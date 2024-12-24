@@ -1,0 +1,1787 @@
+.current_hero
+{
+	position:absolute;
+	left:2%;
+	top:80px;
+	width:28%;
+	height:180px;
+	background-color:rgba(0,0,0,0.2);
+	border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    border: 2px solid rgba(255,255,255,0);
+}
+
+.current_hero.glowing_hero
+{
+	box-shadow: 0px 0px 20px rgba(255,255,255,0.8), inset 0px 0px 30px rgba(255,255,255,0.5);
+	border: 2px solid rgba(255,255,255,1);
+}
+
+.card_count
+{
+	position: absolute;
+    left: 31%;
+    top: 82px;
+    width: 5%;
+    height: 180px;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-top: 10px;
+    font-family: 'Caveat Brush', cursive;
+    font-size: 4vw;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+    color: #fff;
+    opacity: 0.8;
+    text-align: center;
+    border:2px solid rgba(0,0,0,0.5);
+}
+
+@media only screen and (min-width:1000px) {
+	.card_count
+	{
+		font-size: 40px;
+	}
+}
+
+.card_count span
+{
+	position: relative;
+}
+
+.card_count .fill_bar
+{
+	position: absolute;
+    left: 0px;
+    bottom: 0px;
+    right: 	0px;
+    background-color: rgba(255,255,255,0.2);
+}
+
+.hero_mode
+{
+	position:absolute;
+	right:520px;
+	top:10px;
+	width:220px;
+	height:40px;
+	padding-top:10px;
+	background-color:rgba(0,0,0,0.2);
+	text-align:center;
+	font-size:30px;
+	font-weight:bold;
+	color:rgba(0,0,0,0.8);
+	cursor:pointer;
+	border:2px solid #000;
+	opacity: 0.3;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.hero_mode.active
+{
+	background-color:rgba(255,255,255,0.3);
+	color:rgba(255,255,255,0.8);
+	opacity: 1;
+	border:2px solid #fff;
+}
+
+.market_view,
+.tinker_view,
+.edit_view,
+.suggest_view
+{
+	position:absolute;
+	right:220px;
+	top:10px;
+	width:280px;
+	height:40px;
+	padding-top:10px;
+	background-color:rgba(0,0,0,0.2);
+	text-align:center;
+	font-size:30px;
+	font-weight:bold;
+	color:rgba(0,0,0,0.8);
+	cursor:pointer;
+	border:2px solid #000;
+}
+
+.edit_view
+{
+	/*display: inline-block;
+	position: relative;*/
+	right: auto;
+	top:auto;
+	bottom: 10px;
+	left: 2%;
+	width: 34%;
+	height: 55px;
+	box-sizing: border-box;
+}
+
+
+.market_view .select_buy,
+.market_view .select_sell,
+.tinker_view .select_all,
+.tinker_view .select_tinkerable,
+.edit_view .select_edit,
+.edit_view .select_view,
+.suggest_view .suggest_all,
+.suggest_view .suggest_matched
+{
+	position:absolute;
+	top:0px;
+	width:100%;
+	padding-top:10px;
+	background-color:rgba(0,0,0,0);
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	opacity: 0;
+}
+
+.edit_view .select_edit,
+.edit_view .select_view
+{
+    bottom: 10px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.market_view .select_buy.active,
+.market_view .select_sell.active,
+.tinker_view .select_all.active,
+.tinker_view .select_tinkerable.active,
+.edit_view .select_edit.active,
+.edit_view .select_view.active,
+.suggest_view .suggest_all.active,
+.suggest_view .suggest_matched.active
+{
+	background-color:rgba(0,0,0,0);
+	color:rgba(255,255,255,0.8);
+	opacity: 1;
+}
+
+.market_view .select_buy,
+.tinker_view .select_all,
+.edit_view .select_edit,
+.suggest_view .suggest_all
+{
+	left:0px;
+	border-right:0px solid #000;
+}
+
+.market_view .select_sell,
+.tinker_view .select_tinkerable
+.edit_view .select_view,
+.suggest_view .suggest_matched
+{
+	right:0px;
+}
+
+.market_view_slider,
+.tinker_view_slider,
+.edit_view_slider,
+.suggest_slider
+{
+	position:absolute;
+	left:1px;
+	top:1px;
+	width:20px;
+	bottom:1px;
+	background-color:rgba(255,255,255,0.2);
+	border:2px solid #000;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.market_view_slider.buying,
+.tinker_view_slider.viewing,
+.edit_view_slider.viewing,
+.suggest_slider.all
+{
+	left: 100%;
+	margin-left: -25px;
+}
+
+.select_filters
+{
+	position:absolute;
+	right:1%;
+	top:10px;
+	width:180px;
+	height:40px;
+	padding-top:10px;
+	background-color:rgba(0,0,0,0.2);
+	text-align:center;
+	border:2px solid #000;
+	font-size:30px;
+	font-weight:bold;
+	color:rgba(255,255,255,0.8);
+	cursor:pointer;
+}
+
+.clear_deck_button
+{
+	position:absolute;
+	left: 37%;
+    bottom: 10px;
+	width:14%;
+	padding-bottom:10px;
+	padding-top:10px;
+	background-color:rgba(150,0,0,0.2);
+	text-align:center;
+	border:2px solid #000;
+	font-size:3vw;
+	font-weight:bold;
+	color:rgba(255,255,255,0.8);
+	cursor:pointer;
+	overflow: hidden;
+}
+
+@media only screen and (min-width:1000px) {
+	.clear_deck_button
+	{
+		font-size:30px;
+	}
+}
+
+.clear_deck_button:hover,
+.select_filters:hover
+{
+	color:rgba(255,255,255,1);
+	border:2px solid #ccc;
+}
+
+.current_deck
+{
+	position:absolute;
+	left:2%;
+	top:270px;
+	width:34%;
+	bottom:70px;
+	background-color:rgba(0,0,0,0);
+}
+
+.current_deck .filtered_true
+{
+	opacity: 0.3;
+}
+
+.current_deck_colors
+{
+	position:absolute;
+	left:2%;
+	bottom:15px;
+	width:33%;
+	height:15px;
+	background-color:rgba(0,0,0,0);
+	display: none;
+}
+
+.deck_color
+{
+	box-sizing: border-box;
+	float:left;
+	width:50%;
+	height:15px;
+	border-radius:5px;
+	border:2px solid rgba(0,0,0,0.5);
+	/*margin-right:16px;*/
+	opacity:0.6;
+}
+
+.single_campaign_container
+{
+	position:absolute;
+	left:0px;
+	padding-left:0px;
+	padding-top:20px;
+	top:80px;
+	right:0px;
+	bottom:20px;
+	background-color:rgba(0,0,0,0);
+	overflow-y:auto;
+	overflow-x:hidden;
+	text-align: center;
+}
+
+.available_cards
+{
+	position:absolute;
+	left:37%;
+	top:80px;
+	right:0px;
+	bottom:80px;
+	background-color:rgba(0,0,0,0);
+	overflow: auto;
+}
+
+
+
+.card,
+.unit
+{
+	float: left;
+    	width: 150px;
+    	height: 216px;
+    	border-radius: 5px;
+    	background-color: rgba(200,200,200,1);
+    	position: relative;
+    	overflow: hidden;
+    	margin-left: 1.7px;
+    	margin-top: 1.7px;
+    	box-shadow:5px 5px 10px rgba(0,0,0,0.5);
+    	background-position: center center;
+    background-size: cover;
+    background-image: url(../images/old-953394_640.jpg);
+}
+
+.available_card_container
+{
+	display: inline-block;
+    width: 24%;
+    height: 49%;
+    margin: 0%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    box-sizing: border-box;
+}
+
+.available_cards .card
+{
+	float: none;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	margin: 0%;
+}
+
+.portrait .available_cards .available_card_container
+{
+	width: 48%;
+	height: 24%;
+}
+
+.card_detail .card_quote
+{
+	width: 150px;
+	top: 220px;
+}
+
+@media only screen and (max-width:800px) {
+	.portrait .available_cards .card .card_name
+	{
+		font-size: 3vw;
+	}
+	.portrait .available_cards .card .owned_amount
+	{
+		top: auto;
+		right: 10px;
+		left: 10px;
+		bottom: 8px;
+		padding: 0px;
+		text-align: center;
+	}
+}
+
+@media only screen and (max-width:400px) {
+
+	.portrait .available_cards .card .card_name
+	{
+		display: none;
+	}
+	.portrait .available_cards .card .owned_amount
+	{
+		top: 10px;
+		right: 10px;
+		left: auto;
+		padding: 0px;
+	}
+}
+
+@media only screen and (min-width:1100px) {
+	.portrait .available_cards .card .card_name,
+	.landscape .available_cards .card .card_name,
+	.portrait .card .card_name,
+	.landscape .card .card_name
+	{
+		font-size: 20px !important;
+	}
+}
+
+.tinkering_list .faded .card,
+.new_buildings_list .faded .card,
+.available_cards .faded .card
+{
+	opacity: 0.3;
+	box-shadow: none;
+}
+
+.current_hero .card
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	width:auto;
+	height:auto;
+	border-radius: 0px;
+	background-color: rgba(200,200,200,1);
+	overflow: hidden;
+	margin-left: 0px;
+	margin-top: 0px;
+	box-shadow:5px 5px 10px rgba(0,0,0,0.5);
+	background-position: center center;
+    background-size: cover;
+    background-image: url(../images/old-953394_640.jpg);
+}
+
+.card_color
+{
+	position: absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	opacity: 0.4;	
+}
+
+.color_green
+{
+	background-color: rgba(24, 158, 6, 1);
+}
+
+.color_blue
+{
+	background-color: rgba(51, 125, 244, 1);
+}
+
+.color_purple
+{
+	background-color: rgba(163, 16, 121, 1);
+}
+
+.color_red
+{
+	background-color: rgba(244, 50, 50, 1);
+}
+
+.color_orange
+{
+	background-color: rgba(255, 137, 2, 1);
+}
+
+.color_yellow
+{
+	background-color: rgba(248, 252, 73, 1);
+}
+
+.color_colorless
+{
+	background-color: rgba(255, 255, 255, 1);
+	background-color: transparent;
+}
+
+.color_white
+{
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.color_black
+{
+	background-color: rgba(0, 0, 0, 1);
+}
+
+.color_number_0
+{
+	right:50%;
+}
+
+.color_number_1
+{
+	left:50%;
+}
+
+.single_campaign_container .card.disabled
+{
+	opacity:0.75;
+}
+
+.single_campaign_container .card .cleared,
+.single_campaign_container .card .locked
+{
+	font-family: 'Caveat Brush', cursive;
+    font-size: 60px;
+    width: 170px;
+    height: 50px;
+    margin-top: 70px;
+    margin-left: -10px;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+    color: #f55;
+    opacity: 0.8;
+    transform-origin: center center;
+    transform: rotate(-40deg);
+    text-align: center;
+}
+
+.single_campaign_container .card .cleared
+{
+	color: #5f5;
+	opacity:0.5;
+	font-size: 50px;
+	margin-top: 90px;
+}
+
+.single_campaign_container .card,
+.all_campaigns_container .card
+{
+	margin:5px;
+	margin-right:0px;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	opacity:1;
+	display: inline-block;
+    float: none;
+}
+
+.single_campaign_container .card:hover.unlocked:not(.chapter_done),
+.all_campaigns_container .card:hover:not(.chapter_done)
+{
+	/*box-shadow:10px 10px 20px rgba(0,0,0,0.6);*/
+	cursor: pointer;
+	/*transform:scale(1.2,1.2);
+	z-index:2;
+	opacity:1;*/
+}
+
+.card_image
+{
+	background-position: center center;
+	background-size: cover;
+	position: absolute;
+	left:5px;
+	right:5px;
+	top:5px;
+	bottom:5px;
+	border-radius:3px;
+	border:2px solid rgba(0,0,0,0.5);
+	box-shadow:inset 0px 0px 0px rgba(0,0,0,0);
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	opacity: 0.8;
+}
+
+@keyframes new_passive {
+    0%   {
+    	opacity: 	0;
+    }
+    50%   {
+    	opacity: 	0.8;
+    }
+    100%   {
+    	opacity: 	0;
+    }
+}
+
+.card_image .just_burned
+{
+	display:block;
+	background-position: center center;
+	background-size: 90% auto;
+	background-repeat: no-repeat;
+	position: absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+	border-radius:2px;
+	opacity: 0;
+	background-image:url('../images/flamed-leaf.svg');
+	animation-name: new_passive;
+    animation-duration: 0.75s;
+}
+
+.card_image .just_cursed
+{
+	display:block;
+	background-position: center center;
+	background-size: 90% auto;
+	background-repeat: no-repeat;
+	position: absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+	border-radius:2px;
+	opacity: 0;
+	background-image:url('../images/piece-skull.svg');
+	animation-name: new_passive;
+    animation-duration: 0.75s;
+}
+
+.card_image .just_doomed
+{
+	display:block;
+	background-position: center center;
+	background-size: 90% auto;
+	background-repeat: no-repeat;
+	position: absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+	border-radius:2px;
+	opacity: 0;
+	background-image:url('../images/grim-reaper.svg');
+	animation-name: new_passive;
+    animation-duration: 0.75s;
+}
+
+.card_image .just_poisoned
+{
+	display:block;
+	background-position: center center;
+	background-size: 90% auto;
+	background-repeat: no-repeat;
+	position: absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+	border-radius:2px;
+	opacity: 0;
+	background-image:url('../images/poison-gas.svg');
+	animation-name: new_passive;
+    animation-duration: 0.75s;
+}
+
+.card_image .just_blessed
+{
+	display:block;
+	background-position: center center;
+	background-size: 90% auto;
+	background-repeat: no-repeat;
+	position: absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+	border-radius:2px;
+	opacity: 0;
+	background-image:url('../images/prayer.svg');
+	animation-name: new_passive;
+    animation-duration: 0.75s;
+}
+
+.card_image .just_stunned
+{
+	display:block;
+	background-position: center center;
+	background-size: 90% auto;
+	background-repeat: no-repeat;
+	position: absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+	border-radius:2px;
+	opacity: 0;
+	background-image:url('../images/whirlwind.svg');
+	animation-name: new_passive;
+    animation-duration: 0.75s;
+}
+
+@keyframes taken_damage {
+    0%   {
+    	opacity: 	1;
+    	transform:scale(1,1);
+    }
+    /*50%   {
+    	opacity: 	0.8;
+    	transform:scale(1.5,1.5);
+    }*/
+    100%   {
+    	opacity: 	0;
+    	transform:scale(2,2);
+    }
+}
+
+.battle_container .projectile .projectile_text
+{
+	display:block;
+	position: absolute;
+	left:0px;
+	right:0px;
+	top:50%;
+	margin-top:-40px;
+	border-radius:2px;
+	opacity: 0;
+	font-size: 80px;
+	font-family: 'Caveat Brush', cursive;
+	text-align:center;
+	color:#f00;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	transform-origin:center;
+	animation-name: taken_damage;
+    animation-duration: 2s;
+    z-index:201;
+}
+
+.battle_container .projectile.slot_-1 .projectile_text,
+.battle_container .projectile.slot_-2 .projectile_text,
+.battle_container .projectile.slot_-3 .projectile_text,
+.battle_container .projectile.slot_-4 .projectile_text,
+.battle_container .projectile.slot_-5 .projectile_text
+{
+	font-size:20px;
+	top:50%;
+	margin-top:-10px;
+	z-index:1001;
+}
+
+.game_speed_fast .unit .card_image
+{
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+
+.single_campaign_container .card.chapter_done,
+.all_campaigns_container .card.chapter_done
+{
+	opacity:0.4;
+}
+
+.single_campaign_container .card.disabled.pre_load,
+.all_campaigns_container .card.disabled.pre_load,
+.single_campaign_container .card.pre_load,
+.all_campaigns_container .card.pre_load
+{
+	opacity:0;
+}
+
+.need_to_clear
+{
+	position: absolute;
+	left:5px;
+	right:5px;
+	text-align:center;
+	top:65px;
+	border-bottom-right-radius:3px;
+	border-bottom-left-radius:3px;
+	padding-top:5px;
+	padding-bottom:35px;
+	padding-right: 5px;
+    padding-left: 5px;
+	font-size: 14px;
+	font-weight:bold;
+	font-family: arial;
+	line-height: 1.2;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	min-height:12px;
+	color: #fff;
+	z-index:2;
+}
+
+.card_abilities
+{
+	position: absolute;
+	left:5px;
+	right:5px;
+	text-align:center;
+	bottom:5px;
+	border-bottom-right-radius:3px;
+	border-bottom-left-radius:3px;
+	background-color: rgba(0,0,0,0.5);
+	padding-top:5px;
+	padding-bottom:35px;
+	padding-right: 8px;
+    padding-left: 8px;
+	font-size: 12px;
+	font-weight:bold;
+	font-family: arial;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	min-height:12px;
+	color: #fff;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	display: none;
+}
+
+.card_type_cardback .card_abilities,
+.card_type_fragment .card_abilities
+/*.card_type_consumable .card_abilities*/
+{
+	padding-bottom: 10px;
+	min-height: 0px;
+}
+
+.card_type_token .card_abilities
+{
+	padding: 0px;
+	padding-left: 10px;
+	min-height: 0px;
+}
+
+.game_speed_fast .unit .card_abilities
+{
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+
+.single_campaign_container .card .card_abilities
+{
+	display:none;
+}
+
+.card_type
+{
+	text-align: left;
+	color:#ccc;
+	padding-left:3px;
+	top: -20px;
+   	overflow: visible;
+    	height: 0px;
+    	position: relative;
+}
+
+.card_abilities span
+{
+	display:inline-block;
+}
+
+.card .card_time
+{
+	font-family: 'Caveat Brush', cursive;
+    font-size: 20px;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+    color: #fff;
+    position: absolute;
+    left: 7px;
+    width: 25px;
+    top: 7px;
+    height: 21px;
+    padding-top: 4px;
+    background-color: rgba(255,255,255,0.5);
+    border: 2px solid rgba(0,0,0,0.5);
+    border-bottom-right-radius: 5px;
+    text-align: center;
+    border-top: none;
+    border-left: none;
+}
+
+.card_name
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:20px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	position: absolute;
+	left:40px;
+	right:12px;
+	top:10px;
+	text-align:right;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.current_hero .card_name
+{
+	left:15px;
+}
+
+.single_campaign_container .card .card_name
+{
+	font-size:24px;
+}
+
+.unit .card_name
+{
+	left:15px;
+}
+
+.hand_card .card_name
+{
+	position: relative;
+	font-size:13px;
+	text-align:center;
+	overflow:hidden;
+	padding-bottom:3px;
+	padding-right: 2px;
+	left:auto;
+	top:auto;
+	right:auto;
+	font-family: arial;
+}
+
+.card .owned_amount
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:20px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	position: absolute;
+	left:15px;
+	/*width:25px;*/
+	top:35px;
+	height:21px;
+	padding-top:4px;
+	text-align:center;
+	opacity: 0.7;
+}
+
+.card .owned_amount .currently_owned
+{
+	font-size: 25px;
+    color: #ccc;
+
+}
+
+
+
+.reward_cards .card .owned_amount
+{
+	transform:scale(2,2);
+	transform-origin:top left;
+	margin-left:-5px;
+	margin-top:-10px;
+}
+
+.card_power
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:20px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	position: absolute;
+	width:25px;
+	height:21px;
+	padding-top:4px;
+	left:7px;
+	bottom:7px;
+	background-color:rgba(100,100,100,0.7);
+	text-align:center;
+	border-bottom-left-radius: 0px;
+	border-top-right-radius: 5px;
+	border-top:2px solid rgba(0,0,0,0.5);
+	border-right:2px solid rgba(0,0,0,0.5);
+}
+
+.card_armor
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:20px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	position: absolute;
+	width:25px;
+	height:21px;
+	padding-top:3px;
+	right:30px;
+	bottom:12px;
+	background-color:rgba(200,200,200,0.7);
+	text-align:center;
+	border-bottom-left-radius: 70%;
+	border-bottom-right-radius: 70%;
+	border:2px solid rgba(0,0,0,0.5);
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+	z-index:3;
+}
+
+.card_health
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:20px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	position: absolute;
+	min-width:25px;
+	height:21px;
+	padding-top:4px;
+	right:7px;
+	bottom:7px;
+	background-color:rgba(255,0,0,0.7);
+	text-align:center;
+	border-bottom-right-radius: 0px;
+	border-top-left-radius: 5px;
+	border-top:2px solid rgba(0,0,0,0.5);
+	border-left:2px solid rgba(0,0,0,0.5);
+	overflow: hidden;
+}
+
+.game_speed_fast .unit .card_health
+{
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+
+.unit .card_health .current_health,
+.unit .card_health .temp_health
+{
+	position: absolute;
+	padding-top:0px;
+	right:0px;
+	left:0px;
+	top:0px;
+	overflow:hidden;
+	color:rgba(255,0,0,0.6);
+	background-color: rgba(0,0,0,0.7);
+	height:0%;
+	border-radius:1px;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.unit .card_health .temp_health
+{
+	top:auto;
+	bottom:100%;
+	background-color: rgba(255,255,255,0.4);
+	box-shadow: inset -3px 0px 5px -5px rgba(0,0,0,1);
+}
+
+.game_speed_fast .unit .card_health .current_health,
+.game_speed_fast .unit .card_health .temp_health
+{
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+
+.unit .card_health .max_health
+{
+	/*z-index: 2;*/
+	position:relative;
+	padding-left:2px;
+	padding-right:2px;
+}
+
+.unit_effects
+{
+	position: absolute;
+	right:15px;
+	left:15px;
+	top:50px;
+	bottom:0px;
+	color:rgba(255,255,255,0.6);
+	font-family: 'Caveat Brush', cursive;
+	font-size:20px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	text-align:right;
+}
+
+.unit_effects div
+{
+	display:inline-block;
+	margin-left:1%;
+	font-size: 30px;
+	width: 30px;
+	max-width: 24%;
+	height: 30px;
+	max-height: 30%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	font-size:24px;
+	color:rgba(255, 255, 255,0.8);
+}
+
+.unit_effects .effect_burning
+{
+	/*color:rgba(255,0,0,0.9);*/
+	/*color:rgba(255, 255, 255,0.8);*/
+	background-image:url('../images/flamed-leaf.svg');
+	/*background-size: auto 100%;
+	min-width:30px;
+	height:30px;
+	background-repeat: no-repeat;
+	font-size:24px;*/
+}
+
+.unit_effects .effect_poisoned
+{
+	/*color:rgba(202, 230, 48,0.9);*/
+	/*color:rgba(255, 255, 255,0.8);*/
+	background-image:url('../images/poison-gas.svg');
+	/*background-size: auto 100%;
+	min-width:30px;
+	height:30px;
+	background-repeat: no-repeat;
+	font-size:24px;*/
+}
+
+.unit_effects .effect_cursed
+{
+	/*color:rgba(163, 16, 121,0.9);*/
+	/*color:rgba(255, 255, 255,0.8);*/
+	background-image:url('../images/piece-skull.svg');
+	/*background-size: auto 100%;
+	min-width:30px;
+	height:30px;
+	background-repeat: no-repeat;
+	font-size:24px;*/
+}
+
+.unit_effects .effect_doom
+{
+	/*color:rgba(163, 16, 121,0.9);*/
+	/*color:rgba(255, 255, 255,0.8);*/
+	background-image:url('../images/grim-reaper.svg');
+	/*background-size: auto 100%;
+	min-width:30px;
+	height:30px;
+	background-repeat: no-repeat;
+	font-size:24px;*/
+}
+
+.unit_effects .effect_energy
+{
+	/*color:rgba(134, 242, 247,0.9);*/
+	background-image: url(../images/battery-plus.svg);
+}
+
+.unit_effects .effect_blessed
+{
+	/*color:rgba(255, 255, 191,0.9);*/
+	/*color:rgba(255, 255, 255,0.8);*/
+	background-image:url('../images/prayer.svg');
+	/*background-size: auto 100%;
+	min-width:30px;
+	height:30px;
+	background-repeat: no-repeat;
+	font-size:24px;*/
+	
+}
+
+.unit_effects .effect_stunned
+{
+	/*color:rgba(255, 255, 255,1);
+	font-size:100px;
+	position:absolute;
+	left:-15px;
+	right:-15px;
+	top:-50px;
+	bottom:0px;
+	padding-top:60px;
+	background-color:rgba(255,255,255,0.8);
+	text-align:center;
+	margin:0px;
+	opacity:0.5;*/
+	/*color:rgba(255, 255, 255,0.8);*/
+	background-image:url('../images/whirlwind.svg');
+	/*background-size: auto 100%;
+	min-width:30px;
+	height:30px;
+	background-repeat: no-repeat;
+	font-size:24px;*/
+}
+
+.portrait .battle_container .unit.unit_type_artifact .unit_effects,
+.unit_type_artifact .unit_effects
+{
+	right:0px;
+	left:0px;
+	top:2px;
+	bottom:0px;
+	padding: 0px;
+	text-align: center;
+}
+
+.unit_type_artifact .unit_effects .effect_burning,
+.unit_type_artifact .unit_effects .effect_poisoned,
+.unit_type_artifact .unit_effects .effect_cursed,
+.unit_type_artifact .unit_effects .effect_energy,
+.unit_type_artifact .unit_effects .effect_blessed,
+.unit_type_artifact .unit_effects .effect_stunned
+{
+	min-width: 30px;
+	min-height: 30px;
+	/*font-size: 16px;
+	height: auto;*/
+	position: relative;
+	/*top: -5px;*/
+	margin: 0px;
+	max-width: 100%;
+}
+
+/*.unit_type_artifact .unit_effects .effect_stunned
+{
+	color:rgba(255, 255, 255,1);
+	font-size:20px;
+	position:absolute;
+	left:-15px;
+	right:-15px;
+	top:-50px;
+	bottom:0px;
+	padding-top:5px;
+	background-color:rgba(255,255,255,0.8);
+	text-align:center;
+	margin:0px;
+	opacity:0.5;
+}
+
+.unit_type_artifact .unit_effects .effect_energy
+{
+	color:rgba(134, 242, 247,1);
+	font-size:20px;
+	position:absolute;
+	left:-15px;
+	right:-15px;
+	top:-50px;
+	bottom:0px;
+	padding-top:6px;
+	background-color:rgba(134, 242, 247,0);
+	text-align:center;
+	margin:0px;
+	opacity:0.8;
+}*/
+
+.current_deck .card
+{
+	border:2px solid rgba(0,0,0,0.2);
+	width:100%;
+	height:44px;
+	overflow:hidden;
+	position:relative;
+	margin-left: -1px;
+	margin-top:2px;
+	box-sizing: border-box;
+}
+
+.current_deck .card .card_image
+{
+	background-position: center center;
+	background-size: cover;
+	position: absolute;
+	left:1px;
+	width:20px;
+	top:0px;
+	bottom:0px;
+	background-color:rgba(255,255,255,0.5);
+}
+
+.current_deck .card .card_time
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:17px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#ccc;
+	position: absolute;
+	left:25px;
+	right:5px;
+	top:2px;
+	text-align:right;
+	width: auto;
+    height: auto;
+    padding-top: 0px;
+    background-color: transparent;
+    border: none;
+    border-bottom-right-radius: 5px;
+}
+
+.current_deck .card .card_name
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:17px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	position: absolute;
+	left:28px;
+	right:4px;
+	top:2px;
+	text-align:left;
+}
+
+.current_deck .card .card_abilities
+{
+	position: absolute;
+	left:27px;
+	right:0px;
+	text-align:left;
+	top:20px;
+	bottom:0px;
+	background-color: rgba(0,0,0,0.5);
+	padding-top:0px;
+	padding-right: 60px;
+    padding-left: 0px;
+	font-size: 10px;
+	font-weight:bold;
+	font-family: arial;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color: #fff;
+	line-height:2;
+}
+
+.current_deck .card .card_abilities span
+{
+	display: inline-block;
+}
+
+.current_deck .card .card_abilities .card_type
+{
+	display:inline-block;
+	padding-right:3px;
+	opacity:0.7;
+	top:0px;
+}
+
+.current_deck .card .owned_amount
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:17px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	position: absolute;
+	left: 0px;
+    width: 25px;
+    top: 0px;
+    bottom: 0px;
+    padding-top: 20px;
+    background-color: rgba(255,255,255,0);
+    border: none;
+    text-align: center;
+    opacity: 1;
+}
+
+.current_deck .card .card_power
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:17px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	position: absolute;
+	right:20px;
+	width:18px;
+	top:20px;
+	bottom:0px;
+	padding-top:1px;
+	background-color:rgba(255,255,255,0.7);
+	border:1px solid #333;
+	text-align:center;
+	height:auto;
+	left:auto;
+	border-radius: 0px;
+}
+
+.current_deck .card .card_health
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:17px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	position: absolute;
+	right:0px;
+	width:18px;
+	top:20px;
+	bottom:0px;
+	padding-top:1px;
+	background-color:rgba(255,0,0,0.7);
+	border:1px solid #333;
+	text-align:center;
+	height:auto;
+	left:auto;
+	border-radius: 0px;
+	min-width: auto;
+	padding-left:0px;
+	padding-right:0px;
+}
+
+.current_deck .card .card_armor
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:17px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	position: absolute;
+	right:40px;
+	width:18px;
+	top:18px;
+	bottom:0px;
+	padding-top:0px;
+	background-color:rgba(200,200,200,0.7);
+	border:1px solid #333;
+	text-align:center;
+	border-bottom-right-radius:10px;
+	border-bottom-left-radius:10px;
+	height:auto;
+}
+
+.page_selection
+{
+	position:absolute;
+	left:0px;
+	height:auto;
+	right:0px;
+	bottom:20px;
+	background-color:rgba(0,0,0,0);
+	text-align:center;
+	padding-top:15px;
+	color:#ccc;
+}
+
+.portrait .page_selection
+{
+	padding-top: 0px;
+	bottom: 10px;
+}
+
+#content_deck_edit .page_selection
+{
+	left: 50%;
+}
+
+.page_selection .previous_page,
+.page_selection .page_number,
+.page_selection .next_page
+{
+	display:inline-block;
+	padding:5px;
+	margin-left:0px;
+	margin-right:0px;
+	font-weight:bold;
+	width: 30%;
+}
+
+.portrait .page_selection .previous_page,
+.portrait .page_selection .page_number,
+.portrait .page_selection .next_page
+{
+	padding:0px;
+	padding-top: 5px;
+	width: 100%;
+}
+
+.page_selection .previous_page:hover,
+.page_selection .next_page:hover
+{
+	color:#fff;
+	cursor: pointer;
+}
+
+.no_page
+{
+	position: relative;
+	opacity: 0;
+	height: 0px;
+}
+
+.portrait .no_page
+{
+	height: auto;
+	opacity: 0;
+}
+
+.card_detail
+{
+	position: absolute;
+	left:200px;
+	right:200px;
+	top:50px;
+	bottom:100px;
+	border:2px solid rgba(0,0,0,0.8);
+	background-color:rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 150px 0px rgba(255,255,255,0.2);
+    border-radius: 5px;
+}
+
+.card_detail .add_card_to_deck_from_details_button
+{
+	position:absolute;
+	bottom:-60px;
+	right:0px;
+	left:0px;
+	height:40px;
+	padding-top:10px;
+	background-color:rgba(0,0,0,0.5);
+	text-align:center;
+	border:2px solid #000;
+	font-size:30px;
+	font-weight:bold;
+	color:rgba(255,255,255,0.8);
+	cursor:pointer;
+}
+
+.card_detail .available_cards
+{
+	left:0px;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	overflow: visible;
+}
+
+.card_detail .available_cards .card
+{
+	left: 5px;
+	top: 5px;
+	width: 150px;
+	height: 200px;
+}
+
+
+.card_detail .ability_details
+{
+	position: absolute;
+	right:10px;
+	top:10px;
+	left: 170px;
+	bottom: 10px;
+    overflow-y: auto;
+}
+
+.portrait .card_detail .ability_details
+{
+	top: 20px;
+	bottom: 70px;
+	width: auto;
+	right: 2%;
+	overflow-x: visible;
+	overflow-y: auto;
+}
+
+.card_detail .ability_details .single_ability
+{
+	margin:10px;
+	width:360px;
+}
+
+.portrait .card_detail .ability_details .single_ability
+{
+	width: 100%;
+	margin: 0px;
+	margin-bottom: 0px;
+}
+
+.card_detail .ability_details .single_ability .single_ability_name
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:20px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	display: block;
+}
+
+.card_detail .ability_details .single_ability .single_ability_description
+{
+	font-family: times;
+	font-size:16px;
+	color:#fff;
+	display: block;
+	margin-top: 5px;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.card_detail .ability_details .single_ability .single_ability_description i
+{
+	font-style: italic;
+	color:#ccc;
+}
+
+
+.card_detail .card_quote
+{
+	position: absolute;
+    left: 5px;
+    /*top: 240px;*/
+    /*width: 135px;*/
+    text-align: center;
+    font-style: italic;
+    font-family: times;
+    font-size: 16px;
+    color: #fff;
+    display: block;
+    line-height: 20px;
+    color: #ccc;
+}
+
+.card_detail .card_quote_quote
+{
+	font-size: 22px;
+	line-height: 20px;
+}
+
+.card_detail .card_value
+{
+	position: absolute;
+    left: 15px;
+    bottom: 10px;
+    width: 135px;
+    text-align: left;
+    font-family: arial;
+    font-size: 12px;
+    color: #ccc;
+    display: block;
+    line-height: 20px;
+    color: #ccc;
+}
+
+@media only screen and (max-width:1000px) {
+	.card_detail
+	{
+		position: absolute;
+		left:0px;
+		right:0px;
+		top:0px;
+		bottom:0px;
+		border:0px solid rgba(0,0,0,0.8);
+		box-shadow: none;
+	    border-radius: 0px;
+	}
+
+	.card_detail .add_card_to_deck_from_details_button
+	{
+		bottom: 0px;
+	}
+
+	.card_detail .card_value
+	{
+		bottom: 60px;
+	}
+}
+
+
+.reward_cards
+{
+	position:absolute;
+	right: 10px;
+    bottom: 10px;
+    width: 390px;
+}
+
+.reward_cards.big_rewards
+{
+    position: absolute;
+    top: 0px;
+    left: 65px;
+    right: -100px;
+    width: auto;
+}
+
+.reward_cards .reward_title
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:20px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	display: block;
+	position: absolute;
+    top: 80px;
+}
+
+.reward_cards.big_rewards .reward_title
+{
+    position: absolute;
+    font-size: 40px;
+    left: 0px;
+    top: 10px;
+    text-align: center;
+    right: 180px;
+}
+
+.reward_cards .single_reward
+{
+	width: 80px;
+    float: left;
+    min-height: 218px;
+    font-family: 'Caveat Brush', cursive;
+	font-size:20px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+}
+
+.reward_cards .single_reward .scrap_reward
+{
+	position: absolute;
+	bottom:80px;
+}
+
+.reward_cards .card
+{
+	transform: scale(0.5,0.5);
+	transform-origin:left bottom;
+}
+
+.reward_cards.big_rewards .card
+{
+    transform: none;
+    margin-top: 50px;
+}
+
+.not_in_collection .card
+{
+	opacity:0.3;
+}
+
+.not_in_collection .card .card_time,
+.not_in_collection .card .card_abilities,
+.not_in_collection .card .card_name,
+.not_in_collection .card .card_health,
+.not_in_collection .card .card_power,
+.not_in_collection .card .card_armor
+{
+	display:none;
+}
+
+.collection_count
+{
+	position: absolute;
+	top: 22px;
+    right: 240px;
+    font-family: 'Caveat Brush', cursive;
+    font-size: 30px;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+    color: #fff;
+}
+
+@media only screen and (max-width:800px) {
+	.collection_count
+	{
+		position: absolute;
+		top: auto;
+		bottom:  25px;
+	    right: 10px;
+	    font-family: 'Caveat Brush', cursive;
+	    font-size: 20px;
+	    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+	    color: #fff;
+	}
+}
+
+.shiny
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	left:0px;
+	background-image:url('../images/YyBS.gif');
+	background-size:cover;
+}

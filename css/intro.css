@@ -1,0 +1,50 @@
+.intro
+{
+	display:none;
+	position: fixed;
+	top:0px;
+	right:0px;
+	left:0px;
+	bottom:0px;
+	background-color:#000;
+	z-index:100000;
+	overflow: hidden;
+}
+
+.skip_intro_button
+{
+	position: absolute;
+	bottom:20px;
+	left:20px;
+	padding:10px;
+	font-size:20px;
+	color:#fff;
+	background-color:rgba(255,255,255,0.1);
+	letter-spacing: 0.1vh;
+	font-family: arial;
+	font-weight:bold;
+	z-index: 1000001;
+}
+
+.intro_step
+{
+	position: absolute;
+	background-position: center center;
+	background-size: cover;
+	position:absolute;
+	font-family: 'Caveat Brush', cursive;
+	color:#fff;
+	text-align:left;
+	display:block;
+	opacity: 0;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	
+	transition: all 2s ease-in-out;
+	transition-property: opacity, left, top, right, height, width;
+  	transition-duration: 2s, 5s, 5s, 5s, 5s;
+}
+
+.intro_step.visible
+{
+	opacity:0.8;
+}

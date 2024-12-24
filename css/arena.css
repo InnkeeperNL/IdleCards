@@ -1,0 +1,635 @@
+.current_king_of_the_hill_container,
+.current_arena_decks_container,
+.current_arena_container,
+.new_raids_content,
+.raids_content
+{
+	position: absolute;
+	top:80px;
+	left:20px;
+	right:0px;
+	bottom:0px;
+}
+
+#content_card_shop .scrap_shop_content
+{
+	position: absolute;
+	top:80px;
+	left:0px;
+	right:0px;
+	bottom:10px;
+	height:auto;
+}
+
+.raids_content
+{
+	overflow-x:hidden;
+	overflow-y:auto;
+	height:420px;
+	left:10px;
+}
+
+.raids_content.full
+{
+	height:500px;
+	right:10px;
+}
+
+.new_raids_content
+{
+	overflow-x:hidden;
+    overflow-y:auto;
+    bottom:20px;
+}
+
+.refresh_button
+{
+	position: absolute;
+	left:20px;
+	bottom:20px;
+	z-index:10;
+}
+
+.arena_shop_button
+{
+	position: absolute;
+	right:10px;
+	bottom:20px;
+	z-index:10;
+}
+
+.loading_king_of_the_hill,
+.loading_arena_decks,
+.loading_arena
+{
+	color:#fff;
+	font-size: 30px;
+	position: absolute;
+	top:0px;
+	left:0px;
+	right:20px;
+	bottom:20px;
+	background-color:rgba(0,0,0,0.5);
+	box-sizing:border-box;
+	padding-top:200px;
+	text-align: center;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.fightable_deck_container,
+.owned_deck_container
+{
+	float: left;
+    margin-right: 10px;
+    margin: bottom:10px;
+    width: 184px;
+    height: 400px;
+    font-family: times;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgba(255,255,255,0.8);
+    color: #fff;
+    text-shadow: none;
+    box-shadow: none;
+    position: relative;
+    box-sizing:border-box;
+    
+}
+
+.fightable_deck_container
+{
+	height:200px;
+}
+
+.loading_king_of_the_hill
+{
+	left:380px;
+	top:50px;
+	width:184px;
+	height:350px;
+}
+
+.current_king_of_the_hill_container .fightable_deck_container
+{
+	position:absolute;
+	left: 380px;
+    top: 50px;
+}
+
+.single_enemy_deck .background,
+.fightable_deck_container .background,
+.owned_deck_container .background
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	opacity: 0.5;
+	background-position: center center;
+	background-size: cover;
+	z-index:0;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+
+/*.fightable_deck_container:hover .background
+{
+	opacity: 0.8;
+}*/
+
+.single_enemy_deck span,
+.fightable_deck_container span,
+.owned_deck_container span
+{
+	position: relative;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	padding-left: 10px;
+    padding-right: 10px;
+    display:block;
+}
+
+.single_enemy_deck span i,
+.fightable_deck_container span i
+{
+	color:#ccc;
+	font-style: italic;
+	font-size:16px;
+}
+
+.single_enemy_deck,
+.claim_king_button,
+.fight_deck_button,
+.replace_deck_button,
+.owned_deck,
+.current_king_of_the_hill_container .fightable_deck,
+.fightable_deck,
+.fight_single_deck_button,
+.start_raid_button,
+.start_new_raid_button
+{
+    width: 184px;
+    height: 300px;
+    background-color: rgba(0,0,0,0.2);
+    text-align: left;
+    border: 2px solid #000;
+    font-family: times;
+    font-size:22px;
+    font-weight: bold;
+    color: rgba(255,255,255,0.8);
+    border-radius: 0px;
+    color: #fff;
+    text-shadow: none;
+    box-shadow: none;
+    position: relative;
+    box-sizing:border-box;
+    padding-top:10px;
+    text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.fightable_deck
+{
+	font-size:22px;
+}
+
+.fight_single_deck_button
+{
+	position: absolute;
+	top:320px;
+}
+
+.fightable_deck
+{
+	height:170px;
+}
+
+.raids_content .fightable_deck
+{
+	margin-right:0px;
+	margin-left:10px;
+	height: 180px;
+	border-radius:5px;
+	overflow: hidden;
+	background-color:#000;
+}
+
+.raids_content .fightable_deck .background
+{
+	opacity:0.4;
+}
+
+.fightable_deck.fightable
+{
+	cursor: pointer;
+}
+
+.fightable_deck.not_fightable
+{
+	opacity:0.5;
+	border-color:rgba(255,255,255,0.3);
+	color:#ccc;
+}
+
+.owned_deck
+{
+	padding-left:10px;
+}
+
+.owned_deck_container .owned_deck span
+{
+	left:-10px;
+}
+
+.fight_single_deck_button,
+.claim_king_button,
+.fight_deck_button,
+.replace_deck_button,
+.start_raid_button,
+.start_new_raid_button
+{
+	font-size: 30px;
+	text-align: center;
+	height:55px;
+	padding-top:10px;
+	margin-top:10px;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+
+.replace_deck_button.replace_now
+{
+	background-color:rgba(255,0,0,0.3);
+}
+
+.start_new_raid_button:hover,
+.start_raid_button:hover,
+.fight_single_deck_button:hover,
+.fightable:hover,
+.claim_king_button:hover,
+/*.fightable_deck_container:hover .fight_deck_button,*/
+.fight_deck_button:hover,
+.replace_deck_button:hover
+{
+	background-color: rgba(255,255,255,0.2);
+	cursor:pointer;
+}
+
+
+
+.wins_losses
+{
+	position: absolute;
+	left:10px;
+	right:10px;
+	bottom:10px;
+	text-align:right;
+	font-size:16px;
+	line-height:1.1;
+}
+
+.menu_button.slim.king_of_the_hill_button
+{
+	width: 374px;
+	background-color:rgba(0,55,0,0.2);
+	/*position: absolute;
+	bottom:20px;
+	left:20px;*/
+}
+
+.recent_kings_container
+{
+	position: absolute;
+	right:50px;
+	top:150px;
+	width:250px;
+	height:400px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	font-family:times;
+	font-size:38px;
+	color: #fff;
+}
+
+.single_king
+{
+	font-family:times;
+	font-size:18px;
+	color: #fff;
+	margin-top:10px;
+}
+
+.single_king .king_name
+{
+	font-family:times;
+	font-size:28px;
+	color: #ccc;
+	font-style: italic;
+}
+
+.king_rewards_container
+{
+	position: absolute;
+	left:50px;
+	top:150px;
+	width:250px;
+	height:400px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	font-family:times;
+	font-size:38px;
+	color: #fff;
+}
+
+.king_rewards_container span
+{
+	font-size:24px;
+	color:#ccc;
+}
+
+.arena_cost_description
+{
+	position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 398px;
+    font-family: times;
+    color: #fff;
+    font-size: 28px;
+    text-align: center;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+    line-height: 1.1;
+}
+
+.arena_deck_broken
+{
+	font-family: 'Caveat Brush', cursive;
+    font-size: 60px;
+    width: 170px;
+    height: 50px;
+    margin-top: 70px;
+    margin-left: -10px;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+    color: #f55;
+    opacity: 0.6;
+    transform-origin: center center;
+    transform: rotate(-40deg);
+    text-align: center;
+}
+
+.arena_deck_content
+{
+	position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 16px;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.8);
+    font-weight: normal;
+    line-height: 1.2;
+    opacity: 0;
+}
+
+.owned_deck:hover .arena_deck_content
+{
+	opacity: 1;
+}
+
+.single_arena_deck_content
+{
+	position: absolute;
+	left:200px;
+	top:0px;
+	right:100px;
+}
+
+.single_arena_deck_card
+{
+	float:left;
+	transform-origin: top left;
+	width: 80px;
+    height: 115px;
+	transform:scale(0.5);
+}
+
+.single_raid_container
+{
+	position: absolute;
+	left:20px;
+	top:20px;
+	width:600px;
+	bottom:0px;
+}
+
+.single_raid_container .raid_name
+{
+	font-family: 'Caveat Brush', cursive;
+    font-size: 60px;
+    color: #fff;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+    position: absolute;
+    left: 175px;
+}
+
+.single_raid_container .raid_image
+{
+	position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 150px;
+    height: 200px;
+    background-position: top;
+    background-size: cover;
+    border-radius:5px;
+    border:2px solid #333;
+    box-sizing: border-box;
+}
+
+.single_raid_container .raid_description
+{
+	font-family: times;
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+    position: absolute;
+    left: 175px;
+    top:100px;
+    line-height: 1.1;
+}
+
+.raid_health
+{
+	font-family: times;
+    font-size: 16px;
+    color: #fff;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+	position: absolute;
+    left: 175px;
+    top:80px;
+    height:25px;
+    width:500px;
+    border:2px solid #333;
+    background-color:rgba(0,0,0,0.3);
+    overflow: hidden;
+    box-sizing: border-box;
+    padding:2px;
+    border-radius:5px;
+}
+
+.raid_health span
+{
+	position: absolute;
+    left: 5px;
+    top:3px;
+}
+
+.raid_health_bar
+{
+	position: absolute;
+    left: 0px;
+    top:0px;
+    height:100%;
+    background-color:rgba(255,0,0,0.3);
+    box-shadow:inset 0px -10px 10px -10px rgba(0,0,0,0.5), inset 0px 10px 10px -10px rgba(255,255,255,0.1);
+}
+
+.raids_content .contributer_list
+{
+	position: absolute;
+	right:20px;
+	top:20px;
+	font-family: 'Caveat Brush', cursive;
+    font-size: 24px;
+    color: #fff;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+    width:200px;
+    text-align:right;
+    height: 350px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-right: 10px;
+}
+
+.single_contributer
+{
+	width:100%;
+	box-sizing:border-box;
+	padding:10px;
+	background-color:rgba(0,0,0,0.3);
+	border-radius:5px;
+	margin-top:3px;
+	font-family: times;
+    font-size: 18px;
+    color: #fff;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+    text-align:left;
+}
+
+.single_contributer.current_user
+{
+	color:#afa;
+}
+
+.single_contributer .contributed_amount
+{
+	float:right;
+}
+
+.start_raid_button
+{
+	position:absolute;
+	bottom:20px;
+	right:20px;
+}
+
+.start_new_raid_button
+{
+	position:absolute;
+	right:5px;
+	bottom:5px;
+}
+
+.new_raid_description
+{
+    position: absolute;
+    left: 180px;
+    bottom: 10px;
+    width: 500px;
+}
+
+.join_raid_content
+{
+	position: absolute;
+	left:300px;
+	top:200px;
+}
+
+.raid_join_error,
+.raid_code_title
+{
+	font-family: times;
+    font-size: 28px;
+    color: #fff;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+    text-align:left;
+}
+
+.raid_join_error
+{
+	margin-top:20px;
+	color:#f55;
+	font-size:24px;
+}
+
+.hidden_join_code
+{
+	/*display:none;*/
+	position: absolute;
+	opacity: 0;
+}
+
+.copy_code_button
+{
+	color:#ccc;
+	margin-left:20px;
+	cursor: pointer;
+}
+
+.raid_rewards
+{
+	position: absolute;
+	left:0px;
+	bottom:20px;
+
+	font-family: times;
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+}
+
+.raid_rewards .card
+{
+	float: none;
+	display: inline-block;
+	transform-origin:bottom left;
+	transform: scale(0.6);
+	margin-right: -50px;
+    margin-top: -75px;
+}
+
+.raid_reward_block
+{
+	display: inline-block;
+	min-width:200px;
+	text-align: left;
+}
+
+.raid_reward_block .card_holder
+{
+	display: inline-block;
+}

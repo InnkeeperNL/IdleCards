@@ -1,0 +1,181 @@
+.summon_container,
+.waves_container
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	text-align: center;
+	font-family: 'Caveat Brush', cursive;
+	color:#fff;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	overflow-x: hidden;
+	overflow-y: auto;
+	z-index: 0;
+}
+
+.waves_container
+{
+	top: 70px;
+}
+
+.waves_container .menu_button,
+.summon_container .menu_button
+{
+	margin-right: 0px;
+}
+
+@keyframes just_summoned_hero_container {
+    0%   {
+		opacity: 1;
+    }
+    99%   {
+		opacity: 0;
+    }
+}
+
+@keyframes just_summon_hero_container {
+    0%   {
+		opacity: 0;
+    }
+    99%   {
+		opacity: 1;
+    }
+}
+
+.summoned_hero_container,
+.summon_hero_container
+{
+	position: absolute;
+	top: 70px;
+	left: 0px;
+	right: 0px;
+}
+
+.summoned_hero_container.just_summoned,
+.summon_hero_container.just_summoned
+{
+	animation-name: just_summoned_hero_container;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in;
+    opacity: 0;
+}
+
+.summon_hero_container.just_summoned
+{
+	animation-name: just_summon_hero_container;
+	opacity: 1;
+}
+
+.selected_pre_summon_buff_container
+{
+	display: inline-block;
+	width: 90%;
+	max-width: 350px;
+	position: relative;
+	text-align: left;
+	min-height: 60px;
+	margin-bottom: 10px;
+	padding: 5px;
+	border: 2px solid rgba(255,255,255,0.5);
+	background-color: rgba(255,255,255,0.2);
+	border-radius: 5px;
+}
+
+.selected_pre_summon_buff
+{
+	position: absolute;
+	top: 2px;
+	left: 2px;
+}
+
+.selected_pre_summon_buff_text
+{
+	padding-left: 62px;
+	padding-right: 62px;
+}
+
+.menu_button.slim.use_summon_pre_buff_button
+{
+	box-sizing: border-box;
+	position: absolute;
+	bottom: 2px;
+	left: auto;
+	top: auto;
+	right: 2px;
+	height: 50px;
+    width: 55px;
+    font-size: 20px;
+    padding-top: 12px;
+    margin: 0px;
+}
+
+.selected_pre_summon_buff_text,
+.selected_pre_summon_buff,
+.summon_container .card,
+.waves_container .card
+{
+	float: none;
+	display: inline-block;
+}
+
+.selected_pre_summon_buff .card,
+.summon_consumable .card,
+.pebuff .card
+{
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+}
+
+.waves_container .card .card_name,
+.waves_container .card .card_time,
+.selected_pre_summon_buff .card .card_name,
+.summon_consumable .card .card_name,
+.pebuff .card .card_name
+{
+	display: none;
+}
+
+.summon_consumable .card .owned_amount
+{
+	position: absolute;
+	top: 5px;
+	left: 0px;
+	right: 0px;
+	bottom: auto;
+	font-size: 30px;
+	text-align: center;
+}
+
+.waves_container .summon_stats,
+.summon_container .summon_stats
+{
+	font-size:24px;
+	line-height: 30px;
+}
+
+@keyframes goes_up {
+    0%   {
+    	margin-top: 0px;
+		opacity: 0.7;
+		transform: scale(1,1);
+    }
+    100%   {
+    	margin-top: -100px;
+		opacity: 0;
+		transform: scale(0.25,1);
+    }
+}
+
+.unowned_summon .card
+{
+	box-shadow: 0px 0px 40px 0px rgba(255,255,200,0.7), 5px 5px 10px rgba(0,0,0,0.5);
+}
+
+.unowned_summon .card .card_image
+{
+	opacity: 0.8;
+	box-shadow:inset 0px 0px 40px 0px rgba(255,255,200,1), 5px 5px 10px rgba(0,0,0,0.5);
+}

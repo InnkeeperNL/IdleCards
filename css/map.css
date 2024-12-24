@@ -1,0 +1,191 @@
+.map_bg
+{
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	background-position: center;
+	background-size: cover;
+	opacity: 0.1;
+}
+
+.map_content
+{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 80px;
+	bottom: 0px;
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+	width: auto;
+}
+
+.map_button .bg
+{
+	background-image: url('../images/cards/adventure-2528477_640.jpg');
+}
+
+.location
+{
+	box-sizing: border-box;
+	position: absolute;
+	border-radius: 5px;
+	background-image: url('../images/old-953394_640.jpg');
+}
+
+.location.map_back_button
+{
+	border: 4px solid rgba(255,255,255,0.5);
+}
+
+.location_type_battle
+{
+	border: 3px solid rgba(255,0,0,0.5);
+}
+
+.location_type_battle.can_enter_false
+{
+	display: none;
+}
+
+.location_click_event
+{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	cursor: pointer;
+	z-index: 1000;
+}
+
+.map_back_button .location_click_event
+{
+	background-position: center;
+	background-size: 70% auto;
+	background-repeat: no-repeat;
+	background-image: url('../images/exit-door.svg');
+}
+
+.landscape .map_back_button .location_click_event
+{
+	background-size: auto 70%;
+}
+
+.map_icon
+{
+	box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.8), 0px 0px 5px 0px rgba(0,0,0,0.8);
+    font-family: arial;
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    height: 30px;
+    width: 30px;
+    font-size: 22px;
+    text-align: center;
+    border: 3px solid rgba(255,225,0,0.6);
+    background-color: rgba(255,225,0,0.6);
+    color: rgba(255,225,0,1);
+    border-radius: 100%;
+	box-sizing: border-box;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 20px;
+	z-index: 1;
+}
+
+.battle_icon
+{
+	background-image: url('../images/crossed-swords-w.svg');
+	border: 3px solid rgba(255,0,0,0.6);
+    background-color: rgba(255,0,0,0.6);
+}
+
+.location_bg
+{
+	position: absolute;
+	left: 2px;
+	right: 2px;
+	top: 2px;
+	bottom: 2px;
+	border-radius: 3px;
+	opacity: 0.7;
+	background-size: cover;
+	background-position: center;
+}
+
+.location.map_back_button .location_bg
+{
+	opacity: 0.4;
+}
+
+.can_enter_false,
+.can_enter_false .location_bg,
+.cleared_battle_true
+{
+	opacity: 0.5;
+}
+
+.location.map_col_1
+{
+	left: 1%;
+	right: 81%;
+}
+
+.location.map_col_2
+{
+	left: 21%;
+	right: 61%;
+}
+
+.location.map_col_3
+{
+	left: 41%;
+	right: 41%;
+}
+
+.location.map_col_4
+{
+	left: 61%;
+	right: 21%;
+}
+
+.location.map_col_5
+{
+	left: 81%;
+	right: 1%;
+}
+
+.location.map_row_1
+{
+	top: 1%;
+	bottom: 81%;
+}
+
+.location.map_row_2
+{
+	top: 21%;
+	bottom: 61%;
+}
+
+.location.map_row_3
+{
+	top: 41%;
+	bottom: 41%;
+}
+
+.location.map_row_4
+{
+	top: 61%;
+	bottom: 21%;
+}
+
+.location.map_row_5
+{
+	top: 81%;
+	bottom: 1%;
+}
+

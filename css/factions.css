@@ -1,0 +1,218 @@
+.factions_container,
+.single_faction_container
+{
+    overflow-x:hidden;
+    overflow-y:auto;
+    position: absolute;
+    top: 70px;
+    bottom: 0px;
+    left: 1%;
+    right: 1%;
+    width: auto;
+    margin: 0px;
+}
+
+.factions_container .single_expedition
+{
+    min-height: 150px;
+}
+
+.factions_container .single_new_expedition_name
+{
+    display: block;
+    width: 100%;
+}
+
+.faction_description.representing_current,
+.factions_container .single_expedition.active .single_new_expedition_name
+{
+	color:rgba(100,255,100,0.8);
+	/*font-size:5vw;*/
+}
+
+.faction_bg
+{
+	position: absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+	background-size: cover;
+	background-position: center;
+	opacity: 0.1;
+}
+
+.faction_background
+{
+	position: absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+	background-size: cover;
+	background-position: center;
+	opacity: 0.3;
+	z-index:-1;
+}
+
+.faction_bonus_per_level,
+.faction_bonus_current,
+.faction_bonus_title,
+.faction_name,
+.faction_description
+{
+	font-family: times;
+	font-size:	30px;
+	font-weight: bold;
+	color:rgba(255,255,255,0.9);
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.faction_bonus_per_level,
+.faction_bonus_current,
+.faction_bonus_title,
+.faction_description
+{
+	font-size:20px;
+	line-height: 1.2;
+}
+
+.faction_bonus_per_level,
+.faction_bonus_current,
+.faction_bonus_title
+{
+	display:inline-block;
+	width:32%;
+}
+
+@media only screen and (max-width:800px) {
+	.faction_bonus_per_level,
+	.faction_bonus_current,
+	.faction_bonus_title
+	{
+		width:50%;
+	}
+	.faction_bonus_per_level
+	{
+		text-align: left;
+	}
+	.faction_bonus_title
+	{
+		margin-top: 5px;
+	}
+}
+
+.faction_bonus_current
+{
+	text-align: center;
+}
+
+.faction_bonus_per_level
+{
+	text-align: right;
+}
+
+.reputation_bar
+{
+	display:inline-block;
+	margin-top:10px;
+	width:100%;
+	height:20px;
+	box-sizing:border-box;
+	border:1px solid rgba(0,0,0,0.7);
+	background-color:rgba(0,0,0,0.3);
+	border-radius:4px;
+	overflow:hidden;
+	position: relative;
+}
+
+.message .reputation_bar
+{
+	display:block;
+	width:98%;
+	margin:auto;
+}
+
+.reputation_progress_bar
+{
+	position: absolute;
+	left:0px;
+	top:0px;
+	height:20px;
+	background-color:rgba(100,200,100,0.5);
+	box-shadow:inset 0px 5px 3px rgba(200,255,200,0.3);
+}
+
+.reputation_progress_bar_gained
+{
+	position: absolute;
+	left:0px;
+	top:0px;
+	height:20px;
+	background-color:rgba(200,255,200,0.8);
+	box-shadow:inset 0px 5px 3px rgba(255,255,255,0.6);
+	-webkit-transition: all 1.5s ease-in-out;
+	-moz-transition: all 1.5s ease-in-out;
+	-o-transition: all 1.5s ease-in-out;
+	transition: all 1.5s ease-in-out;
+}
+
+.reputation_progress_left,
+.reputation_progress_right
+{
+	position: absolute;
+	left:5px;
+	right:5px;
+	top:2px;
+	text-align: left;
+	color:#fff;
+	font-family: times;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	font-size:16px;
+	font-weight:bold;
+	transform-origin:left center !important;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.reputation_progress_left.levelup
+{	
+	transform:scale(1.2,1.2);
+}
+
+.reputation_progress_right
+{
+	text-align: right;
+}
+
+.activate_faction_button,
+.faction_info_button
+{
+	box-sizing:border-box;
+	font-family: 'Caveat Brush', cursive;
+	font-size:24px;
+	text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+	color: #ccc;
+	text-align: center;
+	width: 150px;
+    display: inline-block;
+    padding:10px;
+    border-radius:5px;
+    background-color:rgba(50,150,50,0.9);
+    border:3px solid rgba(155,155,155,1);
+    box-shadow:inset 5px 5px 2px rgba(255,255,255,0.2), inset -5px -5px 2px rgba(0,0,0,0.3), inset 0px 0px 0px 2px rgba(0,0,0,0.9);
+    cursor:pointer;
+    float:right;
+    margin-left:10px;
+    margin-top: 5px;
+}
+
+.activate_faction_button:hover,
+.faction_info_button:hover
+{
+	border-color: #fff;
+	color:#fff;
+	box-shadow:inset -5px -5px 2px rgba(255,255,255,0.2), inset 5px 5px 2px rgba(0,0,0,0.3), inset 0px 0px 0px 2px rgba(0,0,0,0.9);
+}

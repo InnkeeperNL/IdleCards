@@ -1,0 +1,183 @@
+.journal_content
+{
+	box-sizing: border-box;
+	position: absolute;
+	top: 80px;
+	bottom: 20px;
+	left: 20px;
+	right:  20px;
+	padding: 0px;
+	margin: 0px;
+	width: auto;
+	text-align: center;
+}
+
+.chapter,
+.story
+{
+	max-width: 600px;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px;
+	display: inline-block;
+	position: relative;
+	text-align: center;
+}
+
+.chapter
+{
+	cursor: pointer;
+}
+
+.chapter_done_true
+{
+	opacity: 0.5;
+}
+
+.chapter_bg
+{
+	box-sizing: border-box;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right:  0px;
+	background-image: url(../images/old-953394_640.jpg);
+	background-size: cover;
+	background-position: center;
+	border-radius: 5px;
+	border: 4px solid rgba(0,0,0,0.5);
+	opacity: 0.5;
+}
+
+.chapter_name,
+.chapter_subname,
+.story_name,
+.story_description,
+.story_progress_name
+{
+	box-sizing: border-box;
+	position: relative;
+	font-family: 'Caveat Brush', cursive;
+    font-size: 28px;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+    color: #fff;
+}
+
+.chapter_subname,
+.story_description,
+.story_progress_name,
+.story_progress
+{
+	box-sizing: border-box;
+	position: relative;
+	font-family: 'Caveat Brush', cursive;
+    font-size: 20px;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+    color: #ccc;
+}
+
+.story_description
+{
+	box-sizing: border-box;
+	margin-top: 10px;
+	padding: 10px;
+	background-color: rgba(255,255,255,0.5);
+	color: #333;
+	text-shadow: none;
+	border-radius: 5px;
+	border: 1px solid #000;
+	font-family: times;
+	text-align: left;
+	font-weight: bold;
+	font-size: 18px;
+	width: 90%;
+	display: inline-block;
+}
+
+.story_progress_name
+{
+	margin-top: 10px;
+}
+
+.story_progress_bar_container
+{
+	position: relative;
+	box-sizing: border-box;
+	width: 90%;
+	display: inline-block;
+	height: 25px;
+	border: 2px solid rgba(0,0,0,0.5);
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+.fake_pbc
+{
+	position: absolute;
+	left: 2px;
+	top: 2px;
+	right: 2px;
+	height: 17px;
+}
+
+.story_progress_bar
+{
+	height: 17px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	border-radius: 6px;
+	background-color: rgba(0,0,0,0.3);
+}
+
+.claim_story_button
+{
+	box-sizing: border-box;
+	position: relative;
+	display: inline-block;
+	margin-top: 10px;
+    padding: 5px;
+    background-color: rgba(0,0,0,0.2);
+    text-align: center;
+    border: 2px solid #000;
+    font-family: times;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(255,255,255,0.8);
+    cursor: pointer;
+    border-radius: 0px;
+    color: #fff;
+}
+
+.story_rewards .card
+{
+    display: inline-block;
+    float: none;
+    max-width: 100%;
+    margin-left: 1%;
+    margin-right: 1%;
+    height: 150px;
+}
+
+.story_rewards .card .card_abilities,
+.story_rewards .card .card_armor,
+.story_rewards .card .card_power,
+.story_rewards .card .card_health,
+.story_rewards .card .card_name,
+.story_rewards .card .unit_effects,
+.story_rewards .card .card_time
+{
+	display: none;
+}
+
+.story_rewards .card .owned_amount
+{
+    top: auto;
+    bottom: 20px;
+    right: 15px;
+    text-align: center;
+    height: auto;
+    font-size: 40px;
+    opacity: 1;
+}

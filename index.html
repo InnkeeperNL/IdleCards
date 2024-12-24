@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="js/lib/jquery.js"></script>
+	<script src="js/functions/general.js?v=12345"></script>
+	<script src="js/data/config.js?v=12345"></script>
+	<script src="js/data/ability_parts.js?v=12345"></script>
+	<script src="js/data/abilities.js?v=12345"></script>
+	<script src="js/data/cards.js?v=12345"></script>
+	<script src="js/data/campaigns.js?v=12345"></script>
+	<script src="js/data/quests.js?v=12345"></script>
+	<script src="js/data/buildings.js?v=12345"></script>
+	<script src="js/data/offers.js?v=12345"></script>
+	<script src="js/data/factions.js?v=12345"></script>
+	<script src="js/data/areas.js?v=12345"></script>
+	<script src="js/data/upgrades.js?v=12345"></script>
+	<script src="js/data/locations.js?v=12345"></script>
+	<script src="js/data/stories.js?v=12345"></script>
+	<script src="js/localstorage.js?v=12345"></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css?v=12345">
+	<link rel="stylesheet" type="text/css" href="css/main.css?v=12345">
+
+	<script src="js/deck_edit.js?v=12345"></script>
+	<link rel="stylesheet" type="text/css" href="css/deck_edit.css?v=12345">
+
+	<script src="js/campaign.js?v=123452"></script>
+
+	<script src="js/intro.js?v=12345"></script>
+	<script src="js/merchant.js?v=12345"></script>
+	<script src="js/tinkering.js?v=12345"></script>
+	<script src="js/crafting.js?v=12345"></script>
+	<script src="js/scrapping.js?v=12345"></script>
+	<script src="js/quests.js?v=12345"></script>
+	<script src="js/arena.js?v=12345"></script>
+	<script src="js/town.js?v=12345"></script>
+	<script src="js/daily_reward.js?v=12345"></script>
+	<script src="js/inventory.js?v=12345"></script>
+	<script src="js/raids.js?v=12345"></script>
+	<script src="js/collection.js?v=12345"></script>
+	<script src="js/card_backs.js?v=12345"></script>
+	<script src="js/factions.js?v=12345"></script>
+	<script src="js/journal.js?v=12345"></script>
+	<script src="js/map.js?v=12345"></script>
+	<script src="js/summon.js?v=12345"></script>
+	<script src="js/floating_text.js?v=12345"></script>
+
+	<script src="js/process_turn.js?v=12345"></script>
+	<script src="js/battle.js?v=12345"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/intro.css?v=12345">
+	<link rel="stylesheet" type="text/css" href="css/merchant.css?v=12345">
+	<link rel="stylesheet" type="text/css" href="css/arena.css?v=12345">
+	<link rel="stylesheet" type="text/css" href="css/battle.css?v=12345">
+	<link rel="stylesheet" type="text/css" href="css/crafting.css?v=12345">
+	<link rel="stylesheet" type="text/css" href="css/quests.css?v=12345">
+	<link rel="stylesheet" type="text/css" href="css/town.css?v=12345">
+	<link rel="stylesheet" type="text/css" href="css/inventory.css?v=12345">
+	<link rel="stylesheet" type="text/css" href="css/factions.css?v=12345">
+	<link rel="stylesheet" type="text/css" href="css/map.css?v=12345">
+	<link rel="stylesheet" type="text/css" href="css/journal.css?v=12345">
+	<link rel="stylesheet" type="text/css" href="css/summon.css?v=12345">
+	<link rel="stylesheet" type="text/css" href="css/floating_text.css?v=12345">
+	
+	<link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet">
+</head>
+
+<body>
+	<div class="intro" onclick="skip_intro()"></div>
+	<div class="main_window hidden">
+
+		<div class="paper_bg"></div>
+
+		<div id="content_home" class="page_container active">
+		    
+			<div class="home_section">
+				<h1>Idle cards</h1><h2>Version 0.01</h2>
+			</div>
+			<div class="home_section home_buttons_container">
+
+				<!-- <button class="menu_button third campaigns_button" data-target-content="campaigns">
+					<div class="bg"></div>
+					<span>CAMPAIGN</span>
+				</button> -->
+
+				<!-- <button class="menu_button third map_button" data-target-content="map">
+					<div class="bg"></div>
+					<span>MAP</span>
+				</button>
+				
+				<button class="menu_button third random_battles_button" data-target-content="random_battles">
+					<div class="bg"></div>
+					<span>ARENA</span>
+				</button> -->
+
+				<button class="menu_button third summon_mob_button" data-target-content="summon">
+					<div class="bg"></div>
+					<span>SUMMON</span>
+				</button>
+
+				<button class="menu_button third waves_button" data-target-content="waves">
+					<div class="bg"></div>
+					<span>WAVES</span>
+				</button>
+
+				<button class="menu_button third town_button" data-target-content="town">
+					<div class="bg"></div>
+					<span>TOWN</span>
+				</button>
+
+				<button class="menu_button third upgrades_button" data-target-content="upgrades">
+					<div class="bg"></div>
+					<span>UPGRADE</span>
+				</button>
+
+				<button class="menu_button third quests_button" data-target-content="rewards">
+					<div class="bg"></div>
+					<span>REWARDS</span><span class="quest_button_complete_count"></span>
+				</button>
+
+				<button class="menu_button third deck_edit_button" data-target-content="deck_edit_options">
+					<div class="bg"></div>
+					<span>DECKS</span>
+				</button>
+
+				<!-- <button class="menu_button third deck_edit_button" data-target-content="scrap_shop">
+					<div class="bg"></div>
+					<span>SHOP</span>
+				</button> -->
+
+				<button class="menu_button third craft_menu_button" data-target-content="craft">
+					<div class="bg"></div>
+					<span>CRAFT</span>
+				</button>
+
+				<button class="menu_button third options_button" data-target-content="options">
+					<div class="bg"></div>
+					<span>OPTIONS</span>
+				</button>
+
+			</div>
+
+
+			
+
+		</div>
+		<div id="content_rewards" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="home">BACK</div>
+			</div>
+			<div class="home_section rewards_buttons_container">
+				<!-- <div class="menu_button  third rewards_button" data-target-content="journal">JOURNAL<div class="stories_page_button"></div></div> -->
+				<div class="menu_button  third rewards_button" data-target-content="daily_reward">DAILY REWARD<div class="daily_reward_available"></div></div>
+				<div class="menu_button  third rewards_button" data-target-content="daily_quests">DAILY QUESTS<div class="daily_quests_page_button"></div></div>
+				<div class="menu_button  third rewards_button" data-target-content="quests">QUESTS<div class="quests_page_button"></div></div>
+				<div class="menu_button  third rewards_button" data-target-content="achievements">ACHIEVEMENTS<div class="achievements_page_button"></div></div>
+				<div class="menu_button  third rewards_button" data-target-content="inventory">INVENTORY</div>
+				<div class="menu_button  third rewards_button" data-target-content="card_backs">CARD BACKS</div>
+				<!-- <div class="menu_button  third rewards_button" data-target-content="scrap_shop">SHOP</div> -->
+				<!-- <div class="menu_button  third rewards_button" data-target-content="scrap">SCRAP</div> -->
+				<div class="menu_button  third rewards_button" data-target-content="collection">COLLECTION</div>
+				<!-- <div class="menu_button  third rewards_button" data-target-content="card_creation">CREATE</div> -->
+				<!-- <div class="menu_button  third rewards_button" data-target-content="factions">FACTIONS</div> -->
+			</div>
+		</div>
+		<div id="content_summon" class="page_container">
+			<div class="quest_complete_count menu_button slim" data-target-content="rewards"></div>
+			<div class="home_section menu_button_bar">
+				<div class="menu_button slim" data-target-content="home">BACK</div>
+			</div>
+			<div class="home_section summon_container">
+			</div>
+		</div>
+		<div id="content_waves" class="page_container">
+			<div class="quest_complete_count menu_button slim" data-target-content="rewards"></div>
+			<div class="home_section menu_button_bar">
+				<div class="menu_button slim" data-target-content="home">BACK</div>
+			</div>
+			<div class="home_section waves_container"></div>
+		</div>
+		<div id="content_card_creation" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="rewards">BACK</div>
+			</div>
+			<div class="home_section upgrades_container" style="user-select: text;text-align: left;color:white;font-size:14px;">
+			</div>
+		</div>
+		<div id="content_journal" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim journal_back" data-target-content="rewards">BACK</div>
+				<div class="menu_button slim story_back" onclick="showing_chapter=false" data-target-content="journal">BACK</div>
+			</div>
+			<div class="home_section journal_content">
+			</div>
+		</div>
+		<div id="content_map" class="page_container">
+			<div class="map_bg"></div>
+			<div class="home_section">
+				<div class="quest_complete_count menu_button slim" data-target-content="rewards"></div>
+				<div class="menu_button slim" data-target-content="home">BACK</div>
+			</div>
+			<div class="home_section map_content">
+			</div>
+		</div>
+		<div id="content_upgrades" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="home">BACK</div>
+				<div class="menu_button slim show_max_upgrades_button" onclick="toggle_show_max_upgrades()" data-target-content="upgrades">MAX</div>
+			</div>
+			<div class="home_section upgrades_container">
+			</div>
+		</div>
+		<div id="content_single_upgrade" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim upgrades_back_button" data-target-content="upgrades">BACK</div>
+			</div>
+			<div class="home_section single_upgrade_container">
+			</div>
+		</div>
+		<div id="content_factions" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="rewards">BACK</div>
+			</div>
+			<div class="home_section factions_container">
+			</div>
+		</div>
+		<div id="content_single_faction" class="page_container">
+			<div class="faction_bg"></div>
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="factions">BACK</div>
+			</div>
+			<div class="home_section single_faction_container">
+			</div>
+		</div>
+		<div id="content_achievements" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="rewards">BACK</div>
+				<div class="menu_button slim achievement_options_button" onclick='toggle_shown_achievements()' data-target-content="achievements">BACK</div>
+			</div>
+			<div class="achievement_details">
+			</div>
+			<div class="home_section achievements_container">
+			</div>
+			<div class="claim_all_container">
+				<div class="menu_button slim claim_all_button" data-target-content="current_rewards" onclick="claim_all_achievements()">CLAIM ALL</div>
+			</div>
+			<div class="page_selection">
+				<div class="previous_page" onclick="set_achievements_page(-1)">PREVIOUS</div>
+				<div class="page_number">1 / 1</div>
+				<div class="next_page" onclick="set_achievements_page(1)">NEXT</div>
+			</div>
+		</div>
+		<div id="content_card_shop" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="home">BACK</div>
+				<div class="menu_button slim wide" data-target-content="inventory">INVENTORY</div>
+				<!-- <div class="menu_button slim wide" data-target-content="scrap_shop">SCRAP SHOP</div> -->
+			</div>
+			<div class="scrap_shop_content">
+			</div>
+		</div>
+		<div id="content_current_rewards" class="page_container">
+			<div class="home_section current_rewards_content">
+			</div>
+		</div>
+		<div id="content_daily_reward" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="rewards">BACK</div>
+				<h2>Daily rewards</h2>
+			</div>
+			<div class="home_section daily_reward_content">
+			</div>
+		</div>
+		<div id="content_inventory" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="rewards">BACK</div>
+				<div class="select_filters" onclick="show_content('card_filters')">FILTERS</div>
+			</div>
+			<div class="inventory_content">
+			</div>
+			<div class="page_selection">
+				<div class="previous_page" onclick="set_inventory_page(-1)">PREVIOUS</div>
+				<div class="page_number">1 / 1</div>
+				<div class="next_page" onclick="set_inventory_page(1)">NEXT</div>
+			</div>
+		</div>
+		<div id="content_single_consumable" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="inventory">BACK</div>
+			</div>
+			<div class="home_section single_consumable_content">
+			</div>
+		</div>
+		<div id="content_town" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="home">BACK</div>
+				<!-- <div class="menu_button slim" data-target-content="new_buildings">FRAGMENTS</div> -->
+			</div>
+			<div class="home_section town_content">
+			</div>
+		</div>
+		<div id="content_new_buildings" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="town">BACK</div>
+			</div>
+			<div class="home_section new_buildings_list">
+			</div>
+			<div class="page_selection">
+				<div class="previous_page" onclick="set_fragments_page(-1)">PREVIOUS</div>
+				<div class="page_number">1 / 1</div>
+				<div class="next_page" onclick="set_fragments_page(1)">NEXT</div>
+			</div>
+		</div>
+		<div id="content_single_building" class="page_container">
+			<div class="building_bg"></div>
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="town">BACK</div>
+				<div class="menu_button slim upgrade_building_button" data-target-content="upgrade_building">UPGRADE</div>
+				<!-- <div class="menu_button slim" data-target-content="delete_building">DESTROY</div> -->
+				<h2></h2>
+			</div>
+			<div class="home_section single_building_content">
+				<div class="single_building_content_list">
+				</div>
+			</div>
+		</div>
+		<div id="content_building_recipes" class="page_container">
+			<div class="building_bg"></div>
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="single_building">BACK</div>
+				<!-- <div class="select_filters" onclick="show_content('card_filters')">FILTERS</div> -->
+			</div>
+			<div class="home_section building_recipes_content">
+			</div>
+		</div>
+		
+		<div id="content_upgrade_building" class="page_container">
+			<div class="building_bg"></div>
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="single_building">BACK</div>
+				<h2></h2>
+			</div>
+			<div class="home_section upgrade_content">
+			</div>
+		</div>
+		<div id="content_delete_building" class="page_container">
+			<div class="building_bg"></div>
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="single_building">BACK</div>
+				<h2></h2>
+			</div>
+			<div class="home_section delete_content">
+				Destroying this building returns <span class="returned_fragments"></span> fragments.
+				
+			</div>
+			<div onclick="delete_current_building()" class="construction_button">DESTROY</div>
+		</div>
+		<div id="content_new_mission" class="page_container">
+			<div class="building_bg"></div>
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="single_building">BACK</div>
+			</div>
+			<div class="home_section new_expedition_content">
+			</div>
+		</div>
+		<div id="content_new_expedition" class="page_container">
+			<div class="building_bg"></div>
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="single_building">BACK</div>
+			</div>
+			<div class="home_section new_expedition_content">
+			</div>
+		</div>
+		<div id="content_new_adventure" class="page_container">
+			<div class="building_bg"></div>
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="single_building">BACK</div>
+			</div>
+			<div class="home_section new_expedition_content">
+			</div>
+		</div>
+		<div id="content_adventure_units" class="page_container">
+			<div class="building_bg"></div>
+			<div class="home_section">
+				<div class="menu_button slim single_adventure_back" onclick="current_adventure_units={}" data-target-content="single_building">BACK</div>
+				<!-- <div class="menu_button slim multiple_adventure_back" onclick="current_adventure_units={}" data-target-content="new_adventure">BACK</div> -->
+			</div>
+			<div class="suggest_view" onclick="toggle_suggest_mode()">
+				<div class="suggest_all active">
+					ALL
+				</div>
+				<div class="suggest_matched">
+					SUGGESTED
+				</div>
+				<div class="suggest_slider all"></div>
+			</div>
+			<div class="select_filters" onclick="show_content('card_filters')">FILTERS</div>
+			<div class="selected_adventure_units">
+			</div>
+			<div class="adventure_units_list">
+			</div>
+			<div class="page_selection">
+				<div class="previous_page" onclick="set_adventure_units_page(-1)">PREVIOUS</div>
+				<div class="page_number">1 / 1</div>
+				<div class="next_page" onclick="set_adventure_units_page(1)">NEXT</div>
+			</div>
+		</div>
+		<div id="content_construction" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="new_buildings">BACK</div>
+			</div>
+			<div class="home_section construction_content">
+			</div>
+		</div>
+		<div id="content_merchant" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="my_market">BACK</div>
+				<div class="select_filters" onclick="show_content('card_filters')">FILTERS</div>
+			</div>
+			<div class="tinkering_list">
+
+			</div>
+			<div class="page_selection">
+				<div class="previous_page" onclick="set_merchant_page(-1)">PREVIOUS</div>
+				<div class="page_number">1 / 1</div>
+				<div class="next_page" onclick="set_merchant_page(1)">NEXT</div>
+			</div>
+		</div>
+		<div id="content_quests" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="rewards">BACK</div>
+				<!-- <div class="menu_button slim" data-target-content="daily_quests">DAILY <span class="daily_quests_complete"></span></div>
+				<h2>Quests</h2> -->
+			</div>
+			<div class="current_quest_container">
+
+			</div>
+		</div>
+		<div id="content_daily_quests" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="rewards">BACK</div>
+				<h2>Daily quests</h2>
+			</div>
+			<div class="current_daily_quest_container">
+
+			</div>
+		</div>
+		<div id="content_collection" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="rewards">BACK</div>
+				<div class="select_filters" onclick="show_content('card_filters')">FILTERS</div>
+			</div>
+			<div class="home_section tinkering_container">
+			</div>
+			<div class="page_selection">
+				<div class="previous_page" onclick="set_collection_page(-1)">PREVIOUS</div>
+				<div class="page_number">1 / 1</div>
+				<div class="next_page" onclick="set_collection_page(1)">NEXT</div>
+			</div>
+			<div class="collection_count"></div>
+		</div>
+		<div id="content_options" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="home">BACK</div>
+				<h2>Options</h2>
+			</div>
+			<div class="home_section" style="text-align:center;">
+				<button class="menu_button" onclick="set_game_speed()" data-target-content="options">GAME SPEED<span class="current_game_speed"></span></button>
+				<button class="menu_button" data-target-content="reset_game">RESET ACCOUNT</button>
+				<button class="menu_button" data-target-content="options" onclick="run_intro(true)">INTRO</button>
+				<button class="menu_button" data-target-content="icons">ICONS</button>
+
+			</div>
+		</div>
+		<div id="content_icons" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="options">BACK</div>
+				<h2>Icons</h2>
+			</div>
+			<div class="home_section icons_container" style="text-align:center;">
+			</div>
+		</div>
+		<div id="content_card_backs" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="rewards">BACK</div>
+				<div class="menu_button slim" onclick="clear_card_back();" data-target-content="card_backs">RESET</div>
+				<!-- <div class="menu_button slim show_hand_colors_button widest" onclick="toggle_show_hand_colors();" data-target-content="card_backs">RESET</div> -->
+				
+			</div>
+			<div class="home_section tinkering_container card_backs_container">
+			</div>
+			<div class="page_selection">
+				<div class="previous_page" onclick="set_card_back_page(-1)">PREVIOUS</div>
+				<div class="page_number">1 / 1</div>
+				<div class="next_page" onclick="set_card_back_page(1)">NEXT</div>
+			</div>
+		</div>
+		<div id="content_card_editor" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="deck_edit_options">BACK</div>
+			</div>
+			<div class="home_section">
+			</div>
+		</div>
+		<div id="content_deck_edit_options" class="page_container">
+		    <!-- <div class="quest_complete_count menu_button slim" data-target-content="daily_quests"></div> -->
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="home">BACK</div>
+				<!-- <div class="menu_button slim" data-target-content="arena_decks">DEFENSE</div> -->
+				<!-- <div class="menu_button slim wider" data-target-content="card_editor">CARD EDITOR</div> -->
+				<!-- <div class="menu_button slim wider" data-target-content="card_backs">CARD BACKS</div> -->
+			</div>
+			<div class="home_section">
+				<!-- <button class="menu_button" data-target-content="test_deck">TEST DECK</button>
+				<button class="menu_button" data-target-content="craft">CRAFT</button> -->
+				<!-- <button class="menu_button wide wider" data-target-content="collection">COLLECTION</button>
+				<button class="menu_button wider" onclick="buy_deck_slot()" data-target-content="deck_edit_options">BUY DECK SLOT<span>100 scraps</span></button> -->
+				<!-- <button class="menu_button" data-target-content="scrap_shop">SCRAP SHOP</button> -->
+				
+			</div>
+			<div class="home_section owned_decks" style="margin-top:50px;">
+				<button class="menu_button deck_button deck_0" data-target-content="deck_edit" onclick="set_current_deck(0)"><div class="background"></div><span>DECK 1</span></button>
+				<button class="menu_button deck_button deck_1" data-target-content="deck_edit" onclick="set_current_deck(1)"><div class="background"></div><span>DECK 1</span></button>
+				<button class="menu_button deck_button deck_2" data-target-content="deck_edit" onclick="set_current_deck(2)"><div class="background"></div><span>DECK 1</span></button>
+				<button class="menu_button deck_button deck_3" data-target-content="deck_edit" onclick="set_current_deck(3)"><div class="background"></div><span>DECK 1</span></button>
+				<button class="menu_button deck_button deck_4" data-target-content="deck_edit" onclick="set_current_deck(4)"><div class="background"></div><span>DECK 1</span></button>
+			</div>
+			<div class="home_section">
+				
+			</div>
+		</div>
+		<div id="content_random_battles" class="page_container">
+		    <div class="quest_complete_count menu_button slim" data-target-content="rewards"></div>
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="home">BACK</div>
+			</div>
+			<div class="home_section random_battles_buttons">
+				<button class="menu_button random_battle_button random_battle_0" onclick="/*difficulty_setting=0,*/endless_waves=false;map_hero='none'" data-target-content="random_battle">
+					<div class="background"></div><span>RANDOM BATTLE</span>
+				</button>
+				<!-- <button class="menu_button random_battle_button random_battle_1" onclick="difficulty_setting=5,endless_waves=false" data-target-content="random_battle">
+					<div class="background"></div><span>HARD BATTLE</span>
+				</button> -->
+				<button class="menu_button random_battle_button random_battle_2" onclick="difficulty_setting=(gamedata['highest_wave']),endless_waves=true;map_hero='none'" data-target-content="random_battle">
+					<div class="background"></div>
+					<span>ENDLESS BATTLE<br/>
+						<span class="highest_wave_counter">Highest wave: <span class="highest_wave"></span><br/>
+						Record: <span class="highest_wave_ever"></span>
+					</span>
+					</span>
+				</button>
+			</div>
+		</div>
+		<div id="content_areas" class="page_container">
+		    <div class="quest_complete_count menu_button slim" data-target-content="rewards"></div>
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="random_battles">BACK</div>
+			</div>
+			<div class="home_section difficulty_button_container">
+				<div class="menu_button slim" onclick="set_area_difficulty(-1)" data-target-content="areas"><</div>
+				<span class="current_area_difficulty"></span>
+				<div class="menu_button slim" onclick="set_area_difficulty(1)" data-target-content="areas">></div>
+			</div>
+			<div class="home_section areas_container">
+			</div>
+		</div>
+		<div id="content_scrap_shop" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="rewards">BACK</div>
+				<!-- <div class="menu_button slim" data-target-content="inventory">INVENTORY</div> -->
+				<!-- <div class="menu_button slim" data-target-content="scrap">SCRAP</div> -->
+			</div>
+			<div class="home_section scrap_shop_content">
+				<!-- <div class="scrap_description">
+					Use scraps to get basic crafting cards.<br/>
+					You get 1 to 3 random cards for every 10 scraps used.
+				</div>
+				<div class="use_scrap_buttons_container">
+					<div class="use_scraps_button use_10_scraps" onclick="use_scraps(10)">USE 10 SCRAPS</div>
+					<div class="use_scraps_button use_half_scraps" onclick="use_scraps('half')">USE <span></span> SCRAPS</div>
+					<div class="use_scraps_button use_all_scraps" onclick="use_scraps('all')">USE ALL SCRAPS</div>
+				</div>
+
+				<div class="buy_random_card_buttons_container">
+					<div class="buy_random_card_button" onclick="buy_random_card(20)">BUY RANDOM CARD<br/>FOR 20 SCRAPS</div>
+				</div> -->
+				
+			</div>
+			<!-- <div class="buy_deck_slot" onclick="buy_deck_slot()">BUY DECK SLOT<span>100 scraps</span></div> -->
+			<!-- <div class="scrap_count"></div> -->
+		</div>
+		<div id="content_scrap" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="rewards">BACK</div>
+			</div>
+			<div class="scrap_count"></div>
+			<div class="home_section scrap_container">
+			</div>
+			<div class="scrap_all_container">
+				<div class="menu_button slim claim_all_button" data-target-content="current_rewards" onclick="scrap_all()">SCRAP ALL</div>
+			</div>
+			<div class="page_selection">
+				<div class="previous_page" onclick="set_scrap_page(-1)">PREVIOUS</div>
+				<div class="page_number">1 / 1</div>
+				<div class="next_page" onclick="set_scrap_page(1)">NEXT</div>
+			</div>
+		</div>
+		<div id="content_tinker" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="craft">BACK</div>
+				<div class="menu_button slim tinker_min_amount wide" data-target-content="tinker" onclick="toggle_min_tinker()"></div>
+				<div class="select_filters" onclick="show_content('card_filters')">FILTERS</div>
+			</div>
+			<div class="home_section tinkering_container">
+			</div>
+			<div class="page_selection">
+				<div class="previous_page" onclick="set_tinker_page(-1)">PREVIOUS</div>
+				<div class="page_number">1 / 1</div>
+				<div class="next_page" onclick="set_tinker_page(1)">NEXT</div>
+			</div>
+		</div>
+		<div id="content_single_tinker" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="tinker">BACK</div>
+				<h2 class="single_tinker_name">Tinker</h2>
+			</div>
+			<div class="home_section single_tinker_container">
+			</div>
+		</div>
+		<div id="content_craft" class="page_container">
+			<div class="home_section">
+				
+				<div class="menu_button slim craft_home_button" data-target-content="home">BACK</div>
+				<!-- <div class="menu_button slim" data-target-content="tinker">TINKER</div> -->
+				<div class="menu_button slim carft_back_button" data-target-content="craft">BACK</div>
+				<div class="select_filters" onclick="show_content('card_filters')">FILTERS</div>
+				<!-- <div class="tinker_view" onclick="toggle_tinker_view_mode()">
+					<div class="select_all active">
+						ALL
+					</div>
+					<div class="select_tinkerable">
+						TINKERABLE
+					</div>
+					<div class="tinker_view_slider viewing"></div>
+				</div> -->
+			</div>
+			<div class="home_section craft_container">
+			</div>
+			<div class="page_selection">
+				<div class="previous_page" onclick="set_crafting_page(-1)">PREVIOUS</div>
+				<div class="page_number">1 / 1</div>
+				<div class="next_page" onclick="set_crafting_page(1)">NEXT</div>
+			</div>
+			<div class="menu_button slim craft_button" onclick="craft_current_card()" no-new-page="true">CRAFT</div>
+		</div>
+		<div id="content_campaigns" class="page_container">
+		    <div class="quest_complete_count menu_button slim" data-target-content="rewards"></div>
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="home">BACK</div>
+			</div>
+			<div class="home_section all_campaigns_container">
+			</div>
+		</div>
+		<div id="content_single_campaign" class="page_container">
+		    <div class="quest_complete_count menu_button slim" data-target-content="rewards"></div>
+			<div class="home_section">
+				<!-- <div class="menu_button slim" data-target-content="home">HOME</div> -->
+				<div class="menu_button slim" data-target-content="campaigns">BACK</div>
+				<div class="menu_button slim" data-target-content="deck_edit">EDIT DECK</div>
+			</div>
+			<div class="single_campaign_container">
+			</div>
+		</div>
+		<div id="content_test_deck" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="deck_edit_options">BACK</div>
+				<h2>Test deck</h2>
+			</div>
+			<div class="home_devider">
+				<br/>
+				Select one of your decks to fight.<br/>
+				The deck must have a hero to be able to fight it.<br/>
+				There are no rewards.<br/>
+				<br/>
+			</div>
+			<div class="home_section testable_decks">
+				<button class="menu_button danger test_deck test_deck_0" onclick="current_test_deck = 0" data-target-content="start_test_deck"><div class="background"></div><span>DECK 1</span></button>
+				<button class="menu_button danger test_deck test_deck_1" onclick="current_test_deck = 1" data-target-content="start_test_deck"><div class="background"></div><span>DECK 2</span></button>
+				<button class="menu_button danger test_deck test_deck_2" onclick="current_test_deck = 2" data-target-content="start_test_deck"><div class="background"></div><span>DECK 3</span></button>
+				<button class="menu_button danger test_deck test_deck_3" onclick="current_test_deck = 3" data-target-content="start_test_deck"><div class="background"></div><span>DECK 4</span></button>
+				<button class="menu_button danger test_deck test_deck_4" onclick="current_test_deck = 4" data-target-content="start_test_deck"><div class="background"></div><span>DECK 5</span></button>
+			</div>
+		</div>
+
+		<div id="content_battle" class="page_container">
+			<div class="battle_bg"></div>
+			<div class="home_section">
+
+				<button class="menu_button resign_button" onclick="resign_combat();">resign</button>
+
+			</div>
+
+			<div class="battle_container">
+
+			</div>
+
+			<div class="enemy_deck_counter deck_counter_1"></div>
+
+			<div class="player_deck_counter deck_counter_2"></div>
+
+		</div>
+
+		<div id="content_deck_edit" class="page_container">
+
+			<div class="home_section">
+
+				<div class="menu_button slim" data-target-content="deck_edit_options">BACK</div>
+
+				<!-- <div class="current_hero" onclick="show_current_hero_details()"></div> -->
+				<div class="current_hero" onclick="show_current_hero_details()"></div>
+
+				<div class="select_filters" onclick="show_content('card_filters')">FILTERS</div>
+				<!-- <div class="edit_view" onclick="toggle_edit_view_mode()">
+					<div class="select_edit">
+						QUICK EDITING
+					</div>
+					<div class="select_view active">
+						EDITING
+					</div>
+					<div class="edit_view_slider viewing"></div>
+				</div> -->
+				<!-- <div class="hero_mode" onclick="show_available_heroes()">HERO MODE</div> -->
+				<div class="current_deck scrollable"></div>
+				<div class="edit_view" onclick="toggle_edit_view_mode()">
+					<div class="select_edit">
+						QUICK EDITING
+					</div>
+					<div class="select_view active">
+						EDITING
+					</div>
+					<div class="edit_view_slider viewing"></div>
+				</div>
+				<div class="current_deck_colors"></div>
+				<div class="available_cards"></div>
+				<div class="card_count"></div>
+				<div class="clear_deck_button" onclick="clear_current_deck()">CLEAR</div>
+
+				<div class="page_selection">
+
+					<div class="previous_page" onclick="set_deck_edit_page(-1)">PREVIOUS</div>
+
+					<div class="page_number">1 / 1</div>
+
+					<div class="next_page" onclick="set_deck_edit_page(1)">NEXT</div>
+
+				</div>
+
+			</div>
+
+		</div>
+		<div id="content_card_filters" class="page_container">
+
+			<div class="home_section">
+				<div class="reset_filters_button" onclick="reset_filters()">ALL</div>
+				<div class="clear_filters_button" onclick="clear_filters()">NONE</div>
+				<div class="back_button" onclick="show_last_content()">BACK</div>
+				<div class="filters_container">
+					
+					<!-- <div class="types3">
+						<input type="checkbox" checked class="green_color_filter filter_checkbox"></input> <span onclick="togglecheckbox('green_color_filter')">Green</span><br/>
+						<input type="checkbox" checked class="blue_color_filter filter_checkbox"></input> <span onclick="togglecheckbox('blue_color_filter')">Blue</span><br/>
+						<input type="checkbox" checked class="purple_color_filter filter_checkbox"></input> <span onclick="togglecheckbox('purple_color_filter')">Purple</span><br/>
+					</div>
+					<div class="types4">
+						<input type="checkbox" checked class="red_color_filter filter_checkbox"></input> <span onclick="togglecheckbox('red_color_filter')">Red</span><br/>
+						<input type="checkbox" checked class="orange_color_filter filter_checkbox"></input> <span onclick="togglecheckbox('orange_color_filter')">Orange</span><br/>
+						<input type="checkbox" checked class="yellow_color_filter filter_checkbox"></input> <span onclick="togglecheckbox('yellow_color_filter')">Yellow</span><br/>
+					</div>
+					<div class="types6">
+						<input type="checkbox" checked class="colorless_color_filter filter_checkbox"></input> <span onclick="togglecheckbox('colorless_color_filter')">Neutral</span><br/>
+						<input type="checkbox" checked class="none_color_filter filter_checkbox"></input> <i onclick="togglecheckbox('none_color_filter')">No color</i><br/>
+					</div> -->
+					<div class="types">
+							<input type="checkbox" checked class="artifact_type_filter filter_checkbox"></input> <span onclick="togglecheckbox('artifact_type_filter')">Artifact</span><br/>
+							<input type="checkbox" checked class="spell_type_filter filter_checkbox"></input> <span onclick="togglecheckbox('spell_type_filter')">Spell</span><br/>
+							<input type="checkbox" checked class="creature_type_filter filter_checkbox"></input> <span onclick="togglecheckbox('creature_type_filter')">Creature</span><br/>
+							<input type="checkbox" checked class="structure_type_filter filter_checkbox"></input> <span onclick="togglecheckbox('structure_type_filter')">Structure</span><br/>
+						</div>
+					<div class="types2">
+						
+						<!-- <input type="checkbox" checked class="object_type_filter filter_checkbox"></input> <span onclick="togglecheckbox('object_type_filter')">Object</span><br/> -->
+					</div>
+					<div class="types5">
+						<!-- <input type="checkbox" checked class="fragment_type_filter filter_checkbox"></input> <i onclick="togglecheckbox('fragment_type_filter')">Fragments</i><br/> -->
+						<input type="checkbox" checked class="consumable_type_filter filter_checkbox"></input> <i onclick="togglecheckbox('consumable_type_filter')">Consumables</i><br/>
+						<input type="checkbox" checked class="token_type_filter filter_checkbox"></input> <i onclick="togglecheckbox('token_type_filter')">Tokens</i><br/>
+						<input type="checkbox" checked class="material_type_filter filter_checkbox"></input> <i onclick="togglecheckbox('material_type_filter')">Materials</i><br/>
+						<!-- <input type="checkbox" checked class="cardback_type_filter filter_checkbox"></input> <i onclick="togglecheckbox('cardback_type_filter')">Cardbacks</i><br/> -->
+						<input type="checkbox" checked class="currency_type_filter filter_checkbox"></input> <i onclick="togglecheckbox('currency_type_filter')">Currency</i><br/>
+					</div>
+					<div class="left_filters">
+						Filter name<br/>
+						<input class="name_filter" placeholder="None"></input><br/>
+						<br/>
+						Filter abilities<br/>
+						<input class="ability_filter" placeholder="None"></input><br/>
+						
+					</div>
+					<div class="right_filters">
+						Filter time cost<br/>
+						<input class="min_cost_filter narrow_filter" type="number" placeholder="Min"></input><input class="max_cost_filter narrow_filter" type="number" placeholder="Max"></input><br/>
+						<br/>
+						Filter value<br/>
+						<input class="min_value_filter narrow_filter" type="number" placeholder="Min"></input><input class="max_value_filter narrow_filter" type="number" placeholder="Max"></input><br/>
+						
+					</div>
+					
+				</div>
+			</div>
+
+		</div>
+		<div id="content_reset_game" class="page_container">
+
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="options">BACK</div>
+				<h2>Reset Account</h2>
+
+			</div>
+			<div class="home_section">
+				<div class="danger reset_button" onclick="clearLocalStorage();saveToLocalStorage();loadLocalStorage();show_content('home');location.reload();">RESET</div>
+
+			</div>
+
+		</div>
+
+		<div class="detail_overlay hidden">
+
+			<div class="card_detail"></div>
+		</div>
+		<div class="game_messages">
+		</div>
+		<div class="all_save_icons"></div>
+		<div class="loading_backup_message">
+			<div class="loading_backup_text">
+				Connecting to server...
+			</div>
+		</div>
+		<div class="saving_message">
+			Saving...
+		</div>
+	</div>
+
+</body>
+
+<script>
+
+
+
+	var gamedata = loadLocalStorage();
+
+	saveToLocalStorage();
+
+	$(document).ready(function() {
+
+		$('body').on('click', '.menu_button', function() {
+
+			if($(this).attr('no-new-page') == undefined){
+				$('.menu_button.active').removeClass('active');
+
+				$(this).addClass('active');
+				if($(this).attr('data-target-content') != undefined)
+				{
+					show_content($(this).attr('data-target-content'));
+				}
+			}
+		    
+
+		});
+		$('.detail_overlay').removeClass('hidden');
+		$('.detail_overlay .card_detail').html('<div class="big_text">Generating recipes...</div>');
+		setTimeout(function(){
+			generate_all_recipes();
+			$('.detail_overlay').addClass('hidden');
+		},100);
+		
+	});
+
+	$(document).ready(function() {
+		$('body').on('click', '.game_messages .message', function() {
+				$(this).addClass('not_shown');
+		});
+	});
+	var message_counter = 1;
+	var all_message_timeouts = {};
+	function show_message(message){
+		var message_timeout = 0;
+		if(combat_alive == true)
+		{
+			message_timeout += total_timeout;
+		}
+		message_counter++;
+		var temp_message_counter = message_counter + 0;
+		setTimeout(function(){
+			$('.game_messages').append('<div class="message_container message_' + temp_message_counter + ' not_shown" onclick="$(this).hide()"><div class="message">' + message + '</div></div>');
+			setTimeout(function(){
+					$('.game_messages .message_' + temp_message_counter).removeClass('not_shown');
+			},10);
+			all_message_timeouts[temp_message_counter] = setTimeout(function(){
+				$('.game_messages .message_' + temp_message_counter).addClass('not_shown');
+				setTimeout(function(){
+					$('.game_messages .message_' + temp_message_counter).remove();
+				},1000);
+			},5000);
+		},message_timeout);
+	}
+
+	var last_content = 'home';
+	var current_content = 'home';
+
+	function show_last_content(){
+		show_content(last_content);
+	}
+
+	function update_last_content(new_content){
+		last_content = current_content;
+		current_content = new_content;
+	}
+
+	function show_content(content_id){
+
+		//console.log(content_id);
+		check_window_orientation();
+		reset_achievements();
+		check_quest_complete_count();
+
+		combat_alive = false;
+
+		update_last_content(content_id);
+
+		if(content_id == undefined){content_id = 'home';}
+
+		$('.page_container.active').removeClass('active');
+
+		$('#content_' + content_id).addClass('active');
+
+
+
+		var possible_extra_function = window['show_' + content_id]; 
+
+		if (typeof possible_extra_function === "function") possible_extra_function();
+
+	};
+
+	if(test_mode == false)
+	{
+		window.onerror = function(msg, url, linenumber) {
+		    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+		    return true;
+		}
+	}
+
+
+
+	$('.detail_overlay').click(function(){
+
+		if($(this).hasClass('non_clickable') == false)
+		{
+
+			$('.detail_overlay .card_detail').html('');
+
+			$('.detail_overlay').addClass('hidden');
+
+			check_ready_to_resume();
+		}
+		else
+		{
+			
+		}
+	});
+
+
+
+	function show_home(){
+		var current_time = new Date();
+		var last_midnight = new Date();
+		var next_midnight = new Date();
+		last_midnight.setHours(0,0,0,0);
+		next_midnight.setHours(24,0,0,0);
+		if(gamedata['highest_wave'] == undefined)
+		{
+			gamedata['highest_wave'] = 1;
+			//saveToLocalStorage();
+		}
+		if(gamedata['highest_wave_ever'] == undefined)
+		{
+			gamedata['highest_wave_ever'] = gamedata['highest_wave'];
+			//saveToLocalStorage();
+		}
+		if(gamedata['current_wave'] == undefined)
+		{
+			gamedata['current_wave'] = 1;
+			//saveToLocalStorage();
+		}
+		if(gamedata['highest_wave_reset'] == undefined)
+		{
+			gamedata['highest_wave_reset'] = next_midnight;
+			//saveToLocalStorage();
+		}
+		if(gamedata['saved_waves'] == undefined)
+		{
+			gamedata['saved_waves'] = {};
+			//saveToLocalStorage();
+		}
+		if(new Date(gamedata['highest_wave_reset']) < next_midnight)
+		{
+			gamedata['daily_quests'] = {};
+			gamedata['highest_wave_reset'] = next_midnight;
+			gamedata['highest_wave'] = 1;
+			gamedata['current_wave'] = 1;
+			gamedata['saved_waves'] = {};
+			gamedata['wins_today'] = 0;
+			//saveToLocalStorage();
+		}
+
+		if(gamedata['scraps'] == undefined)
+		{
+			gamedata['scraps'] = 0;
+		}
+		if(gamedata['scraps'] == 1)
+		{
+			$('.scrap_count').html(gamedata['scraps'] + ' scrap');
+		}
+		else
+		{
+			$('.scrap_count').html( numberWithCommas(gamedata['scraps']) + ' scraps');
+		}
+		/*if(gamedata['cleared_chapters'] == undefined || count_object(gamedata['cleared_chapters']) < 1)
+		{
+			$('#content_home .deck_edit_button').css('opacity',0.3);
+			$('#content_home .options_button').css('opacity',0.3);			
+		}
+		else
+		{
+			$('#content_home .deck_edit_button').css('opacity','');
+			$('#content_home .options_button').css('opacity','');
+		}
+		if(gamedata['cleared_chapters'] == undefined || count_object(gamedata['cleared_chapters']) < 5)
+		{
+			$('#content_home .arena_button').css('opacity',0.3);
+			$('#content_home .random_battles_button').css('opacity',0.3);
+			$('#content_home .quests_button').css('opacity',0.3);
+			$('#content_home .merchant_button').css('opacity',0.3);
+		}
+		else
+		{
+			$('#content_home .arena_button').css('opacity','');
+			$('#content_home .random_battles_button').css('opacity','');
+			$('#content_home .quests_button').css('opacity','');
+			$('#content_home .merchant_button').css('opacity','');
+		}*/
+		check_quests('scraps_owned', undefined, undefined, undefined, undefined, gamedata['scraps']);
+
+		if(gamedata['owned_cards'] == undefined || count_object(gamedata['owned_cards']) < 2)
+		{
+			$('.deck_edit_button').hide();
+		}
+		else
+		{
+			$('.deck_edit_button').show();
+		}
+		if(gamedata['known_recipes'] == undefined || count_object(gamedata['known_recipes']) == 0)
+		{
+			//console.log(count_object(gamedata['known_recipes']));
+			$('.craft_menu_button').hide();
+		}
+		else
+		{
+			$('.craft_menu_button').show();
+		}
+		if(get_upgrade_factor('wave_access', 'any', true) > 1)
+		{
+			$('.waves_button').show();
+		}
+		else
+		{
+			$('.waves_button').hide();
+		}
+			
+		saveToLocalStorage();
+	};
+
+	function show_options(){
+		if(gamedata['edit_mode'] != undefined)
+		{
+			edit_mode = gamedata['edit_mode'];
+		}
+		$('.current_game_speed').html(current_game_speed);
+
+		if(gamedata['account_name'] == undefined)
+		{
+			$('.account_name').html('unnamed');
+		}
+		else
+		{
+			$('.account_name').html(gamedata['account_name']);
+		}
+
+		if(gamedata['account_password'] != undefined)
+		{
+			$('.backup_enabled').html('Your account is automatically saved every minute.<br/>You can change your password here.');
+			$('.new_account_password_button').html('UPDATE');
+		}
+	};
+
+	function show_deck_edit_options(){
+		$('.deck_button').removeClass('active');
+		
+		var owned_decks_count = count_object(gamedata['decks']);
+		$('.owned_decks').html('');
+		for (var i = 0; i < owned_decks_count; i++) {
+			$('.owned_decks').append('<button class="menu_button deck_button deck_' + i + '" data-target-content="deck_edit" onclick="set_current_deck(' + i + ')"><div class="background"></div><span>DECK 1</span></button>');
+			if(gamedata['decks'][i]['hero'] != undefined && all_available_cards[gamedata['decks'][i]['hero']] != undefined)
+			{
+				$('.deck_' + i + ' .background').css('background-image', 'url("images/' + all_available_cards[gamedata['decks'][i]['hero']]['hero_version']['image'] + '")');
+				if(all_available_cards[gamedata['decks'][i]['hero']]['image_position'] != undefined)
+				{
+					$('.deck_' + i + ' .background').css('background-position', all_available_cards[gamedata['decks'][i]['hero']]['image_position']);
+				}
+				$('.deck_' + i + ' span').html(all_available_cards[gamedata['decks'][i]['hero']]['hero_version']['name']);
+			}
+			else
+			{
+				$('.deck_' + i + ' .background').css('background-image', '');
+				$('.deck_' + i + ' span').html('DECK ' + (i+1));
+			}
+		};
+		$('.owned_decks').append('<button class="menu_button deck_button" data-target-content="deck_edit_options" onclick="buy_deck_slot()"><span>' + nFormatter(gamedata['scraps']) + ' / ' + nFormatter(get_deck_slot_price()) + ' scraps</span></button>');
+		$('.deck_' + gamedata['current_deck']).addClass('active');
+	}
+
+	function show_test_deck(){
+		$('.deck_button').removeClass('active');
+		
+		var owned_decks_count = count_object(gamedata['decks']);
+		$('.testable_decks').html('');
+		for (var i = 0; i < owned_decks_count; i++) {
+			$('.testable_decks').append('<button class="menu_button danger test_deck test_deck_' + i + '" data-target-content="start_test_deck" onclick="current_test_deck = ' + i + '"><div class="background"></div><span>DECK 1</span></button>');
+			if(gamedata['decks'][i]['hero'] != undefined && all_available_cards[gamedata['decks'][i]['hero']] != undefined)
+			{
+				$('.test_deck_' + i + ' .background').css('background-image', 'url("images/' + all_available_cards[gamedata['decks'][i]['hero']]['hero_version']['image'] + '")');
+				$('.test_deck_' + i + ' span').html(all_available_cards[gamedata['decks'][i]['hero']]['hero_version']['name']);
+			}
+			else
+			{
+				$('.test_deck_' + i + ' .background').css('background-image', '');
+				$('.test_deck_' + i + ' span').html('DECK ' + (i+1));
+			}
+		};
+		//$('.deck_' + gamedata['current_deck']).addClass('active');
+	}
+
+	function get_deck_slot_price(){
+		var owned_decks_count = count_object(gamedata['decks']);
+		var new_deck_slot_price = sqr(owned_decks_count) * 100;
+		return new_deck_slot_price;
+	}
+
+	function buy_deck_slot(){
+		if(gamedata['scraps'] >= get_deck_slot_price())
+		{
+			gamedata['scraps'] -= get_deck_slot_price();
+			var owned_decks_count = count_object(gamedata['decks']);
+			gamedata['decks'][owned_decks_count] = {};
+			saveToLocalStorage();
+			show_content('deck_edit_options');
+		}
+		else
+		{
+			
+		}
+	}
+
+	function set_game_speed(set_new){
+		
+		var old_game_speed = current_game_speed + '';
+		var found_old_game_speed = false;
+		var first_game_speed = false;
+		$.each(game_speeds, function(speed_name, speed_factor){
+			$('.main_window').removeClass('game_speed_' + speed_name);
+			if(set_new == undefined || set_new == true)
+			{
+				if(first_game_speed == false)
+				{
+					first_game_speed = speed_name;
+				}
+				if(found_old_game_speed == true)
+				{
+					current_game_speed = speed_name;
+				}
+				if(speed_name == old_game_speed && found_old_game_speed == false)
+				{
+					found_old_game_speed = true;
+				}
+				else
+				{
+					found_old_game_speed = false;
+				}
+			}
+		});
+
+		if((set_new == undefined || set_new == true) && first_game_speed != false && old_game_speed == current_game_speed)
+		{
+			current_game_speed = first_game_speed;
+		}
+	
+		$('.main_window').addClass('game_speed_' + current_game_speed);
+		if(current_game_speed == 'fastest'){
+			$('.main_window').addClass('game_speed_fast');
+		}
+		battle_speed = game_speeds[current_game_speed];
+		if(current_game_speed == 'fast')
+		{
+			var battle_speed_upgrade_factor = get_upgrade_factor('max_game_speed', undefined, true);
+			battle_speed = game_speeds['medium'] / (((battle_speed_upgrade_factor - 1) / 4) + 1);
+		}
+		if(current_game_speed == 'fastest')
+		{
+			var battle_speed_upgrade_factor = get_upgrade_factor('max_game_speed', undefined, true);
+			battle_speed = game_speeds['medium'] / battle_speed_upgrade_factor;
+		}
+		if(set_new == undefined || set_new == true)
+		{
+			gamedata['battle_speed'] = battle_speed;
+			gamedata['game_speed'] = current_game_speed;
+			saveToLocalStorage();
+		}
+	}
+
+
+	/*function show_test_deck(){
+		for (var i = 0; i < 5; i++) {
+			if(gamedata['decks'][i]['hero'] != undefined)
+			{
+				$('.test_deck_' + i + ' .background').css('background-image', 'url("images/' + all_available_cards[gamedata['decks'][i]['hero']]['hero_version']['image'] + '")');
+				$('.test_deck_' + i + ' span').html(all_available_cards[gamedata['decks'][i]['hero']]['hero_version']['name']);
+			}
+			else
+			{
+				$('.test_deck_' + i + ' .background').css('background-image', '');
+				$('.test_deck_' + i + ' span').html('DECK ' + (i+1));
+			}
+		};
+		
+	}*/
+
+	function get_ajax(data){
+		/*$.post("ajax.php",
+		{
+			data: data,
+		},
+		function(result){
+			console.log(result)
+		});*/
+	};
+
+	function get_new_account_id(){
+		/*$.post("ajax.php",
+		{
+			data: 'get_new_id',
+		},
+		function(result){
+			gamedata['account_id'] = parseInt(result);
+			saveToLocalStorage();
+			set_account_name();
+		});*/
+	};
+
+	function update_account_name(){
+		/*console.log(gamedata['account_id']);
+		var new_account_name = $('.new_account_name').val();
+		if(new_account_name != ''){
+    		$.post("ajax.php",
+    		{
+    			data: 			'update_account_name',
+    			current_id: 	gamedata['account_id'],
+    			new_name: 		new_account_name
+    		},
+    		function(result){
+    			console.log(result);
+    			gamedata['account_name'] = result;
+    			saveToLocalStorage();
+    			show_content('options');
+    		});
+		}*/
+	}
+
+	function enable_account_backup(){
+		/*console.log(gamedata['account_id']);
+		var new_account_password = $('.new_account_password').val();
+		if(new_account_password != ''){
+    		$.post("ajax.php",
+    		{
+    			data: 			'update_account_password',
+    			current_id: 	gamedata['account_id'],
+    			new_password: 		new_account_password
+    		},
+    		function(result){
+    			console.log(result);
+    			gamedata['account_password'] = result;
+    			$('.new_account_password').val('');
+    			saveToLocalStorage();
+    			show_content('options');
+    		});
+		}*/
+	}
+
+	function load_account(){
+		/*console.log(gamedata['account_id']);
+		
+		var account_name = $('.load_account_name').val();
+		var account_password = $('.load_account_password').val();
+		if(account_name != '' && account_password != ''){
+    		$.post("ajax.php",
+    		{
+    			data: 				'load_account',
+    			account_name: 		account_name,
+    			account_password: 	account_password
+    		},
+    		function(result){
+    			console.log(result);
+    			if(result != false && count_object(JSON.parse(result)) > 0)
+    			{
+    				gamedata = JSON.parse(result);
+    				saveToLocalStorage(false);
+    				location.reload();
+    			}
+    		});
+		}*/
+	}	
+	
+	function set_account_name(){
+	    /*if(gamedata['account_id'] != undefined)
+	    {
+	        var new_account_name = 'unnamed' + gamedata['account_id'];
+    		$.post("ajax.php",
+    		{
+    			data: 			'update_account_name',
+    			current_id: 	gamedata['account_id'],
+    			new_name: 		new_account_name
+    		},
+    		function(result){
+    			gamedata['account_name'] = result;
+    			saveToLocalStorage();
+    			show_options();
+    		});
+	    }*/
+	}
+
+	//show_home();
+	run_intro();
+    show_content('home');
+
+    /*window.onerror = function(msg, url, linenumber) {
+	    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+	    return true;
+	}*/
+
+</script>
+
+</html>
+
+
+

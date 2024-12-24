@@ -1,0 +1,1957 @@
+#content_battle.page_container
+{
+	background-color: rgba(0,0,0,0.1);
+	width:1000px;
+	height:600px;
+	width: 100%;
+	height: 100%;
+	overflow:hidden;
+}
+
+.battle_bg
+{
+	position: absolute;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	left:0px;
+	background-position: center center;
+    background-size: cover;
+    background-image: url(../images/bg/background-2768801_640.jpg);
+    opacity:0.4;
+}
+
+.battle_container
+{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	top: 0px;
+}
+
+.resign_button{
+	width: 147px;
+    height: 20px;
+    margin-top: -10px;
+    overflow: hidden;
+    position: absolute;
+    top: 290px;
+    top: 50%;
+    padding: 0px;
+    font-size: 13px;
+    right:13px;
+    background-color:rgba(0,0,0,0.5);
+    opacity: 0.7;
+    z-index: 10000;
+}
+
+.portrait .resign_button
+{
+	width: 20%;
+	top: 0.5%;
+	right: 40%;
+	left: auto;
+	z-index: 10000;
+	height: auto;
+	padding: 2px;
+	font-size: 2vh;
+	margin: 0px;
+}
+
+.total_turn_counter_container
+{
+	position: absolute;
+	font-family: 'Caveat Brush', cursive;
+	font-size:20px;
+	margin-top: -10px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	left:20px;
+	top:290px;
+	top: 50%;
+	width:175px;
+	text-align:center;
+}
+
+.portrait .total_turn_counter_container
+{
+	left: 45%;
+	width: 10%;
+	top: 20%;
+	font-size: 0px;
+	margin: 0px;
+}
+
+.portrait .total_turn_counter
+{
+	font-size: 3vh;
+}
+
+.enemy_deck_counter
+{
+	position:absolute;
+	left:20px;
+	width:175px;
+	width: 17.5%;
+	top:25px;
+	left: 2%;
+	top: 2%;
+	font-weight:bold;
+	text-align:center;
+	font-size:20px;
+	color:#fff;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.portrait .enemy_deck_counter
+{
+	left: 0%;
+	top: 0%;
+	padding: 10px;
+}
+
+.landscape .player_deck_counter
+{
+	position:absolute;
+	left:20px;
+	width:175px;
+	width: 17.5%;
+	bottom:25px;
+	left: 2%;
+	bottom: 2%;
+	font-weight:bold;
+	text-align:center;
+	font-size:20px;
+	color:#fff;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.portrait .player_deck_counter
+{
+	position:absolute;
+	width: 17.5%;
+	right: 0%;
+	top: 0%;
+	font-weight:bold;
+	text-align:center;
+	font-size:20px;
+	color:#fff;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	padding: 10px;
+}
+
+.battle_container .unit
+{
+	position:absolute;
+	margin:0px;
+	left: 	230px;
+	width: 	147px;
+	height: 196px;
+	left:  	23%;
+	width:  14.7%;
+	height: 32%;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	transfrom:scale(1,1);
+	box-shadow:3px 3px 5px rgba(0,0,0,0.6);
+	z-index: 2;
+	background-position: center center;
+    background-size: cover;
+    background-image: url(../images/old-953394_640.jpg);
+}
+
+.portrait .battle_container .unit
+{
+	top:  	23%;
+	height:  14.7%;
+	width: 32%;
+}
+
+.battle_container .unit .card_name
+{
+	font-size: 2.2vw;
+}
+
+.portrait .battle_container .unit .card_name
+{
+	font-size: 2.2vh;
+	font-size: 0px;
+}
+
+.portrait .battle_container .unit .card_image
+{
+	opacity: 0.7;
+}
+
+.portrait .battle_container .unit .card_abilities
+{
+	/*max-height: 50%;*/
+	/*top: 5px;*/
+	box-sizing: border-box;
+	background-color: transparent;
+}
+
+.portrait .battle_container .unit .card_abilities .card_type
+{
+	display: none;
+}
+
+.portrait .battle_container .unit .unit_effects
+{
+	top: 0px;
+	right: 0px;
+	left: 0px;
+	bottom: 0px;
+	margin: 0px;
+	padding: 8px;
+	padding-right: 10px;
+	text-align: right;
+}
+
+/*.battle_container .unit .unit_effects .effect_stunned
+{
+	top: 0px;
+	right: 0px;
+	left: 0px;
+	bottom: 0px;
+	margin: 0px;
+	padding: 5px;
+	font-size: 5vw;
+}*/
+
+.battle_container .projectile
+{
+	z-index: 1001 !important;
+	background-size: 65% auto !important;
+	box-shadow: none !important;
+	background-image: none;
+	background-color:rgba(0,0,0,0);
+	background-repeat: no-repeat;
+	border-color: transparent !important;
+	opacity: 0.7;
+}
+
+.battle_container .unit.slot_-1.projectile,
+.battle_container .unit.slot_-2.projectile,
+.battle_container .unit.slot_-3.projectile,
+.battle_container .unit.slot_-4.projectile,
+.battle_container .unit.slot_-5.projectile
+{
+	transform-origin: center;
+	transform: scale(4);
+}
+
+.battle_container .projectile.big
+{
+	background-size: 90% auto !important;
+}
+
+.portrait .battle_container .projectile
+{
+	background-size: auto 65% !important;
+}
+
+.portrait .battle_container .projectile.big
+{
+	background-size: auto 90% !important;
+}
+
+.battle_container .projectile.projectile_air,
+.icon.icon_air
+{
+	background-image: url(../images/wind-hole.svg);
+}
+
+.battle_container .projectile.projectile_broken,
+.icon.icon_broken
+{
+	background-image: url(../images/slashed-shield.svg);
+}
+
+.battle_container .projectile.projectile_power,
+.icon.icon_power
+{
+	background-image: url(../images/fist.svg);
+}
+
+.battle_container .projectile.projectile_lightning,
+.icon.icon_lightning
+{
+	background-image: url(../images/lightning-branches.svg);
+}
+
+.battle_container .projectile_bomb,
+.icon.icon_bomb
+{
+	background-image: url(../images/fire-bomb.svg);
+}
+
+.battle_container .projectile.projectile_healing,
+.icon.icon_healing
+{
+	background-image: url(../images/healing.svg);
+}
+
+.battle_container .projectile.projectile_bolster,
+.icon.icon_bolster
+{
+	background-image: url(../images/health-increase.svg);
+}
+
+.battle_container .projectile.projectile_wither,
+.icon.icon_wither
+{
+	background-image: url(../images/health-decrease.svg);
+}
+
+.battle_container .projectile.projectile_strike,
+.icon.icon_strike
+{
+	background-image: url(../images/broadsword.svg);
+}
+
+.battle_container .projectile.projectile_arrow,
+.icon.icon_arrow
+{
+	background-image: url(../images/arrowhead.svg);
+}
+
+.battle_container .projectile.projectile_hoof,
+.icon.icon_hoof
+{
+	background-image: url(../images/hoof.svg);
+}
+
+.battle_container .projectile.projectile_fireray,
+.icon.icon_fireray
+{
+	
+	/*background-image: url(../images/fire-ray.svg);*/
+	background-image: url(../images/burning-dot.svg);
+}
+
+.battle_container .projectile.projectile_stun,
+.icon.icon_stun
+{
+	
+	background-image: url(../images/whirlwind.svg);
+}
+
+.battle_container .projectile.projectile_fire,
+.icon.icon_fire
+{
+	background-image: url(../images/celebration-fire.svg);
+}
+
+.battle_container .projectile.projectile_meteor,
+.icon.icon_meteor
+{
+	background-image: url(../images/burning-meteor.svg);
+}
+
+.battle_container .projectile.projectile_burn,
+.icon.icon_burn
+{
+	background-image: url(../images/flamed-leaf.svg);
+}
+
+.battle_container .projectile.projectile_teleport,
+.icon.icon_teleport
+{
+	background-image: url(../images/teleport.svg);
+}
+
+.battle_container .projectile.projectile_poison,
+.icon.icon_poison
+{
+	background-image: url(../images/poison-gas.svg);
+}
+
+.battle_container .projectile.projectile_curse,
+.icon.icon_curse
+{
+	background-image: url(../images/piece-skull.svg);
+}
+
+.battle_container .projectile.projectile_doom,
+.icon.icon_doom
+{
+	background-image: url(../images/grim-reaper.svg);
+}
+
+.battle_container .projectile.projectile_bless,
+.icon.icon_bless
+{
+	background-image: url(../images/prayer.svg);
+}
+
+.battle_container .projectile.projectile_frost,
+.icon.icon_frost
+{
+	background-image: url(../images/ice-bolt.svg);
+}
+
+.battle_container .projectile.projectile_lull,
+.icon.icon_lull
+{
+	background-image: url(../images/sleepy.svg);
+}
+
+.battle_container .projectile.projectile_magic,
+.icon.icon_magic
+{
+	background-image: url(../images/plasma-bolt.svg);
+}
+
+.battle_container .projectile.projectile_armor,
+.icon.icon_armor
+{
+	background-image: url(../images/checked-shield.svg);
+}
+
+.battle_container .projectile.projectile_water,
+.icon.icon_water
+{
+	background-image: url(../images/water-splash.svg);
+}
+
+.battle_container .projectile.projectile_dodge,
+.icon.icon_dodge
+{
+	background-image: url(../images/dodging.svg);
+}
+
+.battle_container .projectile.projectile_shield,
+.icon.icon_shield
+{
+	background-image: url(../images/shield.svg);
+}
+
+.battle_container .projectile.projectile_fly,
+.icon.icon_fly
+{
+	background-image: url(../images/curly-wing.svg);
+}
+
+.battle_container .projectile.projectile_parry,
+.icon.icon_parry
+{
+	background-image: url(../images/crossed-swords.svg);
+}
+
+.battle_container .projectile.projectile_resurrect,
+.icon.icon_resurrect
+{
+	background-image: url(../images/raise-zombie.svg);
+}
+
+.battle_container .projectile.projectile_repair,
+.icon.icon_repair
+{
+	background-image: url(../images/hammer-nails.svg);
+}
+
+.battle_container .projectile.projectile_energize,
+.icon.icon_energize
+{
+	background-image: url(../images/battery-plus.svg);
+}
+
+.battle_container .projectile.projectile_dice,
+.icon.icon_dice
+{
+	background-image: url(../images/rolling-dices.svg);
+}
+
+.battle_container .projectile.projectile_dice_g,
+.icon.icon_dice_g
+{
+	background-image: url(../images/rolling-dices-g.svg);
+}
+
+.battle_container .projectile.projectile_go_again,
+.icon.icon_go_again
+{
+	background-image: url(../images/embrassed-energy.svg);
+}
+
+.battle_container .projectile.projectile_cleanse,
+.icon.icon_cleanse
+{
+	background-image: url(../images/sparkles.svg);
+}
+
+.battle_container .projectile.projectile_voodoo,
+.icon.icon_voodoo
+{
+	background-image: url(../images/voodoo-doll.svg);
+}
+
+.battle_container .projectile.projectile_drain,
+.icon.icon_drain
+{
+	background-image: url(../images/fangs.svg);
+}
+
+.battle_container .projectile.projectile_book,
+.icon.icon_book
+{
+	background-image: url(../images/white-book.svg);
+}
+
+.battle_container .projectile.projectile_hasten,
+.icon.icon_hasten
+{
+	background-image: url(../images/sands-of-time.svg);
+}
+
+.battle_container .projectile.projectile_slow,
+.icon.icon_slow
+{
+	background-image: url(../images/turtle.svg);
+}
+
+.battle_container .projectile.projectile_discard,
+.icon.icon_discard
+{
+	background-image: url(../images/broken-tablet.svg);
+}
+
+.battle_container .projectile.projectile_death,
+.icon.icon_death
+{
+	background-image: url(../images/scythe.svg);
+}
+
+.battle_container .projectile.projectile_magic_shield,
+.icon.icon_magic_shield
+{
+	background-image: url(../images/vibrating-shield.svg);
+}
+
+.battle_container .projectile.projectile_eye,
+.icon.icon_eye
+{
+	background-image: url(../images/eyeball.svg);
+}
+
+.battle_container .projectile.projectile_spikes,
+.icon.icon_spikes
+{
+	background-image: url(../images/spikes-full.svg);
+}
+
+.battle_container .projectile.projectile_money,
+.icon.icon_money
+{
+	background-image: url(../images/cash.svg);
+}
+
+.battle_container .projectile.projectile_stone,
+.icon.icon_stone
+{
+	background-image: url(../images/stone-tablet.svg);
+}
+
+.battle_container .projectile.projectile_fluffyswirl,
+.icon.icon_fluffyswirl
+{
+	background-image: url(../images/fluffy-swirl.svg);
+}
+
+.battle_container .projectile.projectile_music,
+.icon.icon_music
+{
+	background-image: url(../images/musical-notes.svg);
+}
+
+.battle_container .projectile_wound,
+.icon.icon_wound
+{
+	background-image: url(../images/rough-wound.svg);
+	color: transparent;
+	text-shadow: none;
+}
+
+.icon
+{
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background-size: contain;
+	background-position: center; center;
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius:4px;
+	margin: 3px;
+}
+
+.game_speed_fast .battle_container .unit
+{
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.battle_container .unit.stealth
+{
+	opacity:0.5;
+}
+
+.battle_container .unit.flying
+{
+
+}
+
+
+.battle_container .unit .card_time
+{
+	display:none;
+}
+
+.battle_container .unit.slot_0
+{
+	width:175px;
+	width: 17.5%;
+	height:225px;
+	height: 37.5%;
+}
+
+.portrait .battle_container .unit.slot_0
+{
+	height: 15%;
+	width: 37.5%;
+}
+
+@keyframes goes_up {
+    0%   {
+    	margin-top: 0px;
+		opacity: 0.7;
+		transform: scale(1,1);
+    }
+    100%   {
+    	margin-top: -100px;
+		opacity: 0;
+		transform: scale(0.25,1);
+    }
+}
+
+.battle_container .goes_up
+{
+	margin-top: -100px;
+	opacity: 0;
+	transform-origin: center;
+	transform: scale(0.25,1);
+	animation-name: goes_up;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+}
+
+.game_speed_fast .battle_container .goes_up
+{
+	animation-duration: 0.25s;
+}
+
+@keyframes comes_down {
+    0%   {
+    	margin-top: -100px;
+		opacity: 0;
+		transform: scale(0.25,1);
+    }
+    100%   {
+    	margin-top: 0px;
+		opacity: 0.7;
+		transform: scale(1,1);
+    }
+}
+
+.battle_container .comes_down
+{
+	margin-top: 0px;
+	opacity: 0.7;
+	transform-origin: center;
+	transform: scale(1,1);
+	animation-name: comes_down;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+}
+
+.game_speed_fast .battle_container .comes_down
+{
+	animation-duration: 0.25s;
+}
+
+@keyframes flying_1 {
+    0%   {
+    	top: 	90px;
+    	top:  	15%;
+    }
+    25%   {
+    	top: 	85px;
+    	top:  	14%;
+    }
+    75%   {
+    	top: 	95px;
+    	top:  	16%;
+    }
+    100%   {
+    	top: 	90px;
+    	top:  	15%;
+    }
+}
+
+@keyframes flying {
+    0%   {
+    	margin-top: 	0px;
+    }
+    25%   {
+    	margin-top: 	-5px;
+    }
+    75%   {
+    	margin-top: 	5px;
+    }
+    100%   {
+    	margin-top: 	0px;
+    }
+}
+
+@keyframes flying_1_slot_0 {
+    0%   {
+    	top: 	60px;
+    	top:  	10%;
+    }
+    25%   {
+    	top: 	55px;
+    	top:  	9%;
+    }
+    75%   {
+    	top: 	65px;
+    	top:  	11%;
+    }
+    100%   {
+    	top: 	60px;
+    	top:  	10%;
+    }
+}
+
+@keyframes flying_2 {
+    0%   {
+    	top: 	315px;
+    	top:  	52.5%;
+    }
+    25%   {
+    	top: 	320px;
+    	top:  	53.5%;
+    }
+    75%   {
+    	top: 	310px;
+    	top:  	51.5%;
+    }
+    100%   {
+    	top: 	315px;
+    	top:  	52.5%;
+    }
+}
+
+.landscape .battle_container .unit.side_1{top: 	90px;top: 15%;bottom:auto;}
+.landscape .battle_container .unit.side_2{top: 	315px;top:  52.5%;bottom:auto;}
+
+.portrait .battle_container .unit.side_1{left: 15%;bottom:auto;}
+.portrait .battle_container .unit.side_2{left:  52.5%;bottom:auto;}
+
+/*.battle_container .unit.side_1.flying:not(.attack):not(.dodge):not(.dead)*/
+.battle_container .unit.flying:not(.attack):not(.dodge):not(.dead)
+{
+	bottom:auto;
+	animation-name: flying;
+    animation-duration: 3s;
+	animation-iteration-count:infinite;
+	animation-timing-function: linear;
+	box-shadow:10px 10px 10px rgba(0,0,0,0.4);
+}
+
+/*.battle_container .unit.side_1.slot_0.flying:not(.attack):not(.dodge):not(.dead)
+{
+	bottom:auto;
+	animation-name: flying;
+    animation-duration: 3s;
+	animation-iteration-count:infinite;
+	box-shadow:10px 10px 10px rgba(0,0,0,0.4);
+}*/
+
+/*.battle_container .unit.side_2.flying:not(.attack):not(.dodge):not(.dead)
+{
+	bottom:auto;
+	animation-name: flying;
+    animation-duration: 3s;
+	animation-iteration-count:infinite;
+	box-shadow:10px 10px 10px rgba(0,0,0,0.4);
+}*/
+
+.landscape .battle_container .unit.slot_1{left:	230px;left:	23%;}
+.landscape .battle_container .unit.slot_2{left:	380px;left:	38%;z-index: 3;}
+.landscape .battle_container .unit.slot_3{left:	530px;left:	53%;z-index: 4;}
+.landscape .battle_container .unit.slot_4{left:	680px;left:	68%;z-index: 5;}
+.landscape .battle_container .unit.slot_5{left:	830px;left:	83%;z-index: 6;}
+
+.portrait .battle_container .unit.slot_1{top:	23%;}
+.portrait .battle_container .unit.slot_2{top:	38%;z-index: 3;}
+.portrait .battle_container .unit.slot_3{top:	53%;z-index: 4;}
+.portrait .battle_container .unit.slot_4{top:	68%;z-index: 5;}
+.portrait .battle_container .unit.slot_5{top:	83%;z-index: 6;}
+
+.battle_container .unit.slot_-10
+{
+	left: 	425px;
+	left:  	42.5%;
+	right: 	auto;
+	top:	180px;
+	top:  	30%;
+	width: 	180px;
+	width:  18%;
+	height: 240px;	
+	height: 40%;
+	z-index: 1003 !important;
+}
+
+.battle_container .unit.slot_-10.unit_type_spell
+{
+	z-index: 1005 !important;
+}
+
+.portrait .battle_container .unit.slot_-10
+{
+	top:  	42.5%;
+	right: 	auto;
+	left:  	30%;
+	height:  18%;
+	width: 40%;
+}
+
+.portrait .battle_container .unit.slot_container,
+.landscape .battle_container .unit.slot_container,
+.battle_container .unit.slot_container
+{
+	background-image: none;
+	box-shadow: none;
+	background-color: transparent;
+	z-index: 1002;
+}
+
+.battle_container .unit.unit_type_consumable,
+.battle_container .unit.unit_type_spell,
+.battle_container .unit.unit_type_attack
+{
+	z-index: 109;
+	box-shadow: 10px 10px 50px rgba(0,0,0,0.6);
+}
+
+.landscape .battle_container .unit.slot_-1:not(.hand_card),
+.landscape .battle_container .unit.slot_-2:not(.hand_card),
+.landscape .battle_container .unit.slot_-3:not(.hand_card),
+.landscape .battle_container .unit.slot_-4:not(.hand_card),
+.landscape .battle_container .unit.slot_-5:not(.hand_card)
+{
+	width:30px;
+	width: 3.5%;
+	height:30px;
+	height: 6.6%;	
+	left:190px;
+	left: 19.1%;
+}
+
+.portrait .battle_container .unit.slot_-1:not(.hand_card),
+.portrait .battle_container .unit.slot_-2:not(.hand_card),
+.portrait .battle_container .unit.slot_-3:not(.hand_card),
+.portrait .battle_container .unit.slot_-4:not(.hand_card),
+.portrait .battle_container .unit.slot_-5:not(.hand_card)
+{
+	height: 3.5%;
+	width: 6.6%;	
+	top: 19%;
+}
+
+.battle_container .unit.unit_type_artifact
+{
+	border-radius:5px;
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.6);
+}
+
+.battle_container .unit.unit_type_artifact .card_image
+{
+	left:2px;
+	top:2px;
+	right:2px;
+	bottom:2px;
+	border-radius: 3px;
+}
+
+.battle_container .unit.unit_type_artifact .card_name,
+.battle_container .unit.unit_type_artifact .card_abilities,
+.battle_container .unit.unit_type_artifact .card_power,
+.battle_container .unit.unit_type_artifact .card_armor
+{
+	opacity:0;
+}
+
+.battle_container .unit.unit_type_artifact .card_health
+{
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	padding:0px;
+	margin:0px;
+	width:22px;
+	min-width:auto;
+	right:4px;
+	height:20px;
+	bottom:4px;
+	opacity: 0.5;
+	border:none;
+	border-radius: 0px;
+	padding-top:2px;
+}
+
+.landscape .battle_container .unit.side_1.slot_-1 	{	top:85px;top: 11%}
+.landscape .battle_container .unit.side_1.slot_-2 	{	top:125px;top: 18.4%}
+.landscape .battle_container .unit.side_1.slot_-3 	{	top:165px;top: 25.8%}
+.landscape .battle_container .unit.side_1.slot_-4 	{	top:205px;top: 33.2%}
+.landscape .battle_container .unit.side_1.slot_-5 	{	top:245px;top: 40.6%}
+
+.landscape .battle_container .unit.side_2.slot_-5 	{	top:325px;top: 53%}
+.landscape .battle_container .unit.side_2.slot_-4 	{	top:365px;top: 60.4%}
+.landscape .battle_container .unit.side_2.slot_-3 	{	top:405px;top: 67.8%}
+.landscape .battle_container .unit.side_2.slot_-2 	{	top:445px;top: 75.2%}
+.landscape .battle_container .unit.side_2.slot_-1 	{	top:485px;top: 82.6%}
+
+.portrait .battle_container .unit.side_1.slot_-1 	{	left: 10.8%}
+.portrait .battle_container .unit.side_1.slot_-2 	{	left: 18.2%}
+.portrait .battle_container .unit.side_1.slot_-3 	{	left: 25.6%}
+.portrait .battle_container .unit.side_1.slot_-4 	{	left: 33.0%}
+.portrait .battle_container .unit.side_1.slot_-5 	{	left: 40.4%}
+
+.portrait .battle_container .unit.side_2.slot_-5 	{	left: 53%}
+.portrait .battle_container .unit.side_2.slot_-4 	{	left: 60.4%}
+.portrait .battle_container .unit.side_2.slot_-3 	{	left: 67.8%}
+.portrait .battle_container .unit.side_2.slot_-2 	{	left: 75.2%}
+.portrait .battle_container .unit.side_2.slot_-1 	{	left: 82.6%}
+
+.battle_container .unit.unit_type_spell.side_1,
+.battle_container .unit.unit_type_artifact.side_1,
+.battle_container .unit.unit_type_attack.side_1
+{/*top: 	40px;*/}
+
+.battle_container .unit.unit_type_spell.side_2,
+.battle_container .unit.unit_type_artifact.side_2,
+.battle_container .unit.unit_type_attack.side_2
+{/*bottom: 	40px;*/}
+
+.landscape .battle_container .unit.slot_0.side_2
+{
+	left:20px;
+	left: 2%;
+	/*bottom:60px;*/
+}
+
+.portrait .battle_container .unit.slot_0.side_2
+{
+	top: 4.5%;
+}
+
+.landscape .battle_container .unit.slot_0.side_1
+{
+	left:20px;
+	left: 2%;
+	top:60px;
+	top: 10%;
+}
+
+.portrait .battle_container .unit.slot_0.side_1
+{
+	top: 4.5%;
+	left: 10%;
+}
+
+.battle_container .unit.slot_0.won_hero
+{
+	transform: scale(0.75);
+	opacity: 0;
+}
+
+.card.hand_card
+{
+	
+	/*padding-left:5px;
+	padding-right:5px;*/
+    	border-radius: 5px;
+    	background-color: rgba(100,100,100,1);
+    	position: absolute;
+    	overflow: hidden;
+	border:1px solid rgba(0,0,0,0.5);
+	text-align:center;
+	font-family: arial;
+	font-size:30px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	background-image: url('../images/old-953394_640.jpg');
+	background-size: cover;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	z-index: 1;
+	box-shadow:3px 3px 5px 2px rgba(0,0,0,0.5);
+}
+
+.landscape .card.hand_card
+{
+	width: 70px;
+	width: 7%;
+	left:230px;
+	left: 23%;
+}
+
+.portrait .card.hand_card
+{
+	height: 7%;
+	top: 23%;
+}
+
+.card.hand_card.projectile
+{
+	background-color: transparent;
+	border-color: transparent;
+	box-shadow: none;
+}
+
+.game_speed_fast .card.hand_card
+{
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.card.hand_card .hand_card_back
+{
+	position: absolute;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	left:0px;
+	background-size: cover;
+	background-position: top center;
+	opacity:0.8;
+}
+
+.card.hand_card .card_time
+{
+	position: relative;
+    font-family: 'Caveat Brush', cursive;
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    left:0px;
+	right:0px;
+	text-align: center;
+	width:auto;
+	top:0px;
+	height:auto;
+	padding-top:0px;
+}
+
+.card.hand_card.side_1 .card_time
+{
+	position: absolute;
+	top: auto;
+	bottom: 0px;
+}
+
+.landscape .card.hand_card.side_1
+{
+	top:-0.5%;
+	/*padding-top:40px;*/
+	height:40px;
+	height: 12.5%;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+.portrait .card.hand_card.side_1
+{
+	left:-0.5%;
+	/*padding-top:40px;*/
+	width: 12.5%;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+
+.landscape .card.hand_card.side_2
+{
+	bottom:-0.5%;
+	/*padding-top:10px;*/
+	height:70px;
+	height: 12.5%;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.portrait .card.hand_card.side_2
+{
+	right:-0.5%;
+	/*padding-top:10px;*/
+	width: 12.5%;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.landscape .card.hand_card.side_1 .hand_card_back
+{
+	top:0px;
+	/*bottom:5px;*/
+}
+
+.portrait .card.hand_card.side_1 .hand_card_back
+{
+	left:0px;
+	/*right:5px;*/
+}
+
+.landscape .card.hand_card.side_2 .hand_card_back
+{
+	/*top:5px;*/
+	bottom:0px;
+}
+
+.portrait .card.hand_card.side_2 .hand_card_back
+{
+	/*left:5px;*/
+	right:0px;
+}
+
+.landscape .card.hand_card.side_1 .card_color
+{
+	top:auto;
+	height:5px;
+	opacity: 0;
+	/*border-top:2px solid rgba(0,0,0,0.5);*/
+}
+
+.portrait .card.hand_card.side_1 .card_color
+{
+	left:auto;
+	width:5px;
+	opacity: 0;
+	/*border-left:2px solid rgba(0,0,0,0.5);*/
+}
+
+.landscape .card.hand_card.side_2 .card_color
+{
+	bottom:auto;
+	height:5px;
+	opacity: 0;
+	/*border-bottom:2px solid rgba(0,0,0,0.5);*/
+}
+
+.portrait .card.hand_card.side_2 .card_color
+{
+	right:auto;
+	width:5px;
+	opacity: 0;
+	/*border-right:2px solid rgba(0,0,0,0.5);*/
+}
+
+.landscape .card.hand_card.hand_slot_1	{margin-left:	0px;margin-left:	0px;}
+.landscape .card.hand_card.hand_slot_2	{margin-left:	75px;margin-left:	7.5%;}
+.landscape .card.hand_card.hand_slot_3	{margin-left:	150px;margin-left:	15%;}
+.landscape .card.hand_card.hand_slot_4	{margin-left:	225px;margin-left:	22.5%;}
+.landscape .card.hand_card.hand_slot_5	{margin-left:	300px;margin-left:	30%;}
+.landscape .card.hand_card.hand_slot_6	{margin-left:	375px;margin-left:	37.5%;}
+.landscape .card.hand_card.hand_slot_7	{margin-left:	450px;margin-left:	45%;}
+.landscape .card.hand_card.hand_slot_8	{margin-left:	525px;margin-left:	52.5%;}
+.landscape .card.hand_card.hand_slot_9	{margin-left:	600px;margin-left:	60%;}
+.landscape .card.hand_card.hand_slot_10	{margin-left: 	675px;margin-left:	67.5%;}
+
+.portrait .card.hand_card.hand_slot_1	{top:	23%;}
+.portrait .card.hand_card.hand_slot_2	{top:	30.5%;}
+.portrait .card.hand_card.hand_slot_3	{top:	38%;}
+.portrait .card.hand_card.hand_slot_4	{top:	45.5%;}
+.portrait .card.hand_card.hand_slot_5	{top:	53%;}
+.portrait .card.hand_card.hand_slot_6	{top:	60.5%;}
+.portrait .card.hand_card.hand_slot_7	{top:	68%;}
+.portrait .card.hand_card.hand_slot_8	{top:	75.5%;}
+.portrait .card.hand_card.hand_slot_9	{top:	83%;}
+.portrait .card.hand_card.hand_slot_10	{top:	90.5%;}
+
+.landscape .card.hand_card.just_drawn
+{
+	margin-left:-150px;
+	margin-left:-15%;
+	transform:scale(0,0);
+}
+
+.portrait .card.hand_card.just_drawn
+{
+	top:2%;
+	transform:scale(0,0);
+}
+
+.battle_container .unit.hand_card:not(.projectile)
+{
+	transform:scale(0.5,0.5);
+	transform-origin:top left;
+	margin-left:1px;
+	box-shadow: 0px 0px 0px rgba(0,0,0,0);
+}
+
+.landscape .battle_container .unit.hand_card.side_1{top: 	-16px;top: -2.5%;bottom:auto;}
+.landscape .battle_container .unit.hand_card.side_2{top: 	520px;top: 87%;bottom:auto;}
+
+.portrait .battle_container .unit.hand_card.side_1{left: -2.5%;right:auto;}
+.portrait .battle_container .unit.hand_card.side_2{left: 87%;right:auto;}
+
+.battle_container .card.hand_card.deck_slot
+{
+	/*margin-left:	-160px;
+	margin-left:  	-16%;*/
+	background-color: transparent;
+	box-shadow: none;
+	border: none;
+}
+
+.landscape .battle_container .unit.hand_card.deck_slot.side_1{top: 	-10px;top: -1.5%;bottom:auto;}
+.landscape .battle_container .unit.hand_card.deck_slot.side_2{top: 	520px;top: 87%;bottom:auto;}
+
+.portrait .battle_container .unit.hand_card.deck_slot.side_1{top: 0%;left: 16%;right:auto;}
+.portrait .battle_container .unit.hand_card.deck_slot.side_2{top: 0%;left: 84%;right:auto;}
+
+.landscape .battle_container .unit.fake_hand_slot_1 {left:230px;left:23%;}
+.landscape .battle_container .unit.fake_hand_slot_2 {left:305px;left:30.5%;}
+.landscape .battle_container .unit.fake_hand_slot_3 {left:380px;left:38%;}
+.landscape .battle_container .unit.fake_hand_slot_4 {left:455px;left:45.5%;}
+.landscape .battle_container .unit.fake_hand_slot_5 {left:530px;left:53%;}
+.landscape .battle_container .unit.fake_hand_slot_6 {left:605px;left:60.5%;}
+.landscape .battle_container .unit.fake_hand_slot_7 {left:680px;left:68%;}
+.landscape .battle_container .unit.fake_hand_slot_8 {left:745px;left:74.5%;}
+.landscape .battle_container .unit.fake_hand_slot_9 {left:830px;left:83%;}
+.landscape .battle_container .unit.fake_hand_slot_10 {left:905px;left:90.5%;}
+
+.portrait .battle_container .unit.fake_hand_slot_1 {top:23%;}
+.portrait .battle_container .unit.fake_hand_slot_2 {top:30.5%;}
+.portrait .battle_container .unit.fake_hand_slot_3 {top:38%;}
+.portrait .battle_container .unit.fake_hand_slot_4 {top:45.5%;}
+.portrait .battle_container .unit.fake_hand_slot_5 {top:53%;}
+.portrait .battle_container .unit.fake_hand_slot_6 {top:60.5%;}
+.portrait .battle_container .unit.fake_hand_slot_7 {top:68%;}
+.portrait .battle_container .unit.fake_hand_slot_8 {top:74.5%;}
+.portrait .battle_container .unit.fake_hand_slot_9 {top:83%;}
+.portrait .battle_container .unit.fake_hand_slot_10 {top:90.5%;}
+
+@keyframes attack_1 {
+    0%   {
+    	margin-top:0px;
+    }
+    50%   {
+    	margin-top:20px;
+    	margin-top: 3%;
+    }
+    100%   {
+    	margin-top:0px;
+    }
+}
+
+@keyframes attack_1_p {
+    0%   {
+    	margin-left:0px;
+    }
+    50%   {
+    	margin-left: 3%;
+    }
+    100%   {
+    	margin-left:0px;
+    }
+}
+
+@keyframes attack_2 {
+    0%   {
+    	margin-top:0px;
+    }
+    50%   {
+    	margin-top:-20px;
+    	margin-top: -3%;
+    }
+    100%   {
+    	margin-top:0px;
+    }
+}
+
+@keyframes attack_2_p {
+    0%   {
+    	margin-left:0px;
+    }
+    50%   {
+    	margin-left: -3%;
+    }
+    100%   {
+    	margin-left:0px;
+    }
+}
+
+.unit.attack
+{
+	margin:0px;
+    animation-duration: 0.25s;
+    -ms-transform-origin: center center; /* IE 9 */
+    -webkit-transform-origin: center center; /* Chrome, Safari, Opera */
+    transform-origin: center center;
+}
+
+.landscape .unit.attack.side_1
+{
+	animation-name: attack_1;
+}
+
+.portrait .unit.attack.side_1
+{
+	animation-name: attack_1_p;
+}
+
+.landscape .unit.attack.side_2
+{
+	animation-name: attack_2;
+}
+
+.portrait .unit.attack.side_2
+{
+	animation-name: attack_2_p;
+}
+
+.game_speed_fast .unit.attack
+{
+	 animation-duration: 0.15s !important;
+}
+
+@keyframes dodge_1 {
+    0%   {
+    	margin-top:0px;
+    }
+    50%   {
+    	margin-top:-20px;
+    	margin-top: -3%;
+    }
+    100%   {
+    	margin-top:0px;
+    }
+}
+
+@keyframes dodge_1_p {
+    0%   {
+    	margin-left:0px;
+    }
+    50%   {
+    	margin-left: -3%;
+    }
+    100%   {
+    	margin-left:0px;
+    }
+}
+
+@keyframes dodge_2 {
+    0%   {
+    	margin-bottom:0px;
+    }
+    50%   {
+    	margin-top:20px;
+    	margin-top: 3%;
+    }
+    100%   {
+    	margin-bottom:0px;
+    }
+}
+
+@keyframes dodge_2_p {
+    0%   {
+    	margin-left:0px;
+    }
+    50%   {
+    	margin-left: 3%;
+    }
+    100%   {
+    	margin-left:0px;
+    }
+}
+
+.unit.dodge
+{
+	margin:0px;
+    animation-duration: 0.2s;
+    -ms-transform-origin: center center; /* IE 9 */
+    -webkit-transform-origin: center center; /* Chrome, Safari, Opera */
+    transform-origin: center center;
+}
+
+.landscape .unit.dodge.side_1
+{
+	animation-name: dodge_1;
+}
+.portrait .unit.dodge.side_1
+{
+	animation-name: dodge_1_p;
+}
+
+.landscape .unit.dodge.side_2
+{
+	animation-name: dodge_2;
+}
+
+.portrait .unit.dodge.side_2
+{
+	animation-name: dodge_2_p;
+}
+
+.game_speed_fast .unit.dodge
+{
+	 animation-duration: 0.3s;
+}
+
+.green_glow
+{
+	box-shadow:inset 0px 0px 100px 20px rgba(0,200,0,1) !important;
+	-webkit-transition: all 0.15s ease-in-out;
+	-moz-transition: all 0.15s ease-in-out;
+	-o-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
+}
+
+.green_text
+{
+	color:rgba(0,200,0,1) !important;
+	-webkit-transition: all 0.15s ease-in-out;
+	-moz-transition: all 0.15s ease-in-out;
+	-o-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
+}
+
+.yellow_glow
+{
+	box-shadow:inset 0px 0px 100px 20px rgba(245, 245, 66,1) !important;
+	-webkit-transition: all 0.15s ease-in-out;
+	-moz-transition: all 0.15s ease-in-out;
+	-o-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
+}
+
+.red_glow
+{
+	box-shadow:inset 0px 0px 100px 50px rgba(255, 0, 0,1) !important;
+	-webkit-transition: all 0.15s ease-in-out;
+	-moz-transition: all 0.15s ease-in-out;
+	-o-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
+}
+
+.red_text
+{
+	color:rgba(255, 0, 0,1) !important;
+	-webkit-transition: all 0.15s ease-in-out;
+	-moz-transition: all 0.15s ease-in-out;
+	-o-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
+}
+
+.purple_glow
+{
+	box-shadow:inset 0px 0px 100px 20px rgba(166, 62, 250,1) !important;
+	-webkit-transition: all 0.15s ease-in-out;
+	-moz-transition: all 0.15s ease-in-out;
+	-o-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
+}
+
+.blue_glow
+{
+	box-shadow:inset 0px 0px 100px 20px rgba(100, 100, 200,1) !important;
+	-webkit-transition: all 0.15s ease-in-out;
+	-moz-transition: all 0.15s ease-in-out;
+	-o-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
+}
+
+.orange_glow
+{
+	box-shadow:inset 0px 0px 100px 20px rgba(247, 170, 15,1) !important;
+	-webkit-transition: all 0.15s ease-in-out;
+	-moz-transition: all 0.15s ease-in-out;
+	-o-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
+}
+
+.dark_glow
+{
+	box-shadow:inset 0px 0px 100px 20px rgba(0,0,0,0.5) !important;
+	-webkit-transition: all 0.15s ease-in-out;
+	-moz-transition: all 0.15s ease-in-out;
+	-o-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
+}
+
+.combat_zoom
+{
+	transform:scale(1.2,1.2);
+	-webkit-transition: all 0.15s ease-in-out;
+	-moz-transition: all 0.15s ease-in-out;
+	-o-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
+	z-index:102 !important;
+}
+
+.combat_fade
+{
+	opacity: 0;
+	transform-origin: center;
+	transform: scale(0.5);
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	z-index:102 !important;
+}
+
+.unit.combat_zoom
+{
+    box-shadow:32px 32px 10px -20px rgba(0,0,0,0.1);
+}
+
+.unit.combat_zoom.unit_type_artifact
+{
+	transform:scale(1.5,1.5);
+	z-index:110 !important;
+}
+
+.combat_unzoom
+{
+	transform:scale(0.5,0.5);
+	opacity: 0;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+
+.combat_softfade
+{
+	opacity: 0.8;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+
+.combat_hit:not(.dead),
+.unit.combat_hit:not(.dead)
+{
+	transform:scale(0.9,0.9);
+	/*opacity:0.75;*/
+	/*background-image: url('../images/old-953394_640.jpg');*/
+	-webkit-transition: all 0.15s linear;
+	-moz-transition: all 0.15s linear;
+	-o-transition: all 0.15s linear;
+	transition: all 0.15s linear;
+	box-shadow:0px 0px 10px rgba(0,0,0,0.1);
+}
+
+/*.unit.attack.unit_type_artifact,
+.unit.combat_zoom.unit_type_artifact,
+.unit.combat_hit.unit_type_artifact:not(.dead)
+{
+	transform:scale(2,2);
+	z-index:1000;
+}*/
+
+.unit.combat_hit .card_image
+{
+	opacity:0.75;
+}
+
+@keyframes floating_pickup {
+    0%   {
+    	left: -100%;
+    	transform:rotate(-180deg);
+    }
+    100%   {
+    	left: 200%;
+    	transform:rotate(180deg);
+    }
+}
+
+.pickup
+{
+	position: absolute;
+	top: 50%;
+	left: -100px;
+	right: auto;
+	margin-top: -50px;
+	height: 100px;
+	width: 100px;
+	animation-name: floating_pickup;
+	animation-duration: 15s;
+	z-index: 12000;
+	-ms-transform-origin: center center; /* IE 9 */
+    -webkit-transform-origin: center center; /* Chrome, Safari, Opera */
+    transform-origin: center center;
+    transform:rotate(-360deg) scale(0,0);
+}
+
+.battle_container .loot_drop
+{
+	transition: all 0.5s ease-in-out;
+	/*position: absolute;
+	top: 5%;
+	left: 15%;
+	right: auto;
+	height: 100px;
+	width: 100px;*/
+	opacity: 0;
+	z-index: 11000;
+	background-image: none;
+	box-shadow: none;
+	background-color: transparent;
+}
+
+.loot_drop.dropped
+{
+	opacity: 1;
+}
+
+.loot_drop.picked_up
+{
+	opacity: 0;
+	/*left: 60% !important;*/
+}
+
+.loot_drop .card
+{
+	position: absolute;
+	float: none;
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	-ms-transform-origin: center center; /* IE 9 */
+    -webkit-transform-origin: center center; /* Chrome, Safari, Opera */
+    transform-origin: center center;
+    transform: scale(0.75);
+}
+.pickup .card
+{
+	height: 100px;
+	width: 100px;
+}
+
+.loot_drop .card .owned_amount,
+.loot_drop .card .card_name,
+.pickup .card .card_name
+{
+	display: none;
+}
+
+@keyframes dead {
+    0%   {
+    	transform:rotate(0deg) scale(1,1);
+    	opacity: 1;
+    }
+    100%   {
+    	transform:rotate(-360deg) scale(0,0);
+    	opacity: 0;
+    }
+}
+
+.card.dead,
+.battle_container .unit.dead
+{
+	animation-name: dead;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    -ms-transform-origin: center center; /* IE 9 */
+    -webkit-transform-origin: center center; /* Chrome, Safari, Opera */
+    transform-origin: center center;
+    transform:rotate(-360deg) scale(0,0);
+    opacity: 0;
+	/*transform:rotate(-360deg) scale(0,0) !important;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;*/
+}
+
+@keyframes shake {
+    0%   {
+    	margin-left:0px;
+    }
+    20%   {
+    	margin-left:-5px;
+    }
+    40%   {
+    	margin-left:5px;
+    }
+    60%   {
+    	margin-left:-5px;
+    }
+    80%   {
+    	margin-left:5px;
+    }
+    100%   {
+    	margin-left:0px;
+    }
+}
+
+.shake
+{
+	animation-name: shake;
+    animation-duration: 0.5s;
+    -ms-transform-origin: center center; /* IE 9 */
+    -webkit-transform-origin: center center; /* Chrome, Safari, Opera */
+    transform-origin: center center;
+}
+
+@keyframes fade_in {
+    0%   {
+    	opacity:0;
+    }
+    100%   {
+    	opacity:1;
+    }
+}
+
+.turn_pointer
+{
+	position:absolute;
+	left:5px;
+	width:8px;
+	left: 0.5%;
+	width: 1%;
+	border-radius: 5px;
+	height:200px;
+	height: 33%;
+	border:1px solid rgba(0,0,0,0.8);
+	background-color: rgba(255,255,255,0.2);
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+
+.landscape .turn_pointer_1
+{
+	top:80px;
+	top: 13%;
+}
+
+.landscape .turn_pointer_2
+{
+	top:320px;
+	top: 53%;
+}
+
+.portrait .turn_pointer
+{
+	border: none;
+	position:absolute;
+	top: 7%;
+	width: 8%;
+	height: 10%;
+	border-radius: 25%;
+}
+
+.portrait .turn_pointer_1
+{
+	left: 42%;
+}
+
+.portrait .turn_pointer_2
+{
+	left: 50%;
+}
+
+.card_name span.player_name
+{
+	display: inline-block;
+	font-style: italic;
+	color:#aaa;
+	margin-right:3px;
+}
+
+.vs_container
+{
+	position: absolute;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	top:0px;
+	background-color:rgba(0,0,0,1);
+	z-index:10000;
+	overflow: hidden;
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+}
+
+.vs_container.faded
+{
+	opacity:0;
+}
+
+.vs_player_image,
+.vs_enemy_image
+{
+	position: absolute;
+	left:-50%;
+	width:50%;
+	top:0px;
+	bottom:0px;
+	background-position: center center;
+    background-size: cover;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	box-shadow: inset -100px 0px 50px -50px rgba(0,0,0,1);
+	transform-origin:left;
+}
+
+.vs_enemy_image
+{
+	left:auto;
+	right:-50%;
+	box-shadow: inset 100px 0px 50px -50px rgba(0,0,0,1);
+	transform-origin:right;
+}
+
+.portrait .vs_player_image,
+.portrait .vs_enemy_image
+{
+	width: 100%;
+	height: 50%;
+	left: 100%;
+	box-shadow: inset 0px -100px 50px -50px rgba(0,0,0,1);
+}
+.portrait .vs_enemy_image
+{
+	top: auto;
+	left: auto;
+	right: 100%;
+	box-shadow: inset 0px 100px 50px -50px rgba(0,0,0,1);
+}
+
+.portrait .vs_enemy_image.active,
+.vs_enemy_image.active
+{
+	right:0%;
+}
+.portrait .vs_player_image.active,
+.vs_player_image.active
+{
+	left:0%;
+	/*width:50%;*/
+}
+
+.vs_enemy_name,
+.vs_player_name
+{
+	position: absolute;
+	left:3%;
+	top:5%;
+	width:50%;
+	font-size: 20px;
+	font-family: times;
+	font-weight: bold;
+	color:#fff;
+	opacity: 0;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),3px 3px 3px rgba(0,0,0,0.6);
+	-webkit-transition: all 0.5s ease-in;
+	-moz-transition: all 0.5s ease-in;
+	-o-transition: all 0.5s ease-in;
+	transition: all 0.5s ease-in;
+	transform-origin: left top;
+	transform:scale(2);
+	text-align:left;
+	color: rgba(150,205,150,1);
+}
+
+.vs_enemy_name span,
+.vs_player_name span
+{
+	color:#ddd;
+	font-style: italic;
+	font-size: 16px;
+}
+
+.vs_enemy_name
+{
+	left:auto;
+	top:auto;
+	bottom:5%;
+	right:3%;
+	text-align:right;
+	transform-origin: right bottom;
+	color: rgba(255,150,150,1);
+}
+
+.vs_enemy_name.active,
+.vs_player_name.active
+{
+	opacity: 1;
+	transform:scale(2);
+}
+
+.vs_vs
+{
+	position: absolute;
+	left:0%;
+	right:0%;
+	top:45%;
+	font-size: 30px;
+	font-family: arial;
+	color:#f00;
+	opacity: 0;
+	transform-origin: center center;
+	transform:scale(3);
+	text-align:center;
+	line-height: 0.5;
+	font-weight:bold;
+	-webkit-transition: all 0.25s ease-in;
+	-moz-transition: all 0.25s ease-in;
+	-o-transition: all 0.25s ease-in;
+	transition: all 0.25s ease-in;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.vs_vs.active
+{
+	transform:scale(7);
+	opacity: 1;
+}
+
+.vs_vs.active.active2
+{
+
+}

@@ -1,0 +1,574 @@
+.single_tinker_container,
+.craft_container
+{
+	width: 100%;
+	margin: 0px;
+    margin-top: 0px;
+}
+
+.craft_container 
+{
+	text-align: center;
+	vertical-align: top;
+	padding-top: 10px;
+}
+
+/*.craft_container.cost_1{margin-left:300px;}
+.craft_container.cost_2{margin-left:200px;}
+.craft_container.cost_3{margin-left:100px;}
+.craft_container.cost_4{margin-left:50px;}*/
+
+.single_cost_container
+{
+	display:inline-block;
+	/*width: 124px;
+    height: 180px;
+    transform: scale(0.8);*/
+    vertical-align: top;
+    max-width:  32%;
+}
+
+.single_cost_container .card .owned_amount
+{
+	position:absolute;
+    left:0px;
+    right:0px;
+    top:80px;
+    text-align:center;
+    font-size:40px;
+    opacity:1;
+    text-shadow: 2px 2px 0px rgba(0,0,0,1), 2px -2px 0px rgba(0,0,0,1), -2px 2px 0px rgba(0,0,0,1), -2px -2px 0px rgba(0,0,0,1), 2px 0px 0px rgba(0,0,0,1), 0px -2px 0px rgba(0,0,0,1), -2px 0px 0px rgba(0,0,0,1), 0px 2px 0px rgba(0,0,0,1), 0px 0px 3px rgba(0,0,0,1);
+}
+
+.no_tinker
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:44px;
+	text-align: center;
+	display:block;
+	margin:auto;
+	margin-top:100px;
+	width:90%;
+	margin-left: 5%;
+}
+
+.tinkering_list
+{
+	position: absolute;
+	top: 70px;
+	bottom: 70px;
+	left: 0px;
+	right: 0px;
+	margin: 0px;
+}
+
+
+.home_section.tinkering_container .tinkering_list,
+.home_section.scrap_container .tinkering_list
+{
+	text-align: center;
+}
+
+#content_collection .home_section.tinkering_container .tinkering_list
+{
+	left: 10px;
+	right: 10px;
+}
+
+.portrait #content_collection .home_section.tinkering_container .tinkering_list
+{
+	bottom: 90px;
+}
+
+.home_section.scrap_container .tinkering_list
+{
+	bottom: 125px;
+	left: 10px;
+	right: 10px;
+}
+
+.portrait .home_section.scrap_container .tinkering_list
+{
+	bottom: 155px;
+}
+
+.scrap_all_container
+{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	bottom: 60px;
+	text-align: center;
+}
+
+.portrait .scrap_all_container
+{
+	bottom: 80px;
+}
+
+.collection_card_container,
+.scrap_this_card_container
+{
+	width: 25%;
+	height: 33%;
+	display: inline-block;
+	/*margin: 1%;*/
+	position: relative;
+}
+
+.portrait .collection_card_container,
+.portrait .scrap_this_card_container
+{
+	width: 33%;
+	height: 25%;
+	display: inline-block;
+	position: relative;
+	/*margin: 1%;*/
+}
+
+.tinkering_list .collection_card_container .card,
+.portrait .tinkering_list .collection_card_container .card,
+.tinkering_list .scrap_this_card_container .card,
+.portrait .tinkering_list .scrap_this_card_container .card
+{
+	top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+	width: auto;
+	height: auto;
+	margin: 0px;
+	position: absolute;
+}
+
+.tinkering_list .card
+{
+	display: inline-block;
+	float: none;
+	width: 15%;
+	height: 50%;
+	margin-left: 0.5%;
+	margin-right: 0.5%;
+}
+
+.portrait .tinkering_list .card
+{
+	display: inline-block;
+	float: none;
+	width: 30%;
+	height: 20%;
+	margin-left: 0.5%;
+	margin-right: 0.5%;
+}
+
+.portrait .tinkering_list .card_time,
+.portrait .tinkering_list .card_abilities,
+.portrait .tinkering_list .card_name,
+.portrait .tinkering_list .card_health,
+.portrait .tinkering_list .card_power,
+.portrait .tinkering_list .card_armor
+{
+	display:none;
+}
+
+.portrait .tinkering_list .card .owned_amount
+{
+	top:auto;
+	bottom: 5px;
+	left: 0px;
+	right: 0px;
+	text-align: center;
+	font-size: 8vw;
+	height: auto;
+	opacity: 1;
+}
+
+.menu_button.slim .craft_button
+{
+	/*position:absolute;
+	right:20px;
+	bottom:20px;*/
+}
+
+.menu_button.slim.recipe_button
+{
+	margin-top: 10px;
+    width: 125px;
+    margin-right: 0px;
+    max-width: 100%;
+    /*margin-left: 5px;*/
+    overflow: hidden;
+}
+
+#content_scrap .page_selection,
+#content_tinker .page_selection
+{
+	/*left:20px;*/
+}
+
+#content_craft .page_selection
+{
+	left:0px;
+}
+
+.craft_not_enough .card
+{
+	opacity:0.6;
+}
+
+.craft_not_enough .card .card_image
+{
+	opacity:0.5;
+}
+
+.can_craft_false .card
+{
+	opacity:0.6;
+	box-shadow: none;
+}
+
+.recipe_hero_result,
+.recipe_result
+{
+	margin-top: 10px;
+	display: inline-block;
+	vertical-align: middle;
+	/*position:absolute;
+	right:40px;
+	bottom:100px;
+	transform:scale(1.1);
+	transform-origin:bottom right;*/
+}
+
+.recipe_result .card
+{
+	float: none;
+	display: inline-block;
+}
+
+.recipe_hero_result
+{
+	margin-left: -100px;
+	margin-top: 20px;
+	/*right:60px;
+	bottom:120px;*/
+}
+
+.recipe_hero_result.active .card,
+.recipe_result.active .card
+{
+	z-index:5;
+}
+
+.swap_hero_button
+{
+	/*position: absolute;
+    bottom: 370px;
+    right: 40px;*/
+    font-size: 29px;
+    font-family: times;
+    font-weight: bold;
+    color:#fff;
+    opacity: 0.8;
+    cursor: pointer;
+    text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.max_tinker
+{
+	position:absolute;
+	bottom:20px;
+	left:20px;
+	font-family: 'Caveat Brush', cursive;
+	font-size:24px;
+	color:#ccc;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.craftable_with_this
+{
+	/*position:absolute;
+	bottom:-50px;
+	left:20px;
+	width:700px;*/
+	box-sizing: border-box;
+	text-align:center;
+	width:  100%;
+	margin: 0px;
+	padding: 10px;
+}
+
+.single_tinker_container .craftable_with_this
+{
+	/*bottom:-90px;
+	width:950px;*/
+}
+
+.single_cost_container .card,
+.craftable_with_this .card
+{
+	/*transform: scale(0.5,0.5);
+    transform-origin: top left;
+    margin-right: -10%;
+    margin-top: 10px;
+    float: left;*/
+    float: none;
+    display: inline-block;
+    text-align:left;
+    width: 130px;
+    height: 130px;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.single_cost_container .card
+{
+	max-width: 100%;
+}
+
+.craftable_with_this .card
+{
+	max-width: 32%;
+}
+
+
+.single_cost_container .card .card_time,
+.single_cost_container .card .card_abilities,
+.single_cost_container .card .card_name,
+.single_cost_container .card .card_health,
+.single_cost_container .card .card_power,
+.single_cost_container .card .card_armor,
+.craftable_with_this .card .card_time,
+.craftable_with_this .card .card_abilities,
+.craftable_with_this .card .card_name,
+.craftable_with_this .card .card_health,
+.craftable_with_this .card .card_power,
+.craftable_with_this .card .card_armor
+{
+	display:none;
+}
+
+.single_tinker_container .craftable_with_this .card
+{
+	/*margin-right: -7.8%;*/
+}
+
+
+.craftable_with_this_title
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:24px;
+	color:#ccc;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	text-align:center;
+	width: 100%;
+}
+
+.quest_complete_count,
+.scrap_count
+{
+	position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: 'Caveat Brush', cursive;
+    font-size: 32px;
+    color:#ccc;
+    text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+#content_scrap_shop .scrap_count
+{
+	top: auto;
+	bottom: 10px;
+	right: 20px;
+}
+
+.menu_button.quest_complete_count
+{
+	position: absolute;
+    top: 10px;
+    right: 1%;
+    width: 50px;
+    margin: 0px;
+    z-index: 2;
+}
+
+.buy_random_card_buttons_container,
+.use_scrap_buttons_container
+{
+	position: absolute;
+	left:205px;
+	top:160px;
+	width:800px;
+}
+
+.buy_random_card_buttons_container
+{
+	top:340px;
+}
+
+.buy_random_card_button,
+.use_scraps_button
+{
+	/*position: absolute;
+	left:400px;
+	top:200px;*/
+	width:180px;
+	height:105px;
+	margin-right:20px;
+	float:left;
+	padding-top: 45px;
+    background-color:rgba(0,0,0,0.2);
+	text-align:center;
+	border:2px solid #000;
+	font-family: times;
+	font-size:30px;
+	font-weight:bold;
+	color:rgba(255,255,255,0.8);
+	cursor:pointer;
+	border-radius:0px;
+	color:#fff;
+	text-shadow:none;
+	box-shadow: none;
+}
+
+/*.buy_deck_slot
+{
+	position: absolute;
+	top: 340px;
+    right: 203px;
+	margin:0px;
+}*/
+
+.scrap_shop_content
+{
+	overflow-x:hidden;
+    overflow-y:auto;
+    
+}
+
+.scrap_shop_content .single_building_recipe_text
+{
+	position: absolute;
+	top:15px;
+	left:170px;
+	font-family: times;
+	color:#fff;
+	text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+	width:150px;
+	font-size: 20px;
+}
+
+.buy_deck_slot span
+{
+	font-size: 20px;
+	overflow:visible;
+	padding-top:5px;
+	display: block;
+	cursor: pointer;
+}
+
+.buy_deck_slot
+{
+	width:280px;
+    height:60px;
+    padding-top:10px;
+    background-color:rgba(0,0,0,0.2);
+    text-align:center;
+    border:2px solid #000;
+    font-family: times;
+    font-size:30px;
+    font-weight:bold;
+    color:rgba(255,255,255,0.8);
+    cursor:pointer;
+    border-radius:0px;
+    color:#fff;
+    text-shadow:none;
+    box-shadow: none;
+    position: absolute;
+    bottom:7px;
+    left:20px;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+}
+
+.buy_random_card_button
+{
+	width:383px;
+}
+
+.scrap_description
+{
+	font-family: 'Caveat Brush', cursive;
+    font-size: 32px;
+    width:100%;
+    text-align: center;
+    color:#ccc;
+    text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.single_tinker_container .tinker_card_container
+{
+	position: absolute;
+	left:100px;
+	top:100px;
+	transform:scale(1.5,1.5);
+	transform-origin:top left;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.tinker_confirmation_description
+{
+	position: absolute;
+	right:100px;
+	top:160px;
+	width:500px;
+	font-family: 'Caveat Brush', cursive;
+    font-size: 32px;
+    text-align: center;
+    color:#ccc;
+    text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.tinker_confirmation_button
+{
+	position: absolute;
+	right:260px;
+	top:250px;
+	width:180px;
+	height:40px;
+	padding-top:10px;
+	background-color:rgba(0,0,0,0.2);
+	text-align:center;
+	border:2px solid #000;
+	font-family: times;
+	font-size:30px;
+	font-weight:bold;
+	color:rgba(255,255,255,0.8);
+	cursor:pointer;
+	border-radius:0px;
+	color:#fff;
+	text-shadow:none;
+	box-shadow: none;
+}
+
+.possible_new_recipe
+{
+	opacity: 1;
+	position:absolute;
+	left:0px;
+	top:0px;
+	-webkit-transition: all 2s ease-in-out;
+	-moz-transition: all 2s ease-in-out;
+	-o-transition: all 2s ease-in-out;
+	transition: all 2s ease-in-out;
+	animation-name: fade_in;
+    animation-duration: 1s;
+}
+
+.possible_new_recipe.faded_out .card
+{
+	opacity:0;
+}
