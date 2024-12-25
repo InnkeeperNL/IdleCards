@@ -426,13 +426,14 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
-		level_cost_artifact: 1.5,
+		level_cost: 		4,
+		level_cost_artifact: 2,
 		level_cost_hero: 	2,
 	},
 	chaos_touch:{
-		description: 	'When this deals damage to the enemy hero, move a cards from the enemy\'s hand to the grave.',
+		description: 	'When this deals damage to the enemy hero, move a cards from the enemy\'s hand to the grave. Can be used {LEVEL} time(s).',
 		proc: 			'dealt_damage_to_hero',
+		reduce_skill_after_use: 'chaos_touch',
 		proc_amount: 	1,
 		targets:	{
 			0:{
@@ -454,7 +455,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		6,
+		level_cost: 		3,
 	},
 	charge:{
 		ability_subtypes: ['charge','movement','charge','move_ally'],
@@ -727,6 +728,39 @@ var all_abilities = {
 		level_cost: 		2,
 		average_hits: 		1,
 		
+	},
+	counter:{
+		description: 	'If this survives melee damage from an enemy unit or hero, this deals physical melee damage equal to its power to it, {LEVEL} time(s). This cannot counter a counter.',
+		proc: 			'receive_damage',
+		subtypes: 		['melee'],
+		not_subtypes: 	['counter'],
+		need_to_be_alive: true,
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		need_power: 	true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'strike',
+				type: 			'damage',
+				subtypes: 		['melee','physical','counter'],
+				amount: 		'origin_power'
+			}
+		},
+		animation: 			'attack',
+		level_cost: 		2,
+		level_cost_hero: 	2,
+		cost_factor: 		'power',
+		average_hits: 		'ability_level',
 	},
 	counter_spell:		{
 		description: 	'Destroys up to {LEVEL} enemy spell(s).',
@@ -1158,7 +1192,6 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		6,
-		level_cost_spell: 	3,
 		level_cost_hero: 	3,
 	},
 	draw:{
