@@ -992,6 +992,7 @@ function process_passive_effect(unit_id, effect, amount){
 var skills_to_show_icon = {
 	explode: 	'bomb',
 	wounded: 	'wound',
+	blessed: 	'bless',
 }
 
 function update_passive_effects(unit_id){
@@ -1391,6 +1392,7 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 		{
 			set_skill(unit_id, unit_id, 0, current_ability['remove_skill'], false);
 			check_visible_skills(unit_id);
+			update_passive_effects(unit_id);
 		}
 
 		if(any_effect_fired == true && current_ability['animation'] != undefined)

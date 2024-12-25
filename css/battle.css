@@ -394,7 +394,7 @@
 	background-image: url(../images/grim-reaper.svg);
 }
 
-.battle_container .projectile.projectile_bless,
+.battle_container .projectile_bless,
 .icon.icon_bless
 {
 	background-image: url(../images/prayer.svg);

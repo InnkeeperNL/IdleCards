@@ -214,6 +214,61 @@ var all_abilities = {
 		level_cost: 	1,
 		average_hits: 	1,
 	},
+	bless:{
+		description: 	'A random ally unit gains {LEVEL} blessings. {BLESSED}',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bless',
+				type: 			'grant_skill',
+				subtypes: 		['bless','grant_bless'],
+				skill_id: 		'blessed',
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	6,
+		level_cost_spell: 2,
+	},
+	blessed:{
+		description: 	'Restores up to {LEVEL} health of your hero when destroyed.',
+		proc: 			'own_death',
+		proc_while_dead: true,
+		remove_skill: 'blessed',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally',
+				damaged: 		true,
+			},
+		},
+		effects:{
+			0:{
+				projectile:		'healing',
+				type: 			'healing',
+				subtypes: 		['healing','restore_hero','bless'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
+		ability_level_cost_factors:{
+			resurrect: 		2,
+		},
+		level_cost: 	2,
+	},
 	blood_rage:{
 		description: 	'A random living ally creature unit with at least 2 health gains {LEVEL} power and looses 1 health permanently.',
 		cannot_proc_while_stunned: true,
@@ -2104,6 +2159,31 @@ var all_abilities = {
 		level_cost_spell: 	1,
 		average_hits: 		1,
 		cost_adjustment: 	1,
+	},
+	guard:{
+		description: 	'When played, an enemy unit enters the game or any unit is destroyed, if there is no opposing enemy unit, this unit will move to a free slot with an opposing unit. Can be used once each round.',
+		delay: 			1,
+		proc: 			['enemy_unit_card_played','creature_death','structure_death','on_play'],
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'self',
+				has_opposing: 	false,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			1:{
+				type: 			'move',
+				safe_slot: 		false,
+				placement: 		'random',
+				subtypes: 		['movement','guard'],
+				amount: 		1,
+			}
+		},
 	},
 	hasten:{
 		description: 	'Reduces the time left of a card in your hand by {LEVEL}.',
@@ -4064,7 +4144,8 @@ $.each(all_abilities, function(ability_id, ability_info){
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{BURN}").join('<br/><i>Burn: Suffers fire damage equal to half the burn it suffers at the end of each turn, rounded up. The amount of burn is halved each time it deals damage, rounded down.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{POISON}").join('<br/><i>Poison: Suffers piercing poison damage at the end of each turn equal to half the amount of poison, rounded up. The amount of poison is halved each time it deals damage, rounded down.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received. Curse is removed whenever it takes effect.</i>');
-	all_abilities[ability_id]['description'] = ability_info['description'].split("{BLESS}").join('<br/><i>Blessed: Reduces damage received. Blessed is reduced by the amount of damage absorbed.</i>');
+	//all_abilities[ability_id]['description'] = ability_info['description'].split("{BLESS}").join('<br/><i>Blessed: Reduces damage received. Blessed is reduced by the amount of damage absorbed.</i>');
+	all_abilities[ability_id]['description'] = ability_info['description'].split("{BLESSED}").join('<br/><i>Blessed: Restores health to your hero when destroyed. Bless is removed when it restores health.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{DOOM}").join('<br/><i>Doom: There is a 10% chance per doom that this will be destroyed at the end of its turn.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{SHIELD}").join('<br/><i>Shield: Absorbs the first incoming damage. Shield is removed at the start of each round.</i>');
 });
