@@ -758,7 +758,7 @@ var all_abilities = {
 		},
 		animation: 			'attack',
 		level_cost: 		2,
-		level_cost_hero: 	2,
+		level_cost_hero: 	3,
 		cost_factor: 		'power',
 		average_hits: 		'ability_level',
 	},
@@ -3684,7 +3684,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'red_glow',
-		level_cost: 		2,
+		level_cost: 		2.5,
 		level_cost_hero: 	4,
 		average_hits: 		1,
 	},
