@@ -37,7 +37,7 @@ var all_achievements = {
 	lamb_chops:{
 		name: 			'lamb chops',
 		description: 	'Sacrifice a lamb.',
-		card_image: 	'donkey',
+		card_image: 	'lamb',
 		objective: 		'lamb_affected_by_sacrifice',
 		amount: 		1,
 		hide_details: 	true,
