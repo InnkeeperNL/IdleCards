@@ -294,7 +294,6 @@ var all_abilities = {
 				position: 	'random',
 				side: 		'enemy'
 			},
-			
 		},
 		effects:{
 			0:{
@@ -3531,6 +3530,37 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		4,
 	},
+	stun_construct:{
+		description: 	'Stuns a random enemy artifact or golem for {LEVEL} turn(s).',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 5,
+				subtypes: 	['golem'],
+				position: 	'random',
+				side: 		'enemy'
+			},
+			1:{
+				add_targets: true,
+				target: 	'artifact',
+				target_amount: 1,
+				position: 	'random',
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'stun',
+				type: 		'apply_stun',
+				subtypes: 	['stun'],
+				amount: 	1	
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	stun_creature:{
 		description: 	'Stuns a random living enemy creature unit for {LEVEL} turn(s).',
 		cannot_proc_while_stunned: true,
@@ -3585,7 +3615,7 @@ var all_abilities = {
 		level_cost_spell: 	3,
 	},
 	summon_frog:{
-		description: 	'Summons {LEVEL} frog(s) each turn.',
+		description: 	'Summons {LEVEL} frog(s).',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
@@ -3607,6 +3637,30 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		6,
+	},
+	summon_ghost:{
+		description: 	'Summons {LEVEL} ghost(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'ghost',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		3,
 	},
 	summon_imp:{
 		description: 	'Summons up to a total of {LEVEL} imp type unit(s).',
@@ -4015,13 +4069,15 @@ $.each(all_abilities, function(ability_id, ability_info){
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{SHIELD}").join('<br/><i>Shield: Absorbs the first incoming damage. Shield is removed at the start of each round.</i>');
 });
 
-function calc_proc_effect(test_amount, card_id){
-	var resurrect_chance = all_abilities[card_id]['proc_chance'] / 100;
+function calc_proc_effect(test_amount, proc_chance){
+	//var resurrect_chance = all_abilities[card_id]['proc_chance'] / 100;
+	if(proc_chance == undefined){proc_chance = 50;}
+	proc_chance /= 100;
 	var total_procs = [];
 	var sum_total_procs = 0;
 	var highest_proc = 0;
 	for (var i = test_amount - 1; i >= 0; i--) {
-		var proc_chain = check_proc_chain(resurrect_chance);
+		var proc_chain = check_proc_chain(proc_chance);
 		if(total_procs[proc_chain] == undefined){total_procs[proc_chain] = 0;}
 		total_procs[proc_chain] += 1;
 		sum_total_procs += proc_chain;

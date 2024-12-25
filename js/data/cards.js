@@ -827,6 +827,30 @@ var all_available_cards = {
 		abilities: 			{fortify_all: 3, minimum_allies: 3},
 		quote: '\"Be safe.\"',
 	},
+	cog_vandal:{
+		name: 				'cog vandal',
+		type: 				'creature',
+		subtypes: 			['human','rogue'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2024-12-25T112611.818.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, stun_construct: 1},
+		hero_version: 			{
+			theme: 				[],
+			power: 				3,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, stun_construct: 1},
+		},
+		quote: '\"You just take out a single part.\"',
+	},
+	
 	cold_front:{
 		name: 				'cold front',
 		type: 				'spell',
@@ -2000,6 +2024,68 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, plated: 1},
 		},
 		quote: '\"It crawled away, slowly...\"',
+	},
+	ghost:{
+		name: 				'ghost',
+		type: 				'creature',
+		subtypes: 			['undead'],
+		color: 				['colorless'],
+		theme: 				[],
+		pick_chance: 		0,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2024-12-25T105240.183.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			1,
+		abilities: 			{undead: 1},
+		quote: '\"Harmless but creepy.\"',
+	},
+	ghost_caller:{
+		name: 				'ghost caller',
+		type: 				'creature',
+		subtypes: 			['human','mage'],
+		color: 				['colorless'],
+		theme: 				['ally_creature_death_proc_ability','ghost'],
+		craft_theme: 		['ghost','ghost','ghost','ghost','undead'],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2024-12-25T110831.364.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, summon_ghost: 1},
+		hero_version: 			{
+			theme: 				['subtype_undead','sacrifice_ability','ally_creature_death_proc_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, summon_ghost: 1},
+		},
+		quote: '\"Come, spirits! Join me!\"',
+	},
+	
+	ghost_pit:{
+		name: 				'ghost pit',
+		type: 				'structure',
+		subtypes: 			['pit'],
+		color: 				['colorless'],
+		theme: 				['ally_creature_death_proc_ability','ghost'],
+		craft_theme: 		['undead','undead','sacrifice','sacrifice','sacrifice','sacrifice','ghost'],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2024-12-25T105800.017.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			6,
+		abilities: 			{summon_ghost: 3},
+		hero_version: 			{
+			theme: 				['subtype_undead','sacrifice_ability','ally_creature_death_proc_ability'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{summon_ghost: 2},
+		},
+		quote: '\"You can hear them wail...\"',
 	},
 	
 	golem_lobber:{
@@ -4547,6 +4633,23 @@ var all_available_cards = {
 		},
 		quote: '\"Say hello to my little friends!\"',
 	},
+	
+	unholy_night:{
+		name: 				'unholy night',
+		type: 				'spell',
+		subtypes: 			['ritual'],
+		color: 				['colorless'],
+		theme: 				['ally_creature_death_proc_ability'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2024-12-25T111920.684.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{summon_ghost: 5, maximum_allies: 0},
+		quote: '\"Time to meet your grandfather.\"',
+	},
 	unholy_rite:{
 		name: 				'unholy rite',
 		type: 				'spell',
@@ -4998,6 +5101,23 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, flying: 1},
 		},
 		quote: '\"A common bird.\"',
+	},
+	wrench:{
+		name: 				'wrench',
+		type: 				'artifact',
+		subtypes: 			['tool'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2024-12-25T113733.307.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{stun_construct: 1},
+		quote: '\"You have to use it the right way.\"',
+		max_in_deck: 1,
 	},
 	zombie:{
 		name: 				'zombie',
@@ -5979,11 +6099,12 @@ function check_card(card_id){
 		}
 
 		if(card_info['theme'] == undefined){card_info['theme'] = {};};
-		if(card_info['craft_theme'] == undefined){card_info['craft_theme'] = {};};
+		if(card_info['craft_theme'] == undefined || card_info['craft_theme'][0] == undefined){card_info['craft_theme'] = ['type_' + card_info['type']];};
 		card_info['theme'][get_highest_key_in_object(card_info['theme']) + 1] = 'type_' + card_info['type'];
 
 		$.each(card_info['subtypes'], function(subtype_id, current_subtype){
 			card_info['theme'][get_highest_key_in_object(card_info['theme']) + 1] = 'subtype_' + current_subtype;
+			card_info['craft_theme'][get_highest_key_in_object(card_info['craft_theme']) + 1] = 'subtype_' + current_subtype;
 		});
 
 		$.each(card_info['abilities'], function(ability_id, ability_level){
