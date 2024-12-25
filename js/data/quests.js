@@ -702,6 +702,20 @@ var all_chained_achievements = {
 		card_back: 'phoenix',
 		steps: 		6,
 	},
+	warrior:{
+		name: 			'warrior',
+		description: 	'Play {AMOUNT} warrior card(s).',
+		objective: 		'warrior_card_played',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'shield_warrior',
+		steps: 		6,
+	},
 	zoo:{
 		name: 			'zoo',
 		description: 	'Play {AMOUNT} animal card(s).',

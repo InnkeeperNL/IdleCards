@@ -669,6 +669,8 @@ var all_abilities = {
 		name_color: 	'rgba(255,55,55,0.9)',
 		description: 	'Deals {LEVEL} piercing fire damage to a random burning enemy unit or hero multiplied by the burn it suffers.',
 		cannot_proc_while_stunned: true,
+		not_ability_subtypes:['fire'],
+		ability_craft_subtypes:['burn'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -705,6 +707,8 @@ var all_abilities = {
 		name_color: 	'rgba(255,55,55,0.9)',
 		description: 	'Deals {LEVEL} piercing fire damage to a random burning enemy unit multiplied by the burn it suffers.',
 		cannot_proc_while_stunned: true,
+		not_ability_subtypes:['fire'],
+		ability_craft_subtypes:['burn'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -3166,6 +3170,29 @@ var all_abilities = {
 			}
 		},
 	},
+	seek_enemy:{
+		description: 	'This unit will move to a free slot with an opposing unit if it is not facing a unit.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'self',
+				has_opposing: false,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			1:{
+				type: 			'move',
+				safe_slot: 		false,
+				placement: 		'random',
+				subtypes: 		['movement','seek','move_ally'],
+				amount: 		1,
+			}
+		},
+	},
 	seek_structure:{
 		description: 	'This unit will move to a free slot with an opposing structure if it is not facing a structure.',
 		cannot_proc_while_stunned: true,
@@ -3951,8 +3978,12 @@ $.each(all_abilities, function(ability_id, ability_info){
 		$.each(all_abilities[ability_id]['effects'], function(effect_id, ability_effect){
 			var found_craft_effect_type = false;
 			$.each(ability_effect['subtypes'], function(subtype_id, subtype_name){
-				ability_subtype_id++;
-				all_abilities[ability_id]['ability_subtypes'][ability_subtype_id] = subtype_name;
+				
+				if(all_abilities[ability_id]['not_ability_subtypes'] == undefined || match_array_values(all_abilities[ability_id]['not_ability_subtypes'], subtype_name) == false)
+				{
+					ability_subtype_id++;
+					all_abilities[ability_id]['ability_subtypes'][ability_subtype_id] = subtype_name;
+				}
 				if(/*found_craft_effect_type == false && */match_array_values(not_craft_themes, subtype_name) == false)
 				{
 					all_abilities[ability_id]['ability_craft_subtypes'][get_highest_key_in_object(all_abilities[ability_id]['ability_craft_subtypes']) + 1] = subtype_name;

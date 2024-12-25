@@ -114,6 +114,7 @@ function end_this_turn(){
 			if(battle_info.combat_units[2]['current_health'] > 0 && battle_info.combat_units[1]['current_health'] < 1)
 			{
 				check_quests('battle_won');
+				$('.unit_type_artifact.side_1').addClass('dead');
 				if(current_battle_type == 'summoned')
 				{
 					$('.turn_pointer').addClass('hidden');
@@ -175,6 +176,7 @@ function end_this_turn(){
 			{
 				$('.turn_pointer').addClass('hidden');
 				$('.unit_id_2').addClass('dead');
+				$('.unit_type_artifact.side_2').addClass('dead');
 				if(endless_waves == false)
 				{
 					if(battle_info.combat_units[2]['current_health'] < 1 && battle_info.combat_units[1]['current_health'] < 1)
