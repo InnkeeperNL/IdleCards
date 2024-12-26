@@ -1274,6 +1274,56 @@ var all_abilities = {
 		level_cost: 	1.5,
 		level_cost_spell: 0.5,
 	},
+	doom_all:{
+		description: 	'Applies {LEVEL} doom to all enemy units.{DOOM}',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	5,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'doom',
+				type: 			'apply_doom',
+				subtypes: 		['magical','doom'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 	4.5,
+		level_cost_spell: 1.5,
+	},
+	dooming_touch:{
+		description: 	'Applies {LEVEL} doom to any unit it deals damage to.{DOOM}',
+		proc: 			'dealt_damage',
+		proc_while_dead: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				//target_projectile: 'doom',
+				type: 			'apply_doom',
+				subtypes: 		['magical','doom'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		level_cost: 		0,
+		average_hit_cost: 	0.75,
+	},
 	draw:{
 		description: 	'When played, draws up to {LEVEL} card(s).',
 		cannot_proc_while_stunned: true,

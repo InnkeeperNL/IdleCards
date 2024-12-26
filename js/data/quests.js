@@ -205,6 +205,20 @@ var all_chained_achievements = {
 		card_back: 'cursed_skull',
 		steps: 		6,
 	},
+	doom:{
+		name: 			'doom',
+		description: 	'Have allies apply doom {AMOUNT} time(s).',
+		objective: 		'ally_performed_doom',
+		amount: 	1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'bad_omen',
+		steps: 		6,
+	},
 	draw:{
 		name: 			'draw',
 		description: 	'Have allies draw an additional card {AMOUNT} time(s).',
