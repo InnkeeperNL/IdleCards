@@ -149,7 +149,7 @@ var all_available_cards = {
 		subtypes: 			['arcane','weather'],
 		color: 				['colorless'],
 		theme: 				['çurse_ability','arcane_bolts_ability','aoe'],
-		craft_theme: 		['arcane_bolts','arcane_bolts'],
+		craft_theme: 		['arcane_bolts','arcane_bolts','storm'],
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard-2024-11-29T060948.045.jpg',
@@ -204,6 +204,30 @@ var all_available_cards = {
 			abilities: 			{shoot_unit: 1},
 		},
 		quote: '\"Stay at a distance.\"',
+	},
+	archmage:{
+		name: 				'archmage',
+		type: 				'creature',
+		subtypes: 			['human','mage'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		['storm','storm'],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2024-12-26T145457.381.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			10,
+		abilities: 			{arcane_bolt: 3, ignites: 1},
+		verified: 			true,
+		hero_version: 			{
+			theme: 				['arcane_bolts_ability','çurse_ability','burn_ability','çurse_ability'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{arcane_bolt_hv: 3, ignites: 1},
+		},
+		quote: '\"Overlord of magic.\"',
 	},
 	arsonist:{
 		name: 				'arsonist',
@@ -1930,7 +1954,7 @@ var all_available_cards = {
 		subtypes: 			['weather'],
 		color: 				['colorless'],
 		theme: 				['burn_ability','aoe'],
-		craft_theme: 		['burn'],
+		craft_theme: 		['burn','storm'],
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard-2024-11-30T051233.076.jpg',
@@ -7118,7 +7142,7 @@ function generate_recipe(card_id, cost_left, current_recipe, subtypes_left){
 			if(/*cost_id != 'peasant' && */(cost_info['value'] < cost_left || (cost_info['value'] <= cost_left && recipe_size > 0)) /*&& (recipe_size > 0 || cost_info['value'] > all_available_cards[card_id]['value'] * 0.4 || all_available_cards[card_id]['value'] < 10)*/ && (recipe_size > 0 || cost_info['value'] <= all_available_cards[card_id]['value'] * 0.9 || all_available_cards[card_id]['value'] < 10) && cost_info['pick_chance'] > 0 && current_recipe[cost_id] == undefined)
 			{
 				var matched_amount = (match_array_values(current_card['craft_theme'], cost_info['craft_theme'], true));
-				matched_amount = Math.sqrt(matched_amount);
+				//matched_amount = Math.sqrt(matched_amount);
 				matched_amount = matched_amount * 1 /*+ (matched_amount / 4)*/;
 				if(recipe_size == 0){matched_amount *= 2;}
 				if(cost_info['type'] == all_available_cards[card_id]['type']){
@@ -7136,7 +7160,7 @@ function generate_recipe(card_id, cost_left, current_recipe, subtypes_left){
 				/*var value_match = (cost_info['value'] / cost_left) + 0.2;
 				if(value_match > 1){value_match = 1;}
 				matched_amount *= value_match;*/
-				var subtype_match = match_array_values(subtypes_left, cost_info['subtypes'], true) * 2.1;
+				var subtype_match = match_array_values(subtypes_left, cost_info['subtypes'], true) * 1;
 				//if(match_array_values('human', cost_info['subtypes']) && match_array_values('human', subtypes_left) && count_object(cost_info['subtypes']) > 1){subtype_match -= 1.9;}
 				if(cost_info['subtype_craft_factor'] != undefined){subtype_match *= cost_info['subtype_craft_factor'];}
 				if(current_card['subtype_craft_factor'] != undefined){subtype_match *= current_card['subtype_craft_factor'];}
@@ -7150,7 +7174,7 @@ function generate_recipe(card_id, cost_left, current_recipe, subtypes_left){
 				}
 				if(matched_amount > 0 && cost_info['used_in_recipes'] != undefined && cost_info['used_in_recipes'] > 0)
 				{
-					matched_amount /= (1 + (cost_info['used_in_recipes'] * recipe_size));
+					matched_amount /= sqr(sqr(1 + (cost_info['used_in_recipes'] * recipe_size)));
 				}
 				if(matched_amount >= /*sqr*/(recipe_size * 0.25)/* || (count_object(current_recipe) == 0 && matched_amount >= 0)*/)
 				{
@@ -7214,4 +7238,15 @@ function generate_recipe(card_id, cost_left, current_recipe, subtypes_left){
 		}
 		return current_recipe;
 	}
+}
+
+function find_cards_not_used_in_recipe(value_max, value_min){
+	if(value_max == undefined){value_max = 100000000;}
+	if(value_min == undefined){value_min = 0;}
+	$.each(all_available_cards, function(card_id, card_info){
+		if(card_info['pick_chance'] > 0 && (card_info['used_in_recipes'] == undefined || card_info['used_in_recipes'] == 0) && card_info['value'] < value_max && card_info['value'] > value_min)
+		{
+			console.log(card_id + ', value: ' + card_info['value']);
+		}
+	});
 }
