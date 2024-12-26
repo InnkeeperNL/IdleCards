@@ -1936,6 +1936,12 @@ var all_abilities = {
 		level_cost_spell: 	1.25,
 		average_hits: 		1,
 	},
+	fireproof:{
+		description: 		'This unit is immune to fire and burn effects.',
+		grants_immunities: 	['fire','burn'],
+		ability_subtypes: 	['fireproof'],
+		level_cost: 2,
+	},
 	first_aid:{
 		name_color: 	'rgba(55,255,55,0.9)',
 		description: 	'When an ally creature unit receives damages, this heals that ally by {LEVEL}. Can be used once each round.',
@@ -3078,6 +3084,33 @@ var all_abilities = {
 			0:{
 				self_projectile: 	'shield',
 				subtypes: 			['resist_magic','type_resist'],
+				increase_timeout: 	-1500,
+			}
+		},
+		level_cost: 	1,
+	},
+	resist_fire:{
+		name_color: 	'rgba(255, 55, 55,0.9)',
+		description: 	'Has a 50% chance to reduce incoming fire damage to 0.',
+		//proc: 			'reduce_incoming_damage',
+		proc: 			'max_incoming_damage',
+		reduce_chance: 	50,
+		subtypes: 		['fire'],
+		//negated_by: 	['ignores_armor'],
+		amount: 		0,
+		targets:	{
+			0:{
+				target: 	'unit_or_hero',
+				target_amount: 1,
+				position: 	'self',
+				min_hp: 	1,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				self_projectile: 	'shield',
+				subtypes: 			['resist_fire','type_resist'],
 				increase_timeout: 	-1500,
 			}
 		},

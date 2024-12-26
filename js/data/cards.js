@@ -5109,7 +5109,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			10,
-		abilities: 			{counter: 1},
+		abilities: 			{counter: 2},
 		hero_version: 			{
 			theme: 				['subtype_rogue'],
 			power: 				1,
@@ -5122,7 +5122,7 @@ var all_available_cards = {
 	wall_of_spirits:{
 		name: 				'wall of spirits',
 		type: 				'structure',
-		subtypes: 			['wall'],
+		subtypes: 			['wall','undead'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -5142,6 +5142,30 @@ var all_available_cards = {
 		},
 		quote: '\"Everlasting...\"',
 	},
+	wall_of_water:{
+		name: 				'wall of water',
+		type: 				'structure',
+		subtypes: 			['wall','water'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2024-12-26T143302.083.jpg',
+		power: 				2,
+		armor: 				0,
+		health: 			8,
+		abilities: 			{counter: 1, fireproof: 1},
+		hero_version: 			{
+			theme: 				['subtype_water','subtype_animal','subtype_human'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{counter: 1, fireproof: 1},
+		},
+		quote: '\"Get through that? How?!\"',
+	},
+	
 	warder:{
 		name: 				'warder',
 		type: 				'creature',
