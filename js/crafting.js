@@ -184,7 +184,7 @@ function show_card_recipe(recipe_id){
 	var possible_tinker_count = 0;
 	var max_recipes = 0;
 	$.each(all_available_cards, function(current_card_id, current_card_info){
-		if(gamedata['known_recipes'][current_card_id] == undefined && current_card_info['recipe'] != undefined && current_card_info['recipe'][recipe_id] != undefined)
+		if(gamedata['known_recipes'][current_card_id] == undefined && current_card_info['recipe'] != undefined && typeof(current_card_info['recipe']) == 'object' && current_card_info['recipe'][recipe_id] != undefined)
 		{
 			var can_tinker = true;
 			$.each(current_card_info['recipe'], function(recipe_cost_card_id, recipe_cost_amount){
