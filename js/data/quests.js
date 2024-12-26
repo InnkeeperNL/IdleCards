@@ -826,8 +826,8 @@ $.each(all_chained_achievements, function(achievement_id, achievement_info){
 			description: 	achievement_info['description'],
 			image: 			achievement_info['image'],
 			objective: 		achievement_info['objective'],
-			min_amount: 	Math.ceil(quest_amount * 10),
-			max_amount: 	Math.ceil(quest_amount * 20),
+			min_amount: 	Math.ceil(quest_amount * 1),
+			max_amount: 	Math.ceil(quest_amount * 2),
 			rewards:{
 				shard: 		2,
 				//scraps: 		1,

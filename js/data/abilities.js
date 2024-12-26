@@ -236,38 +236,37 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	6,
-		level_cost_spell: 2,
+		level_cost: 	1.5,
+		level_cost_spell: 0.75,
 	},
 	blessed:{
-		description: 	'Restores up to {LEVEL} health of your hero when destroyed.',
+		description: 	'Has a {LEVEL}0% chance to return to your deck when destroyed.',
 		proc: 			'own_death',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		proc_while_dead: true,
 		remove_skill: 'blessed',
 		scales: 		true,
 		targets:	{
 			0:{
-				target: 		'hero',
+				target: 		'any',
 				target_amount: 	1,
-				position: 		'random',
-				min_hp: 		1,
+				position: 		'self',
 				side: 			'ally',
-				damaged: 		true,
 			},
 		},
 		effects:{
 			0:{
-				projectile:		'healing',
-				type: 			'healing',
-				subtypes: 		['healing','restore_hero','bless'],
-				amount: 		'ability_level'
+				//pause_before: 	-1000,
+				target_projectile: 	'bless',
+				type: 			'move_to_deck',
+				subtypes: 		['move_ally_to_deck','deck_control'],
+				new_status: 	'deck',
+				side: 			'ally',
 			}
 		},
 		animation: 		'combat_zoom',
-		ability_level_cost_factors:{
-			resurrect: 		2,
-		},
-		level_cost: 	2,
+		level_cost: 	0.2,
 	},
 	blood_rage:{
 		description: 	'A random living ally creature unit with at least 2 health gains {LEVEL} power and looses 1 health permanently.',
@@ -1251,6 +1250,31 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		6,
 		level_cost_hero: 	3,
+	},
+	doom:{
+		description: 	'Applies {LEVEL} doom to a random enemy unit.{DOOM}',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'doom',
+				type: 			'apply_doom',
+				subtypes: 		['magical','doom'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 	1.5,
+		level_cost_spell: 0.5,
 	},
 	draw:{
 		description: 	'When played, draws up to {LEVEL} card(s).',
@@ -4145,7 +4169,7 @@ $.each(all_abilities, function(ability_id, ability_info){
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{POISON}").join('<br/><i>Poison: Suffers piercing poison damage at the end of each turn equal to half the amount of poison, rounded up. The amount of poison is halved each time it deals damage, rounded down.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received. Curse is removed whenever it takes effect.</i>');
 	//all_abilities[ability_id]['description'] = ability_info['description'].split("{BLESS}").join('<br/><i>Blessed: Reduces damage received. Blessed is reduced by the amount of damage absorbed.</i>');
-	all_abilities[ability_id]['description'] = ability_info['description'].split("{BLESSED}").join('<br/><i>Blessed: Restores health to your hero when destroyed. Bless is removed when it restores health.</i>');
+	all_abilities[ability_id]['description'] = ability_info['description'].split("{BLESSED}").join('<br/><i>Blessed: There is a 10% chance per blessing that this will return to your deck when destroyed.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{DOOM}").join('<br/><i>Doom: There is a 10% chance per doom that this will be destroyed at the end of its turn.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{SHIELD}").join('<br/><i>Shield: Absorbs the first incoming damage. Shield is removed at the start of each round.</i>');
 });

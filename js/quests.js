@@ -310,7 +310,7 @@ function check_new_quests(show_new_message){
 			if(count_object(possible_quests) > 0)
 			{
 				var new_quest_id = get_random_key_from_object(possible_quests);
-				var quest_amount = Math.floor(Math.random() * (all_quests[new_quest_id]['max_amount'] - all_quests[new_quest_id]['min_amount'])) + all_quests[new_quest_id]['min_amount'] * 5;
+				var quest_amount = Math.floor(Math.random() * (all_quests[new_quest_id]['max_amount'] - all_quests[new_quest_id]['min_amount'])) + all_quests[new_quest_id]['min_amount'] * 50;
 				gamedata['quests'][i] = {
 					quest_id: 	new_quest_id,
 					amount: 	quest_amount,
@@ -353,7 +353,7 @@ function check_new_quests(show_new_message){
 				var new_quest_id = get_random_key_from_object(possible_quests);
 				gamedata['daily_quests'][i] = {
 					quest_id: 	new_quest_id,
-					amount: 	Math.floor(Math.random() * (all_quests[new_quest_id]['max_amount'] - all_quests[new_quest_id]['min_amount'])) + all_quests[new_quest_id]['min_amount'],
+					amount: 	Math.floor(Math.random() * (all_quests[new_quest_id]['max_amount'] - all_quests[new_quest_id]['min_amount']) + all_quests[new_quest_id]['min_amount']) * 3,
 					progress: 	0,
 					completed: 	false,
 				}
