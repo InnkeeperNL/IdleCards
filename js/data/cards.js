@@ -7176,7 +7176,7 @@ function generate_recipe(card_id, cost_left, current_recipe, subtypes_left){
 				{
 					matched_amount /= sqr(sqr(1 + (cost_info['used_in_recipes'] * recipe_size)));
 				}
-				if(matched_amount >= /*sqr*/(recipe_size * 0.25)/* || (count_object(current_recipe) == 0 && matched_amount >= 0)*/)
+				if(matched_amount >= /*sqr*/(recipe_size * 0.25) || (count_object(current_recipe) < 2 && matched_amount > 0))
 				{
 					possible_costs[cost_id] = matched_amount;
 				
