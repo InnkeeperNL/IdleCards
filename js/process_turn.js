@@ -2902,6 +2902,7 @@ function move_to_deck(target_id, effect, origin_id){
 				$('.unit_id_' + target_id).remove();
 			},total_timeout + (1500 * battle_speed));
 			delete battle_info.combat_units[target_id];
+
 		}
 		else
 		{
@@ -4278,7 +4279,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 				check_ability_procs(unit['side'], 'death', unit_id);
 			}
 
-			if(battle_info.combat_units[unit_id] != undefined && unit['current_health'] === 0)
+			/*if(battle_info.combat_units[unit_id] != undefined && unit['current_health'] === 0)
 			{
 				if(unit['slot'] !== 0 && unit['current_health'] === 0)
 				{
@@ -4293,14 +4294,8 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 					all_timeouts[timeout_key] = setTimeout(function(){
 						$('.battle_container .unit_id_' + unit_id).remove();
 					},total_timeout + (2000));
-					/*if(unit['card_id'] != undefined && battle_info['deck_' + unit['origin_side']][unit['card_id']]['status'] == 'in_play')
-					{
-						battle_info['deck_' + unit['origin_side']][unit['card_id']]['status'] = 'grave';
-						update_deck_counts();
-
-					}*/
 				}
-			}
+			}*/
 
 			if(battle_info.combat_units[unit_id] != undefined)
 			{
@@ -4336,13 +4331,15 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 				{
 					timeout_key ++;
 					all_timeouts[timeout_key] = setTimeout(function(){
+						$('.battle_container .unit_id_' + unit_id).removeClass('flying');
+						$('.battle_container .unit_id_' + unit_id).removeClass('stealth');
 						$('.battle_container .unit_id_' + unit_id).addClass('dead');
 					},total_timeout);
 					//total_timeout += 500 * battle_speed;
 					timeout_key ++;
 					all_timeouts[timeout_key] = setTimeout(function(){
 						$('.battle_container .unit_id_' + unit_id).remove();
-					},total_timeout + (400));
+					},total_timeout + (1000));
 					if(unit['card_id'] != undefined && battle_info['deck_' + unit['origin_side']][unit['card_id']]['status'] == 'in_play')
 					{
 						battle_info['deck_' + unit['origin_side']][unit['card_id']]['status'] = 'grave';
@@ -4372,12 +4369,12 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 				timeout_key ++;
 				all_timeouts[timeout_key] = setTimeout(function(){
 					$('.battle_container .unit_id_' + unit_id).addClass('dead');
-				},total_timeout);
+				},total_timeout + 2000);
 				//total_timeout += 500 * battle_speed;
 				timeout_key ++;
 				all_timeouts[timeout_key] = setTimeout(function(){
 					$('.battle_container .unit_id_' + unit_id).remove();
-				},total_timeout + (400));
+				},total_timeout + (3000));
 			}
 			
 		}

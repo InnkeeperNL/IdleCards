@@ -120,6 +120,20 @@ var all_chained_achievements = {
 		card_back: 	'peasant',
 		steps: 		7,
 	},
+	bless:{
+		name: 			'bless',
+		description: 	'Have allies apply a blessing {AMOUNT} time(s).',
+		objective: 		'ally_performed_grant_bless',
+		amount: 	1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'divine_blessing',
+		steps: 		6,
+	},
 	bolster:{
 		name: 			'bolster',
 		description: 	'Have allies bolster an ally {AMOUNT} time(s).',

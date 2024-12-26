@@ -245,8 +245,6 @@ var all_abilities = {
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
 		proc_while_dead: true,
-		remove_skill: 'blessed',
-		scales: 		true,
 		targets:	{
 			0:{
 				target: 		'any',
@@ -479,9 +477,9 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_artifact: 2,
-		level_cost_hero: 	2,
+		level_cost: 		6,
+		level_cost_artifact: 3,
+		level_cost_hero: 	3,
 	},
 	chaos_touch:{
 		description: 	'When this deals damage to the enemy hero, move a cards from the enemy\'s hand to the grave. Can be used {LEVEL} time(s).',
@@ -508,7 +506,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
+		level_cost: 		4,
 	},
 	charge:{
 		ability_subtypes: ['charge','movement','charge','move_ally'],
@@ -1220,8 +1218,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		-2,
-		level_cost_hero: 	-1,
+		level_cost: 		-4,
+		level_cost_hero: 	-2,
 	},
 	discard_enemy:{
 		description: 	'Moves up to {LEVEL} card(s) from the enemy\'s hand to the grave.',
@@ -1248,8 +1246,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		6,
-		level_cost_hero: 	3,
+		level_cost: 		8,
+		level_cost_hero: 	4,
 	},
 	doom:{
 		description: 	'Applies {LEVEL} doom to a random enemy unit.{DOOM}',
@@ -1301,7 +1299,10 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	4,
+		level_cost: 	6,
+		ability_level_cost_factors:{
+			homebound: 		1.5,
+		},
 		//cost_on_top: 	true,
 	},
 	draw_on_act:{
@@ -1331,7 +1332,7 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	4,
+		level_cost: 	6,
 		//cost_on_top: 	true,
 	},
 	
