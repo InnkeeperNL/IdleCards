@@ -3984,7 +3984,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
+		level_cost: 		4,
 	},
 	summon_imp:{
 		description: 	'Summons up to a total of {LEVEL} imp type unit(s).',
