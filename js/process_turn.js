@@ -5010,9 +5010,14 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 			all_targets = filter_targets_by_not_subtypes(all_targets, target_peramaters['not_subtypes']);
 		}
 
+		if(target_peramaters['card_ids'] != undefined)
+		{
+			all_targets = filter_targets_by_card_ids(all_targets, target_peramaters['card_ids'], false);
+		}
+
 		if(target_peramaters['not_card_ids'] != undefined)
 		{
-			all_targets = filter_targets_by_not_card_ids(all_targets, target_peramaters['not_card_ids']);
+			all_targets = filter_targets_by_card_ids(all_targets, target_peramaters['not_card_ids'], true);
 		}
 
 		if(target_peramaters['has_ability'] != undefined)
@@ -5567,6 +5572,18 @@ function filter_targets_by_not_subtypes(all_targets, subtypes){
 	$.each(all_targets, function(target_id, target_unit_id){
 		var card_type_array = battle_info.combat_units[target_unit_id]['subtypes'];
 		if(card_type_array != undefined && match_array_values(card_type_array, subtypes) == true)
+		{
+			delete all_targets[target_id];
+		}
+	});
+
+	return all_targets;
+}
+
+function filter_targets_by_card_ids(all_targets, ids, filter_this){
+	$.each(all_targets, function(target_id, target_unit_id){
+		var card_type_array = [battle_info.combat_units[target_unit_id]['card_type']];
+		if(match_array_values(card_type_array, ids) == filter_this)
 		{
 			delete all_targets[target_id];
 		}

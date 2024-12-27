@@ -1,5 +1,34 @@
 var all_abilities = {
 	
+	air_blast:{
+		description: 	'Deals {LEVEL} physical damage to all flying enemy units.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	1,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	5,
+				position: 		'random',
+				has_ability: 	'flying',
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'min'},
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'air',
+				type: 			'damage',
+				subtypes: 		['physical','projectile','air'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		4,
+		level_cost_spell: 	2,
+		average_hits: 		2,
+	},
 	air_bolt:{
 		description: 	'Deals {LEVEL} physical projectile damage to a random flying enemy unit. Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
@@ -34,8 +63,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
-		level_cost_spell: 	1.5,
+		level_cost: 		2,
+		level_cost_spell: 	1,
 	},
 	air_bolt_hv:{
 		name: 			'air bolt',
@@ -1502,6 +1531,88 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		5,
+	},
+	augment_sporeling:{
+		description: 	'An ally sporeling gain {LEVEL} power and health permanently.',
+		cannot_proc_while_stunned: true,
+		do_not_pause_between: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				card_ids: 		['sporeling'],
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				pause_before: 	500,
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower','empower_ally'],
+				amount: 		'ability_level'
+			},
+			1:{
+				pause_before: 	1000,
+				type: 			'increase_health',
+				subtypes: 		['bolster','bolster_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		4,
+	},
+	eat_sporeling:{
+		description: 	'If damaged, destroys a random sporeling. This then heals itself by {LEVEL}.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		origin_damaged: true,
+		ability_effects:{
+			0:{
+				targets:{
+					0:{
+						target: 		'unit',
+						target_amount: 	1,
+						position: 		'random',
+						card_ids: 		['sporeling'],
+						side: 			'any'
+					},
+				},
+				effects:{
+					0:{
+						projectile: 	'drain',
+						type: 			'destroy',
+						subtypes: 		['destroy'],
+						on_success:{
+							targets:{
+								0:{
+									target: 		'unit_or_hero',
+									target_amount: 	1,
+									position: 		'self',
+									min_hp: 		1,
+									damaged: 		true,
+									side: 			'ally'
+								},
+							},
+							effects:{
+								0:{
+									projectile: 	'healing',
+									type: 			'healing',
+									subtypes: 		['healing','feast'],
+									amount: 		'ability_level',
+								}
+							},
+						}
+					}
+				},
+			},
+		},
+		level_cost: 	0.25,
+		level_cost_hero: 2,
 	},
 	enrage:{
 		description: 	'When this unit receives damage, it gains {LEVEL} temporary power.',
@@ -3464,6 +3575,31 @@ var all_abilities = {
 		cost_factor: 	'power',
 		average_hits: 	'ability_level',
 	},
+	spawn_sporeling:{
+		description: 	'Has a 25% chance to summon {LEVEL} sporeling(s).',
+		proc: 			'basic',
+		proc_chance: 	25,
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'sporeling',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 2,
+	},
 	steal:{
 		description: 	'When this deals damage to the enemy hero, gain control over an enemy artifact. Can only be used if you have less then 5 artifacts in play.',
 		proc: 			'dealt_damage_to_hero',
@@ -3926,6 +4062,30 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 12,
 		level_cost_spell: 3,
+	},
+	summon_sporeling:{
+		description: 	'Summons {LEVEL} sporeling(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'sporeling',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 5,
 	},
 	thorns:{
 		description: 	'Deals {LEVEL} physical damage to any enemy that deals melee damage to it.',

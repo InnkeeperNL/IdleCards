@@ -136,7 +136,7 @@ var all_chained_achievements = {
 	},
 	bolster:{
 		name: 			'bolster',
-		description: 	'Have allies bolster an ally {AMOUNT} time(s).',
+		description: 	'Have allies increase the health of an ally {AMOUNT} time(s).',
 		objective: 		'ally_performed_bolster',
 		amount: 	1,
 		rewards:{
@@ -235,7 +235,7 @@ var all_chained_achievements = {
 	},
 	elvish:{
 		name: 			'elvish',
-		description: 	'Play {AMOUNT} elf card(s).',
+		description: 	'Play or summon {AMOUNT} elf card(s).',
 		objective: 		'elf_card_played',
 		amount: 		1,
 		rewards:{
@@ -347,7 +347,7 @@ var all_chained_achievements = {
 	},
 	garden:{
 		name: 			'garden',
-		description: 	'Play {AMOUNT} plant card(s).',
+		description: 	'Play or summon {AMOUNT} plant card(s).',
 		objective: 		'plant_card_played',
 		amount: 		1,
 		rewards:{
@@ -419,7 +419,7 @@ var all_chained_achievements = {
 	},
 	humane:{
 		name: 			'humane',
-		description: 	'Play {AMOUNT} human card(s).',
+		description: 	'Play or summon {AMOUNT} human card(s).',
 		objective: 		'human_card_played',
 		amount: 		1,
 		rewards:{
@@ -433,7 +433,7 @@ var all_chained_achievements = {
 	},
 	imp_lord:{
 		name: 			'imp lord',
-		description: 	'Play {AMOUNT} imp card(s).',
+		description: 	'Play or summon {AMOUNT} imp card(s).',
 		objective: 		'imp_card_played',
 		amount: 	1,
 		rewards:{
@@ -447,7 +447,7 @@ var all_chained_achievements = {
 	},
 	mage:{
 		name: 			'mage',
-		description: 	'Play {AMOUNT} mage card(s).',
+		description: 	'Play or summon {AMOUNT} mage card(s).',
 		objective: 		'mage_card_played',
 		amount: 		1,
 		rewards:{
@@ -473,9 +473,23 @@ var all_chained_achievements = {
 		card_back: 'levitate',
 		steps: 		6,
 	},
+	mouldy:{
+		name: 			'mouldy',
+		description: 	'Play or summon {AMOUNT} fungal card(s).',
+		objective: 		'fungus_card_played',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'sporeling',
+		steps: 		6,
+	},
 	museum:{
 		name: 			'museum',
-		description: 	'Play {AMOUNT} artifact card(s).',
+		description: 	'Play or summon {AMOUNT} artifact card(s).',
 		objective: 		'artifact_card_played',
 		amount: 	1,
 		rewards:{
@@ -545,7 +559,7 @@ var all_chained_achievements = {
 	},
 	rogue:{
 		name: 			'rogue',
-		description: 	'Play {AMOUNT} rogue card(s).',
+		description: 	'Play or summon {AMOUNT} rogue card(s).',
 		objective: 		'rogue_card_played',
 		amount: 		1,
 		rewards:{
@@ -615,7 +629,7 @@ var all_chained_achievements = {
 	},
 	zombie:{
 		name: 			'zombie',
-		description: 	'Play {AMOUNT} undead card(s).',
+		description: 	'Play or summon {AMOUNT} undead card(s).',
 		objective: 		'undead_card_played',
 		amount: 	1,
 		rewards:{
@@ -732,7 +746,7 @@ var all_chained_achievements = {
 	},
 	warrior:{
 		name: 			'warrior',
-		description: 	'Play {AMOUNT} warrior card(s).',
+		description: 	'Play or summon {AMOUNT} warrior card(s).',
 		objective: 		'warrior_card_played',
 		amount: 		1,
 		rewards:{
@@ -746,7 +760,7 @@ var all_chained_achievements = {
 	},
 	zoo:{
 		name: 			'zoo',
-		description: 	'Play {AMOUNT} animal card(s).',
+		description: 	'Play or summon {AMOUNT} animal card(s).',
 		objective: 		'animal_card_played',
 		amount: 		1,
 		rewards:{
