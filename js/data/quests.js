@@ -599,6 +599,20 @@ var all_chained_achievements = {
 		card_back: 'scavanger',
 		steps: 		6,
 	},
+	slow:{
+		name: 			'slow',
+		description: 	'Have allies slow an enemy card {AMOUNT} time(s).',
+		objective: 		'ally_performed_slow_enemy',
+		amount: 	1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'paperwork',
+		steps: 		6,
+	},
 	tactician:{
 		name: 			'tactician',
 		description: 	'Play {AMOUNT} tactic card(s).',

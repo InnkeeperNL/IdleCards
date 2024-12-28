@@ -324,7 +324,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		6,
+		level_cost: 		4,
 		level_cost_spell: 	2,
 		cost_adjustment: 	-1,
 	},
@@ -1328,6 +1328,56 @@ var all_abilities = {
 		level_cost: 	4.5,
 		level_cost_spell: 1.5,
 	},
+	doom_ally:{
+		description: 	'Applies {LEVEL} doom to a random ally unit.{DOOM}',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'doom',
+				type: 			'apply_doom',
+				subtypes: 		['magical','doom'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 	-3,
+		level_cost_spell: -1,
+	},
+	doom_self:{
+		description: 	'Applies {LEVEL} doom to itself.{DOOM}',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				//projectile: 	'doom',
+				type: 			'apply_doom',
+				subtypes: 		['magical','doom'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 	-0.5,
+		cost_factor: 'full',
+	},
 	dooming_touch:{
 		description: 	'Applies {LEVEL} doom to any unit it deals damage to.{DOOM}',
 		proc: 			'dealt_damage',
@@ -1443,7 +1493,6 @@ var all_abilities = {
 		cost_factor: 	'full',
 	},
 	empower_ally:{
-		name_color: 	'rgba(247, 170, 15,0.9)',
 		description: 	'A random ally creature that has power gains {LEVEL} power until they act. Cannot affect heroes or itself.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -1473,7 +1522,6 @@ var all_abilities = {
 		level_cost_hero: 	2,
 	},
 	empower_all:{
-		name_color: 	'rgba(247, 170, 15,0.9)',
 		description: 	'All ally creatures that have power gain {LEVEL} power until they act. Cannot affect heroes or itself.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -1501,6 +1549,32 @@ var all_abilities = {
 		level_cost: 		6,
 		level_cost_spell: 	3,
 		level_cost_hero: 	6,
+	},
+	empower_hero:{
+		description: 	'Your hero gains {LEVEL} power until they act.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower','empower_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_spell: 	1,
 	},
 	empower_imps:{
 		description: 	'All ally imp units that have power gain {LEVEL} power until they act. Cannot affect itself.',
@@ -3574,6 +3648,86 @@ var all_abilities = {
 		level_cost: 	2.5,
 		cost_factor: 	'power',
 		average_hits: 	'ability_level',
+	},
+	slow:{
+		description: 	'Increases the time left of a random enemy card {LEVEL} time(s).',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 			'card',
+				target_amount: 		1,
+				status: 			'hand',
+				can_target_zero: 	true,
+				side: 			'enemy',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'slow',
+				projectile_target: 	'deck',
+				type: 				'increase_ready_time',
+				subtypes: 			['slow','slow_enemy','deck_control'],
+				amount: 			1,
+				side: 				'enemy',
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	4,
+		level_cost_spell: 2,
+	},
+	slow_all:{
+		description: 	'Increases the time left of all enemy cards by {LEVEL}.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 			'card',
+				target_amount: 		10,
+				status: 			'hand',
+				can_target_zero: 	true,
+				side: 				'enemy',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'slow',
+				projectile_target: 	'deck',
+				type: 				'increase_ready_time',
+				subtypes: 			['slow','slow_enemy','deck_control'],
+				amount: 			'ability_level',
+				side: 				'enemy',
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	20,
+		level_cost_spell: 10,
+	},
+	slow_enemy_draws:{
+		description: 	'When the enemy draws a card, this increases the time left of that card by {LEVEL}.',
+		proc: 			'enemy_card_drawn',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 			'card',
+				target_amount: 		1,
+				status: 			'hand',
+				origin_unit: 		true,
+				can_target_zero: 	true,
+				side: 				'enemy',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'slow',
+				projectile_target: 	'deck',
+				type: 				'increase_ready_time',
+				subtypes: 			['slow','slow_enemy','deck_control'],
+				amount: 			'ability_level',
+				side: 				'enemy',
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	4,
 	},
 	spawn_sporeling:{
 		description: 	'Has a 25% chance to summon {LEVEL} sporeling(s).',

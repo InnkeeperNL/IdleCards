@@ -2883,6 +2883,11 @@ function move_to_deck(target_id, effect, origin_id){
 			new_status = effect['new_status'];
 		}
 
+		if(new_status == 'hand' && original_card_id != undefined && count_hand_cards(battle_info['deck_' + current_unit['side']]) > 9)
+		{
+			new_status = 'deck';
+		}
+
 		if(new_status == 'hand' && original_card_id != undefined && count_hand_cards(battle_info['deck_' + current_unit['side']]) < 10)
 		{
 			battle_info['deck_' + original_side][original_card_id]['status'] = 'deck';
