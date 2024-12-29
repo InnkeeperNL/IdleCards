@@ -1134,7 +1134,11 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 		{
 			ability_can_fire = false;
 		}
-		if(current_ability['max_ally_artifacts'] != undefined && count_ally_artifacts(battle_info['combat_units'][unit_id]['side']) > current_ability['max_ally_artifacts'])
+		if(current_ability['max_ally_artifacts'] != undefined && count_ally_artifacts(battle_info['combat_units'][unit_id]['side']) > calculate_effect({amount:current_ability['max_ally_artifacts']},undefined, origin_id, level))
+		{
+			ability_can_fire = false;
+		}
+		if(current_ability['min_enemy_artifacts'] != undefined && count_enemy_artifacts(battle_info['combat_units'][unit_id]['side']) < calculate_effect({amount:current_ability['min_enemy_artifacts']},undefined, origin_id, level))
 		{
 			ability_can_fire = false;
 		}
@@ -1188,11 +1192,23 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 
 		if(current_ability['min_enemy_hand_cards'] != undefined)
 		{
-			if(battle_info['combat_units'][unit_id]['side'] == 1 && count_hand_cards(battle_info['deck_2']) < current_ability['min_enemy_hand_cards'])
+			if(battle_info['combat_units'][unit_id]['side'] == 1 && count_hand_cards(battle_info['deck_2']) < calculate_effect({amount:current_ability['min_enemy_hand_cards']},undefined, origin_id, level))
 			{
 				ability_can_fire = false;
 			}
-			if(battle_info['combat_units'][unit_id]['side'] == 2 && count_hand_cards(battle_info['deck_1']) < current_ability['min_enemy_hand_cards'])
+			if(battle_info['combat_units'][unit_id]['side'] == 2 && count_hand_cards(battle_info['deck_1']) < calculate_effect({amount:current_ability['min_enemy_hand_cards']},undefined, origin_id, level))
+			{
+				ability_can_fire = false;
+			}
+		}
+
+		if(current_ability['max_enemy_hand_cards'] != undefined)
+		{
+			if(battle_info['combat_units'][unit_id]['side'] == 1 && count_hand_cards(battle_info['deck_2']) >= calculate_effect({amount:current_ability['max_enemy_hand_cards'],},undefined, origin_id, level))
+			{
+				ability_can_fire = false;
+			}
+			if(battle_info['combat_units'][unit_id]['side'] == 2 && count_hand_cards(battle_info['deck_1']) >= calculate_effect({amount:current_ability['max_enemy_hand_cards']},undefined, origin_id, level))
 			{
 				ability_can_fire = false;
 			}
@@ -1584,6 +1600,17 @@ function count_ally_artifacts(side){
 	var enemy_unit_count = 0;
 	$.each(battle_info['combat_units'], function(unit_id, unit_info){
 		if(unit_info['side'] == side && unit_info['slot'] < 0 && unit_info['type'] == 'artifact')
+		{
+			enemy_unit_count++;
+		}
+	});
+	return enemy_unit_count;
+}
+
+function count_enemy_artifacts(side){
+	var enemy_unit_count = 0;
+	$.each(battle_info['combat_units'], function(unit_id, unit_info){
+		if(unit_info['side'] != side && unit_info['slot'] < 0 && unit_info['type'] == 'artifact')
 		{
 			enemy_unit_count++;
 		}

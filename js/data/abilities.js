@@ -1227,6 +1227,7 @@ var all_abilities = {
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use:'discard',
 		negative_ability: true,
+		min_enemy_hand_cards: 1,
 		targets:	{
 			0:{
 				target: 		'card',
@@ -1255,6 +1256,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use:'discard_enemy',
+		min_enemy_hand_cards: 1,
 		targets:	{
 			0:{
 				target: 		'card',
@@ -1277,6 +1279,34 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		8,
 		level_cost_hero: 	4,
+	},
+	discard_enemy_down:{
+		description: 	'If the enemy has {LEVEL} or more cards in its hand, this moves 1 cards from the enemy\'s hand to the grave.',
+		cannot_proc_while_stunned: true,
+		min_enemy_hand_cards: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	1,
+				status: 		'hand',
+				can_target_zero: true,
+				side: 			'enemy',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'discard',
+				projectile_target: 	'deck',
+				type: 				'set_status',
+				subtypes: 			['discard_enemy','deck_control'],
+				new_status: 		'grave',
+				side: 				'enemy',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		-2,
+		level_cost_hero: 	-2,
+		cost_adjustment: 	20
 	},
 	doom:{
 		description: 	'Applies {LEVEL} doom to a random enemy unit.{DOOM}',
@@ -2863,6 +2893,30 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	6,
 	},
+	marring_spells:{
+		description: 	'Whenever an enemy spell is played, this deals {LEVEL} damage to the enemy hero.',
+		proc: 			'enemy_spell_card_played',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				min_hp: 		1,
+				side: 			'enemy'
+			}
+		},
+		effects:{
+			0:{
+				projectile: 	'voodoo',
+				type: 			'damage',
+				subtypes: 		['direct_damage'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		8,
+		average_hits: 		1,
+	},
 	maximum_allies:{
 		name: 		'allies:',
 		post_name: 	'-',
@@ -2929,6 +2983,59 @@ var all_abilities = {
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
 		level_cost_cum: true,
+	},
+	painful_hand:{
+		description: 	'Deals {LEVEL} damage to the enemy hero for every card in its hand.',
+		cannot_proc_while_stunned: true,
+		min_enemy_hand_cards: 1,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				min_hp: 		1,
+				side: 			'enemy'
+			}
+		},
+		effects:{
+			0:{
+				projectile: 	'voodoo',
+				type: 			'damage',
+				subtypes: 		['direct_damage'],
+				amount: 		'enemy_hand_card_count',
+				amount_factor: 	'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		40,
+		level_cost_spell: 	20,
+		average_hits: 		1,
+	},
+	painful_empty_hand:{
+		description: 	'Deals 1 damage to the enemy hero for every card in its hand below {LEVEL}.',
+		cannot_proc_while_stunned: true,
+		max_enemy_hand_cards: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				min_hp: 		1,
+				side: 			'enemy'
+			}
+		},
+		effects:{
+			0:{
+				projectile: 	'voodoo',
+				type: 			'damage',
+				subtypes: 		['direct_damage'],
+				amount: 		'enemy_hand_card_count',
+				amount_factor: 	-1,
+				amount_adjustment: 'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_artifact: 1,
+		average_hits: 		1,
 	},
 	plated:{
 		name_color: 	'rgba(255,255,255,0.9)',
@@ -3755,12 +3862,12 @@ var all_abilities = {
 		level_cost: 2,
 	},
 	steal:{
-		description: 	'When this deals damage to the enemy hero, gain control over an enemy artifact. Can only be used if you have less then 5 artifacts in play.',
+		description: 	'If the enemy has at least {LEVEL} artifact(s), when this deals damage to the enemy hero, gain control over an enemy artifact. Can only be used if you have less than 5 artifacts in play.',
 		proc: 			'dealt_damage_to_hero',
 		ability_subtypes: 	['dealt_damage_proc'],
 		cannot_proc_while_stunned: true,
 		max_ally_artifacts: 4,
-		proc_amount: 	'ability_level',
+		min_enemy_artifacts: 'ability_level',
 		targets:	{
 			0:{
 				target: 	'artifact',
@@ -3778,8 +3885,8 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	4,
-		cost_factor: 	'none',
+		level_cost: 	-1,
+		cost_adjustment: 5,
 	},
 	stealth:{
 		description: 	'Gives this unit a 100% chance to avoid any incoming melee or projectile effect. This ability is removed when it has affect.',
@@ -3912,7 +4019,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'strike',
 				type: 			'damage',
-				subtypes: 		['physical','melee'],
+				subtypes: 		['physical','melee','direct_damage'],
 				amount: 		'ability_level'
 			}
 		},

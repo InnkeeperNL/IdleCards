@@ -48,8 +48,8 @@ var all_upgrades = {
 		card_image: 	'scavanger',
 		type: 			'floating_chance',
 		subtypes:  		['any'],
-		amount: 		0.05,
-		level_cost_scale: 	3,
+		amount: 		0.025,
+		level_cost_scale: 	2,
 		cost: 			{scraps:25,},
 		max_level: 		40,
 	},
@@ -63,7 +63,7 @@ var all_upgrades = {
 		type: 			'floating_scraps',
 		subtypes:  		['any'],
 		amount: 		1,
-		level_cost_scale: 	3,
+		level_cost_scale: 	2,
 		cost: 			{scraps:100,},
 		max_level: 		50,
 	},
@@ -76,8 +76,8 @@ var all_upgrades = {
 		card_image: 	'time_mage',
 		type: 			'max_game_speed',
 		subtypes:  		['any'],
-		amount: 		0.2,
-		level_cost_scale: 	3,
+		amount: 		0.1,
+		level_cost_scale: 	2,
 		cost: 			{scraps:25,},
 		max_level: 		40,
 	},
@@ -87,7 +87,8 @@ var all_upgrades = {
 		card_image: 	'scout',
 		type: 			'summon_reward',
 		subtypes:  		['any'],
-		level_cost_scale: 	10,
+		amount: 		0.1,
+		level_cost_scale: 	3,
 		cost: 			{shard:5,},
 	},
 	merchant_offers:{
@@ -147,6 +148,9 @@ var all_upgrades = {
 	wave_access:{
 		name: 			'Waves',
 		description: 	'Unlocks wave battles.',
+		needed_upgrades:{
+			summon_rarity: 	3,
+		},
 		card_image: 	'conscription',
 		type: 			'wave_access',
 		subtypes:  		['any'],
@@ -154,7 +158,7 @@ var all_upgrades = {
 		amount_fixed: 	true,
 		cost: 			{scraps:100,},
 		max_level: 		1,
-		hide_if_maxed: 	true,
+		//hide_if_maxed: 	true,
 	},
 	/*wave_min_power:{
 		name: 			'Wave start',
@@ -199,7 +203,7 @@ var all_upgrades = {
 		amount_fixed: 	true,
 		cost: 			{shard: 10, scraps:100,},
 		max_level: 		1,
-		hide_if_maxed: 	true,
+		//hide_if_maxed: 	true,
 	},
 
 	// ************************************************* POTIONS ************************************************
@@ -385,6 +389,7 @@ function toggle_show_max_upgrades(){
 }
 
 function show_upgrades(){
+	var any_upgrade_maxed = false;
 	if(gamedata['show_max_upgrades'] == undefined){gamedata['show_max_upgrades'] = true;}
 	if(gamedata['show_max_upgrades'] == true){$('.show_max_upgrades_button').css('color','rgba(255,255,255,1)');}
 	if(gamedata['show_max_upgrades'] == false){$('.show_max_upgrades_button').css('color','rgba(255,255,255,0.2)');}
@@ -415,6 +420,12 @@ function show_upgrades(){
 		{
 			can_show = false;
 		}
+		if(gamedata['upgrades'][upgrade_id] != undefined && gamedata['upgrades'][upgrade_id] >= upgrade_info['max_level'])
+		{
+			any_upgrade_maxed = true;
+		}
+
+			
 		/*$.each(upgrade_info['cost'], function(cost_id, cost_amount){
 			if(all_available_cards[cost_id] != undefined && gamedata['owned_cards'][cost_id] == undefined && cost_id != 'shard')
 			{
@@ -430,6 +441,14 @@ function show_upgrades(){
 		}
 	});
 
+	if(any_upgrade_maxed == true)
+	{
+		$('.show_max_upgrades_button').show();
+	}
+	else
+	{
+		$('.show_max_upgrades_button').hide();
+	}
 	$('.upgrades_container').html(parsed_upgrade_buttons);
 }
 

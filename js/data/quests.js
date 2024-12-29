@@ -885,12 +885,12 @@ $.each(all_chained_achievements, function(achievement_id, achievement_info){
 			min_amount: 	Math.ceil(quest_amount * 1),
 			max_amount: 	Math.ceil(quest_amount * 2),
 			rewards:{
-				shard: 		2,
+				shard: 		5,
 				//scraps: 		1,
 			},
 			reward_per_amount:{
 				//peasant: 		(0.25 / quest_amount),
-				scraps: 		(5 / quest_amount),
+				scraps: 		(10 / quest_amount),
 			}
 		}
 	}
