@@ -217,8 +217,42 @@ var all_abilities = {
 			venom: 		1.25,
 		},
 	},
+	backlash:{
+		description: 	'Deals 1 physical damage to a random ally creature unit that has power. That unit then gains {LEVEL} temporary power.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'wound',
+				type: 			'damage',
+				subtypes: 		['physical'],
+				amount: 		1,
+			},
+			1:{
+				target_projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower','empower_ally'],
+				amount: 		'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_spell: 	1,
+		cost_adjustment: 	-1,
+	},
 	backstab:{
-		description: 	'When this deals melee damage to the enemy hero, it deals {LEVEL} damage to a ransom enemy unit.',
+		description: 	'When this deals melee damage to the enemy hero, it deals {LEVEL} physical melee damage to the nearest enemy unit. This damage can not be avoided by evade or stealth.',
 		proc: 			'dealt_damage_to_hero',
 		subtypes: 		['melee'],
 		proc_amount: 	1,
@@ -235,13 +269,16 @@ var all_abilities = {
 			0:{
 				projectile: 	'strike',
 				type: 			'damage',
-				subtypes: 		['physical','melee'],
+				subtypes: 		['physical','melee','precision'],
 				amount: 		'ability_level'
 			}
 		},
 		animation: 		'attack',
 		level_cost: 	1,
 		average_hits: 	1,
+		ability_level_cost_factors:{
+			run_away: 	1.25,
+		},
 	},
 	bless:{
 		description: 	'A random ally unit gains {LEVEL} blessings. {BLESSED}',
@@ -2089,6 +2126,31 @@ var all_abilities = {
 		level_cost_hero: 	4,
 		average_hits: 		1,
 	},
+	fire_blast:{
+		description: 	'Deals {LEVEL} magical fire damage to all enemy units.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	5,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'fire',
+				type: 			'damage',
+				subtypes: 		['magical','fire'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		12,
+		level_cost_spell: 	6,
+		average_hits: 		3,
+	},
 	fire_bolt:		{
 		name_color: 	'rgba(255,55,55,0.9)',
 		description: 	'Deals {LEVEL} magical fire projectile damage to a random enemy unit. Will target the enemy hero if there are no enemy units.',
@@ -2812,6 +2874,58 @@ var all_abilities = {
 		level_cost: 		6,
 		level_cost_spell: 	3,
 	},
+	jolt:{
+		description: 	'A random ally creature unit that has power either gains or looses {LEVEL} temporary power.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		proc_chance: 50,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower','empower_ally'],
+				amount: 		'ability_level',
+			},
+		},
+		on_failure:{
+			targets:	{
+				0:{
+					target: 		'unit',
+					target_amount: 	1,
+					position: 		'random',
+					not_types: 		['object','structure'],
+					not_self: 		true,
+					min_hp: 		1,
+					min_power: 		0,
+					side: 			'ally'
+				},
+			},
+			effects:{
+				0:{
+					projectile: 	'lull',
+					type: 			'grant_temp_power',
+					subtypes: 		['weaken','weaken_ally'],
+					amount: 		'ability_level',
+					amount_factor: 	-1,
+				},
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1.2,
+		level_cost_spell: 	0.6,
+		level_cost_hero: 	1,
+	},
 	leech_hero:{
 		description: 	'When this deals damage to the enemy hero, your hero gains {LEVEL} health permanently.',
 		proc: 			'dealt_damage_to_hero',
@@ -3064,7 +3178,7 @@ var all_abilities = {
 				increase_timeout: 	-1500,
 			}
 		},
-		cost_adjustment: 4,
+		cost_adjustment: 3,
 		level_cost: 	-1,
 		level_cost_hero: 0,
 	},
@@ -3379,7 +3493,9 @@ var all_abilities = {
 				increase_timeout: 	-1500,
 			}
 		},
-		level_cost: 	1,
+		level_cost: 		0.25,
+		min_cost: 			1,
+		cost_factor: 		'health',
 	},
 	resist_fire:{
 		name_color: 	'rgba(255, 55, 55,0.9)',
@@ -3406,7 +3522,9 @@ var all_abilities = {
 				increase_timeout: 	-1500,
 			}
 		},
-		level_cost: 	1,
+		level_cost: 		0.25,
+		min_cost: 			1,
+		cost_factor: 		'health',
 	},
 	resurrect:{
 		name_color: 	'rgba(160, 95, 250,0.9)',
@@ -4124,6 +4242,7 @@ var all_abilities = {
 				target: 	'unit',
 				target_amount: 5,
 				subtypes: 	['golem'],
+				has_effect: {effect_name: 'stunned', amount: 0, limit: 'max'},
 				position: 	'random',
 				side: 		'enemy'
 			},
@@ -4131,6 +4250,7 @@ var all_abilities = {
 				add_targets: true,
 				target: 	'artifact',
 				target_amount: 1,
+				has_effect: {effect_name: 'stunned', amount: 0, limit: 'max'},
 				position: 	'random',
 				side: 		'enemy'
 			},
@@ -4155,7 +4275,7 @@ var all_abilities = {
 				target: 		'unit',
 				target_amount: 	1,
 				position: 		'random',
-				not_types: 	['structure'],
+				not_types: 		['structure'],
 				max_abilities: 	{undead: 0},
 				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'max'},
 				min_hp: 		1,

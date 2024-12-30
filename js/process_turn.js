@@ -3339,7 +3339,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 
     		//////////////////////// RESOLVE
 
-    		if(target_unit['temp_health'] != undefined)
+    		if(target_unit['temp_health'] != undefined && target_unit['temp_health'] > 0)
     		{
     			target_unit['temp_health'] -= calculated_amount;
     			if(target_unit['temp_health'] < 0)
@@ -3709,6 +3709,7 @@ function grant_temp_health(target_id, origin_id, calculated_amount,subtypes){
 		},total_timeout+ 500);
 		//total_timeout += 500 * battle_speed;
 		check_unit_hp(target_id);
+		check_unit_alive(target_id);
 		total_timeout += 500 * battle_speed;
 	}	
 }
@@ -4164,7 +4165,9 @@ function check_unit_hp(unit_id){
 		current_temp_health = unit['temp_health'];
 	}
 	var current_total_health = current_health + current_temp_health;
+	if(current_total_health < 0){current_total_health = 0;}
 	var current_max_health = unit['health'] + current_temp_health;
+	if(current_max_health < 1){current_max_health = 1;}
 	//var current_health_percent = (Math.floor(((unit['health'] - unit['current_health']) / unit['health']) * 62) + 9);
 	var current_health_percent = 100 - (current_health / current_max_health * 100);
 	var current_total_health_percent = 100 - (current_total_health / current_max_health * 100);
@@ -4267,11 +4270,12 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 			unit['current_health'] = 0;
 			unit['temp_health'] = 0;
 		}
-		if(unit['current_health'] === 0 && (unit['temp_health'] == undefined || unit['temp_health'] === 0) && unit['dead'] == undefined)
+		if(unit['temp_health'] == undefined){unit['temp_health'] = 0;}
+		if((unit['current_health'] === 0 || unit['current_health'] + unit['temp_health'] <= 0) && unit['dead'] == undefined)
 		{
 			unit['dead'] = true;
 
-			if(battle_info.combat_units[unit_id] != undefined && unit['current_health'] === 0)
+			if(battle_info.combat_units[unit_id] != undefined && (unit['current_health'] === 0 || unit['current_health'] + unit['temp_health'] <= 0))
 			{
 				//if(battle_info.combat_units[origin_id] != undefined){
 					$.each(battle_info.combat_units[unit_id]['abilities'], function(ability_key, ability_level){
@@ -4283,7 +4287,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 				//}
 			}
 
-			if(battle_info.combat_units[unit_id] != undefined && unit['current_health'] === 0)
+			if(battle_info.combat_units[unit_id] != undefined && (unit['current_health'] === 0 || unit['current_health'] + unit['temp_health'] <= 0))
 			{
 				if(battle_info.combat_units[origin_id] != undefined){
 					$.each(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
@@ -4295,7 +4299,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 				}
 			}
 
-			if(battle_info.combat_units[unit_id] != undefined && unit['current_health'] === 0)
+			if(battle_info.combat_units[unit_id] != undefined && (unit['current_health'] === 0 || unit['current_health'] + unit['temp_health'] <= 0))
 			{
 				$.each(battle_info.combat_units[unit_id]['abilities'], function(ability_key, ability_level){
 					if(match_array_values(all_abilities[ability_key]['proc'], ['own_death']) == true)
@@ -4346,7 +4350,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 				
 			}
 
-			if(battle_info.combat_units[unit_id] != undefined && unit['current_health'] === 0)
+			if(battle_info.combat_units[unit_id] != undefined && (unit['current_health'] === 0 || unit['current_health'] + unit['temp_health'] <= 0))
 			{
 				$.each(battle_info.combat_units[unit_id]['abilities'], function(ability_key, ability_level){
 					if(match_array_values(all_abilities[ability_key]['proc'], ['post_own_death']) == true)
@@ -4359,7 +4363,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 			
 			if(battle_info.combat_units[unit_id] != undefined)
 			{
-				if(unit['slot'] !== 0 && unit['current_health'] === 0)
+				if(unit['slot'] !== 0 && (unit['current_health'] === 0 || unit['current_health'] + unit['temp_health'] <= 0))
 				{
 					timeout_key ++;
 					all_timeouts[timeout_key] = setTimeout(function(){
@@ -4382,7 +4386,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 					}
 				}
 
-				if(unit['slot'] !== 0 && unit['current_health'] === 0)
+				if(unit['slot'] !== 0 && (unit['current_health'] === 0 || unit['current_health'] + unit['temp_health'] <= 0))
 				{
 
 					delete battle_info.combat_units[unit_id];
