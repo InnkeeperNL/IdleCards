@@ -1117,6 +1117,30 @@ var all_abilities = {
 		level_cost: 		0,
 		average_hit_cost: 	0.75,
 	},
+	damage_hero:{
+		description: 	'Deals {LEVEL} damage to the enemy hero.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				min_hp: 		1,
+				side: 			'enemy'
+			}
+		},
+		effects:{
+			0:{
+				projectile: 	'wound',
+				type: 			'damage',
+				subtypes: 		['direct_damage'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'attack',
+		level_cost: 		4,
+		level_cost_spell: 	2,
+		average_hits: 		1,
+	},
 	debilitate:{
 		description: 	'A random enemy creature looses {LEVEL} power and health permanently.',
 		cannot_proc_while_stunned: true,
@@ -1616,6 +1640,37 @@ var all_abilities = {
 		level_cost: 		6,
 		level_cost_spell: 	3,
 		level_cost_hero: 	6,
+	},
+	empower_arrivals:{
+		description: 	'When any ally creature unit that has power enters the game, it gains {LEVEL} temporary power.',
+		proc: 			'ally_unit_card_played',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				not_self: 		true,
+				origin_unit: 	true,
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower','empower_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_artifact: 3,
+		level_cost_hero: 	2,
 	},
 	empower_hero:{
 		description: 	'Your hero gains {LEVEL} power until they act.',
@@ -3007,30 +3062,6 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	6,
 	},
-	marring_spells:{
-		description: 	'Whenever an enemy spell is played, this deals {LEVEL} damage to the enemy hero.',
-		proc: 			'enemy_spell_card_played',
-		cannot_proc_while_stunned: true,
-		targets:	{
-			0:{
-				target: 		'hero',
-				target_amount: 	1,
-				min_hp: 		1,
-				side: 			'enemy'
-			}
-		},
-		effects:{
-			0:{
-				projectile: 	'voodoo',
-				type: 			'damage',
-				subtypes: 		['direct_damage'],
-				amount: 		'ability_level'
-			}
-		},
-		animation: 			'combat_zoom',
-		level_cost: 		8,
-		average_hits: 		1,
-	},
 	maximum_allies:{
 		name: 		'allies:',
 		post_name: 	'-',
@@ -3149,6 +3180,30 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 		level_cost_artifact: 1,
+		average_hits: 		1,
+	},
+	painful_spells:{
+		description: 	'Whenever an enemy spell is played, this deals {LEVEL} damage to the enemy hero.',
+		proc: 			'enemy_spell_card_played',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				min_hp: 		1,
+				side: 			'enemy'
+			}
+		},
+		effects:{
+			0:{
+				projectile: 	'voodoo',
+				type: 			'damage',
+				subtypes: 		['direct_damage'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		8,
 		average_hits: 		1,
 	},
 	plated:{
@@ -3556,6 +3611,32 @@ var all_abilities = {
 		level_cost: 		0.3,
 		min_cost: 			3,
 		cost_factor: 		'health',
+	},
+	retreat:{
+		description: 	'When this survives damage, it return to its owner\'s hand. If this was summoned, it disappears.',
+		proc: 			'receive_damage',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				side: 			'ally',
+				//has_origin_card: true,
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'teleport',
+				type: 			'move_to_deck',
+				subtypes: 		['move_ally_to_hand'],
+				new_status: 	'hand',
+				side: 			'ally',
+				pause_before: 	1000,
+			}
+		},
+		level_cost: 	1,
+		cost_factor: 	'health',
 	},
 	return_into_original:{
 		name_color: 	'rgba(171, 203, 255,0.9)',
@@ -4526,6 +4607,33 @@ var all_abilities = {
 		level_cost: 	2,
 		level_cost_hero: 1,
 		cost_factor: 	'none',
+	},
+	triumphant_haste:{
+		description: 	'When this deals damage to the enemy hero, it reduces the time left of a card in your hand by {LEVEL}.',
+		proc: 			'dealt_damage_to_hero',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	1,
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	1,
+				status: 		'hand',
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'hasten',
+				projectile_target: 'deck',
+				type: 			'reduce_ready_time',
+				subtypes: 		['hasten','deck_control'],
+				amount: 		'ability_level',
+				side: 			'ally',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_spell: 	1,
 	},
 	undead:{
 		name_color: 		'rgba(255,255,255,0.9)',
