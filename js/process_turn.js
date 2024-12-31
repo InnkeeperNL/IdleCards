@@ -4271,7 +4271,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 			unit['temp_health'] = 0;
 		}
 		if(unit['temp_health'] == undefined){unit['temp_health'] = 0;}
-		if((unit['current_health'] === 0 || unit['current_health'] + unit['temp_health'] <= 0) && unit['dead'] == undefined)
+		if(unit['health'] !== false && (unit['current_health'] === 0 || unit['current_health'] + unit['temp_health'] <= 0) && unit['dead'] == undefined)
 		{
 			unit['dead'] = true;
 
