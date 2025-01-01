@@ -881,7 +881,9 @@
 		    
 
 		});
+		$('.detail_overlay').addClass('non_clickable');
 		$('.detail_overlay').removeClass('hidden');
+		
 		total_available_card_count = count_object(all_available_cards);
 		$('.detail_overlay .card_detail').html('<div class="big_text">Checking cards...<br/><span class="card_checking_progress"></span></div>');
 		setTimeout(function(){
@@ -891,6 +893,7 @@
 				generate_all_recipes();
 				setTimeout(function(){
 					$('.detail_overlay').addClass('hidden');
+					$('.detail_overlay').removeClass('non_clickable');
 				},total_available_card_count);
 			},total_available_card_count);
 		},100);
