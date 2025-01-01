@@ -1297,7 +1297,7 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 										timeout_key ++;
 										all_timeouts[timeout_key] = setTimeout(function(){
 											$('.unit_id_' + current_unit_id).removeClass(current_ability['animation']);
-										},total_timeout + (500 * battle_speed));
+										},total_timeout + (1000 * battle_speed));
 									}
 									else
 									{
@@ -1308,8 +1308,8 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 											},total_timeout);
 											timeout_key ++;
 											all_timeouts[timeout_key] = setTimeout(function(){
-												$('.unit_id_' + current_unit_id).addClass(animation_name);
-											},total_timeout + (500 * battle_speed));
+												$('.unit_id_' + current_unit_id).removeClass(animation_name);
+											},total_timeout + (1000 * battle_speed));
 										});
 									}
 									total_timeout += 500 * battle_speed;
