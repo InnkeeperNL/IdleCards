@@ -77,6 +77,22 @@ var all_buildings = {
 		new_mission_title: 'BREW',
 		expeditions: 	['research_new_potion'],
 		recipes:{
+			clover:{
+				costs:{
+					horseshoe: 	3,
+				}
+			},
+			jar_of_luck:{
+				costs:{
+					clover: 	2,
+				}
+			},
+			flask:{
+				costs:{
+					clover: 		1,
+					jar_of_luck: 	2,
+				}
+			},
 		},
 		show_potions: true,
 		productions:{

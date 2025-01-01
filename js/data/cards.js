@@ -6475,7 +6475,7 @@ var all_available_cards = {
 	flask:{
 		name: 				'flask',
 		value: 				25,
-		type: 				'item',
+		type: 				'currency',
 		color: 				['none'],
 		pick_chance: 		0,
 		basic_reward: 		true,
