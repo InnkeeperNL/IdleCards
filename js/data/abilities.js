@@ -391,6 +391,34 @@ var all_abilities = {
 		level_cost: 		2,
 		level_cost_spell: 	1,
 	},
+	bolster_creature:{
+		description: 	'A random non-undead ally creature unit gains {LEVEL} health permanently.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure','object'],
+				max_abilities: 	{undead: 0},
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bolster',
+				type: 			'increase_health',
+				subtypes: 		['bolster','bolster_hero'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_spell: 	1,
+	},
 	bolster_hero:{
 		description: 	'Your hero gains {LEVEL} health permanently.',
 		proc: 			'basic',

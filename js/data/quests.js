@@ -145,7 +145,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'meditation',
+		card_back: 'hearty_meal',
 		steps: 		6,
 	},
 	break:{
