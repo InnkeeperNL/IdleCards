@@ -1629,7 +1629,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'teleport',
 				type: 			'move_to_deck',
-				subtypes: 		['move_ally_to_hand','deck_control'],
+				subtypes: 		['move_ally_to_hand','deck_control','echo'],
 				new_status: 	'hand',
 				side: 			'ally',
 				//pause_before: 2000,
@@ -4113,6 +4113,120 @@ var all_abilities = {
 		},
 		animation: 	'combat_zoom',
 		level_cost: 2,
+	},
+	spellblast:{
+		name: 			'spellblast',
+		description: 	'When any spell is cast, this deals {LEVEL} magical projectile damage to all enemy units.',
+		cannot_proc_while_stunned: true,
+		scales: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'magic',
+				type: 			'damage',
+				subtypes: 		['magical','projectile','arcane_bolts'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		12,
+		average_hits: 		3,
+	},
+	spell_bolt:{
+		description: 	'When any spell is cast, this deals 1 magical projectile damage to a random enemy unit {LEVEL} time(s). Will only target the enemy hero if there are no enemy units.',
+		proc: 			'any_spell_card_played',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		scales: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'magic',
+				type: 			'damage',
+				subtypes: 		['magical','arcane_bolts','projectile','on_spellcast','spellbolt'],
+				amount: 		1,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		3,
+		average_hits: 		'ability_level',
+	},
+	spell_bolt_hv:{
+		name: 			'spell bolt',
+		description: 	'When any spell is cast, this deals 1 magical projectile damage to a random enemy unit {LEVEL} time(s). Will not target the enemy hero.',
+		proc: 			'any_spell_card_played',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		scales: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'magic',
+				type: 			'damage',
+				subtypes: 		['magical','arcane_bolts','projectile','on_spellcast','spellbolt'],
+				amount: 		1,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2.5,
+		average_hits: 		'ability_level',
+	},
+	spellpower:{
+		description: 	'When any spell is cast, this gains {LEVEL} temporary power.',
+		proc: 			'any_spell_card_played',
+		proc_amount: 	1,
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower','empower_ally'],
+				amount: 		'ability_level',
+			},
+		},
+		level_cost: 		2,
 	},
 	steal:{
 		description: 	'If the enemy has at least {LEVEL} artifact(s), when this deals damage to the enemy hero, gain control over an enemy artifact. Can only be used if you have less than 5 artifacts in play.',
