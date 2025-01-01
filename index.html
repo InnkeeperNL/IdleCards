@@ -861,6 +861,7 @@
 
 
 	var gamedata = loadLocalStorage();
+	var loading_speed = 5;
 
 	saveToLocalStorage();
 	var total_available_card_count;
@@ -894,8 +895,8 @@
 				setTimeout(function(){
 					$('.detail_overlay').addClass('hidden');
 					$('.detail_overlay').removeClass('non_clickable');
-				},total_available_card_count);
-			},total_available_card_count);
+				},total_available_card_count / loading_speed);
+			},total_available_card_count / loading_speed);
 		},100);
 		
 	});

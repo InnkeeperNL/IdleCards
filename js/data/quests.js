@@ -233,6 +233,21 @@ var all_chained_achievements = {
 		card_back: 'research',
 		steps: 		6,
 	},
+	duelist:{
+		name: 			'duelist',
+		description: 	'Have allies counter a melee ability {AMOUNT} time(s).',
+		objective: 		'ally_performed_counter',
+		amount: 	1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'duelist',
+		steps: 		6,
+		no_quest: 	true,
+	},
 	elvish:{
 		name: 			'elvish',
 		description: 	'Play or summon {AMOUNT} elf card(s).',
@@ -372,6 +387,21 @@ var all_chained_achievements = {
 		},
 		card_back: 'signaler',
 		steps: 		6,
+	},
+	hunger:{
+		name: 			'hunger',
+		description: 	'Have allies feast on a creature {AMOUNT} time(s).',
+		objective: 		'ally_performed_feast',
+		amount: 	1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'hungry_wolf',
+		steps: 		6,
+		no_quest: 	true,
 	},
 	healing:{
 		name: 			'healing',
@@ -585,6 +615,20 @@ var all_chained_achievements = {
 		card_back: 'fawn',
 		steps: 		6,
 	},
+	sacrifice:{
+		name: 			'sacrifice',
+		description: 	'Have allies sacrifice an ally {AMOUNT} time(s).',
+		objective: 		'ally_performed_sacrifice',
+		amount: 	0.2,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'dark_sacrifice',
+		steps: 		6,
+	},
 	scavanger:{
 		name: 			'scavanger',
 		description: 	'Claim {AMOUNT} floating pickup reward(s).',
@@ -743,6 +787,21 @@ var all_chained_achievements = {
 		},
 		card_back: 'berserker',
 		steps: 		6,
+	},
+	warder:{
+		name: 			'warder',
+		description: 	'Have allies counter a spell {AMOUNT} time(s).',
+		objective: 		'ally_performed_counter_spell',
+		amount: 	1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'warder',
+		steps: 		6,
+		no_quest: 	true,
 	},
 	waves:{
 		name: 			'waves',

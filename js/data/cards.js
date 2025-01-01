@@ -7430,7 +7430,7 @@ function check_all_cards(){
 	   	card_check_timeouts[cards_checked] = setTimeout(function(){
 		    check_card(card_id);
 			$('.card_checking_progress').html(card_checking_progress + '%');
-		},cards_checked);
+		},cards_checked / loading_speed);
 	});
 	//remove_unused_abilities();
 }
@@ -8089,7 +8089,7 @@ function generate_all_recipes(){
 				};
 			}
 			$('.recipe_generation_progress').html(card_checking_progress + '%');
-		},cards_checked);
+		},cards_checked / loading_speed);
 	});
 	
 }

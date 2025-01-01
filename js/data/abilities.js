@@ -365,6 +365,32 @@ var all_abilities = {
 		level_cost_spell: 	2,
 		cost_adjustment: 	-1,
 	},
+	bolster:{
+		description: 	'A random ally unit gains {LEVEL} health permanently.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bolster',
+				type: 			'increase_health',
+				subtypes: 		['bolster','bolster_hero'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_spell: 	1,
+	},
 	bolster_hero:{
 		description: 	'Your hero gains {LEVEL} health permanently.',
 		proc: 			'basic',
@@ -519,7 +545,7 @@ var all_abilities = {
 		level_cost_spell: 	3,
 	},
 	chaos_strikes:{
-		description: 	'When the enemy hero receives damage, move a cards from the enemy\'s hand to the grave. Can be used {LEVEL} time(s).',
+		description: 	'When the enemy hero receives damage, move a card from the enemy\'s hand to the grave. Can be used {LEVEL} time(s).',
 		proc: 			'enemy_hero_damaged',
 		reduce_skill_after_use: 'chaos_strikes',
 		proc_amount: 	1,
