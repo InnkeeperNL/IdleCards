@@ -863,6 +863,7 @@
 	var gamedata = loadLocalStorage();
 
 	saveToLocalStorage();
+	var total_available_card_count;
 
 	$(document).ready(function() {
 
@@ -881,10 +882,17 @@
 
 		});
 		$('.detail_overlay').removeClass('hidden');
-		$('.detail_overlay .card_detail').html('<div class="big_text">Generating recipes...</div>');
+		total_available_card_count = count_object(all_available_cards);
+		$('.detail_overlay .card_detail').html('<div class="big_text">Checking cards...<br/><span class="card_checking_progress"></span></div>');
 		setTimeout(function(){
-			generate_all_recipes();
-			$('.detail_overlay').addClass('hidden');
+			check_all_cards();
+			setTimeout(function(){
+				$('.detail_overlay .card_detail').html('<div class="big_text">Generating recipes...<br/><span class="recipe_generation_progress"></span></div>');
+				generate_all_recipes();
+				setTimeout(function(){
+					$('.detail_overlay').addClass('hidden');
+				},total_available_card_count);
+			},total_available_card_count);
 		},100);
 		
 	});

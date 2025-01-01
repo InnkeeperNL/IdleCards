@@ -7409,7 +7409,12 @@ function check_card(card_id){
 	}
 }
 
+
+var card_check_timeouts = {};
+
 function check_all_cards(){
+	
+	var cards_checked = 0;
 	$.each(all_available_cards, function(card_id, card_info){
 	    /*if(card_info['version'] == undefined || card_info['version'] < 2)
 	    {
@@ -7420,12 +7425,17 @@ function check_all_cards(){
 	            all_available_cards[card_id]['time'] -= Math.floor(all_available_cards[card_id]['time'] / 5);
 	        }
 	    }*/
-	    check_card(card_id);
+	    cards_checked++;
+	    var card_checking_progress = Math.floor((cards_checked / total_available_card_count) * 100);
+	   	card_check_timeouts[cards_checked] = setTimeout(function(){
+		    check_card(card_id);
+			$('.card_checking_progress').html(card_checking_progress + '%');
+		},cards_checked);
 	});
 	//remove_unused_abilities();
 }
 
-check_all_cards();
+//check_all_cards();
 
 var all_available_boosts = {};
 var all_card_backs = {};
@@ -8043,36 +8053,43 @@ function show_no_recipe(){
 }
 
 function generate_all_recipes(){
+	var cards_checked = 0;
 	$.each(all_available_cards, function(card_id, card_info){
-		if(card_info['recipe'] == undefined && card_info['pick_chance'] > 0 && (card_info['type'] == 'creature' || card_info['type'] == 'spell' || card_info['type'] == 'structure' || card_info['type'] == 'object' || card_info['type'] == 'artifact'))
-		{
-			var card_recipe = generate_recipe(card_id);
-			if(count_object(card_recipe) > 0)
+		cards_checked++;
+	    var card_checking_progress = Math.floor((cards_checked / total_available_card_count) * 100);
+	   	card_check_timeouts[cards_checked] = setTimeout(function(){
+		
+			if(card_info['recipe'] == undefined && card_info['pick_chance'] > 0 && (card_info['type'] == 'creature' || card_info['type'] == 'spell' || card_info['type'] == 'structure' || card_info['type'] == 'object' || card_info['type'] == 'artifact'))
 			{
-				card_info['recipe'] = card_recipe;
+				var card_recipe = generate_recipe(card_id);
+				if(count_object(card_recipe) > 0)
+				{
+					card_info['recipe'] = card_recipe;
+				}
 			}
-		}
 
-		if(card_info['recipe'] != undefined && card_info['pick_chance'] > 0 && (card_info['type'] == 'creature' || card_info['type'] == 'spell' || card_info['type'] == 'structure' || card_info['type'] == 'object' || card_info['type'] == 'artifact'))
-		{
-			all_available_cards['recipe_' + card_id] = {
-				name: 				'recipe: ' + card_info['name'],
-				version: 			2,
-				non_tradable: 		true,
-				value: 				card_info['value'],
-				type: 				'recipe',
-				color: 				['yellow'],
-				pick_chance: 		0,
-				months_available: 	card_info['months_available'],
-				time: 				0,
-				image: 				card_info['image'],
-				power: 				false,
-				armor: 				false,
-				health: 			false,
-				abilities: 			{auto_learn: 1},
-				recipe: 			card_id,
-			};
-		}
+			if(card_info['recipe'] != undefined && card_info['pick_chance'] > 0 && (card_info['type'] == 'creature' || card_info['type'] == 'spell' || card_info['type'] == 'structure' || card_info['type'] == 'object' || card_info['type'] == 'artifact'))
+			{
+				all_available_cards['recipe_' + card_id] = {
+					name: 				'recipe: ' + card_info['name'],
+					version: 			2,
+					non_tradable: 		true,
+					value: 				card_info['value'],
+					type: 				'recipe',
+					color: 				['yellow'],
+					pick_chance: 		0,
+					months_available: 	card_info['months_available'],
+					time: 				0,
+					image: 				card_info['image'],
+					power: 				false,
+					armor: 				false,
+					health: 			false,
+					abilities: 			{auto_learn: 1},
+					recipe: 			card_id,
+				};
+			}
+			$('.recipe_generation_progress').html(card_checking_progress + '%');
+		},cards_checked);
 	});
 	
 }
