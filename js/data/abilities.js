@@ -1782,6 +1782,33 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		5,
 	},
+	explode:{
+		description: 	'When this unit is destroyed, it deals {LEVEL} physical damage to all nearby units.',
+		proc: 			'own_death',
+		scales: 		true,
+		proc_while_dead: true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 5,
+				position: 	'opposing_wide',
+				not_self:   true,
+				min_hp: 	1,
+				side: 		'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'bomb',
+				type: 		'damage',
+				subtypes: 	['physical','explode'],
+				amount: 	'ability_level',
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	0.5,
+		average_hits: 	2,
+	},
 	augment_sporeling:{
 		description: 	'An ally sporeling gain {LEVEL} power and health permanently.',
 		cannot_proc_while_stunned: true,
@@ -3551,7 +3578,7 @@ var all_abilities = {
 	},
 	repair:{
 		name_color: 	'rgba(245, 241, 42,0.9)',
-		description: 	'Repairs a random damaged ally structure by {LEVEL}. Cannot affect heroes.',
+		description: 	'Repairs a random non-plant damaged ally structure by {LEVEL}. Cannot affect heroes.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		targets:	{
@@ -3559,6 +3586,7 @@ var all_abilities = {
 				target: 		'unit',
 				target_amount: 	1,
 				not_types: 		['object','creature'],
+				not_subtypes: 	['plant'],
 				position: 		'random',
 				min_hp: 		1,
 				side: 			'ally',
@@ -4117,7 +4145,9 @@ var all_abilities = {
 	spellblast:{
 		name: 			'spellblast',
 		description: 	'When any spell is cast, this deals {LEVEL} magical projectile damage to all enemy units.',
+		proc: 			'any_spell_card_played',
 		cannot_proc_while_stunned: true,
+		not_ability_subtypes:['arcane_bolts','projectile','magical'],
 		scales: true,
 		targets:	{
 			0:{
@@ -4144,6 +4174,7 @@ var all_abilities = {
 		description: 	'When any spell is cast, this deals 1 magical projectile damage to a random enemy unit {LEVEL} time(s). Will only target the enemy hero if there are no enemy units.',
 		proc: 			'any_spell_card_played',
 		cannot_proc_while_stunned: true,
+		not_ability_subtypes:['arcane_bolts','projectile','magical'],
 		proc_amount: 	'ability_level',
 		scales: true,
 		targets:	{
@@ -4179,6 +4210,7 @@ var all_abilities = {
 		description: 	'When any spell is cast, this deals 1 magical projectile damage to a random enemy unit {LEVEL} time(s). Will not target the enemy hero.',
 		proc: 			'any_spell_card_played',
 		cannot_proc_while_stunned: true,
+		not_ability_subtypes:['arcane_bolts','projectile','magical'],
 		proc_amount: 	'ability_level',
 		scales: true,
 		targets:	{
@@ -4207,6 +4239,7 @@ var all_abilities = {
 		proc: 			'any_spell_card_played',
 		proc_amount: 	1,
 		cannot_proc_while_stunned: true,
+		not_ability_subtypes:['empower','empower_ally'],
 		scales: 		true,
 		targets:	{
 			0:{
