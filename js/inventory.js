@@ -9,36 +9,41 @@ function show_inventory(){
 	var current_card_number = 0;
 
 	$.each(gamedata['owned_cards'], function(card_id, owned_amount){
-		var effective_owned_amount = owned_amount + 0;
+		if(all_available_cards[card_id] != undefined){
+			var effective_owned_amount = owned_amount + 0;
+			var card_filtered = false;
+			if(all_available_cards[card_id]['type'] != 'consumable' && all_available_cards[card_id]['type'] != 'token' /*&& all_available_cards[card_id]['type'] != 'cardback'*/ && all_available_cards[card_id]['type'] != 'currency' && all_available_cards[card_id]['type'] != 'material')
+			{
+				card_filtered = true;
+				//console.log(card_id);
+			}
+			
+			if(effective_owned_amount > 0 && card_filtered == false && check_filters(card_id) == false)
+			{
+				current_card_number ++;
+				if(current_card_number == 1)
+				{
+					$('.inventory_content').html('');
+				}
+				if(current_card_number / cards_per_page > current_inventory_page -1 && current_card_number / cards_per_page <= current_inventory_page)
+				{
+					var parsed_card = parse_card(card_id, effective_owned_amount);
 
-		var card_filtered = false;
-		if(all_available_cards[card_id]['type'] != 'consumable' && all_available_cards[card_id]['type'] != 'token' /*&& all_available_cards[card_id]['type'] != 'cardback'*/ && all_available_cards[card_id]['type'] != 'currency' && all_available_cards[card_id]['type'] != 'material')
-		{
-			card_filtered = true;
-			//console.log(card_id);
+					if(all_available_cards[card_id]['type'] == 'consumable' || all_available_cards[card_id]['type'] == 'cardback')
+					{
+						$('.inventory_content').append('<span onclick="current_consumable=\'' + card_id + '\';show_content(\'single_consumable\');">' + parsed_card + '</span>');
+					}
+					if(all_available_cards[card_id]['type'] == 'token' || all_available_cards[card_id]['type'] == 'currency' || all_available_cards[card_id]['type'] == 'material' )
+					{
+						$('.inventory_content').append('<span onclick="show_card_details(\'' + card_id + '\');">' + parsed_card + '</span>');
+					}
+					
+				}
+			}
 		}
-		
-		if(effective_owned_amount > 0 && card_filtered == false && check_filters(card_id) == false)
+		else
 		{
-			current_card_number ++;
-			if(current_card_number == 1)
-			{
-				$('.inventory_content').html('');
-			}
-			if(current_card_number / cards_per_page > current_inventory_page -1 && current_card_number / cards_per_page <= current_inventory_page)
-			{
-				var parsed_card = parse_card(card_id, effective_owned_amount);
-
-				if(all_available_cards[card_id]['type'] == 'consumable' || all_available_cards[card_id]['type'] == 'cardback')
-				{
-					$('.inventory_content').append('<span onclick="current_consumable=\'' + card_id + '\';show_content(\'single_consumable\');">' + parsed_card + '</span>');
-				}
-				if(all_available_cards[card_id]['type'] == 'token' || all_available_cards[card_id]['type'] == 'currency' || all_available_cards[card_id]['type'] == 'material' )
-				{
-					$('.inventory_content').append('<span onclick="show_card_details(\'' + card_id + '\');">' + parsed_card + '</span>');
-				}
-				
-			}
+			delete gamedata['owned_cards'][card_id];
 		}
 	});
 	if(current_inventory_page == 1){$('.page_selection .previous_page').addClass('no_page');}else{$('.page_selection .previous_page').removeClass('no_page');}

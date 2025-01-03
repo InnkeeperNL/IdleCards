@@ -5036,6 +5036,20 @@ var all_abilities = {
 
 }
 
+
+$.each(all_old_abilities, function(ability_id, ability_info){
+	if(all_abilities[ability_id] == undefined)
+	{
+		var use_old_ability = true;
+
+		if(use_old_ability == true)
+		{
+			var new_ability = true_copyobject(all_old_abilities[ability_id]);
+			all_abilities[ability_id] = new_ability;
+		}
+	}
+});
+
 //generate_abilities();
 var not_craft_themes = [
 	'physical',
