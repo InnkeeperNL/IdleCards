@@ -3314,9 +3314,10 @@ var all_abilities = {
 				increase_timeout: 	-1500,
 			}
 		},
-		cost_adjustment: 3,
-		level_cost: 	-1,
-		level_cost_hero: 0,
+		cost_adjustment: 	3,
+		level_cost: 		-1,
+		level_cost_hero: 	0,
+		max_level: 			1,
 	},
 	plunder:{
 		name_color: 	'rgba(247, 170, 15,0.9)',
@@ -3633,6 +3634,7 @@ var all_abilities = {
 		level_cost: 		0.25,
 		min_cost: 			1,
 		cost_factor: 		'health',
+		max_level: 			1,
 	},
 	resist_fire:{
 		name_color: 	'rgba(255, 55, 55,0.9)',
@@ -3662,6 +3664,7 @@ var all_abilities = {
 		level_cost: 		0.25,
 		min_cost: 			1,
 		cost_factor: 		'health',
+		max_level: 			1,
 	},
 	resurrect:{
 		name_color: 	'rgba(160, 95, 250,0.9)',
@@ -5037,10 +5040,11 @@ var all_abilities = {
 }
 
 
-$.each(all_old_abilities, function(ability_id, ability_info){
+/*$.each(all_old_abilities, function(ability_id, ability_info){
 	if(all_abilities[ability_id] == undefined)
 	{
 		var use_old_ability = true;
+		if(ability_info['proc'] == 'reduce_incoming_damage'){use_old_ability = false;}
 
 		if(use_old_ability == true)
 		{
@@ -5048,7 +5052,7 @@ $.each(all_old_abilities, function(ability_id, ability_info){
 			all_abilities[ability_id] = new_ability;
 		}
 	}
-});
+});*/
 
 //generate_abilities();
 var not_craft_themes = [

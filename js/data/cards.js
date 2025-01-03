@@ -7108,12 +7108,14 @@ var all_available_cards = {
 
 }
 
-$.each(all_old_available_cards, function(card_id, card_info){
+/*$.each(all_old_available_cards, function(card_id, card_info){
 	if(all_available_cards[card_id] == undefined)
 	{
 		var use_old_card = true;
 		if(card_info['type'] != 'artifact' && card_info['type'] != 'spell' && card_info['type'] != 'creature' && card_info['type'] != 'structure'){use_old_card = false;}
 		if(card_info.name.replace('icatu','') != card_info.name){use_old_card = false;}
+		if(card_info.name.replace('jotnar','') != card_info.name){use_old_card = false;}
+		if(card_info.name.replace('thief','') != card_info.name){use_old_card = false;}
 
 		var matched_new_card = false;
 		if(use_old_card == true)
@@ -7150,6 +7152,35 @@ $.each(all_old_available_cards, function(card_id, card_info){
 		if(use_old_card == true)
 		{
 			var new_card = true_copyobject(all_old_available_cards[card_id]);
+			$.each(new_card['abilities'], function(ability_id, ability_level){
+				if(all_abilities[ability_id] == undefined)
+				{
+					delete new_card['abilities'][ability_id];
+				}
+				else
+				{
+					if(all_abilities[ability_id]['max_level'] != undefined && ability_level > all_abilities[ability_id]['max_level'])
+					{
+						new_card['abilities'][ability_id] = all_abilities[ability_id]['max_level'];
+					}
+				}
+			});
+			if(new_card['hero_version'] != undefined)
+			{
+				$.each(new_card['hero_version']['abilities'], function(ability_id, ability_level){
+					if(all_abilities[ability_id] == undefined)
+					{
+						delete new_card['hero_version']['abilities'][ability_id];
+					}
+					else
+					{
+						if(all_abilities[ability_id]['max_level'] != undefined && ability_level > all_abilities[ability_id]['max_level'])
+						{
+							new_card['hero_version']['abilities'][ability_id] = all_abilities[ability_id]['max_level'];
+						}
+					}
+				});
+			}
 			var old_image_string = new_card['image']
 			new_card['image'] = old_image_string.replace('cards/','cards_old/');
 			new_card['old'] = true;
@@ -7157,7 +7188,7 @@ $.each(all_old_available_cards, function(card_id, card_info){
 		}
 	}
 });
-
+*/
 $.each(all_available_cards, function(card_id, card_info){
 	if(card_info['color'] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
 });
