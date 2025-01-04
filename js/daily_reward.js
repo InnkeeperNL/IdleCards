@@ -174,13 +174,18 @@ function claim_daily_reward(){
 		$.each(gamedata['daily_rewards']['available_rewards'], function(useless_id, reward_info){
 			if(reward_info['amount'] > 0 && claimed_one == false)
 			{
+				current_battle_type = 'daily';
+				endless_waves = false;
+				fixed_hero = false;
 				all_current_rewards = {};
+
 				current_reward_origin = 'daily_reward';
 				all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
 					reward_id: 		reward_info['reward'],
 					reward_amount: 	reward_info['amount'],
 				}
 				claimed_one = true;
+				add_basic_win_rewards(sqr(useless_id) * get_upgrade_factor('summon_reward', 'any', true));
 				gamedata['daily_rewards']['available_rewards'][useless_id]['amount'] = 0;
 				saveToLocalStorage();
 			}

@@ -567,24 +567,47 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 		}
 	}
 
-	var random_loot_id = get_random_key_from_object_based_on_num_value(random_loot_drops) /*random_loot_drops[get_random_key_from_object(random_loot_drops)]*/;
-	/*$.each(random_loot_drops, function(random_loot_id, random_loot)
-	{*/
-		if(random_loot_id != undefined && all_available_cards[random_loot_id] != undefined)
-		{
-			var random_loot_drop_chance = (((effective_rarity * basic_to_pick) / card_drop_chance_reduction) / sqr(all_available_cards[random_loot_id]['value']));
-			if(random_loot_drop_chance > 0.25){random_loot_drop_chance = 0.25;}
-			if(Math.random() < random_loot_drop_chance)
+	if(current_battle_type != 'daily')
+	{
+		var random_loot_id = get_random_key_from_object_based_on_num_value(random_loot_drops) /*random_loot_drops[get_random_key_from_object(random_loot_drops)]*/;
+		/*$.each(random_loot_drops, function(random_loot_id, random_loot)
+		{*/
+			if(random_loot_id != undefined && all_available_cards[random_loot_id] != undefined)
 			{
-				all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
-					reward_id: 			random_loot_id,
-					reward_amount: 		1,
-				};
-				if(show_drops != undefined && show_drops == true){show_drop(random_loot_id, 1);}
-				basic_to_pick -= all_available_cards[random_loot_id]['value'];
+				var random_loot_drop_chance = (((effective_rarity * basic_to_pick) / card_drop_chance_reduction) / sqr(all_available_cards[random_loot_id]['value']));
+				if(random_loot_drop_chance > 0.25){random_loot_drop_chance = 0.25;}
+				if(Math.random() < random_loot_drop_chance)
+				{
+					all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
+						reward_id: 			random_loot_id,
+						reward_amount: 		1,
+					};
+					if(show_drops != undefined && show_drops == true){show_drop(random_loot_id, 1);}
+					basic_to_pick -= all_available_cards[random_loot_id]['value'];
+				}
 			}
-		}
-	/*});*/
+		/*});*/
+	}
+	else
+	{
+		$.each(random_loot_drops, function(random_loot_id, random_loot)
+		{
+			if(random_loot_id != undefined && all_available_cards[random_loot_id] != undefined)
+			{
+				var random_loot_drop_chance = (((effective_rarity * basic_to_pick) / card_drop_chance_reduction) / sqr(all_available_cards[random_loot_id]['value']));
+				if(random_loot_drop_chance > 0.5){random_loot_drop_chance = 0.5;}
+				if(Math.random() < random_loot_drop_chance)
+				{
+					all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
+						reward_id: 			random_loot_id,
+						reward_amount: 		1,
+					};
+					if(show_drops != undefined && show_drops == true){show_drop(random_loot_id, 1);}
+					basic_to_pick -= all_available_cards[random_loot_id]['value'];
+				}
+			}
+		});
+	}
 
 	if(basic_to_pick > 0)
 	{
