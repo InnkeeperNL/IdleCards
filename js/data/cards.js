@@ -4293,7 +4293,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{discard: 1, fire_blast: 5, damage_hero: 5, minimum_enemies: 3},
+		abilities: 			{discard: 2, fire_blast: 5, damage_hero: 5, minimum_enemies: 3, min_hand_cards: 2},
 		quote: '\"What is a bit of insanity worth to you?\"',
 	},
 	
@@ -6701,7 +6701,29 @@ var all_available_cards = {
 		},
 		quote: '\"Knowledge is power.\"',
 	},
-	
+	warlock:{
+		name: 				'warlock',
+		type: 				'creature',
+		subtypes: 			['human','witch','mage'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		['subtype_mage'],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-01-04T113859.306.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{curse: 1, fire_bolt: 1, summon_imp: 1},
+		hero_version: 			{
+			theme: 				['fire_ability','subtype_imp','curse_ability'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{curse_hv: 2, fire_bolt_hv: 2},
+		},
+		quote: '\"She has been to hell and back.\"',
+	},
 	wave_caller:{
 		name: 				'wave caller',
 		type: 				'creature',
@@ -8271,21 +8293,21 @@ function check_no_aoe_yet(show_found){
 
 var all_card_themes = {
 	races:[
-		'subtype_dwarf',
+		//'subtype_dwarf',
 		'subtype_elf',
-		'subtype_fairy',
-		'subtype_goblin',
+		//'subtype_fairy',
+		//'subtype_goblin',
 		'subtype_golem',
 		'subtype_human',
-		'subtype_jotnar',
-		'subtype_mermaid',
-		'subtype_wanton',
+		//'subtype_jotnar',
+		//'subtype_mermaid',
+		//'subtype_wanton',
 	],
 	types:[
 		'subtype_warrior',
 		'subtype_rogue',
-		'subtype_royal',
-		'subtype_holy',
+		//'subtype_royal',
+		//'subtype_holy',
 		'subtype_mage',
 	],
 	aflictions:[
@@ -8302,15 +8324,15 @@ var all_card_themes = {
 		'movement_ability',
 	],
 	evasion:[
-		'evasion_ability',
+		//'evasion_ability',
 		'flying_ability',
 		'grant_stealth_ability',
 		'evade_ability',
 	],
 	reduction:[
 		'plated_ability',
-		'shield_ability',
-		'resist_fire_ability',
+		//'shield_ability',
+		//'resist_fire_ability',
 		'resist_magic_ability',
 	],
 	deck_control:[
@@ -8321,7 +8343,7 @@ var all_card_themes = {
 	],
 	elemental:[
 		'air_ability',
-		'earth_ability',
+		//'earth_ability',
 		'fire_ability',
 		'water_ability',
 		'cold_ability',
@@ -8329,16 +8351,16 @@ var all_card_themes = {
 	],
 	special:[
 		'reap_ability',
-		'snipe_ability',
+		//'snipe_ability',
 		'stun_ability',
 		'empower_ally_ability',
 		'enrage_ability',
-		'gain_energy_ability',
-		'restore_hero_ability',
+		//'gain_energy_ability',
+		//'restore_hero_ability',
 	],
 }
 
-function count_card_themes(themes){
+function count_card_themes(themes, show_me){
 	var lowest = {
 		key: '',
 		amount: 0,
@@ -8350,7 +8372,7 @@ function count_card_themes(themes){
 		var temp_lowest = 0;
 		if(typeof(theme_id) == 'string')
 		{
-			temp_lowest = count_card_theme(theme_id);
+			temp_lowest = count_card_theme(theme_id, show_me);
 			//console.log(lowest);
 			if(temp_lowest > 0 && (temp_lowest < lowest['amount'] || lowest['amount'] == 0))
 			{
@@ -8361,9 +8383,9 @@ function count_card_themes(themes){
 		}
 		else
 		{
-			console.log('---' + theme_key + '---');
+			if(show_me != undefined){console.log('---' + theme_key + '---');}
 			//count_card_themes(theme_id);
-			var returned_lowest = count_card_themes(theme_id);
+			var returned_lowest = count_card_themes(theme_id, show_me);
 			if(returned_lowest['amount'] > 0 && (returned_lowest['amount'] < lowest['amount'] || lowest['amount'] == 0))
 			{
 				lowest['key'] = returned_lowest['key'];
@@ -8375,15 +8397,31 @@ function count_card_themes(themes){
 	return lowest;
 }
 
-function count_card_theme(theme){
+function count_card_theme(theme, show_me){
 	var total_theme_count = 0;
 	$.each(all_available_cards, function(card_id, card_info){
 		if(card_info['theme'] != undefined && match_array_values(card_info['theme'], theme)){
 			total_theme_count++;
 		};
 	});
-	console.log(theme + ': ' + total_theme_count);
+	if(show_me != undefined){console.log(theme + ': ' + total_theme_count)};
 	return total_theme_count;
+}
+
+function count_all_card_themes(){
+	var all_card_themes = {};
+	$.each(all_available_cards, function(card_id, card_info){
+		if(card_info['theme'] != undefined){
+			$.each(card_info['theme'], function(theme_id, theme_name){
+				if(theme_name != undefined && theme_name.replaceAll('type_','') == theme_name)
+				{
+					if(all_card_themes[theme_name] == undefined){all_card_themes[theme_name] = 0;}
+					all_card_themes[theme_name]++;
+				}
+			});
+		};
+	});
+	return all_card_themes;
 }
 
 function count_card_times(){
@@ -8396,6 +8434,20 @@ function count_card_times(){
 		}
 	});
 	return card_times;
+}
+
+function count_card_subtypes(type){
+	var card_subtypes = {};
+	$.each(all_available_cards, function(card_id, card_info){
+		if((type == undefined || card_info['type'] == type) && (card_info['type'] == 'creature' || card_info['type'] == 'structure' || card_info['type'] == 'spell' || card_info['type'] == 'artifact') && card_info['pick_chance'] > 0)
+		{
+			$.each(card_info['subtypes'], function(useless_key, current_subtype){
+				if(card_subtypes[current_subtype] == undefined){card_subtypes[current_subtype] = 0;}
+				card_subtypes[current_subtype]++;
+			});
+		}
+	});
+	return card_subtypes;
 }
 
 function show_card_times(card_time){
@@ -8426,12 +8478,14 @@ var default_card = {
 		armor: 				0,
 		health: 			false,
 		abilities: 			{},
+		verified: 			true,
 		hero_version: 			{
 			theme: 				[],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{},
+			verified: 			true,
 		},
 		quote: '\"\"',
 }
@@ -8440,17 +8494,24 @@ function get_stat_based_on_type_and_theme(stat, type, themes, hero_version){
 	var possible_powers = {};
 	$.each(all_available_cards, function(card_id, card_info){
 		var matches = false;
-		$.each(card_info['theme'], function(theme_key, theme_name){
-			if(theme_name != undefined)
-			{
-				$.each(themes, function(theme_key_2, theme_name_2){
-					if(theme_name.indexOf(theme_name_2) !== -1)
-					{
-						matches = true;
-					}
-				});
-			}
-		});
+		if(themes == undefined || count_object(themes) == 0)
+		{
+			matches = true;
+		}
+		else
+		{
+			$.each(card_info['theme'], function(theme_key, theme_name){
+				if(theme_name != undefined)
+				{
+					$.each(themes, function(theme_key_2, theme_name_2){
+						if(theme_name.indexOf(theme_name_2) !== -1)
+						{
+							matches = true;
+						}
+					});
+				}
+			});
+		}
 		if(type != undefined && card_info['type'] != type)
 		{
 			matches = false;
@@ -8478,7 +8539,8 @@ function get_stat_based_on_type_and_theme(stat, type, themes, hero_version){
 			}
 		}
 	});
-	var chosen_power = get_random_key_from_object_based_on_num_value(possible_powers);
+	var chosen_power = (get_random_key_from_object_based_on_num_value(possible_powers));
+	if(count_object(possible_powers) < 1){chosen_power = 'false';}
 	return chosen_power;
 }
 
@@ -8563,20 +8625,89 @@ function get_skills_based_on_type_and_themes(type, themes, hero_version){
 	return chosen_skills;
 }
 
+function get_name_parts(theme, type){
+	var all_name_parts = {};
+	$.each(all_available_cards, function(card_id, card_info){
+		if(card_info['pick_chance'] > 0 && match_array_values(theme, card_info['theme']) > 0 && (type == undefined || card_info['type'] == type))
+		{
+			var current_card_name = card_info['name'];
+			var current_name_parts = current_card_name.split(' ');
+			$.each(current_name_parts, function(useless_key, name_part){
+				if(all_name_parts[name_part] == undefined){all_name_parts[name_part] = 0;}
+				all_name_parts[name_part]++;
+			});
+		}
+	});
+	return all_name_parts;
+}
+
 function generate_card(name, subtypes, themes, type, image){
 	var new_card = true_copyobject(default_card);
 	if(image != undefined)
 	{
 		new_card['image'] = 'cards/' + image + '.jpg';
 	}
+	if(name == undefined){name = 'new card';}
 	if(name != undefined){new_card['name'] = name;}
+
+	if(type == undefined)
+	{
+		var all_types = {artifact:true,spell:true,creature:true,structure:true};
+		type = get_random_key_from_object(all_types);
+	}
 	if(type != undefined){new_card['type'] = type;}
+	
+	if(subtypes == undefined)
+	{
+		var all_used_subtypes = count_card_subtypes(new_card['type']);
+		var chosen_subtype = get_random_key_from_object_based_on_num_value(all_used_subtypes);
+		//console.log(all_used_subtypes);
+		subtypes = [chosen_subtype];
+		//console.log('subtype: ' + chosen_subtype);
+	}
 	if(subtypes != undefined){new_card['subtypes'] = subtypes;}
+
+	if(themes == undefined)
+	{
+		if(Math.random() < 1.5)
+		{
+			var all_card_themes = count_all_card_themes();
+			var chosen_theme = get_random_key_from_object(all_card_themes);
+			themes = [chosen_theme];
+			console.log('theme: ' + chosen_theme);
+		}
+		else
+		{
+			var least_used_theme = count_card_themes();
+			themes = [least_used_theme['key']];
+			console.log('theme: ' + least_used_theme['key']);
+		}
+	}
+
+	var all_name_parts = get_name_parts(themes, type);
+	if(count_object(all_name_parts) < 3){all_name_parts = get_name_parts(themes);}
+	//console.log(all_name_parts);
+	if(count_object(all_name_parts) > 1)
+	{
+		var first_name_part = get_random_key_from_object(all_name_parts);
+		delete all_name_parts[first_name_part];
+		new_card['name'] = first_name_part + ' ' + get_random_key_from_object(all_name_parts);
+	}
+
 	var chosen_power = get_stat_based_on_type_and_theme('power',type, themes, false);
+	if(type == 'creature' && chosen_power == 'false')
+	{
+		chosen_power = get_stat_based_on_type_and_theme('power',type, undefined, false);
+	}
 	if(chosen_power != 'false'){new_card['power'] = parseInt(chosen_power);}
 	var chosen_health = get_stat_based_on_type_and_theme('health',type, themes, false);
+	if((type == 'creature' || type == 'structure') && chosen_health == 'false')
+	{
+		chosen_health = get_stat_based_on_type_and_theme('health',type, undefined, false);
+	}
 	if(chosen_health != 'false'){new_card['health'] = parseInt(chosen_health);}
 	var chosen_abilities = get_skills_based_on_type_and_themes(type, themes, false);
+	if(count_object(chosen_abilities) == 0){chosen_abilities = get_skills_based_on_type_and_themes(undefined, themes, false);}
 	$.each(chosen_abilities, function(ability_id, ability_level){
 		new_card['abilities'][ability_id] = 1;
 	});
@@ -8612,8 +8743,8 @@ function generate_card(name, subtypes, themes, type, image){
 
 	$('.upgrades_container').html(name.replaceAll(' ','_') + ':{<br/>' + parse_card_object(new_card) + '},');
 	all_available_cards['temp_card'] = true_copyobject(new_card);
-	
 	check_card('temp_card');
+	console.log(new_card);
 	show_card_details('temp_card');
 }
 

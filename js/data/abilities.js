@@ -1363,8 +1363,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		-4,
-		level_cost_hero: 	-2,
+		level_cost: 		-6,
+		level_cost_hero: 	-3,
 	},
 	discard_enemy:{
 		description: 	'Moves up to {LEVEL} card(s) from the enemy\'s hand to the grave.',
@@ -2176,7 +2176,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		-4,
+		level_cost: 		-5,
 	},
 	final_hasten:{
 		description: 	'When destroyed, reduces the time left of a card in your hand by {LEVEL}.',
@@ -3168,7 +3168,7 @@ var all_abilities = {
 		name: 			'allies:',
 		post_name: 		'+',
 		name_color: 	'rgba(255,255,255,0.9)',
-		description: 	'This card will not be played if there\'s less than {LEVEL} ally unit(s) in play.',
+		description: 	'This card will not be played if there are at least less than {LEVEL} ally unit(s) in play.',
 		proc: 			'on_play',
 		remove_skill: 	'minimum_allies',
 		show_amount_adjustment: 0,
@@ -3209,6 +3209,16 @@ var all_abilities = {
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
 		level_cost_cum: true,
+	},
+	min_hand_cards:{
+		name: 			'hand cards:',
+		post_name: 		'+',
+		name_color: 	'rgba(255,255,255,0.9)',
+		description: 	'This card will not be played if there\'s less than {LEVEL} card(s) in your hand.',
+		proc: 			'on_play',
+		remove_skill: 	'min_hand_cards',
+		show_amount_adjustment: 0,
+		level_cost: 	0,
 	},
 	painful_hand:{
 		description: 	'Deals {LEVEL} damage to the enemy hero for every card in its hand.',
