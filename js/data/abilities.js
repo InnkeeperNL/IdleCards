@@ -1978,6 +1978,79 @@ var all_abilities = {
 		level_cost: 	0.25,
 		level_cost_hero: 2,
 	},
+	energised_haste:{
+		ability_subtypes: 	['hasten','deck_control'],
+		description: 	'Uses all energy it has to reduce the time left of the card in your hand, with the highest time left, by the energy used.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				has_effect: 	{effect_name: 'energy', amount: 1, limit: 'min'},
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'ability',
+				targets:{
+					0:{
+						target: 		'card',
+						target_amount: 	1,
+						status: 		'hand',
+						side: 			'ally',
+						highest_time_left: true,
+					},
+				},
+				effects:{
+					0:{
+						projectile: 		'hasten',
+						projectile_target: 	'deck',
+						type: 				'reduce_ready_time',
+						subtypes: 			['hasten','deck_control'],
+						amount: 			'origin_energy',
+						amount_factor: 		1,
+						side: 				'ally',
+					}
+				},
+			},
+			1:{
+				type: 		'set_effect_amount',
+				effect_names:{
+					energy: 	0,
+				},
+				subtypes: 	[],
+				amount: 	1
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	3,
+	},
+	energising_deaths:{
+		description: 	'Gains {LEVEL} energy when an ally creature is destroyed.',
+		proc: 			'ally_creature_death',
+		origin_not_self: true,
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 	'any',
+				target_amount: 1,
+				position: 	'self',
+				side: 		'any'
+			},
+		},
+		effects:{
+			0:{
+				self_projectile: 'energize',
+				type: 		'apply_energy',
+				subtypes: 	['gain_energy'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	enrage:{
 		description: 	'When this unit receives damage, it gains {LEVEL} temporary power.',
 		proc: 			'receive_damage',
