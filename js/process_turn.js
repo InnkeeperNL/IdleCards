@@ -1310,8 +1310,7 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 							{
 								if(current_ability['animation'] != undefined && (current_ability['do_not_pause_between'] == undefined || i == 1))
 								{
-									/*total_timeout -= 50 * battle_speed;
-									if(total_timeout < 0){total_timeout = 0;}*/
+									//total_timeout += 250 * battle_speed;
 									if(typeof(current_ability['animation']) == 'string')
 									{
 										timeout_key ++;
@@ -1321,7 +1320,7 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 										timeout_key ++;
 										all_timeouts[timeout_key] = setTimeout(function(){
 											$('.unit_id_' + current_unit_id).removeClass(current_ability['animation']);
-										},total_timeout + (500 * battle_speed));
+										},total_timeout + (1000 * battle_speed));
 									}
 									else
 									{
@@ -1333,10 +1332,10 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 											timeout_key ++;
 											all_timeouts[timeout_key] = setTimeout(function(){
 												$('.unit_id_' + current_unit_id).removeClass(animation_name);
-											},total_timeout + (500 * battle_speed));
+											},total_timeout + (1000 * battle_speed));
 										});
 									}
-									total_timeout += 250 * battle_speed;
+									total_timeout += 500 * battle_speed;
 									
 								}
 
@@ -1435,26 +1434,13 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 			update_passive_effects(unit_id);
 		}
 
-		/*if(any_effect_fired == true && current_ability['animation'] != undefined)
+		if(any_effect_fired == true && current_ability['animation'] != undefined)
 		{
-			if(typeof(current_ability['animation']) == 'string')
-			{
-				timeout_key ++;
-				all_timeouts[timeout_key] = setTimeout(function(){
-					$('.unit_id_' + current_unit_id).removeClass(current_ability['animation']);
-				},total_timeout + 0);
-			}
-			else
-			{
-				$.each(current_ability['animation'], function(animation_id, animation_name){
-					timeout_key ++;
-					all_timeouts[timeout_key] = setTimeout(function(){
-						$('.unit_id_' + current_unit_id).removeClass(animation_name);
-					},total_timeout + 0);
-				});
-			}
-			total_timeout += 50 * battle_speed;
-		}*/
+			timeout_key ++;
+			all_timeouts[timeout_key] = setTimeout(function(){
+				$('.unit_id_' + current_unit_id).removeClass(current_ability['animation']);
+			},total_timeout + 10);
+		}
 
 		if(any_effect_fired == true && current_ability['adjust_skill_after_use'] != undefined && battle_info['combat_units'][unit_id] != undefined && battle_info['combat_units'][unit_id]['type'] != 'spell')
 		{
