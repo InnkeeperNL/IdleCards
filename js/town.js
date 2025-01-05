@@ -903,7 +903,8 @@ function show_single_building(){
 				$.each(current_building['expeditions'], function(expedition_key, expedition_info){
 					var parsed_expedition = '';
 					var current_exp = all_expeditions[expedition_info['expedition_id']];
-					parsed_expedition += '<div class="single_expedition"><span class="single_new_expedition_name">' + capitalizeFirstLetter(current_exp['name']) + '</span><br/><span class="single_new_expedition_description">' + current_exp['description'] + '</span>';
+					parsed_expedition += '<div class="single_expedition"><span class="single_new_expedition_name busy_expedition_name">' + capitalizeFirstLetter(current_exp['name']) + '</span>';
+					//parsed_expedition += '<br/><span class="single_new_expedition_description">' + current_exp['description'] + '</span>';
 					parsed_expedition += 	'<div class="timer" data-complete-time="' + expedition_info['done_time'] + '" data-complete-show="complete_expedition_button_' + current_building_id + '_' + expedition_key + '" data-complete-hide="cancel_expedition_button_' + current_building_id + '_' + expedition_key + '"></div>';
 					parsed_expedition += 	'<div class="complete_expedition_button_' + current_building_id + '_' + expedition_key + ' complete_expedition_button hidden" onclick="complete_expedition(' + expedition_key + ')">COMPLETE</div>';
 					if(current_exp['cannot_cancel'] == undefined || current_exp['cannot_cancel'] == false)

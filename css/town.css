@@ -338,6 +338,8 @@ span.done_expeditions
     text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
     max-widh: 80%;
     display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 25px;
 }
 
 .claim_current_rewards_button
@@ -466,6 +468,14 @@ span.done_expeditions
     font-weight:bold;
 }
 
+.single_new_expedition_name.busy_expedition_name
+{
+    position: absolute;
+    left: 15px;
+    top: 17px;
+    text-align: left;
+}
+
 .single_new_expedition_description
 {
     width:100%;
@@ -549,6 +559,7 @@ span.done_expeditions
     z-index:1;
     position: relative;
     max-width: 100%;
+    min-height: 55px;
 }
 
 .single_building_recipe,
@@ -566,6 +577,11 @@ span.done_expeditions
 .single_expedition.production_bar.potion_bar
 {
     text-align: center;
+    padding: 0px;
+    padding-top: 4px;
+    padding-left: 2%;
+    padding-right: 2%;
+    min-height: 0px;
 }
 
 .single_building_recipe
@@ -641,7 +657,7 @@ span.done_expeditions
 {
     position: absolute;
     right:15px;
-    top:10px;
+    top:17px;
 }
 
 .single_building_recipe_craft_button,
