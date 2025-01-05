@@ -20,7 +20,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'air',
 				type: 			'damage',
-				subtypes: 		['physical','projectile','air'],
+				subtypes: 		['physical','air'],
 				amount: 		'ability_level',
 			}
 		},
@@ -63,8 +63,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_spell: 	1,
+		level_cost: 		3,
+		level_cost_spell: 	1.5,
 	},
 	air_bolt_hv:{
 		name: 			'air bolt',
@@ -155,8 +155,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
-		level_cost_spell: 	1.5,
+		level_cost: 		4,
+		level_cost_spell: 	2,
 		average_hits: 		'ability_level',
 	},
 	arcane_bolt_hv:{
@@ -183,8 +183,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2.5,
-		level_cost_spell: 	1,
+		level_cost: 		3,
+		level_cost_spell: 	1.5,
 		average_hits: 		'ability_level',
 	},
 	avoid_structure:{
@@ -571,6 +571,36 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		6,
 		level_cost_spell: 	3,
+	},
+	burning_hero:{
+		description: 	'When an enemy unit deals melee damage to your hero, there is a 25% chance this applies {LEVEL} burn to it.',
+		proc: 			'ally_hero_damaged',
+		subtypes: 		['melee'],
+		ability_subtypes: ['receive_damage_proc'],
+		proc_chance: 	25,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'burn',
+				type: 		'apply_burn',
+				subtypes: 	['burn'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+		level_cost_artifact: 3,
+		level_cost_hero: 	2,
 	},
 	chaos_strikes:{
 		description: 	'When the enemy hero receives damage, move a card from the enemy\'s hand to the grave. Can be used {LEVEL} time(s).',
@@ -1146,6 +1176,32 @@ var all_abilities = {
 		level_cost: 	2,
 		level_cost_artifact: 3,
 	},
+	cursed_hero:{
+		description: 	'When an enemy unit deals melee damage to your hero, this will apply {LEVEL} curse to it.',
+		proc: 			'ally_hero_damaged',
+		subtypes: 		['melee'],
+		ability_subtypes: ['receive_damage_proc'],
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'curse',
+				type: 			'apply_curse',
+				subtypes: 		['magical','curse'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	2,
+	},
 	cursed_touch:{
 		description: 	'Applies {LEVEL} curse to any unit or hero it deals damage to.{CURSE}',
 		proc: 			'dealt_damage',
@@ -1285,6 +1341,33 @@ var all_abilities = {
 		},
 		level_cost: 		0.5,
 		level_cost_hero: 	2,
+	},
+	desperate_haste:{
+		description: 	'When your hero receives damage, this reduces the time left of the card with the highest time left by {LEVEL}. Can be used once.',
+		proc: 			'ally_hero_damaged',
+		remove_skill: 	'desperate_haste',
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	1,
+				status: 		'hand',
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'hasten',
+				projectile_target: 'deck',
+				type: 			'reduce_ready_time',
+				highest_cost: 	true,
+				subtypes: 		['hasten','deck_control'],
+				amount: 		'ability_level',
+				side: 			'ally',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+		level_cost_artifact: 0.5,
 	},
 	destroy:{
 		description: 	'Destroys {LEVEL} random enemy unit(s).',
@@ -1451,6 +1534,7 @@ var all_abilities = {
 	doom_all:{
 		description: 	'Applies {LEVEL} doom to all enemy units.{DOOM}',
 		cannot_proc_while_stunned: true,
+		do_not_pause_between: 	true,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -1574,6 +1658,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	6,
+		level_cost_artifact: 3,
 		ability_level_cost_factors:{
 			homebound: 		1.5,
 		},
@@ -1606,7 +1691,8 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	6,
+		level_cost: 	7,
+		cost_adjustment: -3,
 		//cost_on_top: 	true,
 	},
 	
@@ -1670,6 +1756,7 @@ var all_abilities = {
 		description: 	'All ally creatures that have power gain {LEVEL} power until they act. Cannot affect heroes or itself.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		do_not_pause_between: 	true,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2008,10 +2095,11 @@ var all_abilities = {
 		level_cost: 	2,
 	},
 	fearful_hero:{
-		description: 	'When your hero receives melee damage from a non-undead, non-horror enemy creature unit, that unit returns to their owner\'s hand. Any summoned units this targets disappear.',
+		description: 	'When your hero receives melee damage from a non-undead, non-horror enemy creature unit, there is a 25% chance that unit will return to their owner\'s hand. Any summoned units this targets disappear.',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
+		proc_chance: 	25,
 		proc_amount: 	1,
 		targets:	{
 			0:{
@@ -2035,8 +2123,8 @@ var all_abilities = {
 				side: 			'enemy',
 			}
 		},
-		level_cost: 	2,
-		level_cost_artifact: 4,
+		level_cost: 	1,
+		level_cost_artifact: 2,
 	},
 	feast:{
 		description: 	'When any living creature is killed by this, that creature is detroyed. This then heals itself by {LEVEL}.',
@@ -2317,8 +2405,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
-		level_cost_spell: 	1.5,
+		level_cost: 		4,
+		level_cost_spell: 	2,
 		average_hits: 		1,
 	},
 	fire_bolt_hv:		{
@@ -2345,8 +2433,8 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 		2.5,
-		level_cost_spell: 	1.25,
+		level_cost: 		3,
+		level_cost_spell: 	1.5,
 		average_hits: 		1,
 	},
 	fireproof:{
@@ -2532,6 +2620,30 @@ var all_abilities = {
 		level_cost_hero: 	4,
 		level_cost_spell: 	1.5,
 	},
+	fortify_hero:{
+		description: 	'Grants your hero {LEVEL} shield. {SHIELD}',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'armor',
+				type: 			'increase_armor',
+				subtypes: 		['fortify'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
+	},
 	fortify_self:{
 		description: 	'Grants itself {LEVEL} shield. {SHIELD}',
 		cannot_proc_while_stunned: true,
@@ -2603,8 +2715,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
-		level_cost_spell: 	1.5,
+		level_cost: 		4,
+		level_cost_spell: 	2,
 		average_hits: 		1,
 		cost_adjustment: 	1,
 	},
@@ -2649,8 +2761,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2.5,
-		level_cost_spell: 	1,
+		level_cost: 		3,
+		level_cost_spell: 	1.5,
 		average_hits: 		1,
 		cost_adjustment: 	1,
 	},
@@ -2710,6 +2822,7 @@ var all_abilities = {
 		description: 	'Reduces the time left of all cards in your hand by {LEVEL}.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
+		do_not_pause_between: 	true,
 		proc_amount: 	1,
 		targets:	{
 			0:{
@@ -3401,6 +3514,7 @@ var all_abilities = {
 	poison_all:{
 		description: 	'Applies {LEVEL} poison to all enemy creatures. {POISON}',
 		scales: 		true,
+		do_not_pause_between: 	true,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -4019,7 +4133,7 @@ var all_abilities = {
 			}
 		},
 		animation: 		'attack',
-		level_cost: 	3,
+		level_cost: 	4,
 		cost_factor: 	'power',
 		average_hits: 	'ability_level',
 	},
@@ -4046,7 +4160,7 @@ var all_abilities = {
 			}
 		},
 		animation: 		'attack',
-		level_cost: 	2.5,
+		level_cost: 	3,
 		cost_factor: 	'power',
 		average_hits: 	'ability_level',
 	},
@@ -4080,6 +4194,7 @@ var all_abilities = {
 	slow_all:{
 		description: 	'Increases the time left of all enemy cards by {LEVEL}.',
 		cannot_proc_while_stunned: true,
+		do_not_pause_between: 	true,
 		targets:	{
 			0:{
 				target: 			'card',
@@ -4215,7 +4330,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
+		level_cost: 		4,
 		average_hits: 		'ability_level',
 	},
 	spell_bolt_hv:{
@@ -4244,7 +4359,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2.5,
+		level_cost: 		3,
 		average_hits: 		'ability_level',
 	},
 	spellpower:{
@@ -4763,6 +4878,37 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 5,
 	},
+	thorned_hero:{
+		description: 	'When an enemy unit deals melee damage to your hero, there is a 25% chance this will deal {LEVEL} physical damage to it.',
+		proc: 			'ally_hero_damaged',
+		subtypes: 		['melee'],
+		ability_subtypes: ['receive_damage_proc'],
+		proc_chance: 	25,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'spikes',
+				type: 			'damage',
+				subtypes: 		['physical','thorns'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'red_glow',
+		level_cost: 		0.5,
+		level_cost_artifact: 1,
+		level_cost_hero: 	1,
+		average_hits: 		0.25,
+	},
 	thorns:{
 		description: 	'Deals {LEVEL} physical damage to any enemy that deals melee damage to it.',
 		proc: 			'receive_damage',
@@ -5013,7 +5159,37 @@ var all_abilities = {
 		},
 		level_cost: 	4,
 	},
-	withering_touch: 	{
+	withering_hero:{
+		description: 	'When an enemy unit deals melee damage to your hero, there is a 25% chance this reduces the maximum health of that enemy by {LEVEL}.',
+		proc: 			'ally_hero_damaged',
+		subtypes: 		['melee'],
+		ability_subtypes: ['receive_damage_proc'],
+		proc_chance: 	25,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'wither',
+				type: 		'reduce_max_health',
+				subtypes: 	['magical','wither'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+		level_cost_artifact: 3,
+		level_cost_hero: 	2,
+	},
+	withering_touch:{
 		description: 	'Any damage this deals to enemies reduces the maximum health of that enemy as well.',
 		proc: 			'dealt_damage',
 		proc_while_dead: true,
