@@ -1843,7 +1843,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{spell_bolt: 2, resist_magic: 1},
 		hero_version: 			{
-			theme: 				['type_spell','çurse_ability','type_spell','çurse_ability','type_spell','echo_ability'],
+			theme: 				['type_spell','çurse_ability','any_spell_card_played_proc_ability','echo_ability','subtype_elf'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -4121,7 +4121,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{spell_bolt: 2},
 		hero_version: 			{
-			theme: 				['type_spell','çurse_ability','type_spell','çurse_ability','type_spell','echo_ability'],
+			theme: 				['type_spell','çurse_ability','echo_ability','any_spell_card_played_proc_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -4145,7 +4145,7 @@ var all_available_cards = {
 		health: 			3,
 		abilities: 			{strike: 1, spell_bolt: 1, evade: 1},
 		hero_version: 			{
-			theme: 				['type_spell','çurse_ability','type_spell','çurse_ability','type_spell','echo_ability','subtype_rogue'],
+			theme: 				['type_spell','çurse_ability','any_spell_card_played_proc_ability','echo_ability','subtype_rogue'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -4168,7 +4168,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{spell_bolt: 1},
 		hero_version: 			{
-			theme: 				['type_spell','çurse_ability','type_spell','çurse_ability','type_spell','echo_ability'],
+			theme: 				['type_spell','çurse_ability','any_spell_card_played_proc_ability','echo_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -6058,7 +6058,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, spellpower: 1},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_warrior','type_spell','echo_ability'],
+			theme: 				['melee_ability','subtype_warrior','type_spell','echo_ability','any_spell_card_played_proc_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -6081,7 +6081,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{spellblast: 1},
 		hero_version: 			{
-			theme: 				['subtype_mage','type_spell','echo_ability'],
+			theme: 				['subtype_mage','type_spell','echo_ability','any_spell_card_played_proc_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
