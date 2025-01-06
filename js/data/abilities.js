@@ -4373,15 +4373,14 @@ var all_abilities = {
 	},
 	spellblast:{
 		name: 			'spellblast',
-		description: 	'When any spell is cast, this deals {LEVEL} magical projectile damage to all enemy units.',
+		description: 	'When any spell is cast, this deals {LEVEL} magical damage to all enemy units.',
 		proc: 			'any_spell_card_played',
 		cannot_proc_while_stunned: true,
-		not_ability_subtypes:['arcane_bolts','projectile','magical'],
 		scales: true,
 		targets:	{
 			0:{
 				target: 		'unit',
-				target_amount: 	1,
+				target_amount: 	5,
 				position: 		'random',
 				min_hp: 		1,
 				side: 			'enemy'
@@ -4389,9 +4388,9 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				projectile: 	'magic',
+				projectile: 	'lightning',
 				type: 			'damage',
-				subtypes: 		['magical','projectile','arcane_bolts'],
+				subtypes: 		['magical'],
 				amount: 		'ability_level',
 			}
 		},
