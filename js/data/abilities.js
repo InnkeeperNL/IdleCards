@@ -248,8 +248,8 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		2,
-		level_cost_spell: 	1,
-		cost_adjustment: 	-1,
+		level_cost_spell: 	1.5,
+		cost_adjustment: 	-2,
 	},
 	backstab:{
 		description: 	'When this deals melee damage to the enemy hero, it deals {LEVEL} physical melee damage to the nearest enemy unit. This damage can not be avoided by evade or stealth.',
@@ -1393,6 +1393,34 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	8,
 	},
+	destroy_arrival:{
+		description: 	'Destroys the next enemy creature unit that enters the game. Can be used {LEVEL} time(s).',
+		cannot_proc_while_stunned: true,
+		proc: 			'enemy_unit_card_played',
+		reduce_skill_after_use: 'destroy_arrival',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				origin_unit: 	true,
+				side: 			'enemy',
+				not_types: 	['structure','artifact','spell'],
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['destroy'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	8,
+		level_cost_artifact: 4,
+	},
 	destroy_creature:{
 		description: 	'Destroys {LEVEL} random enemy creature unit(s).',
 		cannot_proc_while_stunned: true,
@@ -1417,7 +1445,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	6,
-		level_cost_artifact: 2.2,
+		level_cost_artifact: 3,
 	},
 	discard:{
 		description: 	'Moves up to {LEVEL} card(s) from the your hand to the grave.',
@@ -4578,7 +4606,6 @@ var all_abilities = {
 		average_hits: 	'ability_level',
 	},
 	strike_arrivals:{
-		name_color: 	'rgba(255,255,255,0.9)',
 		description: 	'When an enemy unit enters the game, this deals {LEVEL} physical melee damage to it.',
 		cannot_proc_while_stunned: true,
 		proc: 			'enemy_unit_card_played',

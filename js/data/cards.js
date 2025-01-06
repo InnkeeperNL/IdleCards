@@ -304,7 +304,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['tactic'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['subtype_warrior'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -749,8 +749,9 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{destroy_creature: 1},
+		abilities: 			{destroy_arrival: 1},
 		quote: '\"Aim for the heart.\"',
+		selfdestructs: 		true,
 	},
 	bloody_tick:{
 		name: 				'bloody tick',
@@ -1108,6 +1109,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{chaos_strikes: 1},
 		quote: '\"You can strike at the mind with that.\"',
+		selfdestructs: 		true,
 	},
 	cinder_witch:{
 		name: 				'cinder witch',
@@ -2025,7 +2027,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, backlash: 1},
 		hero_version: 			{
-			theme: 				['subtype_golem'],
+			theme: 				['type_creature','subtype_warrior'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -2048,7 +2050,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, air_bolt: 1},
 		hero_version: 			{
-			theme: 				['subtype_golem'],
+			theme: 				['subtype_golem','flying_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2126,7 +2128,6 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{fearful_hero: 1},
 		quote: '\"Boo!\"',
-		max_in_deck: 		1,
 	},
 	fencer:{
 		name: 				'fencer',
@@ -3610,7 +3611,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{flame_strike: 1, empower_imps: 1},
 		hero_version: 			{
-			theme: 				['subtype_daemon','subtype_imp','summon_ally_ability'],
+			theme: 				['subtype_daemon','subtype_imp'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -3634,7 +3635,7 @@ var all_available_cards = {
 		abilities: 			{flame_strike: 1},
 		verified: 			true,
 		hero_version: 			{
-			theme: 				['subtype_daemon','subtype_imp','summon_ally_ability'],
+			theme: 				['subtype_daemon','subtype_imp'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -4206,7 +4207,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, first_aid: 1},
 		hero_version: 			{
-			theme: 				['active_healing_ability','fortify_ability','healing_ability','type_creature'],
+			theme: 				['active_healing_ability','fortify_ability','healing_ability','type_creature','type_creature'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -4230,7 +4231,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, first_aid: 1},
 		hero_version: 			{
-			theme: 				['active_healing_ability','fortify_ability','healing_ability','type_creature'],
+			theme: 				['active_healing_ability','fortify_ability','healing_ability','type_creature','type_creature'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -5864,7 +5865,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['weapon'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['subtype_warrior'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
