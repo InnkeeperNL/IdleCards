@@ -155,8 +155,9 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_spell: 	2,
+		level_cost: 		4.5,
+		level_cost_spell: 	2.5,
+		cost_adjustment: 	-0.5,
 		average_hits: 		'ability_level',
 	},
 	arcane_bolt_hv:{
@@ -183,8 +184,9 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
-		level_cost_spell: 	1.5,
+		level_cost: 		3.5,
+		level_cost_spell: 	2,
+		cost_adjustment: 	-0.5,
 		average_hits: 		'ability_level',
 	},
 	avoid_structure:{
@@ -4430,7 +4432,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
+		level_cost: 		4.5,
+		cost_adjustment: 	-0.5,
 		average_hits: 		'ability_level',
 	},
 	spell_bolt_hv:{
@@ -4459,7 +4462,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
+		level_cost: 		3.5,
+		cost_adjustment: 	-0.5,
 		average_hits: 		'ability_level',
 	},
 	spellpower:{
