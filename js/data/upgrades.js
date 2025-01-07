@@ -68,8 +68,8 @@ var all_upgrades = {
 		max_level: 		50,
 	},
 	game_speed:{
-		name: 			'Max game speed',
-		description: 	'Increases the maximum game speed when set to \'fast\' or \'fastest\' by 10%.',
+		name: 			'Game speed',
+		description: 	'Increases the game speed by 5% when set to \'fast\' and by 10% when set to \'fastest\'.',
 		needed_upgrades:{
 			summon_rarity: 	3,
 		},
@@ -83,11 +83,11 @@ var all_upgrades = {
 	},
 	l_rewards:{
 		name: 			'Rewards',
-		description: 	'Increases the rewards of newly summoned enemies, waves and completing quests by 10% each level.',
+		description: 	'Increases the rewards of newly summoned enemies, waves and completing quests by 5% each level.',
 		card_image: 	'scout',
 		type: 			'summon_reward',
 		subtypes:  		['any'],
-		amount: 		0.1,
+		amount: 		0.05,
 		level_cost_scale: 	3,
 		cost: 			{shard:5,},
 	},
@@ -125,7 +125,7 @@ var all_upgrades = {
 		card_image: 	'peasant',
 		type: 			'summon_max_rarity',
 		subtypes:  		['any'],
-		level_cost_scale: 	10,
+		level_cost_scale: 	5,
 		amount: 		1,
 		amount_fixed: 	true,
 		cost: 			{scraps:2,},
@@ -216,10 +216,10 @@ var all_upgrades = {
 		type: 			'summon_loot_rarity',
 		subtypes:  		['any'],
 		amount:  		0.02,
-		level_cost_scale: 	2,
+		level_cost_scale: 	20,
 		cost:{
-			flask: 		1,
-			scraps:  	10,
+			flask: 		5,
+			scraps:  	100,
 		}
 	},
 	zz_mercenary_potion:{
@@ -230,10 +230,10 @@ var all_upgrades = {
 		type: 			'merchant_buy',
 		subtypes:  		['any'],
 		amount:  		0.02,
-		level_cost_scale: 	2,
+		level_cost_scale: 	20,
 		cost:{
-			flask: 		1,
-			scraps:  	10,
+			flask: 		5,
+			scraps:  	100,
 		}
 	},
 	zz_chest_potion:{
@@ -244,10 +244,10 @@ var all_upgrades = {
 		type: 			'merchant_sell',
 		subtypes:  		['any'],
 		amount:  		0.02,
-		level_cost_scale: 	2,
+		level_cost_scale: 	20,
 		cost:{
-			flask: 		1,
-			scraps:  	10,
+			flask: 		5,
+			scraps:  	100,
 		}
 	},
 	zz_shard_potion:{
@@ -258,10 +258,10 @@ var all_upgrades = {
 		type: 			'summon_reward',
 		subtypes:  		['any'],
 		amount:  		0.02,
-		level_cost_scale: 	2,
+		level_cost_scale: 	20,
 		cost:{
-			flask: 		1,
-			scraps:  	10,
+			flask: 		5,
+			scraps:  	100,
 		}
 	},
 	zz_scavenger_potion:{
@@ -272,10 +272,10 @@ var all_upgrades = {
 		type: 			'floating_scraps',
 		subtypes:  		['any'],
 		amount:  		0.02,
-		level_cost_scale: 	2,
+		level_cost_scale: 	20,
 		cost:{
-			flask: 		1,
-			scraps:  	10,
+			flask: 		5,
+			scraps:  	100,
 		}
 	},
 	zz_summon_potion:{
@@ -286,10 +286,10 @@ var all_upgrades = {
 		type: 			'summon_max_rarity',
 		subtypes:  		['any'],
 		amount:  		0.02,
-		level_cost_scale: 	2,
+		level_cost_scale: 	20,
 		cost:{
-			flask: 		1,
-			scraps:  	10,
+			flask: 		5,
+			scraps:  	100,
 		}
 	},
 	/*z_summon_buffs:{
@@ -729,7 +729,7 @@ function calculate_upgrade_upgrade_cost(level, cost, upgrade_info){
 	if(upgrade_info['level_cost_scale'] != undefined)
 	{
 		scale = upgrade_info['level_cost_scale'];
-		return Math.ceil(cost * (1 + sqr(level / scale)));
+		return Math.round(cost * (1 + sqr(level / scale)));
 	}
 	if(upgrade_info['level_cost_type'] != undefined && upgrade_info['level_cost_type'] == 'next_level')
 	{
@@ -739,7 +739,7 @@ function calculate_upgrade_upgrade_cost(level, cost, upgrade_info){
 	{
 		return cost;
 	}
-	return Math.ceil(cost * (1 + sqr(level / scale)));
+	return Math.round(cost * (1 + sqr(level / scale)));
 }
 
 function get_upgrade_factor(type, subtypes, forced){

@@ -8,7 +8,7 @@ var game_speeds = {
 		fastest: 	0.1
 	}
 
-var current_game_speed = 'medium';
+var current_game_speed = 'fastest';
 
 function loadLocalStorage(){
 	if (typeof(localStorage.rows4a) !== "undefined") {

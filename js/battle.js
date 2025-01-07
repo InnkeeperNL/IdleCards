@@ -1319,7 +1319,15 @@ function create_hero(card_id, side){
 				current_hero['power'] = Math.ceil(current_hero['power'] * effective_power_factor);
 			}
 		}
-		current_hero['health'] = Math.ceil(current_hero['health'] * effective_power_factor);
+		if(current_hero['health'] * effective_power_factor > 1)
+		{
+			current_hero['health'] = round_by_percent(current_hero['health'] * effective_power_factor);
+		}
+		else
+		{
+			current_hero['health'] = Math.ceil(current_hero['health'] * effective_power_factor);
+		}
+		//current_hero['health'] = Math.ceil(current_hero['health'] * effective_power_factor);
 		$.each(current_hero['abilities'], function(ability_id, ability_level){
 			if(all_abilities[ability_id] != undefined && all_abilities[ability_id]['scales'] != undefined && all_abilities[ability_id]['scales'] == true)
 			{
@@ -1355,7 +1363,14 @@ function apply_power_factor(unit, side){
 		}
 		if(unit['health'] > 0)
 		{
-			unit['health'] = Math.ceil(unit['health'] * effective_power_factor);
+			if(unit['health'] * effective_power_factor > 1)
+			{
+				unit['health'] = round_by_percent(unit['health'] * effective_power_factor);
+			}
+			else
+			{
+				unit['health'] = Math.ceil(unit['health'] * effective_power_factor);
+			}
 		}
 		if(unit['armor'] > 0)
 		{

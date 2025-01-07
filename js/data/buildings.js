@@ -98,7 +98,7 @@ var all_buildings = {
 		productions:{
 			flask:{
 				base_time: 		24 * 3600,
-				base_storage: 	5,
+				base_storage: 	1,
 				upgrade_cost_speed:{
 					scraps: 		100,
 				},

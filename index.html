@@ -77,7 +77,7 @@
 
 		<div class="paper_bg"></div>
 
-		<div id="content_home" class="page_container active">
+		<div id="content_home" class="page_container">
 		    
 			<div class="home_section">
 				<h1>Idle cards</h1><h2>Version 0.01</h2>
@@ -884,6 +884,7 @@
 		    
 
 		});
+		$('.main_window').removeClass('hidden');
 		$('.detail_overlay').addClass('non_clickable');
 		$('.detail_overlay').removeClass('hidden');
 		
@@ -897,6 +898,7 @@
 				setTimeout(function(){
 					$('.detail_overlay').addClass('hidden');
 					$('.detail_overlay').removeClass('non_clickable');
+					start_game();
 				},total_available_card_count / loading_speed);
 			},total_available_card_count / loading_speed);
 		},100);
@@ -930,6 +932,10 @@
 				},1000);
 			},5000);
 		},message_timeout);
+	}
+
+	function start_game(){
+    	show_content('home');
 	}
 
 	var last_content = 'home';
@@ -1376,8 +1382,6 @@
 
 	//show_home();
 	//run_intro();
-	$('.main_window').removeClass('hidden');
-    show_content('home');
 
     /*window.onerror = function(msg, url, linenumber) {
 	    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
