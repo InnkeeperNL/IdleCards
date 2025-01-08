@@ -188,7 +188,7 @@ function show_town(){
 									var time_elapsed = (new Date().getTime() - current_production['last_claimed']) / 1000;
 									var ready_production = Math.floor(time_elapsed / production_time);
 									//var max_storage = Math.ceil(production_info['base_storage'] * (0.75 + (current_production['storage_level'] / 4)));
-									var max_storage = calculate_production_storage(current_production['storage_level'], production_info['base_storage'], production_info['defeated_heroes_speed_bonusses'], current_building['level']);
+									var max_storage = calculate_production_storage(current_production['storage_level'], production_info['base_storage'], production_info['defeated_heroes_speed_bonusses'], gamedata['town'][building_id]['level']);
 									var shown_ready_production = Math.floor(time_elapsed / production_time);
 									if(shown_ready_production > max_storage)
 									{
@@ -260,14 +260,21 @@ function show_town(){
 	}*/
 
 	$('.town_content').html(parsed_town);
-	/*if(count_object(all_buildings) == 1)
+	if(count_object(gamedata['town']) == 1)
 	{
-		$.each(all_buildings, function(building_id, building_info){
+		$.each(gamedata['town'], function(building_id, building_info){
 			current_building_id	= building_id;
 			
 		});
-		show_content('single_building');
-	}*/
+		if(last_content == 'single_building')
+		{
+			show_content('home');
+		}
+		else
+		{
+			show_content('single_building');
+		}
+	}
 }
 
 function calculate_production_speed(speed_level, base_time, defeated_heroes_speed_bonusses, production_achievement_bonus, building_level){

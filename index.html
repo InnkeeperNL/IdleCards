@@ -1058,6 +1058,14 @@
 		{
 			$('.scrap_count').html( numberWithCommas(gamedata['scraps']) + ' scraps');
 		}
+		if(get_upgrade_factor('show_town', 'any', true) > 1)
+		{
+			$('.town_button').show();
+		}
+		else
+		{
+			$('.town_button').hide();
+		}
 		/*if(gamedata['cleared_chapters'] == undefined || count_object(gamedata['cleared_chapters']) < 1)
 		{
 			$('#content_home .deck_edit_button').css('opacity',0.3);

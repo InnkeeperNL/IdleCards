@@ -72,7 +72,7 @@ var all_buildings = {
 		upgrade_description: 'By upgrading this building you will increase the production, maximum storage and the amount of potions you can brew at the same time.',
 		type: 			'none',
 		needed_upgrades:{
-			z_alchemist_access: 1,
+			z_b_alchemist_access: 1,
 		},
 		new_mission_title: 'BREW',
 		expeditions: 	['research_new_potion'],
