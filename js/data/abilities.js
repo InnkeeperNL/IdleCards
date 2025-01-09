@@ -577,11 +577,11 @@ var all_abilities = {
 		level_cost_spell: 	3,
 	},
 	burning_hero:{
-		description: 	'When an enemy unit deals melee damage to your hero, there is a 25% chance this applies {LEVEL} burn to it.',
+		description: 	'When an enemy unit deals melee damage to your hero, there is a 50% chance this applies {LEVEL} burn to it.',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
-		proc_chance: 	25,
+		proc_chance: 	50,
 		scales: 		true,
 		targets:	{
 			0:{
@@ -4981,11 +4981,11 @@ var all_abilities = {
 		level_cost: 5,
 	},
 	thorned_hero:{
-		description: 	'When an enemy unit deals melee damage to your hero, there is a 25% chance this will deal {LEVEL} physical damage to it.',
+		description: 	'When an enemy unit deals melee damage to your hero, there is a 50% chance this will deal {LEVEL} physical damage to it.',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
-		proc_chance: 	25,
+		proc_chance: 	50,
 		scales: 		true,
 		targets:	{
 			0:{
@@ -5262,11 +5262,11 @@ var all_abilities = {
 		level_cost: 	4,
 	},
 	withering_hero:{
-		description: 	'When an enemy unit deals melee damage to your hero, there is a 25% chance this reduces the maximum health of that enemy by {LEVEL}.',
+		description: 	'When an enemy unit deals melee damage to your hero, there is a 50% chance this reduces the maximum health of that enemy by {LEVEL}.',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
-		proc_chance: 	25,
+		proc_chance: 	50,
 		scales: 		true,
 		targets:	{
 			0:{
