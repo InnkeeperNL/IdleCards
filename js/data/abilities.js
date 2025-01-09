@@ -292,7 +292,7 @@ var all_abilities = {
 				position: 		'random',
 				min_hp: 		1,
 				side: 			'ally',
-				max_abilities: 	{blessed: 10},
+				max_abilities: 	{blessed: 9},
 				has_origin_card: true,
 			},
 		},
