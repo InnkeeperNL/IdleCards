@@ -5437,7 +5437,7 @@ function filter_targets_by_has_origin_card(all_targets, has_origin_card){
 		{
 			delete all_targets[target_id];
 		}
-		if((has_origin_card != undefined || has_origin_card == false) && battle_info.combat_units[target_card_id]['card_id'] != undefined)
+		if((has_origin_card != undefined && has_origin_card == false) && battle_info.combat_units[target_card_id]['card_id'] != undefined)
 		{
 			delete all_targets[target_id];
 		}
