@@ -142,7 +142,10 @@ function show_card_recipe(recipe_id){
 	$('.craft_container').removeClass('cost_4');
 	$('.craft_container').addClass('cost_' + recipe_cost_count);
 
+	var costs_just_peasants = true;
+
 	$.each(all_available_cards[recipe_id]['recipe'], function(card_cost_id, cost_amount){
+		if(card_cost_id != 'peasant'){costs_just_peasants = false;}
 		var parsed_cost_card = '';
 		
 		parsed_cost_card += '<div class="single_cost_container">';
@@ -178,7 +181,18 @@ function show_card_recipe(recipe_id){
 	recipe_details += '<br/>';
 	if(can_craft == true)
 	{
-		recipe_details += '<div class="menu_button slim craft_button" onclick="craft_current_card()" no-new-page="true">CRAFT</div>';
+		recipe_details += '<div class="menu_button slim craft_button" onclick="craft_current_card()" no-new-page="true">CRAFT</div><br/>';
+	}
+	if(costs_just_peasants == false && get_upgrade_factor('quick_craft', 'any', true) > 1)
+	{
+		if(gamedata['owned_cards']['peasant'] >= all_available_cards[recipe_id]['value'])
+		{
+			recipe_details += '<br/><div class="menu_button slim craft_button" onclick="quick_craft_current_card()" no-new-page="true">QUICK CRAFT<br/><span>(' + gamedata['owned_cards']['peasant'] + '/' + all_available_cards[recipe_id]['value'] + ' peasants)</span></div>';
+		}
+		else
+		{
+			recipe_details += '<br/><div class="menu_button slim craft_button" no-new-page="true">QUICK CRAFT<br/><span class="not_enough">(' + gamedata['owned_cards']['peasant'] + '/' + all_available_cards[recipe_id]['value'] + ' peasants)</span></div>';
+		}
 	}
 
 	var possible_tinker_count = 0;
@@ -292,6 +306,20 @@ function craft_current_card(){
 			//show_card_details(card_id);
 			
 		}
+		show_card_recipe(card_id);
+	}
+};
+
+function quick_craft_current_card(){
+	card_id = current_craft;
+	//console.log(card_id);
+	if(gamedata['owned_cards']['peasant'] >= all_available_cards[card_id]['value'])
+	{
+		gamedata['owned_cards']['peasant'] -= all_available_cards[card_id]['value'];
+		gain_card(card_id);
+		check_quests('craft_card_of_value', undefined, undefined, undefined, undefined, all_available_cards[card_id]['value']);
+		show_available_cards(false);
+		saveToLocalStorage();
 		show_card_recipe(card_id);
 	}
 };

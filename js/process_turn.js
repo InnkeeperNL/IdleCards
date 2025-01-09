@@ -5051,7 +5051,7 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 		
 		if(target_peramaters['has_origin_card'] != undefined)
 		{
-			all_targets = filter_targets_by_has_origin_card(all_targets);
+			all_targets = filter_targets_by_has_origin_card(all_targets, target_peramaters['has_origin_card']);
 		}
 
 		if(target_peramaters['not_types'] != undefined)
@@ -5431,10 +5431,13 @@ function filter_targets_by_redirect(all_targets, current_ability, origin_id){
 	return all_targets;
 }
 
-function filter_targets_by_has_origin_card(all_targets){
+function filter_targets_by_has_origin_card(all_targets, has_origin_card){
 	$.each(all_targets, function(target_id, target_card_id){
-		
-		if(battle_info.combat_units[target_card_id]['card_id'] == undefined)
+		if((has_origin_card == undefined || has_origin_card == true) && battle_info.combat_units[target_card_id]['card_id'] == undefined)
+		{
+			delete all_targets[target_id];
+		}
+		if((has_origin_card != undefined || has_origin_card == false) && battle_info.combat_units[target_card_id]['card_id'] != undefined)
 		{
 			delete all_targets[target_id];
 		}
@@ -6016,15 +6019,16 @@ function filter_targets_by_highest_cost(all_targets){
 }
 
 function filter_targets_by_lowest_cost(all_targets){
-	var lowest_cost = false;
+	var lowest_cost = -1;
 	$.each(all_targets, function(target_id, target_unit_id){
-		if(battle_info.combat_units[target_unit_id]['time'] < lowest_cost || lowest_cost == false)
+		if(battle_info.combat_units[target_unit_id]['time'] < lowest_cost || lowest_cost == -1)
 		{
 			lowest_cost = battle_info.combat_units[target_unit_id]['time'];
 		}
 	});
+	console.log(lowest_cost);
 	$.each(all_targets, function(target_id, target_unit_id){
-		if(battle_info.combat_units[target_unit_id]['time'] > lowest_cost && lowest_cost != false)
+		if(battle_info.combat_units[target_unit_id]['time'] > lowest_cost && lowest_cost > -1)
 		{
 			delete all_targets[target_id];
 		}

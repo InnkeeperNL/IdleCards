@@ -283,7 +283,7 @@ var all_abilities = {
 		},
 	},
 	bless:{
-		description: 	'A random ally unit gains {LEVEL} blessings. {BLESSED}',
+		description: 	'A random ally unit gains {LEVEL} blessings. Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
 		scales: 		true,
 		targets:	{
 			0:{
@@ -291,7 +291,9 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				min_hp: 		1,
-				side: 			'ally'
+				side: 			'ally',
+				max_abilities: 	{blessed: 10},
+				has_origin_card: true,
 			},
 		},
 		effects:{
@@ -304,8 +306,8 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1.5,
-		level_cost_spell: 0.75,
+		level_cost: 	0.75,
+		level_cost_spell: 0.375,
 	},
 	blessed:{
 		description: 	'Has a {LEVEL}0% chance to return to your deck when destroyed.',
@@ -332,7 +334,7 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	0.2,
+		level_cost: 	0.1,
 	},
 	blood_rage:{
 		description: 	'A random living ally creature unit with at least 2 health gains {LEVEL} power and looses 1 health permanently.',
@@ -4024,23 +4026,18 @@ var all_abilities = {
 		level_cost: 	1,
 	},
 	sacrifice:{
-		description: 	'Destroy up to {LEVEL} random ally unit(s) or artifact(s).',
+		description: 	'Destroy up to {LEVEL} random ally unit(s) or artifact(s). Will target units or artifacts with the lowest cost first.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use: 'sacrifice',
 		targets:	{
 			0:{
-				target: 	'unit',
-				target_amount: 5,
-				position: 	'random',
-				not_self: 	true,
-				side: 		'ally'
-			},
-			1:{
-				add_targets: true,
-				target: 	'artifact',
+				target: 	'any',
 				target_amount: 1,
 				position: 	'random',
+				not_types: 	['hero'],
+				not_self: 	true,
+				lowest_cost: true,
 				side: 		'ally'
 			},
 		},
@@ -4056,7 +4053,7 @@ var all_abilities = {
 		level_cost: 	-4,
 	},
 	sacrifice_creature:{
-		description: 	'Destroy up to {LEVEL} random ally creature unit(s).',
+		description: 	'Destroy up to {LEVEL} random ally creature unit(s). Will target units with the lowest cost first.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use: 'sacrifice_creature',
@@ -4067,6 +4064,7 @@ var all_abilities = {
 				position: 	'random',
 				not_self: 	true,
 				not_types: 	['structure'],
+				lowest_cost: true,
 				side: 		'ally'
 			},
 		},
@@ -4082,7 +4080,7 @@ var all_abilities = {
 		level_cost: 	-6,
 	},
 	sacrifice_living_creature:{
-		description: 	'Destroy up to {LEVEL} random ally non-undead creature unit(s).',
+		description: 	'Destroy up to {LEVEL} random ally non-undead creature unit(s). Will target units with the lowest cost first.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use: 'sacrifice_living_creature',
@@ -4094,6 +4092,7 @@ var all_abilities = {
 				not_self: 	true,
 				not_types: 	['structure','artifact'],
 				max_abilities: 	{undead: 0},
+				lowest_cost: true,
 				side: 		'ally'
 			},
 		},

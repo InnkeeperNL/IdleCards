@@ -223,6 +223,23 @@ var all_upgrades = {
 		max_level: 		1,
 		//hide_if_maxed: 	true,
 	},
+	zz_a_quick_craft:{
+		name: 			'Quick craft',
+		description: 	'Unlocks quick crafting.',
+		needed_upgrades:{
+			z_a_town_access: 1,
+			wave_access: 1,
+			z_b_alchemist_access: 1,
+		},
+		card_image: 	'carpenter',
+		type: 			'quick_craft',
+		subtypes:  		['any'],
+		amount: 		100,
+		amount_fixed: 	true,
+		cost: 			{shard: 50, scraps:1000,},
+		max_level: 		1,
+		//hide_if_maxed: 	true,
+	},
 
 	// ************************************************* POTIONS ************************************************
 	
