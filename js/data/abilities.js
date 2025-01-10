@@ -582,6 +582,7 @@ var all_abilities = {
 		ability_subtypes: ['receive_damage_proc'],
 		proc_chance: 	50,
 		scales: 		true,
+		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -1185,6 +1186,7 @@ var all_abilities = {
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
 		scales: 		true,
+		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -2205,6 +2207,7 @@ var all_abilities = {
 		ability_subtypes: ['receive_damage_proc'],
 		proc_chance: 	25,
 		proc_amount: 	1,
+		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -3975,6 +3978,7 @@ var all_abilities = {
 		description: 	'When your hero\'s health reaches 0, this will bring it back to life with 10% health. Can be used {LEVEL} time(s).',
 		proc: 			'ally_death',
 		reduce_skill_after_use: 'revive_hero',
+		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -4986,6 +4990,7 @@ var all_abilities = {
 		ability_subtypes: ['receive_damage_proc'],
 		proc_chance: 	50,
 		scales: 		true,
+		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -5267,6 +5272,7 @@ var all_abilities = {
 		ability_subtypes: ['receive_damage_proc'],
 		proc_chance: 	50,
 		scales: 		true,
+		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
