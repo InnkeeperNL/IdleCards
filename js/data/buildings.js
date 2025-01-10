@@ -97,8 +97,8 @@ var all_buildings = {
 		show_potions: true,
 		productions:{
 			flask:{
-				base_time: 		24 * 3600,
-				base_storage: 	2,
+				base_time: 		8 * 3600,
+				base_storage: 	5,
 				upgrade_cost_speed:{
 					scraps: 		100,
 				},
@@ -106,7 +106,8 @@ var all_buildings = {
 					scraps: 		100,
 				},
 				defeated_heroes_speed_bonusses:{
-				}
+				},
+				production_achievement_bonus: 0.1,
 			},
 		}
 	},
