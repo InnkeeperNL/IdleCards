@@ -284,7 +284,6 @@ var all_abilities = {
 	},
 	bless:{
 		description: 	'A random ally unit gains {LEVEL} blessings. Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
-		scales: 		true,
 		targets:	{
 			0:{
 				target: 		'unit',
