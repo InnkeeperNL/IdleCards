@@ -184,7 +184,7 @@ function show_town(){
 									var current_production = gamedata['town'][building_id]['productions'][production_id];
 									var production_info = 	current_building['productions'][production_id];
 									//var production_time = Math.floor(production_info['base_time'] / ( 0.65 + (current_production['speed_level'] / 10)));
-									var production_time = calculate_production_speed(current_production['speed_level'], production_info['base_time'], production_info['defeated_heroes_speed_bonusses'], production_info['production_achievement_bonus'], current_building['level']);
+									var production_time = calculate_production_speed(current_production['speed_level'], production_info['base_time'], production_info['defeated_heroes_speed_bonusses'], production_info['production_achievement_bonus'], gamedata['town'][building_id]['level']);
 									var time_elapsed = (new Date().getTime() - current_production['last_claimed']) / 1000;
 									var ready_production = Math.floor(time_elapsed / production_time);
 									//var max_storage = Math.ceil(production_info['base_storage'] * (0.75 + (current_production['storage_level'] / 4)));
