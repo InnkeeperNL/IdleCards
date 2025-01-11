@@ -216,7 +216,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'bad_omen',
+		card_back: 'oracle',
 		steps: 		6,
 	},
 	draw:{

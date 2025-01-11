@@ -44,14 +44,14 @@ function show_summon(just_summoned){
 			parsed_summon += 	'Reward: ' + nFormatter(Math.floor(summon_stats['reward_bonus'] * 100),3) + '%<br/>';
 			parsed_summon += 	'<br/>';
 			parsed_summon += '</span>';
-			if(just_summoned == undefined || just_summoned == false)
-			{
+			/*if(just_summoned == undefined || just_summoned == false)
+			{*/
 				parsed_summon += '<div class="menu_button slim summon button" onclick="summon_now()">SUMMON</div><br/><br/>';
 				if(get_upgrade_factor('show_altar', 'any', true) > 1)
 				{
 					parsed_summon += '<div class="menu_button slim summon button" data-target-content="altar">ALTAR</div><br/><br/>';
 				}
-			}
+			/*}*/
 
 			for (var i = 1; i < summon_stats['max_pre_buffs'] + 1; i++) {
 				parsed_summon += '<span class="pebuff" onclick="remove_prebuff(\'' + i + '\')">';

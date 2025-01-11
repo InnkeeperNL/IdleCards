@@ -448,6 +448,32 @@ var all_abilities = {
 		level_cost: 		8,
 		level_cost_spell: 	4,
 	},
+	bolstering_deaths:{
+		description: 	'When any ally creature is destroyed, your hero gains {LEVEL} health permanently.',
+		proc: 			'ally_creature_death',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bolster',
+				type: 			'increase_health',
+				subtypes: 		['bolster','bolster_hero'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		8,
+		level_cost_spell: 	4,
+	},
 	break:{
 		name_color: 	'rgba(255,255,255,0.9)',
 		description: 	'Destroys an enemy artifact or golem. Can be used up to {LEVEL} time(s).',
@@ -3697,6 +3723,70 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 		level_cost_spell: 	1,
+	},
+	purify:{
+		description: 	'Removes all negative effects from {LEVEL} random ally unit(s) or your hero. Negative effects are burn, curse, doom and poison.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				has_negative_effect: true,
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'cleanse',
+				type: 		'set_effect_amount',
+							effect_names:{
+								burning: 	0,
+								cursed: 	0,
+								doom: 		0,
+								poisoned: 	0,
+							},
+				subtypes: 	['cleansing','cleanse'],
+				amount: 	1,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_spell: 	1,
+	},
+	purifying_entry:{
+		description: 	'When played, removes all negative effects from {LEVEL} random ally unit(s) or your hero. Negative effects are burn, curse, doom and poison.',
+		cannot_proc_while_stunned: true,
+		proc: 			'on_play',
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				has_negative_effect: true,
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'cleanse',
+				type: 		'set_effect_amount',
+							effect_names:{
+								burning: 	0,
+								cursed: 	0,
+								doom: 		0,
+								poisoned: 	0,
+							},
+				subtypes: 	['cleansing','cleanse'],
+				amount: 	1,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
 	},
 	raging_deaths:{
 		name_color: 	'rgba(55,255,55,0.9)',
