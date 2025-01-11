@@ -220,7 +220,7 @@ var all_abilities = {
 		},
 	},
 	backlash:{
-		description: 	'Deals 1 physical damage to a random ally creature unit that has power. That unit then gains {LEVEL} temporary power.',
+		description: 	'Deals 1 physical damage the ally creature unit with the highest current health that has power. That unit then gains {LEVEL} temporary power.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		targets:	{
@@ -231,6 +231,7 @@ var all_abilities = {
 				not_types: 		['object','structure'],
 				min_hp: 		1,
 				min_power: 		0,
+				highest_hp: 	true,
 				side: 			'ally'
 			},
 		},
