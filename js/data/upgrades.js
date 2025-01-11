@@ -117,6 +117,16 @@ var all_upgrades = {
 		max_level: 		1,
 		//hide_if_maxed: 	true,
 	},
+	summon_altar_rarity:{
+		name: 			'Altar rarity',
+		description: 	'Increases the maximum rarity of cards sacrificed at the altar by 10%.',
+		card_image: 	'reapers_insight',
+		type: 			'altar_rarity',
+		subtypes:  		['any'],
+		level_cost_scale: 	2,
+		amount: 		0.1,
+		cost: 			{scraps:25,},
+	},
 	summon_tries:{
 		name: 			'Summon tries',
 		description: 	'Increases the number of times you can try to defeat the same summoned enemy.',

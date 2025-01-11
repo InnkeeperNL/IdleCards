@@ -412,11 +412,13 @@ function show_altar(){
 	}
 	if(current_altar == undefined || all_available_cards[current_altar] == undefined)
 	{
-		parsed_summon += 	'Max rarity: ' + (summon_stats['max_rarity']);
+		parsed_summon += 	'Max rarity: ' + Math.floor(summon_stats['max_rarity'] * get_upgrade_factor('altar_rarity', 'any', true));
 	}
 	else
 	{
-		parsed_summon += 	'Drop chance: ~' + Math.floor(((summon_stats['loot_rarity'] * round_by_percent((20 * summon_stats['reward_bonus']) * /*sqr*/(get_effective_power_factor(average_level)) * (1 + (average_level / 100))) / card_drop_chance_reduction) / all_available_cards[current_altar]['value']) * 100) + '%';
+		var drop_chance = Math.floor(((summon_stats['loot_rarity'] * round_by_percent((20 * summon_stats['reward_bonus']) * /*sqr*/(get_effective_power_factor(average_level)) * (1 + (average_level / 100))) / card_drop_chance_reduction) / all_available_cards[current_altar]['value']) * 100);
+		if(drop_chance > 100){drop_chance = 100;}
+		parsed_summon += 	'Drop chance: ~' + drop_chance + '%';
 	}
 	parsed_summon += 	'<br/>';
 	parsed_summon += 	'Tries: ' + (summon_stats['max_tries']) + '<br/>';
@@ -447,7 +449,7 @@ function show_choose_altar(){
 	$.each(gamedata['summon_pre_buffs'], function(buff_id, buff_card){
 		summon_stats = adjust_summon_stats(summon_stats, buff_card);
 	});
-	var max_rarity = summon_stats['max_rarity'];
+	var max_rarity = summon_stats['max_rarity'] * get_upgrade_factor('altar_rarity', 'any', true);
 
 	cards_per_page = 12;
 	$('.choose_altar_container').html('<span class="no_tinker">You have no cards that match your filter.</span>');
