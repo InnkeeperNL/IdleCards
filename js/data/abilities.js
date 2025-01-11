@@ -258,6 +258,7 @@ var all_abilities = {
 		proc: 			'dealt_damage_to_hero',
 		subtypes: 		['melee'],
 		proc_amount: 	1,
+		scales: 		true,
 		targets:	{
 			0:{
 				target: 		'unit',

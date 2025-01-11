@@ -120,6 +120,9 @@ var all_upgrades = {
 	summon_altar_rarity:{
 		name: 			'Altar rarity',
 		description: 	'Increases the maximum rarity of cards sacrificed at the altar by 10%.',
+		needed_upgrades:{
+			summon_altar: 	1,
+		},
 		card_image: 	'reapers_insight',
 		type: 			'altar_rarity',
 		subtypes:  		['any'],
