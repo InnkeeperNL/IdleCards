@@ -102,6 +102,21 @@ var all_upgrades = {
 		cost: 			{scraps:25,},
 		max_level: 		40,
 	},
+	summon_altar:{
+		name: 			'Altar',
+		description: 	'Unlocks the altar.',
+		needed_upgrades:{
+			aaa_rewards: 	10,
+		},
+		card_image: 	'skeletal_sacrifice',
+		type: 			'show_altar',
+		subtypes:  		['any'],
+		amount: 		100,
+		amount_fixed: 	true,
+		cost: 			{shard: 10, scraps:100,},
+		max_level: 		1,
+		//hide_if_maxed: 	true,
+	},
 	summon_tries:{
 		name: 			'Summon tries',
 		description: 	'Increases the number of times you can try to defeat the same summoned enemy.',

@@ -1,4 +1,5 @@
 .summon_container,
+.altar_container,
 .waves_container
 {
 	position: absolute;
@@ -21,7 +22,8 @@
 }
 
 .waves_container .menu_button,
-.summon_container .menu_button
+.summon_container .menu_button,
+.altar_container .menu_button
 {
 	margin-right: 0px;
 }
@@ -114,7 +116,8 @@
 .selected_pre_summon_buff_text,
 .selected_pre_summon_buff,
 .summon_container .card,
-.waves_container .card
+.waves_container .card,
+.altar_container .card
 {
 	float: none;
 	display: inline-block;
@@ -150,7 +153,8 @@
 }
 
 .waves_container .summon_stats,
-.summon_container .summon_stats
+.summon_container .summon_stats,
+.altar_container .summon_stats
 {
 	font-size:24px;
 	line-height: 30px;
@@ -178,4 +182,17 @@
 {
 	opacity: 0.8;
 	box-shadow:inset 0px 0px 40px 0px rgba(255,255,200,1), 5px 5px 10px rgba(0,0,0,0.5);
+}
+
+.altar_bg
+{
+	position: absolute;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	left:0px;
+	background-position: center center;
+    background-size: cover;
+    background-image: url(../images/cards/dream_TradingCard-2024-12-01T044710.775.jpg);
+    opacity:0.1;
 }

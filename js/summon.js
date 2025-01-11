@@ -44,7 +44,14 @@ function show_summon(just_summoned){
 			parsed_summon += 	'Reward: ' + nFormatter(Math.floor(summon_stats['reward_bonus'] * 100),3) + '%<br/>';
 			parsed_summon += 	'<br/>';
 			parsed_summon += '</span>';
-			parsed_summon += '<div class="menu_button slim summon button" onclick="summon_now()">SUMMON</div><br/><br/>';
+			if(just_summoned == undefined || just_summoned == false)
+			{
+				parsed_summon += '<div class="menu_button slim summon button" onclick="summon_now()">SUMMON</div><br/><br/>';
+				if(get_upgrade_factor('show_altar', 'any', true) > 1)
+				{
+					parsed_summon += '<div class="menu_button slim summon button" data-target-content="altar">ALTAR</div><br/><br/>';
+				}
+			}
 
 			for (var i = 1; i < summon_stats['max_pre_buffs'] + 1; i++) {
 				parsed_summon += '<span class="pebuff" onclick="remove_prebuff(\'' + i + '\')">';
@@ -259,7 +266,7 @@ function show_waves_battle(){
 	show_content('battle');
 }
 
-function summon_now(){
+function summon_now(use_current_altar_card){
 	var summon_stats = get_summon_stats();
 
 	$.each(gamedata['summon_pre_buffs'], function(buff_id, buff_card){
@@ -270,6 +277,12 @@ function summon_now(){
 	//console.log(summon_stats['max_rarity']);
 
 	var chosen_summon = get_random_hero(true, summon_stats['min_rarity'], summon_stats['max_rarity'], summon_stats['common_reduction']);
+	if(use_current_altar_card != undefined && use_current_altar_card == true && all_available_cards[current_altar] != undefined && gamedata['owned_cards'][current_altar] != undefined && gamedata['owned_cards'][current_altar] > 0)
+	{
+		chosen_summon = current_altar;
+		gamedata['owned_cards'][current_altar] -= 1;
+		current_altar = '';
+	}
 	var found_level = /*round_by_percent*/(summon_stats['min_level'] + (Math.random() * (summon_stats['max_level'] - summon_stats['min_level'])));
 	gamedata['current_summon'] = {
 		hero: 		chosen_summon,
@@ -366,4 +379,124 @@ function use_summon_post_buff(card_id){
 			show_summon();
 		}
 	}
+}
+
+var current_altar = '';
+
+function show_altar(){
+	var parsed_summon = '';
+	var unowned_class = '';
+	var summon_stats = get_summon_stats();
+	$.each(gamedata['summon_pre_buffs'], function(buff_id, buff_card){
+		summon_stats = adjust_summon_stats(summon_stats, buff_card);
+	});
+	correct_summon_stats(summon_stats);
+	var average_level = ((summon_stats['max_level'] - summon_stats['min_level']) / 2) + summon_stats['min_level'];
+	parsed_summon += '<div class="summoned_hero_container">';
+	var parsed_summoned_hero = parse_card('empty_card');
+	if(all_available_cards[current_altar] != undefined)
+	{
+		parsed_summoned_hero = parse_card(current_altar);
+	}
+	parsed_summon += '<span>' + parsed_summoned_hero + '</span>';
+	parsed_summon += '<span class="summon_stats">';
+	parsed_summon += 	'<br/>';
+	if(summon_stats['min_level'] != 10 || summon_stats['max_level'] != 10)
+	{
+		parsed_summon += 	'Power: ' + Math.floor(summon_stats['min_level'] * 10);
+		if(summon_stats['min_level'] != (summon_stats['max_level']))
+		{
+			parsed_summon += 	' - ' + Math.ceil(summon_stats['max_level'] * 10);
+		}
+		parsed_summon += 	'%<br/>';
+	}
+	if(current_altar == undefined || all_available_cards[current_altar] == undefined)
+	{
+		parsed_summon += 	'Max rarity: ' + (summon_stats['max_rarity']);
+	}
+	else
+	{
+		parsed_summon += 	'Drop chance: ~' + Math.floor(((summon_stats['loot_rarity'] * round_by_percent((20 * summon_stats['reward_bonus']) * /*sqr*/(get_effective_power_factor(average_level)) * (1 + (average_level / 100))) / card_drop_chance_reduction) / all_available_cards[current_altar]['value']) * 100) + '%';
+	}
+	parsed_summon += 	'<br/>';
+	parsed_summon += 	'Tries: ' + (summon_stats['max_tries']) + '<br/>';
+	parsed_summon += 	'Reward: ' + nFormatter(Math.floor(summon_stats['reward_bonus'] * 100),3) + '%<br/>';
+	parsed_summon += 	'<br/>';
+	parsed_summon += '</span>';
+
+	if(current_altar == '')
+	{
+		parsed_summon += '<div class="menu_button slim summon button" data-target-content="choose_altar">CHOOSE</div><br/><br/>';
+	}
+	else
+	{
+		parsed_summon += '<div class="menu_button slim summon button" onclick="show_content(\'summon\');summon_now(true)" no-new-page="true">SACRIFICE</div><br/><br/>';
+		parsed_summon += '<div class="menu_button slim summon button" onclick="current_altar=\'\'" data-target-content="altar">CLEAR</div><br/><br/>';
+	}
+
+	parsed_summon += 	'</div>';
+
+	$('.altar_container').html(parsed_summon);
+}
+
+var current_show_altar_page = 1;
+
+function show_choose_altar(){
+
+	var summon_stats = get_summon_stats();
+	$.each(gamedata['summon_pre_buffs'], function(buff_id, buff_card){
+		summon_stats = adjust_summon_stats(summon_stats, buff_card);
+	});
+	var max_rarity = summon_stats['max_rarity'];
+
+	cards_per_page = 12;
+	$('.choose_altar_container').html('<span class="no_tinker">You have no cards that match your filter.</span>');
+
+	gamedata['owned_cards'] = sortObj(gamedata['owned_cards']);
+	var current_card_number = 0;
+
+	$.each(gamedata['owned_cards'], function(card_id, owned_amount){
+		if(all_available_cards[card_id] != undefined){
+			var effective_owned_amount = owned_amount + 0;
+			var card_filtered = false;
+			if(all_available_cards[card_id]['hero_version'] == undefined || all_available_cards[card_id]['value'] > max_rarity)
+			{
+				card_filtered = true;
+				//console.log(card_id);
+			}
+			
+			if(effective_owned_amount > 0 && card_filtered == false && check_filters(card_id) == false)
+			{
+				current_card_number ++;
+				if(current_card_number == 1)
+				{
+					$('.choose_altar_container').html('');
+				}
+				if(current_card_number / cards_per_page > current_show_altar_page -1 && current_card_number / cards_per_page <= current_show_altar_page)
+				{
+					var parsed_card = parse_card(card_id, effective_owned_amount);
+					$('.choose_altar_container').append('<span onclick="current_altar=\'' + card_id + '\';show_content(\'altar\');">' + parsed_card + '</span>');
+				}
+			}
+		}
+		else
+		{
+			delete gamedata['owned_cards'][card_id];
+		}
+	});
+	if(current_show_altar_page == 1){$('.page_selection .previous_page').addClass('no_page');}else{$('.page_selection .previous_page').removeClass('no_page');}
+	if(current_card_number / cards_per_page <= current_show_altar_page){$('.page_selection .next_page').addClass('no_page');}else{$('.page_selection .next_page').removeClass('no_page');}
+	if(current_card_number > 0 && Math.ceil(current_card_number / cards_per_page) < current_show_altar_page)
+	{
+		current_show_altar_page = 1;
+		show_choose_altar();
+	}
+	if(current_card_number == 0){$('.page_selection .page_number').addClass('no_page')}else{$('.page_selection .page_number').removeClass('no_page');}
+	$('.page_selection .page_number').html(current_show_altar_page + ' / ' + Math.ceil(current_card_number / cards_per_page));
+}
+
+function set_altar_page(amount){
+	current_show_altar_page += amount;
+	if(current_show_altar_page < 1){current_show_altar_page = 1;}
+	show_choose_altar();
 }
