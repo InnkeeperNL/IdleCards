@@ -309,6 +309,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	0.75,
 		level_cost_spell: 0.375,
+		level_cost_artifact: 1.5
 	},
 	blessed:{
 		description: 	'Has a {LEVEL}0% chance to return to your deck when destroyed.',
@@ -3988,6 +3989,58 @@ var all_abilities = {
 		min_cost: 			1,
 		cost_factor: 		'health',
 		max_level: 			1,
+	},
+	restore:{
+		description: 	'Heals your hero by {LEVEL}.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				damaged: 		true,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'healing',
+				type: 			'healing',
+				subtypes: 		['active_healing','heal_hero'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		4,
+		level_cost_spell: 	2,
+	},
+	restoring_deaths:{
+		description: 	'When any ally creature is destroyed, this heals your hero by {LEVEL}.',
+		proc: 			'ally_creature_death',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				damaged: 		true,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'healing',
+				type: 			'healing',
+				subtypes: 		['active_healing','heal_hero'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		6,
 	},
 	resurrect:{
 		name_color: 	'rgba(160, 95, 250,0.9)',
