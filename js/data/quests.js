@@ -559,6 +559,20 @@ var all_chained_achievements = {
 		card_back: 'viper',
 		steps: 		6,
 	},
+	pure:{
+		name: 			'pure',
+		description: 	'Have allies purify an ally {AMOUNT} time(s).',
+		objective: 		'ally_performed_cleanse_ally',
+		amount: 	1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'righteous_lady',
+		steps: 		6,
+	},
 	resist_magic:{
 		name: 			'resist magic',
 		description: 	'Have allies resist magic damage {AMOUNT} time(s).',
