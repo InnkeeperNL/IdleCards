@@ -4119,6 +4119,57 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 	0,
 	},
+	reveal:{
+		description: 	'Removes stealth from the nearest enemy {LEVEL} unit(s) or hero.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'nearest',
+				has_ability: 	'stealth',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'eye',
+				type: 		'set_skill',
+				subtypes: 	['reveal'],
+				skill_id: 	'stealth',
+				amount: 	0
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
+	reveal_all:{
+		description: 	'Removes stealth from all enemies.',
+		cannot_proc_while_stunned: true,
+		do_not_pause_between: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	6,
+				position: 		'random',
+				has_ability: 	'stealth',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'eye',
+				type: 		'set_skill',
+				subtypes: 	['reveal'],
+				skill_id: 	'stealth',
+				amount: 	0
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		3,
+	},
 	revive_hero:{
 		description: 	'When your hero\'s health reaches 0, this will bring it back to life with 10% health. Can be used {LEVEL} time(s).',
 		proc: 			'ally_death',
@@ -4494,6 +4545,63 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	4,
+	},
+	snipe:{
+		description: 	'Deals physical projectile damage equal to its power to the enemy unit or hero with the lowest health.',
+		cannot_proc_while_stunned: true,
+		need_power: 	true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				lowest_hp: 		true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'arrow',
+				type: 			'damage',
+				subtypes: 		['physical','ranged','projectile','snipe'],
+				amount: 		'origin_power'
+			}
+		},
+		animation: 		'attack',
+		level_cost: 	4,
+		cost_adjustment: 1,
+		cost_factor: 	'power',
+		average_hits: 	1,
+	},
+	snipe_hv:{
+		name: 			'snipe',
+		description: 	'Deals physical projectile damage equal to its power to the enemy unit with the lowest health.',
+		cannot_proc_while_stunned: true,
+		need_power: 	true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				lowest_hp: 		true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'arrow',
+				type: 		'damage',
+				subtypes: 	['physical','ranged','projectile','snipe'],
+				amount: 	'origin_power'
+			}
+		},
+		animation: 		'attack',
+		level_cost: 	3,
+		cost_adjustment: 1,
+		cost_factor: 	'power',
+		average_hits: 	1,
 	},
 	spawn_sporeling:{
 		description: 	'Has a 25% chance to summon {LEVEL} sporeling(s).',
