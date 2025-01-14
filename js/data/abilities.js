@@ -285,7 +285,7 @@ var all_abilities = {
 		},
 	},
 	bless:{
-		description: 	'A random ally unit gains {LEVEL} blessings. Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
+		description:'A random ally unit gains {LEVEL} blessings. Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -322,6 +322,7 @@ var all_abilities = {
 				target: 		'any',
 				target_amount: 	1,
 				position: 		'self',
+				max_hp: 		0,
 				side: 			'ally',
 			},
 		},
@@ -4072,6 +4073,35 @@ var all_abilities = {
 		level_cost: 		0.3,
 		min_cost: 			3,
 		cost_factor: 		'health',
+	},
+	resurrect_ally:{
+		description: 	'When an ally creature\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 10% health.',
+		proc: 			'ally_creature_death',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				max_hp: 		0,
+				min_total_hp: 	1,
+				side: 			'ally',
+				slot_free: 		true
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'resurrect',
+				type: 			'healing',
+				subtypes: 		['resurrect'],
+				amount: 		'target_max_health',
+				amount_factor: 	0.1,
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
 	},
 	retreat:{
 		description: 	'When this survives damage, it return to its owner\'s hand. If this was summoned, it disappears.',
