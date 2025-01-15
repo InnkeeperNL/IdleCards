@@ -129,6 +129,7 @@ var all_upgrades = {
 		level_cost_scale: 	2,
 		amount: 		0.1,
 		cost: 			{scraps:25,},
+		max_level: 		20,
 	},
 	summon_tries:{
 		name: 			'Summon tries',
@@ -264,7 +265,7 @@ var all_upgrades = {
 		subtypes:  		['any'],
 		amount: 		100,
 		amount_fixed: 	true,
-		cost: 			{shard: 50, scraps:1000,},
+		cost: 			{shard: 25, peasant: 100, scraps:1000,},
 		max_level: 		1,
 		//hide_if_maxed: 	true,
 	},
