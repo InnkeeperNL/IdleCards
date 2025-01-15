@@ -605,6 +605,38 @@ var all_abilities = {
 		level_cost: 		6,
 		level_cost_spell: 	3,
 	},
+	burning_entry:{
+		description: 	'Applies {LEVEL} burn to all nearby enemy units when played. Will apply the burn to the enemy hero if there are no units nearby.{BURN}',
+		proc: 			'on_play',
+		scales: 		true,
+		do_not_pause_between: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	3,
+				position: 		'opposing_wide',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				pause_before: 	500,
+				projectile: 	'burn',
+				type: 			'apply_burn',
+				subtypes: 		['burn'],
+				amount: 		'ability_level',
+			}
+		},
+		level_cost: 	1,
+	},
 	burning_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, there is a 50% chance this applies {LEVEL} burn to it.',
 		proc: 			'ally_hero_damaged',
@@ -3790,7 +3822,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1,
+		level_cost: 		0.5,
 	},
 	raging_deaths:{
 		name_color: 	'rgba(55,255,55,0.9)',
@@ -5003,7 +5035,7 @@ var all_abilities = {
 			}
 		},
 		animation: 		'attack',
-		level_cost: 	1.5,
+		level_cost: 	1,
 		average_hits: 	0.5,
 	},
 	stun:{

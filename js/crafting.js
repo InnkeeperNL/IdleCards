@@ -187,11 +187,11 @@ function show_card_recipe(recipe_id){
 	{
 		if(gamedata['owned_cards']['peasant'] >= all_available_cards[recipe_id]['value'])
 		{
-			recipe_details += '<br/><div class="menu_button slim craft_button" onclick="quick_craft_current_card()" no-new-page="true">QUICK CRAFT<br/><span>(' + gamedata['owned_cards']['peasant'] + '/' + all_available_cards[recipe_id]['value'] + ' peasants)</span></div>';
+			recipe_details += '<br/><div class="menu_button slim craft_button" onclick="quick_craft_current_card()" no-new-page="true">QUICK CRAFT<br/><span>(' + nFormatter(gamedata['owned_cards']['peasant'], 3) + ' / ' + all_available_cards[recipe_id]['value'] + ' peasants)</span></div>';
 		}
 		else
 		{
-			recipe_details += '<br/><div class="menu_button slim craft_button" no-new-page="true">QUICK CRAFT<br/><span class="not_enough">(' + gamedata['owned_cards']['peasant'] + '/' + all_available_cards[recipe_id]['value'] + ' peasants)</span></div>';
+			recipe_details += '<br/><div class="menu_button slim craft_button" no-new-page="true">QUICK CRAFT<br/><span class="not_enough">(' + nFormatter(gamedata['owned_cards']['peasant'], 3) + ' / ' + all_available_cards[recipe_id]['value'] + ' peasants)</span></div>';
 		}
 	}
 
