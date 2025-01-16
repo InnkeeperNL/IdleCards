@@ -1790,7 +1790,31 @@ var all_abilities = {
 		cost_adjustment: -3,
 		//cost_on_top: 	true,
 	},
-	
+	earth_blast:{
+		description: 	'Deals {LEVEL} physical earth damage to all enemy units.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	5,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'earth',
+				type: 			'damage',
+				subtypes: 		['physical','earth'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		12,
+		level_cost_spell: 	6,
+		average_hits: 		3,
+	},
 	echo:{
 		name_color: 	'rgba(171, 203, 255,0.9)',
 		description: 	'Has a 75% chance to return to its owner\'s hand if this used an ability.',
@@ -1845,7 +1869,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 		level_cost_spell: 	1,
-		level_cost_hero: 	2,
+		level_cost_hero: 	3,
 	},
 	empower_all:{
 		description: 	'All ally creatures that have power gain {LEVEL} power until they act. Cannot affect heroes or itself.',
@@ -1875,7 +1899,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		6,
 		level_cost_spell: 	3,
-		level_cost_hero: 	6,
+		level_cost_hero: 	9,
 	},
 	empower_arrivals:{
 		description: 	'When any ally creature unit that has power enters the game, it gains {LEVEL} temporary power.',
@@ -1906,7 +1930,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 		level_cost_artifact: 3,
-		level_cost_hero: 	2,
+		level_cost_hero: 	3,
 	},
 	empower_hero:{
 		description: 	'Your hero gains {LEVEL} power until they act.',
@@ -1963,6 +1987,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		5,
+		level_cost_hero: 	8,
 	},
 	explode:{
 		description: 	'When this unit is destroyed, it deals {LEVEL} physical damage to all nearby units.',
@@ -5172,6 +5197,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		6,
+		level_cost_spell: 	3,
 	},
 	summon_ghost:{
 		description: 	'Summons {LEVEL} ghost(s).',
@@ -5196,9 +5222,10 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		4,
+		level_cost_spell: 	2,
 	},
 	summon_imp:{
-		description: 	'Summons up to a total of {LEVEL} imp type unit(s).',
+		description: 	'Summons {LEVEL} imp type unit(s).',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
@@ -5222,14 +5249,15 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 6,
+		level_cost: 		12,
+		level_cost_spell: 	6
 	},
 	summon_skeleton:{
-		description: 	'Summons up to a total of {LEVEL} skeleton(s).',
+		description: 	'Summons {LEVEL} skeleton(s).',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
-		reduce_skill_after_use:'summon_skeleton',
+		//reduce_skill_after_use:'summon_skeleton',
 		proc_amount: 'ability_level',
 		targets:	{
 			0:{
@@ -5247,7 +5275,8 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 6,
+		level_cost: 		12,
+		level_cost_spell: 	6,
 	},
 	summon_spike_pod:{
 		description: 	'Summons {LEVEL} spike pod(s).',
@@ -5271,8 +5300,8 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 12,
-		level_cost_spell: 3,
+		level_cost: 		12,
+		level_cost_spell: 	6,
 	},
 	summon_sporeling:{
 		description: 	'Summons {LEVEL} sporeling(s).',
@@ -5296,7 +5325,8 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 5,
+		level_cost: 		6,
+		level_cost_spell: 	3,
 	},
 	thorned_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, there is a 50% chance this will deal {LEVEL} physical damage to it.',
