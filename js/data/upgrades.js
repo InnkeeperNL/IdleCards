@@ -148,7 +148,7 @@ var all_upgrades = {
 	},
 	merchant_offers:{
 		name: 			'Merchant offers',
-		description: 	'Reduces the maximum scraps requested by merchants offering cards by 10%.<br>Only affects new offers.',
+		description: 	'Reduces the maximum scraps requested by merchants offering cards by 1%.<br>Only affects new offers.',
 		needed_upgrades:{
 			z_a_town_access: 1,
 			aab_summon_rarity: 	10,
@@ -156,14 +156,14 @@ var all_upgrades = {
 		card_image: 	'chest',
 		type: 			'merchant_sell',
 		subtypes:  		['any'],
-		amount: 		0.1,
+		amount: 		0.01,
 		level_cost_scale: 	5,
 		cost: 			{scraps:10,},
-		max_level: 		100,
+		max_level: 		25,
 	},
 	merchant_sales:{
 		name: 			'Merchant sales',
-		description: 	'Increases the maximum scraps offered by merchants who want to buy cards by 10%.<br>Only affects new offers.',
+		description: 	'Increases the maximum scraps offered by merchants who want to buy cards by 1%.<br>Only affects new offers.',
 		needed_upgrades:{
 			z_a_town_access: 1,
 			aab_summon_rarity: 	10,
@@ -171,10 +171,10 @@ var all_upgrades = {
 		card_image: 	'mercenary',
 		type: 			'merchant_buy',
 		subtypes:  		['any'],
-		amount: 		0.1,
+		amount: 		0.01,
 		level_cost_scale: 	5,
 		cost: 			{scraps:10,},
-		max_level: 		100,
+		max_level: 		25,
 	},
 	wave_access:{
 		name: 			'Waves',
@@ -288,12 +288,12 @@ var all_upgrades = {
 	},
 	zz_mercenary_potion:{
 		name: 			'mercenary potion',
-		description: 	'2% increase to the maximum scraps offered by merchants.',
+		description: 	'1% increase to the maximum scraps offered by merchants.',
 		card_image: 	'mercenary',
 		upgrade_type: 	'potion',
 		type: 			'merchant_buy',
 		subtypes:  		['any'],
-		amount:  		0.02,
+		amount:  		0.01,
 		level_cost_scale: 	20,
 		cost:{
 			flask: 		5,
@@ -302,12 +302,12 @@ var all_upgrades = {
 	},
 	zz_chest_potion:{
 		name: 			'chest potion',
-		description: 	'2% reduction to the maximum scraps requested by merchants.',
+		description: 	'1% reduction to the maximum scraps requested by merchants.',
 		card_image: 	'chest',
 		upgrade_type: 	'potion',
 		type: 			'merchant_sell',
 		subtypes:  		['any'],
-		amount:  		0.02,
+		amount:  		0.01,
 		level_cost_scale: 	20,
 		cost:{
 			flask: 		5,
