@@ -34,6 +34,24 @@ var all_achievements = {
 			},
 		},
 	},
+	fixed_election:{
+		name: 			'fixed election',
+		description: 	'Bless a politician.',
+		card_image: 	'politician',
+		objective: 		'politician_affected_by_grant_bless',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_politician',
+				reward_amount: 1,
+			},
+		},
+	},
 	lamb_chops:{
 		name: 			'lamb chops',
 		description: 	'Sacrifice a lamb.',
