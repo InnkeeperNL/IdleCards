@@ -488,6 +488,11 @@ function show_upgrades(){
 		{
 			any_upgrade_maxed = true;
 		}
+		if(gamedata['upgrades'][upgrade_id] != undefined && gamedata['upgrades'][upgrade_id] > upgrade_info['max_level'])
+		{
+			gamedata['upgrades'][upgrade_id] = upgrade_info['max_level'];
+			saveToLocalStorage();
+		}
 
 			
 		/*$.each(upgrade_info['cost'], function(cost_id, cost_amount){
