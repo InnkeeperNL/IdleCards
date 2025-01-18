@@ -8,7 +8,9 @@ function show_collection(){
 	var cards_displayed = 0;
 
 	var collected = 0;
+	var known_recipes = 0;
 	var collectable = 0;
+	var recipe_count = 0;
 
 	$.each(all_available_cards, function(card_id, card_info){
 
@@ -19,6 +21,14 @@ function show_collection(){
 			if(gamedata['owned_cards'][card_id] != undefined)
 			{
 				collected ++;
+			}
+			if(card_info['recipe'] != undefined)
+			{
+				recipe_count ++;
+			}
+			if(card_info['recipe'] != undefined && gamedata['known_recipes'][card_id] != undefined)
+			{
+				known_recipes ++;
 			}
 			if(cards_displayed > (current_collection_page * 12) - 12 && cards_displayed <= current_collection_page * 12)
 			{
@@ -64,8 +74,11 @@ function show_collection(){
 		}
 	}
 	var percent_collected = Math.floor(collected / collectable * 100);
+	var percent_recipes_collected = Math.floor(known_recipes / recipe_count * 100);
 	if(collected == 0){percent_collected = 0;}
-	$('.collection_count').html('Collected: ' + percent_collected + '%');
+	if(known_recipes == 0){percent_recipes_collected = 0;}
+	$('.collection_count').html('Cards: ' + percent_collected + '%');
+	$('.collection_recipe_count').html('Recipes: ' + percent_recipes_collected + '%');
 };
 
 function set_collection_page(amount){

@@ -1750,6 +1750,7 @@
 	display:none;
 }
 
+.collection_recipe_count,
 .collection_count
 {
 	position: absolute;
@@ -1761,7 +1762,14 @@
     color: #fff;
 }
 
+.collection_recipe_count
+{
+	right: auto;
+	left: 240px;
+}
+
 @media only screen and (max-width:800px) {
+	.collection_recipe_count,
 	.collection_count
 	{
 		position: absolute;
@@ -1772,6 +1780,11 @@
 	    font-size: 20px;
 	    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
 	    color: #fff;
+	}
+	.collection_recipe_count
+	{
+		right: auto;
+		left: 10px;
 	}
 }
 
