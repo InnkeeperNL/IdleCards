@@ -1804,7 +1804,7 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				projectile: 	'earth',
+				projectile: 	'stone',
 				type: 			'damage',
 				subtypes: 		['physical','earth'],
 				amount: 		'ability_level',
