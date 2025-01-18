@@ -44,7 +44,7 @@ h2,h3
 	margin: 0px;
 	font-family: 'Caveat Brush', cursive;
 	float:right;
-	margin-right:1%;
+	margin-right:2%;
 }
 
 .hidden
@@ -563,6 +563,12 @@ div.menu_button.widest
 .hidden
 {
 	display:none;
+}
+
+#content_home h2
+{
+	margin-top: 14px;
+	font-size: 20px;
 }
 
 #content_card_filters .clear_filters_button,

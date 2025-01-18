@@ -190,11 +190,12 @@
 	bottom:20px;*/
 }
 
-.menu_button.craft_button span
+.menu_button.craft_button span.button_subtext
 {
 	font-size: 20px;
 }
 
+.menu_button.craft_button.not_enough,
 .menu_button.craft_button span.not_enough
 {
 	color: rgba(255,100,100,1);

@@ -80,7 +80,7 @@
 		<div id="content_home" class="page_container">
 		    
 			<div class="home_section">
-				<h1>Idle cards</h1><h2>Version 0.01</h2>
+				<h1>Idle cards</h1><h2 class="version_number">Version 0.01</h2>
 			</div>
 			<div class="home_section home_buttons_container">
 
@@ -1027,6 +1027,14 @@
 
 
 	function show_home(){
+		var version_number = 'V';
+		version_number += main_version;
+		version_number += '.' + count_object(all_buildings);
+		version_number += '.' + count_object(all_upgrades);
+		version_number += '.' + count_object(all_available_cards);
+
+		$('.version_number').html(version_number);
+
 		var current_time = new Date();
 		var last_midnight = new Date();
 		var next_midnight = new Date();
@@ -1215,7 +1223,7 @@
 
 	function get_deck_slot_price(){
 		var owned_decks_count = count_object(gamedata['decks']);
-		var new_deck_slot_price = sqr(owned_decks_count) * 100;
+		var new_deck_slot_price = (owned_decks_count) * 100;
 		return new_deck_slot_price;
 	}
 

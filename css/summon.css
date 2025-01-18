@@ -95,7 +95,7 @@
 .selected_pre_summon_buff_text
 {
 	padding-left: 62px;
-	padding-right: 62px;
+	padding-right: 77px;
 }
 
 .menu_button.slim.use_summon_pre_buff_button
@@ -107,7 +107,7 @@
 	top: auto;
 	right: 2px;
 	height: 50px;
-    width: 55px;
+    width: 70px;
     font-size: 20px;
     padding-top: 12px;
     margin: 0px;

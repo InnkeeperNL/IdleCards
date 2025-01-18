@@ -60,19 +60,30 @@ function show_summon(just_summoned){
 				{
 					parsed_prebuff = parse_card(gamedata['summon_pre_buffs'][i]);
 				}
+				else
+				{
+					parsed_prebuff = parse_card('empty_card');
+				}
 				parsed_summon += parsed_prebuff;
 				parsed_summon += '</span>';
 			}
 			parsed_summon += 	'<br/><br/>';
-			if(count_object(gamedata['summon_pre_buffs']) < summon_stats['max_pre_buffs'] && selected_pre_summon_buff != '' && all_available_cards[selected_pre_summon_buff] != undefined)
+			if(/*count_object(gamedata['summon_pre_buffs']) < summon_stats['max_pre_buffs'] &&*/ selected_pre_summon_buff != '' && all_available_cards[selected_pre_summon_buff] != undefined)
 			{
 				parsed_summon += '<div class="selected_pre_summon_buff_container">';
 					parsed_summon += '<span class="selected_pre_summon_buff">' + parse_card(selected_pre_summon_buff) + '</span>';
 					parsed_summon += '<span class="selected_pre_summon_buff_text">' + all_available_cards[selected_pre_summon_buff]['name'] + '<br/>' + all_available_cards[selected_pre_summon_buff]['description'] + '</span>';
-					parsed_summon += '<div class="menu_button slim summon button use_summon_pre_buff_button" onclick="use_summon_pre_buff(\'' + selected_pre_summon_buff + '\')">USE</div>';
+					if(count_object(gamedata['summon_pre_buffs']) < summon_stats['max_pre_buffs'])
+					{
+						parsed_summon += '<div class="menu_button slim summon button use_summon_pre_buff_button" onclick="use_summon_pre_buff(\'' + selected_pre_summon_buff + '\')">USE</div>';
+					}
+					else
+					{
+						parsed_summon += '<div class="menu_button slim summon button use_summon_pre_buff_button")">FULL</div>';
+					}
 				parsed_summon += '</div><br/>';
 			}
-			if(count_object(gamedata['summon_pre_buffs']) < summon_stats['max_pre_buffs'])
+			if(count_object(gamedata['summon_pre_buffs']) < summon_stats['max_pre_buffs'] || true)
 			{
 				$.each(all_available_cards, function(card_id, card_info){
 					if(card_info['summon_pre_buff'] != undefined && gamedata['owned_cards'][card_id] != undefined && gamedata['owned_cards'][card_id] > 0)
@@ -396,7 +407,8 @@ function show_altar(){
 	var parsed_summoned_hero = parse_card('empty_card');
 	if(all_available_cards[current_altar] != undefined)
 	{
-		parsed_summoned_hero = parse_card(current_altar);
+		if(gamedata['known_recipes'] != undefined && gamedata['known_recipes'][current_altar] == undefined && all_available_cards[current_altar]['recipe'] != undefined){unowned_class = 'unowned_summon';}
+		parsed_summoned_hero = '<span class="' + unowned_class + '" onclick="show_card_details(\'' + current_altar + '\', true)">' + parse_card(current_altar) + '</span>';;
 	}
 	parsed_summon += '<span>' + parsed_summoned_hero + '</span>';
 	parsed_summon += '<span class="summon_stats">';

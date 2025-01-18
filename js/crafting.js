@@ -183,6 +183,10 @@ function show_card_recipe(recipe_id){
 	{
 		recipe_details += '<div class="menu_button slim craft_button" onclick="craft_current_card()" no-new-page="true">CRAFT</div><br/>';
 	}
+	else
+	{
+		recipe_details += '<div class="menu_button slim craft_button not_enough" no-new-page="true">CRAFT</div><br/>';
+	}
 	if(costs_just_peasants == false && get_upgrade_factor('quick_craft', 'any', true) > 1)
 	{
 		if(gamedata['owned_cards']['peasant'] >= all_available_cards[recipe_id]['value'])
@@ -191,7 +195,7 @@ function show_card_recipe(recipe_id){
 		}
 		else
 		{
-			recipe_details += '<br/><div class="menu_button slim craft_button" no-new-page="true">QUICK CRAFT<br/><span class="not_enough">(' + nFormatter(gamedata['owned_cards']['peasant'], 3) + ' / ' + all_available_cards[recipe_id]['value'] + ' peasants)</span></div>';
+			recipe_details += '<br/><div class="menu_button slim craft_button" no-new-page="true">QUICK CRAFT<br/><span class="button_subtext not_enough">(' + nFormatter(gamedata['owned_cards']['peasant'], 3) + ' / ' + all_available_cards[recipe_id]['value'] + ' peasants)</span></div>';
 		}
 	}
 

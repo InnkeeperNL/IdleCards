@@ -4,7 +4,7 @@ var all_buildings = {
 		fragment_id: 	'shard',
 		image: 			'cards/dream_TradingCard-2024-12-08T062700.373.jpg',
 		description: 	'Produces peasants.',
-		upgrade_description: 'By upgrading this building you will increase the production, maximum storage and the amount of merchants.',
+		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
 		//type: 			'none',
 
 		type: 			'adventures',
@@ -69,7 +69,7 @@ var all_buildings = {
 		fragment_id: 	'shard',
 		image: 			'cards/dream_TradingCard-2024-11-30T071556.368.jpg',
 		description: 	'<i>Allows you to brew potions.</i>',
-		upgrade_description: 'By upgrading this building you will increase the production, maximum storage and the amount of potions you can brew at the same time.',
+		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
 		type: 			'none',
 		needed_upgrades:{
 			z_b_alchemist_access: 1,
@@ -98,7 +98,7 @@ var all_buildings = {
 		productions:{
 			flask:{
 				base_time: 		5 * 24 * 3600,
-				base_storage: 	3,
+				base_storage: 	1,
 				upgrade_cost_speed:{
 					scraps: 		100,
 				},
@@ -167,7 +167,7 @@ var all_adventure_results = {
 var all_expeditions = {
 	research_new_potion:{
 		name: 			'Research potion',
-		description: 	'Research and possibly find a new potion recipe.<br/>If you know the potion recipe, it\'s level increases by 1.<br/><br/>Time: 4 hours',
+		description: 	'Research and possibly find a new potion recipe.<br/>If you know the potion recipe, it\'s level increases by 1.<br/><br/>Time: 8 hours',
 		costs: 	{
 			flask: 				1,
 			//scraps: 			100
@@ -175,7 +175,7 @@ var all_expeditions = {
 		rewards:{
 			potion: 			1,
 		},
-		time: 			(4 * 3600),
+		time: 			(8 * 3600),
 		success_picks: 			1,
 		success_text: 			'You found this potion.',
 		cannot_cancel: 			true, 

@@ -5481,7 +5481,7 @@ var all_abilities = {
 		level_cost_spell: 	1.5,
 	},
 	vampiric:{
-		description: 	'When this deals physical damage to a non-undead creature, it heals iself by the amount of damage done.',
+		description: 	'When this deals physical damage to a non-undead creature, it heals iself by the amount of damage done, up to {LEVEL}.',
 		proc: 			'dealt_damage',
 		subtypes: 		['physical'],
 		origin_type:    'creature',
@@ -5501,12 +5501,13 @@ var all_abilities = {
 				projectile:		'drain',
 				type: 			'healing',
 				subtypes: 		['vampiric','drain'],
-				amount: 		'latest_result'
+				amount: 		'latest_result',
+				max_amount: 	'ability_level',
 			}
 		},
-		level_cost: 		2,
-		level_cost_hero: 	2,
-		cost_factor: 	'power'
+		level_cost: 		1,
+		//level_cost_hero: 	2,
+		//cost_factor: 	'power'
 	},
 	venom:{
 		description: 	'Applies {LEVEL} poison to any creature it damages.{POISON}',

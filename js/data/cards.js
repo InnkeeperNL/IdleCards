@@ -7923,13 +7923,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			3,
-		abilities: 			{strike: 1, vampiric: 1, flying: 1},
+		abilities: 			{strike: 1, feast: 2, flying: 1},
 		hero_version: 			{
 			theme: 				['curse_ability','subtype_animal'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, vampiric: 1, flying: 1},
+			abilities: 			{strike_unit: 1, feast: 1, flying: 1},
 		},
 		quote: '\"Flying rats... great...\"',
 	},
@@ -8777,7 +8777,93 @@ var all_available_cards = {
 			buff_amount_type:  'percent',
 		}
 	},
-	
+	spyglass:{
+		name: 				'spyglass',
+		description: 		'Doubles the maximum rarity of the next summoned enemy.',
+		version: 			2,
+		value: 				2,
+		type: 				'currency',
+		basic_reward: 		true,
+		color: 				['none'],
+		pick_chance: 		0,
+		boost_pick_chance: 	0,
+		time: 				0,
+		image: 				'cards/dream_TradingCard-2025-01-18T051643.275.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{},
+		summon_pre_buff:{
+			0:{
+				buff_type: 			'max_rarity',
+				buff_amount: 		100,
+				buff_amount_type:  'percent',
+			},
+			1:{
+				buff_type: 			'common_reduction',
+				buff_amount: 		100,
+				buff_amount_type:  'percent',
+			}
+		}
+	},
+	compass:{
+		name: 				'compass',
+		description: 		'Triples the maximum rarity of the next summoned enemy.',
+		version: 			2,
+		value: 				6,
+		type: 				'currency',
+		basic_reward: 		true,
+		color: 				['none'],
+		pick_chance: 		0,
+		boost_pick_chance: 	0,
+		time: 				0,
+		image: 				'cards/dream_TradingCard-2025-01-18T051900.208.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{},
+		summon_pre_buff:{
+			0:{
+				buff_type: 			'max_rarity',
+				buff_amount: 		200,
+				buff_amount_type:  'percent',
+			},
+			1:{
+				buff_type: 			'common_reduction',
+				buff_amount: 		200,
+				buff_amount_type:  'percent',
+			}
+		}
+	},
+	treasure_map:{
+		name: 				'treasure map',
+		description: 		'Quadruples the maximum rarity of the next summoned enemy.',
+		version: 			2,
+		value: 				6,
+		type: 				'currency',
+		basic_reward: 		true,
+		color: 				['none'],
+		pick_chance: 		0,
+		boost_pick_chance: 	0,
+		time: 				0,
+		image: 				'cards/dream_TradingCard-2025-01-18T053212.141.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{},
+		summon_pre_buff:{
+			0:{
+				buff_type: 			'max_rarity',
+				buff_amount: 		300,
+				buff_amount_type:  'percent',
+			},
+			1:{
+				buff_type: 			'common_reduction',
+				buff_amount: 		300,
+				buff_amount_type:  'percent',
+			}
+		}
+	},
 	shard:{
 		name: 				'shard',
 		value: 				5,
@@ -8794,22 +8880,6 @@ var all_available_cards = {
 		abilities: 			{},
 		quote: '\"Used for upgrades.\"',
 	},
-	/*spyglass:{
-		name: 				'spyglass',
-		version: 			2,
-		value: 				20,
-		type: 				'currency',
-		basic_reward: 		true,
-		color: 				['none'],
-		pick_chance: 		0,
-		boost_pick_chance: 	0,
-		time: 				0,
-		image: 				'cards/telescope-971430_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{},
-	},*/
 	stash:{
 		name: 				'stash',
 		value: 				25,

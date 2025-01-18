@@ -42,7 +42,7 @@ var all_upgrades = {
 	aaa_rewards:{
 		name: 			'Rewards',
 		description: 	'Increases the rewards of newly summoned enemies, waves and completing quests by 5% each level.',
-		card_image: 	'scout',
+		card_image: 	'chest',
 		type: 			'summon_reward',
 		subtypes:  		['any'],
 		amount: 		0.05,
@@ -52,7 +52,7 @@ var all_upgrades = {
 	aab_summon_rarity:{
 		name: 			'Summon rarity',
 		description: 	'Increases the maximum rarity of summoned enemies.<br/>This includes wave bosses.',
-		card_image: 	'peasant',
+		card_image: 	'death_warrant',
 		type: 			'summon_max_rarity',
 		subtypes:  		['any'],
 		level_cost_scale: 	5,
@@ -129,7 +129,22 @@ var all_upgrades = {
 		level_cost_scale: 	2,
 		amount: 		0.1,
 		cost: 			{scraps:25,},
-		max_level: 		20,
+		max_level: 		30,
+	},
+	summon_buffs:{
+		name: 			'Summon buffs',
+		description: 	'Increases the number of buffs you can use when summoning an enemy.',
+		needed_upgrades:{
+			summon_tries: 	1,
+		},
+		card_image: 	'spyglass',
+		type: 			'summon_max_pre_buffs',
+		subtypes:  		['any'],
+		amount: 		1,
+		amount_fixed: 	true,
+		level_cost_scale: 	2,
+		cost: 			{spyglass:10,},
+		max_level: 		4,
 	},
 	summon_tries:{
 		name: 			'Summon tries',
@@ -146,24 +161,25 @@ var all_upgrades = {
 		cost: 			{shard:5,},
 		max_level: 		9,
 	},
+
 	merchant_offers:{
 		name: 			'Merchant offers',
-		description: 	'Reduces the maximum scraps requested by merchants offering cards by 1%.<br>Only affects new offers.',
+		description: 	'Reduces the maximum scraps requested by merchants offering cards by 5%.<br>Only affects new offers.',
 		needed_upgrades:{
 			z_a_town_access: 1,
 			aab_summon_rarity: 	10,
 		},
-		card_image: 	'chest',
+		card_image: 	'pirate',
 		type: 			'merchant_sell',
 		subtypes:  		['any'],
-		amount: 		0.01,
+		amount: 		0.05,
 		level_cost_scale: 	5,
 		cost: 			{scraps:10,},
 		max_level: 		25,
 	},
 	merchant_sales:{
 		name: 			'Merchant sales',
-		description: 	'Increases the maximum scraps offered by merchants who want to buy cards by 1%.<br>Only affects new offers.',
+		description: 	'Increases the maximum scraps offered by merchants who want to buy cards by 5%.<br>Only affects new offers.',
 		needed_upgrades:{
 			z_a_town_access: 1,
 			aab_summon_rarity: 	10,
@@ -171,10 +187,25 @@ var all_upgrades = {
 		card_image: 	'mercenary',
 		type: 			'merchant_buy',
 		subtypes:  		['any'],
-		amount: 		0.01,
+		amount: 		0.05,
 		level_cost_scale: 	5,
 		cost: 			{scraps:10,},
 		max_level: 		25,
+	},
+	peasants_gained:{
+		name: 			'Peasants gained',
+		description: 	'Increases the number of peasants gained by 5%.',
+		needed_upgrades:{
+			z_a_town_access: 1,
+			aab_summon_rarity: 	10,
+		},
+		card_image: 	'peasant',
+		type: 			'loot',
+		subtypes:  		['peasant'],
+		amount: 		0.05,
+		level_cost_scale: 	10,
+		cost: 			{scraps:10,},
+		max_level: 		40,
 	},
 	wave_access:{
 		name: 			'Waves',
@@ -273,7 +304,7 @@ var all_upgrades = {
 	// ************************************************* POTIONS ************************************************
 	
 	zz_burglar_potion:{
-		name: 			'burglar potion',
+		name: 			'Burglar potion',
 		description: 	'2% bonus chance battles reward cards and items in stead of scraps.',
 		card_image: 	'burglar',
 		upgrade_type: 	'potion',
@@ -282,13 +313,41 @@ var all_upgrades = {
 		amount:  		0.02,
 		level_cost_scale: 	20,
 		cost:{
-			flask: 		5,
+			flask: 		2,
+			scraps:  	100,
+		}
+	},
+	zz_chest_potion:{
+		name: 			'Chest potion',
+		description: 	'2% bonus to rewards of newly summoned enemies, waves and completing quests.',
+		card_image: 	'chest',
+		upgrade_type: 	'potion',
+		type: 			'summon_reward',
+		subtypes:  		['any'],
+		amount:  		0.02,
+		level_cost_scale: 	20,
+		cost:{
+			flask: 		2,
+			scraps:  	100,
+		}
+	},
+	zz_horseshoe_potion:{
+		name: 			'Horseshoe potion',
+		description: 	'2% increase to the number of horseshoes gained.',
+		card_image: 	'peasant',
+		upgrade_type: 	'potion',
+		type: 			'loot',
+		subtypes:  		['horseshoe'],
+		amount:  		0.02,
+		level_cost_scale: 	20,
+		cost:{
+			flask: 		2,
 			scraps:  	100,
 		}
 	},
 	zz_mercenary_potion:{
-		name: 			'mercenary potion',
-		description: 	'1% increase to the maximum scraps offered by merchants.',
+		name: 			'Mercenary potion',
+		description: 	'2% increase to the maximum scraps offered by merchants.',
 		card_image: 	'mercenary',
 		upgrade_type: 	'potion',
 		type: 			'merchant_buy',
@@ -296,35 +355,63 @@ var all_upgrades = {
 		amount:  		0.01,
 		level_cost_scale: 	20,
 		cost:{
-			flask: 		5,
+			flask: 		2,
 			scraps:  	100,
 		}
 	},
-	zz_chest_potion:{
-		name: 			'chest potion',
-		description: 	'1% reduction to the maximum scraps requested by merchants.',
-		card_image: 	'chest',
+	zz_peasant_potion:{
+		name: 			'Peasant potion',
+		description: 	'2% increase to the number of peasants gained.',
+		card_image: 	'peasant',
+		upgrade_type: 	'potion',
+		type: 			'loot',
+		subtypes:  		['peasant'],
+		amount:  		0.02,
+		level_cost_scale: 	20,
+		cost:{
+			flask: 		2,
+			scraps:  	100,
+		}
+	},
+	zz_pirate_potion:{
+		name: 			'Pirate potion',
+		description: 	'2% reduction to the maximum scraps requested by merchants.',
+		card_image: 	'pirate',
 		upgrade_type: 	'potion',
 		type: 			'merchant_sell',
 		subtypes:  		['any'],
 		amount:  		0.01,
 		level_cost_scale: 	20,
 		cost:{
-			flask: 		5,
+			flask: 		2,
 			scraps:  	100,
 		}
 	},
 	zz_shard_potion:{
 		name: 			'Shard potion',
-		description: 	'2% bonus to rewards of newly summoned enemies, waves and completing quests.',
+		description: 	'2% bonus to gained shards.',
 		card_image: 	'shard',
 		upgrade_type: 	'potion',
-		type: 			'summon_reward',
-		subtypes:  		['any'],
+		type: 			'loot',
+		subtypes:  		['shard'],
 		amount:  		0.02,
 		level_cost_scale: 	20,
 		cost:{
-			flask: 		5,
+			flask: 		2,
+			scraps:  	100,
+		}
+	},
+	zz_spyglass_potion:{
+		name: 			'Spyglass potion',
+		description: 	'2% bonus to gained spyglasses.',
+		card_image: 	'shard',
+		upgrade_type: 	'potion',
+		type: 			'loot',
+		subtypes:  		['spyglass'],
+		amount:  		0.02,
+		level_cost_scale: 	20,
+		cost:{
+			flask: 		2,
 			scraps:  	100,
 		}
 	},
@@ -338,7 +425,7 @@ var all_upgrades = {
 		amount:  		0.02,
 		level_cost_scale: 	20,
 		cost:{
-			flask: 		5,
+			flask: 		2,
 			scraps:  	100,
 		}
 	},
@@ -352,7 +439,7 @@ var all_upgrades = {
 		amount:  		0.02,
 		level_cost_scale: 	20,
 		cost:{
-			flask: 		5,
+			flask: 		2,
 			scraps:  	100,
 		}
 	},

@@ -836,12 +836,14 @@ function show_single_building(){
 			$.each(current_building['current_offers'], function(offer_key, offer_info){
 				//console.log(offer_info);
 				var temp_offer_amount = '';
-				if(offer_info['card_amount'] > 1){temp_offer_amount = '' + offer_info['card_amount'] + ' ';}
+				if(offer_info['card_amount'] > 1){temp_offer_amount = '' + offer_info['card_amount'] + 'x ';}
 				var parsed_expedition = '';
 				parsed_expedition += '<div class="single_expedition single_offer"><span class="single_new_expedition_name">' + capitalizeFirstLetter(all_available_cards[offer_info['card_id']]['name']) + '</span><br/><span class="single_new_expedition_description">' + capitalizeFirstLetter(offer_info['buysell']) + 'ing: ' + temp_offer_amount + '' + capitalizeFirstLetter(all_available_cards[offer_info['card_id']]['name']) + '. <br/></span>';
 				
 				if(offer_info['buysell'] == 'buy'){parsed_expedition+='Offer: ' + nFormatter(offer_info['offer_price'],3) + ' scraps.';}
 				if(offer_info['buysell'] == 'sell'){parsed_expedition+='Price: ' + nFormatter(offer_info['offer_price'],3) + ' scraps.';}
+				var offer_percent = (offer_info['offer_price'] / (all_available_cards[offer_info['card_id']]['value'] * offer_info['card_amount'])) * 100;
+				parsed_expedition+='<br/>(' + nFormatter(offer_percent,0) + '%)';
 				var owned_amount = 0;
 
 				if(gamedata['owned_cards'][offer_info['card_id']] != undefined)
@@ -925,7 +927,7 @@ function show_single_building(){
 			}
 
 			mission_count += count_object(current_building['expeditions']);
-			if(count_object(current_building['expeditions']) < building_level /*&& building_info['productions'] == undefined) || count_object(current_building['expeditions']) == 0*/)
+			if(count_object(current_building['expeditions']) < 1/*building_level*/ /*&& building_info['productions'] == undefined) || count_object(current_building['expeditions']) == 0*/)
 			{
 				//$('.single_building_content').append('<div class="new_expedition_button" onclick="show_content(\'new_expedition\')">' + building_info['new_expedition_title'] + '</div>');
 				//new_expedition_button += '<div class="new_expedition_button" onclick="show_content(\'new_expedition\')">' + building_info['new_expedition_title'] + '</div>';
@@ -965,13 +967,13 @@ function show_single_building(){
 			}
 
 			mission_count += count_object(current_building['adventures']);
-			if(count_object(current_building['adventures']) < building_level /*&& building_info['productions'] == undefined) || count_object(current_building['expeditions']) == 0*/)
+			if(count_object(current_building['adventures']) < 1/*building_level*/ /*&& building_info['productions'] == undefined) || count_object(current_building['expeditions']) == 0*/)
 			{
 				//$('.single_building_content').append('<div class="new_expedition_button" onclick="show_content(\'new_adventure\')">' + building_info['new_adventures_title'] + '</div>');
 				//new_expedition_button += '<div class="new_expedition_button" onclick="show_content(\'new_expedition\')">' + building_info['new_expedition_title'] + '</div>';
 			}
 		}
-		if((building_info['expeditions'] != undefined || building_info['adventures']) != undefined && mission_count < building_level)
+		if((building_info['expeditions'] != undefined || building_info['adventures']) != undefined && mission_count < 1/*building_level*/)
 		{
 			if(building_info['new_mission_title'] != undefined)
 			{
@@ -1225,7 +1227,7 @@ function check_current_offers(){
 	{
 		gamedata['town'][current_building_id]['current_offers'] = {};
 	}
-	for (var i = 0; i < building_level; i++) {
+	for (var i = 0; i < /*building_level*/ 1; i++) {
 		if(current_building['current_offers'][i] != undefined && new Date(current_building['current_offers'][i]['offer_expires']) < new Date())
 		{
 			delete current_building['current_offers'][i];
@@ -1295,9 +1297,9 @@ function create_new_building_offer(building_info){
 		var offer_amount = /*Math.ceil(Math.random() * 2) + 0*/ 1;
 		if(buysell == 'buy' && gamedata['owned_cards'][found_card] != undefined && offer_amount < gamedata['owned_cards'][found_card] && gamedata['owned_cards'][found_card] > 0)
 		{
-			offer_amount = Math.ceil(Math.random() * gamedata['owned_cards'][found_card] * 1.1);
+			offer_amount = Math.ceil(Math.random() * gamedata['owned_cards'][found_card] * 1);
 		}
-		var offer_price = Math.ceil(all_available_cards[found_card]['value'] * offer_amount * (1 + (Math.random() * (3 / get_upgrade_factor('merchant_' + buysell, undefined, true)))));
+		var offer_price = Math.ceil(all_available_cards[found_card]['value'] * offer_amount * (1 + (Math.random() * (5 / get_upgrade_factor('merchant_' + buysell, undefined, true)))));
 		if(buysell == 'buy')
 		{
 			offer_price = Math.ceil(all_available_cards[found_card]['value'] * offer_amount * ((Math.random() * (get_upgrade_factor('merchant_' + buysell, undefined, true) - 1)) + 1 ));
@@ -2384,10 +2386,10 @@ function show_current_rewards(){
 			}
 		});
 	}
-	if(gamedata['upgrades'] != undefined && do_no_apply_factions == false)
+	if(gamedata['upgrades'] != undefined /*&& do_no_apply_factions == false*/)
 	{
 		$.each(all_current_rewards, function(useless_key, reward){
-			var loot_factor = get_upgrade_factor('loot', [reward['reward_id']]);
+			var loot_factor = get_upgrade_factor('loot', [reward['reward_id']], true);
 			//console.log(loot_factor);
 			reward['reward_amount'] = round_by_percent(reward['reward_amount'] * loot_factor);
 		});

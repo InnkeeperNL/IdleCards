@@ -1,6 +1,5 @@
 var daily_reward_claimable = false;
 function show_daily_reward(forced_month){
-
 	var month = new Date().getMonth() + 1;
 	var day = new Date().getDate();
 

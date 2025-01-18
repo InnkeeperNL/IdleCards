@@ -4921,6 +4921,17 @@ function calculate_effect(effect, target_id, origin_id, level){
 		{
 			calculated_amount = Math.ceil(calculated_amount);
 		}
+		if(effect['max_amount'] != undefined)
+		{
+			if(effect['max_amount'] == 'ability_level' && level != undefined && calculated_amount > level)
+			{
+				calculated_amount = level;
+			}
+			if(typeof(effect['max_amount']) == 'number' && calculated_amount > effect['max_amount'])
+			{
+				calculated_amount = effect['max_amount'];
+			}
+		}
 	}
 
 	return calculated_amount;
