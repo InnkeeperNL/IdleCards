@@ -12,7 +12,7 @@ function show_inventory(){
 		if(all_available_cards[card_id] != undefined){
 			var effective_owned_amount = owned_amount + 0;
 			var card_filtered = false;
-			if(all_available_cards[card_id]['type'] != 'consumable' && all_available_cards[card_id]['type'] != 'token' /*&& all_available_cards[card_id]['type'] != 'cardback'*/ && all_available_cards[card_id]['type'] != 'currency' && all_available_cards[card_id]['type'] != 'material')
+			if(all_available_cards[card_id]['type'] != 'consumable' && all_available_cards[card_id]['type'] != 'token' /*&& all_available_cards[card_id]['type'] != 'cardback'*/ && all_available_cards[card_id]['type'] != 'currency' && all_available_cards[card_id]['type'] != 'material' && all_available_cards[card_id]['type'] != 'treasure')
 			{
 				card_filtered = true;
 				//console.log(card_id);
@@ -33,7 +33,7 @@ function show_inventory(){
 					{
 						$('.inventory_content').append('<span onclick="current_consumable=\'' + card_id + '\';show_content(\'single_consumable\');">' + parsed_card + '</span>');
 					}
-					if(all_available_cards[card_id]['type'] == 'token' || all_available_cards[card_id]['type'] == 'currency' || all_available_cards[card_id]['type'] == 'material' )
+					if(all_available_cards[card_id]['type'] == 'token' || all_available_cards[card_id]['type'] == 'currency' || all_available_cards[card_id]['type'] == 'material' || all_available_cards[card_id]['type'] == 'treasure')
 					{
 						$('.inventory_content').append('<span onclick="show_card_details(\'' + card_id + '\');">' + parsed_card + '</span>');
 					}
