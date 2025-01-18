@@ -102,7 +102,7 @@ function show_available_cards(heroes_only){
 		var card_filtered = false;
 		var wrong_color = false;
 
-		if(all_available_cards[card_id]['type'] == 'boost' || all_available_cards[card_id]['type'] == 'recipe' || all_available_cards[card_id]['type'] == 'fragment' || all_available_cards[card_id]['type'] == 'material' || all_available_cards[card_id]['type'] == 'consumable' || all_available_cards[card_id]['type'] == 'token' || all_available_cards[card_id]['type'] == 'currency' || all_available_cards[card_id]['type'] == 'cardback' || all_available_cards[card_id]['type'] == 'item' || $('.' + all_available_cards[card_id]['type'] + '_type_filter').prop("checked") == false)
+		if(all_available_cards[card_id]['type'] == 'boost' || all_available_cards[card_id]['type'] == 'recipe' || all_available_cards[card_id]['type'] == 'fragment' || all_available_cards[card_id]['type'] == 'material' || all_available_cards[card_id]['type'] == 'consumable' || all_available_cards[card_id]['type'] == 'token' || all_available_cards[card_id]['type'] == 'currency' || all_available_cards[card_id]['type'] == 'cardback' || all_available_cards[card_id]['type'] == 'item' || all_available_cards[card_id]['type'] == 'treasure' || $('.' + all_available_cards[card_id]['type'] + '_type_filter').prop("checked") == false)
 		{
 			card_filtered = true;
 		}
