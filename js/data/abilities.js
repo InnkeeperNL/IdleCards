@@ -3836,6 +3836,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 'cleanse',
+				target_projectile: 'cleanse',
 				type: 		'set_effect_amount',
 							effect_names:{
 								burning: 	0,
