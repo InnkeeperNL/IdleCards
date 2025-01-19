@@ -4299,9 +4299,9 @@ var all_abilities = {
 	},
 	resurrect:{
 		name_color: 	'rgba(160, 95, 250,0.9)',
-		description: 	'When this unit\'s health reaches 0, it has a 60% chance to come back to life with {LEVEL}0% health, rounded up.',
+		description: 	'When this unit\'s health reaches 0, it has a 50% chance to come back to life with {LEVEL}0% health, rounded up.',
 		proc: 			'own_death',
-		proc_chance: 	60,
+		proc_chance: 	50,
 		proc_while_dead: true,
 		targets:	{
 			0:{
