@@ -2975,6 +2975,7 @@ var all_abilities = {
 	frost_bolt:{
 		description: 	'Deals {LEVEL} physical cold projectile damage to a random enemy unit. Has a 25% chance to stun any unit or hero it hits. Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
+		scales: 	true,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -3028,6 +3029,7 @@ var all_abilities = {
 		name: 			'frost bolt',
 		description: 	'Deals {LEVEL} physical cold projectile damage to a random enemy unit. Has a 25% chance to stun any unit it hits. Will not target the enemy hero.',
 		cannot_proc_while_stunned: true,
+		scales: 	true,
 		targets:	{
 			0:{
 				target: 		'unit',
