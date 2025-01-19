@@ -36,16 +36,16 @@ var all_buildings = {
 					scraps: 	50,
 				}
 			},
-			chest:{
+			/*chest:{
 				//costs_increas_factor: 1.05,
 				costs:{
 					//peasant: 	5,
 					shard: 		1,
 				}
-			},
+			},*/
 		},
 
-		shop_type: 		['artifact','creature','structure'],
+		shop_type: 		['creature'],
 		
 		/*recipe_shop:{
 			natures_touch:{
@@ -110,6 +110,79 @@ var all_buildings = {
 				production_achievement_bonus: 0.1,
 			},
 		}
+	},
+	a3_bank:{
+		name: 			'bank',
+		fragment_id: 	'chest',
+		image: 			'cards/dream_TradingCard-2025-01-19T051830.026.jpg',
+		description: 	'<i>Produces scraps.</i>',
+		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
+		type: 			'shop',
+		needed_upgrades:{
+			z_c_bank_access: 1,
+		},
+		productions:{
+			scraps_placeholder:{
+				base_time: 		1 * 3600,
+				base_storage: 	100,
+				upgrade_cost_speed:{
+					scraps: 		100,
+				},
+				upgrade_cost_storage:{
+					scraps: 		100,
+				},
+				defeated_heroes_speed_bonusses:{
+				},
+				production_achievement_bonus: 0.1,
+			},
+		},
+		recipes:{
+			chest:{
+				costs:{
+					scraps: 	250,
+				}
+			},
+		},
+		shop_type: 		['structure'],
+	},
+	a4_treasury:{
+		name: 			'treasury',
+		fragment_id: 	'trove',
+		image: 			'cards/dream_TradingCard-2025-01-19T055525.326.jpg',
+		description: 	'<i>Produces troves.</i>',
+		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
+		type: 			'shop',
+		needed_upgrades:{
+			z_d_treasury_access: 1,
+		},
+		productions:{
+			trove:{
+				base_time: 		5 * 24 * 3600,
+				base_storage: 	1,
+				upgrade_cost_speed:{
+					scraps: 		100,
+				},
+				upgrade_cost_storage:{
+					scraps: 		100,
+				},
+				defeated_heroes_speed_bonusses:{
+				},
+				production_achievement_bonus: 0.1,
+			},
+		},
+		recipes:{
+			compass:{
+				costs:{
+					spyglass: 	3,
+				}
+			},
+			treasure_map:{
+				costs:{
+					compass: 	4,
+				}
+			},
+		},
+		shop_type: 		['artifact'],
 	},
 	
 }

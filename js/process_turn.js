@@ -574,8 +574,8 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 		{*/
 			if(random_loot_id != undefined && all_available_cards[random_loot_id] != undefined)
 			{
-				var random_loot_drop_chance = (((effective_rarity * basic_to_pick) / card_drop_chance_reduction) / sqr(all_available_cards[random_loot_id]['value']));
-				if(random_loot_drop_chance > 0.25){random_loot_drop_chance = 0.25;}
+				var random_loot_drop_chance = (((effective_rarity * basic_to_pick) / card_drop_chance_reduction) / sqr(all_available_cards[random_loot_id]['value'])) * get_upgrade_factor('loot_drop_chance', random_loot_id, true);
+				//if(random_loot_drop_chance > 0.25){random_loot_drop_chance = 0.25;}
 				if(Math.random() < random_loot_drop_chance)
 				{
 					all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
@@ -583,7 +583,7 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 						reward_amount: 		1,
 					};
 					if(show_drops != undefined && show_drops == true){show_drop(random_loot_id, 1);}
-					basic_to_pick -= all_available_cards[random_loot_id]['value'];
+					//basic_to_pick -= all_available_cards[random_loot_id]['value'];
 				}
 			}
 		/*});*/

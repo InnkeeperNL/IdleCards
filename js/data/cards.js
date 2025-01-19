@@ -487,6 +487,29 @@ var all_available_cards = {
 		},
 		quote: '\"A dangerous beast.\"',
 	},
+	bank:{
+		name: 				'bank',
+		type: 				'structure',
+		subtypes: 			['wall'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-01-19T051830.026.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			10,
+		abilities: 			{pay_life: 5, bolster_hero:1},
+		hero_version: 			{
+			theme: 				['type_creature','subtype_human','active_healing_ability','fortify_ability','cleanse_ally_ability'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{bolster: 2},
+		},
+		quote: '\"Time to invest!\"',
+	},
 	
 	battle_plans:{
 		name: 				'battle plans',
@@ -8680,37 +8703,9 @@ var all_available_cards = {
 	},*/
 
 	//##################################################################################################################################################################
-	//########################################################## REWARDS ###############################################################################################
+	//########################################################## TREASURE ###############################################################################################
 	//##################################################################################################################################################################
 
-	flask:{
-		name: 				'flask',
-		value: 				25,
-		type: 				'currency',
-		color: 				['none'],
-		pick_chance: 		0,
-		basic_reward: 		true,
-		time: 				0,
-		image: 				'cards/dream_TradingCard-2024-12-21T070512.391.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{},
-		quote: 'Used in alchemy'
-	},
-	potion_placeholder:{
-		name: 				'potion',
-		value: 				1,
-		type: 				'potion',
-		color: 				['purple'],
-		pick_chance: 		0,
-		time: 				0,
-		image: 				'mason-jar.svg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{},
-	},
 	clover:{
 		name: 				'clover',
 		description: 		'Can be used to boost the current enemy. Increases rewards by 25%.',
@@ -8804,7 +8799,8 @@ var all_available_cards = {
 				buff_amount: 		100,
 				buff_amount_type:  'percent',
 			}
-		}
+		},
+		quote: '\"I think I see something shiny overe there!\"',
 	},
 	compass:{
 		name: 				'compass',
@@ -8833,13 +8829,14 @@ var all_available_cards = {
 				buff_amount: 		200,
 				buff_amount_type:  'percent',
 			}
-		}
+		},
+		quote: '\"Keep going that way.\"',
 	},
 	treasure_map:{
 		name: 				'treasure map',
 		description: 		'Quadruples the maximum rarity of the next summoned enemy.',
 		version: 			2,
-		value: 				6,
+		value: 				24,
 		type: 				'treasure',
 		basic_reward: 		true,
 		color: 				['none'],
@@ -8862,7 +8859,89 @@ var all_available_cards = {
 				buff_amount: 		300,
 				buff_amount_type:  'percent',
 			}
-		}
+		},
+		quote: '\"It\'s not hard if you know where it is.\"',
+	},
+
+	
+	crown:{
+		name: 				'crown',
+		description: 		'Passively increases all peasants gained by 1%.',
+		value: 				10,
+		type: 				'treasure',
+		color: 				['none'],
+		pick_chance: 		0,
+		time: 				0,
+		image: 				'cards/dream_TradingCard-2025-01-19T064030.359.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{},
+		quote: '\"Wear this and they will follow you.\"',
+	},
+	endless_pouch:{
+		name: 				'endless pouch',
+		description: 		'Passively increases all scraps gained by 1%.',
+		value: 				25,
+		type: 				'treasure',
+		color: 				['none'],
+		pick_chance: 		0,
+		time: 				0,
+		image: 				'cards/dream_TradingCard-2025-01-19T061306.496.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{},
+		quote: '\"It just keeps giving.\"',
+	},
+	loupe:{
+		name: 				'loupe',
+		description: 		'Passively increases all shards gained by 1%.',
+		value: 				50,
+		type: 				'treasure',
+		color: 				['none'],
+		pick_chance: 		0,
+		time: 				0,
+		image: 				'cards/dream_TradingCard-2025-01-19T064733.364.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{},
+		quote: '\"Make those gems shine!\"',
+	},
+
+	
+	//##################################################################################################################################################################
+	//########################################################## REWARDS ###############################################################################################
+	//##################################################################################################################################################################
+	
+	flask:{
+		name: 				'flask',
+		value: 				25,
+		type: 				'currency',
+		color: 				['none'],
+		pick_chance: 		0,
+		basic_reward: 		true,
+		time: 				0,
+		image: 				'cards/dream_TradingCard-2024-12-21T070512.391.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{},
+		quote: 'Used in alchemy'
+	},
+	potion_placeholder:{
+		name: 				'potion',
+		value: 				1,
+		type: 				'potion',
+		color: 				['purple'],
+		pick_chance: 		0,
+		time: 				0,
+		image: 				'mason-jar.svg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{},
 	},
 	shard:{
 		name: 				'shard',
@@ -8926,6 +9005,32 @@ var all_available_cards = {
 			amount_used: 	[1,5,'all'],
 		},
 	},
+	trove:{
+		name: 				'trove',
+		value: 				100,
+		type: 				'consumable',
+		basic_reward: 		true,
+		color: 				['none'],
+		pick_chance: 		0,
+		time: 				0,
+		image: 				'cards/dream_TradingCard-2025-01-19T055525.326.jpg',
+		power: 				false,
+		armor: 				false,
+		health: 			false,
+		abilities: 			{},
+		reward: 			{
+			type: 			'random_card',
+			card_type: 		'treasure',
+			pick_amount: 	1,
+			amount: 		1,
+			min_value: 		7,
+			description: 	'Awards 1 random treasure.',
+			text: 			'&nbsp;',
+			amount_used: 	[1,5,'all'],
+			all_pick_chance: true,
+		},
+	},
+	
 	empty_card:{
 		name: 				'',
 		value: 				1,
@@ -8952,6 +9057,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{},
 	},
+	
 
 }
 

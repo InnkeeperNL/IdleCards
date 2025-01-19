@@ -396,6 +396,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		2,
+		level_cost_hero: 	3,
 		level_cost_spell: 	1,
 	},
 	bolster_creature:{
@@ -3603,6 +3604,33 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		8,
 		average_hits: 		1,
+	},
+	pay_life:{
+		description: 	'When played, reduces the health of your hero by {LEVEL}.',
+		proc: 			'on_play',
+		proc_while_dead: true,
+		scales: 		true,
+		targets: 	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'any',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'wither',
+				type: 			'reduce_health',
+				amount: 		'ability_level',
+			},
+		},
+		level_cost: 	-1,
+		ability_level_cost_factors:{
+			retreat: 	2,
+			homebound: 	2,
+		},
 	},
 	plated:{
 		name_color: 	'rgba(255,255,255,0.9)',

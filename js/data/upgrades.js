@@ -283,6 +283,51 @@ var all_upgrades = {
 		max_level: 		1,
 		//hide_if_maxed: 	true,
 	},
+	z_c_bank_access:{
+		name: 			'Banking',
+		description: 	'Unlocks the bank.',
+		needed_upgrades:{
+			z_b_alchemist_access: 1,
+		},
+		card_image: 	'bank',
+		type: 			'bank_access',
+		subtypes:  		['any'],
+		amount: 		100,
+		amount_fixed: 	true,
+		cost: 			{scraps:2500,},
+		max_level: 		1,
+		//hide_if_maxed: 	true,
+	},
+	z_d_treasury_access:{
+		name: 			'Treasury',
+		description: 	'Unlocks the treasury.',
+		needed_upgrades:{
+			z_c_bank_access: 1,
+		},
+		card_image: 	'trove',
+		type: 			'treasure_access',
+		subtypes:  		['any'],
+		amount: 		100,
+		amount_fixed: 	true,
+		cost: 			{chest: 20},
+		max_level: 		1,
+		//hide_if_maxed: 	true,
+	},
+	z_d_trove_drops:{
+		name: 			'Trove drops',
+		description: 	'Increases the chance troves will drop as loot from battles by 100%.',
+		needed_upgrades:{
+			z_d_treasury_access: 1,
+		},
+		card_image: 	'kleptomaniac',
+		type: 			'loot_drop_chance',
+		subtypes:  		['trove'],
+		amount: 		1,
+		level_cost_scale: 	20,
+		cost: 			{trove: 1},
+		max_level: 		20,
+		//hide_if_maxed: 	true,
+	},
 	zz_a_quick_craft:{
 		name: 			'Quick craft',
 		description: 	'Unlocks quick crafting.',
@@ -387,6 +432,20 @@ var all_upgrades = {
 			scraps:  	100,
 		}
 	},
+	zz_scraps_potion:{
+		name: 			'Scraps potion',
+		description: 	'2% bonus to gained scraps.',
+		card_image: 	'scraps_placeholder',
+		upgrade_type: 	'potion',
+		type: 			'loot',
+		subtypes:  		['scraps'],
+		amount:  		0.02,
+		level_cost_scale: 	20,
+		cost:{
+			flask: 		2,
+			scraps:  	100,
+		}
+	},
 	zz_shard_potion:{
 		name: 			'Shard potion',
 		description: 	'2% bonus to gained shards.',
@@ -441,6 +500,36 @@ var all_upgrades = {
 		cost:{
 			flask: 		2,
 			scraps:  	100,
+		}
+	},
+
+	// ************************************************* TREASURES ************************************************
+
+	crown_bonus:{
+		upgrade_type: 	'passive',
+		type: 			'loot',
+		subtypes:  		['peasant'],
+		amount:  		0.01,
+		cost:{
+			crown:  	1,
+		}
+	},
+	endless_pouch_bonus:{
+		upgrade_type: 	'passive',
+		type: 			'loot',
+		subtypes:  		['scraps'],
+		amount:  		0.01,
+		cost:{
+			endless_pouch:  	1,
+		}
+	},
+	loupe_bonus:{
+		upgrade_type: 	'passive',
+		type: 			'loot',
+		subtypes:  		['shard'],
+		amount:  		0.01,
+		cost:{
+			loupe:  	1,
 		}
 	},
 	/*z_summon_buffs:{

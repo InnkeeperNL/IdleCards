@@ -2369,6 +2369,27 @@ function show_current_rewards(){
 	var multiple_lowest_owned = false;
 	var reward_count = count_object(all_current_rewards);
 
+	$.each(all_current_rewards, function(useless_key_1, reward_1){
+		if(reward_1['reward_id'] == 'scraps_placeholder')
+		{
+			reward_1['reward_id'] = 'scraps';
+		}
+		if(all_current_rewards[useless_key_1]['reward_amount'] == 0)
+		{
+			delete all_current_rewards[useless_key_1];
+		}
+		else
+		{
+			$.each(all_current_rewards, function(useless_key_2, reward_2){
+				if(all_current_rewards[useless_key_2] != undefined && reward_1['reward_id'] == reward_2['reward_id'] && useless_key_1 < useless_key_2)
+				{
+					all_current_rewards[useless_key_1]['reward_amount'] += all_current_rewards[useless_key_2]['reward_amount'];
+					delete all_current_rewards[useless_key_2];
+				}
+			});
+		}
+	});
+
 	if(gamedata['factions'] != undefined && do_no_apply_factions == false)
 	{
 		$.each(gamedata['factions'], function(faction_id, faction_info){
@@ -2394,22 +2415,7 @@ function show_current_rewards(){
 			reward['reward_amount'] = round_by_percent(reward['reward_amount'] * loot_factor);
 		});
 	}
-	$.each(all_current_rewards, function(useless_key_1, reward_1){
-		if(all_current_rewards[useless_key_1]['reward_amount'] == 0)
-		{
-			delete all_current_rewards[useless_key_1];
-		}
-		else
-		{
-			$.each(all_current_rewards, function(useless_key_2, reward_2){
-				if(all_current_rewards[useless_key_2] != undefined && reward_1['reward_id'] == reward_2['reward_id'] && useless_key_1 < useless_key_2)
-				{
-					all_current_rewards[useless_key_1]['reward_amount'] += all_current_rewards[useless_key_2]['reward_amount'];
-					delete all_current_rewards[useless_key_2];
-				}
-			});
-		}
-	});
+	
 
 	/*$.each(all_current_rewards, function(useless_key_1, reward_1){
 		if(all_available_cards[reward_1['reward_id']] != undefined && all_available_cards[reward_1['reward_id']]['type'] == 'recipe')
