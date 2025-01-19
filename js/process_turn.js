@@ -6037,7 +6037,6 @@ function filter_targets_by_lowest_cost(all_targets){
 			lowest_cost = battle_info.combat_units[target_unit_id]['time'];
 		}
 	});
-	console.log(lowest_cost);
 	$.each(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['time'] > lowest_cost && lowest_cost > -1)
 		{

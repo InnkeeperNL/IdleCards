@@ -7,7 +7,7 @@ var all_quests = {
 		min_amount: 	50,
 		max_amount: 	200,
 		rewards:{
-			shard: 	2,
+			shard: 	5,
 		},
 		reward_per_amount:{
 			scraps: 0.5,
@@ -170,7 +170,7 @@ var all_chained_achievements = {
 		name: 			'break',
 		description: 	'Have allies break or plunder an artifact or structure {AMOUNT} time(s).',
 		objective: 		'ally_performed_break',
-		amount: 	1,
+		amount: 	0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -195,7 +195,7 @@ var all_chained_achievements = {
 		card_back: 'arsonist',
 		steps: 		6,
 	},
-	city: {
+	city:{
 		name: 			'city',
 		description: 	'Play {AMOUNT} structure card(s).',
 		objective: 		'structure_card_played',
@@ -279,6 +279,7 @@ var all_chained_achievements = {
 		},
 		card_back: 'elf',
 		steps: 		6,
+		no_quest: 	true,
 	},
 	empower:{
 		name: 			'empower',
@@ -320,6 +321,20 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 'fearful_mask',
+		steps: 		6,
+	},
+	feast:{
+		name: 			'feast',
+		description: 	'Have allies feast on a creature {AMOUNT} time(s).',
+		objective: 		'ally_performed_feast',
+		amount: 	1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'vulture',
 		steps: 		6,
 	},
 	fire:{
@@ -649,7 +664,7 @@ var all_chained_achievements = {
 	},
 	sacrifice:{
 		name: 			'sacrifice',
-		description: 	'Have allies sacrifice an ally {AMOUNT} time(s).',
+		description: 	'Have allies sacrifice or consume an ally {AMOUNT} time(s).',
 		objective: 		'ally_performed_sacrifice',
 		amount: 	0.2,
 		rewards:{

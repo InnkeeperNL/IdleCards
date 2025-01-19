@@ -1001,6 +1001,90 @@ var all_abilities = {
 		average_hits: 		1,
 		
 	},
+	consume_corpse:{
+		description: 	'Heals itself by {LEVEL} for every 5 creature cards in your grave.',
+		proc: 			'basic',
+		min_ally_creature_cards_in_grave: 5,
+		//remove_skill: 'grave_power',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit_or_hero',
+				target_amount: 1,
+				position: 	'self',
+				min_hp: 	1,
+				side: 		'ally',
+				damaged: 	true,
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'drain',
+				projectile_target: 	'deck',
+				type: 			'healing',
+				subtypes: 		['feast'],
+				amount: 		'ally_grave_creature_card_count',
+				amount_factors: [0.2,'ability_level'],
+				amount_rounding: 'down',
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	2,
+		cost_factor: 	'none',
+	},
+	consume_creature:{
+		description: 	'Each turn, this destroys 1 random non-undead ally creature units. If it does, This gains {LEVEL} temporary power and heals itself by {LEVEL}. Will target units with the lowest cost first.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				not_self: 	true,
+				not_types: 	['structure','artifact'],
+				max_abilities: 	{undead: 0},
+				lowest_cost: true,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'drain',
+				type: 		'destroy',
+				subtypes: 	['sacrifice'],
+				amount: 	1,
+			},
+		},
+		on_success:{
+			targets:	{
+				0:{
+					target: 		'any',
+					target_amount: 	1,
+					position: 		'self',
+					min_hp: 		1,
+					side: 			'ally'
+				},
+			},
+			effects:{
+				0:{
+					projectile: 	'power',
+					type: 			'grant_temp_power',
+					subtypes: 		['empower','empower_ally'],
+					amount: 		'ability_level'
+				},
+				1:{
+					pause_before: 	-1000,
+					type: 			'healing',
+					subtypes: 		['healing','feast'],
+					amount: 		'ability_level'
+				},
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	3,
+		cost_adjustment: -3,
+	},
 	counter:{
 		description: 	'If this survives melee damage from an enemy unit or hero, this deals physical melee damage equal to its power to it, {LEVEL} time(s). This cannot counter a counter.',
 		proc: 			'receive_damage',
@@ -1420,6 +1504,7 @@ var all_abilities = {
 				target_amount: 	1,
 				status: 		'hand',
 				side: 			'ally',
+				highest_time_left: true,
 			},
 		},
 		effects:{
@@ -1427,7 +1512,6 @@ var all_abilities = {
 				projectile: 	'hasten',
 				projectile_target: 'deck',
 				type: 			'reduce_ready_time',
-				highest_cost: 	true,
 				subtypes: 		['hasten','deck_control'],
 				amount: 		'ability_level',
 				side: 			'ally',
@@ -2035,21 +2119,19 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				pause_before: 	500,
 				projectile: 	'power',
 				type: 			'increase_power',
 				subtypes: 		['empower','empower_ally'],
 				amount: 		'ability_level'
 			},
 			1:{
-				pause_before: 	1000,
 				type: 			'increase_health',
 				subtypes: 		['bolster','bolster_ally'],
 				amount: 		'ability_level'
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
+		level_cost: 		5,
 	},
 	eat_sporeling:{
 		description: 	'If damaged, destroys a random sporeling. This then heals itself by {LEVEL}.',
@@ -2147,6 +2229,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	3,
+		level_cost_artifact: 1.5,
 	},
 	energising_deaths:{
 		description: 	'Gains {LEVEL} energy when an ally creature is destroyed.',
@@ -2322,7 +2405,7 @@ var all_abilities = {
 		level_cost_artifact: 2,
 	},
 	feast:{
-		description: 	'When any living creature is killed by this, that creature is detroyed. This then heals itself by {LEVEL}.',
+		description: 	'When any enemy living creature is killed by this, that creature is detroyed. This then heals itself by {LEVEL}.',
 		proc: 			'prekill_creature',
 		cannot_proc_while_stunned: true,
 		origin_does_not_have_ability: ['undead'],
@@ -2335,7 +2418,7 @@ var all_abilities = {
 						target_amount: 	1,
 						position: 		'random',
 						origin_unit: 	true,
-						side: 			'any'
+						side: 			'enemy'
 					},
 				},
 				effects:{
@@ -2460,6 +2543,32 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		-5,
+	},
+	final_embrace:{
+		description: 	'When destroyed, this destroys {LEVEL} random enemy creature unit(s).',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		reduce_skill_after_use: 'final_destroy_creature',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				not_types: 	['structure','artifact','spell'],
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['destroy'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	6,
+		level_cost_artifact: 3,
 	},
 	final_hasten:{
 		description: 	'When destroyed, reduces the time left of a card in your hand by {LEVEL}.',
@@ -2960,6 +3069,62 @@ var all_abilities = {
 		level_cost_spell: 	1.5,
 		average_hits: 		1,
 		cost_adjustment: 	1,
+	},
+	grant_final_embrace:{
+		name: 			'grant: final embrace',
+		ability_subtypes: ['own_death_proc'],
+		description: 	'Grants the final embrace ability to a random ally unit. Cannot target your hero.<br/><i>When destroyed, this destroys {LEVEL} random enemy creature unit(s).</i>',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'death',
+				type: 			'grant_skill',
+				subtypes: 		['grant_ability'],
+				skill_id: 		'final_embrace',
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		6,
+	},
+	grow:{
+		description: 	'This gains {LEVEL} power and health permanently.',
+		cannot_proc_while_stunned: true,
+		scales: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower','empower_ally'],
+				amount: 		'ability_level'
+			},
+			1:{
+				pause_before: 	-1000,
+				type: 			'increase_health',
+				subtypes: 		['bolster','bolster_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		8,
 	},
 	guard:{
 		description: 	'When played, an enemy unit enters the game or any unit is destroyed, if there is no opposing enemy unit, this unit will move to a free slot with an opposing unit. Can be used once each round.',
@@ -4393,7 +4558,7 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	-6,
+		level_cost: 	-5,
 	},
 	sacrifice_living_creature:{
 		description: 	'Destroy up to {LEVEL} random ally non-undead creature unit(s). Will target units with the lowest cost first.',
@@ -4421,7 +4586,7 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	-6,
+		level_cost: 	-5,
 	},
 	scavange:{
 		name_color: 	'rgba(55,255,55,0.9)',
@@ -5509,6 +5674,51 @@ var all_abilities = {
 		level_cost: 		3,
 		level_cost_spell: 	1.5,
 	},
+	upkeep_creature:{
+		name: 			'upkeep: creature',
+		description: 	'Each turn, this destroys {LEVEL} random ally creature unit(s). If it cannot, this is stunned. Will target units with the lowest cost first.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				not_self: 	true,
+				not_types: 	['structure','artifact'],
+				lowest_cost: true,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['sacrifice'],
+				amount: 	1,
+			},
+		},
+		on_failure:{
+			targets:{
+				0:{
+					target: 		'any',
+					target_amount: 	1,
+					position: 		'self',
+					side: 			'any',
+				},
+			},
+			effects:{
+				0:{
+					projectile:		'stun',
+					type: 			'apply_stun',
+					subtypes: 		['stun_self'],
+					amount: 		1,
+				}
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	-10,
+	},
 	vampiric:{
 		description: 	'When this deals physical damage to a non-undead creature, it heals iself by the amount of damage done, up to {LEVEL}.',
 		proc: 			'dealt_damage',
@@ -5694,7 +5904,7 @@ var all_abilities = {
 				amount: 	'latest_result',
 			}
 		},
-		level_cost: 	2,
+		level_cost: 	1,
 	},
 	auto_learn:{
 		name: 			'learned on pickup',

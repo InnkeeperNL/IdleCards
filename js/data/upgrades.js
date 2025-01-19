@@ -514,6 +514,15 @@ var all_upgrades = {
 			crown:  	1,
 		}
 	},
+	cup_of_blood_bonus:{
+		upgrade_type: 	'passive',
+		type: 			'altar_rarity',
+		subtypes:  		['any'],
+		amount:  		0.01,
+		cost:{
+			cup_of_blood:  	1,
+		}
+	},
 	endless_pouch_bonus:{
 		upgrade_type: 	'passive',
 		type: 			'loot',
