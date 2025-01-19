@@ -9140,7 +9140,7 @@ var all_available_cards = {
 		abilities: 			{},
 		reward: 			{
 			type: 			'random_card',
-			card_type: 		'treasure',
+			card_type: 		['treasure'],
 			pick_amount: 	1,
 			amount: 		1,
 			min_value: 		7,

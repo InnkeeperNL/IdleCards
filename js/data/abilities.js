@@ -5231,7 +5231,7 @@ var all_abilities = {
 		proc: 			'on_play',
 		ability_subtypes: 		['on_play_proc'],
 		cannot_proc_while_stunned: true,
-		need_power: 	true,
+		scales: 		true,
 		targets:	{
 			0:{
 				target: 		'unit',
