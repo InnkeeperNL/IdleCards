@@ -315,14 +315,14 @@ var all_upgrades = {
 	},
 	z_d_trove_drops:{
 		name: 			'Trove drops',
-		description: 	'Increases the chance troves will drop as loot from battles by 100%.',
+		description: 	'Increases the chance troves will drop as loot from battles by 50%.',
 		needed_upgrades:{
 			z_d_treasury_access: 1,
 		},
 		card_image: 	'kleptomaniac',
 		type: 			'loot_drop_chance',
 		subtypes:  		['trove'],
-		amount: 		1,
+		amount: 		0.5,
 		level_cost_scale: 	20,
 		cost: 			{trove: 1},
 		max_level: 		20,

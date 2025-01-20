@@ -9126,7 +9126,7 @@ var all_available_cards = {
 	},
 	trove:{
 		name: 				'trove',
-		value: 				100,
+		value: 				50,
 		type: 				'consumable',
 		basic_reward: 		true,
 		color: 				['none'],

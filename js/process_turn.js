@@ -8009,7 +8009,7 @@ function get_all_possible_pickups(){
 	$.each(all_available_cards, function(card_id, card_info){
 		if(match_array_values(month, card_info['months_available']) && card_info['type'] == 'currency')
 		{
-			all_possible_pickups[card_id] = 1 / card_info['value'];
+			all_possible_pickups[card_id] = 1 / Math.sqrt(card_info['value']);
 		}
 	});
 	all_possible_pickups['peasant'] = 1;
