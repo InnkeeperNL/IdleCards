@@ -7962,6 +7962,12 @@ function spawn_monthly_pickup(){
 function claim_pickups(counter){
 	if(pickup_rewards[counter] != undefined)
 	{
+		if(gamedata['upgrades'] != undefined /*&& do_no_apply_factions == false*/)
+		{
+			var loot_factor = get_upgrade_factor('loot', [pickup_rewards[counter]['card_id']], true);
+			//console.log(loot_factor);
+			pickup_rewards[counter]['card_amount'] = round_by_percent(pickup_rewards[counter]['card_amount'] * loot_factor);
+		}
 		check_quests('claimed_pickup');
 		if(all_available_cards[pickup_rewards[counter]['card_id']] != undefined)
 		{
