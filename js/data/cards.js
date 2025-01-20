@@ -13,7 +13,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, consume_corpse: 1, enrage: 1, undead: 1},
+		abilities: 			{strike: 1, corpse_feast: 1, enrage: 1, undead: 1},
 		hero_version: 			{
 			theme: 				['curse_ability','subtype_undead'],
 			power: 				2,
@@ -1421,7 +1421,6 @@ var all_available_cards = {
 		},
 		quote: '\"Feed her or become food.\"',
 	},
-	
 	carnivorous_plant:{
 		name: 				'carnivorous plant',
 		type: 				'structure',
@@ -3531,13 +3530,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, consume_corpse: 1, undead: 1},
+		abilities: 			{strike: 1, corpse_feast: 1, undead: 1},
 		hero_version: 			{
 			theme: 				['curse_ability','subtype_undead'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, consume_corpse: 1, undead: 1},
+			abilities: 			{strike_unit: 1, corpse_feast: 1, undead: 1},
 		},
 		quote: '\"It will eat anything inside a grave.\"',
 	},

@@ -16,6 +16,42 @@ var all_quests = {
 };
 
 var all_achievements = {
+	broken:{
+		name: 			'broken',
+		description: 	'Break a breaker.',
+		card_image: 	'breaker',
+		objective: 		'breaker_affected_by_break',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_breaker',
+				reward_amount: 1,
+			},
+		},
+	},
+	chemical_warfare:{
+		name: 			'chemical warfare',
+		description: 	'Poison an alchemist.',
+		card_image: 	'alchemist',
+		objective: 		'alchemist_affected_by_poison',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_alchemist',
+				reward_amount: 1,
+			},
+		},
+	},
 	donkey:{
 		name: 			'donkey!',
 		description: 	'Make a donkey fly.',
@@ -52,6 +88,24 @@ var all_achievements = {
 			},
 		},
 	},
+	forced_labor:{
+		name: 			'forced labor',
+		description: 	'Backlash a conscript.',
+		card_image: 	'backlash',
+		objective: 		'conscript_affected_by_backlash',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_backlash',
+				reward_amount: 1,
+			},
+		},
+	},
 	lamb_chops:{
 		name: 			'lamb chops',
 		description: 	'Sacrifice a lamb.',
@@ -70,6 +124,42 @@ var all_achievements = {
 			},
 		},
 	},
+	magic_muscles:{
+		name: 			'magic muscles',
+		description: 	'Empower a mage.',
+		card_image: 	'arcane_axe',
+		objective: 		'mage_affected_by_empower_ally',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_arcane_axe',
+				reward_amount: 1,
+			},
+		},
+	},
+	mechanical_play:{
+		name: 			'mechanical play',
+		description: 	'Hit a snowball golem with a frost bolt.',
+		card_image: 	'snowball_golem',
+		objective: 		'snowball_golem_affected_by_cold_bolt',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_snowball_golem',
+				reward_amount: 1,
+			},
+		},
+	},
 	scaredy_cat:{
 		name: 			'scaredy-cat',
 		description: 	'Use fear on a black cat.',
@@ -84,6 +174,24 @@ var all_achievements = {
 			},
 			1:{
 				reward_id: 'card_back_black_cat',
+				reward_amount: 1,
+			},
+		},
+	},
+	snowball_fight:{
+		name: 			'snowball fight',
+		description: 	'Hit a snowballer with a frost bolt.',
+		card_image: 	'snowballer',
+		objective: 		'snowballer_affected_by_cold_bolt',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_snowballer',
 				reward_amount: 1,
 			},
 		},
@@ -166,8 +274,8 @@ var all_chained_achievements = {
 		card_back: 'hearty_meal',
 		steps: 		6,
 	},
-	break:{
-		name: 			'break',
+	plunder:{
+		name: 			'plunder',
 		description: 	'Have allies break or plunder an artifact or structure {AMOUNT} time(s).',
 		objective: 		'ally_performed_break',
 		amount: 	0.5,
@@ -177,7 +285,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'breaker',
+		card_back: 'pirate',
 		steps: 		6,
 		no_quest: 	true,
 	},
@@ -323,20 +431,6 @@ var all_chained_achievements = {
 		card_back: 'fearful_mask',
 		steps: 		6,
 	},
-	feast:{
-		name: 			'feast',
-		description: 	'Have allies feast on a creature {AMOUNT} time(s).',
-		objective: 		'ally_performed_feast',
-		amount: 	1,
-		rewards:{
-			0:{
-				reward_id: 			'stash',
-				reward_amount: 		1
-			},
-		},
-		card_back: 'vulture',
-		steps: 		6,
-	},
 	fire:{
 		name: 			'fire',
 		description: 	'Have allies perform a fire ability {AMOUNT} time(s).',
@@ -434,7 +528,6 @@ var all_chained_achievements = {
 		},
 		card_back: 'hungry_wolf',
 		steps: 		6,
-		no_quest: 	true,
 	},
 	healing:{
 		name: 			'healing',

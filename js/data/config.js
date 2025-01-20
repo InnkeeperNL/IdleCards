@@ -1,6 +1,6 @@
 
 var main_version = 1;
-var test_mode = true;
+var test_mode = false;
 var battle_speed = 0.65;
 
 var card_drop_chance_reduction = 4;

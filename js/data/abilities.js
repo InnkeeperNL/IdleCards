@@ -245,7 +245,7 @@ var all_abilities = {
 			1:{
 				target_projectile: 	'power',
 				type: 			'grant_temp_power',
-				subtypes: 		['empower','empower_ally'],
+				subtypes: 		['empower','empower_ally','backlash'],
 				amount: 		'ability_level',
 			},
 		},
@@ -1001,38 +1001,6 @@ var all_abilities = {
 		average_hits: 		1,
 		
 	},
-	consume_corpse:{
-		description: 	'Heals itself by {LEVEL} for every 5 creature cards in your grave.',
-		proc: 			'basic',
-		min_ally_creature_cards_in_grave: 5,
-		//remove_skill: 'grave_power',
-		cannot_proc_while_stunned: true,
-		scales: 		true,
-		targets:	{
-			0:{
-				target: 	'unit_or_hero',
-				target_amount: 1,
-				position: 	'self',
-				min_hp: 	1,
-				side: 		'ally',
-				damaged: 	true,
-			},
-		},
-		effects:{
-			0:{
-				projectile: 	'drain',
-				projectile_target: 	'deck',
-				type: 			'healing',
-				subtypes: 		['feast'],
-				amount: 		'ally_grave_creature_card_count',
-				amount_factors: [0.2,'ability_level'],
-				amount_rounding: 'down',
-			}
-		},
-		animation: 		'combat_zoom',
-		level_cost: 	2,
-		cost_factor: 	'none',
-	},
 	consume_creature:{
 		description: 	'Each turn, this destroys 1 random non-undead ally creature units. If it does, This gains {LEVEL} temporary power and heals itself by {LEVEL}. Will target units with the lowest cost first.',
 		cannot_proc_while_stunned: true,
@@ -1146,6 +1114,38 @@ var all_abilities = {
 		level_cost: 		3,
 		level_cost_hero: 	2,
 		level_cost_artifact: 2,
+	},
+	corpse_feast:{
+		description: 	'Heals itself by {LEVEL} for every 5 creature cards in your grave.',
+		proc: 			'basic',
+		min_ally_creature_cards_in_grave: 5,
+		//remove_skill: 'grave_power',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit_or_hero',
+				target_amount: 1,
+				position: 	'self',
+				min_hp: 	1,
+				side: 		'ally',
+				damaged: 	true,
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'drain',
+				projectile_target: 	'deck',
+				type: 			'healing',
+				subtypes: 		['feast'],
+				amount: 		'ally_grave_creature_card_count',
+				amount_factors: [0.2,'ability_level'],
+				amount_rounding: 'down',
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	2,
+		cost_factor: 	'none',
 	},
 	curse:{
 		name_color: 	'rgba(160, 95, 250,0.9)',

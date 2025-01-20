@@ -1798,6 +1798,15 @@ function process_effect(target_id, origin_id, effect, level){
 							var possible_quest_string = battle_info['combat_units'][target_id]['card_type'] + '_affected_by_' + effect_subtype;
 							if(all_achievement_goals[possible_quest_string] != undefined){
 								check_quests(possible_quest_string);
+							};
+							if(battle_info['combat_units'][target_id] != undefined)
+							{
+								$.each(battle_info['combat_units'][target_id]['subtypes'], function(subtype_key, quest_subtype){
+									var possible_quest_string = quest_subtype + '_affected_by_' + effect_subtype;
+									if(all_achievement_goals[possible_quest_string] != undefined){
+										check_quests(possible_quest_string);
+									};
+								});
 							}
 						});
 					}
