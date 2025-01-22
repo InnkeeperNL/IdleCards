@@ -4299,7 +4299,7 @@ var all_abilities = {
 	},
 	resurrect:{
 		name_color: 	'rgba(160, 95, 250,0.9)',
-		description: 	'When this unit\'s health reaches 0, it has a 50% chance to come back to life with {LEVEL}0% health, rounded up.',
+		description: 	'When this\' health reaches 0, it has a 50% chance to come back to life with {LEVEL}0% health, rounded up.',
 		proc: 			'own_death',
 		proc_chance: 	50,
 		proc_while_dead: true,
@@ -4329,13 +4329,13 @@ var all_abilities = {
 		cost_factor: 		'health',
 	},
 	resurrect_ally:{
-		description: 	'When an ally creature\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 10% health.',
+		description: 	'When an ally creature unit\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 10% health.',
 		proc: 			'ally_creature_death',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
 		targets:	{
 			0:{
-				target: 		'unit_or_hero',
+				target: 		'unit',
 				target_amount: 	1,
 				position: 		'random',
 				origin_unit: 	true,
