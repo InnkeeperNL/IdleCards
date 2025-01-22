@@ -5825,7 +5825,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, doom_all: 1, doom_self: 1},
 		hero_version: 			{
-			theme: 				['deck_control_ability','hasten_ability','draw_cards_ability'],
+			theme: 				['doom_ability','subtype_human','subtype_wall'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
