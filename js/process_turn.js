@@ -725,12 +725,12 @@ function process_single_unit(unit_id, activate_on_play, do_not_process_effects, 
 			}
 			
 		});
-		if(any_effect_fired == true && battle_info.combat_units[unit_id] != undefined && current_unit['acted_this_turn'] < 1 && combat_alive == true && battle_info.combat_units[unit_id]['temp_power'] != undefined && battle_info.combat_units[unit_id]['temp_power'] != 0)
+		/*if(any_effect_fired == true && battle_info.combat_units[unit_id] != undefined && current_unit['acted_this_turn'] < 1 && combat_alive == true && battle_info.combat_units[unit_id]['temp_power'] != undefined && battle_info.combat_units[unit_id]['temp_power'] != 0)
 		{
 			battle_info.combat_units[unit_id]['temp_power'] = 0;
 			check_unit_power(unit_id);	
 			//total_timeout += 500 * battle_speed;
-		}
+		}*/
 		if(any_effect_fired == true)
 		{
 			total_timeout += 1000 * battle_speed;
@@ -1643,6 +1643,10 @@ function count_enemy_artifacts(side){
 
 function process_effect(target_id, origin_id, effect, level){
 	var calculated_amount = calculate_effect(effect, target_id, origin_id, level);
+	if(effect['uses_power'] != undefined && effect['uses_power'] == true && origin_id != undefined && battle_info.combat_units[origin_id] != undefined && battle_info.combat_units[origin_id]['temp_power'] != undefined && battle_info.combat_units[origin_id]['temp_power'] > 0)
+	{
+		battle_info.combat_units[origin_id]['temp_power'] = 0;
+	}
 	var prev_any_effect_fired = any_effect_fired;
 	var any_effect_fired = true;
 	var effect_avoided = false;
@@ -2322,6 +2326,11 @@ function process_effect(target_id, origin_id, effect, level){
 				$('.battle_container .unit_id_' + target_id).removeClass('combat_softfade');
 			},total_timeout + 500);
 			//total_timeout += 500 * battle_speed;
+		}
+
+		if(battle_info.combat_units[origin_id] != undefined)
+		{
+			check_unit_power(origin_id);
 		}
 		
 		if(any_effect_fired == true)

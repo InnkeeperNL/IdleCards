@@ -1928,7 +1928,7 @@ var all_abilities = {
 		cost_factor: 	'full',
 	},
 	empower_ally:{
-		description: 	'A random ally creature that has power gains {LEVEL} power until they act. Cannot affect heroes or itself.',
+		description: 	'A random ally creature that has power gains {LEVEL} temporary power. Cannot affect heroes or itself.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		targets:	{
@@ -1957,7 +1957,7 @@ var all_abilities = {
 		level_cost_hero: 	3,
 	},
 	empower_all:{
-		description: 	'All ally creatures that have power gain {LEVEL} power until they act. Cannot affect heroes or itself.',
+		description: 	'All ally creatures that have power gain {LEVEL} temporary power. Cannot affect heroes or itself.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		do_not_pause_between: 	true,
@@ -2018,7 +2018,7 @@ var all_abilities = {
 		level_cost_hero: 	3,
 	},
 	empower_hero:{
-		description: 	'Your hero gains {LEVEL} power until they act.',
+		description: 	'Your hero gains {LEVEL} temporary power.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		targets:	{
@@ -2044,7 +2044,7 @@ var all_abilities = {
 		level_cost_spell: 	1,
 	},
 	empower_imps:{
-		description: 	'All ally imp units that have power gain {LEVEL} power until they act. Cannot affect itself.',
+		description: 	'All ally imp units that have power gain {LEVEL} temporary power. Cannot affect itself.',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: true,
 		scales: 		true,
@@ -5803,7 +5803,7 @@ var all_abilities = {
 		average_hits: 		3,
 	},
 	weakness:{
-		description: 	'A random enemy creature unit that has at least 1 power looses {LEVEL} power until they act.',
+		description: 	'A random enemy creature unit that has at least 1 power looses {LEVEL} temporary power.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		targets:	{
@@ -5967,6 +5967,10 @@ $.each(all_abilities, function(ability_id, ability_info){
 	if(all_abilities[ability_id]['effects'] != undefined)
 	{	
 		$.each(all_abilities[ability_id]['effects'], function(effect_id, ability_effect){
+			if(ability_effect['amount'] == 'origin_power')
+			{
+				all_abilities[ability_id]['effects'][effect_id]['uses_power'] = true;
+			}
 			var found_craft_effect_type = false;
 			$.each(ability_effect['subtypes'], function(subtype_id, subtype_name){
 				
