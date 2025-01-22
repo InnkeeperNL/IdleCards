@@ -142,33 +142,52 @@ function show_town(){
 					{
 						free = 1;
 					}*/
-
+						var first_done_time = 0;
 						$.each(gamedata['town'][building_id]['expeditions'], function(expedition_id, expedition_info){
 							free -= 1;
 							if(expedition_info['done_time'] <= time_now){done += 1;}
-							if(expedition_info['done_time'] > time_now){busy += 1;}
+							if(expedition_info['done_time'] > time_now){busy += 1;if(first_done_time == 0 || first_done_time > expedition_info['done_time']){first_done_time = expedition_info['done_time'];};}
 						});
 						$.each(gamedata['town'][building_id]['adventures'], function(expedition_id, expedition_info){
 							free -= 1;
 							if(expedition_info['done_time'] <= time_now){done += 1;}
-							if(expedition_info['done_time'] > time_now){busy += 1;}
+							if(expedition_info['done_time'] > time_now){busy += 1;if(first_done_time == 0 || first_done_time > expedition_info['done_time']){first_done_time = expedition_info['done_time'];};}
 						});
 
-						/*if(gamedata['town'][building_id]['adventures'] != undefined || gamedata['town'][building_id]['expeditions'] != undefined)
+						if(gamedata['town'][building_id]['adventures'] != undefined || gamedata['town'][building_id]['expeditions'] != undefined)
 						{
 							if(busy > 0)
 							{
-								parsed_town += '<br/>Busy: ' + busy;
+								//parsed_town += '<br/>Busy: ' + busy;
+								parsed_town += '<br/><span class="timer" data-complete-time=' + first_done_time + '></span>';
 							}
 							if(done > 0)
 							{
-								parsed_town += '<br/><b><span style="color:#afa">DONE: ' + done + '</span></b>';
+								//parsed_town += '<br/><b><span style="color:#afa">DONE: ' + done + '</span></b>';
+								parsed_town += '<br/><b><span style="color:#afa">DONE</span></b>';
 							}
 							if(free > 0)
 							{
-								parsed_town += '<br/>Free slots: ' + free;
+								//parsed_town += '<br/>Free slots: ' + free;
+								parsed_town += '<br/>Idle';
 							}
-						}*/
+						}
+
+						if(gamedata['town'][building_id] != undefined && current_building['type'] == 'shop')
+						{
+							var offers_available = 0;
+							$.each(gamedata['town'][building_id]['current_offers'], function(offer_id, offer_info){
+								if(offer_info['sold'] == undefined || new Date(offer_info['offer_expires']) < new Date())
+								{
+									offers_available++;
+								}
+							});
+							if(offers_available > 0)
+							{
+								//parsed_town += '<br/>Offers: ' + offers_available;
+								parsed_town += '<br/>Offer available';
+							}
+						}
 
 					
 						var total_storage = 0;
@@ -220,20 +239,7 @@ function show_town(){
 								}
 							}
 						}
-						/*if(gamedata['town'][building_id] != undefined && current_building['type'] == 'shop')
-						{
-							var offers_available = 0;
-							$.each(gamedata['town'][building_id]['current_offers'], function(offer_id, offer_info){
-								if(offer_info['sold'] == undefined || new Date(offer_info['offer_expires']) < new Date())
-								{
-									offers_available++;
-								}
-							});
-							if(offers_available > 0)
-							{
-								parsed_town += '<br/>Offers: ' + offers_available;
-							}
-						}*/
+						
 					}
 					/*var upgrade_cost = calculate_upgrade_cost(building_level);
 					if(gamedata['owned_cards'][current_building['fragment_id']] >= upgrade_cost && gamedata['scraps'] >= upgrade_cost * building_scraps_cost)
@@ -274,6 +280,10 @@ function show_town(){
 		{
 			show_content('single_building');
 		}
+	}
+	else
+	{
+		update_all_timers();
 	}
 }
 
