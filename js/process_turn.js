@@ -1676,77 +1676,84 @@ function process_effect(target_id, origin_id, effect, level){
 
 	}
 
-	if(battle_info.combat_units[target_id] != undefined)
+	if(battle_info.combat_units[origin_id] != undefined)
 	{
-		$.each(battle_info.combat_units[target_id]['abilities'], function(ability_key, ability_level){
-			if(match_array_values(all_abilities[ability_key]['proc'], ['targeted_by']) == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], effect['subtypes']) == true))
-			{
-				process_ability(target_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'targeted_by');
-			}
-			if(match_array_values(all_abilities[ability_key]['proc'], ['targeted_by_' + battle_info.combat_units[origin_id]['type']]) == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], effect['subtypes']) == true))
-			{
-				process_ability(target_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'targeted_by');
-			}
-		});
-		if(battle_info.combat_units[target_id]['slot'] == 0)
-		{
-			check_ability_procs(battle_info.combat_units[target_id]['side'], 'hero_targeted_by', origin_id, effect['subtypes']);
-		}
-		if(battle_info.combat_units[target_id] != undefined)
-		{
-			check_ability_procs(battle_info.combat_units[target_id]['side'], 'ally_targeted_by', target_id, effect['subtypes']);
-		}
+		check_ability_procs(battle_info.combat_units[target_id]['side'], battle_info.combat_units[origin_id]['type'] + '_about_to_use_ability', origin_id, effect['subtypes']);
 	}
 
 	if(battle_info.combat_units[origin_id] != undefined)
 	{
-		var origin_side = battle_info.combat_units[origin_id]['side'] + 0;
 		if(battle_info.combat_units[target_id] != undefined)
 		{
-
-			
-			$.each(battle_info.combat_units[target_id]['abilities'], function(ability_id, ability_level){
-				var has_avoid = all_abilities[ability_id]['proc'];
-				var avoid_subtypes = all_abilities[ability_id]['subtypes'];
-				var avoid_chance = calculate_effect({amount:all_abilities[ability_id]['effect']}, target_id, origin_id, ability_level);
-				var avoid_rolled = (Math.random() * 100);
-				var effect_negated = false;
-				var prev_effect_avoided = false;
-				if(effect_avoided == true){prev_effect_avoided = true;}
-
-				if(all_abilities[ability_id]['cannot_proc_while_stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == 0)
-	        		{
-	        			if(effect_avoided == false && match_array_values(has_avoid, 'avoid_effect') == true && match_array_values(avoid_subtypes, effect['subtypes']) == true && avoid_rolled <= avoid_chance)
-	        			{
-	        			    if(all_abilities[ability_id]['negated_by_ability'] != undefined)
-	            			{	
-	            				$.each(all_abilities[ability_id]['negated_by_ability'], function(useless_key, negated_ability_key){
-	            					$.each(battle_info.combat_units[origin_id]['abilities'], function(ability_key, useless_data){
-	            						if(ability_key == negated_ability_key)
-	            						{
-	            							effect_negated = true;
-	            						}
-	            					});
-	            				});
-	            			}
-	            			if(effect_negated == false)
-	            			{
-	            				effect_avoided = true;
-	            				latest_result = 0;
-	            				process_ability(target_id, all_abilities[ability_id], ability_level, origin_id, undefined, 'avoid_effect');
-	            			}
-	        			}
-	        		}
-				
-				
+			$.each(battle_info.combat_units[target_id]['abilities'], function(ability_key, ability_level){
+				if(match_array_values(all_abilities[ability_key]['proc'], ['targeted_by']) == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], effect['subtypes']) == true))
+				{
+					process_ability(target_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'targeted_by');
+				}
+				if(match_array_values(all_abilities[ability_key]['proc'], ['targeted_by_' + battle_info.combat_units[origin_id]['type']]) == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], effect['subtypes']) == true))
+				{
+					process_ability(target_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'targeted_by');
+				}
 			});
-
+			if(battle_info.combat_units[target_id]['slot'] == 0)
+			{
+				check_ability_procs(battle_info.combat_units[target_id]['side'], 'hero_targeted_by', origin_id, effect['subtypes']);
+			}
+			if(battle_info.combat_units[target_id] != undefined)
+			{
+				check_ability_procs(battle_info.combat_units[target_id]['side'], 'ally_targeted_by', target_id, effect['subtypes']);
+			}
 		}
 
-	
+		if(battle_info.combat_units[origin_id] != undefined)
+		{
+			var origin_side = battle_info.combat_units[origin_id]['side'] + 0;
+			if(battle_info.combat_units[target_id] != undefined)
+			{
+
+				
+				$.each(battle_info.combat_units[target_id]['abilities'], function(ability_id, ability_level){
+					var has_avoid = all_abilities[ability_id]['proc'];
+					var avoid_subtypes = all_abilities[ability_id]['subtypes'];
+					var avoid_chance = calculate_effect({amount:all_abilities[ability_id]['effect']}, target_id, origin_id, ability_level);
+					var avoid_rolled = (Math.random() * 100);
+					var effect_negated = false;
+					var prev_effect_avoided = false;
+					if(effect_avoided == true){prev_effect_avoided = true;}
+
+					if(all_abilities[ability_id]['cannot_proc_while_stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == 0)
+		        		{
+		        			if(effect_avoided == false && match_array_values(has_avoid, 'avoid_effect') == true && match_array_values(avoid_subtypes, effect['subtypes']) == true && avoid_rolled <= avoid_chance)
+		        			{
+		        			    if(all_abilities[ability_id]['negated_by_ability'] != undefined)
+		            			{	
+		            				$.each(all_abilities[ability_id]['negated_by_ability'], function(useless_key, negated_ability_key){
+		            					$.each(battle_info.combat_units[origin_id]['abilities'], function(ability_key, useless_data){
+		            						if(ability_key == negated_ability_key)
+		            						{
+		            							effect_negated = true;
+		            						}
+		            					});
+		            				});
+		            			}
+		            			if(effect_negated == false)
+		            			{
+		            				effect_avoided = true;
+		            				latest_result = 0;
+		            				process_ability(target_id, all_abilities[ability_id], ability_level, origin_id, undefined, 'avoid_effect');
+		            			}
+		        			}
+		        		}
+					
+					
+				});
+
+			}
+
+		}
 		
 	
-		if(effect_avoided == false && target_immune == false && combat_alive == true && (effect['chance'] == undefined || effect['chance'] >= (Math.random() * 100)))
+		if(battle_info.combat_units[origin_id] != undefined && effect_avoided == false && target_immune == false && combat_alive == true && (effect['chance'] == undefined || effect['chance'] >= (Math.random() * 100)))
 		{
 			var effect_count = 1;
 			if(effect['effect_count'] != undefined)

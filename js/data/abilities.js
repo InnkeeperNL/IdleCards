@@ -1088,7 +1088,7 @@ var all_abilities = {
 	},
 	counter_spell:		{
 		description: 	'Destroys up to {LEVEL} enemy spell(s).',
-		proc: 			'enemy_spell_card_preplayed',
+		proc: 			'spell_about_to_use_ability',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		reduce_skill_after_use:'counter_spell',
@@ -1098,7 +1098,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				origin_unit: 	true,
-				side: 			'any'
+				side: 			'enemy'
 			},
 		},
 		effects:{
@@ -4404,7 +4404,7 @@ var all_abilities = {
 		level_cost: 	0,
 	},
 	reveal:{
-		description: 	'Removes stealth from the nearest enemy {LEVEL} unit(s) or hero.',
+		description: 	'Removes stealth from the {LEVEL} enemy  unit(s) or hero. Will target the nearest unit or hero with stealth',
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
