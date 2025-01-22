@@ -166,7 +166,7 @@ function show_town(){
 								//parsed_town += '<br/><b><span style="color:#afa">DONE: ' + done + '</span></b>';
 								parsed_town += '<br/><b><span style="color:#afa">DONE</span></b>';
 							}
-							if(free > 0)
+							if(free > 0 && done == 0)
 							{
 								//parsed_town += '<br/>Free slots: ' + free;
 								parsed_town += '<br/>Idle';
