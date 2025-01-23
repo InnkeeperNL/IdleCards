@@ -971,6 +971,20 @@ var all_chained_achievements = {
 		card_back: 'shield_warrior',
 		steps: 		6,
 	},
+	witch:{
+		name: 			'witch',
+		description: 	'Play or summon {AMOUNT} witch card(s).',
+		objective: 		'witch_card_played',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'witch',
+		steps: 		6,
+	},
 	zoo:{
 		name: 			'zoo',
 		description: 	'Play or summon {AMOUNT} animal card(s).',
