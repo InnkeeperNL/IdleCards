@@ -1291,6 +1291,15 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 				
 				var effect_start_timeout = total_timeout + 0;
 				var highest_effect_end = total_timeout + 0;
+				var temp_power_used = 0;
+				if(current_ability['uses_power'] != undefined && current_ability['uses_power'] == true && unit_id != undefined && battle_info.combat_units[unit_id] != undefined && battle_info.combat_units[unit_id]['temp_power'] != undefined && battle_info.combat_units[unit_id]['temp_power'] > 0)
+				{
+					if(battle_info.combat_units[unit_id]['temp_power'] > temp_power_used)
+					{
+						temp_power_used = battle_info.combat_units[unit_id]['temp_power'] + 0;
+					}
+				}
+
 				for (var i = 1; i <= proc_amount; i++) {
 
 					var ability_can_fire = check_ability_can_fire(unit_id, current_ability, level, origin_id);
@@ -1426,6 +1435,13 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 				};
 			};
 		};
+
+		if(battle_info.combat_units[unit_id] != undefined && temp_power_used > 0)
+		{
+			battle_info.combat_units[unit_id]['temp_power'] -= temp_power_used;
+			temp_power_used = 0;
+			check_unit_power(unit_id);
+		}
 
 		if(current_ability['remove_skill'] != undefined && battle_info['combat_units'][unit_id] != undefined && battle_info['combat_units'][unit_id]['type'] != 'spell')
 		{
@@ -1641,12 +1657,9 @@ function count_enemy_artifacts(side){
 	return enemy_unit_count;
 }
 
+
 function process_effect(target_id, origin_id, effect, level){
 	var calculated_amount = calculate_effect(effect, target_id, origin_id, level);
-	if(effect['uses_power'] != undefined && effect['uses_power'] == true && origin_id != undefined && battle_info.combat_units[origin_id] != undefined && battle_info.combat_units[origin_id]['temp_power'] != undefined && battle_info.combat_units[origin_id]['temp_power'] > 0)
-	{
-		battle_info.combat_units[origin_id]['temp_power'] = 0;
-	}
 	var prev_any_effect_fired = any_effect_fired;
 	var any_effect_fired = true;
 	var effect_avoided = false;
@@ -2327,11 +2340,6 @@ function process_effect(target_id, origin_id, effect, level){
 			},total_timeout + 500);
 			//total_timeout += 500 * battle_speed;
 		}
-
-		if(battle_info.combat_units[origin_id] != undefined)
-		{
-			check_unit_power(origin_id);
-		}
 		
 		if(any_effect_fired == true)
 		{
@@ -2713,6 +2721,10 @@ function apply_doom(target_id, calculated_amount, origin_id){
 		{
 			current_unit['effects']['doom'] += calculated_amount;
 		}
+		if(current_unit['effects']['doom'] > 10)
+		{
+			current_unit['effects']['doom'] = 10;
+		}
 		//current_unit['effects']['blessed'] = 0;
 		timeout_key ++;
 		passive_effect_count++;
@@ -2783,6 +2795,10 @@ function apply_blessed(target_id, calculated_amount, origin_id){
 		if(current_unit['effects']['blessed'] < 0)
 		{
 			current_unit['effects']['blessed'] = 0;
+		}
+		if(current_unit['effects']['blessed'] > 10)
+		{
+			current_unit['effects']['blessed'] = 10;
 		}
 		//current_unit['effects']['cursed'] = 0;
 		timeout_key ++;

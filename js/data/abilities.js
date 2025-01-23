@@ -5969,7 +5969,7 @@ $.each(all_abilities, function(ability_id, ability_info){
 		$.each(all_abilities[ability_id]['effects'], function(effect_id, ability_effect){
 			if(ability_effect['amount'] == 'origin_power')
 			{
-				all_abilities[ability_id]['effects'][effect_id]['uses_power'] = true;
+				all_abilities[ability_id]['uses_power'] = true;
 			}
 			var found_craft_effect_type = false;
 			$.each(ability_effect['subtypes'], function(subtype_id, subtype_name){
