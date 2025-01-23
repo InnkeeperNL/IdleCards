@@ -4749,6 +4749,61 @@ var all_abilities = {
 		cost_factor: 	'power',
 		average_hits: 	'ability_level',
 	},
+	shoot_arrival:{
+		description: 	'When an enemy unit enters the game, this deals {LEVEL} physical projectile damage to it. Can be used once.',
+		cannot_proc_while_stunned: true,
+		proc: 			'enemy_unit_card_played',
+		remove_skill_after_use: 'shoot_arrival',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'arrow',
+				type: 			'damage',
+				subtypes: 		['physical','projectile','ranged'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'attack',
+		level_cost: 	1,
+		average_hits: 	0.25,
+	},
+	shoot_arrivals:{
+		description: 	'When an enemy unit enters the game, this deals {LEVEL} physical projectile damage to it.',
+		cannot_proc_while_stunned: true,
+		proc: 			'enemy_unit_card_played',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'arrow',
+				type: 			'damage',
+				subtypes: 		['physical','projectile','ranged'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'attack',
+		level_cost: 	4,
+		average_hits: 	1,
+	},
 	slow:{
 		description: 	'Increases the time left of a random enemy card {LEVEL} time(s).',
 		cannot_proc_while_stunned: true,

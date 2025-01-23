@@ -161,7 +161,6 @@ var all_upgrades = {
 		cost: 			{shard:5,},
 		max_level: 		9,
 	},
-
 	merchant_offers:{
 		name: 			'Merchant offers',
 		description: 	'Reduces the maximum scraps requested by merchants offering cards by 5%.<br>Only affects new offers.',
@@ -203,7 +202,7 @@ var all_upgrades = {
 		type: 			'loot',
 		subtypes:  		['peasant'],
 		amount: 		0.05,
-		level_cost_scale: 	10,
+		level_cost_scale: 	2,
 		cost: 			{scraps:10,},
 		max_level: 		40,
 	},
