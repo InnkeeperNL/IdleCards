@@ -7966,10 +7966,12 @@ function create_projectile(origin_id, target_id, projectile_id, avoided, target_
 var possible_pickups = {};
 var pickup_counter = 0;
 var clear_pickup_timers = {};
+var last_spawned_pickup = 0;
 
 function spawn_monthly_pickup(){
-	if(count_object(pickup_rewards) < 100)
+	if(count_object(pickup_rewards) < 100 && last_spawned_pickup + 1000 < nowint())
 	{
+		last_spawned_pickup = nowint();
 		pickup_counter++;
 		var temp_pickup_counter = pickup_counter + 0;
 		if(count_object(possible_pickups) < 1)
