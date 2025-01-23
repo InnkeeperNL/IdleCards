@@ -115,7 +115,7 @@ var all_buildings = {
 		name: 			'bank',
 		fragment_id: 	'chest',
 		image: 			'cards/dream_TradingCard-2025-01-19T051830.026.jpg',
-		description: 	'<i>Produces scraps.</i>',
+		description: 	'<i>Produces scraps and stashes.</i>',
 		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
 		type: 			'shop',
 		needed_upgrades:{
@@ -135,11 +135,24 @@ var all_buildings = {
 				},
 				production_achievement_bonus: 0.1,
 			},
+			stash:{
+				base_time: 		2 * 24 * 3600,
+				base_storage: 	5,
+				upgrade_cost_speed:{
+					scraps: 		100,
+				},
+				upgrade_cost_storage:{
+					scraps: 		100,
+				},
+				defeated_heroes_speed_bonusses:{
+				},
+				production_achievement_bonus: 0.1,
+			},
 		},
 		recipes:{
 			chest:{
 				costs:{
-					scraps: 	250,
+					stash: 		4,
 				}
 			},
 		},

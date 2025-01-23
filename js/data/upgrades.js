@@ -379,7 +379,7 @@ var all_upgrades = {
 	zz_horseshoe_potion:{
 		name: 			'Horseshoe potion',
 		description: 	'2% increase to the number of horseshoes gained.',
-		card_image: 	'peasant',
+		card_image: 	'horseshoe',
 		upgrade_type: 	'potion',
 		type: 			'loot',
 		subtypes:  		['horseshoe'],
@@ -432,6 +432,20 @@ var all_upgrades = {
 			scraps:  	100,
 		}
 	},
+	zz_scavenger_potion:{
+		name: 			'Scavanger potion',
+		description: 	'2% bonus to picked up floating scraps during combat.',
+		card_image: 	'scavanger',
+		upgrade_type: 	'potion',
+		type: 			'floating_scraps',
+		subtypes:  		['any'],
+		amount:  		0.02,
+		level_cost_scale: 	20,
+		cost:{
+			flask: 		2,
+			scraps:  	100,
+		}
+	},
 	zz_scraps_potion:{
 		name: 			'Scraps potion',
 		description: 	'2% bonus to gained scraps.',
@@ -474,13 +488,13 @@ var all_upgrades = {
 			scraps:  	100,
 		}
 	},
-	zz_scavenger_potion:{
-		name: 			'Scavanger potion',
-		description: 	'2% bonus to picked up floating scraps during combat.',
-		card_image: 	'scavanger',
+	zz_stash_potion:{
+		name: 			'Stash potion',
+		description: 	'2% bonus to gained shards.',
+		card_image: 	'stash',
 		upgrade_type: 	'potion',
-		type: 			'floating_scraps',
-		subtypes:  		['any'],
+		type: 			'loot',
+		subtypes:  		['stash'],
 		amount:  		0.02,
 		level_cost_scale: 	20,
 		cost:{
