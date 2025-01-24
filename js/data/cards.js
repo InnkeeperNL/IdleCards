@@ -1661,7 +1661,6 @@ var all_available_cards = {
 		},
 		quote: '\"You just take out a single part.\"',
 	},
-	
 	cold_front:{
 		name: 				'cold front',
 		type: 				'spell',
@@ -3174,6 +3173,20 @@ var all_available_cards = {
 		},
 		quote: '\"Fight with fire.\"',
 	},
+	flare:{
+		name: 				'flare',
+		type: 				'spell',
+		subtypes: 			['fire'],
+		color: 				['colorless'],
+		theme: 				['muscle'],
+		pick_chance: 		1,
+		time: 				2,
+		image: 				'cards/dream_TradingCard-2025-01-24T143443.351.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{fire_bolt: 1, draw_on_act: 1},
+	},
 	floating_fungus:{
 		name: 				'floating fungus',
 		type: 				'creature',
@@ -4066,7 +4079,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{bolster_creature: 4},
+		abilities: 			{bolster_creature: 5},
 		quote: '\"I could eat that all day!\"',
 	},
 	heatblade:{
@@ -6650,7 +6663,6 @@ var all_available_cards = {
 		},
 		quote: '\"Do you want a knuckle sandwich?.\"',
 	},
-	
 	saboteur:{
 		name: 				'saboteur',
 		type: 				'creature',
@@ -6675,7 +6687,6 @@ var all_available_cards = {
 		},
 		quote: '\"Just get me there.\"',
 	},
-	
 	sacrificial_dagger:{
 		name: 				'sacrificial dagger',
 		type: 				'artifact',

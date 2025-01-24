@@ -1122,7 +1122,7 @@
 			$('#content_home .quests_button').css('opacity','');
 			$('#content_home .merchant_button').css('opacity','');
 		}*/
-		check_quests('scraps_owned', undefined, undefined, undefined, undefined, gamedata['scraps']);
+		check_quests('scraps_owned', gamedata['scraps']);
 
 		if(gamedata['owned_cards'] == undefined || count_object(gamedata['owned_cards']) < 2)
 		{

@@ -642,7 +642,7 @@ function gain_card(card_id, amount){
 		}
 		if(amount > 0)
 		{
-			check_quests('gained_card_' + card_id, undefined, undefined, undefined, undefined, undefined, amount);
+			check_quests('gained_card_' + card_id, undefined, amount);
 		}
 	}
 	if(card_id == 'scrap')

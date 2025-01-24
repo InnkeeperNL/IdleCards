@@ -1443,6 +1443,7 @@ function create_combat_unit(unit, side){
 }
 
 function add_battle_stats(stat, amount, max){
+	if(amount == undefined){amount = 1;}
 	check_achievement_goals();
 	if(battle_stats[stat + '_total'] == undefined){battle_stats[stat + '_total'] = 0;}
 	if(battle_stats[stat + '_times'] == undefined){battle_stats[stat + '_times'] = 0;}
@@ -1452,11 +1453,11 @@ function add_battle_stats(stat, amount, max){
 	if(amount > battle_stats[stat + '_max']){battle_stats[stat + '_max'] = amount;}
 
 	if(all_achievement_goals[stat] != undefined){				check_quests(stat);}
-	if(all_achievement_goals[stat + '_total'] != undefined){	check_quests(stat + '_total',undefined,undefined,undefined,undefined,battle_stats[stat + '_total']);}
-	if(all_achievement_goals[stat + '_times'] != undefined){	check_quests(stat + '_times',undefined,undefined,undefined,undefined,battle_stats[stat + '_times']);}
-	if(all_achievement_goals[stat + '_max'] != undefined){		check_quests(stat + '_max',undefined,undefined,undefined,undefined,battle_stats[stat + '_max']);}
+	if(all_achievement_goals[stat + '_total'] != undefined){	check_quests(stat + '_total',battle_stats[stat + '_total']);}
+	if(all_achievement_goals[stat + '_times'] != undefined){	check_quests(stat + '_times',battle_stats[stat + '_times']);}
+	if(all_achievement_goals[stat + '_max'] != undefined){		check_quests(stat + '_max',battle_stats[stat + '_max']);}
 
-	//if(stat == '2_performed_evade'){console.log(amount);console.log(stat + '_total: ' + battle_stats[stat + '_total']);};
+	//if(stat == 'spell_card_played'){console.log(amount);console.log(stat + '_times: ' + battle_stats[stat + '_times']);};
 	//console.log(stat + '_total: ' + battle_stats[stat + '_total']);
 
 }

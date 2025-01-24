@@ -2472,8 +2472,8 @@ function show_current_rewards(){
 				{
 					gamedata['scraps'] += reward['reward_amount'];
 				}
-				check_quests('gained_scraps', undefined, undefined, undefined, undefined, undefined, reward['reward_amount']);
-				check_quests('scraps_owned', undefined, undefined, undefined, undefined, gamedata['scraps']);
+				check_quests('gained_scraps', undefined, reward['reward_amount']);
+				check_quests('scraps_owned', gamedata['scraps']);
 				gained_scraps += reward['reward_amount'];
 			}
 			else

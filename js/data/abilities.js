@@ -1838,6 +1838,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	6,
+		level_cost_spell: 4,
 		level_cost_artifact: 3,
 		ability_level_cost_factors:{
 			homebound: 		1.5,
@@ -1872,6 +1873,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	7,
+		level_cost_spell: 4,
 		cost_adjustment: -3,
 		//cost_on_top: 	true,
 	},

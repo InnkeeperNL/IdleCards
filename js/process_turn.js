@@ -2363,6 +2363,7 @@ function process_effect(target_id, origin_id, effect, level){
 			{
 				$.each(effect['subtypes'], function(useless_key, effect_subtype){
 					check_quests('ally_performed_' + effect_subtype);
+					add_battle_stats('ally_performed_' + effect_subtype, calculated_amount);
 				});
 			}
 			if(battle_info.combat_units[origin_id] != undefined)
@@ -4365,6 +4366,17 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 					if(battle_info.combat_units[origin_id]['unit_id'] == 2)
 					{
 						check_quests('enemy_' + unit['type'] + '_killed_by_hero');
+					}
+				}
+			}
+			if(unit['side'] == 2)
+			{
+				if(origin_id != undefined && battle_info.combat_units[origin_id] != undefined && battle_info.combat_units[origin_id]['side'] == 1)
+				{
+					check_quests('ally_' + unit['type'] + '_killed');
+					if(battle_info.combat_units[origin_id]['unit_id'] == 2)
+					{
+						check_quests('ally_' + unit['type'] + '_killed_by_hero');
 					}
 				}
 			}
@@ -6919,6 +6931,7 @@ function play_unit_card(side, card_id, origin_id, forced_play, origin_unit){
 		if(side == 2)
 		{
 			check_quests(all_available_cards[card_id]['type'] + '_card_played');
+			add_battle_stats(all_available_cards[card_id]['type'] + '_card_played');
 			$.each(all_available_cards[card_id]['subtypes'], function(subtype_key, current_subtype){
 				check_quests(current_subtype + '_card_played');
 			});
@@ -7038,6 +7051,7 @@ function play_action_card(side, card_id, origin_id, forced_play){
 				if(side == 2)
 				{
 					check_quests(all_available_cards[card_id]['type'] + '_card_played');
+					add_battle_stats(all_available_cards[card_id]['type'] + '_card_played');
 					$.each(all_available_cards[card_id]['subtypes'], function(subtype_key, current_subtype){
 						check_quests(current_subtype + '_card_played');
 					});
@@ -7148,6 +7162,7 @@ function play_artifact_card(side, card_id, origin_id, forced_play){
 			if(side == 2)
 			{
 				check_quests(all_available_cards[card_id]['type'] + '_card_played');
+				add_battle_stats(all_available_cards[card_id]['type'] + '_card_played');
 				$.each(all_available_cards[card_id]['subtypes'], function(subtype_key, current_subtype){
 					check_quests(current_subtype + '_card_played');
 				});
