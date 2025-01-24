@@ -303,7 +303,7 @@ function craft_current_card(){
 				gamedata['owned_cards'][card_cost_id] -= cost_amount;
 			});
 			gain_card(card_id);
-			check_quests('craft_card_of_value', undefined, undefined, undefined, undefined, all_available_cards[card_id]['value']);
+			check_quests('craft_card_of_value', all_available_cards[card_id]['value']);
 			
 			show_available_cards(false);
 			saveToLocalStorage();
@@ -321,7 +321,7 @@ function quick_craft_current_card(){
 	{
 		gamedata['owned_cards']['peasant'] -= all_available_cards[card_id]['value'];
 		gain_card(card_id);
-		check_quests('craft_card_of_value', undefined, undefined, undefined, undefined, all_available_cards[card_id]['value']);
+		check_quests('craft_card_of_value', all_available_cards[card_id]['value']);
 		show_available_cards(false);
 		saveToLocalStorage();
 		show_card_recipe(card_id);
