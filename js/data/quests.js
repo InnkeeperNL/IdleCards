@@ -221,7 +221,7 @@ var all_chained_achievements = {
 	almost:{
 		name: 			'almost',
 		description: 	'Loose a battle while the enemy hero has 1 health left {AMOUNT} time(s).',
-		objective: 		'battle_loss_health_left',
+		objective: 		'battle_loss_health_left_1',
 		max_amount: 	1,
 		amount: 		1,
 		rewards:{
