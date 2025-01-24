@@ -114,6 +114,10 @@ function end_this_turn(){
 			if(battle_info.combat_units[2]['current_health'] > 0 && battle_info.combat_units[1]['current_health'] < 1)
 			{
 				check_quests('battle_won');
+				check_quests('battle_won_' + current_battle_type);
+				check_quests('battle_won_turn_count',undefined,undefined,undefined,undefined,total_turn_counter);
+				check_quests('battle_won_' + current_battle_type + '_turn_count',undefined,undefined,undefined,undefined,total_turn_counter);
+				check_quests('battle_won_health_left',undefined,undefined,undefined,undefined,battle_info.combat_units[2]['current_health']);
 				$('.unit_type_artifact.side_1').addClass('dead');
 				if(current_battle_type == 'summoned')
 				{
@@ -138,6 +142,8 @@ function end_this_turn(){
 							show_content('battle');
 						},total_timeout + 1000);
 						check_quests('battle_won_wave');
+						check_quests('battle_won_wave_turn_count',undefined,undefined,undefined,undefined,total_turn_counter);
+						check_quests('battle_won_wave_health_left',undefined,undefined,undefined,undefined,battle_info.combat_units[1]['current_health']);
 					}
 					else
 					{
@@ -164,7 +170,8 @@ function end_this_turn(){
 							show_content('current_rewards');
 						},total_timeout + 1000);
 						check_quests('battle_won_summoned');
-
+						check_quests('battle_won_summoned_turn_count',undefined,undefined,undefined,undefined,total_turn_counter);
+						check_quests('battle_won_summoned_health_left',undefined,undefined,undefined,undefined,battle_info.combat_units[1]['current_health']);
 					}
 					$('.side_1.type_artifact').addClass('dead');
 				}
@@ -182,11 +189,16 @@ function end_this_turn(){
 					if(battle_info.combat_units[2]['current_health'] < 1 && battle_info.combat_units[1]['current_health'] < 1)
 					{
 						gamedata['battles_tied']++;
+						check_quests('battle_tie');
 					}
 					else
 					{
 						gamedata['battles_lost']++;
 						gamedata['summon_min_power'] *= 0.75;
+						check_quests('battle_loss');
+						check_quests('battle_loss_turn_count',undefined,undefined,undefined,undefined,total_turn_counter);
+						check_quests('battle_loss_' + current_battle_type + '_turn_count',undefined,undefined,undefined,undefined,total_turn_counter);
+						check_quests('battle_loss_health_left',undefined,undefined,undefined,undefined,battle_info.combat_units[1]['current_health']);
 					}
 				}
 				if(current_battle_type == 'random' || true)
@@ -4345,7 +4357,18 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 		if(unit['health'] !== false && (unit['current_health'] === 0 || unit['current_health'] + unit['temp_health'] <= 0) && unit['dead'] == undefined)
 		{
 			unit['dead'] = true;
-
+			if(unit['side'] == 1)
+			{
+				if(origin_id != undefined && battle_info.combat_units[origin_id] != undefined && battle_info.combat_units[origin_id]['side'] == 2)
+				{
+					check_quests('enemy_' + unit['type'] + '_killed');
+					if(battle_info.combat_units[origin_id]['unit_id'] == 2)
+					{
+						check_quests('enemy_' + unit['type'] + '_killed_by_hero');
+					}
+				}
+			}
+			
 			if(battle_info.combat_units[unit_id] != undefined && (unit['current_health'] === 0 || unit['current_health'] + unit['temp_health'] <= 0))
 			{
 				//if(battle_info.combat_units[origin_id] != undefined){

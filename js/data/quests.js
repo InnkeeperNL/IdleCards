@@ -218,6 +218,22 @@ var all_achievements = {
 }
 
 var all_chained_achievements = {
+	almost:{
+		name: 			'almost',
+		description: 	'Loose a battle while the enemy hero has 1 health left {AMOUNT} time(s).',
+		objective: 		'battle_loss_health_left',
+		max_amount: 	1,
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'cry_for_help',
+		steps: 		5,
+		no_quest: 	true,
+	},
 	arcane:{
 		name: 			'arcane',
 		description: 	'Have allies shoot {AMOUNT} arcane bolt(s).',
@@ -601,6 +617,21 @@ var all_chained_achievements = {
 		card_back: 	'imp_lord',
 		steps: 		6,
 	},
+	loss:{
+		name: 			'loss',
+		description: 	'Loose a battle {AMOUNT} time(s).',
+		objective: 		'battle_loss',
+		amount: 	1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'witchs_initiate',
+		steps: 		6,
+		no_quest: 	true,
+	},
 	mage:{
 		name: 			'mage',
 		description: 	'Play or summon {AMOUNT} mage card(s).',
@@ -783,6 +814,20 @@ var all_chained_achievements = {
 		card_back: 'scavanger',
 		steps: 		6,
 	},
+	slaughter: {
+		name: 			'slaughter',
+		description: 	'Kill {AMOUNT} enemy creature(s) with your hero.',
+		objective: 		'enemy_creature_killed_by_hero',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'vulture',
+		steps: 		6,
+	},
 	slow:{
 		name: 			'slow',
 		description: 	'Have allies slow an enemy card {AMOUNT} time(s).',
@@ -824,6 +869,21 @@ var all_chained_achievements = {
 		},
 		card_back: 'spike_pod',
 		steps: 		6,
+	},
+	tie:{
+		name: 			'tie',
+		description: 	'Have a battle end with both heroes at 0 health {AMOUNT} time(s).',
+		objective: 		'battle_tie',
+		amount: 		0.1,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'final_embrace',
+		steps: 		4,
+		no_quest: 	true,
 	},
 	zombie:{
 		name: 			'zombie',
