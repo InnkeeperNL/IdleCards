@@ -514,6 +514,38 @@ var all_abilities = {
 		level_cost_hero: 2,
 		level_cost_artifact: 2,
 	},
+	bring_clone:{
+		description: 	'When played, creates {LEVEL} clone(s) of itself. Clones created this way do not have this ability.',
+		proc: 			'on_play',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		reduce_skill_after_use: 'bring_clone',
+		proc_amount: 	'ability_level',
+		do_not_pause_between: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				position: 		'self',
+				target_amount: 	1,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'teleport',
+				type: 			'summon_unit',
+				remove_skills: 	'clone_self',
+				subtypes: 		['magical','clone_unit','summon_ally','summon_creature'],
+				card_id: 		'self',
+				card_type: 		'creature',
+				amount: 		1,
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
+		cost_factor: 	'full',
+	},
 	burn:{
 		name_color: 	'rgba(255, 55, 55,0.9)',
 		description: 	'Applies {LEVEL} burn to a random enemy unit. Will target the enemy hero if there are no enemy units.{BURN}',
@@ -1812,8 +1844,7 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 	-0.5,
-		cost_factor: 'full',
+		level_cost: 	-2,
 	},
 	dooming_touch:{
 		description: 	'Applies {LEVEL} doom to any unit it deals damage to.{DOOM}',
@@ -3415,6 +3446,7 @@ var all_abilities = {
 			}
 		},
 		level_cost: 	2,
+		level_cost_artifact: 1,
 	},
 	ice_blast:{
 		description: 	'Deals {LEVEL} physical cold damage to all enemy units. Has a 25% chance to stun any unit or hero it hits.',
@@ -5311,7 +5343,6 @@ var all_abilities = {
 		average_hits: 	'ability_level',
 	},
 	striking_entry:{
-		name_color: 	'rgba(255,255,255,0.9)',
 		description: 	'When played, deals {LEVEL} physical melee damage to the nearest enemy unit. Will target the enemy hero if there are no enemy units.',
 		proc: 			'on_play',
 		ability_subtypes: 		['on_play_proc'],
