@@ -1042,7 +1042,22 @@ var all_chained_achievements = {
 		card_back: 'paperwork',
 		steps: 		6,
 	},
-	stealth: {
+	spell_ward:{
+		name: 			'spell ward',
+		description: 	'Have allies counter {AMOUNT} spell(s).',
+		objective: 		'ally_performed_counter_spell',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'spell_ward',
+		steps: 		6,
+		no_quest: 	true,
+	},
+	stealth:{
 		name: 			'stealth',
 		description: 	'Have allies evade an attack using stealth {AMOUNT} time(s).',
 		objective: 		'ally_performed_use_stealth',

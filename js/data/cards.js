@@ -2438,7 +2438,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{spell_bolt: 2, resist_magic: 1},
 		hero_version: 			{
-			theme: 				['echo_ability','subtype_elf','subtype_wall'],
+			theme: 				['echo_ability','subtype_elf','subtype_wall','type_spell'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -5158,7 +5158,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{spell_bolt: 2},
 		hero_version: 			{
-			theme: 				['echo_ability','subtype_wall'],
+			theme: 				['echo_ability','subtype_wall','type_spell','subtype_human'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -5182,7 +5182,7 @@ var all_available_cards = {
 		health: 			3,
 		abilities: 			{strike: 1, spell_bolt: 1, evade: 1},
 		hero_version: 			{
-			theme: 				['echo_ability','subtype_wall','subtype_rogue'],
+			theme: 				['echo_ability','subtype_wall','subtype_rogue','type_spell'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -5205,7 +5205,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{spell_bolt: 1},
 		hero_version: 			{
-			theme: 				['echo_ability','subtype_wall','type_spell'],
+			theme: 				['echo_ability','subtype_wall','type_spell','subtype_human'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -5538,6 +5538,23 @@ var all_available_cards = {
 		abilities: 			{painful_empty_hand: 3},
 		quote: '\"Out of thoughts?\"',
 	},
+	mind_spike:{
+		name: 				'mind spike',
+		type: 				'spell',
+		subtypes: 			['ritual'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-01-24T161059.011.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{discard_enemy: 1},
+		quote: '\"It stings, doesn\'t it?\"',
+	},
+	
 	mind_storm:{
 		name: 				'mind storm',
 		type: 				'spell',
@@ -7628,7 +7645,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, spellpower: 1},
 		hero_version: 			{
-			theme: 				['subtype_warrior','echo_ability','subtype_wall'],
+			theme: 				['subtype_warrior','echo_ability','subtype_wall','type_spell'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
