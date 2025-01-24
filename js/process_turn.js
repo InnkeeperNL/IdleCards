@@ -1705,16 +1705,13 @@ function process_effect(target_id, origin_id, effect, level){
 
 	}
 
+	if(battle_info.combat_units[origin_id] != undefined && (battle_info.combat_units[origin_id]['used_effect'] == undefined || battle_info.combat_units[origin_id]['used_effect'] == false))
+	{
+		check_ability_procs(battle_info.combat_units[origin_id]['side'], battle_info.combat_units[origin_id]['type'] + '_about_to_use_ability', origin_id, effect['subtypes']);
+	}
 	if(battle_info.combat_units[origin_id] != undefined)
 	{
-		if(target_id != undefined && battle_info.combat_units[target_id] != undefined)
-		{
-			check_ability_procs(battle_info.combat_units[target_id]['side'], battle_info.combat_units[origin_id]['type'] + '_about_to_use_ability', origin_id, effect['subtypes']);
-		}
-		else
-		{
-			check_ability_procs(battle_info.combat_units[origin_id]['side'], battle_info.combat_units[origin_id]['type'] + '_about_to_use_ability', origin_id, effect['subtypes']);
-		}
+		battle_info.combat_units[origin_id]['used_effect'] = true;
 	}
 
 	if(battle_info.combat_units[origin_id] != undefined)

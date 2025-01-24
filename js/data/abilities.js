@@ -1086,7 +1086,7 @@ var all_abilities = {
 		cost_factor: 		'power',
 		average_hits: 		'ability_level',
 	},
-	counter_spell:		{
+	counter_spell:{
 		description: 	'Destroys up to {LEVEL} enemy spell(s).',
 		proc: 			'spell_about_to_use_ability',
 		cannot_proc_while_stunned: true,
@@ -1114,6 +1114,34 @@ var all_abilities = {
 		level_cost: 		3,
 		level_cost_hero: 	2,
 		level_cost_artifact: 2,
+	},
+	counter_spells:{
+		description: 	'Has a {LEVEL}0% chance to destroy any enemy spell as that spell is played.',
+		proc: 			'spell_about_to_use_ability',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'magic_shield',
+				type: 			'destroy',
+				subtypes: 		['counter_spell'],
+				amount: 		1,
+				increase_timeout: 500,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		0.6,
+		level_cost_artifact: 1,
 	},
 	corpse_feast:{
 		description: 	'Heals itself by {LEVEL} for every 5 creature cards in your grave.',
