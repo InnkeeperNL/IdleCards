@@ -220,7 +220,7 @@ var all_abilities = {
 		},
 	},
 	backlash:{
-		description: 	'Deals 1 physical damage the ally creature unit with the highest current health that has power. That unit then gains {LEVEL} temporary power.',
+		description: 	'Deals 1 physical damage the ally creature unit with the highest current health that has power. That unit then gains {LEVEL} temporary power. Will only target units that have at least 2 health.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		targets:	{
@@ -229,7 +229,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				not_types: 		['object','structure'],
-				min_hp: 		1,
+				min_hp: 		2,
 				min_power: 		0,
 				highest_hp: 	true,
 				side: 			'ally'
