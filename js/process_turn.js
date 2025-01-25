@@ -1304,6 +1304,7 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 				var effect_start_timeout = total_timeout + 0;
 				var highest_effect_end = total_timeout + 0;
 				var temp_power_used = 0;
+				var effect_fired = false;
 				if(current_ability['uses_power'] != undefined && current_ability['uses_power'] == true && unit_id != undefined && battle_info.combat_units[unit_id] != undefined && battle_info.combat_units[unit_id]['temp_power'] != undefined && battle_info.combat_units[unit_id]['temp_power'] > 0)
 				{
 					if(battle_info.combat_units[unit_id]['temp_power'] > temp_power_used)
@@ -1448,7 +1449,7 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 			};
 		};
 
-		if(battle_info.combat_units[unit_id] != undefined && temp_power_used > 0)
+		if(any_effect_fired == true && battle_info.combat_units[unit_id] != undefined && temp_power_used > 0)
 		{
 			battle_info.combat_units[unit_id]['temp_power'] -= temp_power_used;
 			temp_power_used = 0;
