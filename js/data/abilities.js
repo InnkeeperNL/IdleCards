@@ -4866,6 +4866,41 @@ var all_abilities = {
 		level_cost: 	4,
 		average_hits: 	1,
 	},
+	shooting_entry:{
+		description: 	'When played, deals {LEVEL} physical projectile damage to the nearest enemy unit. Will target the enemy hero if there are no enemy units.',
+		proc: 			'on_play',
+		ability_subtypes: 		['on_play_proc'],
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'nearest',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'arrow',
+				type: 			'damage',
+				subtypes: 		['physical','projectile','ranged'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'attack',
+		level_cost: 	1.25,
+		level_cost_artifact: 0.75,
+		average_hits: 	0.5,
+	},
 	slow:{
 		description: 	'Increases the time left of a random enemy card {LEVEL} time(s).',
 		cannot_proc_while_stunned: true,

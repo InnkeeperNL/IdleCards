@@ -308,7 +308,7 @@ var all_chained_achievements = {
 		name: 			'plunder',
 		description: 	'Have allies break or plunder an artifact or structure {AMOUNT} time(s).',
 		objective: 		'ally_performed_break',
-		amount: 		0.5,
+		amount: 		0.2,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -317,7 +317,6 @@ var all_chained_achievements = {
 		},
 		card_back: 		'pirate',
 		steps: 			6,
-		no_quest: 		true,
 	},
 	burn:{
 		name: 			'burn',
