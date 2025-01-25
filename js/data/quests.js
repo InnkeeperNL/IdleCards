@@ -237,57 +237,57 @@ var all_chained_achievements = {
 		name: 			'arcane',
 		description: 	'Have allies shoot {AMOUNT} arcane bolt(s).',
 		objective: 		'ally_performed_arcane_bolts',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'arcane_missiles',
-		steps: 		6,
+		card_back: 		'arcane_missiles',
+		steps: 			6,
 	},
 	army:{
 		name: 			'army',
 		description: 	'Play {AMOUNT} creature card(s).',
 		objective: 		'creature_card_played',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 	'peasant',
-		steps: 		7,
+		card_back: 		'peasant',
+		steps: 			6,
 	},
 	avoidance:{
 		name: 			'avoidance',
 		description: 	'Have allies avoid an enemy ability in any way {AMOUNT} time(s).',
 		objective: 		'ally_performed_evade',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'mole',
-		steps: 		6,
+		card_back: 		'mole',
+		steps: 			6,
 	},
 	bless:{
 		name: 			'bless',
 		description: 	'Have allies apply a blessing {AMOUNT} time(s).',
 		objective: 		'ally_performed_grant_bless',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'divine_blessing',
-		steps: 		6,
+		card_back: 		'divine_blessing',
+		steps: 			6,
 	},
 	bolster:{
 		name: 			'bolster',
@@ -300,37 +300,38 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'hearty_meal',
-		steps: 		6,
+		card_back: 		'hearty_meal',
+		steps: 			6,
+		no_quest: 		true,
 	},
 	plunder:{
 		name: 			'plunder',
 		description: 	'Have allies break or plunder an artifact or structure {AMOUNT} time(s).',
 		objective: 		'ally_performed_break',
-		amount: 	0.5,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'pirate',
-		steps: 		6,
-		no_quest: 	true,
+		card_back: 		'pirate',
+		steps: 			6,
+		no_quest: 		true,
 	},
 	burn:{
 		name: 			'burn',
 		description: 	'Have allies apply burn {AMOUNT} time(s).',
 		objective: 		'ally_performed_burn',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'arsonist',
-		steps: 		6,
+		card_back: 		'arsonist',
+		steps: 			6,
 	},
 	city:{
 		name: 			'city',
@@ -343,8 +344,8 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'haunted_house',
-		steps: 		6,
+		card_back: 		'haunted_house',
+		steps: 			6,
 	},
 	close_call:{
 		name: 			'close call',
@@ -357,9 +358,9 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'gravestone',
-		steps: 		5,
-		no_quest: 	true,
+		card_back: 		'gravestone',
+		steps: 			5,
+		no_quest: 		true,
 	},
 	conscription:{
 		name: 			'conscription',
@@ -384,30 +385,29 @@ var all_chained_achievements = {
 		name: 			'crafter',
 		description: 	'Craft a card {AMOUNT} time(s).',
 		objective: 		'craft_card_of_value',
-		min_amount: 	1,
-		amount: 		10,
+		amount: 		0.1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'carpenter',
-		steps: 		5,
+		card_back: 		'carpenter',
+		steps: 			5,
 	},
 	curse:{
 		name: 			'curse',
 		description: 	'Have allies apply a curse {AMOUNT} time(s).',
 		objective: 		'ally_performed_curse',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'cursed_skull',
-		steps: 		6,
+		card_back: 		'cursed_skull',
+		steps: 			6,
 	},
 	dancer:{
 		name: 			'dancer',
@@ -420,8 +420,8 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'blade_dancer',
-		steps: 		6,
+		card_back: 		'blade_dancer',
+		steps: 			6,
 	},
 	demolisher:{
 		name: 			'demolisher',
@@ -434,14 +434,14 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'breaking_ray',
-		steps: 		6,
+		card_back: 		'breaking_ray',
+		steps: 			6,
 	},
 	discard:{
 		name: 			'discard',
 		description: 	'Make the enemy discard a card {AMOUNT} time(s).',
 		objective: 		'ally_performed_discard_enemy',
-		amount: 		1,
+		amount: 		0.1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -450,56 +450,55 @@ var all_chained_achievements = {
 		},
 		card_back: 'mind_leak',
 		steps: 		6,
-		no_quest: 	true,
 	},
 	doom:{
 		name: 			'doom',
 		description: 	'Have allies apply doom {AMOUNT} time(s).',
 		objective: 		'ally_performed_doom',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'oracle',
-		steps: 		6,
+		card_back: 		'oracle',
+		steps: 			6,
 	},
 	draw:{
 		name: 			'draw',
 		description: 	'Have allies draw an additional card {AMOUNT} time(s).',
 		objective: 		'ally_performed_draw_cards',
-		amount: 	1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'research',
-		steps: 		6,
+		card_back: 		'research',
+		steps: 			6,
 	},
 	duelist:{
 		name: 			'duelist',
 		description: 	'Have allies counter a melee ability {AMOUNT} time(s).',
 		objective: 		'ally_performed_counter',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'duelist',
-		steps: 		6,
-		no_quest: 	true,
+		card_back: 		'duelist',
+		steps: 			6,
+		no_quest: 		true,
 	},
 	elvish:{
 		name: 			'elvish',
 		description: 	'Play or summon {AMOUNT} elf card(s).',
 		objective: 		'elf_card_played',
-		amount: 		1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -508,7 +507,6 @@ var all_chained_achievements = {
 		},
 		card_back: 'elf',
 		steps: 		6,
-		no_quest: 	true,
 	},
 	empower:{
 		name: 			'empower',
@@ -575,49 +573,49 @@ var all_chained_achievements = {
 		name: 			'fly',
 		description: 	'Have allies evade an attack by flying {AMOUNT} time(s).',
 		objective: 		'ally_performed_flying',
-		amount: 	1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'hawk',
-		steps: 		6,
+		card_back: 		'hawk',
+		steps: 			6,
 	},
 	fortify:{
 		name: 			'fortify',
 		description: 	'Have allies fortify an ally {AMOUNT} time(s).',
 		objective: 		'ally_performed_fortify',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'armor_smith',
-		steps: 		6,
+		card_back: 		'armor_smith',
+		steps: 			6,
 	},
 	frost:{
 		name: 			'frost',
 		description: 	'Have allies perform a cold ability {AMOUNT} time(s).',
 		objective: 		'ally_performed_cold',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'frost_mage',
-		steps: 		6,
+		card_back: 		'frost_mage',
+		steps: 			6,
 	},
 	garden:{
 		name: 			'garden',
 		description: 	'Play or summon {AMOUNT} plant card(s).',
 		objective: 		'plant_card_played',
-		amount: 		1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -649,44 +647,44 @@ var all_chained_achievements = {
 		name: 			'hasten',
 		description: 	'Have allies hasten a card {AMOUNT} time(s).',
 		objective: 		'ally_performed_hasten',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'signaler',
-		steps: 		6,
+		card_back: 		'signaler',
+		steps: 			6,
 	},
 	hunger:{
 		name: 			'hunger',
 		description: 	'Have allies feast on a creature {AMOUNT} time(s).',
 		objective: 		'ally_performed_feast',
-		amount: 	1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'hungry_wolf',
-		steps: 		6,
+		card_back: 		'hungry_wolf',
+		steps: 			6,
 	},
 	healing:{
 		name: 			'healing',
 		description: 	'Have allies heal themselves or allies {AMOUNT} time(s).',
 		objective: 		'ally_performed_active_healing',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'medic',
-		steps: 		6,
-		no_quest: 	true,
+		card_back: 		'medic',
+		steps: 			6,
+		no_quest: 		true,
 	},
 	heist:{
 		name: 			'heist',
@@ -699,9 +697,9 @@ var all_chained_achievements = {
 				reward_amount: 		2
 			},
 		},
-		card_back: 'burglar',
-		steps: 		6,
-		no_quest: 	true,
+		card_back: 		'burglar',
+		steps: 			6,
+		no_quest: 		true,
 	},
 	homebound:{
 		name: 			'homebound',
@@ -714,8 +712,8 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'pigeon',
-		steps: 		6,
+		card_back: 		'pigeon',
+		steps: 			6,
 	},
 	humane:{
 		name: 			'humane',
@@ -728,22 +726,22 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'conscript',
-		steps: 		6,
+		card_back: 		'conscript',
+		steps: 			6,
 	},
 	imp_lord:{
 		name: 			'imp lord',
 		description: 	'Play or summon {AMOUNT} imp card(s).',
 		objective: 		'imp_card_played',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 	'imp_lord',
-		steps: 		6,
+		card_back: 		'imp_lord',
+		steps: 			6,
 	},
 	killer:{
 		name: 			'killer',
@@ -756,23 +754,23 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'fencer',
-		steps: 		6,
+		card_back: 		'fencer',
+		steps: 			6,
 	},
 	loss:{
 		name: 			'loss',
 		description: 	'Loose a battle {AMOUNT} time(s).',
 		objective: 		'battle_loss',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'witchs_initiate',
-		steps: 		6,
-		no_quest: 	true,
+		card_back: 		'witchs_initiate',
+		steps: 			6,
+		no_quest: 		true,
 	},
 	mage:{
 		name: 			'mage',
@@ -785,8 +783,8 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'arcane_mage',
-		steps: 		6,
+		card_back: 		'arcane_mage',
+		steps: 			6,
 	},
 	magician:{
 		name: 			'magician',
@@ -799,22 +797,22 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'levitate',
-		steps: 		6,
+		card_back: 		'levitate',
+		steps: 			6,
 	},
 	martyr:{
 		name: 			'martyr',
 		description: 	'Have {AMOUNT} ally creature(s) die.',
 		objective: 		'ally_creature_killed',
-		amount: 		10,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'vengeful_spirit',
-		steps: 		6,
+		card_back: 		'vengeful_spirit',
+		steps: 			6,
 	},
 	merchant:{
 		name: 			'merchant',
@@ -827,9 +825,9 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 	'thief',
-		steps: 		5,
-		no_quest: 	true,
+		card_back: 		'thief',
+		steps: 			5,
+		no_quest: 		true,
 	},
 	mouldy:{
 		name: 			'mouldy',
@@ -842,126 +840,126 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'sporeling',
-		steps: 		6,
+		card_back: 		'sporeling',
+		steps: 			6,
 	},
 	museum:{
 		name: 			'museum',
 		description: 	'Play or summon {AMOUNT} artifact card(s).',
 		objective: 		'artifact_card_played',
-		amount: 	1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 	'medkit',
-		steps: 		6,
+		card_back: 		'medkit',
+		steps: 			6,
 	},
 	plated:{
 		name: 			'plated',
 		description: 	'Have allies reduce damage with plated {AMOUNT} time(s).',
 		objective: 		'ally_performed_plated',
-		amount: 	1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'soldier',
-		steps: 		6,
+		card_back: 		'soldier',
+		steps: 			6,
 	},
 	poison:{
 		name: 			'poison',
 		description: 	'Have allies apply poison {AMOUNT} time(s).',
 		objective: 		'ally_performed_poison',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'viper',
-		steps: 		6,
+		card_back: 		'viper',
+		steps: 			6,
 	},
 	pure:{
 		name: 			'pure',
 		description: 	'Have allies purify an ally {AMOUNT} time(s).',
 		objective: 		'ally_performed_cleanse_ally',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'righteous_lady',
-		steps: 		6,
+		card_back: 		'righteous_lady',
+		steps: 			6,
 	},
 	resist_magic:{
 		name: 			'resist magic',
 		description: 	'Have allies resist magic damage {AMOUNT} time(s).',
 		objective: 		'ally_performed_resist_magic',
-		amount: 	1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'elf_youngster',
-		steps: 		6,
+		card_back: 		'elf_youngster',
+		steps: 			6,
 	},
 	resurrect:{
 		name: 			'resurrect',
 		description: 	'Have allies resurrect {AMOUNT} time(s).',
 		objective: 		'ally_performed_resurrect',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'skeleton',
-		steps: 		6,
+		card_back: 		'skeleton',
+		steps: 			6,
 	},
 	rogue:{
 		name: 			'rogue',
 		description: 	'Play or summon {AMOUNT} rogue card(s).',
 		objective: 		'rogue_card_played',
-		amount: 		1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'rogue',
-		steps: 		6,
+		card_back: 		'rogue',
+		steps: 			6,
 	},
 	runner:{
 		name: 			'runner',
 		description: 	'Have allies move themselves or allies {AMOUNT} time(s).',
 		objective: 		'ally_performed_move_ally',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'fawn',
-		steps: 		6,
+		card_back: 		'fawn',
+		steps: 			6,
 	},
 	saboteur:{
 		name: 			'saboteur',
 		description: 	'Destroy {AMOUNT} enemy structure(s) with your hero.',
 		objective: 		'enemy_structure_killed_by_hero',
-		amount: 		1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -975,44 +973,44 @@ var all_chained_achievements = {
 		name: 			'sacrifice',
 		description: 	'Have allies sacrifice or consume an ally {AMOUNT} time(s).',
 		objective: 		'ally_performed_sacrifice',
-		amount: 	0.2,
+		amount: 		0.2,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'dark_sacrifice',
-		steps: 		6,
+		card_back: 		'dark_sacrifice',
+		steps: 			6,
 	},
 	scavanger:{
 		name: 			'scavanger',
 		description: 	'Claim {AMOUNT} floating pickup reward(s).',
 		objective: 		'claimed_pickup',
-		amount: 	0.5,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'scavanger',
-		steps: 		6,
+		card_back: 		'scavanger',
+		steps: 			6,
 	},
 	shards:{
 		name: 			'shards',
 		description: 	'Collect {AMOUNT} shard(s).',
 		objective: 		'gained_card_shard',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'shard',
-		steps: 		5,
-		no_quest: 	true,
+		card_back: 		'shard',
+		steps: 			5,
+		no_quest: 		true,
 	},
 	slaughter:{
 		name: 			'slaughter',
@@ -1025,27 +1023,13 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'vulture',
-		steps: 		6,
+		card_back: 		'vulture',
+		steps: 			6,
 	},
 	slow:{
 		name: 			'slow',
 		description: 	'Have allies slow an enemy card {AMOUNT} time(s).',
 		objective: 		'ally_performed_slow_enemy',
-		amount: 	1,
-		rewards:{
-			0:{
-				reward_id: 			'stash',
-				reward_amount: 		1
-			},
-		},
-		card_back: 'paperwork',
-		steps: 		6,
-	},
-	spell_ward:{
-		name: 			'spell ward',
-		description: 	'Have allies counter {AMOUNT} spell(s).',
-		objective: 		'ally_performed_counter_spell',
 		amount: 		1,
 		rewards:{
 			0:{
@@ -1053,9 +1037,23 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'spell_ward',
-		steps: 		6,
-		no_quest: 	true,
+		card_back: 		'paperwork',
+		steps: 			6,
+	},
+	stasher:{
+		name: 			'stasher',
+		description: 	'Open {AMOUNT} stashes.',
+		objective: 		'used_consumable_stash',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'stash',
+		steps: 			6,
+		no_quest: 		true,
 	},
 	stealth:{
 		name: 			'stealth',
@@ -1068,9 +1066,9 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'scout',
-		steps: 		6,
-		no_quest: 	true,
+		card_back: 		'scout',
+		steps: 			6,
+		no_quest: 		true,
 	},
 	stinger:{
 		name: 			'stinger',
@@ -1085,80 +1083,80 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'striker',
-		steps: 		6,
-		no_quest: 	true,
+		card_back: 		'striker',
+		steps: 			6,
+		no_quest: 		true,
 	},
 	stun:{
 		name: 			'stun',
 		description: 	'Have allies stun an enemy {AMOUNT} time(s).',
 		objective: 		'ally_performed_stun',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'iceblade',
-		steps: 		6,
-		no_quest: true,
+		card_back: 		'iceblade',
+		steps: 			6,
+		no_quest: 		true,
 	},
 	summoner:{
 		name: 			'summoner',
 		description: 	'Defeat a summoned enemy {AMOUNT} time(s).',
 		objective: 		'battle_won_summoned',
-		amount: 	0.1,
+		amount: 		0.1,
 		rewards:{
 			0:{
 				reward_id: 			'chest',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'imp_horde',
-		steps: 		6,
+		card_back: 		'imp_horde',
+		steps: 			6,
 	},
 	tactician:{
 		name: 			'tactician',
 		description: 	'Play {AMOUNT} tactic card(s).',
 		objective: 		'tactic_card_played',
-		amount: 	0.1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'battle_plans',
-		steps: 		6,
+		card_back: 		'battle_plans',
+		steps: 			6,
 	},
 	take_aim:{
 		name: 			'take aim',
 		description: 	'Have allies fire {AMOUNT} projectile(s).',
 		objective: 		'ally_performed_projectile',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'archer',
-		steps: 		6,
+		card_back: 		'archer',
+		steps: 			6,
 	},
 	thorny:{
 		name: 			'thorny',
 		description: 	'Have allies deal damage with thorns {AMOUNT} time(s).',
 		objective: 		'ally_performed_thorns',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'spike_pod',
-		steps: 		6,
+		card_back: 		'spike_pod',
+		steps: 			6,
 	},
 	tie:{
 		name: 			'tie',
@@ -1171,9 +1169,9 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'final_embrace',
-		steps: 		4,
-		no_quest: 	true,
+		card_back: 		'final_embrace',
+		steps: 			4,
+		no_quest: 		true,
 	},
 	toxic_cloud:{
 		name: 			'toxic cloud',
@@ -1217,86 +1215,85 @@ var all_chained_achievements = {
 		name: 			'victory',
 		description: 	'Win {AMOUNT} battle(s).',
 		objective: 		'battle_won',
-		amount: 	0.2,
+		amount: 		0.2,
 		rewards:{
 			0:{
 				reward_id: 			'chest',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'berserker',
-		steps: 		6,
+		card_back: 		'berserker',
+		steps: 			6,
 	},
 	warder:{
 		name: 			'warder',
 		description: 	'Have allies counter a spell {AMOUNT} time(s).',
 		objective: 		'ally_performed_counter_spell',
-		amount: 	1,
+		amount: 		0.1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'warder',
-		steps: 		6,
-		no_quest: 	true,
+		card_back: 		'warder',
+		steps: 			6,
 	},
 	waves:{
 		name: 			'waves',
 		description: 	'Defeat {AMOUNT} wave(s).',
 		objective: 		'battle_won_wave',
-		amount: 	0.4,
+		amount: 		0.4,
 		rewards:{
 			0:{
 				reward_id: 			'chest',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'phoenix',
-		steps: 		6,
+		card_back: 		'phoenix',
+		steps: 			6,
 	},
 	warrior:{
 		name: 			'warrior',
 		description: 	'Play or summon {AMOUNT} warrior card(s).',
 		objective: 		'warrior_card_played',
-		amount: 		1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'shield_warrior',
-		steps: 		6,
+		card_back: 		'shield_warrior',
+		steps: 			6,
 	},
 	witch:{
 		name: 			'witch',
 		description: 	'Play or summon {AMOUNT} witch card(s).',
 		objective: 		'witch_card_played',
-		amount: 		1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 'witch',
-		steps: 		6,
+		card_back: 		'witch',
+		steps: 			6,
 	},
 	zombie:{
 		name: 			'zombie',
 		description: 	'Play or summon {AMOUNT} undead card(s).',
 		objective: 		'undead_card_played',
-		amount: 	1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
 				reward_amount: 		1
 			},
 		},
-		card_back: 	'zombie',
-		steps: 		6,
+		card_back: 		'zombie',
+		steps: 			6,
 	},
 	zoo:{
 		name: 			'zoo',
@@ -1309,8 +1306,8 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'cow',
-		steps: 		6,
+		card_back: 		'cow',
+		steps: 			6,
 	},
 }
 

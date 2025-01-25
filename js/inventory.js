@@ -239,6 +239,7 @@ function use_current_inventory(amount_used){
 				else
 				{
 					gamedata['owned_cards'][current_consumable] += amount_used;
+					amount_used = 0;
 				}
 				saveToLocalStorage();
 				show_content('single_consumable');
@@ -426,6 +427,11 @@ function use_current_inventory(amount_used){
 			
 		}
 		
+		if(amount_used > 0)
+		{
+			check_quests('used_consumable_' + current_consumable, undefined, amount_used);
+		}
+
 	}
 
 }
