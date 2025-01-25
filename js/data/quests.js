@@ -942,7 +942,7 @@ var all_chained_achievements = {
 	},
 	runner:{
 		name: 			'runner',
-		description: 	'Have allies move themselves or allies {AMOUNT} time(s).',
+		description: 	'Have allies run away {AMOUNT} time(s).',
 		objective: 		'ally_performed_run_away',
 		amount: 		0.8,
 		rewards:{
