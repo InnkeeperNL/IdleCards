@@ -2855,8 +2855,8 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{grant_final_embrace: 1},
-		quote: '\"We will be together forever!\"',
+		abilities: 			{destroy_creature: 2, minimum_enemy_creatures: 2},
+		quote: '\"You will be together forever!\"',
 	},
 	fire_apprentice:{
 		name: 				'fire apprentice',
