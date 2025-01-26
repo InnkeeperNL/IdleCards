@@ -546,6 +546,60 @@ var all_abilities = {
 		level_cost: 	1,
 		cost_factor: 	'full',
 	},
+	bring_golem:{
+		description: 	'Summons a golem unit. Can be used {LEVEL} time(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		reduce_skill_after_use:'bring_golem',
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_structure'],
+				card_id: 	'random',
+				card_type: 	'structure',
+				card_subtype: 'golem',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		6,
+	},
+	bring_structure:{
+		description: 	'Summons a non-plant structure unit. Can be used {LEVEL} time(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		reduce_skill_after_use:'bring_structure',
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_structure'],
+				card_id: 	'random',
+				card_type: 	'structure',
+				not_subtypes: ['plant'],
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		6,
+	},
 	burn:{
 		name_color: 	'rgba(255, 55, 55,0.9)',
 		description: 	'Applies {LEVEL} burn to a random enemy unit. Will target the enemy hero if there are no enemy units.{BURN}',
@@ -702,10 +756,9 @@ var all_abilities = {
 		level_cost_hero: 	2,
 	},
 	channel_life:{
-		description: 	'Reduces the time left of a card in your hand by 1. If it does, this deals 1 damage to itself.',
+		description: 	'Reduces the time left of a card in your hand by {LEVEL}. If it does, this deals 1 damage to itself.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
-		proc_amount: 	'ability_level',
 		targets:	{
 			0:{
 				target: 		'card',
@@ -720,7 +773,7 @@ var all_abilities = {
 				projectile_target: 'deck',
 				type: 			'reduce_ready_time',
 				subtypes: 		['hasten','deck_control'],
-				amount: 		1,
+				amount: 		'ability_level',
 				side: 			'ally',
 				
 			}
@@ -746,7 +799,8 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1,
+		level_cost: 		5,
+		cost_adjustment: 	-4,
 	},
 	chaos_strikes:{
 		description: 	'When the enemy hero receives damage, discard a card from the enemy\'s hand to the grave. Can be used {LEVEL} time(s).',
@@ -3347,7 +3401,8 @@ var all_abilities = {
 		description: 	'Up to {LEVEL} times, your hero reduces the time left of a card in your hand by 1. Every time it does, it deals 1 damage to itself.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
-		proc_amount: 	1,
+		proc_amount: 	'ability_level',
+		ability_subtypes: ['hasten','deck_control'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -3362,7 +3417,7 @@ var all_abilities = {
 				type: 			'random_ability',
 				subtypes: 		[],
 				ability_options: ['channel_life'],
-				amount: 		'ability_level'
+				amount: 		1
 			}
 		},
 		animation: 			'combat_zoom',
@@ -5690,6 +5745,32 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		4,
 		level_cost_spell: 	2,
+	},
+	summon_golem:{
+		description: 	'Summons {LEVEL} golem unit(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_structure'],
+				card_id: 	'random',
+				card_type: 	'structure',
+				card_subtype: 'golem',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		20,
 	},
 	summon_imp:{
 		description: 	'Summons {LEVEL} imp type unit(s).',

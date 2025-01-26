@@ -470,7 +470,7 @@ function add_card_to_deck(card_id, forced){
 		var current_deck = gamedata['decks'][gamedata['current_deck']];
 		if(current_deck[card_id] == undefined){current_deck[card_id] = 0;}
 		//count_current_deck_cards(current_deck);
-		if(gamedata['owned_cards'][card_id] != undefined && gamedata['owned_cards'][card_id] > current_deck[card_id] && count_current_deck_cards(current_deck) < max_deck_size && current_deck[card_id] < 5)
+		if(gamedata['owned_cards'][card_id] != undefined && gamedata['owned_cards'][card_id] > current_deck[card_id] && count_current_deck_cards(current_deck) < max_deck_size && ((current_deck[card_id] < 5 && all_available_cards[card_id]['unique'] == undefined) || (current_deck[card_id] < 1 && current_deck['hero'] != card_id)))
 		{
 			current_deck[card_id]++;
 		}
@@ -484,6 +484,8 @@ function add_card_to_deck(card_id, forced){
 		var not_too_many = true;
 		if(current_deck[card_id] == undefined){current_deck[card_id] = 0;}
 		if(current_deck[card_id] >= 5){not_too_many = false;}
+		if(all_available_cards[card_id]['unique'] != undefined && current_deck[card_id] > 0){not_too_many = false;}
+		if(all_available_cards[card_id]['unique'] != undefined && current_deck['hero'] == card_id){not_too_many = false;}
 		//count_current_deck_cards(current_deck);
 		if(gamedata['owned_cards'][card_id] != undefined && gamedata['owned_cards'][card_id] > current_deck[card_id] && count_current_deck_cards(current_deck) < max_deck_size && not_too_many == true)
 		{
@@ -553,12 +555,14 @@ function set_hero(card_id, forced){
 		if(gamedata['owned_cards'][card_id] != undefined && gamedata['owned_cards'][card_id] > current_deck[card_id])
 		{
 			current_deck['hero'] = card_id;
+			if(all_available_cards[card_id]['unique'] != undefined && current_deck[card_id] != undefined){remove_card_from_deck(card_id, true);}
 		}
 		else
 		{
 			if(gamedata['owned_cards'][card_id] != undefined && gamedata['owned_cards'][card_id] > 0)
 			{
 				current_deck['hero'] = card_id;
+				if(all_available_cards[card_id]['unique'] != undefined && current_deck[card_id] != undefined){remove_card_from_deck(card_id, true);}
 			}
 		}
 		//showing_heroes = false;
