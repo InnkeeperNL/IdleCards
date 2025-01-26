@@ -255,7 +255,7 @@ var all_expeditions = {
 		name: 			'Research potion',
 		description: 	'Research and possibly find a new potion recipe.<br/>If you know the potion recipe, it\'s level increases by 1.<br/><br/>Time: 8 hours',
 		costs: 	{
-			flask: 				1,
+			//flask: 				1,
 			//scraps: 			100
 		},
 		rewards:{

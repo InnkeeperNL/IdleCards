@@ -1414,12 +1414,17 @@ function show_new_mission(){
 	{
 		$('.new_expedition_content').html('');
 
+		var total_possible_missions = 0;
+		var total_mission_cost = 0;
+		var first_mission_id = '';
 		var current_building = 	gamedata['town'][current_building_id];
 		var building_info = 	all_buildings[current_building['building_id']];
 		var building_level = 	current_building['level'];
 		$.each(building_info['expeditions'], function(useless_id, expedition_id){
 			if(all_expeditions[expedition_id] != undefined)
 			{
+				if(first_mission_id == ''){first_mission_id = '' + expedition_id;}
+				total_possible_missions += 1;
 				var current_exp = all_expeditions[expedition_id];
 				var can_start = true;
 				var single_new_expedition = '';
@@ -1434,6 +1439,7 @@ function show_new_mission(){
 				}
 				single_new_expedition += 	'<div class="expedition_costs">';
 				$.each(current_exp['costs'], function(cost_id, cost_amount){
+					total_mission_cost += 1;
 					var cost_color = '';
 					if(cost_id == 'scraps' && gamedata['scraps'] < cost_amount)
 					{
@@ -1508,6 +1514,7 @@ function show_new_mission(){
 
 			if(all_adventures[expedition_id] != undefined)
 			{
+				total_possible_missions += 1;
 				console.log(expedition_id);
 				var current_exp = all_adventures[expedition_id];
 				var can_start = true;
@@ -1523,6 +1530,7 @@ function show_new_mission(){
 				}
 				single_new_expedition += 	'<div class="expedition_costs">';
 				$.each(current_exp['costs'], function(cost_id, cost_amount){
+					total_mission_cost += 1;
 					var cost_color = '';
 					if(cost_id == 'scraps' && gamedata['scraps'] < cost_amount)
 					{
@@ -1600,6 +1608,10 @@ function show_new_mission(){
 				}*/
 			}
 		});
+		if(total_possible_missions == 1 && total_mission_cost == 0 && first_mission_id != undefined)
+		{
+			start_new_expedition(first_mission_id);
+		}
 	}
 };
 
