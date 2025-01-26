@@ -701,8 +701,55 @@ var all_abilities = {
 		level_cost_artifact: 3,
 		level_cost_hero: 	2,
 	},
+	channel_life:{
+		description: 	'Reduces the time left of a card in your hand by 1. If it does, this deals 1 damage to itself.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	1,
+				status: 		'hand',
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'hasten',
+				projectile_target: 'deck',
+				type: 			'reduce_ready_time',
+				subtypes: 		['hasten','deck_control'],
+				amount: 		1,
+				side: 			'ally',
+				
+			}
+		},
+		on_each_success:{
+			targets:{
+				0:{
+					target: 		'any',
+					target_amount: 	1,
+					position: 		'self',
+					min_hp: 		1,
+					side: 			'any'
+				},
+			},
+			effects:{
+				0:{
+					pause_before: 	-1500,
+					self_projectile: 'voodoo',
+					type: 			'damage',
+					amount: 		1,
+					increase_timeout: 500,
+				},
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	chaos_strikes:{
-		description: 	'When the enemy hero receives damage, move a card from the enemy\'s hand to the grave. Can be used {LEVEL} time(s).',
+		description: 	'When the enemy hero receives damage, discard a card from the enemy\'s hand to the grave. Can be used {LEVEL} time(s).',
 		proc: 			'enemy_hero_damaged',
 		reduce_skill_after_use: 'chaos_strikes',
 		proc_amount: 	1,
@@ -731,7 +778,7 @@ var all_abilities = {
 		level_cost_hero: 	3,
 	},
 	chaos_touch:{
-		description: 	'When this deals damage to the enemy hero, move a cards from the enemy\'s hand to the grave. Can be used {LEVEL} time(s).',
+		description: 	'When this deals damage to the enemy hero, discard a cards from the enemy\'s hand to the grave. Can be used {LEVEL} time(s).',
 		proc: 			'dealt_damage_to_hero',
 		reduce_skill_after_use: 'chaos_touch',
 		proc_amount: 	1,
@@ -1660,7 +1707,7 @@ var all_abilities = {
 		level_cost_artifact: 3,
 	},
 	discard:{
-		description: 	'Moves up to {LEVEL} card(s) from the your hand to the grave.',
+		description: 	'Discards up to {LEVEL} card(s) from the your hand to the grave.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use:'discard',
@@ -1690,7 +1737,7 @@ var all_abilities = {
 		level_cost_hero: 	-3,
 	},
 	discard_enemy:{
-		description: 	'Moves up to {LEVEL} card(s) from the enemy\'s hand to the grave.',
+		description: 	'Discards up to {LEVEL} card(s) from the enemy\'s hand to the grave.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use:'discard_enemy',
@@ -1719,7 +1766,7 @@ var all_abilities = {
 		level_cost_hero: 	4,
 	},
 	discard_enemy_down:{
-		description: 	'If the enemy has {LEVEL} or more cards in its hand, this moves 1 cards from the enemy\'s hand to the grave.',
+		description: 	'If the enemy has {LEVEL} or more cards in its hand, this discards 1 cards from the enemy\'s hand to the grave.',
 		cannot_proc_while_stunned: true,
 		min_enemy_hand_cards: 'ability_level',
 		targets:	{
@@ -2579,7 +2626,7 @@ var all_abilities = {
 	},
 	final_discard:{
 		name_color: 	'rgba(160, 95, 250,0.9)',
-		description: 	'When this is destroyed, moves up to {LEVEL} card(s) from your hand to the grave.',
+		description: 	'When this is destroyed, discard up to {LEVEL} card(s) from your hand to the grave.',
 		proc: 			'own_death',
 		proc_while_dead: true,
 		proc_amount: 	'ability_level',
@@ -3296,6 +3343,31 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	4,
 	},
+	hero_channels_life:{
+		description: 	'Up to {LEVEL} times, your hero reduces the time left of a card in your hand by 1. Every time it does, it deals 1 damage to itself.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	1,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'random_ability',
+				subtypes: 		[],
+				ability_options: ['channel_life'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	hex:{
 		description: 	'Turns {LEVEL} nearest non-undead enemy creature unit(s) into a frog until the end of their next round.',
 		cannot_proc_while_stunned: true,
@@ -3599,6 +3671,30 @@ var all_abilities = {
 		level_cost_spell: 	0.6,
 		level_cost_hero: 	1,
 	},
+	keeps_going:{
+		description: 	'This has a 75% chance to go again.',
+		proc_chance: 	75,
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 	'any',
+				target_amount: 1,
+				position: 	'self',
+				side: 		'any'
+			},
+		},
+		effects:{
+			0:{
+				//self_projectile: 	'go_again',
+				type: 				'go_again',
+				subtypes: 			['go_again'],
+				amount: 			'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+		cost_factor: 		'full'
+	},
 	leech_hero:{
 		description: 	'When this deals damage to the enemy hero, your hero gains {LEVEL} health permanently.',
 		proc: 			'dealt_damage_to_hero',
@@ -3654,6 +3750,33 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		9,
 		level_cost_spell: 	4.5,
+	},
+	life_cost:{
+		description: 	'When played, reduces the health of your hero by {LEVEL}.',
+		proc: 			'on_play',
+		proc_while_dead: true,
+		scales: 		true,
+		targets: 	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'any',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'wither',
+				type: 			'reduce_health',
+				amount: 		'ability_level',
+			},
+		},
+		level_cost: 	-1,
+		ability_level_cost_factors:{
+			retreat: 	2,
+			homebound: 	2,
+		},
 	},
 	marred_vines:{
 		description: 	'When this takes damage, there is a 50% chance it summons {LEVEL} vine(s).',
@@ -3835,8 +3958,7 @@ var all_abilities = {
 		average_hits: 		1,
 	},
 	pay_life:{
-		description: 	'When played, reduces the health of your hero by {LEVEL}.',
-		proc: 			'on_play',
+		description: 	'Reduces the health of your hero by {LEVEL}.',
 		proc_while_dead: true,
 		scales: 		true,
 		targets: 	{
@@ -3855,11 +3977,8 @@ var all_abilities = {
 				amount: 		'ability_level',
 			},
 		},
-		level_cost: 	-1,
-		ability_level_cost_factors:{
-			retreat: 	2,
-			homebound: 	2,
-		},
+		level_cost: 	-2,
+		level_cost_spell: -1,
 	},
 	plated:{
 		name_color: 	'rgba(255,255,255,0.9)',

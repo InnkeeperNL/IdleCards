@@ -3694,6 +3694,8 @@ function go_again(target_id, origin_id, calculated_amount,subtypes){
 	target_unit['failed_to_act_this_phase'] = false;
     //battle_info.combat_units[target_id]['used_ability'] = false;
 
+
+
     /*var current_unit = battle_info.combat_units[target_id];
     $.each(current_unit['abilities'], function(ability_id, ability_level){
 		var current_ability = all_abilities[ability_id];
@@ -3719,6 +3721,21 @@ function go_again(target_id, origin_id, calculated_amount,subtypes){
 	total_timeout += 500 * battle_speed;
 	//process_single_unit(target_id, undefined, false, 'basic');
 	//total_timeout += 250 * battle_speed;
+
+	if(target_unit['type'] == 'spell')
+    {
+    	$.each(target_unit['abilities'], function(ability_id, ability_level){
+			var current_ability = all_abilities[ability_id];
+			if(battle_info.combat_units[target_id] != undefined){
+				if(current_ability['proc'] != undefined && current_ability['proc'] == 'basic')
+				{
+				    //console.log('processing ' + ability_id + ' for ' + target_id);
+				    //total_timeout += 250 * battle_speed;
+					process_ability(target_id, current_ability, ability_level, target_id);
+				}
+			}
+		});
+    }
 }
 
 function increase_power(target_id, origin_id, calculated_amount,subtypes){
