@@ -152,7 +152,7 @@ var all_buildings = {
 		recipes:{
 			chest:{
 				costs:{
-					stash: 		4,
+					stash: 		5,
 				}
 			},
 		},
