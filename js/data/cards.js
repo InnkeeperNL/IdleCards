@@ -2494,7 +2494,7 @@ var all_available_cards = {
 		quote: '\"A force of nature.\"',
 	},
 	elf_sniper:{
-		name: 				'elvish sniper',
+		name: 				'elf sniper',
 		type: 				'creature',
 		subtypes: 			['elf','archer'],
 		color: 				['colorless'],
