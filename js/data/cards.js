@@ -3265,7 +3265,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['fire'],
 		color: 				['colorless'],
-		theme: 				['muscle'],
+		theme: 				[],
 		pick_chance: 		1,
 		time: 				2,
 		image: 				'cards/dream_TradingCard-2025-01-24T143443.351.jpg',
