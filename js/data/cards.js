@@ -2169,7 +2169,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{sacrifice_creature: 1, restore: 5, minimum_ally_creatures: 1},
+		abilities: 			{sacrifice_creature: 1, restore: 8, minimum_ally_creatures: 1},
 		quote: '\"I can feel the life flowing through me.\"',
 	},
 	dread_shield:{
@@ -2687,7 +2687,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, counter_spells: 2, resist_magic: 1},
 		hero_version: 			{
-			theme: 				['subtype_elf','subtype_witch'],
+			theme: 				['subtype_elf','subtype_cleric'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -3580,7 +3580,7 @@ var all_available_cards = {
 	fungal_rat:{
 		name: 				'fungal rat',
 		type: 				'creature',
-		subtypes: 			['fungus','animal'],
+		subtypes: 			['fungus','animal','rodent'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -4657,7 +4657,7 @@ var all_available_cards = {
 	imp_lord:{
 		name: 				'imp lord',
 		type: 				'creature',
-		subtypes: 			['daemon','imp'],
+		subtypes: 			['daemon','imp','warrior'],
 		color: 				['colorless'],
 		theme: 				['subtype_imp'],
 		craft_theme: 		['subtype_imp','subtype_imp','empower_ability'],
@@ -4680,7 +4680,7 @@ var all_available_cards = {
 	imp_soldier:{
 		name: 				'imp soldier',
 		type: 				'creature',
-		subtypes: 			['daemon','imp'],
+		subtypes: 			['daemon','imp','warrior'],
 		color: 				['colorless'],
 		theme: 				['subtype_imp'],
 		craft_theme: 		[],
@@ -4703,7 +4703,7 @@ var all_available_cards = {
 	imp_warrior:{
 		name: 				'imp warrior',
 		type: 				'creature',
-		subtypes: 			['daemon','imp'],
+		subtypes: 			['daemon','imp','warrior'],
 		color: 				['colorless'],
 		theme: 				['subtype_imp'],
 		craft_theme: 		[],
@@ -4729,7 +4729,7 @@ var all_available_cards = {
 		type: 				'creature',
 		subtypes: 			['human','mage'],
 		color: 				['colorless'],
-		theme: 				['burn_ability','burn_ability'],
+		theme: 				['burn_ability'],
 		not_theme: 			['subtype_mage','fire_ability','subtype_human'],
 		craft_theme: 		['burn_ability'],
 		pick_chance: 		1,
@@ -4858,7 +4858,6 @@ var all_available_cards = {
 		},
 		quote: '\"Years of training.\"',
 	},
-	
 	lamb:{
 		name: 				'lamb',
 		type: 				'creature',
@@ -4872,7 +4871,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, final_bolster_hero: 1},
+		abilities: 			{strike: 1, final_bolster_hero: 2},
 		hero_version: 			{
 			theme: 				['subtype_animal','bolster_ability','sacrifice_ability'],
 			power: 				3,
@@ -7039,7 +7038,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{upkeep_creature: 1, empower_hero: 2, restore: 2},
+		abilities: 			{upkeep_creature: 1, empower_hero: 2, restore: 3},
 		quote: '\"Those can last for days...\"',
 	},
 	sandstorm:{
@@ -7132,7 +7131,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['orb'],
 		color: 				['colorless'],
-		theme: 				['burn_ability','burn_ability'],
+		theme: 				['burn_ability'],
 		not_theme: 			['fire_ability'],
 		craft_theme: 		['burn','burn'],
 		pick_chance: 		1,
@@ -8380,16 +8379,16 @@ var all_available_cards = {
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard-2024-12-23T072509.492.jpg',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
-		health: 			2,
-		abilities: 			{strike: 1, avoid_structure: 1},
+		health: 			1,
+		abilities: 			{strike: 1, venom: 2, avoid_structure: 1},
 		hero_version: 			{
 			theme: 				['subtype_animal','poison_ability'],
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, evade: 1},
+			abilities: 			{strike_unit: 1, venom: 1, evade: 1},
 		},
 		quote: '\"It feeds on lost travelers.\"',
 	},
@@ -9048,7 +9047,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, counter_spells: 2},
 		hero_version: 			{
-			theme: 				['subtype_elf','subtype_witch'],
+			theme: 				['subtype_human','subtype_cleric'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,

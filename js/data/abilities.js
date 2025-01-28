@@ -390,7 +390,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'bolster',
 				type: 			'increase_health',
-				subtypes: 		['bolster','bolster_hero'],
+				subtypes: 		['bolster','bolster_ally'],
 				amount: 		'ability_level'
 			},
 		},
@@ -450,8 +450,8 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		8,
-		level_cost_spell: 	4,
+		level_cost: 		4,
+		level_cost_spell: 	2.5,
 	},
 	bolstering_deaths:{
 		description: 	'When any ally creature is destroyed, your hero gains {LEVEL} health permanently.',
@@ -476,8 +476,8 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		8,
-		level_cost_spell: 	4,
+		level_cost: 		4,
+		level_cost_spell: 	2,
 	},
 	break:{
 		name_color: 	'rgba(255,255,255,0.9)',
@@ -2315,7 +2315,7 @@ var all_abilities = {
 					0:{
 						projectile: 	'drain',
 						type: 			'destroy',
-						subtypes: 		['destroy'],
+						subtypes: 		['sacrifice'],
 						on_success:{
 							targets:{
 								0:{
@@ -2639,8 +2639,8 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_artifact: 2,
+		level_cost: 		2,
+		level_cost_artifact: 1,
 	},
 	final_curse:{
 		description: 	'When destroyed, applies {LEVEL} curse to a random enemy unit or hero.{CURSE}',
@@ -4504,8 +4504,8 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_spell: 	2,
+		level_cost: 		3,
+		level_cost_spell: 	1.5,
 	},
 	restoring_deaths:{
 		description: 	'When any ally creature is destroyed, this heals your hero by {LEVEL}.',
