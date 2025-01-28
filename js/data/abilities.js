@@ -2295,7 +2295,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		5,
 	},
-	eat_sporeling:{
+	consume_sporeling:{
 		description: 	'If damaged, destroys a random sporeling. This then heals itself by {LEVEL}.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
