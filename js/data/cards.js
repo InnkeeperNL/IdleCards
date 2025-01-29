@@ -7582,7 +7582,7 @@ var all_available_cards = {
 		abilities: 			{strike: 2, undead: 1, resurrect: 1},
 		hero_version: 			{
 			theme: 				['subtype_undead','subtype_skeleton','on_death_proc_ability'],
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 2, undead: 1, resurrect: 1},
@@ -8258,7 +8258,6 @@ var all_available_cards = {
 		},
 		quote: '\"Made from steel.\"',
 	},
-	
 	strike_of_opportunity:{
 		name: 				'strike of opportunity',
 		type: 				'spell',
@@ -8454,7 +8453,6 @@ var all_available_cards = {
 		abilities: 			{unsummon_ally: 1, echo: 1},
 		quote: '\"I\'m not running away! It\'s called a tactical retreat!\"',
 	},
-	
 	thief:{
 		name: 				'thief',
 		type: 				'creature',
@@ -8517,7 +8515,6 @@ var all_available_cards = {
 		},
 		quote: '\"The past can be your friend.\"',
 	},
-	
 	town_hall:{
 		name: 				'town hall',
 		type: 				'structure',
@@ -9494,7 +9491,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, evade: 1, striking_entry: 2},
 		hero_version: 			{
 			theme: 				['evade_ability','subtype_rogue'],
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 2, evade: 1},
@@ -9687,7 +9684,6 @@ var all_available_cards = {
 	spyglass:{
 		name: 				'spyglass',
 		description: 		'Doubles the maximum rarity of the next summoned enemy.',
-		version: 			2,
 		value: 				10,
 		type: 				'treasure',
 		basic_reward: 		true,
@@ -9717,7 +9713,6 @@ var all_available_cards = {
 	compass:{
 		name: 				'compass',
 		description: 		'Triples the maximum rarity of the next summoned enemy.',
-		version: 			2,
 		value: 				30,
 		type: 				'treasure',
 		color: 				['none'],
@@ -9746,7 +9741,6 @@ var all_available_cards = {
 	treasure_map:{
 		name: 				'treasure map',
 		description: 		'Quadruples the maximum rarity of the next summoned enemy.',
-		version: 			2,
 		value: 				120,
 		type: 				'treasure',
 		color: 				['none'],
@@ -9832,7 +9826,22 @@ var all_available_cards = {
 		abilities: 			{},
 		quote: '\"Make those gems shine!\"',
 	},
-
+	rope_of_binding:{
+		name: 				'rope of binding',
+		description: 		'Passively increases the chance for loot items to drop after winning a battle by 1%.',
+		value: 				50,
+		type: 				'treasure',
+		color: 				['none'],
+		pick_chance: 		0,
+		time: 				0,
+		image: 				'cards/dream_TradingCard-2025-01-29T060640.618.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{},
+		quote: '\"I got you!\"',
+	},
+	
 	
 	//##################################################################################################################################################################
 	//########################################################## REWARDS ###############################################################################################
@@ -10544,6 +10553,11 @@ function calculate_card_time(card_id, show_calc, hero_version){
 		{
 			calculated_time += ability['cost_adjustment'];
 			if(show_calc!=undefined){console.log('adjustment: ' + ability['cost_adjustment']);}
+		}
+		if(ability['additional_levels_cost'] != undefined && ability_level > 1)
+		{
+			calculated_time += ability['additional_levels_cost'] * (ability_level - 1);
+			if(show_calc!=undefined){console.log('additional_levels_cost: ' + (ability['additional_levels_cost'] * (ability_level - 1)));}
 		}
 		if(show_calc!=undefined){console.log('--- total = ' + calculated_time);}
 		if(ability['cost_factor'] == undefined || (ability['cost_factor'] != 'full' && ability['cost_factor'] != 'health'))

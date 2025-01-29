@@ -1015,6 +1015,7 @@ var all_abilities = {
 		cost_factor: 		'power',
 		average_hits: 		'ability_level',
 		cost_adjustment: 	1,
+		additional_levels_cost: 2,
 	},
 	cold_strike_hv:{
 		name: 			'cold strike',
@@ -1065,6 +1066,7 @@ var all_abilities = {
 		cost_factor: 		'power',
 		average_hits: 		'ability_level',
 		cost_adjustment: 	1,
+		additional_levels_cost: 1,
 	},
 	conflagrate:{
 		name_color: 	'rgba(255,55,55,0.9)',
@@ -2973,6 +2975,7 @@ var all_abilities = {
 		level_cost: 	2,
 		cost_factor: 	'power',
 		average_hits: 	1,
+		additional_levels_cost: 2,
 	},
 	flame_strike_hv:{
 		name: 			'flame strike',
@@ -3002,6 +3005,7 @@ var all_abilities = {
 		level_cost: 	2,
 		cost_factor: 	'power',
 		average_hits: 	1,
+		additional_levels_cost: 1,
 	},
 	flying:{
 		name: 			'flying',
@@ -3132,7 +3136,8 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1.5,
+		level_cost: 	2,
+		level_cost_hero: 1,
 	},
 	frost_bolt:{
 		description: 	'Deals {LEVEL} physical cold projectile damage to a random enemy unit. Has a 25% chance to stun any unit or hero it hits. Will target the enemy hero if there are no enemy units.',
@@ -3459,8 +3464,8 @@ var all_abilities = {
 		level_cost_hero: 	4,
 	},
 	hide:{
-		description: 	'Has a 75% chance to grant itself stealth every turn.',
-		proc_chance: 	75,
+		description: 	'Grants itself stealth every turn.',
+		//proc_chance: 	75,
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
@@ -4957,6 +4962,7 @@ var all_abilities = {
 		level_cost: 	4,
 		cost_factor: 	'power',
 		average_hits: 	'ability_level',
+		additional_levels_cost: 2,
 	},
 	shoot_unit:		{
 		description: 	'Deals physical projectile damage equal to its power to a random enemy unit {LEVEL} time(s).',
@@ -4984,6 +4990,7 @@ var all_abilities = {
 		level_cost: 	3,
 		cost_factor: 	'power',
 		average_hits: 	'ability_level',
+		additional_levels_cost: 1,
 	},
 	shoot_arrival:{
 		description: 	'When an enemy unit enters the game, this deals {LEVEL} physical projectile damage to it. Can be used once.',
@@ -5472,6 +5479,7 @@ var all_abilities = {
 		level_cost: 	2,
 		cost_factor: 	'power',
 		average_hits: 	'ability_level',
+		additional_levels_cost: 2,
 	},
 	strike_arrivals:{
 		description: 	'When an enemy unit enters the game, this deals {LEVEL} physical melee damage to it.',
@@ -5550,6 +5558,7 @@ var all_abilities = {
 		level_cost: 	2,
 		cost_factor: 	'power',
 		average_hits: 	'ability_level',
+		additional_levels_cost: 1,
 	},
 	striking_entry:{
 		description: 	'When played, deals {LEVEL} physical melee damage to the nearest enemy unit. Will target the enemy hero if there are no enemy units.',

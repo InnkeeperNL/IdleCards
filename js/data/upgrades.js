@@ -476,7 +476,7 @@ var all_upgrades = {
 	zz_spyglass_potion:{
 		name: 			'Spyglass potion',
 		description: 	'2% bonus to gained spyglasses.',
-		card_image: 	'shard',
+		card_image: 	'spyglass',
 		upgrade_type: 	'potion',
 		type: 			'loot',
 		subtypes:  		['spyglass'],
@@ -554,6 +554,16 @@ var all_upgrades = {
 			loupe:  	1,
 		}
 	},
+	rope_of_binding_bonus:{
+		upgrade_type: 	'passive',
+		type: 			'summon_loot_rarity',
+		subtypes:  		['any'],
+		amount:  		0.01,
+		cost:{
+			rope_of_binding:  	1,
+		}
+	},
+	
 	/*z_summon_buffs:{
 		name: 			'Summon buffs',
 		description: 	'Increases the number of buffs you can use at the same time.',
