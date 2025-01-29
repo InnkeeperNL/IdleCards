@@ -489,7 +489,7 @@ var all_upgrades = {
 	},
 	zz_stash_potion:{
 		name: 			'Stash potion',
-		description: 	'2% bonus to gained shards.',
+		description: 	'2% bonus to gained stashes.',
 		card_image: 	'stash',
 		upgrade_type: 	'potion',
 		type: 			'loot',
