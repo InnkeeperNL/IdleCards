@@ -16,8 +16,8 @@ var all_buildings = {
 
 		productions:{
 			peasant:{
-				base_time: 		24 * 3600,
-				base_storage: 	10,
+				base_time: 		2 * 24 * 3600,
+				base_storage: 	2 * 10,
 				upgrade_cost_speed:{
 					scraps: 		100,
 				},
@@ -30,20 +30,20 @@ var all_buildings = {
 			},
 		},
 
-		recipes:{
+		/*recipes:{
 			stash:{
 				costs:{
 					scraps: 	50,
 				}
 			},
-			/*chest:{
+			chest:{
 				//costs_increas_factor: 1.05,
 				costs:{
 					//peasant: 	5,
 					shard: 		1,
 				}
-			},*/
-		},
+			},
+		},*/
 
 		shop_type: 		['creature'],
 		
@@ -76,7 +76,7 @@ var all_buildings = {
 		},
 		new_mission_title: 'BREW',
 		expeditions: 	['research_new_potion'],
-		recipes:{
+		/*recipes:{
 			clover:{
 				costs:{
 					horseshoe: 	3,
@@ -93,12 +93,12 @@ var all_buildings = {
 					jar_of_luck: 	2,
 				}
 			},
-		},
+		},*/
 		show_potions: true,
 		productions:{
 			flask:{
-				base_time: 		5 * 24 * 3600,
-				base_storage: 	1,
+				base_time: 		2 * 5 * 24 * 3600,
+				base_storage: 	2 * 1,
 				upgrade_cost_speed:{
 					scraps: 		100,
 				},
@@ -123,8 +123,8 @@ var all_buildings = {
 		},
 		productions:{
 			scraps_placeholder:{
-				base_time: 		1 * 3600,
-				base_storage: 	100,
+				base_time: 		2 * 1 * 3600,
+				base_storage: 	2 * 100,
 				upgrade_cost_speed:{
 					scraps: 		100,
 				},
@@ -136,8 +136,8 @@ var all_buildings = {
 				production_achievement_bonus: 0.1,
 			},
 			stash:{
-				base_time: 		2 * 24 * 3600,
-				base_storage: 	5,
+				base_time: 		2 * 2 * 24 * 3600,
+				base_storage: 	2 * 5,
 				upgrade_cost_speed:{
 					scraps: 		100,
 				},
@@ -170,8 +170,8 @@ var all_buildings = {
 		},
 		productions:{
 			trove:{
-				base_time: 		5 * 24 * 3600,
-				base_storage: 	1,
+				base_time: 		2 * 5 * 24 * 3600,
+				base_storage: 	2 * 1,
 				upgrade_cost_speed:{
 					scraps: 		100,
 				},
@@ -183,7 +183,7 @@ var all_buildings = {
 				production_achievement_bonus: 0.1,
 			},
 		},
-		recipes:{
+		/*recipes:{
 			compass:{
 				costs:{
 					spyglass: 	3,
@@ -194,7 +194,7 @@ var all_buildings = {
 					compass: 	4,
 				}
 			},
-		},
+		},*/
 		shop_type: 		['artifact'],
 	},
 	
