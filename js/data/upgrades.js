@@ -143,7 +143,7 @@ var all_upgrades = {
 		amount: 		1,
 		amount_fixed: 	true,
 		level_cost_scale: 	2,
-		cost: 			{spyglass:10,},
+		cost: 			{spyglass:2,},
 		max_level: 		4,
 	},
 	summon_tries:{
@@ -314,17 +314,17 @@ var all_upgrades = {
 	},
 	z_d_trove_drops:{
 		name: 			'Trove drops',
-		description: 	'Increases the chance troves will drop as loot from battles by 50%.',
+		description: 	'Increases the chance troves will drop as loot from battles by 100%.',
 		needed_upgrades:{
 			z_d_treasury_access: 1,
 		},
 		card_image: 	'kleptomaniac',
 		type: 			'loot_drop_chance',
 		subtypes:  		['trove'],
-		amount: 		0.5,
-		level_cost_scale: 	20,
-		cost: 			{trove: 1},
-		max_level: 		20,
+		amount: 		1,
+		level_cost_scale: 	5,
+		cost: 			{shard: 5},
+		max_level: 		10,
 		//hide_if_maxed: 	true,
 	},
 	zz_a_quick_craft:{
@@ -358,7 +358,7 @@ var all_upgrades = {
 		level_cost_scale: 	20,
 		cost:{
 			flask: 		2,
-			scraps:  	100,
+			//scraps:  	100,
 		}
 	},
 	zz_chest_potion:{
@@ -371,8 +371,8 @@ var all_upgrades = {
 		amount:  		0.02,
 		level_cost_scale: 	20,
 		cost:{
-			flask: 		2,
-			scraps:  	100,
+			flask: 		5,
+			//scraps:  	100,
 		}
 	},
 	zz_horseshoe_potion:{
@@ -385,8 +385,8 @@ var all_upgrades = {
 		amount:  		0.02,
 		level_cost_scale: 	20,
 		cost:{
-			flask: 		2,
-			scraps:  	100,
+			flask: 		1,
+			//scraps:  	100,
 		}
 	},
 	zz_mercenary_potion:{
@@ -400,7 +400,7 @@ var all_upgrades = {
 		level_cost_scale: 	20,
 		cost:{
 			flask: 		2,
-			scraps:  	100,
+			//scraps:  	100,
 		}
 	},
 	zz_peasant_potion:{
@@ -414,7 +414,7 @@ var all_upgrades = {
 		level_cost_scale: 	20,
 		cost:{
 			flask: 		2,
-			scraps:  	100,
+			//scraps:  	100,
 		}
 	},
 	zz_pirate_potion:{
@@ -428,7 +428,7 @@ var all_upgrades = {
 		level_cost_scale: 	20,
 		cost:{
 			flask: 		2,
-			scraps:  	100,
+			//scraps:  	100,
 		}
 	},
 	zz_scavenger_potion:{
@@ -442,7 +442,7 @@ var all_upgrades = {
 		level_cost_scale: 	20,
 		cost:{
 			flask: 		2,
-			scraps:  	100,
+			//scraps:  	100,
 		}
 	},
 	zz_scraps_potion:{
@@ -455,8 +455,8 @@ var all_upgrades = {
 		amount:  		0.02,
 		level_cost_scale: 	20,
 		cost:{
-			flask: 		2,
-			scraps:  	100,
+			flask: 		4,
+			//scraps:  	100,
 		}
 	},
 	zz_shard_potion:{
@@ -469,8 +469,8 @@ var all_upgrades = {
 		amount:  		0.02,
 		level_cost_scale: 	20,
 		cost:{
-			flask: 		2,
-			scraps:  	100,
+			flask: 		4,
+			//scraps:  	100,
 		}
 	},
 	zz_spyglass_potion:{
@@ -483,8 +483,8 @@ var all_upgrades = {
 		amount:  		0.02,
 		level_cost_scale: 	20,
 		cost:{
-			flask: 		2,
-			scraps:  	100,
+			flask: 		1,
+			//scraps:  	100,
 		}
 	},
 	zz_stash_potion:{
@@ -498,7 +498,7 @@ var all_upgrades = {
 		level_cost_scale: 	20,
 		cost:{
 			flask: 		2,
-			scraps:  	100,
+			//scraps:  	100,
 		}
 	},
 	zz_summon_potion:{
@@ -511,8 +511,8 @@ var all_upgrades = {
 		amount:  		0.02,
 		level_cost_scale: 	20,
 		cost:{
-			flask: 		2,
-			scraps:  	100,
+			flask: 		1,
+			//scraps:  	100,
 		}
 	},
 
