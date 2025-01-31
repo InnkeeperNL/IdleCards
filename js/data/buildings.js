@@ -113,7 +113,7 @@ var all_buildings = {
 	},
 	a3_bank:{
 		name: 			'bank',
-		fragment_id: 	'chest',
+		fragment_id: 	'shard',
 		image: 			'cards/dream_TradingCard-2025-01-19T051830.026.jpg',
 		description: 	'<i>Produces scraps and stashes.</i>',
 		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
@@ -160,7 +160,7 @@ var all_buildings = {
 	},
 	a4_treasury:{
 		name: 			'treasury',
-		fragment_id: 	'trove',
+		fragment_id: 	'shard',
 		image: 			'cards/dream_TradingCard-2025-01-19T055525.326.jpg',
 		description: 	'<i>Produces troves.</i>',
 		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
