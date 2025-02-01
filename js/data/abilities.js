@@ -301,7 +301,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'bless',
 				type: 			'grant_skill',
-				subtypes: 		['bless','grant_bless'],
+				subtypes: 		['bless','grant_bless','deck_control'],
 				skill_id: 		'blessed',
 				amount: 		'ability_level'
 			}

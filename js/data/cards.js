@@ -306,7 +306,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, reclaim_artifact: 1},
 		hero_version: 			{
-			theme: 				['type_artifact'],
+			theme: 				['type_artifact','deck_control_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -494,7 +494,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, hasten: 1, hide_hero: 1},
 		hero_version: 			{
-			theme: 				['evade_ability','hasten_ability','draw_cards_ability'],
+			theme: 				['evade_ability','hasten_ability','draw_cards_ability','deck_control_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -945,7 +945,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{strike: 1, stealth: 1, blessed: 5},
 		hero_version: 			{
-			theme: 				['subtype_cleric','subtype_rogue','bless_ability','draw_cards_ability'],
+			theme: 				['subtype_cleric','subtype_rogue','bless_ability','draw_cards_ability','deck_control_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -968,7 +968,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, guard: 1, blessed: 5},
 		hero_version: 			{
-			theme: 				['subtype_cleric','subtype_warrior','bless_ability','draw_cards_ability'],
+			theme: 				['subtype_cleric','subtype_warrior','bless_ability','draw_cards_ability','deck_control_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -1008,7 +1008,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, enrage: 1, blessed: 5},
 		hero_version: 			{
-			theme: 				['burn_ability','burn_ability'],
+			theme: 				['empower_ability','subtype_warrior','deck_control_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1031,7 +1031,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, evade: 1, blessed: 5},
 		hero_version: 			{
-			theme: 				['subtype_cleric','subtype_rogue','bless_ability','draw_cards_ability'],
+			theme: 				['subtype_cleric','subtype_rogue','bless_ability','draw_cards_ability','deck_control_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1070,7 +1070,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{strike: 1, blessed: 5},
 		hero_version: 			{
-			theme: 				['subtype_cleric','subtype_warrior','bless_ability','draw_cards_ability'],
+			theme: 				['subtype_cleric','subtype_warrior','bless_ability','draw_cards_ability','deck_control_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -1188,7 +1188,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{strike: 1, withering_touch: 1, final_hasten: 3},
 		hero_version: 			{
-			theme: 				['subtype_animal','subtype_horror'],
+			theme: 				['subtype_animal','subtype_horror','deck_control_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -1803,7 +1803,7 @@ var all_available_cards = {
 		health: 			3,
 		abilities: 			{strike: 1, homebound: 1},
 		hero_version: 			{
-			theme: 				['evade_ability','move_ally_to_hand_ability','subtype_human'],
+			theme: 				['evade_ability','move_ally_to_hand_ability','subtype_human','deck_control_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -2093,7 +2093,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, bless: 1},
 		hero_version: 			{
-			theme: 				['bless_ability','subtype_cleric','draw_cards_ability'],
+			theme: 				['bless_ability','subtype_cleric','draw_cards_ability','deck_control_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -2526,7 +2526,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{strike: 1, purifying_entry: 3, resist_magic: 1, blessed: 5},
 		hero_version: 			{
-			theme: 				['subtype_tactic','çurse_ability','any_spell_card_played_proc_ability','subtype_elf','subtype_wall'],
+			theme: 				['deck_control_ability','subtype_elf'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2572,7 +2572,7 @@ var all_available_cards = {
 		health: 			2,
 		abilities: 			{strike: 1, homebound: 1, resist_magic: 1},
 		hero_version: 			{
-			theme: 				['subtype_elf','subtype_rogue'],
+			theme: 				['subtype_elf','subtype_rogue','deck_control_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2827,7 +2827,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, reclaim_structure: 1},
 		hero_version: 			{
-			theme: 				['type_structure'],
+			theme: 				['type_structure','deck_control_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -3452,7 +3452,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{run_away: 1, strike: 1, triumphant_haste: 2},
 		hero_version: 			{
-			theme: 				['empower_ability','subtype_warrior'],
+			theme: 				['empower_ability','subtype_warrior','deck_control_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -4381,7 +4381,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, reclaim_spell: 1},
 		hero_version: 			{
-			theme: 				['subtype_clerk','deck_control','type_spell'],
+			theme: 				['subtype_clerk','deck_control_ability','type_spell'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -4701,7 +4701,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{flame_strike: 1, run_away: 1, triumphant_haste: 1},
 		hero_version: 			{
-			theme: 				['subtype_daemon','subtype_imp'],
+			theme: 				['subtype_daemon','subtype_imp','deck_control_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -5600,7 +5600,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, homebound: 1},
 		hero_version: 			{
-			theme: 				['move_ally_to_hand_ability','evade_ability'],
+			theme: 				['move_ally_to_hand_ability','evade_ability','deck_control_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -5623,7 +5623,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{strike: 1, draw: 1, homebound: 1},
 		hero_version: 			{
-			theme: 				['subtype_human','draw_cards_ability'],
+			theme: 				['subtype_human','draw_cards_ability','deck_control_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -5903,7 +5903,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, bless: 2},
 		hero_version: 			{
-			theme: 				['bless_ability','subtype_cleric','draw_cards_ability'],
+			theme: 				['bless_ability','subtype_cleric','draw_cards_ability','deck_control_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -6279,7 +6279,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, plunder: 1, homebound: 1},
 		hero_version: 			{
-			theme: 				['break_ability','subtype_rogue'],
+			theme: 				['break_ability','subtype_rogue','deck_control_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -6765,7 +6765,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{unsummon_ally: 1, strike: 1},
 		hero_version: 			{
-			theme: 				['on_play_proc_ability','subtype_mage'],
+			theme: 				['on_play_proc_ability','subtype_mage','deck_control_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -8637,7 +8637,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{unsummon_ally: 1, hasten: 1, arcane_bolt: 1},
 		hero_version: 			{
-			theme: 				['on_play_proc_ability','subtype_mage'],
+			theme: 				['on_play_proc_ability','subtype_mage','deck_control_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -9151,7 +9151,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, draw: 1},
 		hero_version: 			{
-			theme: 				['draw_cards_ability','subtype_warrior'],
+			theme: 				['draw_cards_ability','subtype_warrior','deck_control_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -9359,7 +9359,7 @@ var all_available_cards = {
 		type: 				'creature',
 		subtypes: 			['animal'],
 		color: 				['colorless'],
-		theme: 				['deck_control_ability','hasten_ability'],
+		theme: 				[],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -9369,7 +9369,7 @@ var all_available_cards = {
 		health: 			8,
 		abilities: 			{strike: 1, homebound: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','subtype_tactic'],
+			theme: 				['subtype_animal','subtype_tactic','deck_control_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -9485,7 +9485,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, draw: 1, flying: 1},
 		hero_version: 			{
-			theme: 				['flying_ability','subtype_animal'],
+			theme: 				['flying_ability','subtype_animal','deck_control_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
