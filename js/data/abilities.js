@@ -3902,12 +3902,21 @@ var all_abilities = {
 	minimum_ally_creatures:{
 		name: 			'ally creatures:',
 		post_name: 		'+',
-		name_color: 	'rgba(255,255,255,0.9)',
 		description: 	'This card will not be played if there\'s less than {LEVEL} ally creature unit(s) in play.',
 		proc: 			'on_play',
 		remove_skill: 	'minimum_ally_creatures',
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
+		level_cost_cum: true,
+	},
+	minimum_dead_ally_creatures:{
+		name: 			'dead ally creatures:',
+		post_name: 		'+',
+		description: 	'This card will not be played if there are less then {LEVEL} ally creatures in your grave.',
+		proc: 			'on_play',
+		remove_skill: 	'minimum_dead_ally_creatures',
+		show_amount_adjustment: 0,
+		level_cost: 	-0.1,
 		level_cost_cum: true,
 	},
 	minimum_enemies:{
