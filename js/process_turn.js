@@ -6924,20 +6924,27 @@ function play_unit_card(side, card_id, origin_id, forced_play, origin_unit){
 			$('.battle_container').append(parsed_unit);
 		},total_timeout);
 		timeout_key ++;
-		var temp_hand_slot = battle_info['deck_' + side][origin_id]['hand_slot'] + 0;
-		var temp_side = side + 0;
-		var temp_hand_slot_id = battle_info['deck_' + side][origin_id]['hand_slot_id'] + 0;
-
-		all_timeouts[timeout_key] = setTimeout(function(){
-				$('.unit_id_' + next_combat_unit_id).removeClass('hand_card');
-				$('.unit_id_' + next_combat_unit_id).removeClass('fake_hand_slot_' + origin_hand_slot);
-				$('.unit_id_' + next_combat_unit_id).removeClass(temp_slot_2);
-				$('.unit_id_' + next_combat_unit_id).addClass('slot_' + temp_slot);
+		if(battle_info['deck_' + side][origin_id] != undefined)
+		{
+			var temp_hand_slot = battle_info['deck_' + side][origin_id]['hand_slot'] + 0;
+			var temp_side = side + 0;
+			var temp_hand_slot_id = battle_info['deck_' + side][origin_id]['hand_slot_id'] + 0;
+			timeout_key ++;
+			all_timeouts[timeout_key] = setTimeout(function(){
 				$('.hand_slot_' + temp_hand_slot + '.side_' + temp_side + '.hand_slot_id_' + temp_hand_slot_id).each(function(){
 					this.remove();	
 				});
-			},total_timeout + 150);
-		battle_info['deck_' + side][origin_id]['status'] = 'in_play';
+			},total_timeout);
+			battle_info['deck_' + side][origin_id]['status'] = 'in_play';
+		}
+
+		all_timeouts[timeout_key] = setTimeout(function(){
+			$('.unit_id_' + next_combat_unit_id).removeClass('hand_card');
+			$('.unit_id_' + next_combat_unit_id).removeClass('fake_hand_slot_' + origin_hand_slot);
+			$('.unit_id_' + next_combat_unit_id).removeClass(temp_slot_2);
+			$('.unit_id_' + next_combat_unit_id).addClass('slot_' + temp_slot);	
+		},total_timeout + 150);
+		
 		check_visible_skills(next_combat_unit_id);
 		update_passive_effects(next_combat_unit_id);
 		total_timeout += 1000 * battle_speed;
@@ -6975,7 +6982,8 @@ function play_unit_card(side, card_id, origin_id, forced_play, origin_unit){
 				}
 			});
 		}
-		if(battle_info['deck_' + side][origin_id]['status'] != 'in_play'){played_card = false;}
+
+		if(battle_info['deck_' + side][origin_id] != undefined && battle_info['deck_' + side][origin_id]['status'] != 'in_play'){played_card = false;}
 		
 	}
 	return played_card;

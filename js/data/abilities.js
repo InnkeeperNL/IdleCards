@@ -756,7 +756,7 @@ var all_abilities = {
 		level_cost_hero: 	2,
 	},
 	channel_life:{
-		description: 	'Reduces the time left of a card in your hand by {LEVEL}. If it does, this deals 1 damage to itself.',
+		description: 	'Reduces the time left of the card in your hand with the highest time left by {LEVEL}. If it does, this deals 1 damage to itself.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		targets:	{
@@ -765,6 +765,7 @@ var all_abilities = {
 				target_amount: 	1,
 				status: 		'hand',
 				side: 			'ally',
+				highest_time_left: true,
 			},
 		},
 		effects:{
@@ -2735,7 +2736,7 @@ var all_abilities = {
 		level_cost_artifact: 3,
 	},
 	final_hasten:{
-		description: 	'When destroyed, reduces the time left of a card in your hand by {LEVEL}.',
+		description: 	'When destroyed, reduces the time left of the card in your hand with the highest time left by {LEVEL}.',
 		proc: 			'own_death',
 		proc_while_dead: true,
 		targets:	{
@@ -2744,6 +2745,7 @@ var all_abilities = {
 				target_amount: 	1,
 				status: 		'hand',
 				side: 			'ally',
+				highest_time_left: true,
 			},
 		},
 		effects:{
@@ -3403,10 +3405,10 @@ var all_abilities = {
 		level_cost: 	4,
 	},
 	hero_channels_life:{
-		description: 	'Up to {LEVEL} times, your hero reduces the time left of a card in your hand by 1. Every time it does, it deals 1 damage to itself.',
+		description: 	'Your hero reduces the time left of the card in your hand with the highest time left by {LEVEL}. If it does, it deals 1 damage to itself.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
-		proc_amount: 	'ability_level',
+		//proc_amount: 	'ability_level',
 		ability_subtypes: ['hasten','deck_control'],
 		targets:	{
 			0:{
@@ -3422,11 +3424,13 @@ var all_abilities = {
 				type: 			'random_ability',
 				subtypes: 		[],
 				ability_options: ['channel_life'],
-				amount: 		1
+				amount: 		'ability_level'
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1,
+		level_cost: 		4,
+		level_cost_spell: 	2,
+		cost_adjustment: 	-6,
 	},
 	hex:{
 		description: 	'Turns {LEVEL} nearest non-undead enemy creature unit(s) into a frog until the end of their next round.',
