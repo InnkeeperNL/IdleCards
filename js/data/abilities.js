@@ -95,10 +95,37 @@ var all_abilities = {
 		level_cost: 		2,
 		level_cost_spell: 	1,
 	},
+	ally_charges:{
+		description: 	'Makes an ally creature unit with power charge. If used by a creature, it cannot target itself.<br/><i>Charge: This unit will move to the furthest free slot with an opposing unit and gains {LEVEL} temporary power for each slot moved.</i>',
+		max_ally_units: 4,
+		min_unopposed_enemy_units: 1,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure','object'],
+				not_self: 		true,
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'go_again',
+				type: 				'random_ability',
+				ability_options: 	['charge'],
+				amount: 			'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		3,
+	},
 	ally_runs_away:{
-		description: 	'An ally creature unit facing an enemy unit will move to a slot with no opposing unit. Can be used when played, any enemy unit enters the game, an enemy moved or on its turn, but only once each round.',
-		proc: 			['on_play','enemy_unit_card_played','enemy_moved','basic'],
-		delay: 			1,
+		description: 	'{LEVEL} Ally creature unit(s) facing an enemy unit will move to a slot with no opposing unit.',
+		proc: 			'basic',
 		min_double_free_slots: 1,
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
@@ -123,7 +150,36 @@ var all_abilities = {
 				amount: 		1,
 			}
 		},
-		level_cost: 	1,
+		level_cost: 	2,
+		level_cost_spell: 1,
+	},
+	also_empower_all:{
+		name: 			'also: empower all',
+		description: 	'When this performs any ability, the target also grants all other ally creatures that have power {LEVEL} temporary power.',
+		proc: 			'performed_ability',
+		not_subtypes: 	['additional_effect'],
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				side: 			'any',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'random_ability',
+				subtypes: 		['empower','empower_ally','additional_effect'],
+				ability_options: ['empower_all'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_spell: 	1,
 	},
 	arcane_bolt:{
 		description: 	'Deals 1 magical projectile damage to a random enemy unit {LEVEL} time(s). Will only target the enemy hero if there are no enemy units.',
@@ -311,6 +367,33 @@ var all_abilities = {
 		level_cost_spell: 0.375,
 		level_cost_artifact: 1.5
 	},
+	bless_all:{
+		description:'All ally units gains {LEVEL} blessings. Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally',
+				max_abilities: 	{blessed: 9},
+				has_origin_card: true,
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bless',
+				type: 			'grant_skill',
+				subtypes: 		['bless','grant_bless','deck_control'],
+				skill_id: 		'blessed',
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	2.25,
+		level_cost_spell: 1.125,
+		level_cost_artifact: 4.5
+	},
 	blessed:{
 		description: 	'Has a {LEVEL}0% chance to return to your deck when destroyed.',
 		proc: 			'own_death',
@@ -399,6 +482,33 @@ var all_abilities = {
 		level_cost_hero: 	3,
 		level_cost_spell: 	1,
 	},
+	bolster_all:{
+		description: 	'All ally units gains {LEVEL} health permanently.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bolster',
+				type: 			'increase_health',
+				subtypes: 		['bolster','bolster_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		6,
+		level_cost_hero: 	9,
+		level_cost_spell: 	3,
+	},
 	bolster_creature:{
 		description: 	'A random non-undead ally creature unit gains {LEVEL} health permanently.',
 		proc: 			'basic',
@@ -480,8 +590,7 @@ var all_abilities = {
 		level_cost_spell: 	2,
 	},
 	break:{
-		name_color: 	'rgba(255,255,255,0.9)',
-		description: 	'Destroys an enemy artifact or golem. Can be used up to {LEVEL} time(s).',
+		description: 	'Destroys up to a total of {LEVEL} enemy artifacts or golems.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use: 'break',
@@ -571,7 +680,7 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		6,
+		level_cost: 		10,
 	},
 	bring_structure:{
 		description: 	'Summons a non-plant structure unit. Can be used {LEVEL} time(s).',
@@ -598,7 +707,7 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		6,
+		level_cost: 		10,
 	},
 	burn:{
 		name_color: 	'rgba(255, 55, 55,0.9)',
@@ -722,7 +831,7 @@ var all_abilities = {
 				amount: 		'ability_level',
 			}
 		},
-		level_cost: 	1,
+		level_cost: 	1.5,
 	},
 	burning_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, there is a 50% chance this applies {LEVEL} burn to it.',
@@ -912,7 +1021,8 @@ var all_abilities = {
 	},
 	clone_ally:{
 		ability_subtypes: ['summon_ally','summon_creature'],
-		description: 	'Creates a clone of a random ally creature.',
+		description: 	'Creates a clone of a random ally creature {LEVEL} time(s).',
+		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
 		targets:	{
@@ -935,7 +1045,8 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 10,
+		level_cost: 		16,
+		level_cost_spell: 	8,
 	},
 	clone_target:{
 		description: 	'### USED BY CLONE ALLY ###',
@@ -1873,7 +1984,7 @@ var all_abilities = {
 		},
 		animation: 	'combat_zoom',
 		level_cost: 	1.5,
-		level_cost_spell: 0.5,
+		level_cost_spell: 0.75,
 	},
 	doom_all:{
 		description: 	'Applies {LEVEL} doom to all enemy units.{DOOM}',
@@ -1899,7 +2010,7 @@ var all_abilities = {
 		},
 		animation: 	'combat_zoom',
 		level_cost: 	4.5,
-		level_cost_spell: 1.5,
+		level_cost_spell: 2.25,
 	},
 	doom_ally:{
 		description: 	'Applies {LEVEL} doom to a random ally unit.{DOOM}',
@@ -3430,7 +3541,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		4,
 		level_cost_spell: 	2,
-		cost_adjustment: 	-6,
+		cost_adjustment: 	-4,
 	},
 	hex:{
 		description: 	'Turns {LEVEL} nearest non-undead enemy creature unit(s) into a frog until the end of their next round.',
@@ -3867,6 +3978,15 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	6,
 	},
+	max_hand_cards:{
+		name: 		'hand cards:',
+		post_name: 	'-',
+		description: 	'This card will not be played if there are more then {LEVEL} cards in your hand.',
+		proc: 			'on_play',
+		remove_skill: 	'max_hand_cards',
+		show_amount_adjustment: 0,
+		level_cost: 	0,
+	},
 	maximum_allies:{
 		name: 		'allies:',
 		post_name: 	'-',
@@ -3897,7 +4017,7 @@ var all_abilities = {
 		remove_skill: 	'minimum_allies',
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
-		level_cost_cum: true,
+		//level_cost_cum: true,
 	},
 	minimum_ally_creatures:{
 		name: 			'ally creatures:',
@@ -3907,7 +4027,7 @@ var all_abilities = {
 		remove_skill: 	'minimum_ally_creatures',
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
-		level_cost_cum: true,
+		//level_cost_cum: true,
 	},
 	minimum_dead_ally_creatures:{
 		name: 			'dead ally creatures:',
@@ -3916,8 +4036,8 @@ var all_abilities = {
 		proc: 			'on_play',
 		remove_skill: 	'minimum_dead_ally_creatures',
 		show_amount_adjustment: 0,
-		level_cost: 	-0.1,
-		level_cost_cum: true,
+		level_cost: 	0.25,
+		//level_cost_cum: true,
 	},
 	minimum_enemies:{
 		name: 			'enemies:',
@@ -3928,9 +4048,9 @@ var all_abilities = {
 		proc: 			'on_play',
 		remove_skill: 	'minimum_enemies',
 		show_amount_adjustment: 0,
-		level_cost: 	-0.1,
-		cost_factor: 	'full',
-		level_cost_cum: true,
+		level_cost: 	0.25,
+		//cost_factor: 	'full',
+		//level_cost_cum: true,
 	},
 	minimum_enemy_creatures:{
 		name: 			'enemy creatures:',
@@ -3941,7 +4061,7 @@ var all_abilities = {
 		remove_skill: 	'minimum_enemy_creatures',
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
-		level_cost_cum: true,
+		//level_cost_cum: true,
 	},
 	min_hand_cards:{
 		name: 			'hand cards:',
@@ -4027,7 +4147,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		8,
+		level_cost: 		4,
 		average_hits: 		1,
 	},
 	pay_life:{
@@ -4080,10 +4200,9 @@ var all_abilities = {
 				increase_timeout: 	-1500,
 			}
 		},
-		cost_adjustment: 	3,
-		level_cost: 		-1,
-		level_cost_hero: 	0,
-		max_level: 			1,
+		level_cost: 		0.5,
+		min_cost: 			2,
+		cost_factor: 		'health',
 	},
 	plunder:{
 		name_color: 	'rgba(247, 170, 15,0.9)',
@@ -4330,7 +4449,7 @@ var all_abilities = {
 		level_cost: 		2,
 	},
 	raise_skeleton:{
-		description: 	'The first time an ally creature dies, this summons up to a total of {LEVEL} skeleton(s).',
+		description: 	'When an ally creature dies, this summons up to a total of {LEVEL} skeleton(s).',
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
@@ -5849,8 +5968,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		12,
-		level_cost_spell: 	3,
+		level_cost: 		10,
+		level_cost_spell: 	5,
 	},
 	summon_frog:{
 		description: 	'Summons {LEVEL} frog(s).',
@@ -5874,8 +5993,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		6,
-		level_cost_spell: 	3,
+		level_cost: 		8,
+		level_cost_spell: 	4,
 	},
 	summon_ghost:{
 		description: 	'Summons {LEVEL} ghost(s).',
@@ -5899,8 +6018,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_spell: 	2,
+		level_cost: 		6,
+		level_cost_spell: 	3,
 	},
 	summon_golem:{
 		description: 	'Summons {LEVEL} golem unit(s).',
@@ -5927,6 +6046,7 @@ var all_abilities = {
 		},
 		animation: 	'combat_zoom',
 		level_cost: 		20,
+		level_cost_spell: 	10,
 	},
 	summon_imp:{
 		description: 	'Summons {LEVEL} imp type unit(s).',
@@ -5953,8 +6073,7 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		12,
-		level_cost_spell: 	6
+		level_cost: 		8,
 	},
 	summon_skeleton:{
 		description: 	'Summons {LEVEL} skeleton(s).',
@@ -6004,8 +6123,8 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		12,
-		level_cost_spell: 	6,
+		level_cost: 		16,
+		level_cost_spell: 	8,
 	},
 	summon_sporeling:{
 		description: 	'Summons {LEVEL} sporeling(s).',
@@ -6029,8 +6148,8 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		6,
-		level_cost_spell: 	3,
+		level_cost: 		8,
+		level_cost_spell: 	4,
 	},
 	thorned_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, there is a 50% chance this will deal {LEVEL} physical damage to it.',
@@ -6180,8 +6299,8 @@ var all_abilities = {
 				side: 			'ally',
 			}
 		},
-		level_cost: 		3,
-		level_cost_spell: 	1.5,
+		level_cost: 		4,
+		level_cost_spell: 	2,
 	},
 	upkeep_creature:{
 		name: 			'upkeep: creature',
@@ -6310,7 +6429,7 @@ var all_abilities = {
 		average_hits: 		3,
 	},
 	weakness:{
-		description: 	'A random enemy creature unit that has at least 1 power looses {LEVEL} temporary power.',
+		description: 	'The enemy creature unit with the highest power looses {LEVEL} power temporarily.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		targets:	{
@@ -6322,6 +6441,7 @@ var all_abilities = {
 				not_self: 		true,
 				min_hp: 		1,
 				min_power: 		1,
+				highest_power: 	true,
 				side: 			'enemy'
 			},
 		},

@@ -538,7 +538,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{backlash: 2, echo: 1},
+		abilities: 			{backlash: 3, echo: 1},
 		quote: '\"Now get going!\"',
 	},
 	backstabber:{
@@ -727,7 +727,7 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, enrage: 1},
 		},
 		quote: '\"RAAAAAH!\"',
-	},
+	},	
 	black_cat:{
 		name: 				'black cat',
 		type: 				'creature',
@@ -1130,7 +1130,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{blood_rage: 3},
+		abilities: 			{blood_rage: 5},
 		quote: '\"I will end you!\"',
 	},
 	blood_rat:{
@@ -1350,7 +1350,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{break: 1},
+		abilities: 			{break: 5},
 		quote: '\"Don\'t point it at a mirror.\"',
 	},
 	bright_elf:{
@@ -1644,7 +1644,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{hero_channels_life: 5},
+		abilities: 			{hero_channels_life: 10},
 		quote: '\"It will cost you!\"',
 	},
 	channeler:{
@@ -2118,6 +2118,23 @@ var all_available_cards = {
 		abilities: 			{bless: 5, echo: 1},
 		quote: '\"Have you seen the light?\"',
 	},
+	divine_power:{
+		name: 				'divine power',
+		type: 				'spell',
+		subtypes: 			['holy'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-04T150903.077.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{bless_all: 5, empower_all: 5, minimum_allies: 3},
+		quote: '\"It\'s almost too bright!\"',
+	},
+	
 	doe:{
 		name: 				'doe',
 		type: 				'creature',
@@ -2917,7 +2934,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{bolster_creature: 1, draw_on_act: 1},
+		abilities: 			{bolster_creature: 2, draw_on_act: 1},
 		quote: '\"Just a quick bite!\"',
 	},
 	fear:{
@@ -3460,6 +3477,23 @@ var all_available_cards = {
 		},
 		quote: '\"I will find a path. You can follow me!\"',
 	},
+	frontal_charge:{
+		name: 				'frontal charge',
+		type: 				'spell',
+		subtypes: 			['tactic'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-04T160058.989.jpg',
+		image_position: 	'top',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{ally_charges: 1, echo: 1},
+		quote: '\"Take this mount and get out there!\"',
+	},
 	frost_apprentice:{
 		name: 				'frost apprentice',
 		type: 				'creature',
@@ -3839,13 +3873,13 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{summon_ghost: 3},
+		abilities: 			{summon_ghost: 2},
 		hero_version: 			{
 			theme: 				['subtype_undead','sacrifice_ability','ally_creature_death_proc_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{summon_ghost: 2},
+			abilities: 			{summon_ghost: 1},
 		},
 		quote: '\"You can hear them wail...\"',
 	},
@@ -3979,6 +4013,23 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1},
 		},
 		quote: '\"I did not know they got that big!\"',
+	},
+	group_meditation:{
+		name: 				'group meditation',
+		type: 				'spell',
+		subtypes: 			['ritual'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-04T154506.170.jpg',
+		image_position: 	'right',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{bolster_hero: 3, bolster_all: 3, minimum_allies: 3},
+		quote: '\"Everyone... Take a deep breath.\"',
 	},
 	grow_thorns:{
 		name: 				'grow thorns',
@@ -4213,7 +4264,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{bolster_creature: 5},
+		abilities: 			{bolster_creature: 8},
 		quote: '\"I could eat that all day!\"',
 	},
 	heatblade:{
@@ -4238,6 +4289,22 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, ignites: 2},
 		},
 		quote: '\"Her blade burns hot.\"',
+	},
+	heatwave:{
+		name: 				'heatwave',
+		type: 				'spell',
+		subtypes: 			['weather'],
+		color: 				['colorless'],
+		theme: 				['aoe'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-04T151516.207.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{water_blast: 5, fire_blast: 5, minimum_enemies: 3},
+		quote: '\"A wave of fire!\"',
 	},
 	heavy_javelineer:{
 		name: 				'heavy javelineer',
@@ -4317,7 +4384,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{hex: 1},
+		abilities: 			{hex: 5, minimum_enemy_creatures: 3},
 		quote: '\"Ribbit!\"',
 	},
 	hexing_witch:{
@@ -4435,7 +4502,6 @@ var all_available_cards = {
 		},
 		quote: '\"You don\'t wanna find those in your boot!\"',
 	},
-	
 	horrid_scream:{
 		name: 				'horrid scream',
 		type: 				'spell',
@@ -4796,6 +4862,22 @@ var all_available_cards = {
 		},
 		quote: '\"Me wield fire!\"',
 	},
+	impending_doom:{
+		name: 				'impending doom',
+		type: 				'spell',
+		subtypes: 			['ritual'],
+		color: 				['colorless'],
+		theme: 				['aoe'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-04T163058.487.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{doom_all: 9, minimum_enemies: 3},
+		quote: '\"Your days are numbered!\"',
+	},
 	incinerator:{
 		name: 				'incinerator',
 		type: 				'creature',
@@ -4820,6 +4902,22 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, conflagrate_hv: 1},
 		},
 		quote: '\"I will turn you into ashes.\"',
+	},
+	infiltrator_strike:{
+		name: 				'infiltrator strike',
+		type: 				'spell',
+		subtypes: 			['tactic'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-04T145824.247.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{strike_hero: 3, backstab: 10},
+		quote: '\"Strike from within!\"',
 	},
 	instil_doubt:{
 		name: 				'instil doubt',
@@ -5713,7 +5811,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{discard_enemy: 1, wither_hero: 2},
+		abilities: 			{damage_hero: 2, discard_enemy: 1},
 		quote: '\"It hurts, doesn\'t it?\"',
 	},
 	
@@ -5747,10 +5845,9 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{discard_enemy: 1, draw_on_act: 1},
-		quote: '\"Did you loose your train of thought?\"',
+		abilities: 			{discard_enemy: 1, draw_on_act: 2},
+		quote: '\"I like your way of thinking!\"',
 	},
-	
 	mind_shard:{
 		name: 				'mind shard',
 		type: 				'artifact',
@@ -5798,7 +5895,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{discard: 2, fire_blast: 5, damage_hero: 5, minimum_enemies: 3, min_hand_cards: 2},
+		abilities: 			{discard: 2, fire_blast: 10, damage_hero: 10, minimum_enemies: 3, min_hand_cards: 2},
 		quote: '\"What is a bit of insanity worth to you?\"',
 	},
 	
@@ -6566,7 +6663,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{jolt: 3, echo: 1},
+		abilities: 			{jolt: 5, echo: 1},
 		quote: '\"This will sting a little.\"',
 	},
 	power_mage:{
@@ -6734,6 +6831,23 @@ var all_available_cards = {
 		abilities: 			{empower_arrivals: 1},
 		quote: '\"Come and fight!\"',
 	},
+	rallying_charge:{
+		name: 				'rallying charge',
+		type: 				'spell',
+		subtypes: 			['tactic'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-04T160718.334.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{ally_charges: 1, also_empower_all: 5, minimum_ally_creatures: 3},
+		quote: '\"Follow that one!\"',
+		max_in_deck: 1,
+	},
 	reapers_insight:{
 		name: 				'reaper\'s insight',
 		type: 				'spell',
@@ -6746,7 +6860,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{sacrifice_living_creature: 1, draw_on_act: 3},
+		abilities: 			{sacrifice_living_creature: 1, draw_on_act: 3, max_hand_cards: 7},
 		quote: '\"We can learn from this.\"',
 		max_in_deck: 		2,
 	},
@@ -7423,7 +7537,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{fortify: 1, echo: 1},
+		abilities: 			{fortify: 2, echo: 1},
 		quote: '\"Usefull, when needed.\"',
 	},
 	shooting_witch:{
@@ -7772,6 +7886,22 @@ var all_available_cards = {
 		},
 		quote: '\"Didn\'t that used to be Tommy?\"',
 	},
+	skewed_fate:{
+		name: 				'skewed fate',
+		type: 				'spell',
+		subtypes: 			['ritual'],
+		color: 				['colorless'],
+		theme: 				['aoe'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-04T165023.346.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{doom_all: 3, bless_all: 3, minimum_enemies: 3, minimum_allies: 3},
+		quote: '\"Let us tip the scales in our favor.\"',
+	},
 	skygazer:{
 		name: 				'skygazer',
 		type: 				'creature',
@@ -7870,7 +8000,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{ally_runs_away: 1, echo: 1},
+		abilities: 			{ally_runs_away: 3, echo: 1},
 		quote: '\"Move around them!\"',
 	},
 	
@@ -8440,7 +8570,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{empower_hero: 1, echo: 1},
+		abilities: 			{empower_hero: 2, echo: 1},
 		quote: '\"Get me another one!\"',
 	},
 	strongshot:{
@@ -8800,7 +8930,22 @@ var all_available_cards = {
 		},
 		quote: '\"Say hello to my little friends!\"',
 	},
-	
+	twin_rage:{
+		name: 				'twin rage',
+		type: 				'spell',
+		subtypes: 			['mental'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-04T153922.296.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{blood_rage: 5, empower_hero: 5, minimum_ally_creatures: 1},
+		quote: '\"We will end you!\"',
+	},
 	unholy_night:{
 		name: 				'unholy night',
 		type: 				'spell',
@@ -8830,7 +8975,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{curse_all: 2, minimum_enemies: 3},
+		abilities: 			{curse_all: 5, minimum_enemies: 3},
 		quote: '\"It\'s never good when the witches come together.\"',
 	},
 	undertaker:{
@@ -9304,7 +9449,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{weakness: 2, echo: 1},
+		abilities: 			{weakness: 4, echo: 1},
 		quote: '\"You think you are strong?\"',
 	},
 	weasel:{
@@ -10742,13 +10887,13 @@ function calculate_card_time(card_id, show_calc, hero_version){
 	{
 		if(card['type'] == 'spell')
 		{
-			/*calculated_time /= 3;
-			if(show_calc!=undefined){console.log('spell: /3 = ' + calculated_time);}*/
+			calculated_time /= 3;
+			if(show_calc!=undefined){console.log('spell: /3 = ' + calculated_time);}
 			//calculated_time -= 4;
 			/*calculated_time -= 5;
 			if(show_calc!=undefined){console.log('spell: -5 = ' + calculated_time);}*/
-			calculated_time = calculated_time / 2;
-			if(show_calc!=undefined){console.log('spell: /2 = ' + calculated_time);}
+			/*calculated_time = calculated_time / 2;
+			if(show_calc!=undefined){console.log('spell: /2 = ' + calculated_time);}*/
 		}
 		if(card['type'] == 'artifact' && (card['selfdestructs'] == undefined || card['selfdestructs'] == false))
 		{
@@ -11776,34 +11921,34 @@ function generate_recipe(card_id, cost_left, current_recipe, subtypes_left){
 			{
 				var matched_amount = (match_array_values(current_card['craft_theme'], cost_info['craft_theme'], true));
 				//matched_amount = Math.sqrt(matched_amount);
-				matched_amount = matched_amount * 1 /*+ (matched_amount / 4)*/;
+				matched_amount = matched_amount * 1 + (matched_amount / 4);
 				if(recipe_size == 0){matched_amount *= 2;}
-				if(cost_info['type'] == all_available_cards[card_id]['type']){
-					matched_amount *= 1.5;
-					if(matched_amount < 0.5)
+				/*if(cost_info['type'] == all_available_cards[card_id]['type']){
+					matched_amount *= 1.2;
+					if(matched_amount < 0.25)
 					{
-						matched_amount = 0.5;
+						matched_amount = 0.25;
 					}
 				}
 				if(cost_info['type'] != all_available_cards[card_id]['type'] && (cost_info['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'artifact'))
 				{
 					matched_amount *= 5;
-				}
+				}*/
 				//if(recipe_size > 0 && cost_info['value'] < cost_left * 0.5){matched_amount /= 2;}
 				/*var value_match = (cost_info['value'] / cost_left) + 0.2;
 				if(value_match > 1){value_match = 1;}
 				matched_amount *= value_match;*/
 				var subtype_match = match_array_values(subtypes_left, cost_info['subtypes'], true) * 1;
 				//if(match_array_values('human', cost_info['subtypes']) && match_array_values('human', subtypes_left) && count_object(cost_info['subtypes']) > 1){subtype_match -= 1.9;}
-				if(cost_info['subtype_craft_factor'] != undefined){subtype_match *= cost_info['subtype_craft_factor'];}
-				if(current_card['subtype_craft_factor'] != undefined){subtype_match *= current_card['subtype_craft_factor'];}
+				//if(cost_info['subtype_craft_factor'] != undefined){subtype_match *= cost_info['subtype_craft_factor'];}
+				//if(current_card['subtype_craft_factor'] != undefined){subtype_match *= current_card['subtype_craft_factor'];}
 				//subtype_match = sqr(subtype_match);
 				if(subtype_match > 0)
 				{
-					if(matched_amount < 1){matched_amount = 1;}
+					//if(matched_amount < 1){matched_amount = 1;}
 					if(recipe_size >= 0 && recipe_size < 3){subtype_match *= 2;}
 					matched_amount *= (subtype_match + 0);
-					if(matched_amount < subtype_match){matched_amount = subtype_match;}
+					//if(matched_amount < subtype_match){matched_amount = subtype_match;}
 				}
 				if(matched_amount > 0 && cost_info['used_in_recipes'] != undefined && cost_info['used_in_recipes'] > 0)
 				{
