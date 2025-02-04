@@ -5460,6 +5460,11 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 			all_targets = filter_targets_by_highest_time_left(all_targets, target_side);
 		}
 
+		if(target_peramaters['lowest_time_left'] != undefined && target_peramaters['highest_time_left'] == true)
+		{
+			all_targets = filter_targets_by_lowest_time_left(all_targets, target_side);
+		}
+
 		if(target_peramaters['lowest_cost'] != undefined && target_peramaters['lowest_cost'] == true)
 		{
 			all_targets = filter_targets_by_lowest_cost_card(all_targets, target_side);
@@ -5690,6 +5695,24 @@ function filter_targets_by_highest_time_left(all_targets, side){
 	});
 	$.each(all_targets, function(target_id, target_card_id){
 		if(battle_info['deck_' + side][target_card_id]['time_left'] < highest_cost)
+		{
+			delete all_targets[target_id];
+		}
+	});
+
+	return all_targets;
+}
+
+function filter_targets_by_lowest_time_left(all_targets, side){
+	var lowest_cost = false;
+	$.each(all_targets, function(target_id, target_card_id){
+		if(battle_info['deck_' + side][target_card_id]['time_left'] < lowest_cost || lowest_cost == false)
+		{
+			lowest_cost = battle_info['deck_' + side][target_card_id]['time_left'];
+		}
+	});
+	$.each(all_targets, function(target_id, target_card_id){
+		if(battle_info['deck_' + side][target_card_id]['time_left'] > lowest_cost)
 		{
 			delete all_targets[target_id];
 		}

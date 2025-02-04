@@ -5349,7 +5349,7 @@ var all_abilities = {
 		average_hits: 	0.5,
 	},
 	slow:{
-		description: 	'Increases the time left of a random enemy card {LEVEL} time(s).',
+		description: 	'Increases the time left of the enemy card with the lowest time left {LEVEL} time(s).',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		targets:	{
@@ -5358,6 +5358,7 @@ var all_abilities = {
 				target_amount: 		1,
 				status: 			'hand',
 				can_target_zero: 	true,
+				lowest_time_left: 	true,
 				side: 			'enemy',
 			},
 		},
