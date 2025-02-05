@@ -149,13 +149,13 @@ var all_buildings = {
 				production_achievement_bonus: 0.1,
 			},
 		},
-		recipes:{
+		/*recipes:{
 			chest:{
 				costs:{
 					stash: 		5,
 				}
 			},
-		},
+		},*/
 		shop_type: 		['structure'],
 	},
 	a4_treasury:{
