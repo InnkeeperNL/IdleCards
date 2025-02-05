@@ -4270,8 +4270,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_spell: 	1,
+		level_cost: 		1.5,
+		level_cost_spell: 	0.75,
 	},
 	poison_all:{
 		description: 	'Applies {LEVEL} poison to all enemy creatures. {POISON}',
@@ -4350,8 +4350,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_spell: 	1,
+		level_cost: 		1.5,
+		level_cost_spell: 	0.75,
 	},
 	purify:{
 		description: 	'Removes all negative effects from {LEVEL} random ally unit(s) or your hero. Negative effects are burn, curse, doom and poison.',
@@ -6050,7 +6050,7 @@ var all_abilities = {
 		level_cost_spell: 	10,
 	},
 	summon_imp:{
-		description: 	'Summons {LEVEL} imp type unit(s).',
+		description: 	'Summons up to {LEVEL} imp type unit(s).',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
