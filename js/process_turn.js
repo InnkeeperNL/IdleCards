@@ -4129,10 +4129,18 @@ function grant_skill(target_id, origin_id, calculated_amount, skill_id, visible_
 		if(typeof(target_unit['abilities'][skill_id]) == 'object')
 		{
 			target_unit['abilities'][skill_id]['level'] += calculated_amount;
+			if(all_abilities[skill_id] != undefined && all_abilities[skill_id]['max_level'] != undefined && target_unit['abilities'][skill_id]['level'] > all_abilities[skill_id]['max_level'])
+			{
+				target_unit['abilities'][skill_id]['level'] = all_abilities[skill_id]['max_level'];
+			}
 		}
 		else
 		{
 			target_unit['abilities'][skill_id] += calculated_amount;
+			if(all_abilities[skill_id] != undefined && all_abilities[skill_id]['max_level'] != undefined && target_unit['abilities'][skill_id] > all_abilities[skill_id]['max_level'])
+			{
+				target_unit['abilities'][skill_id] = all_abilities[skill_id]['max_level'];
+			}
 		}
 	}
 	if(typeof(target_unit['abilities'][skill_id]) == 'object')

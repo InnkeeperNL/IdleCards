@@ -359,7 +359,7 @@ var all_abilities = {
 				type: 			'grant_skill',
 				subtypes: 		['bless','grant_bless','deck_control'],
 				skill_id: 		'blessed',
-				amount: 		'ability_level'
+				amount: 		'ability_level',
 			}
 		},
 		animation: 		'combat_zoom',
@@ -369,6 +369,7 @@ var all_abilities = {
 	},
 	bless_all:{
 		description:'All ally units gains {LEVEL} blessings. Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
+		do_not_pause_between: true,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -386,7 +387,7 @@ var all_abilities = {
 				type: 			'grant_skill',
 				subtypes: 		['bless','grant_bless','deck_control'],
 				skill_id: 		'blessed',
-				amount: 		'ability_level'
+				amount: 		'ability_level',
 			}
 		},
 		animation: 		'combat_zoom',
@@ -400,6 +401,7 @@ var all_abilities = {
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
 		proc_while_dead: true,
+		max_level: 		10,
 		targets:	{
 			0:{
 				target: 		'any',
@@ -622,6 +624,33 @@ var all_abilities = {
 		level_cost: 	4,
 		level_cost_hero: 2,
 		level_cost_artifact: 2,
+	},
+	bring_cat:{
+		description: 	'Summons a cat unit. Can be used {LEVEL} time(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		reduce_skill_after_use:'bring_cat',
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_structure'],
+				card_id: 	'random',
+				card_type: 	'creature',
+				card_subtype: 'cat',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		10,
 	},
 	bring_clone:{
 		description: 	'When played, creates {LEVEL} clone(s) of itself. Clones created this way do not have this ability.',
