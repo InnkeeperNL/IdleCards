@@ -75,11 +75,12 @@ function show_quests(){
 
 				parsed_quest += '<div class="single_quest_reward_title">Reward:</div>';
 				parsed_quest += 	'<div class="single_quest_reward_container">';
-				$.each(quest_info['reward_per_amount'], function(reward_type, reward_info){
-					reward_info = (reward_info * get_upgrade_factor('summon_reward', 'any', true));
+				$.each(current_quest_info['rewards'], function(reward_type, reward_info){
+					//reward_info = (reward_info * get_upgrade_factor('summon_reward', 'any', true));
+					scrap_amount = reward_info;
 					if(reward_type == 'scraps')
 					{
-						var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
+						//var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
 						if(scrap_amount == 1)
 						{
 							parsed_quest += '<div class="single_quest_reward">' + scrap_amount + ' scrap</div>';
@@ -92,12 +93,12 @@ function show_quests(){
 					}
 					if(reward_type == 'reputation')
 					{
-						var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
+						//var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
 						parsed_quest += '<div class="single_quest_reward">' + scrap_amount + ' reputation</div>';
 					}
 					if(all_available_cards[reward_type] != undefined)
 					{
-						var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
+						//var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
 						if(scrap_amount == 1)
 						{
 							parsed_quest += '<div class="single_quest_reward">' + capitalizeFirstLetter(all_available_cards[reward_type]['name']) + '</div>';	
@@ -310,13 +311,28 @@ function check_new_quests(show_new_message){
 			if(count_object(possible_quests) > 0)
 			{
 				var new_quest_id = get_random_key_from_object(possible_quests);
-				var quest_amount = Math.floor(Math.random() * (all_quests[new_quest_id]['max_amount'] - all_quests[new_quest_id]['min_amount'])) + all_quests[new_quest_id]['min_amount'] * 50;
+				var quest_amount = Math.floor((Math.random() * (all_quests[new_quest_id]['max_amount'] - (all_quests[new_quest_id]['min_amount'] / 2)) * get_upgrade_factor('quest_amount', 'any', true) * 5) + (all_quests[new_quest_id]['min_amount'] / 2));
+				var chosen_reward = get_random_key_from_object_based_on_num_value(random_loot_drops);
+				//console.log(chosen_reward);
+				var chosen_reward_amount = all_quests[new_quest_id]['reward_per_amount']['scraps'] * quest_amount * get_upgrade_factor('summon_reward', 'any', true);
+				if(Math.random() < 0.25 || all_available_cards[chosen_reward]['value'] > chosen_reward_amount / 10)
+				{
+					chosen_reward = 'scraps';
+					chosen_reward_amount = Math.floor(chosen_reward_amount);
+				}
+				else
+				{
+					chosen_reward_amount = Math.floor(chosen_reward_amount / all_available_cards[chosen_reward]['value'] / 10);
+					if(chosen_reward_amount < 1){chosen_reward_amount = 1;}
+				}
 				gamedata['quests'][i] = {
 					quest_id: 	new_quest_id,
 					amount: 	quest_amount,
 					progress: 	0,
 					completed: 	false,
+					rewards:{},
 				}
+				gamedata['quests'][i]['rewards'][chosen_reward] = chosen_reward_amount;
 				saveToLocalStorage();
 			}
 		}
@@ -573,13 +589,13 @@ function claim_quest(current_quest_id){
 		all_current_rewards = {};
 		current_reward_origin 	= 'quests';
 		current_reward_text 	= 'For completing the quest <b>"' + capitalizeFirstLetter(all_quests[current_quest_info['quest_id']]['name']) + '"</b><br/>You have been rewarded with:<br/>';
-		$.each(all_quests[current_quest_info['quest_id']]['reward_per_amount'], function(reward_type, reward_info){
-			reward_info = (reward_info * get_upgrade_factor('summon_reward', 'any', true));
-			var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
+		$.each(current_quest_info['rewards'], function(reward_type, reward_info){
+			//reward_info = (reward_info * get_upgrade_factor('summon_reward', 'any', true));
+			//var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
 			//gain_scraps(scrap_amount);
 			all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
 				reward_id: 		reward_type,
-				reward_amount: 	scrap_amount,
+				reward_amount: 	reward_info,
 			}
 		});
 		/*$.each(all_quests[current_quest_info['quest_id']]['rewards'], function(reward_type, reward_info){

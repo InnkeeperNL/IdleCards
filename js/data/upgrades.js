@@ -137,13 +137,13 @@ var all_upgrades = {
 		needed_upgrades:{
 			summon_tries: 	1,
 		},
-		card_image: 	'spyglass',
+		card_image: 	'treasure_map',
 		type: 			'summon_max_pre_buffs',
 		subtypes:  		['any'],
 		amount: 		1,
 		amount_fixed: 	true,
 		level_cost_scale: 	2,
-		cost: 			{spyglass:2,},
+		cost: 			{treasure_map:2,},
 		max_level: 		4,
 	},
 	summon_tries:{
@@ -205,6 +205,20 @@ var all_upgrades = {
 		level_cost_scale: 	2,
 		cost: 			{scraps:10,},
 		max_level: 		20,
+	},
+	quest_amount:{
+		name: 			'Quest difficulty',
+		description: 	'Increases the maximum difficulty and rewards of quests by 100%. This may unlock new possible rewards.',
+		needed_upgrades:{
+			aaa_rewards: 5,
+		},
+		card_image: 	'battle_plans',
+		type: 			'quest_amount',
+		subtypes:  		['any'],
+		amount: 		1,
+		level_cost_scale: 	5,
+		cost: 			{scraps:10,},
+		max_level: 		25,
 	},
 	wave_access:{
 		name: 			'Waves',
