@@ -442,7 +442,7 @@ function construct_random_deck(size, hero, randomized){
 		deck_time_theme = all_available_cards[hero]['hero_version']['time_theme'];
 	}
 	var active_deck_speed = get_active_deck_speed();
-	if(Math.random() < 0.5){
+	if(Math.random() < 0.25){
 		if(active_deck_speed > 0 && active_deck_speed < 2)
 		{
 			deck_time_theme = 'cheap';

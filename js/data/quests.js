@@ -221,7 +221,7 @@ var all_chained_achievements = {
 	almost:{
 		name: 			'almost',
 		description: 	'Loose a battle while the enemy hero has 1 health left {AMOUNT} time(s).',
-		objective: 		'battle_loss_health_left_1',
+		objective: 		'battle_loss_any_health_left_1',
 		amount: 		0.1,
 		rewards:{
 			0:{
@@ -349,7 +349,7 @@ var all_chained_achievements = {
 	close_call:{
 		name: 			'close call',
 		description: 	'Win a battle while your hero has 1 health left {AMOUNT} time(s).',
-		objective: 		'battle_won_health_left_1',
+		objective: 		'battle_won_any_health_left_1',
 		amount: 		0.1,
 		rewards:{
 			0:{
@@ -759,7 +759,7 @@ var all_chained_achievements = {
 	loss:{
 		name: 			'loss',
 		description: 	'Loose a battle {AMOUNT} time(s).',
-		objective: 		'battle_loss',
+		objective: 		'battle_loss_any',
 		amount: 		1,
 		rewards:{
 			0:{
@@ -1160,7 +1160,7 @@ var all_chained_achievements = {
 	tie:{
 		name: 			'tie',
 		description: 	'Have a battle end with both heroes at 0 health {AMOUNT} time(s).',
-		objective: 		'battle_tie',
+		objective: 		'battle_tie_any',
 		amount: 		0.1,
 		rewards:{
 			0:{
@@ -1213,7 +1213,7 @@ var all_chained_achievements = {
 	victory:{
 		name: 			'victory',
 		description: 	'Win {AMOUNT} battle(s).',
-		objective: 		'battle_won',
+		objective: 		'battle_won_any',
 		amount: 		0.2,
 		rewards:{
 			0:{

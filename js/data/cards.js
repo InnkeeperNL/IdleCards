@@ -11225,7 +11225,7 @@ var random_loot_drops = {};
 $.each(all_available_cards, function(card_id, card_info){
 	if(card_info['basic_reward'] != undefined && card_info['basic_reward'] == true && random_loot_drops[card_id] == undefined /*match_array_values(card_id, random_loot_drops) == false*/)
 	{
-		random_loot_drops[card_id] = 1 / /*sqr*/(card_info['value'] * (1 + (card_info['value'] / 10)));
+		random_loot_drops[card_id] = 1 / Math.sqrt(Math.sqrt(card_info['value'] * (1 + (card_info['value'] / 10))));
 	}
 	if(card_info['type'] == 'consumable' && card_info['reward'] != undefined && card_info['reward']['type'] != undefined && card_info['reward']['type'] == 'boost')
 	{
