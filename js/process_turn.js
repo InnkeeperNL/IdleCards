@@ -6531,7 +6531,7 @@ function play_card(side, card_id, forced_play, origin_unit){
 		{
 			var prev_total_timeout = total_timeout;
 			played_card = play_unit_card(side, battle_info['deck_' + side][card_id]['card_id'], card_id, forced_play, origin_unit);
-			if(played_card == true)
+			/*if(played_card == true)
 			{
 				battle_info['deck_' + side][card_id]['status'] = 'in_play';
 				//if(played_card == true)
@@ -6550,28 +6550,22 @@ function play_card(side, card_id, forced_play, origin_unit){
 					
 				},prev_total_timeout);
 				total_timeout += 500 * battle_speed;
-			}
+			}*/
 			
 		}
 
 		if(current_card_info['type'] == 'artifact')
 		{
 			played_card = play_artifact_card(side, battle_info['deck_' + side][card_id]['card_id'], card_id);
-			if(played_card == true)
-			{
-				update_deck_counts();
-			}
-			
 		}
 
 		if(current_card_info['type'] == 'spell' || current_card_info['type'] == 'attack' || current_card_info['type'] == 'consumable' /*|| current_card_info['type'] == 'artifact'*/)
 		{
 			played_card = play_action_card(side, battle_info['deck_' + side][card_id]['card_id'], card_id);
-			if(played_card == true)
-			{
-				update_deck_counts();
-			}
-			
+		}
+		if(played_card == true)
+		{
+			update_deck_counts();
 		}
 
 	}
@@ -7014,7 +7008,7 @@ function play_unit_card(side, card_id, origin_id, forced_play, origin_unit){
 			});
 		}
 
-		if(battle_info['deck_' + side][origin_id] != undefined && battle_info['deck_' + side][origin_id]['status'] != 'in_play'){played_card = false;}
+		if(battle_info['deck_' + side][origin_id] != undefined && battle_info['deck_' + side][origin_id]['status'] == 'hand'){played_card = false;}
 		
 	}
 	return played_card;

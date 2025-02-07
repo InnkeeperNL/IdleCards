@@ -208,17 +208,17 @@ var all_upgrades = {
 	},
 	quest_amount:{
 		name: 			'Quest difficulty',
-		description: 	'Increases the maximum difficulty and rewards of quests by 100%. This may unlock new possible rewards.',
+		description: 	'Increases the maximum difficulty and rewards of quests by 50%. This may unlock new possible rewards.',
 		needed_upgrades:{
 			aaa_rewards: 5,
 		},
 		card_image: 	'battle_plans',
 		type: 			'quest_amount',
 		subtypes:  		['any'],
-		amount: 		1,
+		amount: 		0.5,
 		level_cost_scale: 	5,
 		cost: 			{scraps:10,},
-		max_level: 		25,
+		max_level: 		100,
 	},
 	wave_access:{
 		name: 			'Waves',

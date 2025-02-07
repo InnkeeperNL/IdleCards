@@ -311,7 +311,7 @@ function check_new_quests(show_new_message){
 			if(count_object(possible_quests) > 0)
 			{
 				var new_quest_id = get_random_key_from_object(possible_quests);
-				var quest_amount = Math.floor((Math.random() * (all_quests[new_quest_id]['max_amount'] - (all_quests[new_quest_id]['min_amount'] / 2)) * get_upgrade_factor('quest_amount', 'any', true) * 5) + (all_quests[new_quest_id]['min_amount'] / 2));
+				var quest_amount = Math.floor((Math.random() * (all_quests[new_quest_id]['max_amount'] - (all_quests[new_quest_id]['min_amount'] / 2)) * get_upgrade_factor('quest_amount', 'any', true) * 1) + (all_quests[new_quest_id]['min_amount'] / 2));
 				var chosen_reward = get_random_key_from_object_based_on_num_value(random_loot_drops);
 				//console.log(chosen_reward);
 				var chosen_reward_amount = all_quests[new_quest_id]['reward_per_amount']['scraps'] * quest_amount * get_upgrade_factor('summon_reward', 'any', true);
