@@ -4910,7 +4910,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'teleport',
 				type: 			'move_to_deck',
-				subtypes: 		['move_ally_to_hand'],
+				subtypes: 		['move_ally_to_hand','retreat'],
 				new_status: 	'hand',
 				side: 			'ally',
 				pause_before: 	1000,
@@ -4918,6 +4918,30 @@ var all_abilities = {
 		},
 		level_cost: 	1,
 		cost_factor: 	'health',
+	},
+	retreat_on_kill:{
+		description: 	'Return to your hand when it destroys an enemy.',
+		proc: 			'kill',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				side: 			'ally',
+				has_origin_card: true,
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'teleport',
+				type: 			'move_to_deck',
+				subtypes: 		['move_ally_to_hand','retreat'],
+				new_status: 	'hand',
+				side: 			'ally',
+			}
+		},
+		level_cost: 	1,
 	},
 	return_into_original:{
 		name_color: 	'rgba(171, 203, 255,0.9)',
