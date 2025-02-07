@@ -114,9 +114,9 @@ function end_this_turn(){
 			if(battle_info.combat_units[2]['current_health'] > 0 && battle_info.combat_units[1]['current_health'] < 1)
 			{
 				check_quests('battle_won_any');
-				check_quests('battle_won_' + current_battle_type);
-				check_quests('battle_won_any_turn_count',undefined,undefined,undefined,undefined,total_turn_counter);
-				check_quests('battle_won_' + current_battle_type + '_turn_count',undefined,undefined,undefined,undefined,total_turn_counter);
+				check_quests('battle_won_type_' + current_battle_type);
+				check_quests('battle_won_any_turn_count',total_turn_counter);
+				check_quests('battle_won_' + current_battle_type + '_turn_count',total_turn_counter);
 				check_quests('battle_won_any_health_left_' + battle_info.combat_units[2]['current_health']);
 				$('.unit_type_artifact.side_1').addClass('dead');
 				if(current_battle_type == 'summoned')
@@ -142,7 +142,7 @@ function end_this_turn(){
 							show_content('battle');
 						},total_timeout + 1000);
 						check_quests('battle_won_wave');
-						check_quests('battle_won_wave_turn_count',undefined,undefined,undefined,undefined,total_turn_counter);
+						check_quests('battle_won_wave_turn_count',total_turn_counter);
 						check_quests('battle_won_wave_health_left_' + battle_info.combat_units[1]['current_health']);
 					}
 					else
@@ -170,7 +170,7 @@ function end_this_turn(){
 							show_content('current_rewards');
 						},total_timeout + 1000);
 						check_quests('battle_won_summoned');
-						check_quests('battle_won_summoned_turn_count',undefined,undefined,undefined,undefined,total_turn_counter);
+						check_quests('battle_won_summoned_turn_count',total_turn_counter);
 						check_quests('battle_won_summoned_health_left_' + battle_info.combat_units[1]['current_health']);
 					}
 					$('.side_1.type_artifact').addClass('dead');
@@ -196,8 +196,8 @@ function end_this_turn(){
 						gamedata['battles_lost']++;
 						gamedata['summon_min_power'] *= 0.75;
 						check_quests('battle_loss_any');
-						check_quests('battle_loss_any_turn_count',undefined,undefined,undefined,undefined,total_turn_counter);
-						check_quests('battle_loss_' + current_battle_type + '_turn_count',undefined,undefined,undefined,undefined,total_turn_counter);
+						check_quests('battle_loss_any_turn_count',total_turn_counter);
+						check_quests('battle_loss_' + current_battle_type + '_turn_count',total_turn_counter);
 						check_quests('battle_loss_any_health_left_' + battle_info.combat_units[1]['current_health']);
 					}
 				/*}*/

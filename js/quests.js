@@ -492,7 +492,7 @@ function check_quests(string, achieved_amount, achieved_times){
 				});
 				$.each(gamedata['daily_quests'], function(current_quest_id, current_quest_info){
 					if(all_achievement_goals[current_string]['quests'] != undefined && all_achievement_goals[current_string]['quests'][current_quest_info['quest_id']] != undefined){
-						if(match_array_values(all_quests[current_quest_info['quest_id']]['objective'], current_string) && current_quest_info['progress'] < current_quest_info['amount'] && (current_quest_info['completed'] == undefined || current_quest_info['completed'] == false))
+						if(current_quest_info['progress'] < current_quest_info['amount'] && (current_quest_info['completed'] == undefined || current_quest_info['completed'] == false))
 						{
 							current_quest_info['progress'] += achieved_times;
 							if(current_quest_info['progress'] >= current_quest_info['amount'] && current_quest_info['shown_message'] == undefined)
