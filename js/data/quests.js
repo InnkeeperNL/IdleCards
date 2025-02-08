@@ -233,6 +233,20 @@ var all_chained_achievements = {
 		steps: 		5,
 		no_quest: 	true,
 	},
+	aquatic:{
+		name: 			'aquatic',
+		description: 	'Play or summon {AMOUNT} aquatic card(s).',
+		objective: 		'aquatic_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'starfish',
+		steps: 		6,
+	},
 	arcane:{
 		name: 			'arcane',
 		description: 	'Have allies shoot {AMOUNT} arcane bolt(s).',

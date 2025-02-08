@@ -181,6 +181,35 @@ var all_abilities = {
 		level_cost: 		2,
 		level_cost_spell: 	1,
 	},
+	submerged:{
+		name: 			'submerged',
+		description: 	'Gives this unit a 50% chance to avoid any incoming projectile effect, or any melee effect that comes from a unit that has the flying ability.',
+		proc: 			'avoid_effect',
+		subtypes: 				['projectile','melee'],
+		subtypes_while_origin_has_ability: 	{melee: ['flying'],},
+		effect: 		50,
+		targets:	{
+			0:{
+				target: 	'unit_or_hero',
+				target_amount: 1,
+				position: 	'self',
+				min_hp: 	1,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				pause_before: 		500,
+				self_projectile: 	'water',
+				subtypes: 			['submerge','evade'],
+				increase_timeout: 	-500,
+			}
+		},
+		level_cost: 		0.75,
+		min_cost: 			3,
+		level_cost_hero: 	3,
+		cost_factor: 		'health',
+	},
 	arcane_bolt:{
 		description: 	'Deals 1 magical projectile damage to a random enemy unit {LEVEL} time(s). Will only target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
@@ -3517,6 +3546,31 @@ var all_abilities = {
 		level_cost: 		20,
 		level_cost_spell: 	10,
 	},
+	hatch_chicken:{
+		description: 	'Has a 50% chance to turn into a chicken when destroyed.',
+		proc: 			'own_death',
+		proc_chance: 	50,
+		proc_while_dead: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'self',
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'voodoo',
+				type: 		'turn_into',
+				subtypes: 	['turn_ally_into'],
+				card_id: 	'chicken',
+				amount: 	1
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		4,
+	},
 	heal:{
 		name_color: 	'rgba(55,255,55,0.9)',
 		description: 	'Heals a random damaged ally creature unit by {LEVEL}.',
@@ -3898,6 +3952,32 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		1,
 		cost_factor: 		'full'
+	},
+	lay_egg:{
+		description: 	'Has a 50% chance to summon {LEVEL} chicken egg(s).',
+		proc: 			'basic',
+		proc_chance: 	50,
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		//reduce_skill_after_use:'summon_skeleton',
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature','summon_structure'],
+				card_id: 	'chicken_egg',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		3.5,
 	},
 	leech_hero:{
 		description: 	'When this deals damage to the enemy hero, your hero gains {LEVEL} health permanently.',
