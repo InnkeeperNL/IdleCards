@@ -188,12 +188,18 @@ function end_this_turn(){
 				{*/
 					if(battle_info.combat_units[2]['current_health'] < 1 && battle_info.combat_units[1]['current_health'] < 1)
 					{
-						gamedata['battles_tied']++;
+						if(endless_waves != true)
+						{
+							gamedata['battles_tied']++;
+						}
 						check_quests('battle_tie_any');
 					}
 					else
 					{
-						gamedata['battles_lost']++;
+						if(endless_waves != true)
+						{
+							gamedata['battles_lost']++;
+						}
 						gamedata['summon_min_power'] *= 0.75;
 						check_quests('battle_loss_any');
 						check_quests('battle_loss_any_turn_count',total_turn_counter);

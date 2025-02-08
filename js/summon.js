@@ -201,8 +201,8 @@ function get_summon_stats(){
 	var min_level = gamedata['summon_min_power'] * 0.9;
 	var max_level = gamedata['summon_min_power'] * 1.1;
 
-	min_level = ((gamedata['battles_started'] - gamedata['battles_lost'] + 1) / ((gamedata['battles_lost'] * 5) + 10)) * 10;
-	max_level = min_level * 1.1;
+	min_level = ((gamedata['battles_won'] + 1) / ((gamedata['battles_lost'] * 3) + 10)) * 10;
+	max_level = min_level * 1.2;
 
 	var max_rarity = get_upgrade_factor('summon_max_rarity', 'any', true);
 	var summon_stats = {
