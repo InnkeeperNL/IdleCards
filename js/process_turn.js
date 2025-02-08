@@ -1889,7 +1889,7 @@ function process_effect(target_id, origin_id, effect, level){
 
 				if(battle_info.combat_units[target_id] != undefined && battle_info.combat_units[origin_id] != undefined)
 				{
-					
+					var damage_dealt = false;
 
 					if(effect['type'] == 'increase_loot_charges' && calculated_amount > 0)
 					{
@@ -2385,7 +2385,7 @@ function process_effect(target_id, origin_id, effect, level){
 		
 		if(any_effect_fired == true)
 		{
-			if(effect_avoided == false && effect['on_success'] != undefined)
+			if(effect_avoided == false && effect['on_success'] != undefined && (damage_dealt === false || damage_dealt > 0))
 			{
 				process_ability(origin_id, effect['on_success'], level, target_id);
 			}

@@ -1133,7 +1133,7 @@ var all_abilities = {
 	},
 	cold_strike:{
 		name_color: 	'rgba(255,55,55,0.9)',
-		description: 	'Deals physical cold melee damage equal to its power to the opposing unit. Has a 25% chance to stun any unit or hero it hits. Will target the enemy hero if there is no opposing unit.',
+		description: 	'Deals physical cold melee damage equal to its power to the opposing unit. Has a 25% chance to stun any unit or hero it deals damage to. Will target the enemy hero if there is no opposing unit.',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
 		proc_amount: 	'ability_level',
@@ -1190,7 +1190,7 @@ var all_abilities = {
 	cold_strike_hv:{
 		name: 			'cold strike',
 		name_color: 	'rgba(255,55,55,0.9)',
-		description: 	'Deals physical cold melee damage equal to its power to the nearest enemy unit. Has a 25% chance to stun any unit it hits. Will not target the enemy hero.',
+		description: 	'Deals physical cold melee damage equal to its power to the nearest enemy unit. Has a 25% chance to stun any unit it deals damage to. Will not target the enemy hero.',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
 		proc_amount: 	'ability_level',
@@ -3077,10 +3077,33 @@ var all_abilities = {
 		average_hits: 		1,
 	},
 	fireproof:{
-		description: 		'This unit is immune to fire and burn effects.',
+		description: 	'Reduces all fire damage to 0.',
+		proc: 			'max_incoming_damage',
+		subtypes: 		['fire'],
+		negated_by: 	['ignores_armor'],
+		amount: 		0,
+		targets:	{
+			0:{
+				target: 	'unit_or_hero',
+				target_amount: 1,
+				position: 	'self',
+				min_hp: 	1,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				self_projectile: 	'shield',
+				subtypes: 			['resist_fire','type_resist'],
+				increase_timeout: 	-1500,
+			}
+		},
+		level_cost: 		2,
+		max_level: 			1,
+		/*description: 		'This unit is immune to fire and burn effects.',
 		grants_immunities: 	['fire','burn'],
 		ability_subtypes: 	['fireproof'],
-		level_cost: 2,
+		level_cost: 2,*/
 	},
 	first_aid:{
 		name_color: 	'rgba(55,255,55,0.9)',
@@ -3311,7 +3334,7 @@ var all_abilities = {
 		level_cost_hero: 1,
 	},
 	frost_bolt:{
-		description: 	'Deals {LEVEL} physical cold projectile damage to a random enemy unit. Has a 25% chance to stun any unit or hero it hits. Will target the enemy hero if there are no enemy units.',
+		description: 	'Deals {LEVEL} physical cold projectile damage to a random enemy unit. Has a 25% chance to stun any unit or hero it deals damage to. Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
 		scales: 	true,
 		targets:	{
@@ -3365,7 +3388,7 @@ var all_abilities = {
 	},
 	frost_bolt_hv:{
 		name: 			'frost bolt',
-		description: 	'Deals {LEVEL} physical cold projectile damage to a random enemy unit. Has a 25% chance to stun any unit it hits. Will not target the enemy hero.',
+		description: 	'Deals {LEVEL} physical cold projectile damage to a random enemy unit. Has a 25% chance to stun any unit it deals damage to. Will not target the enemy hero.',
 		cannot_proc_while_stunned: true,
 		scales: 	true,
 		targets:	{
@@ -4801,8 +4824,34 @@ var all_abilities = {
 		level_cost: 2,
 		level_cost_spell: 0.5,
 	},
+	resist_cold:{
+		description: 	'Reduces all cold damage to 0.',
+		proc: 			'max_incoming_damage',
+		subtypes: 		['cold'],
+		negated_by: 	['ignores_armor'],
+		amount: 		0,
+		targets:	{
+			0:{
+				target: 	'unit_or_hero',
+				target_amount: 1,
+				position: 	'self',
+				min_hp: 	1,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				self_projectile: 	'shield',
+				subtypes: 			['resist_cold','type_resist'],
+				increase_timeout: 	-1500,
+			}
+		},
+		level_cost: 		0.25,
+		min_cost: 			1,
+		cost_factor: 		'health',
+		max_level: 			1,
+	},
 	resist_magic:{
-		name_color: 	'rgba(255, 55, 55,0.9)',
 		description: 	'Has a 50% chance to reduce incoming magical damage to 0.',
 		//proc: 			'reduce_incoming_damage',
 		proc: 			'max_incoming_damage',
@@ -4832,7 +4881,6 @@ var all_abilities = {
 		max_level: 			1,
 	},
 	resist_fire:{
-		name_color: 	'rgba(255, 55, 55,0.9)',
 		description: 	'Has a 50% chance to reduce incoming fire damage to 0.',
 		//proc: 			'reduce_incoming_damage',
 		proc: 			'max_incoming_damage',
