@@ -4850,8 +4850,36 @@ var all_abilities = {
 		level_cost: 		4,
 	},
 	reclaim_structure:{
-		description: 	'Returns {LEVEL} structure card(s) in your grave to your deck.',
+		description: 	'Returns up to {LEVEL} structure card(s) in your grave to your deck.',
 		cannot_proc_while_stunned: true,
+		reduce_skill_after_use: 	'reclaim_structure',
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	1,
+				status: 		'grave',
+				types: 			['structure'],
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 				'set_status',
+				subtypes: 			['move_ally_to_deck_from_grave','move_ally_to_deck','deck_control'],
+				new_status: 		'deck',
+				side: 				'ally',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+	},
+	reclaim_structures:{
+		description: 	'Has a 25% chance to return {LEVEL} structure card(s) in your grave to your deck.',
+		cannot_proc_while_stunned: true,
+		proc_chance: 	25,
 		proc_amount: 	'ability_level',
 		targets:	{
 			0:{
@@ -4874,7 +4902,6 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		4,
-		level_cost_spell: 	2,
 	},
 	repair:{
 		name_color: 	'rgba(245, 241, 42,0.9)',
