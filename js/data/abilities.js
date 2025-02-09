@@ -566,6 +566,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		2,
+		level_cost_hero: 	3,
 		level_cost_spell: 	1,
 	},
 	bolster_hero:{
@@ -4687,8 +4688,36 @@ var all_abilities = {
 		level_cost_spell: 	3,
 	},
 	reclaim_artifact:{
-		description: 	'Returns {LEVEL} artifact card(s) in your grave to your deck.',
+		description: 	'Returns up to {LEVEL} artifact card(s) in your grave to your deck.',
 		cannot_proc_while_stunned: true,
+		reduce_skill_after_use: 	'reclaim_artifact',
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	1,
+				status: 		'grave',
+				types: 			['artifact'],
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 				'set_status',
+				subtypes: 			['move_ally_to_deck_from_grave','move_ally_to_deck','deck_control'],
+				new_status: 		'deck',
+				side: 				'ally',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+	},
+	reclaim_artifacts:{
+		description: 	'Has a 25% chance to return {LEVEL} artifact card(s) in your grave to your deck.',
+		cannot_proc_while_stunned: true,
+		proc_chance: 	25,
 		proc_amount: 	'ability_level',
 		targets:	{
 			0:{
@@ -4711,11 +4740,38 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		4,
-		level_cost_spell: 	2,
 	},
 	reclaim_creature:{
-		description: 	'Returns {LEVEL} creature card(s) in your grave to your deck.',
+		description: 	'Returns up to {LEVEL} creature card(s) in your grave to your deck.',
 		cannot_proc_while_stunned: true,
+		reduce_skill_after_use: 	'reclaim_creature',
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	1,
+				status: 		'grave',
+				types: 			['creature'],
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 				'set_status',
+				subtypes: 			['move_ally_to_deck_from_grave','move_ally_to_deck','deck_control'],
+				new_status: 		'deck',
+				side: 				'ally',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+	},
+	reclaim_creatures:{
+		description: 	'Has a 25% chance to return {LEVEL} creature card(s) in your grave to your deck.',
+		cannot_proc_while_stunned: true,
+		proc_chance: 	25,
 		proc_amount: 	'ability_level',
 		targets:	{
 			0:{
@@ -4738,11 +4794,38 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		4,
-		level_cost_spell: 	2,
 	},
 	reclaim_spell:{
-		description: 	'Returns {LEVEL} spell card(s) in your grave to your deck.',
+		description: 	'Returns up to {LEVEL} spell card(s) in your grave to your deck.',
 		cannot_proc_while_stunned: true,
+		reduce_skill_after_use: 	'reclaim_spell',
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	1,
+				status: 		'grave',
+				types: 			['spell'],
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 				'set_status',
+				subtypes: 			['move_ally_to_deck_from_grave','move_ally_to_deck','deck_control'],
+				new_status: 		'deck',
+				side: 				'ally',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+	},
+	reclaim_spells:{
+		description: 	'Has a 25% chance to return {LEVEL} spell card(s) in your grave to your deck.',
+		cannot_proc_while_stunned: true,
+		proc_chance: 	25,
 		proc_amount: 	'ability_level',
 		targets:	{
 			0:{
@@ -4765,7 +4848,6 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		4,
-		level_cost_spell: 	2,
 	},
 	reclaim_structure:{
 		description: 	'Returns {LEVEL} structure card(s) in your grave to your deck.',
@@ -6149,8 +6231,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		10,
-		level_cost_spell: 	5,
+		level_cost: 		8,
+		level_cost_spell: 	4,
 	},
 	summon_frog:{
 		description: 	'Summons {LEVEL} frog(s).',
