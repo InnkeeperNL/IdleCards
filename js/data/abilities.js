@@ -1445,8 +1445,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		0.6,
-		level_cost_artifact: 1,
+		level_cost: 		0.5,
 	},
 	corpse_feast:{
 		description: 	'Heals itself by {LEVEL} for every 5 creature cards in your grave.',
