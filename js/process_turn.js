@@ -2941,6 +2941,7 @@ function move_unit(target_id, effect, origin_id){
 	if(free_slot != false)
 	{
 		var unit_old_slot = current_unit['slot'] + 0;
+		current_unit['old_slot'] = unit_old_slot;
 		current_unit['slot'] = free_slot;
 		var unit_new_slot = current_unit['slot'] + 0;
 		timeout_key ++;
@@ -7407,6 +7408,10 @@ function find_free_slot(side, card_id, forced_safe_slot, forced_placement, oppos
 			{
 				free_slot = pick_adjacent_slot(all_free_slots, origin_id);
 			}
+			if(forced_placement == 'origin_old_slot')
+			{
+				free_slot = pick_origin_old_slot(all_free_slots, origin_id);
+			}
 			if(forced_placement == 'opposing')
 			{
 				if(origin_id == undefined || battle_info['combat_units'][origin_id] == undefined)
@@ -7592,6 +7597,28 @@ function pick_adjacent_slot(all_slots, unit_id){
 	}
 
 	return adjacent_slot;
+}
+
+function pick_origin_old_slot(all_slots, unit_id){
+	var origin_old_slot = false;
+	var origin_slot = false;
+	if(battle_info['combat_units'][unit_id]['old_slot'] != undefined)
+	{
+		origin_slot = battle_info['combat_units'][unit_id]['old_slot'];
+	}
+
+	$.each(all_slots, function(free_slot_id, slot){
+		if(slot != origin_slot)
+		{
+			delete all_slots[free_slot_id];
+		}
+	});
+	if(count_object(all_slots) > 0)
+	{
+		origin_old_slot = all_slots[get_random_key_from_object(all_slots)];
+	}
+
+	return origin_old_slot;
 }
 
 function reduce_all_hand_times(side){

@@ -509,9 +509,9 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_hero: 	3,
-		level_cost_spell: 	1,
+		level_cost: 		3,
+		level_cost_hero: 	4,
+		level_cost_spell: 	1.5,
 	},
 	bolster_all:{
 		description: 	'All ally units gains {LEVEL} health permanently.',
@@ -560,7 +560,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'bolster',
 				type: 			'increase_health',
-				subtypes: 		['bolster','bolster_hero'],
+				subtypes: 		['bolster','bolster_creature'],
 				amount: 		'ability_level'
 			},
 		},
@@ -594,6 +594,35 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		4,
 		level_cost_spell: 	2.5,
+	},
+	bolster_structure:{
+		description: 	'A random ally structure unit gains {LEVEL} health permanently.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['creature','object'],
+				max_abilities: 	{undead: 0},
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bolster',
+				type: 			'increase_health',
+				subtypes: 		['bolster','bolster_structure'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_hero: 	3,
+		level_cost_spell: 	1,
 	},
 	bolstering_deaths:{
 		description: 	'When any ally creature is destroyed, your hero gains {LEVEL} health permanently.',
@@ -4004,6 +4033,49 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 		3.5,
 	},
+	lay_trap:{
+		description: 	'This unit will move to a random free slot. If it does, it leaves a trap behind.',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			1:{
+				type: 			'move',
+				safe_slot: 		'dont care',
+				has_opposing: 	'dont care',
+				placement: 		'random',
+				subtypes: 		['movement','move'],
+				amount: 		1,
+				on_success:{
+					targets:	{
+						0:{
+							target: 		'hero',
+							target_amount: 	1,
+							side: 			'ally'
+						},
+					},
+					effects:{
+						0:{
+							type: 		'summon_unit',
+							subtypes: 	['summon_ally','summon_structure'],
+							card_id: 	'trap',
+							forced_slot: 'origin_old_slot',
+							amount: 	1,
+						}
+					},
+				}
+			},
+		},
+		level_cost: 8,
+	},
 	leech_hero:{
 		description: 	'When this deals damage to the enemy hero, your hero gains {LEVEL} health permanently.',
 		proc: 			'dealt_damage_to_hero',
@@ -4103,7 +4175,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				type: 		'summon_unit',
-				subtypes: 	['summon_ally','summon_creature'],
+				subtypes: 	['summon_ally','summon_structure'],
 				type: 		'summon_unit',
 				card_id: 	'vine',
 				amount: 	1,
@@ -4206,6 +4278,30 @@ var all_abilities = {
 		remove_skill: 	'min_hand_cards',
 		show_amount_adjustment: 0,
 		level_cost: 	0,
+	},
+	move:{
+		description: 	'This unit will move to a random free slot.',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			1:{
+				type: 			'move',
+				safe_slot: 		'dont care',
+				has_opposing: 	'dont care',
+				placement: 		'random',
+				subtypes: 		['movement','move'],
+				amount: 		1,
+			}
+		},
 	},
 	painful_hand:{
 		description: 	'Deals {LEVEL} damage to the enemy hero for every card in its hand.',
@@ -6366,6 +6462,30 @@ var all_abilities = {
 		},
 		animation: 	'combat_zoom',
 		level_cost: 		8,
+	},
+	summon_trap:{
+		description: 	'Summons {LEVEL} trap(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_structure'],
+				card_id: 	'trap',
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		8,
+		level_cost_spell: 	4,
 	},
 	summon_skeleton:{
 		description: 	'Summons {LEVEL} skeleton(s).',
