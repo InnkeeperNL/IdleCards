@@ -1308,7 +1308,7 @@ var all_abilities = {
 		
 	},
 	consume_creature:{
-		description: 	'Each turn, this destroys 1 random non-undead ally creature units. If it does, This gains {LEVEL} temporary power and heals itself by {LEVEL}. Will target units with the lowest cost first.',
+		description: 	'Each turn, this destroys 1 random non-undead ally creature unit with no more than {LEVEL} health. If it does, This gains {LEVEL} temporary power and heals itself by {LEVEL}. Will target units with the lowest cost first.',
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
@@ -1318,6 +1318,7 @@ var all_abilities = {
 				not_self: 	true,
 				not_types: 	['structure','artifact'],
 				max_abilities: 	{undead: 0},
+				max_hp: 	'ability_level',
 				lowest_cost: true,
 				side: 		'ally'
 			},
@@ -1358,6 +1359,54 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	3,
 		cost_adjustment: -3,
+	},
+	consume_sporeling:{
+		description: 	'If damaged, destroys a random sporeling. This then heals itself by {LEVEL}.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		origin_damaged: true,
+		ability_effects:{
+			0:{
+				targets:{
+					0:{
+						target: 		'unit',
+						target_amount: 	1,
+						position: 		'random',
+						card_ids: 		['sporeling'],
+						side: 			'any'
+					},
+				},
+				effects:{
+					0:{
+						projectile: 	'drain',
+						type: 			'destroy',
+						subtypes: 		['sacrifice'],
+						on_success:{
+							targets:{
+								0:{
+									target: 		'unit_or_hero',
+									target_amount: 	1,
+									position: 		'self',
+									min_hp: 		1,
+									damaged: 		true,
+									side: 			'ally'
+								},
+							},
+							effects:{
+								0:{
+									projectile: 	'healing',
+									type: 			'healing',
+									subtypes: 		['healing','feast'],
+									amount: 		'ability_level',
+								}
+							},
+						}
+					}
+				},
+			},
+		},
+		level_cost: 	0.25,
+		level_cost_hero: 2,
 	},
 	counter:{
 		description: 	'If this survives melee damage from an enemy unit or hero, this deals physical melee damage equal to its power to it, {LEVEL} time(s). This cannot counter a counter.',
@@ -2467,54 +2516,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		5,
 	},
-	consume_sporeling:{
-		description: 	'If damaged, destroys a random sporeling. This then heals itself by {LEVEL}.',
-		cannot_proc_while_stunned: true,
-		scales: 		true,
-		origin_damaged: true,
-		ability_effects:{
-			0:{
-				targets:{
-					0:{
-						target: 		'unit',
-						target_amount: 	1,
-						position: 		'random',
-						card_ids: 		['sporeling'],
-						side: 			'any'
-					},
-				},
-				effects:{
-					0:{
-						projectile: 	'drain',
-						type: 			'destroy',
-						subtypes: 		['sacrifice'],
-						on_success:{
-							targets:{
-								0:{
-									target: 		'unit_or_hero',
-									target_amount: 	1,
-									position: 		'self',
-									min_hp: 		1,
-									damaged: 		true,
-									side: 			'ally'
-								},
-							},
-							effects:{
-								0:{
-									projectile: 	'healing',
-									type: 			'healing',
-									subtypes: 		['healing','feast'],
-									amount: 		'ability_level',
-								}
-							},
-						}
-					}
-				},
-			},
-		},
-		level_cost: 	0.25,
-		level_cost_hero: 2,
-	},
+	
 	energised_haste:{
 		ability_subtypes: 	['hasten','deck_control'],
 		description: 	'Uses all energy it has to reduce the time left of the card in your hand, with the highest time left, by the energy used.',
