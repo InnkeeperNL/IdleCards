@@ -104,7 +104,7 @@ var all_available_cards = {
 		image: 				'cards/dream_TradingCard-2025-01-04T170102.521.jpg',
 		power: 				false,
 		armor: 				0,
-		health: 			6,
+		health: 			8,
 		abilities: 			{cursed_deaths: 1},
 		hero_version: 			{
 			theme: 				['summon_creature_ability','resurrect_ability','own_death_proc_ability'],
