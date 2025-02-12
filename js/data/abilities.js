@@ -628,6 +628,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		2,
+		level_cost_creature: 1.5,
 		level_cost_hero: 	3,
 		level_cost_spell: 	1,
 	},
