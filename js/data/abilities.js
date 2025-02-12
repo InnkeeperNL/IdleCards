@@ -181,34 +181,38 @@ var all_abilities = {
 		level_cost: 		2,
 		level_cost_spell: 	1,
 	},
-	submerged:{
-		name: 			'submerged',
-		description: 	'Gives this unit a 50% chance to avoid any incoming projectile effect, or any melee effect that comes from a unit that has the flying ability.',
-		proc: 			'avoid_effect',
-		subtypes: 				['projectile','melee'],
-		subtypes_while_origin_has_ability: 	{melee: ['flying'],},
-		effect: 		50,
+	augment_sporeling:{
+		description: 	'An ally sporeling gain {LEVEL} power and health permanently.',
+		cannot_proc_while_stunned: true,
+		do_not_pause_between: true,
+		scales: 		true,
 		targets:	{
 			0:{
-				target: 	'unit_or_hero',
-				target_amount: 1,
-				position: 	'self',
-				min_hp: 	1,
-				side: 		'ally'
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				card_ids: 		['sporeling'],
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
 			},
 		},
 		effects:{
 			0:{
-				pause_before: 		500,
-				self_projectile: 	'water',
-				subtypes: 			['submerge','evade'],
-				increase_timeout: 	-500,
-			}
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower','empower_ally'],
+				amount: 		'ability_level'
+			},
+			1:{
+				type: 			'increase_health',
+				subtypes: 		['bolster','bolster_ally'],
+				amount: 		'ability_level'
+			},
 		},
-		level_cost: 		0.75,
-		min_cost: 			3,
-		level_cost_hero: 	3,
-		cost_factor: 		'health',
+		animation: 			'combat_zoom',
+		level_cost: 		5,
+		level_cost_structure: 3.75,
 	},
 	arcane_bolt:{
 		description: 	'Deals 1 magical projectile damage to a random enemy unit {LEVEL} time(s). Will only target the enemy hero if there are no enemy units.',
@@ -314,6 +318,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				not_types: 		['object','structure'],
+				not_self: 		true,
 				min_hp: 		2,
 				min_power: 		0,
 				highest_hp: 	true,
@@ -336,6 +341,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		2,
+		level_cost_structure: 1.75,
 		level_cost_spell: 	1.5,
 		cost_adjustment: 	-2,
 	},
@@ -566,6 +572,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		2,
+		level_cost_structure: 1.5,
 		level_cost_hero: 	3,
 		level_cost_spell: 	1,
 	},
@@ -648,6 +655,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		4,
+		level_cost_structure: 3,
 		level_cost_spell: 	2,
 	},
 	break:{
@@ -1708,6 +1716,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	1.5,
+		level_cost_structure: 1,
 	},
 	cursed_deaths_hv:{
 		name: 			'cursed deaths',
@@ -2365,6 +2374,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		2,
+		level_cost_structure: 1.5,
 		level_cost_spell: 	1,
 		level_cost_hero: 	3,
 	},
@@ -2395,6 +2405,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		6,
+		level_cost_structure: 4.5,
 		level_cost_spell: 	3,
 		level_cost_hero: 	9,
 	},
@@ -2426,6 +2437,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		2,
+		level_cost_structure: 1.75,
 		level_cost_artifact: 3,
 		level_cost_hero: 	3,
 	},
@@ -2484,6 +2496,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		5,
+		level_cost_structure: 4.25,
 		level_cost_hero: 	8,
 	},
 	explode:{
@@ -2512,38 +2525,6 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	0.5,
 		average_hits: 	2,
-	},
-	augment_sporeling:{
-		description: 	'An ally sporeling gain {LEVEL} power and health permanently.',
-		cannot_proc_while_stunned: true,
-		do_not_pause_between: true,
-		scales: 		true,
-		targets:	{
-			0:{
-				target: 		'unit',
-				target_amount: 	1,
-				position: 		'random',
-				card_ids: 		['sporeling'],
-				min_hp: 		1,
-				min_power: 		0,
-				side: 			'ally'
-			},
-		},
-		effects:{
-			0:{
-				projectile: 	'power',
-				type: 			'increase_power',
-				subtypes: 		['empower','empower_ally'],
-				amount: 		'ability_level'
-			},
-			1:{
-				type: 			'increase_health',
-				subtypes: 		['bolster','bolster_ally'],
-				amount: 		'ability_level'
-			},
-		},
-		animation: 			'combat_zoom',
-		level_cost: 		5,
 	},
 	
 	energised_haste:{
@@ -2619,6 +2600,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		1,
+		level_cost_structure: 0.75,
 	},
 	enrage:{
 		description: 	'When this unit receives damage, it gains {LEVEL} temporary power.',
@@ -3165,6 +3147,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	3,
+		level_cost_structure: 2.25,
 		//level_cost_cum: true,
 	},
 	flame_strike:{
@@ -3651,6 +3634,8 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	4,
+		level_cost_structure: 3,
+		level_cost_spell: 2,
 	},
 	hero_channels_life:{
 		description: 	'Your hero reduces the time left of the card in your hand with the highest time left by {LEVEL}. If it does, it deals 1 damage to itself.',
@@ -4677,6 +4662,10 @@ var all_abilities = {
 			},
 		},
 		level_cost: 		2,
+		ability_level_cost_factors:{
+			resurrect: 		1.25,
+		},
+		level_cost_structure: 1.5,
 	},
 	raise_skeleton:{
 		description: 	'When an ally creature dies, this summons up to a total of {LEVEL} skeleton(s).',
@@ -5027,8 +5016,9 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 2,
-		level_cost_spell: 0.5,
+		level_cost: 4,
+		level_cost_creature: 3.5,
+		level_cost_spell: 2,
 	},
 	resist_cold:{
 		description: 	'Reduces all cold damage to 0.',
@@ -5166,6 +5156,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		6,
+		level_cost_structure: 4.5,
 	},
 	resurrect:{
 		name_color: 	'rgba(160, 95, 250,0.9)',
@@ -5226,6 +5217,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		2,
+		level_cost_structure: 1.5,
 	},
 	retreat:{
 		description: 	'When this survives damage, it return to its owner\'s hand. If this was summoned, it disappears.',
@@ -6332,6 +6324,35 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		3,
+	},
+	submerged:{
+		name: 			'submerged',
+		description: 	'Gives this unit a 50% chance to avoid any incoming projectile effect, or any melee effect that comes from a unit that has the flying ability.',
+		proc: 			'avoid_effect',
+		subtypes: 				['projectile','melee'],
+		subtypes_while_origin_has_ability: 	{melee: ['flying'],},
+		effect: 		50,
+		targets:	{
+			0:{
+				target: 	'unit_or_hero',
+				target_amount: 1,
+				position: 	'self',
+				min_hp: 	1,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				pause_before: 		500,
+				self_projectile: 	'water',
+				subtypes: 			['submerge','evade'],
+				increase_timeout: 	-500,
+			}
+		},
+		level_cost: 		0.75,
+		min_cost: 			3,
+		level_cost_hero: 	3,
+		cost_factor: 		'health',
 	},
 	summon_conscript:{
 		description: 	'Summons {LEVEL} conscript(s).',

@@ -3248,7 +3248,7 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, backlash: 1},
+		abilities: 			{strike: 1, backlash: 2},
 		hero_version: 			{
 			theme: 				['type_creature','subtype_warrior'],
 			power: 				3,
@@ -12002,6 +12002,19 @@ function calculate_card_time(card_id, show_calc, hero_version){
 			{
 				level_cost = ability['level_cost_hero'];
 				if(show_calc!=undefined){console.log(ability_id + ': ' + ability['level_cost_hero'] + ' points (hero)');}
+			}
+			if(hero_version == undefined || hero_version == false)
+			{
+				if(card['type'] == 'structure' && ability['level_cost_structure'] != undefined)
+				{
+					level_cost = ability['level_cost_structure'];
+					if(show_calc!=undefined){console.log(ability_id + ': ' + ability['level_cost_structure'] + ' points (structure)');}
+				}
+				if(card['type'] == 'creature' && ability['level_cost_creature'] != undefined)
+				{
+					level_cost = ability['level_cost_creature'];
+					if(show_calc!=undefined){console.log(ability_id + ': ' + ability['level_cost_creature'] + ' points (creature)');}
+				}
 			}
 		}
 		else
