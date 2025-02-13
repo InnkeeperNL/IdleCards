@@ -4,13 +4,13 @@ var all_quests = {
 		description: 	'Have allies deal damage to the enemy hero {AMOUNT} time(s).',
 		image: 			"cards/dream_TradingCard26.jpg",
 		objective: 		'enemy_hero_damaged',
-		min_amount: 	50,
-		max_amount: 	200,
+		min_amount: 	10,
+		max_amount: 	20,
 		rewards:{
 			shard: 	5,
 		},
 		reward_per_amount:{
-			scraps: 0.5,
+			scraps: 0.25,
 		},
 	},
 };
@@ -316,7 +316,6 @@ var all_chained_achievements = {
 		},
 		card_back: 		'hearty_meal',
 		steps: 			6,
-		no_quest: 		true,
 	},
 	plunder:{
 		name: 			'plunder',
@@ -391,7 +390,7 @@ var all_chained_achievements = {
 		card_back: 		'conscription',
 		steps: 			6,
 		step_effect: 	'min_amount',
-		step_amount: 	5,
+		step_amount: 	10,
 		no_quest: 		true,
 	},
 	crafter:{
@@ -579,7 +578,7 @@ var all_chained_achievements = {
 		card_back: 		'flare',
 		steps: 			6,
 		step_effect: 	'min_amount',
-		step_amount: 	5,
+		step_amount: 	10,
 		no_quest: 		true,
 	},
 	fly:{
@@ -697,7 +696,6 @@ var all_chained_achievements = {
 		},
 		card_back: 		'medic',
 		steps: 			6,
-		no_quest: 		true,
 	},
 	heist:{
 		name: 			'heist',
@@ -827,6 +825,25 @@ var all_chained_achievements = {
 		card_back: 		'vengeful_spirit',
 		steps: 			6,
 	},
+	mason:{
+		name: 			'mason',
+		description: 	'Play or summon {AMOUNT} structure card(s) in a single battle.',
+		objective: 		'structure_card_played_times',
+		min_amount: 	10,
+		amount: 		1,
+		hide_amount: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'mason',
+		steps: 			6,
+		step_effect: 	'min_amount',
+		step_amount: 	10,
+		no_quest: 		true,
+	},
 	merchant:{
 		name: 			'merchant',
 		description: 	'Earn {AMOUNT} scrap(s).',
@@ -840,7 +857,6 @@ var all_chained_achievements = {
 		},
 		card_back: 		'thief',
 		steps: 			5,
-		no_quest: 		true,
 	},
 	mouldy:{
 		name: 			'mouldy',
