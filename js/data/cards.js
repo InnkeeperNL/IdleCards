@@ -11188,8 +11188,8 @@ var all_available_cards = {
 
 	clover:{
 		name: 				'clover',
-		description: 		'Can be used to boost the current enemy. Increases rewards by 25%.',
-		value: 				5,
+		description: 		'Can be used to boost the current enemy. Increases rewards by 50%.',
+		value: 				10,
 		//months_available: 	[0,1,2,3,4,5,6,7,8,9,10,11,12],
 		type: 				'treasure',
 		basic_reward: 		true,
@@ -11204,7 +11204,7 @@ var all_available_cards = {
 		quote: '\"Rare as they are lucky.\"',
 		summon_post_buff:{
 			buff_type: 			'reward_count',
-			buff_amount: 		25,
+			buff_amount: 		50,
 			buff_amount_type:  'percent',
 		}
 	},
@@ -11232,8 +11232,8 @@ var all_available_cards = {
 	},
 	jar_of_luck:{
 		name: 				'jar of luck',
-		description: 		'Can be used to boost the current enemy. Increases rewards by 50%.',
-		value: 				10,
+		description: 		'Can be used to boost the current enemy. Increases rewards by 250%.',
+		value: 				50,
 		//months_available: 	[0,1,2,3,4,5,6,7,8,9,10,11,12],
 		type: 				'treasure',
 		basic_reward: 		true,
@@ -11248,7 +11248,7 @@ var all_available_cards = {
 		quote: '\"Overflowing with the good stuff.\"',
 		summon_post_buff:{
 			buff_type: 			'reward_count',
-			buff_amount: 		50,
+			buff_amount: 		250,
 			buff_amount_type:  'percent',
 		}
 	},
