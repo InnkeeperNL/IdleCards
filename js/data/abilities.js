@@ -3120,7 +3120,6 @@ var all_abilities = {
 		level_cost: 2,*/
 	},
 	first_aid:{
-		name_color: 	'rgba(55,255,55,0.9)',
 		description: 	'When an ally creature unit receives damages, this heals that ally by {LEVEL}. Can be used once each round.',
 		proc: 			'ally_takes_damage',
 		cannot_proc_while_stunned: true,
@@ -6738,9 +6737,8 @@ var all_abilities = {
 	},
 	upkeep_creature:{
 		name: 			'upkeep: creature',
-		description: 	'Each turn, this destroys {LEVEL} random ally creature unit(s). If it cannot, this is stunned. Will target units with the lowest cost first.',
+		description: 	'Each turn, this destroys a random ally creature unit with no more than {LEVEL} health. If it cannot, this is stunned. Will target units with the lowest cost first.',
 		cannot_proc_while_stunned: true,
-		proc_amount: 	'ability_level',
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -6748,6 +6746,7 @@ var all_abilities = {
 				position: 	'random',
 				not_self: 	true,
 				not_types: 	['structure','artifact'],
+				max_hp: 	'ability_level',
 				lowest_cost: true,
 				side: 		'ally'
 			},
@@ -6779,7 +6778,7 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	-10,
+		level_cost: 	-6,
 	},
 	vampiric:{
 		description: 	'When this deals physical damage to a non-undead creature, it heals iself by the amount of damage done, up to {LEVEL}.',

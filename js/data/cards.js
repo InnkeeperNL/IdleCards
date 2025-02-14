@@ -8429,8 +8429,8 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{upkeep_creature: 1, empower_hero: 2, restore: 3},
-		quote: '\"Those can last for days...\"',
+		abilities: 			{upkeep_creature: 1, empower_hero: 1, restore: 2},
+		quote: '\"Keep the lambs coming...\"',
 	},
 	sandstorm:{
 		name: 				'sandstorm',
