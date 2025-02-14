@@ -30,6 +30,14 @@ function start_next_turn(){
 
 	$('.total_turn_counter').html(total_turn_counter);
 
+	$('.resign_button').css('display','block');
+
+	reduce_all_ability_delays(active_turn);
+	enable_all_units_to_act(true, active_turn);
+
+	reset_temp_health(active_turn);
+	reset_temp_skills(active_turn);
+
 	if(total_turn_counter >= 80)
 	{
 		total_timeout += 500;
@@ -46,14 +54,6 @@ function start_next_turn(){
 		};
 		
 	}
-
-	$('.resign_button').css('display','block');
-
-	reduce_all_ability_delays(active_turn);
-	enable_all_units_to_act(true, active_turn);
-
-	reset_temp_health(active_turn);
-	reset_temp_skills(active_turn);
 
 	var pickup_chance = ((total_turn_counter /** total_turn_counter*/) / (160) / 3) * get_upgrade_factor('floating_chance', 'any', true);
 	if(pickup_chance > 0.5){pickup_chance = 0.5;};
