@@ -3287,92 +3287,15 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 	    	    //origin_unit['effects']['blessed'] --;
 	    	    update_passive_effects(origin_id);
 	    	}*/
-	    	if(target_unit['effects'] != undefined && target_unit['effects']['blessed'] != undefined && target_unit['effects']['blessed'] > 0 && origin_unit != undefined && origin_unit['abilities']['hexed'] != undefined)
+	    	/*if(target_unit['effects'] != undefined && target_unit['effects']['blessed'] != undefined && target_unit['effects']['blessed'] > 0 && origin_unit != undefined && origin_unit['abilities']['hexed'] != undefined)
 	    	{
 	    	    calculated_amount += origin_unit['abilities']['hexed'];
-	    	}
+	    	}*/
 		}
 
 		amount_reduced = 0;
 
-		$.each(target_unit['abilities'], function(ability_id, ability_level){
-			if(match_array_values(all_abilities[ability_id]['proc'], 'max_incoming_damage') == true && (match_array_values(subtypes,all_abilities[ability_id]['subtypes']) == true || all_abilities[ability_id]['subtypes'] == undefined) && match_array_values(subtypes,all_abilities[ability_id]['negated_by']) == false && (all_abilities[ability_id]['origin_not_self'] == undefined || target_id != origin_id) && (all_abilities[ability_id]['has_origin_unit'] == undefined || (origin_unit != undefined && origin_unit['current_health'] > 0)) && (all_abilities[ability_id]['cannot_proc_while_stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == 0))
-    		{
-    			if(all_abilities[ability_id]['reduce_chance'] == undefined || Math.random() * 100 <= calculate_effect({amount:all_abilities[ability_id]['reduce_chance']}, target_id, origin_id, ability_level))
-	    		{
-	    			var max_incoming_damage = calculate_effect({amount:all_abilities[ability_id]['amount']}, target_id, origin_id, ability_level);
-	    			if(calculated_amount > max_incoming_damage)
-	    			{
-	    				amount_reduced = calculated_amount - max_incoming_damage;
-	    				var temp_amount_reduced = amount_reduced + 0;
-	    				calculated_amount = max_incoming_damage;
-	    				if(calculated_amount >= 0)
-	    				{
-		    				timeout_key ++;
-		    				var temp_fct_class = '.slot_' + battle_info['combat_units'][target_id]['slot'] + '.side_' + battle_info['combat_units'][target_id]['side'];
-				    		all_timeouts[timeout_key] = setTimeout(function(){
-				    			var combat_text = parse_floating_text(temp_amount_reduced, '#ccc', false);
-				    			//$('.battle_container .unit_id_' + target_id).append(combat_text);
-				    			$('.battle_container .slot_container' + temp_fct_class).append(combat_text);
-				    		},total_timeout );
-				    		process_ability(target_id, all_abilities[ability_id], ability_level, origin_id, undefined, 'reduce_incoming_damage');
-			    			check_ability_delay(target_id, ability_id);
-				    	}
-	    			}
-	    		}
-    		}
-		});
-	    
-	    if(calculated_amount > 0)
-    	{	    
-	    	if(target_unit['effects'] != undefined && target_unit['effects']['cursed'] != undefined)
-	    	{
-	    	    calculated_amount += target_unit['effects']['cursed'];
-	    	    target_unit['effects']['cursed'] = 0;
-	    	    //target_unit['effects']['cursed'] = Math.floor(target_unit['effects']['cursed'] / 2);
-	    	    if(target_unit['effects']['cursed'] < 1)
-	    	    {
-	    	    	delete target_unit['effects']['cursed'];
-	    	    }
-	    	    //delete target_unit['effects']['cursed'];
-	    	    update_passive_effects(target_id);
-	    	}
-	    }
-
-    	if(calculated_amount > 0)
-    	{
-			if(target_unit['effects'] != undefined && target_unit['effects']['blessed'] != undefined && target_unit['effects']['blessed'] > 0 && (origin_unit == undefined || origin_unit['abilities']['hexed'] == undefined))
-	    	{
-	    		var temp_calculated_amount = calculated_amount + 0;
-	    	    calculated_amount -= target_unit['effects']['blessed'];
-	    	    target_unit['effects']['blessed'] -= temp_calculated_amount;
-	    	    if(target_unit['effects']['blessed'] < 0){target_unit['effects']['blessed'] = 0;}
-	    	    update_passive_effects(target_id);
-	    	}
-	    }
-    
-    	$.each(target_unit['abilities'], function(ability_id, ability_level){
-    		if(match_array_values(all_abilities[ability_id]['proc'], 'reduce_incoming_damage') == true && (match_array_values(subtypes,all_abilities[ability_id]['subtypes']) == true || all_abilities[ability_id]['subtypes'] == undefined) && match_array_values(subtypes,all_abilities[ability_id]['negated_by']) == false && (all_abilities[ability_id]['origin_not_self'] == undefined || target_id != origin_id) && (all_abilities[ability_id]['has_origin_unit'] == undefined || (origin_unit != undefined && origin_unit['current_health'] > 0)) && (all_abilities[ability_id]['cannot_proc_while_stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == 0))
-    		{
-    			if(check_ability_can_fire(target_id, all_abilities[ability_id], ability_level, origin_id) == true)
-    			{
-	    			if(target_unit['ability_delays'][ability_id] == undefined || target_unit['ability_delays'][ability_id] < 1)
-	    			{
-	    				if(all_abilities[ability_id]['reduce_chance'] == undefined || Math.random() * 100 <= calculate_effect({amount:all_abilities[ability_id]['reduce_chance']}, target_id, origin_id, ability_level))
-	    				{
-	    					process_ability(target_id, all_abilities[ability_id], ability_level, origin_id, undefined, 'reduce_incoming_damage');
-			    			amount_reduced = calculate_effect({amount:all_abilities[ability_id]['amount']}, target_id, origin_id, ability_level);
-			    			check_ability_delay(target_id, ability_id);
-			    			if(calculated_amount < amount_reduced){amount_reduced = calculated_amount};
-			    			calculated_amount -= amount_reduced;
-			    		}
-		    			
-		    		}
-		    	}
-    		}
-    	});
-    
-    	if(calculated_amount > 0)
+		if(calculated_amount > 0)
     	{
     		var armor_reduced = 0;
     		if(target_unit['armor'] > 0 && match_array_values(['ignores_armor'],subtypes) == false)
@@ -3428,6 +3351,103 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
     			}
     			target_unit['armor'] = 0;
     		}
+    		if(armor_reduced > 0)
+			{
+				check_unit_hp(target_id);
+				//create_projectile(target_id, target_id, 'just_damaged', undefined, undefined, projectile_side, armor_reduced, '#ccc', 2000);
+				timeout_key ++;
+				var temp_fct_class = '.slot_' + battle_info['combat_units'][target_id]['slot'] + '.side_' + battle_info['combat_units'][target_id]['side'];
+	    		all_timeouts[timeout_key] = setTimeout(function(){
+	    			var combat_text = parse_floating_text(armor_reduced, '#ccc', false);
+	    			//$('.battle_container .unit_id_' + target_id).append(combat_text);
+	    			$('.battle_container .slot_container' + temp_fct_class).append(combat_text);
+	    		},total_timeout );
+			}
+    	}
+
+		if(calculated_amount > 0)
+    	{
+			$.each(target_unit['abilities'], function(ability_id, ability_level){
+				if(match_array_values(all_abilities[ability_id]['proc'], 'max_incoming_damage') == true && (match_array_values(subtypes,all_abilities[ability_id]['subtypes']) == true || all_abilities[ability_id]['subtypes'] == undefined) && match_array_values(subtypes,all_abilities[ability_id]['negated_by']) == false && (all_abilities[ability_id]['origin_not_self'] == undefined || target_id != origin_id) && (all_abilities[ability_id]['has_origin_unit'] == undefined || (origin_unit != undefined && origin_unit['current_health'] > 0)) && (all_abilities[ability_id]['cannot_proc_while_stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == 0))
+	    		{
+	    			if(all_abilities[ability_id]['reduce_chance'] == undefined || Math.random() * 100 <= calculate_effect({amount:all_abilities[ability_id]['reduce_chance']}, target_id, origin_id, ability_level))
+		    		{
+		    			var max_incoming_damage = calculate_effect({amount:all_abilities[ability_id]['amount']}, target_id, origin_id, ability_level);
+		    			if(calculated_amount > max_incoming_damage)
+		    			{
+		    				amount_reduced = calculated_amount - max_incoming_damage;
+		    				var temp_amount_reduced = amount_reduced + 0;
+		    				calculated_amount = max_incoming_damage;
+		    				if(calculated_amount >= 0)
+		    				{
+			    				timeout_key ++;
+			    				var temp_fct_class = '.slot_' + battle_info['combat_units'][target_id]['slot'] + '.side_' + battle_info['combat_units'][target_id]['side'];
+					    		all_timeouts[timeout_key] = setTimeout(function(){
+					    			var combat_text = parse_floating_text(temp_amount_reduced, '#ccc', false);
+					    			//$('.battle_container .unit_id_' + target_id).append(combat_text);
+					    			$('.battle_container .slot_container' + temp_fct_class).append(combat_text);
+					    		},total_timeout );
+					    		process_ability(target_id, all_abilities[ability_id], ability_level, origin_id, undefined, 'reduce_incoming_damage');
+				    			check_ability_delay(target_id, ability_id);
+					    	}
+		    			}
+		    		}
+	    		}
+			});
+		}
+	    
+	    if(calculated_amount > 0)
+    	{	    
+	    	if(target_unit['effects'] != undefined && target_unit['effects']['cursed'] != undefined)
+	    	{
+	    	    calculated_amount += target_unit['effects']['cursed'];
+	    	    target_unit['effects']['cursed'] = 0;
+	    	    //target_unit['effects']['cursed'] = Math.floor(target_unit['effects']['cursed'] / 2);
+	    	    if(target_unit['effects']['cursed'] < 1)
+	    	    {
+	    	    	delete target_unit['effects']['cursed'];
+	    	    }
+	    	    //delete target_unit['effects']['cursed'];
+	    	    update_passive_effects(target_id);
+	    	}
+	    }
+
+    	if(calculated_amount > 0)
+    	{
+			if(target_unit['effects'] != undefined && target_unit['effects']['blessed'] != undefined && target_unit['effects']['blessed'] > 0 && (origin_unit == undefined || origin_unit['abilities']['hexed'] == undefined))
+	    	{
+	    		var temp_calculated_amount = calculated_amount + 0;
+	    	    calculated_amount -= target_unit['effects']['blessed'];
+	    	    target_unit['effects']['blessed'] -= temp_calculated_amount;
+	    	    if(target_unit['effects']['blessed'] < 0){target_unit['effects']['blessed'] = 0;}
+	    	    update_passive_effects(target_id);
+	    	}
+	    }
+    
+    	$.each(target_unit['abilities'], function(ability_id, ability_level){
+    		if(match_array_values(all_abilities[ability_id]['proc'], 'reduce_incoming_damage') == true && (match_array_values(subtypes,all_abilities[ability_id]['subtypes']) == true || all_abilities[ability_id]['subtypes'] == undefined) && match_array_values(subtypes,all_abilities[ability_id]['negated_by']) == false && (all_abilities[ability_id]['origin_not_self'] == undefined || target_id != origin_id) && (all_abilities[ability_id]['has_origin_unit'] == undefined || (origin_unit != undefined && origin_unit['current_health'] > 0)) && (all_abilities[ability_id]['cannot_proc_while_stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == 0))
+    		{
+    			if(check_ability_can_fire(target_id, all_abilities[ability_id], ability_level, origin_id) == true)
+    			{
+	    			if(target_unit['ability_delays'][ability_id] == undefined || target_unit['ability_delays'][ability_id] < 1)
+	    			{
+	    				if(all_abilities[ability_id]['reduce_chance'] == undefined || Math.random() * 100 <= calculate_effect({amount:all_abilities[ability_id]['reduce_chance']}, target_id, origin_id, ability_level))
+	    				{
+	    					process_ability(target_id, all_abilities[ability_id], ability_level, origin_id, undefined, 'reduce_incoming_damage');
+			    			amount_reduced = calculate_effect({amount:all_abilities[ability_id]['amount']}, target_id, origin_id, ability_level);
+			    			check_ability_delay(target_id, ability_id);
+			    			if(calculated_amount < amount_reduced){amount_reduced = calculated_amount};
+			    			calculated_amount -= amount_reduced;
+			    		}
+		    			
+		    		}
+		    	}
+    		}
+    	});
+    
+    	if(calculated_amount > 0)
+    	{
+    		
     		var overkill = 0;
     		var current_total_health = target_unit['current_health'];
     		if(target_unit['temp_health'] != undefined)
@@ -3497,20 +3517,6 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 	    			//$('.battle_container .unit_id_' + target_id).append(combat_text);
 	    			$('.battle_container .slot_container' + temp_fct_class).append(combat_text);
 	    		},total_timeout );
-    		}
-    		else
-    		{
-    			if(armor_reduced > 0)
-    			{
-    				//create_projectile(target_id, target_id, 'just_damaged', undefined, undefined, projectile_side, armor_reduced, '#ccc', 2000);
-    				timeout_key ++;
-    				var temp_fct_class = '.slot_' + battle_info['combat_units'][target_id]['slot'] + '.side_' + battle_info['combat_units'][target_id]['side'];
-		    		all_timeouts[timeout_key] = setTimeout(function(){
-		    			var combat_text = parse_floating_text(armor_reduced, '#ccc', false);
-		    			//$('.battle_container .unit_id_' + target_id).append(combat_text);
-		    			$('.battle_container .slot_container' + temp_fct_class).append(combat_text);
-		    		},total_timeout );
-    			}
     		}
     		/*timeout_key ++;
     		all_timeouts[timeout_key] = setTimeout(function(){
