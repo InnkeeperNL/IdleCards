@@ -4937,7 +4937,6 @@ var all_available_cards = {
 		},
 		quote: '\"If they see me, I\'m out of here!\"',
 	},
-	
 	guerrilla_fighter:{
 		name: 				'guerrilla fighter',
 		type: 				'creature',
@@ -4986,13 +4985,13 @@ var all_available_cards = {
 		},
 		quote: '\"Hit them where it hurts!\"',
 	},
-	
 	haunted_house:{
 		name: 				'haunted house',
 		type: 				'structure',
 		subtypes: 			['wall'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['sacrifice_ability'],
+		not_theme: 			['type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -5055,6 +5054,7 @@ var all_available_cards = {
 		subtypes: 			['food'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['type_structure','subtype_undead'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -5158,6 +5158,7 @@ var all_available_cards = {
 		subtypes: 			['weapon'],
 		color: 				['colorless'],
 		theme: 				['subtype_warrior'],
+		not_theme: 			['subtype_mage','arcane_bolts_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -5237,6 +5238,7 @@ var all_available_cards = {
 		subtypes: 			['human','clerk'],
 		color: 				['colorless'],
 		theme: 				['type_spell'],
+		not_theme: 			['type_structure','type_creature'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
