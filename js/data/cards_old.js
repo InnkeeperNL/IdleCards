@@ -8217,6 +8217,7 @@ var all_old_available_cards = {
 		health: 			3,
 		abilities: 			{},
 		quote: '\"It ain\'t much, but it will have to do.\"',
+		use_old: true,
 	},
 	peasant:{
 		name: 				'peasant',
