@@ -861,7 +861,8 @@ var all_old_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 1,
+		level_cost: 6,
+		level_cost_spell: 3,
 	},
 	burn:{
 		name_color: 	'rgba(255, 55, 55,0.9)',
@@ -5654,7 +5655,6 @@ var all_old_abilities = {
 		level_cost: 		1,
 	},
 	ghost_strike:{
-		name_color: 	'rgba(255,55,55,0.9)',
 		description: 	'Deals 1 physical death damage for every creature in your grave to {LEVEL} random non-undead enemy creature unit(s).',
 		cannot_proc_while_stunned: true,
 		min_ally_creature_cards_in_grave: 1,
@@ -9127,7 +9127,7 @@ var all_old_abilities = {
 		},
 		cost_factor: 	'full',
 	},
-	restore_hero:{
+	/*restore_hero:{
 		name_color: 	'rgba(245, 241, 42,0.9)',
 		description: 	'Restores up to {LEVEL} health of your hero.',
 		cannot_proc_while_stunned: true,
@@ -9154,7 +9154,7 @@ var all_old_abilities = {
 		level_cost: 			4,
 		level_cost_artifact: 	6,
 		level_cost_spell: 		1,
-	},
+	},*/
 	restoring_deaths:{
 		name_color: 	'rgba(160, 95, 250,0.9)',
 		description: 	'Restores {LEVEL} health to your hero when any ally creature is destroyed.',
@@ -11433,7 +11433,8 @@ var all_old_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 5,
+		level_cost: 12,
+		level_cost_spell: 6,
 	},
 	summon_peasant:{
 		name_color: 	'rgba(255,255,255,0.9)',
@@ -11980,7 +11981,6 @@ var all_old_abilities = {
 		level_cost: 	2,
 	},
 	turn_enemy:{
-		name_color: 	'rgba(255, 135, 249,0.9)',
 		description: 	'Turns a random enemy non-undead creature into an ally.',
 		max_ally_units: 4,
 		proc_amount: 	1,

@@ -1170,6 +1170,54 @@ var all_abilities = {
 		},
 		//animation: 	'combat_zoom',
 	},
+	cold_aura:{
+		description: 	'Deals {LEVEL} physical cold damage to any unit or hero that deals melee damage to it. Has a 25% chance to stun any unit or hero it deals damage to.',
+		proc: 			'receive_damage',
+		subtypes: 		['melee'],
+		proc_while_dead: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'frost',
+				type: 			'damage',
+				subtypes: 		['physical','cold','elemental'],
+				amount: 		'ability_level',
+				on_success:{
+					proc_chance:    25,
+					targets:	{
+						0:{
+							target: 	'any',
+							target_amount: 1,
+							position: 	'random',
+							origin_unit: 	true,
+							side: 		'any'
+						},
+					},
+					effects:{
+						0:{
+							type: 		'apply_stun',
+							subtypes: 	['stun'],
+							amount: 	1	
+						}
+					},
+				}
+			}
+		},
+		animation: 			'red_glow',
+		level_cost: 		2,
+		level_cost_hero: 	4,
+		average_hits: 		1,
+		cost_adjustment: 	1,
+	},
 	cold_strike:{
 		name_color: 	'rgba(255,55,55,0.9)',
 		description: 	'Deals physical cold melee damage equal to its power to the opposing unit. Has a 25% chance to stun any unit or hero it deals damage to. Will target the enemy hero if there is no opposing unit.',
@@ -2972,6 +3020,35 @@ var all_abilities = {
 		ability_level_cost_factors:{
 			resurrect: 		2,
 		},
+	},
+	final_sacrifice:{
+		description: 	'Destroys {LEVEL} ally unit(s) when destroyed.',
+		proc: 			'own_death',
+		proc_while_dead: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	'ability_level',
+				position: 		'random',
+				not_self: 		true,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'death',
+				type: 			'destroy',
+				subtypes: 		[],
+				amount: 		1,
+			},
+			
+		},
+		animation: 			'combat_zoom',
+		ability_level_cost_factors:{
+			resurrect: 		2,
+		},
+		level_cost: 		-3,
 	},
 	fire_aura:{
 		name_color: 	'rgba(255,55,55,0.9)',
@@ -6484,6 +6561,32 @@ var all_abilities = {
 		},
 		animation: 	'combat_zoom',
 		level_cost: 		8,
+	},
+	summon_structure:{
+		description: 	'Summons {LEVEL} structure unit(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_structure'],
+				card_id: 	'random',
+				card_type: 	'structure',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		20,
+		level_cost_spell: 	10,
 	},
 	summon_trap:{
 		description: 	'Summons {LEVEL} trap(s).',

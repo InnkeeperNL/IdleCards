@@ -825,7 +825,7 @@ var all_available_cards = {
 	bear:{
 		name: 				'bear',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','bear'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -3769,7 +3769,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{fire_bolt: 5},
+		abilities: 			{fire_bolt: 1, echo: 1},
 		quote: '\"When you need somethng done...\"',
 	},
 	fire_imp:{
@@ -5392,7 +5392,7 @@ var all_available_cards = {
 	hungry_wolf:{
 		name: 				'hungry wolf',
 		type: 				'creature',
-		subtypes: 			['animal','wolf'],
+		subtypes: 			['animal','canine'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -10971,7 +10971,7 @@ var all_available_cards = {
 	wolf_pack:{
 		name: 				'wolf pack',
 		type: 				'creature',
-		subtypes: 			['animal','wolf'],
+		subtypes: 			['animal','canine'],
 		color: 				['colorless'],
 		theme: 				['aoe'],
 		craft_theme: 		[],
@@ -11614,6 +11614,7 @@ $.each(all_old_available_cards, function(card_id, card_info){
 					var matched_this = true;
 					if(new_card_info['power'] != card_info['power']){matched_this = false;}
 					if(new_card_info['health'] != card_info['health']){matched_this = false;}
+					if(new_card_info['type'] != card_info['type']){matched_this = false;}
 					if(count_object(card_info['abilities']) == count_object(new_card_info['abilities']))
 					{
 						$.each(card_info['abilities'], function(ability_id, ability_level){
