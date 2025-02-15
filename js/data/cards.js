@@ -1243,7 +1243,7 @@ var all_available_cards = {
 	blood_charm:{
 		name: 				'blood charm',
 		type: 				'artifact',
-		subtypes: 			['charm'],
+		subtypes: 			['trinket'],
 		color: 				['colorless'],
 		theme: 				['subtype_witch'],
 		craft_theme: 		[],
@@ -1455,7 +1455,7 @@ var all_available_cards = {
 	box_of_rage:{
 		name: 				'box of rage',
 		type: 				'artifact',
-		subtypes: 			['charm'],
+		subtypes: 			['trinket'],
 		color: 				['colorless'],
 		theme: 				['subtype_warrior'],
 		not_theme: 			['type_structure','subtype_mage'],
@@ -1787,7 +1787,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{consume_creature: 1, strike: 1, feast: 1},
 		hero_version: 			{
-			theme: 				['type_structure','summon_creature_ability'],
+			theme: 				['curse_ability','summon_creature_ability','ally_creature_death_proc_ability','own_death_proc_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -2447,7 +2447,7 @@ var all_available_cards = {
 	cursed_skull:{
 		name: 				'cursed skull',
 		type: 				'artifact',
-		subtypes: 			['charm'],
+		subtypes: 			['trinket'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		['curse','curse','curse','curse'],
@@ -5324,6 +5324,7 @@ var all_available_cards = {
 		subtypes: 			['wall'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['type_structure','subtype_undead'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -5462,7 +5463,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['weather'],
 		color: 				['colorless'],
-		theme: 				['aoe'],
+		theme: 				[],
 		craft_theme: 		['storm'],
 		pick_chance: 		1,
 		time: 				1,
@@ -5597,7 +5598,6 @@ var all_available_cards = {
 		},
 		quote: '\"Me bring fire and flame!\"',
 	},
-	
 	imp_front_runner:{
 		name: 				'imp front runner',
 		type: 				'creature',
@@ -5621,7 +5621,6 @@ var all_available_cards = {
 		},
 		quote: '\"C\'mon guys, there is an opening!\"',
 	},
-	
 	imp_horde:{
 		name: 				'imp horde',
 		type: 				'spell',
@@ -5644,6 +5643,7 @@ var all_available_cards = {
 		subtypes: 			['daemon','imp','warrior'],
 		color: 				['colorless'],
 		theme: 				['subtype_imp'],
+		not_theme: 			['empower_ability','subtype_warrior'],
 		craft_theme: 		['subtype_imp','subtype_imp','empower_ability'],
 		pick_chance: 		1,
 		time: 				1,
@@ -5698,7 +5698,6 @@ var all_available_cards = {
 		armor: 				0,
 		health: 			6,
 		abilities: 			{flame_strike: 1},
-		verified: 			true,
 		hero_version: 			{
 			theme: 				['subtype_daemon','subtype_imp'],
 			power: 				3,
@@ -5771,6 +5770,7 @@ var all_available_cards = {
 		subtypes: 			['wall'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['type_structure','subtype_undead'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -5850,7 +5850,6 @@ var all_available_cards = {
 		},
 		quote: '\"I do smash!\"',
 	},
-	
 	kleptomaniac:{
 		name: 				'kleptomaniac',
 		type: 				'creature',
@@ -5925,7 +5924,7 @@ var all_available_cards = {
 		type: 				'creature',
 		subtypes: 			['animal'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['sacrifice_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -5935,7 +5934,7 @@ var all_available_cards = {
 		health: 			3,
 		abilities: 			{strike: 1, final_bolster_hero: 2},
 		hero_version: 			{
-			theme: 				['subtype_animal','bolster_ability','sacrifice_ability'],
+			theme: 				['subtype_animal','bolster_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -5946,7 +5945,7 @@ var all_available_cards = {
 	lava_lizard:{
 		name: 				'lava lizard',
 		type: 				'creature',
-		subtypes: 			['animal','lizard'],
+		subtypes: 			['animal','reptile'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -5958,7 +5957,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, venom: 1, fire_aura: 1},
 		hero_version: 			{
-			theme: 				['subtype_lizard','poison_ability','fire_ability'],
+			theme: 				['subtype_reptile','poison_ability','fire_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -5969,7 +5968,7 @@ var all_available_cards = {
 	lava_newt:{
 		name: 				'lava newt',
 		type: 				'creature',
-		subtypes: 			['animal','lizard'],
+		subtypes: 			['animal','reptile'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -5982,7 +5981,7 @@ var all_available_cards = {
 		health: 			3,
 		abilities: 			{strike: 1, venom: 1, fire_aura: 1},
 		hero_version: 			{
-			theme: 				['subtype_lizard','poison_ability','fire_ability'],
+			theme: 				['subtype_reptile','poison_ability','fire_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -5990,11 +5989,10 @@ var all_available_cards = {
 		},
 		quote: '\"Cute, but don\'t pet it.\"',
 	},
-	
 	lava_tegu:{
 		name: 				'lava tegu',
 		type: 				'creature',
-		subtypes: 			['animal','lizard'],
+		subtypes: 			['animal','reptile'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -6007,7 +6005,7 @@ var all_available_cards = {
 		health: 			8,
 		abilities: 			{strike: 1, venom: 1, fire_aura: 1},
 		hero_version: 			{
-			theme: 				['subtype_lizard','poison_ability','fire_ability'],
+			theme: 				['subtype_reptile','poison_ability','fire_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -6021,6 +6019,7 @@ var all_available_cards = {
 		subtypes: 			['plant','wall'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -6089,7 +6088,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['arcane'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['evade_ability'],
 		craft_theme: 		['flying_ability','subtype_mage'],
 		pick_chance: 		1,
 		time: 				1,
@@ -6115,7 +6114,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, draw: 1},
 		hero_version: 			{
-			theme: 				['subtype_human','draw_cards_ability'],
+			theme: 				['subtype_human','draw_cards_ability','deck_control_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -6139,7 +6138,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{draw: 3, final_discard: 1},
 		hero_version: 			{
-			theme: 				['draw_cards_ability','subtype_human'],
+			theme: 				['draw_cards_ability','subtype_human','deck_control_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -6148,11 +6147,10 @@ var all_available_cards = {
 		},
 		quote: '\"It\'s amazing, what you can find.\"',
 	},
-	
 	lizardman:{
 		name: 				'lizardman',
 		type: 				'creature',
-		subtypes: 			['lizard'],
+		subtypes: 			['reptile'],
 		color: 				['colorless'],
 		theme: 				['jungle'],
 		craft_theme: 		[],
@@ -6164,7 +6162,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, venom: 1},
 		hero_version: 			{
-			theme: 				['subtype_lizard','poison_ability'],
+			theme: 				['subtype_reptile','poison_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -6175,7 +6173,7 @@ var all_available_cards = {
 	lizardman_warrior:{
 		name: 				'lizardman warrior',
 		type: 				'creature',
-		subtypes: 			['lizard','warrior'],
+		subtypes: 			['reptile','warrior'],
 		color: 				['colorless'],
 		theme: 				['jungle'],
 		craft_theme: 		[],
@@ -6187,7 +6185,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{strike: 1, venom: 2},
 		hero_version: 			{
-			theme: 				['subtype_lizard','poison_ability'],
+			theme: 				['subtype_reptile','poison_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -6248,7 +6246,7 @@ var all_available_cards = {
 		type: 				'creature',
 		subtypes: 			['human','clerk'],
 		color: 				['purple'],
-		theme: 				[],
+		theme: 				['type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -6307,7 +6305,6 @@ var all_available_cards = {
 		},
 		quote: '\"It loves shinies.\"',
 	},
-	
 	mana_bulb:{
 		name: 				'mana bulb',
 		type: 				'artifact',
@@ -6365,13 +6362,13 @@ var all_available_cards = {
 		quote: '\"Small, but handy in an emergency.\"',
 		selfdestructs: true,
 	},
-	
 	mana_mage:{
 		name: 				'mana mage',
 		type: 				'creature',
 		subtypes: 			['human','mage'],
 		color: 				['colorless'],
 		theme: 				['type_spell'],
+		not_theme: 			['subtype_mage','arcane_bolts_ability'],
 		craft_theme: 		['arcane_bolts','type_spell','type_spell','type_spell','echo'],
 		pick_chance: 		1,
 		time: 				1,
@@ -6395,6 +6392,7 @@ var all_available_cards = {
 		subtypes: 			['human','rogue','mage'],
 		color: 				['colorless'],
 		theme: 				['type_spell'],
+		not_theme: 			['subtype_mage','arcane_bolts_ability'],
 		craft_theme: 		['arcane_bolts','type_spell','type_spell','type_spell','echo'],
 		pick_chance: 		1,
 		time: 				1,
@@ -6419,6 +6417,7 @@ var all_available_cards = {
 		subtypes: 			['human','mage'],
 		color: 				['colorless'],
 		theme: 				['type_spell'],
+		not_theme: 			['subtype_mage','arcane_bolts_ability'],
 		craft_theme: 		['arcane_bolts','type_spell','type_spell','type_spell','echo'],
 		pick_chance: 		1,
 		time: 				1,
@@ -6464,7 +6463,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['aoe'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -6482,6 +6481,7 @@ var all_available_cards = {
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		['type_structure'],
+		not_theme: 			['type_creature','subtype_human'],
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard-2025-02-11T162223.675.jpg',
@@ -6504,6 +6504,7 @@ var all_available_cards = {
 		subtypes: 			['human','clerk'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['subtype_mage'],
 		craft_theme: 		['poison_ability'],
 		pick_chance: 		1,
 		time: 				1,
@@ -6528,6 +6529,7 @@ var all_available_cards = {
 		subtypes: 			['human','rogue'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['empower_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -6573,7 +6575,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['resurrect_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -6590,6 +6592,7 @@ var all_available_cards = {
 		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['type_structure','subtype_undead'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -6613,7 +6616,7 @@ var all_available_cards = {
 		subtypes: 			['golem'],
 		color: 				['colorless'],
 		theme: 				[],
-		not_theme: 			['subtype_golem','type_structure'],
+		not_theme: 			['subtype_golem','type_structure','subtype_undead'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -6654,6 +6657,7 @@ var all_available_cards = {
 		subtypes: 			['tool'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['type_structure','subtype_undead'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -6887,7 +6891,6 @@ var all_available_cards = {
 		abilities: 			{damage_hero: 2, discard_enemy: 1},
 		quote: '\"It hurts, doesn\'t it?\"',
 	},
-	
 	mind_clamp:{
 		name: 				'mind clamp',
 		type: 				'artifact',
@@ -6954,7 +6957,6 @@ var all_available_cards = {
 		abilities: 			{discard_enemy: 1},
 		quote: '\"It stings, doesn\'t it?\"',
 	},
-	
 	mind_storm:{
 		name: 				'mind storm',
 		type: 				'spell',
@@ -7010,11 +7012,10 @@ var all_available_cards = {
 		quote: '\"Reap the nightmare.\"',
 		max_in_deck: 		2,
 	},
-	
 	nightmare:{
 		name: 				'nightmare',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','horror'],
 		color: 				['colorless'],
 		theme: 				['draw_cards_ability'],
 		craft_theme: 		[],
@@ -7037,7 +7038,7 @@ var all_available_cards = {
 	nightmare_hound:{
 		name: 				'nightmare hound',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','horror'],
 		color: 				['colorless'],
 		theme: 				['draw_cards_ability'],
 		craft_theme: 		[],
@@ -7132,6 +7133,7 @@ var all_available_cards = {
 		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['empower_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -7171,6 +7173,7 @@ var all_available_cards = {
 		subtypes: 			['orb'],
 		color: 				['colorless'],
 		theme: 				['subtype_warrior'],
+		not_theme: 			['type_structure','subtype_mage'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -7226,6 +7229,7 @@ var all_available_cards = {
 		subtypes: 			['weapon'],
 		color: 				['colorless'],
 		theme: 				['subtype_warrior'],
+		not_theme: 			['subtype_mage'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -7241,7 +7245,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['deck_control_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -7525,7 +7529,6 @@ var all_available_cards = {
 		},
 		quote: '\"If only those pistols reloaded faster.\"',
 	},
-	
 	pirate_runner:{
 		name: 				'pirate runner',
 		type: 				'creature',
@@ -7572,7 +7575,6 @@ var all_available_cards = {
 		},
 		quote: '\"Get the loot before they see you.\"',
 	},
-	
 	plated_fungus:{
 		name: 				'plated fungus',
 		type: 				'creature',
@@ -7797,6 +7799,7 @@ var all_available_cards = {
 		subtypes: 			['tactic'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['type_structure','subtype_mage'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -7813,7 +7816,7 @@ var all_available_cards = {
 		subtypes: 			['human','mage'],
 		color: 				['colorless'],
 		theme: 				[],
-		not_theme: 			['subtype_mage'],
+		not_theme: 			['subtype_mage','type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -7836,7 +7839,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['curse'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['aoe'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -7876,6 +7879,7 @@ var all_available_cards = {
 		subtypes: 			['human','mage'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['empower_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -7946,6 +7950,7 @@ var all_available_cards = {
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
 		theme: 				['resurrect_ability'],
+		not_theme: 			['type_structure'],
 		craft_theme: 		['resurrect_ability','resurrect_ability'],
 		pick_chance: 		1,
 		time: 				1,
@@ -7961,7 +7966,8 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['flag'],
 		color: 				['colorless'],
-		theme: 				['summon_creature_ability'],
+		theme: 				['summon_creature_ability','move_ally_to_hand_ability'],
+		not_theme: 			['type_structure'],
 		craft_theme: 		['empower','move_ally_to_hand'],
 		pick_chance: 		1,
 		time: 				1,
@@ -7978,6 +7984,7 @@ var all_available_cards = {
 		subtypes: 			['tactic'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['type_structure','subtype_mage'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -7994,7 +8001,8 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['summon_creature_ability'],
+		not_theme: 			['type_structure','subtype_undead'],
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard-2025-01-04T160701.212.jpg',
@@ -8011,6 +8019,7 @@ var all_available_cards = {
 		subtypes: 			['human','mage'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['type_structure','subtype_skeleton'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -8113,7 +8122,6 @@ var all_available_cards = {
 		abilities: 			{draw: 2},
 		quote: '\"Let us study.\"',
 	},
-	
 	righteous_lady:{
 		name: 				'righteous lady',
 		type: 				'creature',
@@ -8321,7 +8329,6 @@ var all_available_cards = {
 		},
 		quote: '\"Blades and fire.\"',
 	},
-	
 	rogue_light_bringer:{
 		name: 				'rogue light bringer',
 		type: 				'creature',
@@ -8445,6 +8452,7 @@ var all_available_cards = {
 		subtypes: 			['weapon'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['type_structure','subtype_undead'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -8477,6 +8485,7 @@ var all_available_cards = {
 		subtypes: 			['plant'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['subtype_golem'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -8563,6 +8572,7 @@ var all_available_cards = {
 		subtypes: 			['golem'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['empower_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -8796,7 +8806,6 @@ var all_available_cards = {
 		},
 		quote: '\"Over here!\"',
 	},
-	
 	skeletal_apprentice:{
 		name: 				'skeletal apprentice',
 		type: 				'creature',
@@ -8844,7 +8853,6 @@ var all_available_cards = {
 		},
 		quote: '\"Didn\'t that used to be Fred?\"',
 	},
-	
 	skeletal_bull:{
 		name: 				'skeletal bull',
 		type: 				'creature',
@@ -8937,13 +8945,13 @@ var all_available_cards = {
 		},
 		quote: '\"Didn\'t that used to be Jimmy?\"',
 	},
-	
 	skeletal_sacrifice:{
 		name: 				'skeletal sacrifice',
 		type: 				'spell',
 		subtypes: 			['ritual','summon'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['summon_ally_creature_ability','subtype_undead'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -8955,7 +8963,6 @@ var all_available_cards = {
 		abilities: 			{sacrifice_living_creature: 1, raise_skeleton: 2, maximum_allies: 4},
 		quote: '\"The living bore me. Bring me more death!\"',
 	},
-	
 	skeletal_scout:{
 		name: 				'skeletal scout',
 		type: 				'creature',
@@ -9141,6 +9148,7 @@ var all_available_cards = {
 		subtypes: 			['weapon'],
 		color: 				['colorless'],
 		theme: 				['subtype_warrior'],
+		not_theme: 			['type_structure','subtype_undead','subtype_mage'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -9190,7 +9198,6 @@ var all_available_cards = {
 		abilities: 			{ally_runs_away: 3, echo: 1},
 		quote: '\"Move around them!\"',
 	},
-	
 	snowballer:{
 		name: 				'snowballer',
 		type: 				'creature',
@@ -9266,6 +9273,7 @@ var all_available_cards = {
 		subtypes: 			['gear'],
 		color: 				['colorless'],
 		theme: 				['ally_creature_death_proc_ability','own_death_proc_ability'],
+		not_theme: 			['type_structure','subtype_golem'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -9281,7 +9289,8 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['orb'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['ally_creature_death_proc_ability','own_death_proc_ability'],
+		not_theme: 			['type_structure','subtype_golem'],
 		craft_theme: 		['curse_ability','curse_ability'],
 		pick_chance: 		1,
 		time: 				1,
@@ -9292,7 +9301,6 @@ var all_available_cards = {
 		abilities: 			{cursed_deaths_hv: 1},
 		quote: '\"Share the pain of death.\"',
 	},
-	
 	soul_huntress:{
 		name: 				'soul huntress',
 		type: 				'creature',
@@ -9339,7 +9347,6 @@ var all_available_cards = {
 		},
 		quote: '\"You will pay for my services.\"',
 	},
-	
 	sparrow:{
 		name: 				'sparrow',
 		type: 				'creature',
@@ -9367,7 +9374,7 @@ var all_available_cards = {
 	spell_ward:{
 		name: 				'spell ward',
 		type: 				'artifact',
-		subtypes: 			['charm'],
+		subtypes: 			['trinket'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		['counter_spell_ability','counter_spell_ability'],
@@ -9409,6 +9416,7 @@ var all_available_cards = {
 		subtypes: 			['human','mage'],
 		color: 				['colorless'],
 		theme: 				['type_spell'],
+		not_theme: 			['subtype_mage','arcane_bolts_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -9426,13 +9434,13 @@ var all_available_cards = {
 		},
 		quote: '\"Feed me mana!\"',
 	},
-	
 	spell_staff:{
 		name: 				'spell staff',
 		type: 				'artifact',
 		subtypes: 			['weapon'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['arcane_bolts_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -9475,7 +9483,6 @@ var all_available_cards = {
 		abilities: 			{reclaim_spells: 1},
 		quote: '\"Infinite knowledge.\"',
 	},
-	
 	spider:{
 		name: 				'spider',
 		type: 				'creature',
@@ -9714,9 +9721,9 @@ var all_available_cards = {
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard-2025-02-08T051138.375.jpg',
-		power: 				1,
+		power: 				2,
 		armor: 				0,
-		health: 			4,
+		health: 			2,
 		abilities: 			{strike: 1, submerged: 1},
 		hero_version: 			{
 			theme: 				['subtype_aquatic','subtype_animal','submerge_ability'],
@@ -9795,6 +9802,7 @@ var all_available_cards = {
 		subtypes: 			['food'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['subtype_mage'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -9935,6 +9943,7 @@ var all_available_cards = {
 		subtypes: 			['tactic'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['subtype_skeleton'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -10006,6 +10015,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{shooting_entry: 1, homebound: 1},
 		quote: '\"Just pick it up to use it again.\"',
+		selfdestructs: true,
 	},
 	tiger:{
 		name: 				'tiger',
@@ -10395,6 +10405,7 @@ var all_available_cards = {
 		subtypes: 			['plant'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['type_structure','subtype_golem'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -10412,13 +10423,13 @@ var all_available_cards = {
 		},
 		quote: '\"Even the plants try to kill you!\"',
 	},
-	
 	vine_master:{
 		name: 				'vine master',
 		type: 				'structure',
 		subtypes: 			['plant','mage'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['type_structure','subtype_golem'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -10442,6 +10453,7 @@ var all_available_cards = {
 		subtypes: 			['plant','animal'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['type_structure','subtype_golem'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -10459,11 +10471,10 @@ var all_available_cards = {
 		},
 		quote: '\"Even the plants try to eat you!\"',
 	},
-	
 	viper:{
 		name: 				'viper',
 		type: 				'creature',
-		subtypes: 			['animal','lizard'],
+		subtypes: 			['animal','reptile'],
 		color: 				['colorless'],
 		theme: 				['jungle'],
 		craft_theme: 		[],
@@ -10476,7 +10487,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, venom: 2},
 		verified: 			true,
 		hero_version: 			{
-			theme: 				['poison_ability','subtype_lizard'],
+			theme: 				['poison_ability','subtype_reptile'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -10507,7 +10518,6 @@ var all_available_cards = {
 		},
 		quote: '\"Can you see it circle?\"',
 	},
-	
 	walking_fungus:{
 		name: 				'walking fungus',
 		type: 				'creature',
@@ -11044,7 +11054,6 @@ var all_available_cards = {
 		quote: '\"You have to use it the right way.\"',
 		max_in_deck: 1,
 	},
-	
 	zealot:{
 		name: 				'zealot',
 		type: 				'creature',
@@ -11587,14 +11596,14 @@ var all_available_cards = {
 
 }
 
-/*$.each(all_old_available_cards, function(card_id, card_info){
-	if(all_available_cards[card_id] == undefined)
+$.each(all_old_available_cards, function(card_id, card_info){
+	if(all_available_cards[card_id] == undefined && card_info['use_old'] != undefined && card_info['use_old'] == true)
 	{
 		var use_old_card = true;
 		if(card_info['type'] != 'artifact' && card_info['type'] != 'spell' && card_info['type'] != 'creature' && card_info['type'] != 'structure'){use_old_card = false;}
-		if(card_info.name.replace('icatu','') != card_info.name){use_old_card = false;}
+		/*if(card_info.name.replace('icatu','') != card_info.name){use_old_card = false;}
 		if(card_info.name.replace('jotnar','') != card_info.name){use_old_card = false;}
-		if(card_info.name.replace('thief','') != card_info.name){use_old_card = false;}
+		if(card_info.name.replace('thief','') != card_info.name){use_old_card = false;}*/
 
 		var matched_new_card = false;
 		if(use_old_card == true)
@@ -11667,9 +11676,10 @@ var all_available_cards = {
 		}
 	}
 });
-*/
+
 $.each(all_available_cards, function(card_id, card_info){
 	if(card_info['color'] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
+	if(card_info['color'][0] != undefined && card_info['color'][0] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
 });
 
 function calculate_card_value(card_id, show_calc){

@@ -4265,7 +4265,7 @@ var all_old_abilities = {
 						0:{
 							projectile:	'healing',
 							type: 		'healing',
-							subtypes: 	['healing','restore_hero'],
+							subtypes: 	['healing','heal_hero'],
 							amount: 	'ability_level'
 						}
 					},
@@ -4840,7 +4840,7 @@ var all_old_abilities = {
 			0:{
 				projectile:		'healing',
 				type: 			'healing',
-				subtypes: 		['healing','restore_hero'],
+				subtypes: 		['healing','heal_hero'],
 				amount: 		'ability_level'
 			}
 		},
@@ -7203,8 +7203,7 @@ var all_old_abilities = {
 		level_cost_hero: 	1.5,
 	},
 	marred_ghosts:{
-		name_color: 	'rgba(255,255,255,0.9)',
-		description: 	'When an enemy deals damage to your hero, there is a 25% chance this summons {LEVEL} ghost creature(s).',
+		description: 	'When an enemy deals damage to your hero, there is a 25% chance this summons {LEVEL} ghost(s).',
 		proc: 			'ally_hero_damaged',
 		proc_chance: 	25,
 		max_ally_units: 4,
@@ -7221,14 +7220,12 @@ var all_old_abilities = {
 				type: 		'summon_unit',
 				subtypes: 	['summon_ally','summon_creature'],
 				type: 		'summon_unit',
-				card_id: 	'random',
-				card_type: 	'creature',
-				card_subtype: 'ghost',
+				card_id: 	'ghost',
 				amount: 	1,
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 	4,
+		level_cost: 	2,
 	},
 	marred_goblins:{
 		name_color: 	'rgba(255,255,255,0.9)',
@@ -7441,7 +7438,7 @@ var all_old_abilities = {
 			0:{
 				projectile:		'healing',
 				type: 			'healing',
-				subtypes: 		['healing','restore_hero'],
+				subtypes: 		['healing','heal_hero'],
 				amount: 		'ability_level'
 			}
 		},
@@ -8770,7 +8767,7 @@ var all_old_abilities = {
 			}
 		},
 		//animation: 		'combat_zoom',
-		level_cost: 	6,
+		level_cost: 	12,
 		cost_on_top: 	true,
 	},
 	release_doom:{
@@ -8823,8 +8820,7 @@ var all_old_abilities = {
 		cost_on_top: 		true,
 	},
 	release_ghost:{
-		name_color: 	'rgba(255,255,255,0.9)',
-		description: 	'Summons {LEVEL} ghost creature(s) when destroyed.',
+		description: 	'Summons {LEVEL} ghost(s) when destroyed.',
 		proc: 			'own_death',
 		proc_while_dead: true,
 		max_ally_units: 4,
@@ -8841,9 +8837,7 @@ var all_old_abilities = {
 				type: 		'summon_unit',
 				subtypes: 	['summon_ally','summon_creature'],
 				type: 		'summon_unit',
-				card_id: 	'random',
-				card_type: 	'creature',
-				card_subtype: 'ghost',
+				card_id: 	'ghost',
 				amount: 	1,
 			}
 		},
@@ -9152,7 +9146,7 @@ var all_old_abilities = {
 			0:{
 				projectile:		'healing',
 				type: 		'healing',
-				subtypes: 	['healing','restore_hero'],
+				subtypes: 	['healing','heal_hero'],
 				amount: 	'ability_level'
 			}
 		},
@@ -9181,13 +9175,13 @@ var all_old_abilities = {
 			0:{
 				projectile:		'healing',
 				type: 			'healing',
-				subtypes: 		['healing','restore_hero','restoring_deaths'],
+				subtypes: 		['healing','heal_hero','restoring_deaths'],
 				amount: 		'ability_level'
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	2,
-		level_cost_artifact: 4,
+		level_cost: 	3,
+		level_cost_artifact: 5,
 	},
 	restoring_entries:{
 		name_color: 	'rgba(245, 241, 42,0.9)',
@@ -9210,13 +9204,13 @@ var all_old_abilities = {
 			0:{
 				projectile:		'healing',
 				type: 			'healing',
-				subtypes: 		['healing','restore_hero'],
+				subtypes: 		['healing','heal_hero'],
 				amount: 		'ability_level'
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	2,
-		level_cost_artifact: 4,
+		level_cost: 	3,
+		level_cost_artifact: 5,
 	},
 	restoring_entry:{
 		name_color: 	'rgba(245, 241, 42,0.9)',
@@ -9239,7 +9233,7 @@ var all_old_abilities = {
 			0:{
 				projectile:		'healing',
 				type: 			'healing',
-				subtypes: 		['healing','restore_hero'],
+				subtypes: 		['healing','heal_hero'],
 				amount: 		'ability_level'
 			}
 		},
@@ -9267,13 +9261,13 @@ var all_old_abilities = {
 			0:{
 				projectile:		'healing',
 				type: 			'healing',
-				subtypes: 		['healing','restore_hero','on_spellcast'],
+				subtypes: 		['healing','heal_hero','on_spellcast'],
 				amount: 		'ability_level'
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	2,
-		level_cost_artifact: 4.1,
+		level_cost: 	3,
+		level_cost_artifact: 5,
 	},
 	resurrect:{
 		name_color: 	'rgba(160, 95, 250,0.9)',
@@ -11465,7 +11459,8 @@ var all_old_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		5,
+		level_cost: 		12,
+		level_cost_spell: 	6,
 	},
 	summon_skeleton:{
 		name_color: 	'rgba(255,255,255,0.9)',
@@ -11575,7 +11570,8 @@ var all_old_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 3,
+		level_cost: 8,
+		level_cost_spell: 	4,
 	},
 	sustain_ally:{
 		name_color: 	'rgba(55,255,55,0.9)',
@@ -11976,13 +11972,12 @@ var all_old_abilities = {
 			0:{
 				projectile: 'healing',
 				type: 		'healing',
-				subtypes: 	['healing','trophy_kill'],
+				subtypes: 	['healing','trophy_kill','heal_hero'],
 				amount: 	'ability_level'
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1,
-		level_cost_hero: 	2,
+		level_cost: 	2,
 	},
 	turn_enemy:{
 		name_color: 	'rgba(255, 135, 249,0.9)',
@@ -12076,11 +12071,10 @@ var all_old_abilities = {
 	},
 
 	unsummon_dead:{
-		name_color: 	'rgba(171, 203, 255,0.9)',
-		description: 	'When any ally creature unit dies, returns it to your hand. Will not unsummon summoned units. Can be used {LEVEL} time(s).',
+		description: 	'When any ally creature unit dies, there is a {LEVEL}0% chance it returns to your hand. Will not unsummon summoned units.',
 		cannot_proc_while_stunned: true,
 		proc: 			'ally_creature_death',
-		reduce_skill_after_use: 'unsummon_dead',
+		proc_chance: 	25,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -12103,8 +12097,8 @@ var all_old_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	3,
-		level_cost_hero: 	1,
+		level_cost: 		2,
+		level_cost_structure: 	1.5,
 	},
 	vampiric:{
 		name_color: 	'rgba(160, 95, 250,0.9)',

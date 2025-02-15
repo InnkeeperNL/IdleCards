@@ -660,7 +660,7 @@ var all_abilities = {
 		level_cost_spell: 	2,
 	},
 	break:{
-		description: 	'Destroys up to a total of {LEVEL} enemy artifacts or golems.',
+		description: 	'Destroys up to a total of {LEVEL} enemy artifact(s) or golem(s).',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use: 'break',
@@ -1346,7 +1346,7 @@ var all_abilities = {
 		
 	},
 	consume_creature:{
-		description: 	'Each turn, this destroys 1 random non-undead ally creature unit with no more than {LEVEL} health. If it does, This gains {LEVEL} temporary power and heals itself by {LEVEL}. Will target units with the lowest cost first.',
+		description: 	'Each turn, this destroys 1 random non-undead ally creature unit with no more than 1 health. If it does, This gains {LEVEL} temporary power and heals itself by {LEVEL}. Will target units with the lowest cost first.',
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
@@ -1356,7 +1356,7 @@ var all_abilities = {
 				not_self: 	true,
 				not_types: 	['structure','artifact'],
 				max_abilities: 	{undead: 0},
-				max_hp: 	'ability_level',
+				max_hp: 	1,
 				lowest_cost: true,
 				side: 		'ally'
 			},
@@ -1746,7 +1746,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	2,
-		level_cost_artifact: 3,
+		level_cost_artifact: 2,
 	},
 	cursed_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, this will apply {LEVEL} curse to it.',
@@ -5129,6 +5129,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		3,
+		level_cost_artifact: 5,
 		level_cost_spell: 	1.5,
 	},
 	restoring_deaths:{
@@ -6981,7 +6982,7 @@ var all_abilities = {
 }
 
 
-/*$.each(all_old_abilities, function(ability_id, ability_info){
+$.each(all_old_abilities, function(ability_id, ability_info){
 	if(all_abilities[ability_id] == undefined)
 	{
 		var use_old_ability = true;
@@ -6993,7 +6994,7 @@ var all_abilities = {
 			all_abilities[ability_id] = new_ability;
 		}
 	}
-});*/
+});
 
 //generate_abilities();
 var not_craft_themes = [
