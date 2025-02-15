@@ -37,7 +37,6 @@ var all_old_available_cards = {
 		abilities: 			{air_bolt: 1, echo: 1},
 		quote: '\"Wind can push over the strongest warrior.\"',
 		max_in_deck: 		1,
-		use_old: true,
 	},
 	air_mage:{
 		name: 				'air mage',
@@ -61,7 +60,6 @@ var all_old_available_cards = {
 			abilities: 			{air_bolt_hv: 2, evade: 1},
 		},
 		quote: '\"The mages of Gu\'nar have mastered the element of air.\"',
-		use_old: true,
 	},
 	alchemists_lab:{
 		name: 				'alchemist\'s lab',
@@ -158,7 +156,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, evade: 1, plated: 1},
 		},
 		quote: '\"So lifelike!\"',
-		use_old: true,
 	},
 	angel_statue:{
 		name: 				'angel statue',
@@ -207,8 +204,7 @@ var all_old_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, flying: 1},
 		},
-		quote: '\"They fight with divine power.\"',
-		use_old: true,
+		quote: '\"They fight with divine power.\"',	
 	},
 	angry_mob:{
 		name: 				'angry mob',
@@ -2995,7 +2991,6 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{earth_bolt: 1, echo: 1},
 		quote: '\"There once was a little boy with just a rock.\"',
-		use_old: true,
 	},
 	earth_elemental:{
 		name: 				'earth elemental',
@@ -6011,7 +6006,7 @@ var all_old_available_cards = {
 		image: 				'cards/dream_TradingCard-2023-04-07T062417.jpg',
 		power: 				2,
 		armor: 				0,
-		health: 			2,
+		health: 			4,
 		abilities: 			{guard: 1, strike: 1},
 		hero_version: 			{
 			theme: 				['enrage_ability','subtype_animal','active_healing_ability','subtype_guard'],
@@ -6572,8 +6567,8 @@ var all_old_available_cards = {
 		image: 				'cards/dream_TradingCard-2023-03-23T062352.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			1,
-		abilities: 			{flame_strike: 1, steal: 1},
+		health: 			4,
+		abilities: 			{flame_strike: 1, run_away: 1, steal: 1},
 		hero_version: 			{
 			theme: 				['discard_enemy_ability','hell','subtype_imp'],
 			power: 				2,
@@ -6582,7 +6577,6 @@ var all_old_available_cards = {
 			abilities: 			{flame_strike_hv: 1, evade: 1},
 		},
 		quote: '\"Hihi!\"',
-		use_old: true,
 	},
 	imp_warrior:{
 		name: 				'imp warrior',
@@ -7419,7 +7413,7 @@ var all_old_available_cards = {
 		image_position: 	'top right',
 		power: 				1,
 		armor: 				0,
-		health: 			4,
+		health: 			5,
 		abilities: 			{strike: 1, final_grant_charge: 1},
 		hero_version: 			{
 			theme: 				['movement_ability','subtype_animal','subtype_horse'],
@@ -11946,7 +11940,6 @@ var all_old_available_cards = {
 		abilities: 			{water_bolt: 1, echo: 1},
 		quote: '\"It may be a liquid, but it can still hurt.\"',
 		max_in_deck: 		1,
-		use_old: true,
 	},
 	water_mage:{
 		name: 				'water mage',

@@ -3525,9 +3525,8 @@ var all_old_abilities = {
 		cost_factor: 	'full',
 	},
 	elemental_bolt:{
-		ability_subtypes: ['fire','air','water','earth','elemental'],
-		name_color: 	'rgba(255,55,55,0.9)',
-		description: 	'Fires a random elemental bolt at an enemy, dealing {LEVEL} physical or magical projectile damage. Will target the enemy hero if there are no enemy units.',
+		ability_subtypes: ['fire','cold','elemental'],
+		description: 	'Fires a fire or frost bolt at an enemy, dealing {LEVEL} magical or physical projectile damage. Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		targets:	{
@@ -3543,7 +3542,7 @@ var all_old_abilities = {
 			0:{
 				type: 			'random_ability',
 				subtypes: 		[],
-				ability_options: ['fire_bolt','earth_bolt','water_bolt','air_bolt'],
+				ability_options: ['fire_bolt','frost_bolt_hv'],
 				amount: 		'ability_level'
 			}
 		},
@@ -3553,10 +3552,9 @@ var all_old_abilities = {
 		average_hits: 		1,
 	},
 	elemental_bolt_hv:{
-		ability_subtypes: ['fire','air','water','earth','elemental'],
+		ability_subtypes: ['fire','cold','elemental'],
 		name: 			'elemental bolt',
-		name_color: 	'rgba(255,55,55,0.9)',
-		description: 	'Fires a random elemental bolt at an enemy, dealing {LEVEL} physical or magical projectile damage. Will target the enemy hero if there are no enemy units.',
+		description: 	'Fires a fire or frost bolt at an enemy, dealing {LEVEL} magical or physical projectile damage.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		targets:	{
@@ -3572,7 +3570,7 @@ var all_old_abilities = {
 			0:{
 				type: 			'random_ability',
 				subtypes: 		[],
-				ability_options: ['fire_bolt_hv','earth_bolt_hv','water_bolt_hv','air_bolt_hv'],
+				ability_options: ['fire_bolt_hv','frost_bolt_hv'],
 				amount: 		'ability_level'
 			}
 		},
@@ -3960,7 +3958,6 @@ var all_old_abilities = {
 		level_cost: 	0.5,
 	},
 	energised_hatch:{
-		name_color: 	'rgba(171, 203, 255,0.9)',
 		description: 	'Each turn, if this has {LEVEL} or more energy and there is a free unit slot, this has a 10% chance per energy to summon a random creature with a cost equal to the current energy. If it does, this is destroyed. If there is no unit with a cost equal to the energy, it will summon a random unit in stead.',
 		max_ally_units: 4,
 		proc_chance: 	'origin_energy',
@@ -3992,7 +3989,7 @@ var all_old_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	0,
+		level_cost: 	0.5,
 	},
 	energised_spellrush:{
 		ability_subtypes: 	['hasten','deck_control'],
@@ -7526,7 +7523,6 @@ var all_old_abilities = {
 		level_cost_cum: true,
 	},
 	morph_ally:{
-		name_color: 	'rgba(171, 203, 255,0.9)',
 		description: 	'Turns an ally creature with a cost no higher then {LEVEL} into a random creature with a cost of {LEVEL} or more. Can be used once.',
 		remove_skill_after_use: 	'morph_ally',
 		targets:	{
@@ -7561,7 +7557,7 @@ var all_old_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1,
+		level_cost: 		2,
 	},
 	morph_sporeling:{
 		name_color: 	'rgba(171, 203, 255,0.9)',
@@ -8183,7 +8179,6 @@ var all_old_abilities = {
 		level_cost_spell: 	0.5,
 	},
 	purify_all:{
-		name_color: 	'rgba(245, 245, 66,0.9)',
 		description: 	'Removes all negative effects from all ally units and your hero. Negative effects are burn, curse, doom and poison.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
@@ -8213,7 +8208,7 @@ var all_old_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		6,
-		level_cost_spell: 	1.5,
+		level_cost_spell: 	3,
 	},
 	purify_self:{
 		name_color: 	'rgba(245, 245, 66,0.9)',
@@ -8316,6 +8311,7 @@ var all_old_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	1,
+		cost_adjustment: 	6,
 		cost_on_top: 	true,
 	},
 	quicken_poison:{
