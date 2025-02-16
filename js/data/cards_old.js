@@ -8114,7 +8114,6 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{command_golem: 1, righthand: 1, echo: 1},
 		quote: '\"Let the gears turn faster!\"',
-		use_old: true,
 	},
 	overload:{
 		name: 				'overload',
