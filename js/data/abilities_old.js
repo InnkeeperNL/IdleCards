@@ -837,7 +837,6 @@ var all_old_abilities = {
 		cost_factor: 	'full',
 	},
 	build_palisade:{
-		name_color: 	'rgba(255,255,255,0.9)',
 		description: 	'Summons up to {LEVEL} palisade(s).',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,

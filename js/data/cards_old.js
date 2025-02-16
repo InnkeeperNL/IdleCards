@@ -602,7 +602,7 @@ var all_old_available_cards = {
 		type: 				'creature',
 		subtypes: 			['human','rogue'],
 		color: 				['colorless'],
-		theme: 				['muscle'],
+		theme: 				[],
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/huntress-7758199_640.jpg',
@@ -1814,7 +1814,6 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{restore: 1},
 		quote: '\"Beloved by many queens.\"',
-		use_old: true,
 	},
 	cleansing_water:{
 		name: 				'cleansing water',
@@ -1966,7 +1965,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, restore: 1},
 		},
 		quote: '\"Those guards cannot see their ruler get hurt.\"',
-		use_old: true,
 	},
 	court_huntress:{
 		name: 				'court huntress',
@@ -4900,7 +4898,6 @@ var all_old_available_cards = {
 		armor: 				0,
 		health: 			1,
 		abilities: 			{shatter: 1},
-		use_old: true,
 	},
 	fungal_curse:{
 		name: 				'fungal curse',
@@ -4918,7 +4915,6 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{morph_sporeling: 1, minimum_enemies: 3},
 		quote: '\"There is something growing on your back?!\"',
-		use_old: true,
 	},
 	fungal_overgrowth:{
 		name: 				'fungal overgrowth',
@@ -4937,7 +4933,6 @@ var all_old_available_cards = {
 		abilities: 			{morph_sporeling: 5, minimum_enemies: 5},
 		quote: '\"One of us!\"',
 		max_in_deck: 	1,
-		use_old: true,
 	},
 	fungal_pod:{
 		name: 				'fungal pod',
@@ -5992,7 +5987,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1},
 		},
 		quote: '\"Expendable protection.\"',
-		use_old: true,
 	},
 	guard_dog:{
 		name: 				'guard dog',
@@ -6015,7 +6009,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, empower_ally: 1},
 		},
 		quote: '\"They warn you of incoming threats.\"',
-		use_old: true,
 	},
 	haunted_castle:{
 		name: 				'haunted castle',
@@ -6770,7 +6763,6 @@ var all_old_available_cards = {
 			abilities: 			{static_strike_hv: 1, static_aura: 1, submerged: 1},
 		},
 		quote: '\"A painful touch.\"',
-		use_old: true,
 	},
 	
 	jotnar_druid:{
@@ -7108,7 +7100,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, command_ally: 1},
 		},
 		quote: '\"He rules with an iron fist.\"',
-		use_old: true,
 	},
 	knife_thrower:{
 		name: 				'knife thrower',
@@ -7156,7 +7147,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, enrage: 1},
 		},
 		quote: '\"Let sleeping bears lie!\"',
-		use_old: true,
 	},
 	lethal_wound:{
 		name: 				'lethal wound',
@@ -7796,10 +7786,9 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{morph_ally: 4},
+		abilities: 			{morph_ally: 1},
 		quote: '\"It turned into what?!\"',
 		max_in_deck: 		1,
-		use_old: true,
 	},
 	mind_cage:{
 		name: 				'mind cage',
@@ -7932,7 +7921,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, enrage: 1},
 		},
 		quote: '\"Once you wake them up, run!\"',
-		use_old: true,
 	},
 	mountain:{
 		name: 				'mountain',
@@ -8063,7 +8051,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, marred_guards: 1},
 		},
 		quote: '\"She feels safe that way.\"',
-		use_old: true,
 	},
 	ocotopus:{
 		name: 				'ocotopus',
@@ -9244,7 +9231,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, water_bolt_hv: 1, submerged: 1},
 		},
 		quote: '\"Watery rage.\"',
-		use_old: true,
 	},
 	sea_monster:{
 		name: 				'sea monster',
@@ -9936,7 +9922,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, enrage: 2},
 		},
 		quote: '\"Let sleeping dogs lie!\"',
-		use_old: true,
 	},
 	small_fairy:{
 		name: 				'small fairy',
@@ -11509,7 +11494,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1},
 		},
 		quote: '\"They work hard to improve their life.\"',
-		use_old: true,
 	},
 	wake_up_call:{
 		name: 				'wake up call',

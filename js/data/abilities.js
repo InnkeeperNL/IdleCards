@@ -308,6 +308,32 @@ var all_abilities = {
 			venom: 		1.25,
 		},
 	},
+	awaken:{
+		description: 	'The first time this unit takes damage, it gains {LEVEL} power permanently.',
+		proc: 			'receive_damage',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		remove_skill_after_use:'awaken',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower_ally','awaken','enrage'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		0,
+	},
 	backlash:{
 		description: 	'Deals 1 physical damage the ally creature unit with the highest current health that has power. That unit then gains {LEVEL} temporary power. Will only target units that have at least 2 health.',
 		cannot_proc_while_stunned: true,
@@ -753,7 +779,7 @@ var all_abilities = {
 		cost_factor: 	'full',
 	},
 	bring_golem:{
-		description: 	'Summons a golem unit. Can be used {LEVEL} time(s).',
+		description: 	'Summons a golem structure unit. Can be used {LEVEL} time(s).',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
@@ -773,6 +799,33 @@ var all_abilities = {
 				card_id: 	'random',
 				card_type: 	'structure',
 				card_subtype: 'golem',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		10,
+	},
+	bring_human:{
+		description: 	'Summons a human creature unit. Can be used {LEVEL} time(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		reduce_skill_after_use:'bring_human',
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'random',
+				card_type: 	'creature',
+				card_subtype: 'human',
 				amount: 	1
 			}
 		},
@@ -2281,9 +2334,8 @@ var all_abilities = {
 		average_hit_cost: 	0.75,
 	},
 	draw:{
-		description: 	'When played, draws up to {LEVEL} card(s).',
+		description: 	'Draws up to a total of {LEVEL} card(s).',
 		cannot_proc_while_stunned: true,
-		proc: 			['on_play','basic'],
 		proc_amount: 	'ability_level',
 		remove_skill: 	'draw',
 		min_cards_in_deck: 	1,
@@ -2547,6 +2599,37 @@ var all_abilities = {
 		level_cost: 		5,
 		level_cost_structure: 4.25,
 		level_cost_hero: 	8,
+	},
+	empower_opposed:{
+		description: 	'A random ally creature that has power and an opposing unit gains {LEVEL} temporary power. Cannot affect heroes or itself.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				not_self: 		true,
+				has_opposing: 	true,
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower','empower_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+		level_cost_structure: 0.75,
+		level_cost_spell: 	0.5,
+		level_cost_hero: 	1.5,
 	},
 	explode:{
 		description: 	'When this unit is destroyed, it deals {LEVEL} physical damage to all nearby units.',
@@ -4341,6 +4424,43 @@ var all_abilities = {
 		show_amount_adjustment: 0,
 		level_cost: 	0,
 	},
+	morph_ally:{
+		description: 	'Turns the ally creature with the lowest cost into a random creature with an equal or higher cost. Can be used once.',
+		remove_skill_after_use: 	'morph_ally',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure','object'],
+				min_hp: 		1,
+				lowest_cost: 	true,
+				//max_cost: 		'ability_level',
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'go_again',
+				type: 			'turn_into',
+				subtypes: 		['shift','turn_ally_into'],
+				card_id: 		'random',
+				card_type: 		'creature',
+				min_time: 		'target_cost',
+				amount: 		1
+			},
+			1:{
+				type: 		'set_effect_amount',
+				effect_names:{
+					energy: 	0,
+				},
+				subtypes: 	[],
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		10,
+	},
 	move:{
 		description: 	'This unit will move to a random free slot.',
 		cannot_proc_while_stunned: true,
@@ -4850,6 +4970,9 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		6,
 		level_cost_spell: 	3,
+		ability_level_cost_factors:{
+			echo: 		2,
+		},
 	},
 	reclaim_artifact:{
 		description: 	'Returns up to {LEVEL} artifact card(s) in your grave to your deck.',
@@ -5653,6 +5776,51 @@ var all_abilities = {
 			}
 		},
 	},
+	shatter:{
+		description: 	'Returns into the original creature when destroyed. If there is no original creature, turns into a random creature in stead.',
+		proc: 			'own_death',
+		proc_while_dead: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'self',
+				side: 			'any',
+				slot_free: 		true
+			},
+		},
+		effects:{
+			0:{
+				type: 		'turn_into_original',
+				subtypes: 	['shift'],
+				amount: 	1
+			},
+		},
+		animation: 	'combat_zoom',
+		on_failure:{
+			proc_while_dead: true,
+			targets:	{
+				0:{
+					target: 		'unit',
+					target_amount: 	1,
+					position: 		'self',
+					side: 			'any',
+					slot_free: 		true
+				},
+			},
+			effects:{
+				0:{
+					type: 		'turn_into',
+					subtypes: 	['shift'],
+					card_id: 	'random',
+					card_type: 	'creature',
+					amount: 	1
+				},
+			},
+			animation: 	'combat_zoom',
+		},
+		level_cost: 	7,
+	},
 	shoot:{
 		description: 	'Deals physical projectile damage equal to its power to a random enemy unit {LEVEL} time(s). Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
@@ -6088,6 +6256,97 @@ var all_abilities = {
 			},
 		},
 		level_cost: 		2,
+	},
+	static_aura:{
+		description: 	'Deals {LEVEL} magical air damage to any unit or hero that deals melee damage to it.',
+		proc: 			'receive_damage',
+		subtypes: 		['melee'],
+		proc_while_dead: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'lightning',
+				type: 			'damage',
+				subtypes: 		['magical','air','elemental'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'red_glow',
+		level_cost: 		2,
+		level_cost_hero: 	4,
+		average_hits: 		1,
+	},
+	static_strike:{
+		description: 	'Deals melee magical air damage equal to its power to the opposing unit. Will target the enemy hero if there is no opposing unit.',
+		proc_amount: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		need_power: 	true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'opposing',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				min_hp: 		1,
+				side: 			'enemy'
+			}
+		},
+		effects:{
+			0:{
+				projectile: 	'lightning',
+				type: 			'damage',
+				subtypes: 		['magical','air','melee','elemental'],
+				amount: 		'origin_power'
+			}
+		},
+		animation: 		'attack',
+		level_cost: 	2,
+		cost_factor: 	'power',
+		average_hits: 	'ability_level',
+		additional_levels_cost: 2,
+	},
+	static_strike_hv:{
+		name: 			'static strike',
+		description: 	'Deals melee magical air damage equal to its power to the nearest enemy unit.',
+		proc_amount: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		need_power: 	true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'nearest',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'lightning',
+				type: 			'damage',
+				subtypes: 		['magical','air','melee','elemental'],
+				amount: 		'origin_power'
+			}
+		},
+		animation: 		'attack',
+		level_cost: 	2,
+		cost_factor: 	'power',
+		average_hits: 	'ability_level',
+		additional_levels_cost: 2,
 	},
 	steal:{
 		description: 	'If the enemy has at least {LEVEL} artifact(s), when this deals damage to the enemy hero, gain control over an enemy artifact. Can only be used if you have less than 5 artifacts in play.',

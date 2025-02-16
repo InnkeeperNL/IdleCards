@@ -968,7 +968,7 @@ function get_random_card_based_on_time(type, max_time, color_restriction, second
 			if(can_pick == true)
 			{
 				var pick_chance = 1;
-				if(card_info['time'] != undefined && card_info['time'] > 1){pick_chance = pick_chance / (card_info['time'] / 2);}
+				if(card_info['time'] != undefined && card_info['time'] > 1){pick_chance = pick_chance / (card_info['time'] / 1);}
 				total_card_count += pick_chance;
 			}
 		}
@@ -999,7 +999,7 @@ function get_random_card_based_on_time(type, max_time, color_restriction, second
 			if(can_pick == true)
 			{
 				var pick_chance = 1;
-				if(card_info['time'] != undefined && card_info['time'] > 1){pick_chance = pick_chance / (card_info['time'] / 2);}
+				if(card_info['time'] != undefined && card_info['time'] > 1){pick_chance = pick_chance / (card_info['time'] / 1);}
 				picked_card_number -= pick_chance;
 				if(picked_card_number <= 0 && picked_card == false)
 				{

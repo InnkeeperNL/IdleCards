@@ -6783,6 +6783,11 @@ function turn_into(target_id, effect, origin_id, level){
 	{
 		var original_unit = true_copyobject(battle_info.combat_units[target_id]);
 		var original_unit_effects = true_copyobject(battle_info.combat_units[target_id]['effects']);
+		var original_unit_blessed = 0;
+		if(battle_info.combat_units[target_id]['abilities']['blessed'] != undefined)
+		{
+			original_unit_blessed += battle_info.combat_units[target_id]['abilities']['blessed'];
+		}
 		var original_card_type = battle_info.combat_units[target_id]['card_type'];
 		var turns_into_id = effect['card_id'] + '';
 		var card_subtypes = effect['card_subtypes'];
@@ -6822,6 +6827,10 @@ function turn_into(target_id, effect, origin_id, level){
 					delete battle_info.combat_units[target_id]['abilities'][ability_id];
 				}
 			});
+			if(original_unit_blessed > 0 && (battle_info.combat_units[target_id]['abilities']['blessed'] == undefined || battle_info.combat_units[target_id]['abilities']['blessed'] < original_unit_blessed))
+			{
+				battle_info.combat_units[target_id]['abilities']['blessed'] = original_unit_blessed;
+			}
 			battle_info.combat_units[target_id]['effects'] = true_copyobject(original_unit_effects);
 			battle_info.combat_units[target_id]['original_unit'] = true_copyobject(original_unit);
 			var parsed_abilities = parse_abilities(target_id);
