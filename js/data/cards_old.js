@@ -9704,7 +9704,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, resurrect: 1, undead: 1},
 		},
 		quote: '\"Bones... just bones guarding.\"',
-		use_old: true,
 	},
 	
 	skeletal_mage:{
@@ -9744,7 +9743,6 @@ var all_old_available_cards = {
 		abilities: 			{raise_skeleton: 5, no_allies: 1, minimum_dead_ally_creatures: 5},
 		quote: '\"Bones... bones everywhere.\"',
 		max_in_deck: 		1,
-		use_old: true,
 	},
 	skeletal_seer:{
 		name: 				'skeletal seer',

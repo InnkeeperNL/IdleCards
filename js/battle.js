@@ -968,7 +968,7 @@ function get_random_card_based_on_time(type, max_time, color_restriction, second
 			if(can_pick == true)
 			{
 				var pick_chance = 1;
-				if(card_info['time'] != undefined && card_info['time'] > 1){pick_chance = pick_chance / (card_info['time'] / 1);}
+				if(card_info['time'] != undefined && card_info['time'] > 1){pick_chance = pick_chance / sqr(card_info['time'] / 1);}
 				total_card_count += pick_chance;
 			}
 		}
@@ -999,7 +999,7 @@ function get_random_card_based_on_time(type, max_time, color_restriction, second
 			if(can_pick == true)
 			{
 				var pick_chance = 1;
-				if(card_info['time'] != undefined && card_info['time'] > 1){pick_chance = pick_chance / (card_info['time'] / 1);}
+				if(card_info['time'] != undefined && card_info['time'] > 1){pick_chance = pick_chance / sqr(card_info['time'] / 1);}
 				picked_card_number -= pick_chance;
 				if(picked_card_number <= 0 && picked_card == false)
 				{
@@ -1010,6 +1010,22 @@ function get_random_card_based_on_time(type, max_time, color_restriction, second
 	});
 	if(picked_card == false){picked_card = get_random_card_based_on_time(type, max_time + 1);}
 	return picked_card;
+}
+
+function test_based_on_time(amount, type, max_time, color_restriction, second_color_restriction, card_subtype, min_time, not_these, not_subtypes){
+	var total_time = 0;
+	var lowest = false;
+	var highest = false;
+	for (var i = 0; i < amount; i++) {
+		var chosen_card = get_random_card_based_on_time(type, max_time, color_restriction, second_color_restriction, card_subtype, min_time, not_these, not_subtypes);
+		total_time += all_available_cards[chosen_card]['time'];
+		if(lowest === false || all_available_cards[chosen_card]['time'] < lowest){lowest = all_available_cards[chosen_card]['time'];}
+		if(highest === false || all_available_cards[chosen_card]['time'] > highest){highest = all_available_cards[chosen_card]['time'];}
+	}
+	total_time /= amount;
+	console.log('average: ' + total_time);
+	console.log('lowest: ' + lowest);
+	console.log('highest: ' + highest);
 }
 
 function get_random_card_based_on_value(min_value, color, type, all_pick_chance, not_these, max_value){

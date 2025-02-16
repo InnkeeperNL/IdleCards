@@ -4864,7 +4864,7 @@ var all_abilities = {
 		},
 		level_cost_structure: 1.5,
 	},
-	raise_skeleton:{
+	/*raise_skeleton:{
 		description: 	'When an ally creature dies, this summons up to a total of {LEVEL} skeleton(s).',
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
@@ -4888,6 +4888,57 @@ var all_abilities = {
 		},
 		animation: 	'combat_zoom',
 		level_cost: 6,
+	},*/
+	raise_skeleton:{
+		ability_subtypes: ['summon_ally','summon_creature'],
+		name_color: 	'rgba(255,255,255,0.9)',
+		description: 	'Up to {LEVEL} time(s), removes a creature card from your grave from the game and summons a basic skeleton.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		min_ally_creature_cards_in_grave: 1,
+		reduce_skill_after_use:'raise_skeleton',
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 	'card',
+				target_amount: 1,
+				status: 	'grave',
+				types: 		['creature'],
+				side: 		'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'resurrect',
+				projectile_target: 	'deck',
+				type: 				'remove_card',
+				side: 				'ally',
+				on_success:{
+					targets:	{
+						0:{
+							target: 		'hero',
+							target_amount: 	1,
+							side: 			'ally'
+						},
+					},
+					effects:{
+						0:{
+							pause_before: -1000,
+							type: 		'summon_unit',
+							subtypes: 	['summon_ally','summon_creature'],
+							card_id: 	'skeleton',
+							amount: 	1
+						},
+					},
+				},
+			},
+		},
+		
+		animation: 	'combat_zoom',
+		level_cost: 		5,
+		level_cost_spell: 	2.5,
+		level_cost_hero: 	2,
 	},
 	reap:{
 		description: 	'Destroys an enemy creature with {LEVEL} or less health.',
