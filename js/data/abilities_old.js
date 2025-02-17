@@ -3541,7 +3541,7 @@ var all_old_abilities = {
 			0:{
 				type: 			'random_ability',
 				subtypes: 		[],
-				ability_options: ['fire_bolt','frost_bolt_hv'],
+				ability_options: ['fire_bolt','frost_bolt'],
 				amount: 		'ability_level'
 			}
 		},
@@ -11239,7 +11239,6 @@ var all_old_abilities = {
 		level_cost: 		4,
 	},
 	stunning_touch:{
-		name_color: 	'rgba(202, 230, 48,0.9)',
 		description: 	'Has a 35% chance to apply {LEVEL} stun to any creature it damages.',
 		proc: 			'dealt_damage',
 		proc_chance: 	35,

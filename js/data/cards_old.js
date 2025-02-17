@@ -3104,7 +3104,6 @@ var all_old_available_cards = {
 			abilities: 			{elemental_bolt_hv: 2, spellrush: 1},
 		},
 		quote: '\"Grants elemental wishes only.\"',
-		use_old: true,
 	},
 	elemental_warrior:{
 		name: 				'elemental warrior',
@@ -5894,7 +5893,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, spellrush: 1},
 		},
 		quote: '\"A wish for death, you say?\"',
-		use_old: true,
 	},
 	grinning_imp:{
 		name: 				'grinning imp',
@@ -6281,7 +6279,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, venom: 1, flying: 1},
 		},
 		quote: '\"A painful sting.\"',
-		use_old: true,
 	},
 	hill_warrior:{
 		name: 				'hill warrior',
@@ -6433,7 +6430,6 @@ var all_old_available_cards = {
 		abilities: 			{build_palisade: 5, no_allies: 1},
 		quote: '\"It should keep them out for a little while.\"',
 		max_in_deck: 		1,
-		use_old: true,
 	},
 	icatu:{
 		name: 				'icatu',
@@ -7309,7 +7305,6 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{grant_bolster_self: 3, righthand: 1},
 		quote: '\"It regrows after every battle.\"',
-		use_old: true,
 	},
 	local_time_shift:{
 		name: 				'local time-shift',
@@ -7348,7 +7343,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, feast:2, flying: 1},
 		},
 		quote: '\"There will be more as long as they can feed.\"',
-		use_old: true,
 	},
 	locust_swarm:{
 		name: 				'locust swarm',
@@ -7364,7 +7358,6 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{summon_locust: 1, echo: 1},
 		quote: '\"They will eat everything.\"',
-		use_old: true,
 	},
 	looter:{
 		name: 				'looter',
@@ -7412,7 +7405,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, ally_charges: 1},
 		},
 		quote: '\"I wonder what happened to the rider.\"',
-		use_old: true,
 	},
 	mage_tower:{
 		name: 				'mage tower',
@@ -8075,7 +8067,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, stunning_touch: 1},
 		},
 		quote: '\"Not to confuse with an octopus, which only has 8 arms.\"',
-		use_old: true,
 	},
 	ornate_owl:{
 		name: 				'ornate owl',
@@ -8202,7 +8193,6 @@ var all_old_available_cards = {
 		health: 			3,
 		abilities: 			{},
 		quote: '\"It ain\'t much, but it will have to do.\"',
-		use_old: true,
 	},
 	peasant:{
 		name: 				'peasant',
@@ -12076,7 +12066,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, spellrush: 1},
 		},
 		quote: '\"For those who wish to live in the wild.\"',
-		use_old: true,
 	},
 	wind_mage:{
 		name: 				'wind mage',

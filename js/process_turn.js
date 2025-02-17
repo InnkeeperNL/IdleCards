@@ -833,7 +833,9 @@ function reset_temp_health(side){
 		if(combat_alive == true && current_unit['side'] == side && current_unit['temp_health'] != undefined && current_unit['temp_health'] != 0)
 		{
 			total_timeout += 500 * battle_speed;
-			current_unit['temp_health'] = 0;
+			if(current_unit['temp_health'] > 0){current_unit['temp_health'] -= 1;}
+			if(current_unit['temp_health'] < 0){current_unit['temp_health'] += 1;}
+			//current_unit['temp_health'] = 0;
 			check_unit_hp(unit_id);
 			check_unit_alive(unit_id);
 		}
