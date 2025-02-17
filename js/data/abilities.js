@@ -4633,6 +4633,35 @@ var all_abilities = {
 			}
 		},
 	},
+	nurture:{
+		description: 	'A random non-undead ally creature with 1 health gains {LEVEL} health permanently.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	1,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure','object'],
+				max_abilities: 	{undead: 0},
+				min_hp: 		1,
+				max_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bolster',
+				type: 			'increase_health',
+				subtypes: 		['bolster','nurture'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+		level_cost_spell: 	0.25,
+	},
 	painful_hand:{
 		description: 	'Deals {LEVEL} damage to the enemy hero for every card in its hand.',
 		cannot_proc_while_stunned: true,
