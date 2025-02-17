@@ -1492,7 +1492,6 @@ var all_old_available_cards = {
 		abilities: 			{summon_swamp: 2, maximum_allies: 3},
 		quote: '\"I will turn this place into a paradise!\"',
 		max_in_deck: 		1,
-		use_old: true,
 	},
 	calm_druid:{
 		name: 				'calm druid',
@@ -10622,7 +10621,6 @@ var all_old_available_cards = {
 		health: 			5,
 		abilities: 			{},
 		quote: '\"Smells awful.\"',
-		use_old: true,
 	},
 	swamp_gas:{
 		name: 				'swamp gas',

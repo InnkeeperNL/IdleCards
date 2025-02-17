@@ -1362,7 +1362,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{blood_rage: 5},
+		abilities: 			{blood_rage: 3},
 		quote: '\"I will end you!\"',
 	},
 	blood_rat:{
@@ -10873,7 +10873,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{blood_rage: 5, empower_hero: 5, minimum_ally_creatures: 1},
+		abilities: 			{blood_rage: 3, empower_hero: 3, minimum_ally_creatures: 1},
 		quote: '\"We will end you!\"',
 	},
 	unholy_night:{

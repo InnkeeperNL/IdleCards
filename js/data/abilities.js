@@ -514,9 +514,9 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_spell: 	2,
+		level_cost: 		2,
 		cost_adjustment: 	-1,
+		level_cost_cum: 	true,
 	},
 	bolster:{
 		description: 	'A random ally unit gains {LEVEL} temporary health.',
