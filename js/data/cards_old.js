@@ -133,7 +133,6 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{fortify_hero: 1, fortify_entries: 1},
 		quote: '\"Used by ancient warrior queens.\"',
-		use_old: true,
 	},
 	android:{
 		name: 				'android',
@@ -180,7 +179,6 @@ var all_old_available_cards = {
 			abilities: 			{purify: 1, heal: 1},
 		},
 		quote: '\"The holy empire of Naldu has one of those on every town square.\"',
-		use_old: true,
 	},
 	angelic_warrior:{
 		name: 				'angelic warrior',
@@ -220,7 +218,6 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{summon_peasant: 5, minimum_dead_ally_creatures: 10, maximum_allies: 0},
 		quote: '\"Enough is enough!\"',
-		use_old: true,
 	},
 	angry_witch:{
 		name: 				'angry witch',
@@ -245,7 +242,6 @@ var all_old_available_cards = {
 			abilities: 			{curse_hv: 1, strike_unit: 1, withering_aura: 1},
 		},
 		quote: '\"A man once humiliated her. Now she makes sure nobody will do that ever again.\"',
-		use_old: true,
 	},
 	apprentice:{
 		name: 				'apprentice',
@@ -295,7 +291,6 @@ var all_old_available_cards = {
 			abilities: 			{arcane_bolt_hv: 1, plated: 1, flying: 1},
 		},
 		quote: '\"Only the strongest of heroes attempts to attack that.\"',
-		use_old: true,
 	},
 	arcane_icatu:{
 		name: 				'arcane icatu',
@@ -386,7 +381,6 @@ var all_old_available_cards = {
 		},
 		quote: '\"Let the pieces fly.\"',
 		max_in_deck: 		2,
-		use_old: true,
 	},
 	arcane_staff:{
 		name: 				'arcane staff',
@@ -440,7 +434,6 @@ var all_old_available_cards = {
 			abilities: 			{arcane_bolt_hv: 2, evade: 1},
 		},
 		quote: '\"Teehee!\"',
-		use_old: true,
 	},
 	archmage:{
 		name: 				'archmage',
@@ -508,7 +501,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, plated: 1, evade: 1},
 		},
 		quote: '\"The kingdom of Tinah used to train many of these knights as their stike force.\"',
-		use_old: true,
 	},
 	armory:{
 		name: 				'armory',
@@ -532,7 +524,6 @@ var all_old_available_cards = {
 			abilities: 			{empower_ally: 2},
 		},
 		quote: '\"Ready to hand out arms.\"',
-		use_old: true,
 	},
 	arson:{
 		name: 				'arson',
@@ -548,7 +539,6 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{burn_all: 4, minimum_enemies: 3, echo: 1},
 		quote: '\"Burn, baby!\"',
-		use_old: true,
 	},
 	artifact_trader:{
 		name: 				'artifact trader',
@@ -595,7 +585,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, burning_aura: 1, resurrect: 1},
 		},
 		quote: '\"She rises from the ashes.\"',
-		use_old: true,
 	},
 	assassin:{
 		name: 				'assassin',
@@ -619,7 +608,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1},
 		},
 		quote: '\"Seek and destroy.\"',
-		use_old: true,
 	},
 	assassinate:{
 		name: 				'assassinate',
@@ -637,7 +625,6 @@ var all_old_available_cards = {
 		quote: '\"It is time to die.\"',
 		max_in_deck: 		1,
 	},
-	
 	autumn_witch:{
 		name: 				'autumn witch',
 		type: 				'creature',
@@ -659,7 +646,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, wither_hv: 1},
 		},
 		quote: '\"All things must eventually wither and die.\"',
-		use_old: true,
 	},
 	bad_omen:{
 		name: 				'bad omen',
@@ -721,7 +707,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, enrage: 1, counter: 1},
 		},
 		quote: '\"Channel your rage into something productive.\"',
-		use_old: true,
 	},
 	barbarian_raiding_party:{
 		name: 				'barbarian raiding party',
@@ -745,7 +730,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 2, enrage: 1, evade: 1},
 		},
 		quote: '\"We will take and we will leave.\"',
-		use_old: true,
 	},
 	barbarian_rogue:{
 		name: 				'barbarian rogue',
@@ -769,7 +753,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, enrage: 2, evade: 1},
 		},
 		quote: '\"Don\'t you dare hit me!\"',
-		use_old: true,
 	},
 	barbarian_shaman:{
 		name: 				'barbarian shaman',
@@ -792,7 +775,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, enrage: 1, counter_spells: 2},
 		},
 		quote: '\"Your magic will not hurt me.\"',
-		use_old: true,
 	},
 	barbarian_shield_maiden:{
 		name: 				'barbarian shield maiden',
@@ -816,7 +798,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, enrage: 1, fortify_self: 1},
 		},
 		quote: '\"She can bash your face in with that shield.\"',
-		use_old: true,
 	},
 	barbarian_signaller:{
 		name: 				'barbarian signaller',
@@ -839,7 +820,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, enrage: 1, hasten: 1},
 		},
 		quote: '\"Come! There is loot here!\"',
-		use_old: true,
 	},
 	barbarian_sisters:{
 		name: 				'barbarian sisters',
@@ -863,7 +843,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 2, enrage: 1},
 		},
 		quote: '\"They fight side by side.\"',
-		use_old: true,
 	},
 	barbarian_spear_thrower:{
 		name: 				'barbarian spear thrower',
@@ -888,7 +867,6 @@ var all_old_available_cards = {
 			abilities: 			{shoot_unit: 1, enrage: 1},
 		},
 		quote: '\"Put all your anger into that spear.\"',
-		use_old: true,
 	},
 	battle_druid:{
 		name: 				'battle druid',
@@ -915,7 +893,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, heal: 1, earth_bolt_hv: 1},
 		},
 		quote: '\"Rage of nature.\"',
-		use_old: true,
 	},
 	battle_shout:{
 		name: 				'battle shout',
@@ -3992,7 +3969,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, break: 1, flying: 1},
 		},
 		quote: '\"You like your treasures, don\'t you?\"',
-		use_old: true,
 	},
 	fairy_sniper:{
 		name: 				'fairy sniper',
@@ -4689,7 +4665,6 @@ var all_old_available_cards = {
 			abilities: 			{air_bolt_hv: 1, fortify: 1, flying: 1},
 		},
 		quote: '\"The mages of Gu\'nar used to have many of those.\"',
-		use_old: true,
 	},
 	flying_fungus:{
 		name: 				'flying fungus',
@@ -5960,7 +5935,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, enrage: 1, shield: 1},
 		},
 		quote: '\"If you hurt me, I will hurt you.\"',
-		use_old: true,
 	},
 	guard:{
 		name: 				'guard',

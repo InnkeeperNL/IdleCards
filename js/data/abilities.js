@@ -1,7 +1,7 @@
 var all_abilities = {
 	
 	air_blast:{
-		description: 	'Deals {LEVEL} physical damage to all flying enemy units.',
+		description: 	'Deals {LEVEL} physical damage to all enemy units. Deals double damage to flying units.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
@@ -10,8 +10,8 @@ var all_abilities = {
 				target: 		'unit',
 				target_amount: 	5,
 				position: 		'random',
-				has_ability: 	'flying',
-				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'min'},
+				/*has_ability: 	'flying',
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'min'},*/
 				min_hp: 		1,
 				side: 			'enemy'
 			},
@@ -22,6 +22,8 @@ var all_abilities = {
 				type: 			'damage',
 				subtypes: 		['physical','air'],
 				amount: 		'ability_level',
+				crit_on_has_skills: ['flying'],
+				crit_amount_factor: 2,
 			}
 		},
 		animation: 			'combat_zoom',
@@ -30,7 +32,7 @@ var all_abilities = {
 		average_hits: 		2,
 	},
 	air_bolt:{
-		description: 	'Deals {LEVEL} physical projectile damage to a random flying enemy unit. Will target the enemy hero if there are no enemy units.',
+		description: 	'Deals {LEVEL} physical projectile damage to a random enemy unit. Deals double damage to flying targets. Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
@@ -39,8 +41,8 @@ var all_abilities = {
 				target: 		'unit',
 				target_amount: 	1,
 				position: 		'random',
-				has_ability: 	'flying',
-				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'min'},
+				/*has_ability: 	'flying',
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'min'},*/
 				min_hp: 		1,
 				side: 			'enemy'
 			},
@@ -48,8 +50,8 @@ var all_abilities = {
 				target: 		'hero',
 				target_amount: 	1,
 				position: 		'random',
-				has_ability: 	'flying',
-				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'min'},
+				/*has_ability: 	'flying',
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'min'},*/
 				min_hp: 		1,
 				side: 			'enemy'
 			},
@@ -60,15 +62,18 @@ var all_abilities = {
 				type: 			'damage',
 				subtypes: 		['physical','projectile','air'],
 				amount: 		'ability_level',
+				crit_on_has_skills: ['flying'],
+				crit_amount_factor: 2,
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
-		level_cost_spell: 	1.5,
+		level_cost: 		5,
+		level_cost_spell: 	2.5,
+		average_hits: 		1,
 	},
 	air_bolt_hv:{
 		name: 			'air bolt',
-		description: 	'Deals {LEVEL} physical projectile damage to a random flying enemy unit. Will not target the enemy hero.',
+		description: 	'Deals {LEVEL} physical projectile damage to a random enemy unit. Deals double damage to flying units. Will not target the enemy hero.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
@@ -77,8 +82,8 @@ var all_abilities = {
 				target: 		'unit',
 				target_amount: 	1,
 				position: 		'random',
-				has_ability: 	'flying',
-				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'min'},
+				/*has_ability: 	'flying',
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'min'},*/
 				min_hp: 		1,
 				side: 			'enemy'
 			},
@@ -89,11 +94,14 @@ var all_abilities = {
 				type: 			'damage',
 				subtypes: 		['physical','projectile','air'],
 				amount: 		'ability_level',
+				crit_on_has_skills: ['flying'],
+				crit_amount_factor: 2,
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_spell: 	1,
+		level_cost: 		4,
+		level_cost_spell: 	2,
+		average_hits: 		1,
 	},
 	ally_charges:{
 		description: 	'Makes an ally creature unit with power charge. If used by a creature, it cannot target itself.<br/><i>Charge: This unit will move to the furthest free slot with an opposing unit and gains {LEVEL} temporary power for each slot moved.</i>',
@@ -3555,6 +3563,36 @@ var all_abilities = {
 		level_cost_hero: 	3,
 		cost_factor: 		'health',
 	},
+	flying_entries:{
+		ability_subtypes: ['flying'],
+		description: 	'When a non-flying ally unit enters the game, this grants the flying ability to it until the start of next round.',
+		proc: 			'ally_unit_card_played',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	1,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				max_abilities: 	{flying: 0},
+				origin_unit: 	true,
+				not_self: 		true,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'fly',
+				type: 			'grant_temp_skill',
+				subtypes: 		['grant_flying'],
+				skill_id: 		'flying',
+				amount: 		1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		3,
+	},
 	fortify:{
 		description: 	'Grants a random ally unit {LEVEL} shield. Cannot affect heroes. {SHIELD}',
 		cannot_proc_while_stunned: true,
@@ -3780,6 +3818,35 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		6,
+	},
+	grant_one_turn_flying:{
+		name: 			'grant one round: flying',
+		ability_subtypes: ['flying'],
+		description: 	'Grants the flying ability to {LEVEL} random ally unit(s) until the start of next round. Cannot target your hero.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				max_abilities: 	{flying: 0},
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'fly',
+				type: 			'grant_temp_skill',
+				subtypes: 		['grant_flying'],
+				skill_id: 		'flying',
+				amount: 		1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		3,
+		level_cost_spell: 	1.5,
 	},
 	grow:{
 		description: 	'This gains {LEVEL} power and health permanently.',
@@ -4974,6 +5041,38 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 		level_cost_spell: 	1,
+	},
+	purify_all:{
+		description: 	'Removes all negative effects from all ally units and your hero. Negative effects are burn, curse, doom and poison.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	6,
+				position: 		'random',
+				has_negative_effect: true,
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'cleanse',
+				target_projectile: 'cleanse',
+				type: 		'set_effect_amount',
+							effect_names:{
+								burning: 	0,
+								cursed: 	0,
+								doom: 		0,
+								poisoned: 	0,
+							},
+				subtypes: 	['cleanse_ally'],
+				amount: 	1,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		6,
+		level_cost_spell: 	3,
 	},
 	purifying_entry:{
 		description: 	'When played, removes all negative effects from {LEVEL} random ally unit(s) or your hero. Negative effects are burn, curse, doom and poison.',
@@ -7172,6 +7271,33 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 3,
 	},
+	summon_peasant:{
+		name_color: 	'rgba(255,255,255,0.9)',
+		description: 	'Summons {LEVEL} peasant(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		reduce_skill_after_use:'summon_peasant',
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'peasant',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		12,
+		level_cost_spell: 	6,
+	},
 	summon_structure:{
 		description: 	'Summons {LEVEL} structure unit(s).',
 		proc: 			'basic',
@@ -7630,6 +7756,62 @@ var all_abilities = {
 		level_cost: 		2,
 		level_cost_spell: 	1,
 		level_cost_hero: 	2,
+	},
+	wither:{
+		description: 	'Reduces the maximum health of a random enemy unit by {LEVEL}. Will target the enemy hero if there are no enemy units.',
+		proc: 			'basic',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'wither',
+				type: 			'reduce_max_health',
+				subtypes: 		['magical','wither'],
+				amount: 		'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_spell: 	1,
+	},
+	wither_hv:{
+		name: 			'wither',
+		description: 	'Reduces the maximum health of a random enemy unit by {LEVEL}. Will not target the enemy hero.',
+		proc: 			'basic',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'wither',
+				type: 			'reduce_max_health',
+				subtypes: 		['magical','wither'],
+				amount: 		'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_spell: 	1,
 	},
 	wither_hero:{
 		description: 	'When played, reduces the health of the enemy hero by {LEVEL}.',
