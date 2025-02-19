@@ -848,7 +848,7 @@ var all_chained_achievements = {
 		name: 			'merchant',
 		description: 	'Earn {AMOUNT} scrap(s).',
 		objective: 		'gained_scraps',
-		amount: 		100,
+		amount: 		10,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -856,7 +856,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'thief',
-		steps: 			5,
+		steps: 			7,
 	},
 	mouldy:{
 		name: 			'mouldy',
