@@ -2042,7 +2042,12 @@ function process_effect(target_id, origin_id, effect, level){
 
 					if(effect['type'] == 'random_ability')
 					{
-						any_effect_fired = process_ability(target_id, all_abilities[effect['ability_options'][get_random_key_from_object(effect['ability_options'])]], calculated_amount, origin_id);
+						var chosen_ability = effect['ability_options'][get_random_key_from_object(effect['ability_options'])];
+						//console.log(chosen_ability);
+						if(all_abilities[chosen_ability] != undefined)
+						{
+							any_effect_fired = process_ability(target_id, all_abilities[chosen_ability], calculated_amount, origin_id);
+						}
 					}
 
 					if(effect['type'] == 'move')
@@ -6987,10 +6992,15 @@ function play_unit_card(side, card_id, origin_id, forced_play, origin_unit){
 			origin_hand_slot = battle_info['deck_' + side][origin_id]['hand_slot'];
 		}
 		var temp_slot_2 = '';
+		var old_side = 'side_' + side;
 		if(origin_unit != undefined && battle_info.combat_units[origin_unit] != undefined && (battle_info.combat_units[origin_unit]['type'] == 'creature' || battle_info.combat_units[origin_unit]['type'] == 'structure' || battle_info.combat_units[origin_unit]['type'] == 'object' || battle_info.combat_units[origin_unit]['type'] == 'spell' || battle_info.combat_units[origin_unit]['type'] == 'artifact'))
 		{
-			var parsed_unit = parse_combat_unit(battle_info.combat_units[next_combat_unit_id], 'slot_' + (battle_info.combat_units[origin_unit]['slot'] + ' combat_unzoom'), true);
-			temp_slot_2 = 'slot_' + (battle_info.combat_units[origin_unit]['slot'] + ' combat_unzoom');
+			if(battle_info.combat_units[origin_unit]['side'] != side)
+			{
+				old_side = 'side_' + battle_info.combat_units[origin_unit]['side'];
+			}
+			var parsed_unit = parse_combat_unit(battle_info.combat_units[next_combat_unit_id], 'slot_' + (battle_info.combat_units[origin_unit]['slot'] + ' combat_unzoom ' + old_side), true);
+			temp_slot_2 = 'slot_' + (battle_info.combat_units[origin_unit]['slot'] + ' combat_unzoom ' + old_side);
 		}
 		else
 		{
@@ -7002,6 +7012,8 @@ function play_unit_card(side, card_id, origin_id, forced_play, origin_unit){
 
 		all_timeouts[timeout_key] = setTimeout(function(){
 			$('.battle_container').append(parsed_unit);
+			$('.unit_id_' + next_combat_unit_id).removeClass('side_' + side);
+			$('.unit_id_' + next_combat_unit_id).addClass(old_side);
 		},total_timeout);
 		timeout_key ++;
 		if(battle_info['deck_' + side][origin_id] != undefined)
@@ -7022,6 +7034,8 @@ function play_unit_card(side, card_id, origin_id, forced_play, origin_unit){
 			$('.unit_id_' + next_combat_unit_id).removeClass('hand_card');
 			$('.unit_id_' + next_combat_unit_id).removeClass('fake_hand_slot_' + origin_hand_slot);
 			$('.unit_id_' + next_combat_unit_id).removeClass(temp_slot_2);
+			$('.unit_id_' + next_combat_unit_id).removeClass(old_side);
+			$('.unit_id_' + next_combat_unit_id).addClass('side_' + side);
 			$('.unit_id_' + next_combat_unit_id).addClass('slot_' + temp_slot);	
 		},total_timeout + 150);
 		

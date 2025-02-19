@@ -71,6 +71,41 @@ var all_abilities = {
 		level_cost_spell: 	2.5,
 		average_hits: 		1,
 	},
+	air_bolt_any:{
+		description: 	'Deals {LEVEL} physical projectile damage to a random unit or hero. Deals double damage to flying targets.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	1,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'air',
+				type: 			'damage',
+				subtypes: 		['physical','projectile','air'],
+				amount: 		'ability_level',
+				crit_on_has_skills: ['flying'],
+				crit_amount_factor: 2,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+		average_hits: 		1,
+	},
 	air_bolt_hv:{
 		name: 			'air bolt',
 		description: 	'Deals {LEVEL} physical projectile damage to a random enemy unit. Deals double damage to flying units. Will not target the enemy hero.',
@@ -189,6 +224,35 @@ var all_abilities = {
 		level_cost: 		2,
 		level_cost_spell: 	1,
 	},
+	any_runs_away:{
+		description: 	'{LEVEL} Random creature unit(s) facing an enemy unit will move to a slot with no opposing unit.',
+		proc: 			'basic',
+		min_double_free_slots: 1,
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure'],
+				has_opposing: 	true,
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			1:{
+				projectile: 	'dodge',
+				type: 			'move',
+				safe_slot: 		true,
+				placement: 		'random',
+				subtypes: 		['movement','run_away','move_ally'],
+				amount: 		1,
+			}
+		},
+		level_cost: 	1,
+	},
 	augment_sporeling:{
 		description: 	'An ally sporeling gain {LEVEL} power and health permanently.',
 		cannot_proc_while_stunned: true,
@@ -255,6 +319,39 @@ var all_abilities = {
 		level_cost: 		4.5,
 		level_cost_spell: 	2.5,
 		cost_adjustment: 	-0.5,
+		average_hits: 		'ability_level',
+	},
+	arcane_bolt_any:{
+		description: 	'Deals 1 magical projectile damage to a random unit or hero {LEVEL} time(s).',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'magic',
+				type: 			'damage',
+				subtypes: 		['magical','projectile','arcane_bolts'],
+				amount: 		1,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
 		average_hits: 		'ability_level',
 	},
 	arcane_bolt_hv:{
@@ -379,6 +476,40 @@ var all_abilities = {
 		level_cost_spell: 	1.5,
 		cost_adjustment: 	-2,
 	},
+	backlash_any:{
+		description: 	'Deals 1 physical damage the creature unit with the highest current health that has power. That unit then gains {LEVEL} temporary power. Will only target units that have at least 2 health.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				not_self: 		true,
+				min_hp: 		2,
+				min_power: 		0,
+				highest_hp: 	true,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'wound',
+				type: 			'damage',
+				subtypes: 		['physical'],
+				amount: 		1,
+			},
+			1:{
+				target_projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower','empower_ally','backlash'],
+				amount: 		'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	backstab:{
 		description: 	'When this deals melee damage to the enemy hero, it deals {LEVEL} physical melee damage to the nearest enemy unit. This damage can not be avoided by evade or stealth.',
 		proc: 			'dealt_damage_to_hero',
@@ -464,6 +595,31 @@ var all_abilities = {
 		level_cost_spell: 1.125,
 		level_cost_artifact: 4.5
 	},
+	bless_any:{
+		description:'A random unit gains {LEVEL} blessings. Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any',
+				max_abilities: 	{blessed: 9},
+				has_origin_card: true,
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bless',
+				type: 			'grant_skill',
+				subtypes: 		['bless','grant_bless','deck_control'],
+				skill_id: 		'blessed',
+				amount: 		'ability_level',
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
+	},
 	blessed:{
 		description: 	'Has a {LEVEL}0% chance to return to your deck when destroyed.',
 		proc: 			'own_death',
@@ -527,6 +683,37 @@ var all_abilities = {
 		level_cost_cum: 	true,
 		level_cost_artifact: 	3,
 	},
+	blood_rage_any:{
+		description: 	'A random living creature unit with at least 2 health gains {LEVEL} power and looses 1 health permanently.',
+		cannot_proc_while_stunned: true,
+		scales: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure'],
+				min_power: 		0,
+				min_hp: 		2,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['mental','rage','empower','empower_ally'],
+				amount: 		'ability_level',
+			},
+			1:{
+				type: 			'increase_health',
+				subtypes: 		[],
+				amount: 		-1,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	bolster:{
 		description: 	'A random ally unit gains {LEVEL} temporary health.',
 		proc: 			'basic',
@@ -581,6 +768,31 @@ var all_abilities = {
 		level_cost: 		4.5,
 		level_cost_spell: 	2.25,
 		level_cost_cum: 	true,
+	},
+	bolster_any:{
+		description: 	'A random unit or hero gains {LEVEL} temporary health.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'true'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bolster',
+				type: 			'grant_temp_health',
+				subtypes: 		['bolster','bolster_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
 	},
 	bolster_creature:{
 		description: 	'A random non-undead ally creature unit gains {LEVEL} temporary health.',
@@ -732,6 +944,38 @@ var all_abilities = {
 		level_cost: 	4,
 		level_cost_hero: 2,
 		level_cost_artifact: 2,
+	},
+	break_any:{
+		description: 	'Destroys up to a total of {LEVEL} artifact(s) or golem(s).',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		reduce_skill_after_use: 'break_any',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 10,
+				subtypes: 	['golem'],
+				position: 	'random',
+				side: 		'any'
+			},
+			1:{
+				add_targets: true,
+				target: 	'artifact',
+				target_amount: 1,
+				position: 	'random',
+				side: 		'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'broken',
+				type: 		'destroy',
+				subtypes: 	['break'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
 	},
 	bring_cat:{
 		description: 	'Summons a cat unit. Can be used {LEVEL} time(s).',
@@ -899,6 +1143,31 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 		4,
 	},
+	build_palisade_any:{
+		description: 	'Summons up to {LEVEL} palisade(s) on either side.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		reduce_skill_after_use:'build_palisade_any',
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_structure'],
+				type: 		'summon_unit',
+				card_id: 	'palisade',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 1,
+	},
 	burn:{
 		description: 	'Applies {LEVEL} burn to a random enemy unit. Will target the enemy hero if there are no enemy units.{BURN}',
 		cannot_proc_while_stunned: true,
@@ -932,6 +1201,39 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 		level_cost_spell: 	1,
+	},
+	burn_any:{
+		description: 	'Applies {LEVEL} burn to a random unit or hero. {BURN}',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'any'
+			},
+			1:{
+				target: 	'hero',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'burn',
+				type: 		'apply_burn',
+				subtypes: 	['burn'],
+				amount: 	'ability_level',
+				increase_timeout: 500,
+				pause_before: 500,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
 	},
 	burn_hv:		{
 		name: 			'burn',
@@ -1244,6 +1546,41 @@ var all_abilities = {
 		level_cost: 	2,
 		level_cost_hero: 1,
 	},
+	charm_any:{
+		description: 	'The nearest non-undead creature unit changes sides and gives it the charmed ability. Can be used {LEVEL} time(s).<br/><i>Charmed: If there are no more then 4 enemy units, this unit has a 50% chance to change sides.</i>',
+		proc_amount: 	1,
+		reduce_skill_after_use:'charm',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'nearest',
+				not_types: ['object','structure'],
+				max_abilities: 	{undead: 0},
+				min_hp: 	1,
+				side: 		'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'music',
+				type: 		'change_side',
+				subtypes: 	['mental','change_side','charm'],
+				amount: 	1,
+			},
+			1:{
+				type: 		'set_skill',
+				skill_id: 	'charmed',
+				amount: 	1
+			},
+			2:{
+				type: 		'enable_to_act',
+				amount: 	1
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
+	},
 	charmed:{
 		description: 	'If there are no more then 4 enemy units, this unit has a 50% chance to change sides. This effect will trigger {LEVEL} time(s).',
 		proc_chance: 	50,
@@ -1334,6 +1671,32 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 		16,
 		level_cost_spell: 	8,
+	},
+	clone_any:{
+		description: 	'Creates a clone of a random creature {LEVEL} time(s).',
+		proc_amount: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				position: 		'random',
+				not_types: 		['structure','object'],
+				target_amount: 	1,
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'teleport',
+				type: 			'random_ability',
+				subtypes: 		['clone'],
+				ability_options: ['clone_target'],
+				amount: 		1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		1,
 	},
 	clone_self_on_kill:{
 		description: 	'Creates {LEVEL} clone(s) of itself when it destroys a unit.',
@@ -1545,7 +1908,6 @@ var all_abilities = {
 		additional_levels_cost: 1,
 	},
 	conflagrate:{
-		name_color: 	'rgba(255,55,55,0.9)',
 		description: 	'Deals {LEVEL} piercing fire damage to a random burning enemy unit or hero multiplied by the burn it suffers.',
 		cannot_proc_while_stunned: true,
 		not_ability_subtypes:['fire'],
@@ -1583,7 +1945,6 @@ var all_abilities = {
 	},
 	conflagrate_hv:{
 		name: 			'conflagrate',
-		name_color: 	'rgba(255,55,55,0.9)',
 		description: 	'Deals {LEVEL} piercing fire damage to a random burning enemy unit multiplied by the burn it suffers.',
 		cannot_proc_while_stunned: true,
 		not_ability_subtypes:['fire'],
@@ -1867,6 +2228,38 @@ var all_abilities = {
 		level_cost: 1.5,
 		level_cost_spell: 0.75,
 	},
+	curse_any:{
+		description: 	'Applies {LEVEL} curse to a random unit or hero.{CURSE}',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+			1:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'curse',
+				type: 			'apply_curse',
+				subtypes: 		['magical','curse'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 1,
+	},
 	curse_all:{
 		name_color: 	'rgba(160, 95, 250,0.9)',
 		description: 	'Applies {LEVEL} curse to all enemy units.{CURSE}',
@@ -2122,6 +2515,37 @@ var all_abilities = {
 		level_cost: 		6,
 		level_cost_spell: 	3,
 	},
+	debilitate_any:{
+		description: 	'A random creature looses {LEVEL} power and health permanently.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure','object'],
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'voodoo',
+				type: 			'increase_power',
+				subtypes: 		['debilitate'],
+				amount: 		'ability_level',
+				amount_factor: 	-1,
+			},
+			1:{
+				type: 			'reduce_health',
+				subtypes: 		['wither'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	debilitate_all:{
 		description: 	'All enemy creatures loose {LEVEL} power and health permanently.',
 		cannot_proc_while_stunned: true,
@@ -2231,6 +2655,30 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	8,
+	},
+	destroy_any:{
+		description: 	'Destroys {LEVEL} random unit(s).',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		reduce_skill_after_use: 'destroy_any',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				side: 		'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['destroy'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
 	},
 	destroy_arrival:{
 		description: 	'Destroys the next enemy creature unit that enters the game. Can be used {LEVEL} time(s).',
@@ -2449,6 +2897,30 @@ var all_abilities = {
 		level_cost: 	-3,
 		level_cost_spell: -1,
 	},
+	doom_any:{
+		description: 	'Applies {LEVEL} doom to a random unit.{DOOM}',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'doom',
+				type: 			'apply_doom',
+				subtypes: 		['magical','doom'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 	1,
+	},
 	doom_self:{
 		description: 	'Applies {LEVEL} doom to itself.{DOOM}',
 		cannot_proc_while_stunned: true,
@@ -2556,6 +3028,30 @@ var all_abilities = {
 			homebound: 		1.5,
 		},
 		//cost_on_top: 	true,
+	},
+	draw_any:{
+		description: 	'You or the enemy draws up to a total of {LEVEL} card(s).',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		remove_skill: 	'draw_any',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 				'draw_card',
+				subtypes: 			['draw_cards','deck_control'],
+				amount: 			1
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1
 	},
 	draw_on_act:{
 		name: 			'draw',
@@ -2755,6 +3251,33 @@ var all_abilities = {
 		level_cost_spell: 	3,
 		level_cost_hero: 	9,
 	},
+	empower_any:{
+		description: 	'A random creature or hero that has power gains {LEVEL} temporary power.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				not_self: 		true,
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower','empower_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	empower_arrivals:{
 		description: 	'When any ally creature unit that has power enters the game, it gains {LEVEL} temporary power.',
 		proc: 			'ally_unit_card_played',
@@ -2877,85 +3400,39 @@ var all_abilities = {
 		level_cost_hero: 	1.5,
 	},
 	experiment:{
-		description: 	'Does something random to a random unit. Or not... It might just destroy itself.',
+		description: 	'Does something random. Or not...',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		targets:{
+		targets:	{
 			0:{
-				target: 		'unit',
+				target: 		'any',
 				target_amount: 	1,
-				position: 		'random',
-				min_hp: 		1,
+				position: 		'self',
 				side: 			'any'
 			},
 		},
 		effects:{
 			0:{
-				proc_chance: 		10,
-				projectile: 	'burn',
-				type: 			'apply_burn',
-				subtypes: 		['burn'],
-				amount: 		'ability_level',
-			},
-			1:{
-				proc_chance: 		10,
-				projectile: 	'bomb',
-				type: 			'grant_skill',
-				skill_id: 		'explode',
+				type: 			'random_ability',
+				subtypes: 		['experiment'],
+				ability_options: ['air_bolt_any','any_runs_away','arcane_bolt_any','backlash_any','bless_any','blood_rage_any','bolster_any','break_any','build_palisade_any','burn_any','charm_any','clone_any','curse_any','debilitate_any','destroy_any','discard','discard_enemy','doom_any','draw_any','empower_any','fire_bolt_any','fortify_any','frost_bolt_any','grant_any_one_turn_flying','grant_explode','heal_any','hex_any','hide_any','homebound','lay_egg_any','morph_any','poison_any','purify_any','reap_any','repair_any','restore_any','reveal_any','stun_any','summon_trap_any','summon_sporeling_any','weakness_any','wither_any'],
 				amount: 		'ability_level'
-			},
-			2:{
-				proc_chance: 		10,
-				projectile: 	'doom',
-				type: 			'apply_doom',
-				subtypes: 		['doom'],
-				amount: 		'ability_level',
-			},
-			3:{
-				proc_chance: 		10,
-				projectile: 	'curse',
-				type: 			'apply_curse',
-				subtypes: 		['curse'],
-				amount: 		'ability_level',
-			},
-			4:{
-				proc_chance: 		10,
-				projectile: 	'wither',
-				type: 			'reduce_max_health',
-				subtypes: 		['wither'],
-				amount: 		'ability_level',
-			},
-			5:{
-				proc_chance: 		10,
-				projectile: 	'bolster',
-				type: 			'increase_health',
-				subtypes: 		['bolster'],
-				amount: 		'ability_level'
-			},
-			6:{
-				proc_chance: 		10,
-				projectile: 	'armor',
-				type: 			'increase_armor',
-				subtypes: 		['fortify'],
-				amount: 		'ability_level'
-			},
+			}
 		},
-		on_success:{
-			proc_chance: 	10,
-			targets:{
+		on_failure:{
+			targets:	{
 				0:{
 					target: 		'any',
 					target_amount: 	1,
 					position: 		'self',
-					not_types: 		['hero'],
-					min_hp: 		1,
 					side: 			'any'
 				},
 			},
 			effects:{
 				0:{
-					self_projectile: 'death',
-					type: 			'destroy',
+					type: 			'random_ability',
+					ability_options: ['experiment'],
+					amount: 		'ability_level'
 				}
 			},
 		},
@@ -3502,7 +3979,6 @@ var all_abilities = {
 		level_cost: 		-3,
 	},
 	fire_aura:{
-		name_color: 	'rgba(255,55,55,0.9)',
 		description: 	'Deals {LEVEL} magical fire damage to any enemy unit or hero that deals melee damage to it.',
 		proc: 			'receive_damage',
 		subtypes: 		['melee'],
@@ -3556,8 +4032,7 @@ var all_abilities = {
 		level_cost_spell: 	6,
 		average_hits: 		3,
 	},
-	fire_bolt:		{
-		name_color: 	'rgba(255,55,55,0.9)',
+	fire_bolt:{
 		description: 	'Deals {LEVEL} magical fire projectile damage to a random enemy unit. Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -3590,7 +4065,38 @@ var all_abilities = {
 		level_cost_spell: 	2,
 		average_hits: 		1,
 	},
-	fire_bolt_hv:		{
+	fire_bolt_any:{
+		description: 	'Deals {LEVEL} magical fire projectile damage to a random unit or hero.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'fireray',
+				type: 			'damage',
+				subtypes: 		['magical','fire','projectile','elemental'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
+	fire_bolt_hv:{
 		name: 			'fire bolt',
 		name_color: 	'rgba(255,55,55,0.9)',
 		description: 	'Deals {LEVEL} magical fire projectile damage to a random enemy unit.',
@@ -3679,7 +4185,6 @@ var all_abilities = {
 		//level_cost_cum: true,
 	},
 	flame_strike:{
-		name_color: 	'rgba(255,255,255,0.9)',
 		description: 	'Deals melee magical fire damage equal to its power to the opposing unit. Will target the enemy hero if there is no opposing unit.',
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
@@ -3856,6 +4361,37 @@ var all_abilities = {
 		level_cost_hero: 	4,
 		level_cost_spell: 	1.5,
 	},
+	fortify_any:{
+		description: 	'Grants a random unit or hero {LEVEL} shield. {SHIELD}',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'armor',
+				type: 			'increase_armor',
+				subtypes: 		['fortify'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
+	},
 	fortify_hero:{
 		description: 	'Grants your hero {LEVEL} shield. {SHIELD}',
 		cannot_proc_while_stunned: true,
@@ -3958,6 +4494,56 @@ var all_abilities = {
 		average_hits: 		1,
 		cost_adjustment: 	1,
 	},
+	frost_bolt_any:{
+		description: 	'Deals {LEVEL} physical cold projectile damage to a random unit or hero. Has a 25% chance to stun any unit or hero it deals damage to.',
+		cannot_proc_while_stunned: true,
+		scales: 	true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'frost',
+				type: 			'damage',
+				subtypes: 		['projectile','physical','cold','cold_bolt'],
+				amount: 		'ability_level',
+				on_success:{
+					proc_chance:    25,
+					targets:	{
+						0:{
+							target: 	'any',
+							target_amount: 1,
+							position: 	'random',
+							origin_unit: 	true,
+							side: 		'any'
+						},
+					},
+					effects:{
+						0:{
+							type: 		'apply_stun',
+							subtypes: 	['stun'],
+							amount: 	1	
+						}
+					},
+				}
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	frost_bolt_hv:{
 		name: 			'frost bolt',
 		description: 	'Deals {LEVEL} physical cold projectile damage to a random enemy unit. Has a 25% chance to stun any unit it deals damage to. Will not target the enemy hero.',
@@ -4004,6 +4590,34 @@ var all_abilities = {
 		level_cost_spell: 	1.5,
 		average_hits: 		1,
 		cost_adjustment: 	1,
+	},
+	grant_explode:{
+		name: 			'grant: explode',
+		ability_subtypes: ['explode','own_death_proc'],
+		description: 	'Grants the explode {LEVEL} ability to a random unit, or increases the level of that ability by {LEVEL}. Cannot target heroes.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	1,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bomb',
+				type: 			'grant_skill',
+				subtypes: 		['physical'],
+				skill_id: 		'explode',
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
 	},
 	grant_final_embrace:{
 		name: 			'grant: final embrace',
@@ -4059,6 +4673,34 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		3,
 		level_cost_spell: 	1.5,
+	},
+	grant_any_one_turn_flying:{
+		name: 			'grant any one round: flying',
+		ability_subtypes: ['flying'],
+		description: 	'Grants the flying ability to {LEVEL} random unit(s) until the start of next round.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				max_abilities: 	{flying: 0},
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'fly',
+				type: 			'grant_temp_skill',
+				subtypes: 		['grant_flying'],
+				skill_id: 		'flying',
+				amount: 		1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
 	},
 	grow:{
 		description: 	'This gains {LEVEL} power and health permanently.',
@@ -4196,7 +4838,6 @@ var all_abilities = {
 		level_cost: 		4,
 	},
 	heal:{
-		name_color: 	'rgba(55,255,55,0.9)',
 		description: 	'Heals a random damaged ally creature unit by {LEVEL}.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -4223,6 +4864,32 @@ var all_abilities = {
 		level_cost: 	4,
 		level_cost_structure: 3,
 		level_cost_spell: 2,
+	},
+	heal_any:{
+		description: 	'Heals a random damaged creature unit by {LEVEL}.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				not_types: 		['object','structure'],
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any',
+				damaged: 		true,
+			},
+		},
+		effects:{
+			0:{
+				projectile:		'healing',
+				type: 			'healing',
+				subtypes: 		['healing','active_healing'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
 	},
 	hero_channels_life:{
 		description: 	'Your hero reduces the time left of the card in your hand with the highest time left by {LEVEL}. If it does, it deals 1 damage to itself.',
@@ -4253,7 +4920,7 @@ var all_abilities = {
 		cost_adjustment: 	-4,
 	},
 	hex:{
-		description: 	'Turns {LEVEL} nearest non-undead enemy creature unit(s) into a frog until the end of their next round.',
+		description: 	'Turns {LEVEL} nearest non-undead enemy creature unit(s) into a frog until the end of their next turn.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		targets:	{
@@ -4286,6 +4953,40 @@ var all_abilities = {
 		level_cost: 		10,
 		level_cost_spell: 	5,
 		level_cost_hero: 	4,
+	},
+	hex_any:{
+		description: 	'Turns {LEVEL} nearest non-undead creature unit(s) into a frog until the end of their next turn.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'nearest',
+				not_types: 		['structure'],
+				not_self: 		true,
+				max_abilities: 	{undead: 0},
+				not_card_ids: 	['frog'],
+				min_hp: 		1,
+				side: 			'eny'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'voodoo',
+				type: 		'turn_into',
+				subtypes: 	['shift','turn_enemy_into','hex'],
+				card_id: 	'frog',
+				amount: 	1
+			},
+			1:{
+				type: 		'set_skill',
+				skill_id: 	'return_into_original',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
 	},
 	hide:{
 		description: 	'Grants itself stealth every turn.',
@@ -4346,6 +5047,36 @@ var all_abilities = {
 		level_cost: 		5,
 		level_cost_hero: 	4,
 		level_cost_spell: 	2.5,
+	},
+	hide_any:{
+		ability_subtypes: ['evade'],
+		description: 	'Grants {LEVEL} unit(s) stealth. If used by a unit, this cannot target itself.',
+		cannot_proc_while_stunned: true,
+		do_not_pause_between: 	true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_self: 		true,
+				max_abilities: 	{stealth: 0},
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				pause_before: 	500,
+				projectile: 'dodge',
+				type: 		'set_skill',
+				subtypes: 	['grant_stealth'],
+				skill_id: 	'stealth',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
 	},
 	hide_hero:{
 		ability_subtypes: ['evade'],
@@ -4449,7 +5180,6 @@ var all_abilities = {
 		cost_adjustment: 	3,
 	},
 	ignites:{
-		name_color: 	'rgba(255,55,55,0.9)',
 		description: 	'Applies {LEVEL} burn to any unit or hero it deals damage to.{BURN}',
 		proc: 			'dealt_damage',
 		ability_subtypes:['dealt_damage_proc'],
@@ -4476,7 +5206,6 @@ var all_abilities = {
 		average_hit_cost: 	1,
 	},
 	incinerate:{
-		name_color: 	'rgba(255,55,55,0.9)',
 		description: 	'Destroys {LEVEL} burning enemy unit(s).',
 		cannot_proc_while_stunned: true,
 		targets:	{
@@ -4603,6 +5332,31 @@ var all_abilities = {
 		},
 		animation: 	'combat_zoom',
 		level_cost: 		3.5,
+	},
+	lay_egg_any:{
+		description: 	'Has a 50% chance to summon {LEVEL} chicken egg(s) on either side.',
+		proc: 			'basic',
+		proc_chance: 	50,
+		cannot_proc_while_stunned: true,
+		//reduce_skill_after_use:'summon_skeleton',
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature','summon_structure'],
+				card_id: 	'chicken_egg',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		1,
 	},
 	lay_trap:{
 		description: 	'This unit will move to a random free slot. If it does, it leaves a trap behind.',
@@ -4887,6 +5641,43 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		10,
 	},
+	morph_any:{
+		description: 	'Turns the creature with the lowest cost into a random creature with an equal or higher cost. Can be used once.',
+		remove_skill_after_use: 	'morph_any',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure','object'],
+				min_hp: 		1,
+				lowest_cost: 	true,
+				//max_cost: 		'ability_level',
+				side: 			'any',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'go_again',
+				type: 			'turn_into',
+				subtypes: 		['shift','turn_ally_into'],
+				card_id: 		'random',
+				card_type: 		'creature',
+				min_time: 		'target_cost',
+				amount: 		1
+			},
+			1:{
+				type: 		'set_effect_amount',
+				effect_names:{
+					energy: 	0,
+				},
+				subtypes: 	[],
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	move:{
 		description: 	'This unit will move to a random free slot.',
 		cannot_proc_while_stunned: true,
@@ -5041,7 +5832,6 @@ var all_abilities = {
 		level_cost_spell: -1,
 	},
 	plated:{
-		name_color: 	'rgba(255,255,255,0.9)',
 		description: 	'Reduces incoming physical damage down to {LEVEL}.',
 		//proc: 			'reduce_incoming_damage',
 		proc: 			'max_incoming_damage',
@@ -5072,7 +5862,6 @@ var all_abilities = {
 		cost_factor: 		'health',
 	},
 	plunder:{
-		name_color: 	'rgba(247, 170, 15,0.9)',
 		description: 	'When this deals damage to the enemy hero, destroy an enemy artifact or non-golem structure unit.',
 		proc: 			'dealt_damage_to_hero',
 		ability_subtypes:['dealt_damage_proc'],
@@ -5166,6 +5955,38 @@ var all_abilities = {
 		level_cost: 		4,
 		level_cost_spell: 	2,
 	},
+	poison_any:{
+		description: 	'Applies {LEVEL} poison to a random creature or hero.{POISON}',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				min_hp: 		1,
+				side: 			'any'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'apply_poison',
+				projectile: 	'poison',
+				subtypes: 		['poison'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	poison_aura:{
 		description: 	'Applies {LEVEL} poison to any enemy creature unit or hero that deals melee damage to it.{POISON}',
 		proc: 			'receive_damage',
@@ -5252,6 +6073,38 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 		level_cost_spell: 	1,
+	},
+	purify_any:{
+		description: 	'Removes all negative effects from {LEVEL} random unit(s) or hero. Negative effects are burn, curse, doom and poison.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				has_negative_effect: true,
+				min_hp: 		1,
+				side: 			'any',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'cleanse',
+				target_projectile: 'cleanse',
+				type: 		'set_effect_amount',
+							effect_names:{
+								burning: 	0,
+								cursed: 	0,
+								doom: 		0,
+								poisoned: 	0,
+							},
+				subtypes: 	['cleanse_ally'],
+				amount: 	1,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
 	},
 	purify_all:{
 		description: 	'Removes all negative effects from all ally units and your hero. Negative effects are burn, curse, doom and poison.',
@@ -5452,6 +6305,32 @@ var all_abilities = {
 		level_cost: 		4,
 		level_cost_hero: 	4,
 		level_cost_spell: 	2,
+	},
+	reap_any:{
+		description: 	'Destroys a creature with {LEVEL} or less health.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				min_hp: 		1,
+				max_hp: 		'ability_level',
+				side: 			'eny'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['reap'],
+				amount: 	1,
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		1,
 	},
 	reap_all:{
 		description: 	'Destroys all enemy creatures with {LEVEL} or less health.',
@@ -5727,7 +6606,6 @@ var all_abilities = {
 		level_cost: 		4,
 	},
 	repair:{
-		name_color: 	'rgba(245, 241, 42,0.9)',
 		description: 	'Repairs a random non-plant damaged ally structure by {LEVEL}. Cannot affect heroes.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -5755,6 +6633,33 @@ var all_abilities = {
 		level_cost: 4,
 		level_cost_creature: 3.5,
 		level_cost_spell: 2,
+	},
+	repair_any:{
+		description: 	'Repairs a random non-plant damaged structure by {LEVEL}. Cannot affect heroes.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				not_types: 		['object','creature'],
+				not_subtypes: 	['plant'],
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any',
+				damaged: 		true,
+			},
+		},
+		effects:{
+			0:{
+				projectile:		'repair',
+				type: 			'healing',
+				subtypes: 		['repairing'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 1,
 	},
 	resist_cold:{
 		description: 	'Reduces all cold damage to 0.',
@@ -5867,6 +6772,31 @@ var all_abilities = {
 		level_cost: 		3,
 		level_cost_artifact: 5,
 		level_cost_spell: 	1.5,
+	},
+	restore_any:{
+		description: 	'Heals a random hero by {LEVEL}.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				damaged: 		true,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'healing',
+				type: 			'healing',
+				subtypes: 		['active_healing','heal_hero'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
 	},
 	restoring_deaths:{
 		description: 	'When any ally creature is destroyed, this heals your hero by {LEVEL}.',
@@ -6032,7 +6962,6 @@ var all_abilities = {
 		level_cost: 	1,
 	},
 	return_into_original:{
-		name_color: 	'rgba(171, 203, 255,0.9)',
 		description: 	'If this unit is shapeshifted, returns into the original creature.',
 		targets:	{
 			0:{
@@ -6052,7 +6981,7 @@ var all_abilities = {
 		level_cost: 	0,
 	},
 	reveal:{
-		description: 	'Removes stealth from the {LEVEL} enemy  unit(s) or hero. Will target the nearest unit or hero with stealth',
+		description: 	'Removes stealth from {LEVEL} enemy unit(s) or hero. Will target the nearest unit or hero with stealth',
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
@@ -6101,6 +7030,31 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		3,
+	},
+	reveal_any:{
+		description: 	'Removes stealth from {LEVEL} unit(s) or hero. Will target the nearest unit or hero with stealth',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'nearest',
+				has_ability: 	'stealth',
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'eye',
+				type: 		'set_skill',
+				subtypes: 	['reveal'],
+				skill_id: 	'stealth',
+				amount: 	0
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
 	},
 	revive_hero:{
 		description: 	'When your hero\'s health reaches 0, this will bring it back to life with 10% health. Can be used {LEVEL} time(s).',
@@ -6239,7 +7193,6 @@ var all_abilities = {
 		level_cost: 	-5,
 	},
 	scavange:{
-		name_color: 	'rgba(55,255,55,0.9)',
 		description: 	'When any structure or artifact is destroyed, this gains {LEVEL} temporary power.',
 		proc: 			['artifact_death','structure_death'],
 		proc_amount: 	1,
@@ -7189,6 +8142,31 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		4,
 	},
+	stun_any:{
+		description: 	'Stuns a random unit for {LEVEL} turn(s).',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'max'},
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'stun',
+				type: 		'apply_stun',
+				subtypes: 	['stun'],
+				amount: 	1	
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	stun_construct:{
 		description: 	'Stuns a random enemy artifact or golem for {LEVEL} turn(s).',
 		cannot_proc_while_stunned: true,
@@ -7482,7 +8460,6 @@ var all_abilities = {
 		level_cost: 3,
 	},
 	summon_peasant:{
-		name_color: 	'rgba(255,255,255,0.9)',
 		description: 	'Summons {LEVEL} peasant(s).',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
@@ -7558,6 +8535,29 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 		8,
 		level_cost_spell: 	4,
+	},
+	summon_trap_any:{
+		description: 	'Summons {LEVEL} trap(s) on either side.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_structure'],
+				card_id: 	'trap',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		1,
 	},
 	summon_skeleton:{
 		description: 	'Summons {LEVEL} skeleton(s).',
@@ -7659,6 +8659,29 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 		8,
 		level_cost_spell: 	4,
+	},
+	summon_sporeling_any:{
+		description: 	'Summons {LEVEL} sporeling(s) on either side.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'sporeling',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		1
 	},
 	thorned_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, there is a 50% chance this will deal {LEVEL} physical damage to it.',
@@ -7784,7 +8807,6 @@ var all_abilities = {
 		ability_subtypes: 	['undead'],
 	},
 	unsummon_ally:{
-		name_color: 	'rgba(171, 203, 255,0.9)',
 		description: 	'Returns a damaged ally creature unit to your hand. Will not unsummon summoned units.',
 		cannot_proc_while_stunned: true,
 		targets:	{
@@ -7998,6 +9020,35 @@ var all_abilities = {
 		level_cost_spell: 	1,
 		level_cost_hero: 	2,
 	},
+	weakness_any:{
+		description: 	'The creature unit with the highest power looses {LEVEL} power temporarily.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				not_self: 		true,
+				min_hp: 		1,
+				min_power: 		1,
+				highest_power: 	true,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'lull',
+				type: 			'grant_temp_power',
+				subtypes: 		['weaken','weaken_enemy'],
+				amount: 		'ability_level',
+				amount_factor: 	-1,
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	wither:{
 		description: 	'Reduces the maximum health of a random enemy unit by {LEVEL}. Will target the enemy hero if there are no enemy units.',
 		proc: 			'basic',
@@ -8028,6 +9079,36 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 		level_cost_spell: 	1,
+	},
+	wither_any:{
+		description: 	'Reduces the maximum health of a random unit or hero by {LEVEL}.',
+		proc: 			'basic',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				side: 			'any'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'wither',
+				type: 			'reduce_max_health',
+				subtypes: 		['magical','wither'],
+				amount: 		'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
 	},
 	wither_hv:{
 		name: 			'wither',
