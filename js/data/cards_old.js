@@ -955,7 +955,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, marred_birds: 1},
 		},
 		quote: '\"She loves her birds.\"',
-		use_old: true,
 	},
 	black_cat:{
 		name: 				'black cat',
@@ -3010,7 +3009,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 3},
 		},
 		quote: '\"Which is the real one?!\"',
-		use_old: true,
 	},
 	elder_druid:{
 		name: 				'elder druid',

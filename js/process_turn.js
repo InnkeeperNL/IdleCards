@@ -1379,7 +1379,7 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 											{
 												latest_effect_hit = false;
 											}
-											if(latest_effect_hit == true)
+											if(latest_effect_hit == true && (effect['proc_chance'] == undefined || effect['proc_chance'] > Math.random() * 100))
 											{
 												if(current_ability['do_not_pause_between'] != undefined && current_ability['do_not_pause_between'] == true)
 												{

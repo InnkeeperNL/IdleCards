@@ -525,6 +525,7 @@ var all_abilities = {
 		level_cost: 		2,
 		cost_adjustment: 	-1,
 		level_cost_cum: 	true,
+		level_cost_artifact: 	3,
 	},
 	bolster:{
 		description: 	'A random ally unit gains {LEVEL} temporary health.',
@@ -1735,7 +1736,6 @@ var all_abilities = {
 		cost_factor: 	'none',
 	},
 	curse:{
-		name_color: 	'rgba(160, 95, 250,0.9)',
 		description: 	'Applies {LEVEL} curse to a random enemy unit or hero.{CURSE}',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -2489,7 +2489,6 @@ var all_abilities = {
 		average_hits: 		3,
 	},
 	echo:{
-		name_color: 	'rgba(171, 203, 255,0.9)',
 		description: 	'Has a 75% chance to return to its owner\'s hand if this used an ability.',
 		cannot_proc_while_stunned: true,
 		has_used_ability: true,
@@ -2750,6 +2749,93 @@ var all_abilities = {
 		level_cost_structure: 0.75,
 		level_cost_spell: 	0.5,
 		level_cost_hero: 	1.5,
+	},
+	experiment:{
+		description: 	'Does something random to a random unit. Or not... It might just destroy itself.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				proc_chance: 		5,
+				projectile: 	'burn',
+				type: 			'apply_burn',
+				subtypes: 		['burn'],
+				amount: 		'ability_level',
+			},
+			1:{
+				proc_chance: 		5,
+				projectile: 	'bomb',
+				type: 			'grant_skill',
+				skill_id: 		'explode',
+				amount: 		'ability_level'
+			},
+			2:{
+				proc_chance: 		5,
+				projectile: 	'doom',
+				type: 			'apply_doom',
+				subtypes: 		['doom'],
+				amount: 		'ability_level',
+			},
+			3:{
+				proc_chance: 		5,
+				projectile: 	'curse',
+				type: 			'apply_curse',
+				subtypes: 		['curse'],
+				amount: 		'ability_level',
+			},
+			4:{
+				proc_chance: 		5,
+				projectile: 	'wither',
+				type: 			'reduce_max_health',
+				subtypes: 		['wither'],
+				amount: 		'ability_level',
+			},
+			5:{
+				proc_chance: 		5,
+				projectile: 	'bolster',
+				type: 			'increase_health',
+				subtypes: 		['bolster'],
+				amount: 		'ability_level'
+			},
+			6:{
+				proc_chance: 		5,
+				projectile: 	'armor',
+				type: 			'increase_armor',
+				subtypes: 		['fortify'],
+				amount: 		'ability_level'
+			},
+		},
+		on_success:{
+			proc_chance: 	10,
+			targets:{
+				0:{
+					target: 		'any',
+					target_amount: 	1,
+					position: 		'self',
+					not_types: 		['hero'],
+					min_hp: 		1,
+					side: 			'any'
+				},
+			},
+			effects:{
+				0:{
+					self_projectile: 'death',
+					type: 			'destroy',
+				}
+			},
+		},
+		//animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_hero: 	2,
 	},
 	explode:{
 		description: 	'When this unit is destroyed, it deals {LEVEL} physical damage to all nearby units.',
@@ -4166,7 +4252,6 @@ var all_abilities = {
 		level_cost_spell: 	2,
 	},
 	homebound:{
-		name_color: 	'rgba(171, 203, 255,0.9)',
 		description: 	'Has a 50% chance to return to its owner\'s hand. If this was summoned, it disappears.',
 		cannot_proc_while_stunned: true,
 		proc_chance: 	50,
@@ -6138,6 +6223,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'self',
 				side: 			'any',
+				min_total_hp: 	1,
 				slot_free: 		true
 			},
 		},
