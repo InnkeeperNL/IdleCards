@@ -12063,7 +12063,6 @@ var all_old_abilities = {
 		},
 		level_cost: 	3,
 	},
-
 	unsummon_dead:{
 		description: 	'When any ally creature unit dies, there is a {LEVEL}0% chance it returns to your hand. Will not unsummon summoned units.',
 		cannot_proc_while_stunned: true,

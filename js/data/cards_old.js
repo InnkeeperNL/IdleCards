@@ -1137,8 +1137,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, evade: 1, flying: 1},
 		},
 		quote: '\"Cute and very annoying.\"',
-		verified: true,
-		use_old: true,
 	},
 	
 	blood_elf:{
@@ -1163,7 +1161,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, thorns: 1, withering_touch: 1, resist_magic: 1},
 		},
 		quote: '\"The blood elves made a dark pact once.\"',
-		use_old: true,
 	},
 	blood_moon:{
 		name: 				'blood moon',
@@ -1326,7 +1323,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, thorns: 1, withering_touch: 1},
 		},
 		quote: '\"She has embraced the thorns.\"',
-		use_old: true,
 	},
 	breaking_ray:{
 		name: 				'breaking ray',
@@ -1747,7 +1743,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, charming_touch: 1, curse_hv: 1},
 		},
 		quote: '\"Do not let her whisper in your ear.\"',
-		use_old: true,
 	},
 	chest_golem:{
 		name: 				'chest golem',
@@ -2006,7 +2001,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, burning_deaths_hv: 1},
 		},
 		quote: '\"Burn the corpses. Burn the rest.\"',
-		use_old: true,
 	},
 	curse_of_the_lich:{
 		name: 				'curse of the lich',
@@ -2147,7 +2141,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, cursed_deaths_hv: 1, resurrect: 1, undead: 1},
 		},
 		quote: '\"You hurt us, we hurt you.\"',
-		use_old: true,
 	},
 	
 	
@@ -2550,7 +2543,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, dooming_touch: 1},
 		},
 		quote: '\"Join me in the darkness.\"',
-		use_old: true,
 	},
 	drain_life:{
 		name: 				'drain life',
@@ -2631,7 +2623,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, resist_fire: 1, resurrect: 1, undead: 1},
 		},
 		quote: '\"She will pull you into the deep.\"',
-		use_old: true,
 	},
 	druid:{
 		name: 				'druid',
@@ -4032,7 +4023,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, curse_hv: 2, flying: 1},
 		},
 		quote: '\"Tiny curses are still curses.\"',
-		use_old: true,
 	},
 	fanged_nightmare:{
 		name: 				'fanged nightmare',
@@ -4479,7 +4469,6 @@ var all_old_available_cards = {
 			abilities: 			{fire_bolt_hv: 2, withering_touch: 1},
 		},
 		quote: '\"The fire will melt you away.\"',
-		use_old: true,
 	},
 	flame_fairy:{
 		name: 				'flame fairy',
@@ -4597,7 +4586,6 @@ var all_old_available_cards = {
 			abilities: 			{burn_hv: 2, resurrect: 1, undead: 1},
 		},
 		quote: '\"It died in a fire long ago.\"',
-		use_old: true,
 	},
 	flare:{
 		name: 				'flare',
@@ -5079,7 +5067,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, resurrect: 1, vengeance_hv: 1, undead: 1},
 		},
 		quote: '\"She weeps for the dead\"',
-		use_old: true,
 	},
 	ghost_owl:{
 		name: 				'ghost owl',
@@ -5100,10 +5087,8 @@ var all_old_available_cards = {
 			armor: 				0,
 			health: 			25,
 			abilities: 			{strike_unit: 1, flying: 1, resurrect: 1, undead: 1},
-			verified: true,
 		},
 		quote: '\"An endless ooh-hu...\"',
-		use_old: true,
 	},
 	ghost_pendant:{
 		name: 				'ghost pendant',
@@ -5121,7 +5106,6 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{unsummon_dead: 2},
 		quote: '\"You cannot rest yet.\"',
-		use_old: true,
 	},
 	ghostly_gas:{
 		name: 				'ghostly gas',
@@ -5138,7 +5122,6 @@ var all_old_available_cards = {
 		abilities: 			{ghost_strike: 1, long_echo: 1},
 		quote: '\"The wrath of the dead.\"',
 		max_in_deck: 		1,
-		use_old: true,
 	},
 	ghoul:{
 		name: 				'ghoul',
@@ -9293,7 +9276,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, resurrect: 1, undead: 1},
 		},
 		quote: '\"It looks for souls to devour.\"',
-		use_old: true,
 	},
 	servant_of_freya:{
 		name: 				'servant of Freya',
@@ -10331,7 +10313,6 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{restoring_deaths: 1},
 		quote: '\"Let their deaths feed you.\"',
-		use_old: true,
 	},
 	spirit_of_the_cat:{
 		name: 				'spirit of the cat',

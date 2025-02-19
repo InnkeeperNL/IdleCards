@@ -1207,6 +1207,105 @@ var all_abilities = {
 		level_cost: 		0,
 		average_hit_cost: 	2,
 	},
+	charm:{
+		description: 	'Turns the nearest enemy non-undead creature into an ally and gives it the charmed ability. Cannot affect the enemy hero. Can be used {LEVEL} time(s).<br/><i>Charmed: If there are no more then 4 enemy units, this unit has a 50% chance to change sides.</i>',
+		max_ally_units: 4,
+		proc_amount: 	1,
+		reduce_skill_after_use:'charm',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'nearest',
+				not_types: ['object','structure'],
+				max_abilities: 	{undead: 0},
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'music',
+				type: 		'change_side',
+				subtypes: 	['mental','change_side','charm'],
+				amount: 	1,
+			},
+			1:{
+				type: 		'set_skill',
+				skill_id: 	'charmed',
+				amount: 	1
+			},
+			2:{
+				type: 		'enable_to_act',
+				amount: 	1
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	2,
+		level_cost_hero: 1,
+	},
+	charmed:{
+		description: 	'If there are no more then 4 enemy units, this unit has a 50% chance to change sides. This effect will trigger {LEVEL} time(s).',
+		proc_chance: 	50,
+		max_enemy_units: 	4,
+		cannot_proc_while_stunned: true,
+		reduce_skill_after_use:'charmed',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				self_projectile: 	'go_again',
+				type: 			'change_side',
+				subtypes: 		['mental','change_side'],
+				amount: 		1,
+			},
+		},
+		level_cost: 	-2,
+	},
+	charming_touch:{
+		description: 	'When this deals damage to an enemy non-undead creature unit, there is a 50% chance to turn it into an ally and gives it the charmed ability. Cannot affect the enemy hero.<br/><i>Charmed: If there are no more then 4 enemy units, this unit has a 50% chance to change sides.</i>',
+		proc: 			'dealt_damage',
+		max_ally_units: 4,
+		proc_chance: 	50,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				max_abilities: 	{undead: 0},
+				min_hp: 		1,
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				target_projectile: 'music',
+				type: 		'change_side',
+				subtypes: 	['mental','change_side','charm'],
+				amount: 	1,
+			},
+			1:{
+				type: 		'set_skill',
+				skill_id: 	'charmed',
+				amount: 	1
+			},
+			2:{
+				type: 		'enable_to_act',
+				amount: 	1
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	4,
+	},
 	clone_ally:{
 		ability_subtypes: ['summon_ally','summon_creature'],
 		description: 	'Creates a clone of a random ally creature {LEVEL} time(s).',
@@ -5793,12 +5892,13 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		6,
-		level_cost_structure: 4.5,
+		level_cost: 		3,
+		level_cost_artifact: 5,
+		level_cost_spell: 	1.5,
 	},
 	resurrect:{
 		name_color: 	'rgba(160, 95, 250,0.9)',
-		description: 	'When this\' health reaches 0, it has a 50% chance to come back to life with {LEVEL}0% health, rounded up.',
+		description: 	'When this\' health reaches 0, it has a 50% chance to come back to life with 1 health.',
 		proc: 			'own_death',
 		proc_chance: 	50,
 		proc_while_dead: true,
@@ -5818,8 +5918,7 @@ var all_abilities = {
 				projectile: 	'resurrect',
 				type: 			'healing',
 				subtypes: 		['resurrect'],
-				amount: 		'target_max_health',
-				amount_factors: ['ability_level',0.1],
+				amount: 		1,
 			},
 		},
 		animation: 			'combat_zoom',
@@ -5828,7 +5927,7 @@ var all_abilities = {
 		cost_factor: 		'health',
 	},
 	resurrect_ally:{
-		description: 	'When an ally creature unit\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 10% health.',
+		description: 	'When an ally creature unit\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 1 health.',
 		proc: 			'ally_creature_death',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
@@ -5849,8 +5948,7 @@ var all_abilities = {
 				projectile: 	'resurrect',
 				type: 			'healing',
 				subtypes: 		['resurrect'],
-				amount: 		'target_max_health',
-				amount_factor: 	0.1,
+				amount: 		1,
 			},
 		},
 		animation: 			'combat_zoom',
@@ -7712,6 +7810,37 @@ var all_abilities = {
 		level_cost: 		4,
 		level_cost_spell: 	2,
 	},
+	unsummon_dead:{
+		description: 	'When any ally creature unit dies, there is a {LEVEL}0% chance it returns to your hand. Will not unsummon summoned units.',
+		cannot_proc_while_stunned: true,
+		proc: 			'ally_creature_death',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure','object'],
+				origin_unit: 	true,
+				max_hp: 		0,
+				side: 			'ally',
+				has_origin_card: true,
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'teleport',
+				type: 			'move_to_deck',
+				subtypes: 		['move_ally_to_hand','unsummon'],
+				new_status: 	'hand',
+				side: 			'ally',
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 		2,
+		level_cost_structure: 	1.5,
+	},
 	upkeep_creature:{
 		name: 			'upkeep: creature',
 		description: 	'Each turn, this destroys a random ally creature unit with no more than {LEVEL} health. If it cannot, this is stunned. Will target units with the lowest cost first.',
@@ -7945,6 +8074,32 @@ var all_abilities = {
 			},
 		},
 		level_cost: 	4,
+	},
+	withering_deaths:{
+		name: 			'withering deaths',
+		description: 	'Reduces the maximum health of a random enemy unit by {LEVEL} when any ally creature is destroyed.',
+		proc: 			'ally_creature_death',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'wither',
+				type: 			'reduce_max_health',
+				subtypes: 		['wither'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1.5,
 	},
 	withering_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, there is a 50% chance this reduces the maximum health of that enemy by {LEVEL}.',
