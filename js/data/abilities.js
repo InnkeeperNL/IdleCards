@@ -2891,49 +2891,49 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				proc_chance: 		5,
+				proc_chance: 		10,
 				projectile: 	'burn',
 				type: 			'apply_burn',
 				subtypes: 		['burn'],
 				amount: 		'ability_level',
 			},
 			1:{
-				proc_chance: 		5,
+				proc_chance: 		10,
 				projectile: 	'bomb',
 				type: 			'grant_skill',
 				skill_id: 		'explode',
 				amount: 		'ability_level'
 			},
 			2:{
-				proc_chance: 		5,
+				proc_chance: 		10,
 				projectile: 	'doom',
 				type: 			'apply_doom',
 				subtypes: 		['doom'],
 				amount: 		'ability_level',
 			},
 			3:{
-				proc_chance: 		5,
+				proc_chance: 		10,
 				projectile: 	'curse',
 				type: 			'apply_curse',
 				subtypes: 		['curse'],
 				amount: 		'ability_level',
 			},
 			4:{
-				proc_chance: 		5,
+				proc_chance: 		10,
 				projectile: 	'wither',
 				type: 			'reduce_max_health',
 				subtypes: 		['wither'],
 				amount: 		'ability_level',
 			},
 			5:{
-				proc_chance: 		5,
+				proc_chance: 		10,
 				projectile: 	'bolster',
 				type: 			'increase_health',
 				subtypes: 		['bolster'],
 				amount: 		'ability_level'
 			},
 			6:{
-				proc_chance: 		5,
+				proc_chance: 		10,
 				projectile: 	'armor',
 				type: 			'increase_armor',
 				subtypes: 		['fortify'],
@@ -2960,8 +2960,8 @@ var all_abilities = {
 			},
 		},
 		//animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_hero: 	2,
+		level_cost: 		1,
+		level_cost_hero: 	1,
 	},
 	explode:{
 		description: 	'When this unit is destroyed, it deals {LEVEL} physical damage to all nearby units.',
@@ -5399,23 +5399,23 @@ var all_abilities = {
 				projectile_target: 	'deck',
 				type: 				'remove_card',
 				side: 				'ally',
-				on_success:{
-					targets:	{
-						0:{
-							target: 		'hero',
-							target_amount: 	1,
-							side: 			'ally'
-						},
-					},
-					effects:{
-						0:{
-							pause_before: -1000,
-							type: 		'summon_unit',
-							subtypes: 	['summon_ally','summon_creature'],
-							card_id: 	'skeleton',
-							amount: 	1
-						},
-					},
+			},
+		},
+		on_each_success:{
+			targets:{
+				0:{
+					target: 		'hero',
+					target_amount: 	1,
+					side: 			'ally'
+				},
+			},
+			effects:{
+				0:{
+					pause_before: -1000,
+					type: 		'summon_unit',
+					subtypes: 	['summon_ally','summon_creature'],
+					card_id: 	'skeleton',
+					amount: 	1
 				},
 			},
 		},
