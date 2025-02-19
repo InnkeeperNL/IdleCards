@@ -1023,7 +1023,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, spawn_sporeling: 1, dooming_aura: 1},
 		},
 		quote: '\"Those can be deadly if you leave them too long.\"',
-		use_old: true,
 	},
 	black_whelp:{
 		name: 				'black whelp',
@@ -1048,7 +1047,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, doom_all: 1},
 		},
 		quote: '\"And that is just a whelp?\"',
-		use_old: true,
 	},
 	blade_dancer:{
 		name: 				'blade dancer',
@@ -1284,7 +1282,6 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{experiment: 1},
 		quote: '\"And I reach in and... Ouch!\"',
-		use_old: true,
 	},
 	/*bramble_bush:{
 		name: 				'bramble bush',
@@ -2051,7 +2048,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, curse_all: 1, flying: 1},
 		},
 		quote: '\"After the Great Fall, the dragons that survived lost their shine.\"',
-		use_old: true,
 	},
 	cursed_jesters:{
 		name: 				'cursed jesters',
@@ -2612,7 +2608,6 @@ var all_old_available_cards = {
 		abilities: 			{fire_blast: 3, ignites: 3, minimum_enemies: 3},
 		quote: '\"Not many survive a few puffs of that.\"',
 		max_in_deck: 		1,
-		use_old: true,
 	},
 	drowned_ghost:{
 		name: 				'drowned ghost',
@@ -4330,7 +4325,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, fire_bolt_hv: 1, flying: 1},
 		},
 		quote: '\"It will burn everything.\"',
-		use_old: true,
 	},
 	fire_icatu:{
 		name: 				'fire icatu',
@@ -4730,7 +4724,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, poison_all: 1},
 		},
 		quote: '\"And that is just a whelp?\"',
-		use_old: true,
 	},
 	fort:{
 		name: 				'fort',
@@ -5824,7 +5817,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, fortify_ally: 1, flying: 1},
 		},
 		quote: '\"The kingdom of Tinah is protected by the ancient golden dragon Mu\'ra Tull.\"',
-		use_old: true,
 	},
 	grave_call:{
 		name: 				'grave call',
@@ -9082,7 +9074,6 @@ var all_old_available_cards = {
 			abilities: 			{earth_blast: 1},
 		},
 		quote: '\"And that is just a whelp?\"',
-		use_old: true,
 	},
 	sandstorm:{
 		name: 				'sandstorm',
@@ -11161,7 +11152,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, resurrect: 1, undead: 1, flying: 1},
 		},
 		quote: '\"Bones... just bones. And lots of them.\"',
-		use_old: true,
 	},
 	undertaker:{
 		name: 				'undertaker',

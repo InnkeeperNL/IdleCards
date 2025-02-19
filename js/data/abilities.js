@@ -2374,6 +2374,33 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 	-2,
 	},
+	dooming_deaths:{
+		description: 	'Applies {LEVEL} doom to a random enemy unit when any ally creature is destroyed.',
+		proc: 			'ally_creature_death',
+		ability_subtypes:['on_death_proc'],
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'doom',
+				type: 			'apply_doom',
+				subtypes: 		['magical','doom'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1.5,
+		level_cost_structure: 1,
+	},
 	dooming_touch:{
 		description: 	'Applies {LEVEL} doom to any unit it deals damage to.{DOOM}',
 		proc: 			'dealt_damage',
@@ -5193,7 +5220,6 @@ var all_abilities = {
 		level_cost: 		0.5,
 	},
 	raging_deaths:{
-		name_color: 	'rgba(55,255,55,0.9)',
 		description: 	'When an ally creature is detroyed, this gains {LEVEL} temporary power.',
 		proc: 			'ally_creature_death',
 		ability_subtypes:['on_death_proc'],
