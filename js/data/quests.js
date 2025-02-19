@@ -1310,6 +1310,20 @@ var all_chained_achievements = {
 		card_back: 		'witch',
 		steps: 			6,
 	},
+	withering:{
+		name: 			'withering',
+		description: 	'Have allies reduce the maximum health of something {AMOUNT} time(s).',
+		objective: 		'ally_performed_wither',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'autumn_witch',
+		steps: 			6,
+	},
 	zombie:{
 		name: 			'zombie',
 		description: 	'Play or summon {AMOUNT} undead card(s).',
