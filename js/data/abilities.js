@@ -622,7 +622,7 @@ var all_abilities = {
 	},
 	blessed:{
 		description: 	'Has a {LEVEL}0% chance to return to your deck when destroyed.',
-		proc: 			'own_death',
+		proc: 			'post_own_death',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
 		proc_while_dead: true,
