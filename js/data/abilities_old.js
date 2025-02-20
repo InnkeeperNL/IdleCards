@@ -12774,3 +12774,18 @@ var all_old_abilities = {
 	},
 
 }
+
+$.each(all_old_abilities, function(ability_id, ability_info){
+	if(all_abilities[ability_id] == undefined)
+	{
+		var use_old_ability = true;
+		if(ability_info['proc'] == 'reduce_incoming_damage'){use_old_ability = false;}
+
+		if(use_old_ability == true)
+		{
+			var new_ability = true_copyobject(all_old_abilities[ability_id]);
+			all_abilities[ability_id] = new_ability;
+			all_abilities[ability_id]['old'] = true;
+		}
+	}
+});

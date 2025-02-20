@@ -13212,3 +13212,106 @@ var all_old_available_cards = {
 	
 
 }
+
+$.each(all_old_available_cards, function(card_id, card_info){
+	if(false && all_available_cards[card_id] == undefined && card_info['use_old'] != undefined && card_info['use_old'] == true)
+	{
+		var use_old_card = true;
+		if(card_info['type'] != 'artifact' && card_info['type'] != 'spell' && card_info['type'] != 'creature' && card_info['type'] != 'structure'){use_old_card = false;}
+		//if(card_info.name.replace('icatu','') != card_info.name){use_old_card = false;}
+		//if(card_info.name.replace('jotnar','') != card_info.name){use_old_card = false;}
+		//if(card_info.name.replace('thief','') != card_info.name){use_old_card = false;}
+
+		var matched_new_card = false;
+		if(use_old_card == true)
+		{
+			$.each(all_available_cards, function(new_card_id, new_card_info){
+				if(matched_new_card == false)
+				{
+					var matched_this = true;
+					if(new_card_info['power'] != card_info['power']){matched_this = false;}
+					if(new_card_info['health'] != card_info['health']){matched_this = false;}
+					if(new_card_info['type'] != card_info['type']){matched_this = false;}
+					if(count_object(card_info['abilities']) == count_object(new_card_info['abilities']))
+					{
+						$.each(card_info['abilities'], function(ability_id, ability_level){
+							if(new_card_info['abilities'][ability_id] == undefined || new_card_info['abilities'][ability_id] != ability_level)
+							{
+								matched_this = false;
+							}
+						});
+					}
+					else
+					{
+						matched_this = false;
+					}
+					if(matched_this == true)
+					{
+						matched_new_card = true;
+						console.log(card_id + ' is the same as ' + new_card_id);
+					}
+				}
+			});
+		}
+		if(matched_new_card == true){use_old_card = false;}
+
+		if(use_old_card == true)
+		{
+			var new_card = true_copyobject(all_old_available_cards[card_id]);
+			$.each(new_card['abilities'], function(ability_id, ability_level){
+				if(all_abilities[ability_id] == undefined)
+				{
+					delete new_card['abilities'][ability_id];
+				}
+				else
+				{
+					if(all_abilities[ability_id]['max_level'] != undefined && ability_level > all_abilities[ability_id]['max_level'])
+					{
+						new_card['abilities'][ability_id] = all_abilities[ability_id]['max_level'];
+					}
+				}
+			});
+			if(new_card['hero_version'] != undefined)
+			{
+				$.each(new_card['hero_version']['abilities'], function(ability_id, ability_level){
+					if(all_abilities[ability_id] == undefined)
+					{
+						delete new_card['hero_version']['abilities'][ability_id];
+					}
+					else
+					{
+						if(all_abilities[ability_id]['max_level'] != undefined && ability_level > all_abilities[ability_id]['max_level'])
+						{
+							new_card['hero_version']['abilities'][ability_id] = all_abilities[ability_id]['max_level'];
+						}
+					}
+				});
+			}
+			var old_image_string = new_card['image']
+			new_card['image'] = old_image_string.replace('cards/','cards_old/');
+			new_card['old'] = true;
+			all_available_cards[card_id] = new_card;
+		}
+	}
+});
+
+function check_using_old_abilities(){
+	$.each(all_available_cards, function(card_id, card_info){
+		//console.log(card_id);
+		$.each(card_info['abilities'], function(ability_id, ability_info){
+			if(all_abilities[ability_id]['old'] != undefined)
+			{
+				console.log(card_id + ' using old ability: ' + ability_id);
+			}
+		});
+		if(card_info['hero_version'] != undefined)
+		{
+			$.each(card_info['hero_version']['abilities'], function(ability_id, ability_info){
+				if(all_abilities[ability_id]['old'] != undefined)
+				{
+					console.log(card_id + ' hero using old ability: ' + ability_id);
+				}
+			});
+		}
+	});
+}

@@ -1291,6 +1291,66 @@ var all_abilities = {
 		level_cost: 		6,
 		level_cost_spell: 	3,
 	},
+	burning_deaths:{
+		description: 	'Applies {LEVEL} burn to a random enemy unit or hero when any ally creature is destroyed.',
+		proc: 			'ally_creature_death',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'burn',
+				type: 			'apply_burn',
+				subtypes: 		['burn'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	2,
+	},
+	burning_deaths_hv:{
+		name: 			'burning deaths',
+		description: 	'Applies {LEVEL} burn to a random enemy unit when any ally creature is destroyed.',
+		proc: 			'ally_creature_death',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'burn',
+				type: 			'apply_burn',
+				subtypes: 		['burn'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	2,
+	},
 	burning_entry:{
 		description: 	'Applies {LEVEL} burn to all nearby enemy units when played. Will apply the burn to the enemy hero if there are no units nearby.{BURN}',
 		proc: 			'on_play',
@@ -4332,7 +4392,9 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1,
+		level_cost: 		1,
+		level_cost_spell: 	0.5,
+		level_cost_cum: 	true,
 	},
 	fortify_all:{
 		description: 	'Grants all ally units {LEVEL} shield. Cannot affect heroes. {SHIELD}',
@@ -4358,8 +4420,8 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 		3,
-		level_cost_hero: 	4,
 		level_cost_spell: 	1.5,
+		level_cost_cum: 	true,
 	},
 	fortify_any:{
 		description: 	'Grants a random unit or hero {LEVEL} shield. {SHIELD}',
@@ -4389,8 +4451,38 @@ var all_abilities = {
 				amount: 		'ability_level'
 			},
 		},
-		animation: 		'combat_zoom',
-		level_cost: 	1,
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+		level_cost_spell: 	0.5,
+		level_cost_cum: 	true,
+	},
+	fortify_entries:{
+		description: 	'When any ally unit enters the game, it gains {LEVEL} armor.',
+		proc: 			'ally_creature_card_played',
+		cannot_proc_while_stunned: true,
+		origin_not_self: 	true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'armor',
+				type: 			'increase_armor',
+				subtypes: 		['fortify'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+		level_cost_cum: 	true,
 	},
 	fortify_hero:{
 		description: 	'Grants your hero {LEVEL} shield. {SHIELD}',
@@ -4413,8 +4505,10 @@ var all_abilities = {
 				amount: 		'ability_level'
 			},
 		},
-		animation: 		'combat_zoom',
-		level_cost: 	1,
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+		level_cost_spell: 	0.5,
+		level_cost_cum: 	true,
 	},
 	fortify_self:{
 		description: 	'Grants itself {LEVEL} shield. {SHIELD}',
@@ -4437,9 +4531,9 @@ var all_abilities = {
 				amount: 		'ability_level'
 			},
 		},
-		animation: 		'combat_zoom',
-		level_cost: 	2,
-		level_cost_hero: 1,
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+		level_cost_cum: 	true,
 	},
 	frost_bolt:{
 		description: 	'Deals {LEVEL} physical cold projectile damage to a random enemy unit. Has a 25% chance to stun any unit or hero it deals damage to. Will target the enemy hero if there are no enemy units.',
@@ -6604,6 +6698,34 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		4,
+	},
+	release_bird:{
+		description: 	'Summons {LEVEL} bird creature(s) when destroyed.',
+		proc: 			'own_death',
+		proc_while_dead: true,
+		max_ally_units: 4,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				type: 		'summon_unit',
+				card_id: 	'random',
+				card_type: 	'creature',
+				card_subtype: 'bird',
+				amount: 	1,
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	12,
+		cost_on_top: 	true,
 	},
 	repair:{
 		description: 	'Repairs a random non-plant damaged ally structure by {LEVEL}. Cannot affect heroes.',
@@ -8937,6 +9059,68 @@ var all_abilities = {
 		//level_cost_hero: 	2,
 		//cost_factor: 	'power'
 	},
+	vengeance:{
+		description: 	'When any ally creature is destroyed, deals {LEVEL} physical melee damage to the nearest enemy unit. Will target the enemy hero if there are no enemy units.',
+		proc: 			'ally_creature_death',
+		proc_while_dead: false,
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'nearest',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'strike',
+				type: 			'damage',
+				subtypes: 		['physical','melee','vengeance'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'attack',
+		level_cost: 	2,
+		average_hits: 	1,
+	},
+	vengeance_hv:{
+		name: 			'vengeance',
+		description: 	'When any ally creature is destroyed, deals {LEVEL} physical melee damage to the nearest enemy unit. Will not target the enemy hero.',
+		proc: 			'ally_creature_death',
+		proc_while_dead: false,
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'nearest',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'strike',
+				type: 			'damage',
+				subtypes: 		['physical','melee','vengeance'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'attack',
+		level_cost: 	3,
+		average_hits: 	1,
+	},
 	venom:{
 		description: 	'Applies {LEVEL} poison to any creature it damages.{POISON}',
 		proc: 			'dealt_damage',
@@ -8988,6 +9172,65 @@ var all_abilities = {
 		level_cost: 		8,
 		level_cost_spell: 	4,
 		average_hits: 		3,
+	},
+	water_bolt:{
+		description: 	'Deals {LEVEL} physical water projectile damage to a random enemy unit. Will target the enemy hero if there are no enemy units.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'water',
+				type: 			'damage',
+				subtypes: 		['physical','water','projectile','elemental'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		4,
+		level_cost_spell: 	2,
+		average_hits: 		1,
+	},
+	water_bolt_hv:{
+		name: 			'water bolt',
+		description: 	'Deals {LEVEL} physical water projectile damage to a random enemy unit.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'water',
+				type: 			'damage',
+				subtypes: 		['physical','water','projectile','elemental'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	3,
+		average_hits: 	1,
 	},
 	weakness:{
 		description: 	'The enemy creature unit with the highest power looses {LEVEL} power temporarily.',
@@ -9249,31 +9492,11 @@ var all_abilities = {
 
 }
 
-
-$.each(all_old_abilities, function(ability_id, ability_info){
-	if(all_abilities[ability_id] == undefined)
-	{
-		var use_old_ability = true;
-		if(ability_info['proc'] == 'reduce_incoming_damage'){use_old_ability = false;}
-
-		if(use_old_ability == true)
-		{
-			var new_ability = true_copyobject(all_old_abilities[ability_id]);
-			all_abilities[ability_id] = new_ability;
-		}
-	}
-});
-
 //generate_abilities();
 var not_craft_themes = [
 	'physical',
 	'melee',
 	'magical',
-	'movement',
-	'evade',
-	'move_ally_to_hand',
-	'move_ally_to_deck',
-	'summon_ally',
 	'type_resist'
 ]
 
