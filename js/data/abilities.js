@@ -649,6 +649,35 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	0.1,
 	},
+	blessed_deaths:{
+		description: 	'A random ally unit gains {LEVEL} blessings when any ally creature is destroyed. Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
+		proc: 			'ally_creature_death',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally',
+				max_abilities: 	{blessed: 9},
+				has_origin_card: true,
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bless',
+				type: 			'grant_skill',
+				subtypes: 		['bless','grant_bless','deck_control'],
+				skill_id: 		'blessed',
+				amount: 		'ability_level',
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	0.75,
+		level_cost_artifact: 1.5,
+	},
 	blood_rage:{
 		description: 	'A random living ally creature unit with at least 2 health gains {LEVEL} power and looses 1 health permanently.',
 		cannot_proc_while_stunned: true,
@@ -909,6 +938,7 @@ var all_abilities = {
 		level_cost: 		1,
 		level_cost_structure: 0.75,
 		level_cost_spell: 	0.5,
+		level_cost_artifact: 2,
 		level_cost_cum: 	true,
 	},
 	break:{
@@ -1350,6 +1380,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	2,
+		level_cost_artifact: 4,
 	},
 	burning_entry:{
 		description: 	'Applies {LEVEL} burn to all nearby enemy units when played. Will apply the burn to the enemy hero if there are no units nearby.{BURN}',
@@ -2464,8 +2495,9 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	2,
-		level_cost_artifact: 2,
+		level_cost: 	1.5,
+		level_cost_artifact: 3,
+		level_cost_cum: true,
 	},
 	cursed_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, this will apply {LEVEL} curse to it.',
@@ -3030,6 +3062,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	1.5,
+		level_cost_artifact: 3,
 		level_cost_structure: 1,
 	},
 	dooming_touch:{
@@ -5578,6 +5611,70 @@ var all_abilities = {
 			homebound: 	2,
 		},
 	},
+	lightning:{
+		description: 	'Deals {LEVEL} magical air damage to the enemy unit with the highest current health. Will target the enemy hero if there are no enemy units.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				highest_hp: 	true,
+				side: 		'enemy'
+			},
+			1:{
+				target: 	'hero',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				self_projectile: 	'lightning goes_up',
+				target_projectile: 	'lightning comes_down',
+				type: 				'damage',
+				subtypes: 			['magical','air','elemental','lightning'],
+				amount: 			'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		5,
+		level_cost_spell: 	2.5,
+		average_hits: 		1,
+	},
+	lightning_hv:{
+		name: 			'lightning',
+		description: 	'Deals {LEVEL} magical air damage to the enemy unit with the highest current health.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				highest_hp: 	true,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				self_projectile: 	'lightning goes_up',
+				target_projectile: 	'lightning comes_down',
+				type: 				'damage',
+				subtypes: 			['magical','air','elemental','lightning'],
+				amount: 			'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		5,
+		level_cost_spell: 	2.5,
+		average_hits: 		1,
+	},
 	marred_vines:{
 		description: 	'When this takes damage, there is a 50% chance it summons {LEVEL} vine(s).',
 		proc: 			'receive_damage',
@@ -6135,8 +6232,70 @@ var all_abilities = {
 		level_cost: 		1.5,
 		level_cost_spell: 	0.75,
 	},
+	poisonous_deaths:{
+		description: 	'Applies {LEVEL} poison to a random enemy unit or hero when any ally creature is destroyed.',
+		proc: 			'ally_creature_death',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'apply_poison',
+				projectile: 	'poison',
+				subtypes: 		['poison'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1.5,
+	},
+	poisonous_deaths_hv:{
+		name: 			'poisonous deaths',
+		description: 	'Applies {LEVEL} poison to a random enemy unit when any ally creature is destroyed.',
+		proc: 			'ally_creature_death',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'apply_poison',
+				projectile: 	'poison',
+				subtypes: 		['poison'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1.5,
+		level_cost_artifact: 3,
+	},
 	purify:{
-		description: 	'Removes all negative effects from {LEVEL} random ally unit(s) or your hero. Negative effects are burn, curse, doom and poison.',
+		description: 	'Removes all negative effects from {LEVEL} random ally unit(s) or your hero.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		targets:	{
@@ -6169,7 +6328,7 @@ var all_abilities = {
 		level_cost_spell: 	1,
 	},
 	purify_any:{
-		description: 	'Removes all negative effects from {LEVEL} random unit(s) or hero. Negative effects are burn, curse, doom and poison.',
+		description: 	'Removes all negative effects from {LEVEL} random unit(s) or hero.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		targets:	{
@@ -6201,7 +6360,7 @@ var all_abilities = {
 		level_cost: 		1,
 	},
 	purify_all:{
-		description: 	'Removes all negative effects from all ally units and your hero. Negative effects are burn, curse, doom and poison.',
+		description: 	'Removes all negative effects from all ally units and your hero.',
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
@@ -6233,7 +6392,7 @@ var all_abilities = {
 		level_cost_spell: 	3,
 	},
 	purifying_entry:{
-		description: 	'When played, removes all negative effects from {LEVEL} random ally unit(s) or your hero. Negative effects are burn, curse, doom and poison.',
+		description: 	'When played, removes all negative effects from {LEVEL} random ally unit(s) or your hero.',
 		cannot_proc_while_stunned: true,
 		proc: 			'on_play',
 		proc_amount: 	'ability_level',
@@ -6264,6 +6423,40 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		0.5,
+	},
+	purifying_deaths:{
+		description: 	'ARemoves all negative effects from {LEVEL} random ally unit(s) or your hero when any ally creature is destroyed.',
+		proc: 			'ally_creature_death',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				has_negative_effect: true,
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'cleanse',
+				target_projectile: 'cleanse',
+				type: 		'set_effect_amount',
+							effect_names:{
+								burning: 	0,
+								cursed: 	0,
+								doom: 		0,
+								poisoned: 	0,
+							},
+				subtypes: 	['cleanse_ally'],
+				amount: 	1,
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	2,
+		level_cost_artifact: 4,
 	},
 	raging_deaths:{
 		description: 	'When an ally creature is detroyed, this gains {LEVEL} temporary power.',
@@ -6892,7 +7085,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		3,
-		level_cost_artifact: 5,
+		level_cost_artifact: 6,
 		level_cost_spell: 	1.5,
 	},
 	restore_any:{
@@ -6945,11 +7138,10 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		3,
-		level_cost_artifact: 5,
+		level_cost_artifact: 6,
 		level_cost_spell: 	1.5,
 	},
 	resurrect:{
-		name_color: 	'rgba(160, 95, 250,0.9)',
 		description: 	'When this\' health reaches 0, it has a 50% chance to come back to life with 1 health.',
 		proc: 			'own_death',
 		proc_chance: 	50,
@@ -9400,7 +9592,6 @@ var all_abilities = {
 		level_cost: 	4,
 	},
 	withering_deaths:{
-		name: 			'withering deaths',
 		description: 	'Reduces the maximum health of a random enemy unit by {LEVEL} when any ally creature is destroyed.',
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
@@ -9424,6 +9615,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	1.5,
+		level_cost_artifact: 3,
 	},
 	withering_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, there is a 50% chance this reduces the maximum health of that enemy by {LEVEL}.',
