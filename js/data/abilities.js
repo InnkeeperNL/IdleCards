@@ -6892,6 +6892,31 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		4,
 	},
+	regenerate:{
+		description: 	'Heals itself by {LEVEL} each turn.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				side: 			'ally',
+				damaged: 		true,
+			},
+		},
+		effects:{
+			0:{
+				projectile:		'healing',
+				type: 			'healing',
+				subtypes: 		['healing','regeneration'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		3,
+	},
 	release_bird:{
 		description: 	'Summons {LEVEL} bird creature(s) when destroyed.',
 		proc: 			'own_death',

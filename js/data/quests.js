@@ -229,9 +229,9 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'cry_for_help',
-		steps: 		5,
-		no_quest: 	true,
+		card_back: 		'cry_for_help',
+		steps: 			5,
+		no_quest: 		true,
 	},
 	aquatic:{
 		name: 			'aquatic',
@@ -244,8 +244,8 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'starfish',
-		steps: 		6,
+		card_back: 		'starfish',
+		steps: 			6,
 	},
 	arcane:{
 		name: 			'arcane',
@@ -460,8 +460,8 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'mind_leak',
-		steps: 		6,
+		card_back: 		'mind_leak',
+		steps: 			6,
 	},
 	doom:{
 		name: 			'doom',
@@ -517,8 +517,8 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'elf',
-		steps: 		6,
+		card_back: 		'elf',
+		steps: 			6,
 	},
 	empower:{
 		name: 			'empower',
@@ -531,8 +531,8 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'flag_carrier',
-		steps: 		6,
+		card_back: 		'flag_carrier',
+		steps: 			6,
 	},
 	fear:{
 		name: 			'fear',
@@ -545,8 +545,8 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'fearful_mask',
-		steps: 		6,
+		card_back: 		'fearful_mask',
+		steps: 			6,
 	},
 	fire:{
 		name: 			'fire',
@@ -559,8 +559,8 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'fire_mage',
-		steps: 		6,
+		card_back: 		'fire_mage',
+		steps: 			6,
 	},
 	flare:{
 		name: 			'flare',
@@ -634,8 +634,8 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 'carnivorous_plant',
-		steps: 		6,
+		card_back: 		'carnivorous_plant',
+		steps: 			6,
 	},
 	greed:{
 		name: 			'greed',
@@ -822,7 +822,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'vengeful_spirit',
+		card_back: 		'raging_spirit',
 		steps: 			6,
 	},
 	mason:{
