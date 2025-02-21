@@ -12895,7 +12895,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, counter_spells: 5},
 		hero_version: 			{
 			theme: 				['subtype_human','subtype_cleric'],
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, counter_spells: 4},
