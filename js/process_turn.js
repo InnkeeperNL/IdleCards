@@ -1701,7 +1701,7 @@ function process_effect(target_id, origin_id, effect, level){
 			{
 				target_immune = true;
 			}
-			if(all_abilities[ability_id]['negated_by_ability'] != undefined)
+			if(battle_info.combat_units[origin_id] != undefined && all_abilities[ability_id]['negated_by_ability'] != undefined)
 			{	
 				$.each(battle_info.combat_units[origin_id]['abilities'], function(ability_key, useless_data){
 					if(ability_key == all_abilities[ability_id]['negated_by_ability'])
