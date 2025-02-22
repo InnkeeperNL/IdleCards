@@ -87,7 +87,7 @@ function set_collection_page(amount){
 	show_collection();
 };
 
-all_icons = {
+var all_icons = {
 	air:{},
 	broken:{},
 	power:{},

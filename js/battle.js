@@ -74,8 +74,8 @@ function show_battle(){
 		combat_alive = true;
 
 		//SET UP SLOT PLACEHOLDERS
-		for (slot_side = 1; slot_side < 3; slot_side++) {
-			for (slot_number = -5; slot_number < 6; slot_number++) {
+		for (var slot_side = 1; slot_side < 3; slot_side++) {
+			for (var slot_number = -5; slot_number < 6; slot_number++) {
 				$('.battle_container').append('<div class="unit slot_container side_' + slot_side + ' slot_' + slot_number + '" onclick="show_unit_details(' + slot_side + ',' + slot_number + ')"></div>');
 			}
 		}
@@ -142,7 +142,7 @@ function show_battle(){
 		var deck_card_counter = 0;
 		$.each(gamedata.decks[gamedata.current_deck], function(card_id, amount){
 			if(card_id != 'hero'){
-				for(t = 0;t < amount; t++){
+				for(var t = 0;t < amount; t++){
 					battle_info.deck_2[deck_card_counter] = {
 						card_id: 	card_id,
 						status: 	'deck',
@@ -288,7 +288,7 @@ function convert_deck(deck){
 	var deck_card_counter = 0;
 	$.each(deck['deck'], function(card_id, amount){
 		if(card_id != 'hero'){
-			for(t = 0;t < amount; t++){
+			for(var t = 0;t < amount; t++){
 				converted_deck[deck_card_counter] = {
 					card_id: 	card_id,
 					status: 	'deck',
@@ -479,7 +479,7 @@ function construct_random_deck(size, hero, randomized){
 			deck_times[deck_time_type] *= deck_size_ratio;
 		});
 	}
-	for(t = 0;t < size; t++){
+	for(var t = 0;t < size; t++){
 		var card_weight = 1;
 		//if(all_available_cards[card_id]['pick_chance'] != undefined){card_weight = all_available_cards[card_id]['pick_chance'];}
 		if(card_weight > 0)
@@ -1371,7 +1371,7 @@ function create_hero(card_id, side){
 
 function apply_power_factor(unit, side){
 
-	effective_power_factor = get_effective_power_factor();
+	var effective_power_factor = get_effective_power_factor();
 	if(side == 1)
 	{
 		if(unit['power'] > 0)

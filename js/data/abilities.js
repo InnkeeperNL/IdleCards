@@ -10,8 +10,6 @@ var all_abilities = {
 				target: 		'unit',
 				target_amount: 	5,
 				position: 		'random',
-				/*has_ability: 	'flying',
-				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'min'},*/
 				min_hp: 		1,
 				side: 			'enemy'
 			},
@@ -41,8 +39,6 @@ var all_abilities = {
 				target: 		'unit',
 				target_amount: 	1,
 				position: 		'random',
-				/*has_ability: 	'flying',
-				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'min'},*/
 				min_hp: 		1,
 				side: 			'enemy'
 			},
@@ -50,8 +46,6 @@ var all_abilities = {
 				target: 		'hero',
 				target_amount: 	1,
 				position: 		'random',
-				/*has_ability: 	'flying',
-				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'min'},*/
 				min_hp: 		1,
 				side: 			'enemy'
 			},
@@ -117,8 +111,6 @@ var all_abilities = {
 				target: 		'unit',
 				target_amount: 	1,
 				position: 		'random',
-				/*has_ability: 	'flying',
-				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'min'},*/
 				min_hp: 		1,
 				side: 			'enemy'
 			},
@@ -638,7 +630,6 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				//pause_before: 	-1000,
 				target_projectile: 	'bless',
 				type: 			'move_to_deck',
 				subtypes: 		['move_ally_to_deck','deck_control'],
@@ -1165,7 +1156,6 @@ var all_abilities = {
 			0:{
 				type: 		'summon_unit',
 				subtypes: 	['summon_ally','summon_structure'],
-				type: 		'summon_unit',
 				card_id: 	'palisade',
 				amount: 	1
 			}
@@ -1190,7 +1180,6 @@ var all_abilities = {
 			0:{
 				type: 		'summon_unit',
 				subtypes: 	['summon_ally','summon_structure'],
-				type: 		'summon_unit',
 				card_id: 	'palisade',
 				amount: 	1
 			}
@@ -1833,7 +1822,6 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				//projectile: 	'teleport',
 				type: 			'summon_unit',
 				subtypes: 		['magical','clone_unit','summon_ally','summon_creature'],
 				card_id: 		'self',
@@ -1841,7 +1829,6 @@ var all_abilities = {
 				amount: 		1,
 			}
 		},
-		//animation: 	'combat_zoom',
 	},
 	cold_aura:{
 		description: 	'Deals {LEVEL} physical cold damage to any unit or hero that deals melee damage to it. Has a 25% chance to stun any unit or hero it deals damage to.',
@@ -2258,7 +2245,6 @@ var all_abilities = {
 		description: 	'Heals itself by {LEVEL} for every 5 creature cards in your grave.',
 		proc: 			'basic',
 		min_ally_creature_cards_in_grave: 5,
-		//remove_skill: 'grave_power',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		targets:	{
@@ -3027,7 +3013,6 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				//projectile: 	'doom',
 				type: 			'apply_doom',
 				subtypes: 		['magical','doom'],
 				amount: 		'ability_level',
@@ -3080,7 +3065,6 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				//target_projectile: 'doom',
 				type: 			'apply_doom',
 				subtypes: 		['magical','doom'],
 				amount: 		'ability_level',
@@ -3120,7 +3104,6 @@ var all_abilities = {
 		ability_level_cost_factors:{
 			homebound: 		1.5,
 		},
-		//cost_on_top: 	true,
 	},
 	draw_any:{
 		description: 	'You or the enemy draws up to a total of {LEVEL} card(s).',
@@ -3176,7 +3159,6 @@ var all_abilities = {
 		level_cost: 	7,
 		level_cost_spell: 4,
 		cost_adjustment: -3,
-		//cost_on_top: 	true,
 	},
 	earth_blast:{
 		description: 	'Deals {LEVEL} physical earth damage to all enemy units.',
@@ -3224,7 +3206,6 @@ var all_abilities = {
 				subtypes: 		['move_ally_to_hand','deck_control','echo'],
 				new_status: 	'hand',
 				side: 			'ally',
-				//pause_before: 2000,
 			}
 		},
 		cost_factor: 	'full',
@@ -3251,7 +3232,6 @@ var all_abilities = {
 				amount: 		'ability_level'
 			}
 		},
-		//animation: 			'combat_zoom',
 		level_cost: 		4,
 		level_cost_spell: 	2,
 		average_hits: 		1,
@@ -3279,7 +3259,6 @@ var all_abilities = {
 				amount: 		'ability_level'
 			}
 		},
-		//animation: 			'combat_zoom',
 		level_cost: 		3,
 		average_hits: 		1,
 	},
@@ -3529,7 +3508,6 @@ var all_abilities = {
 				}
 			},
 		},
-		//animation: 			'combat_zoom',
 		level_cost: 		1,
 		level_cost_hero: 	1,
 	},
@@ -3703,7 +3681,6 @@ var all_abilities = {
 				target: 		'unit',
 				target_amount: 	1,
 				position: 		'nearest',
-				//highest_cost: 	true,
 				not_types: 		['structure','object'],
 				not_subtypes: 	['horror'],
 				max_abilities: 	{undead: 0},
@@ -4241,10 +4218,6 @@ var all_abilities = {
 		},
 		level_cost: 		2,
 		max_level: 			1,
-		/*description: 		'This unit is immune to fire and burn effects.',
-		grants_immunities: 	['fire','burn'],
-		ability_subtypes: 	['fireproof'],
-		level_cost: 2,*/
 	},
 	first_aid:{
 		description: 	'When an ally creature unit receives damages, this heals that ally by {LEVEL}. Can be used once each round.',
@@ -4275,7 +4248,6 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	3,
 		level_cost_structure: 2.25,
-		//level_cost_cum: true,
 	},
 	flame_strike:{
 		description: 	'Deals melee magical fire damage equal to its power to the opposing unit. Will target the enemy hero if there is no opposing unit.',
@@ -4468,7 +4440,7 @@ var all_abilities = {
 				min_hp: 		1,
 				side: 			'any'
 			},
-			0:{
+			1:{
 				target: 		'hero',
 				target_amount: 	1,
 				position: 		'random',
@@ -5022,7 +4994,6 @@ var all_abilities = {
 		description: 	'Your hero reduces the time left of the card in your hand with the highest time left by {LEVEL}. If it does, it deals 1 damage to itself.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
-		//proc_amount: 	'ability_level',
 		ability_subtypes: ['hasten','deck_control'],
 		targets:	{
 			0:{
@@ -5117,7 +5088,6 @@ var all_abilities = {
 	},
 	hide:{
 		description: 	'Grants itself stealth every turn.',
-		//proc_chance: 	75,
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
@@ -5245,7 +5215,6 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'self',
 				side: 			'ally',
-				//has_origin_card: true,
 			},
 		},
 		effects:{
@@ -5255,7 +5224,6 @@ var all_abilities = {
 				subtypes: 		['move_ally_to_hand'],
 				new_status: 	'hand',
 				side: 			'ally',
-				//pause_before: 2000,
 			}
 		},
 		level_cost: 	2,
@@ -5424,7 +5392,6 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				//self_projectile: 	'go_again',
 				type: 				'go_again',
 				subtypes: 			['go_again'],
 				amount: 			'ability_level',
@@ -5440,7 +5407,6 @@ var all_abilities = {
 		proc_chance: 	50,
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
-		//reduce_skill_after_use:'summon_skeleton',
 		proc_amount: 'ability_level',
 		targets:	{
 			0:{
@@ -5465,7 +5431,6 @@ var all_abilities = {
 		proc: 			'basic',
 		proc_chance: 	50,
 		cannot_proc_while_stunned: true,
-		//reduce_skill_after_use:'summon_skeleton',
 		proc_amount: 'ability_level',
 		targets:	{
 			0:{
@@ -5692,7 +5657,6 @@ var all_abilities = {
 			0:{
 				type: 		'summon_unit',
 				subtypes: 	['summon_ally','summon_structure'],
-				type: 		'summon_unit',
 				card_id: 	'vine',
 				amount: 	1,
 			}
@@ -5739,7 +5703,6 @@ var all_abilities = {
 		remove_skill: 	'minimum_allies',
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
-		//level_cost_cum: true,
 	},
 	minimum_ally_creatures:{
 		name: 			'ally creatures:',
@@ -5749,7 +5712,6 @@ var all_abilities = {
 		remove_skill: 	'minimum_ally_creatures',
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
-		//level_cost_cum: true,
 	},
 	minimum_dead_ally_creatures:{
 		name: 			'dead ally creatures:',
@@ -5759,7 +5721,6 @@ var all_abilities = {
 		remove_skill: 	'minimum_dead_ally_creatures',
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
-		//level_cost_cum: true,
 	},
 	minimum_enemies:{
 		name: 			'enemies:',
@@ -5771,8 +5732,6 @@ var all_abilities = {
 		remove_skill: 	'minimum_enemies',
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
-		//cost_factor: 	'full',
-		//level_cost_cum: true,
 	},
 	minimum_enemy_creatures:{
 		name: 			'enemy creatures:',
@@ -5783,7 +5742,6 @@ var all_abilities = {
 		remove_skill: 	'minimum_enemy_creatures',
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
-		//level_cost_cum: true,
 	},
 	min_hand_cards:{
 		name: 			'hand cards:',
@@ -5806,7 +5764,6 @@ var all_abilities = {
 				not_types: 		['structure','object'],
 				min_hp: 		1,
 				lowest_cost: 	true,
-				//max_cost: 		'ability_level',
 				side: 			'ally',
 			},
 		},
@@ -5843,7 +5800,6 @@ var all_abilities = {
 				not_types: 		['structure','object'],
 				min_hp: 		1,
 				lowest_cost: 	true,
-				//max_cost: 		'ability_level',
 				side: 			'any',
 			},
 		},
@@ -6024,11 +5980,9 @@ var all_abilities = {
 	},
 	plated:{
 		description: 	'Reduces incoming physical damage down to {LEVEL}.',
-		//proc: 			'reduce_incoming_damage',
 		proc: 			'max_incoming_damage',
 		subtypes: 		['physical'],
 		negated_by: 	['ignores_armor'],
-		//reduce_chance: 	75,
 		amount: 		'ability_level',
 		scales: 		true,
 		targets:	{
@@ -6042,7 +5996,6 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				//pause_before: 		500, 
 				self_projectile: 	'shield',
 				subtypes: 			['plated'],
 				increase_timeout: 	-1500,
@@ -6313,12 +6266,12 @@ var all_abilities = {
 				projectile: 'cleanse',
 				target_projectile: 'cleanse',
 				type: 		'set_effect_amount',
-							effect_names:{
-								burning: 	0,
-								cursed: 	0,
-								doom: 		0,
-								poisoned: 	0,
-							},
+				effect_names:{
+					burning: 	0,
+					cursed: 	0,
+					doom: 		0,
+					poisoned: 	0,
+				},
 				subtypes: 	['cleanse_ally'],
 				amount: 	1,
 			}
@@ -6346,12 +6299,12 @@ var all_abilities = {
 				projectile: 'cleanse',
 				target_projectile: 'cleanse',
 				type: 		'set_effect_amount',
-							effect_names:{
-								burning: 	0,
-								cursed: 	0,
-								doom: 		0,
-								poisoned: 	0,
-							},
+				effect_names:{
+					burning: 	0,
+					cursed: 	0,
+					doom: 		0,
+					poisoned: 	0,
+				},
 				subtypes: 	['cleanse_ally'],
 				amount: 	1,
 			}
@@ -6377,12 +6330,12 @@ var all_abilities = {
 				projectile: 'cleanse',
 				target_projectile: 'cleanse',
 				type: 		'set_effect_amount',
-							effect_names:{
-								burning: 	0,
-								cursed: 	0,
-								doom: 		0,
-								poisoned: 	0,
-							},
+				effect_names:{
+					burning: 	0,
+					cursed: 	0,
+					doom: 		0,
+					poisoned: 	0,
+				},
 				subtypes: 	['cleanse_ally'],
 				amount: 	1,
 			}
@@ -6411,12 +6364,12 @@ var all_abilities = {
 				projectile: 'cleanse',
 				target_projectile: 'cleanse',
 				type: 		'set_effect_amount',
-							effect_names:{
-								burning: 	0,
-								cursed: 	0,
-								doom: 		0,
-								poisoned: 	0,
-							},
+				effect_names:{
+					burning: 	0,
+					cursed: 	0,
+					doom: 		0,
+					poisoned: 	0,
+				},
 				subtypes: 	['cleanse_ally'],
 				amount: 	1,
 			}
@@ -6444,12 +6397,12 @@ var all_abilities = {
 				projectile: 'cleanse',
 				target_projectile: 'cleanse',
 				type: 		'set_effect_amount',
-							effect_names:{
-								burning: 	0,
-								cursed: 	0,
-								doom: 		0,
-								poisoned: 	0,
-							},
+				effect_names:{
+					burning: 	0,
+					cursed: 	0,
+					doom: 		0,
+					poisoned: 	0,
+				},
 				subtypes: 	['cleanse_ally'],
 				amount: 	1,
 			}
@@ -6490,31 +6443,6 @@ var all_abilities = {
 		},
 		level_cost_structure: 1.5,
 	},
-	/*raise_skeleton:{
-		description: 	'When an ally creature dies, this summons up to a total of {LEVEL} skeleton(s).',
-		proc: 			'ally_creature_death',
-		cannot_proc_while_stunned: true,
-		max_ally_units: 4,
-		reduce_skill_after_use:'raise_skeleton',
-		proc_amount: 'ability_level',
-		targets:	{
-			0:{
-				target: 		'hero',
-				target_amount: 	1,
-				side: 			'ally'
-			},
-		},
-		effects:{
-			0:{
-				type: 		'summon_unit',
-				subtypes: 	['summon_ally','summon_creature'],
-				card_id: 	'skeleton',
-				amount: 	1
-			}
-		},
-		animation: 	'combat_zoom',
-		level_cost: 6,
-	},*/
 	raise_skeleton:{
 		ability_subtypes: ['summon_ally','summon_creature'],
 		description: 	'Up to {LEVEL} time(s), removes a creature card from your grave from the game and summons a basic skeleton.',
@@ -6934,7 +6862,6 @@ var all_abilities = {
 			0:{
 				type: 		'summon_unit',
 				subtypes: 	['summon_ally','summon_creature'],
-				type: 		'summon_unit',
 				card_id: 	'random',
 				card_type: 	'creature',
 				card_subtype: 'bird',
@@ -7030,7 +6957,6 @@ var all_abilities = {
 	},
 	resist_magic:{
 		description: 	'Has a 50% chance to reduce incoming magical damage to 0.',
-		//proc: 			'reduce_incoming_damage',
 		proc: 			'max_incoming_damage',
 		reduce_chance: 	50,
 		subtypes: 		['magical'],
@@ -7059,11 +6985,9 @@ var all_abilities = {
 	},
 	resist_fire:{
 		description: 	'Has a 50% chance to reduce incoming fire damage to 0.',
-		//proc: 			'reduce_incoming_damage',
 		proc: 			'max_incoming_damage',
 		reduce_chance: 	50,
 		subtypes: 		['fire'],
-		//negated_by: 	['ignores_armor'],
 		amount: 		0,
 		targets:	{
 			0:{
@@ -7234,7 +7158,6 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'self',
 				side: 			'ally',
-				//has_origin_card: true,
 			},
 		},
 		effects:{
@@ -8625,7 +8548,6 @@ var all_abilities = {
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
-		//reduce_skill_after_use:'summon_conscript',
 		proc_amount: 'ability_level',
 		targets:	{
 			0:{
@@ -8903,7 +8825,6 @@ var all_abilities = {
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
-		//reduce_skill_after_use:'summon_skeleton',
 		proc_amount: 'ability_level',
 		targets:	{
 			0:{
@@ -9273,8 +9194,6 @@ var all_abilities = {
 			}
 		},
 		level_cost: 		1,
-		//level_cost_hero: 	2,
-		//cost_factor: 	'power'
 	},
 	vengeance:{
 		description: 	'When any ally creature is destroyed, deals {LEVEL} physical melee damage to the nearest enemy unit. Will target the enemy hero if there are no enemy units.',
@@ -9706,16 +9625,9 @@ var all_abilities = {
 		cost_factor: 	'full',
 		used: 			true,
 	},
+};
 
-}
-
-//generate_abilities();
-var not_craft_themes = [
-	'physical',
-	'melee',
-	'magical',
-	'type_resist'
-]
+var not_craft_themes = ['physical','melee','magical','type_resist'];
 
 $.each(all_abilities, function(ability_id, ability_info){
 	if(all_abilities[ability_id]['name'] == undefined){all_abilities[ability_id]['name'] = ability_id.replaceAll('_',' ');};
@@ -9748,7 +9660,7 @@ $.each(all_abilities, function(ability_id, ability_info){
 					ability_subtype_id++;
 					all_abilities[ability_id]['ability_subtypes'][ability_subtype_id] = subtype_name;
 				}
-				if(/*found_craft_effect_type == false && */match_array_values(not_craft_themes, subtype_name) == false)
+				if(match_array_values(not_craft_themes, subtype_name) == false)
 				{
 					all_abilities[ability_id]['ability_craft_subtypes'][get_highest_key_in_object(all_abilities[ability_id]['ability_craft_subtypes']) + 1] = subtype_name;
 					found_craft_effect_type = true;
@@ -9774,14 +9686,12 @@ $.each(all_abilities, function(ability_id, ability_info){
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{BURN}").join('<br/><i>Burn: Suffers fire damage equal to half the burn it suffers at the end of each turn, rounded up. The amount of burn is halved each time it deals damage, rounded down.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{POISON}").join('<br/><i>Poison: Suffers piercing poison damage at the end of each turn equal to half the amount of poison, rounded up. The amount of poison is halved each time it deals damage, rounded down.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received. Curse is removed whenever it takes effect.</i>');
-	//all_abilities[ability_id]['description'] = ability_info['description'].split("{BLESS}").join('<br/><i>Blessed: Reduces damage received. Blessed is reduced by the amount of damage absorbed.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{BLESSED}").join('<br/><i>Blessed: There is a 10% chance per blessing that this will return to your deck when destroyed.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{DOOM}").join('<br/><i>Doom: There is a 10% chance per doom that this will be destroyed at the end of its turn.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{SHIELD}").join('<br/><i>Shield: Absorbs the first incoming damage. Shield is removed at the start of each round.</i>');
 });
 
 function calc_proc_effect(test_amount, proc_chance){
-	//var resurrect_chance = all_abilities[card_id]['proc_chance'] / 100;
 	if(proc_chance == undefined){proc_chance = 50;}
 	proc_chance /= 100;
 	var total_procs = [];

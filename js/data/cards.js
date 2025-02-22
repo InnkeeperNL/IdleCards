@@ -1,3 +1,12 @@
+/*
+Combiner:{
+  combine:"/abilities.js",
+  combine:"/cards.js",
+  combine:"/quests.js",
+  output:"/ca.js"
+}
+*/
+
 var all_available_cards = {
 
 	aggressive_ghoul:{
@@ -14974,7 +14983,7 @@ var ideal_hero_hp = 40;
 function check_card(card_id){
 	if(all_available_cards[card_id] != undefined)
 	{
-		card_info = all_available_cards[card_id];
+		var card_info = all_available_cards[card_id];
 		if(card_info['time'] != undefined && card_info['time'] > 0)
 		{
 			card_info['raw_time'] = calculate_card_time(card_id);

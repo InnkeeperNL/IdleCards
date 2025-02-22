@@ -321,7 +321,7 @@ function calculate_production_storage(speed_level, base_storage, defeated_heroes
 
 function calculate_new_building_slot_cost(){
 	var cost = 10;
-	for(i = 0;i <= gamedata['max_buildings']; i++)
+	for(var i = 0;i <= gamedata['max_buildings']; i++)
 	{
 		cost *= 2.5;
 	}
@@ -2263,7 +2263,7 @@ function complete_expedition(expedition_key){
 				{
 					success_picks = current_exp['success_picks'];
 				}
-				for(i = 1;i <= success_picks; i++)
+				for(var i = 1;i <= success_picks; i++)
 				{
 					var chosen_reward = get_random_key_from_object(current_exp['rewards']);
 					var reward_amount = Math.floor((Math.random() * current_exp['rewards'][chosen_reward]) + current_exp['rewards'][chosen_reward]);
@@ -2329,7 +2329,7 @@ function complete_expedition(expedition_key){
 				});
 				if(all_expedition_results[chosen_reward]['additional_reward_picks'] != undefined)
 				{
-					for(i = 1;i <= all_expedition_results[chosen_reward]['additional_reward_picks']; i++)
+					for(var i = 1;i <= all_expedition_results[chosen_reward]['additional_reward_picks']; i++)
 					{
 						var reward_id = get_random_key_from_object_based_on_num_value(all_expedition_results[chosen_reward]['additional_reward_chances']);
 						var reward_amounts = all_expedition_results[chosen_reward]['additional_rewards'][reward_id];

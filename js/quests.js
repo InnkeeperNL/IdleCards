@@ -78,7 +78,7 @@ function show_quests(){
 				parsed_quest += 	'<div class="single_quest_reward_container">';
 				$.each(current_quest_info['rewards'], function(reward_type, reward_info){
 					//reward_info = (reward_info * get_upgrade_factor('summon_reward', 'any', true));
-					scrap_amount = reward_info;
+					var scrap_amount = reward_info;
 					if(reward_type == 'scraps')
 					{
 						//var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
@@ -292,7 +292,7 @@ function check_new_quests(show_new_message){
 
 	var current_quest_count = count_object(gamedata['quests']);
 
-	for(i = 1; i <= 6; i++)
+	for(var i = 1; i <= 6; i++)
 	{
 		if(gamedata['quests'][i] == undefined)
 		{
@@ -341,7 +341,7 @@ function check_new_quests(show_new_message){
 	}
 	var last_midnight = new Date();
 	last_midnight.setHours(0,0,0,0);
-	for(i = 1; i <= 6; i++)
+	for(var i = 1; i <= 6; i++)
 	{
 		if(gamedata['daily_quests'][i] != undefined && all_quests[gamedata['daily_quests'][i]['quest_id']] == undefined)
 		{
@@ -349,7 +349,7 @@ function check_new_quests(show_new_message){
 			//delete gamedata['daily_quests'][i];
 		}
 	}
-	for(i = 1; i <= 6; i++)
+	for(var i = 1; i <= 6; i++)
 	{
 		if(gamedata['daily_quests'][i] == undefined || (gamedata['daily_quests'][i]['completed'] != false && new Date(gamedata['daily_quests'][i]['completed']) < last_midnight))
 		{
@@ -588,7 +588,7 @@ function check_quests(string, achieved_amount, achieved_times){
 function claim_quest(current_quest_id){
 	if(gamedata['quests'][current_quest_id] != undefined && gamedata['quests'][current_quest_id]['amount'] <= gamedata['quests'][current_quest_id]['progress'])
 	{
-		current_quest_info = gamedata['quests'][current_quest_id];
+		var current_quest_info = gamedata['quests'][current_quest_id];
 		all_current_rewards = {};
 		current_reward_origin 	= 'quests';
 		current_reward_text 	= 'For completing the quest <b>"' + capitalizeFirstLetter(all_quests[current_quest_info['quest_id']]['name']) + '"</b><br/>You have been rewarded with:<br/>';
@@ -911,8 +911,8 @@ function set_achievements_page(amount){
 
 function show_achievements_details(achievement_id){
 	$('.achievement_details').html('');
-	achievement_info = all_achievements[achievement_id];
-	achievement_progress = gamedata['achievements'][achievement_id];
+	var achievement_info = all_achievements[achievement_id];
+	var achievement_progress = gamedata['achievements'][achievement_id];
 
 	var completed = '';
 	if(gamedata['achievements'][achievement_id] != undefined && gamedata['achievements'][achievement_id]['completed'] == true)

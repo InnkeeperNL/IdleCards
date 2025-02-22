@@ -310,7 +310,7 @@ function find_next_phase(){
 
 function find_next_unit_to_act(side){
 	var next_unit_id = false;
-	for(unit_slot=-5;unit_slot<=5;unit_slot++)
+	for(var unit_slot=-5;unit_slot<=5;unit_slot++)
 	{
 		$.each(battle_info.combat_units, function(unit_id, unit){
 			if(next_unit_id == false && /*unit['side'] == side &&*/ unit['acted_this_turn'] < 1 && unit['slot'] == unit_slot && combat_alive == true && (unit['failed_to_act_this_phase'] == undefined || unit['failed_to_act_this_phase'] == false))
@@ -939,7 +939,7 @@ function check_ability_delay(unit_id, ability_id){
 
 function check_unopposed_ally(side){
 	var found_unopposed_ally = false;
-	for(slot = 1;slot <= 5;slot++)
+	for(var slot = 1;slot <= 5;slot++)
 	{
 		var found_ally = false;
 		var found_enemy = false;	
@@ -2432,7 +2432,7 @@ function process_effect(target_id, origin_id, effect, level){
 
 function reduce_negative_effects(target_id, calculated_amount, origin_id){	
 	var current_unit = battle_info.combat_units[target_id];
-	for(counter = 1;counter <= calculated_amount;counter++){
+	for(var counter = 1;counter <= calculated_amount;counter++){
 		//console.log(counter + ' -> ' + calculated_amount);
 		var total_negative_effects = 0;
 		var removed_one = false;
@@ -5158,7 +5158,7 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 		var all_targets_slot = get_highest_key_in_object(all_targets) + 1;
 		if(target_peramaters['from_right'] == undefined || target_peramaters['from_right'] == false)
 		{
-			for(slot = starting_slot;slot <= ending_slot;slot++)
+			for(var slot = starting_slot;slot <= ending_slot;slot++)
 			{
 				
 				$.each(battle_info.combat_units, function(unit_id, unit_info){
@@ -5172,7 +5172,7 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 		}
 		else
 		{
-			for(slot = ending_slot;slot >= starting_slot;slot--)
+			for(var slot = ending_slot;slot >= starting_slot;slot--)
 			{
 				
 				$.each(battle_info.combat_units, function(unit_id, unit_info){
@@ -6431,7 +6431,7 @@ function filter_targets_by_position(all_targets, unit_id, position, origin_slot)
 }
 
 function process_combat_units(side, proc, do_not_process_effects){
-	for(unit_slot=-5;unit_slot<=5;unit_slot++)
+	for(var unit_slot=-5;unit_slot<=5;unit_slot++)
 	{
 		$.each(battle_info.combat_units, function(unit_id, unit){
 			if(unit['side'] == side && unit['acted_this_turn'] < 1 && unit['slot'] == unit_slot && combat_alive == true)
@@ -6475,10 +6475,10 @@ function enable_all_units_to_act(reset_ability_use, side){
 
 function check_all_ready_cards(side){
 	side = undefined;
-	for(t=1;t<=2;t++){
+	for(var t=1;t<=2;t++){
 		if(side == undefined || side == t)
 		{
-			for(slot_id=1;slot_id<=10;slot_id++){
+			for(var slot_id=1;slot_id<=10;slot_id++){
 				$.each(battle_info['deck_' + t], function(card_id, card_info){
 					if(card_info['time_left'] <= 0 && card_info['status'] == 'hand' && card_info['hand_slot'] == slot_id && combat_alive == true)
 					{
@@ -6490,7 +6490,7 @@ function check_all_ready_cards(side){
 	};
 
 	var no_ready_cards_left = true;
-	for(t=1;t<=2;t++){
+	for(var t=1;t<=2;t++){
 		if(side == undefined || side == t)
 		{
 			$.each(battle_info['deck_' + t], function(card_id, card_info){
@@ -7315,7 +7315,7 @@ function find_free_artifact_slot(side){
 	var free_slot = false;
 	var all_free_slots = {};
 
-	for(slot = -5;slot <= -1;slot++)
+	for(var slot = -5;slot <= -1;slot++)
 	{
 		var this_slot_free = check_slot_free(slot, side);
 		if(this_slot_free == true)
@@ -7337,7 +7337,7 @@ function find_free_slot(side, card_id, forced_safe_slot, forced_placement, oppos
 
 	if(current_card_info['type'] != 'artifact')
 	{
-		for(slot = 1;slot <= 5;slot++)
+		for(var slot = 1;slot <= 5;slot++)
 		{
 			var this_slot_free = check_slot_free(slot, side);
 			if(this_slot_free == true)
@@ -7348,7 +7348,7 @@ function find_free_slot(side, card_id, forced_safe_slot, forced_placement, oppos
 	}
 	else
 	{
-		for(slot = -5;slot <= -1;slot++)
+		for(var slot = -5;slot <= -1;slot++)
 		{
 			var this_slot_free = check_slot_free(slot, side);
 			if(this_slot_free == true)
@@ -7880,7 +7880,7 @@ function show_unit_details(side, slot){
 
 function get_first_free_hand_slot(deck){
 	var found_free_slot = false;
-	for(t=1;t<11;t++){
+	for(var t=1;t<11;t++){
 		var this_slot_free = true;
 		if(found_free_slot == false){
 			$.each(deck, function(deck_card_id, deck_card_info){
@@ -7904,7 +7904,7 @@ function get_first_free_hand_slot(deck){
 
 function get_last_free_hand_slot(deck){
 	var found_free_slot = false;
-	for(t=10;t>0;t--){
+	for(var t=10;t>0;t--){
 		var this_slot_free = true;
 		if(found_free_slot == false){
 			$.each(deck, function(deck_card_id, deck_card_info){

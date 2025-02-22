@@ -1,3 +1,32 @@
+/*
+Combiner:{
+  combine:"/deck_edit.js",
+  combine:"/campaign.js",
+  combine:"/intro.js",
+  combine:"/merchant.js",
+  combine:"/tinkering.js",
+  combine:"/crafting.js",
+  combine:"/scrapping.js",
+  combine:"/quests.js",
+  combine:"/arena.js",
+  combine:"/town.js",
+  combine:"/daily_reward.js",
+  combine:"/inventory.js",
+  combine:"/raids.js",
+  combine:"/collection.js",
+  combine:"/card_backs.js",
+  combine:"/factions.js",
+  combine:"/journal.js",
+  combine:"/map.js",
+  combine:"/summon.js",
+  combine:"/floating_text.js",
+  combine:"/process_turn.js",
+  combine:"/battle.js",
+
+  output:"/all_scripts.js"
+}
+*/
+
 var current_page = 1;
 var cards_per_page = 8;
 var showing_heroes = false;

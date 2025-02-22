@@ -286,7 +286,7 @@ function swap_hero_preview(){
 }
 
 function craft_current_card(){
-	card_id = current_craft;
+	var card_id = current_craft;
 	//console.log(card_id);
 	if(all_available_cards[card_id] != undefined)
 	{
@@ -315,7 +315,7 @@ function craft_current_card(){
 };
 
 function quick_craft_current_card(){
-	card_id = current_craft;
+	var card_id = current_craft;
 	//console.log(card_id);
 	if(gamedata['owned_cards']['peasant'] >= all_available_cards[card_id]['value'])
 	{

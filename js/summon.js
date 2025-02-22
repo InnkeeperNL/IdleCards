@@ -98,7 +98,7 @@ function show_summon(just_summoned){
 	}
 	if(gamedata['current_summon'] != undefined || (just_summoned != undefined && just_summoned == true))
 	{
-		drop_chance = Math.floor((((gamedata['current_summon']['loot_rarity'] * gamedata['current_summon']['reward_count']) / card_drop_chance_reduction) / all_available_cards[gamedata['current_summon']['hero']]['value']) * 100);
+		var drop_chance = Math.floor((((gamedata['current_summon']['loot_rarity'] * gamedata['current_summon']['reward_count']) / card_drop_chance_reduction) / all_available_cards[gamedata['current_summon']['hero']]['value']) * 100);
 		if(all_available_cards[gamedata['current_summon']['hero']]['recipe'] == undefined || gamedata['known_recipes'][gamedata['current_summon']['hero']] != undefined)
 		{
 			drop_chance = Math.floor((((gamedata['current_summon']['loot_rarity'] * gamedata['current_summon']['reward_count']) / card_drop_chance_reduction) / all_available_cards[gamedata['current_summon']['hero']]['value']) * 100);
