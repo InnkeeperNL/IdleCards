@@ -32,7 +32,8 @@ function show_quests(){
 	$.each(gamedata['quests'], function(current_quest_id, current_quest_info){
 		if(all_quests[current_quest_info['quest_id']] == undefined)
 		{
-			delete gamedata['quests'][current_quest_id];
+			//delete gamedata['quests'][current_quest_id];
+			console.log('unknown quest: ' + current_quest_id);
 			check_new_quests();
 		}
 		else
@@ -136,7 +137,8 @@ function show_daily_quests(){
 	$.each(gamedata['daily_quests'], function(current_quest_id, current_quest_info){
 		if(all_quests[current_quest_info['quest_id']] == undefined)
 		{
-			delete gamedata['daily_quests'][current_quest_id];
+			//delete gamedata['daily_quests'][current_quest_id];
+			console.log('unknown daily quest: ' + current_quest_id);
 			check_new_quests();
 		}
 		var quest_info = all_quests[current_quest_info['quest_id']];
@@ -343,7 +345,8 @@ function check_new_quests(show_new_message){
 	{
 		if(gamedata['daily_quests'][i] != undefined && all_quests[gamedata['daily_quests'][i]['quest_id']] == undefined)
 		{
-			delete gamedata['daily_quests'][i];
+			console.log('unknown daily quest: ' + current_quest_id);
+			//delete gamedata['daily_quests'][i];
 		}
 	}
 	for(i = 1; i <= 6; i++)
@@ -688,7 +691,8 @@ function check_quest_complete_count(){
     $.each(gamedata['achievements'], function(achievement_id, achievement_status){
     	if(all_achievements[achievement_id] == undefined)
     	{
-    		delete gamedata['achievements'][achievement_id];
+    		console.log('unknown achievement: ' + achievement_id);
+    		//delete gamedata['achievements'][achievement_id];
     	}
     	else
     	{
