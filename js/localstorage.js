@@ -199,7 +199,7 @@ function saveToLocalStorage(backup_now){
 	localStorage.setItem(gamename, JSON.stringify(gamedata));
 
 	var save_successfull = false;
-	if(typeof(localStorage.rows4) !== "undefined")
+	if(typeof(localStorage.rows4a) !== "undefined")
 	{
 	    var tempgamedata = localStorage.getItem(gamename);
 	    var test_gamedata = JSON.parse(tempgamedata);
