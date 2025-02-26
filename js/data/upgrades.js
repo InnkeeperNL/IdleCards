@@ -287,7 +287,7 @@ var all_upgrades = {
 			z_a_town_access: 1,
 			wave_access: 1,
 		},
-		card_image: 	'alchemist',
+		card_image: 	'alchemy_lab',
 		type: 			'alchemist_access',
 		subtypes:  		['any'],
 		amount: 		100,

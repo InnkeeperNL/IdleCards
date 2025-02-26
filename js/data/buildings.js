@@ -67,7 +67,7 @@ var all_buildings = {
 	a2_alchemist:{
 		name: 			'alchemist lab',
 		fragment_id: 	'shard',
-		image: 			'cards/dream_TradingCard-2024-11-30T071556.368.jpg',
+		image: 			'cards/dream_TradingCard-2025-02-05T060919.678.jpg',
 		description: 	'<i>Allows you to brew potions.</i>',
 		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
 		type: 			'none',
