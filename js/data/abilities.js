@@ -25,9 +25,10 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_spell: 	2,
-		average_hits: 		2,
+		level_cost: 		12,
+		level_cost_spell: 	6,
+		level_cost_hero: 	10,
+		average_hits: 		3,
 	},
 	air_bolt:{
 		description: 	'Deals {LEVEL} physical projectile damage to a random enemy unit. Deals double damage to flying targets. Will target the enemy hero if there are no enemy units.',
@@ -186,7 +187,7 @@ var all_abilities = {
 			}
 		},
 		level_cost: 	2,
-		level_cost_spell: 1,
+		level_cost_spell: 2.3,
 	},
 	also_empower_all:{
 		name: 			'also: empower all',
@@ -309,7 +310,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		4.5,
-		level_cost_spell: 	2.5,
+		level_cost_spell: 	2.25,
 		cost_adjustment: 	-0.5,
 		average_hits: 		'ability_level',
 	},
@@ -2242,35 +2243,68 @@ var all_abilities = {
 		level_cost: 		0.5,
 	},
 	corpse_feast:{
-		description: 	'Heals itself by {LEVEL} for every 5 creature cards in your grave.',
+		description: 	'If damaged, this removes a creature card in your grave from the game. If it does, it heals itself by {LEVEL}.',
 		proc: 			'basic',
-		min_ally_creature_cards_in_grave: 5,
+		min_ally_creature_cards_in_grave: 1,
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		targets:	{
 			0:{
-				target: 	'unit_or_hero',
-				target_amount: 1,
-				position: 	'self',
-				min_hp: 	1,
-				side: 		'ally',
-				damaged: 	true,
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				side: 			'any',
+				damaged: 		true,
 			},
 		},
 		effects:{
 			0:{
-				projectile: 	'drain',
-				projectile_target: 	'deck',
-				type: 			'healing',
-				subtypes: 		['feast'],
-				amount: 		'ally_grave_creature_card_count',
-				amount_factors: [0.2,'ability_level'],
-				amount_rounding: 'down',
-			}
+				on_success:{
+					proc_while_dead: true,
+					targets:	{
+						0:{
+							target: 		'card',
+							target_amount: 	1,
+							status: 		'grave',
+							types: 			['creature'],
+							side: 			'ally',
+						},
+					},
+					effects:{
+						0:{
+							projectile: 		'drain',
+							projectile_target: 	'deck',
+							type: 				'remove_card',
+							side: 				'ally',
+						}
+					},
+					on_success:{
+						targets:{
+							0:{
+								target: 	'unit_or_hero',
+								target_amount: 1,
+								position: 	'self',
+								min_hp: 	1,
+								side: 		'ally',
+								damaged: 	true,
+							},
+						},
+						effects:{
+							0:{
+								self_projectile: 	'healing',
+								type: 			'healing',
+								subtypes: 		['feast'],
+								amount: 		'ability_level',
+							}
+						},
+					},
+					animation: 		'combat_zoom',
+				}
+			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	2,
-		cost_factor: 	'none',
+		level_cost: 	3,
+		cost_adjustment: -2,
 	},
 	curse:{
 		description: 	'Applies {LEVEL} curse to a random enemy unit or hero.{CURSE}',
@@ -2734,6 +2768,30 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	8,
 	},
+	destroy_ally:{
+		description: 	'Destroys {LEVEL} random ally unit(s).',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		reduce_skill_after_use: 'destroy',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['sacrifice'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	-4,
+	},
 	destroy_any:{
 		description: 	'Destroys {LEVEL} random unit(s).',
 		cannot_proc_while_stunned: true,
@@ -3099,7 +3157,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	6,
-		level_cost_spell: 4,
+		//level_cost_spell: 4,
 		level_cost_artifact: 3,
 		ability_level_cost_factors:{
 			homebound: 		1.5,
@@ -3156,9 +3214,9 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	7,
-		level_cost_spell: 4,
-		cost_adjustment: -3,
+		level_cost: 	6,
+		//level_cost_spell: 3.5,
+		//cost_adjustment: -3,
 	},
 	earth_blast:{
 		description: 	'Deals {LEVEL} physical earth damage to all enemy units.',
@@ -3208,6 +3266,7 @@ var all_abilities = {
 				side: 			'ally',
 			}
 		},
+		level_cost: 	2,
 		cost_factor: 	'full',
 	},
 	elemental_bolt:{
@@ -3667,7 +3726,10 @@ var all_abilities = {
 		},
 		level_cost: 		0.5,
 		min_cost: 			2,
-		level_cost_hero: 	2,
+		level_cost_hero: 	1.5,
+		ability_level_cost_factors:{
+			flying: 		2,
+		},
 		cost_factor: 		'health',
 	},
 	fear:{
@@ -3697,7 +3759,7 @@ var all_abilities = {
 				side: 			'enemy',
 			}
 		},
-		level_cost: 	2,
+		level_cost: 	2.3,
 	},
 	fearful_aura:{
 		description: 	'When this receives melee damage from a non-undead, non-horror enemy creature unit, that unit returns to their owner\'s hand. Any summoned units this targets disappear.',
@@ -4100,6 +4162,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		12,
 		level_cost_spell: 	6,
+		level_cost_hero: 	10,
 		average_hits: 		3,
 	},
 	fire_bolt:{
@@ -4342,10 +4405,10 @@ var all_abilities = {
 		},
 		level_cost: 		0.75,
 		min_cost: 			3,
-		level_cost_hero: 	3,
+		level_cost_hero: 	1.5,
 		cost_factor: 		'health',
 	},
-	flying_entries:{
+	flying_arrivals:{
 		ability_subtypes: ['flying'],
 		description: 	'When a non-flying ally unit enters the game, this grants the flying ability to it until the start of next round.',
 		proc: 			'ally_unit_card_played',
@@ -4461,7 +4524,7 @@ var all_abilities = {
 		level_cost_spell: 	0.5,
 		level_cost_cum: 	true,
 	},
-	fortify_entries:{
+	fortify_arrivals:{
 		description: 	'When any ally unit enters the game, it gains {LEVEL} armor.',
 		proc: 			'ally_creature_card_played',
 		cannot_proc_while_stunned: true,
@@ -5640,6 +5703,71 @@ var all_abilities = {
 		level_cost_spell: 	2.5,
 		average_hits: 		1,
 	},
+	lightning_storm:{
+		description: 	'Deals 1 magical air damage to the enemy unit with the highest current health {LEVEL} time(s). Will target the enemy hero if there are no enemy units.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				highest_hp: 	true,
+				side: 		'enemy'
+			},
+			1:{
+				target: 	'hero',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				self_projectile: 	'lightning goes_up',
+				target_projectile: 	'lightning comes_down',
+				type: 				'damage',
+				subtypes: 			['magical','air','elemental','lightning'],
+				amount: 			1,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		5,
+		level_cost_spell: 	2.5,
+		average_hits: 		'ability_level',
+	},
+	long_echo:{
+		description: 	'This card has a 75% chance to return to its owners deck.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		proc_while_dead: true,
+		has_used_ability: true,
+		proc_chance: 75,
+		targets:	{
+			0:{
+				target: 			'any',
+				target_amount: 		1,
+				position: 			'self',
+				side: 				'ally',
+				has_origin_card: 	true,
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'teleport',
+				type: 			'move_to_deck',
+				subtypes: 		['move_ally_to_deck'],
+				new_status: 	'deck',
+				side: 			'ally',
+				pause_before: 	2000,
+			}
+		},
+		level_cost: 	0.5,
+		cost_factor: 	'full',
+	},
 	marred_vines:{
 		description: 	'When this takes damage, there is a 50% chance it summons {LEVEL} vine(s).',
 		proc: 			'receive_damage',
@@ -5676,33 +5804,34 @@ var all_abilities = {
 	maximum_allies:{
 		name: 		'allies:',
 		post_name: 	'-',
-		name_color: 	'rgba(255,255,255,0.9)',
 		description: 	'This card will not be played if there\'s more than {LEVEL} ally unit(s) in play.',
 		proc: 			'on_play',
 		remove_skill: 	'maximum_allies',
 		show_amount_adjustment: 0,
-		level_cost: 	0,
+		level_cost: 	0.25,
+		cost_adjustment: 	-1,
+		cost_on_top: true,
 	},
 	maximum_enemies:{
 		name: 		'enemies:',
 		post_name: 	'-',
-		name_color: 	'rgba(255,255,255,0.9)',
 		description: 	'This card will not be played if there\'s more than {LEVEL} enemy unit(s) in play.',
 		proc: 			'on_play',
 		remove_skill: 	'maximum_enemies',
 		show_amount_adjustment: 0,
-		level_cost: 	1,
-		cost_adjustment: -4,
+		level_cost: 	0.25,
+		cost_adjustment: -1,
+		cost_on_top: 	true,
 	},
 	minimum_allies:{
 		name: 			'allies:',
 		post_name: 		'+',
-		name_color: 	'rgba(255,255,255,0.9)',
 		description: 	'This card will not be played if there are at least less than {LEVEL} ally unit(s) in play.',
 		proc: 			'on_play',
 		remove_skill: 	'minimum_allies',
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
+		cost_on_top: 	true,
 	},
 	minimum_ally_creatures:{
 		name: 			'ally creatures:',
@@ -5712,6 +5841,7 @@ var all_abilities = {
 		remove_skill: 	'minimum_ally_creatures',
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
+		cost_on_top: 	true,
 	},
 	minimum_dead_ally_creatures:{
 		name: 			'dead ally creatures:',
@@ -5721,6 +5851,7 @@ var all_abilities = {
 		remove_skill: 	'minimum_dead_ally_creatures',
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
+		cost_on_top: 	true,
 	},
 	minimum_enemies:{
 		name: 			'enemies:',
@@ -5732,6 +5863,7 @@ var all_abilities = {
 		remove_skill: 	'minimum_enemies',
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
+		cost_on_top: 	true,
 	},
 	minimum_enemy_creatures:{
 		name: 			'enemy creatures:',
@@ -5742,6 +5874,7 @@ var all_abilities = {
 		remove_skill: 	'minimum_enemy_creatures',
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
+		cost_on_top: 	true,
 	},
 	min_hand_cards:{
 		name: 			'hand cards:',
@@ -6519,7 +6652,7 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 		4,
 		level_cost_hero: 	4,
-		level_cost_spell: 	2,
+		level_cost_spell: 	2.4,
 	},
 	reap_any:{
 		description: 	'Destroys a creature with {LEVEL} or less health.',
@@ -6683,7 +6816,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
+		level_cost: 		2.25,
 	},
 	reclaim_creatures:{
 		description: 	'Has a 25% chance to return {LEVEL} creature card(s) in your grave to your deck.',
@@ -7091,7 +7224,7 @@ var all_abilities = {
 		level_cost_spell: 	1.5,
 	},
 	resurrect:{
-		description: 	'When this\' health reaches 0, it has a 50% chance to come back to life with 1 health.',
+		description: 	'When this\' health reaches 0, it has a 50% chance to come back to life with {LEVEL} health.',
 		proc: 			'own_death',
 		proc_chance: 	50,
 		proc_while_dead: true,
@@ -7111,13 +7244,13 @@ var all_abilities = {
 				projectile: 	'resurrect',
 				type: 			'healing',
 				subtypes: 		['resurrect'],
-				amount: 		1,
+				amount: 		'ability_level',
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		0.3,
-		min_cost: 			3,
-		cost_factor: 		'health',
+		level_cost: 		3,
+		level_cost_hero: 	1,
+		additional_levels_cost: -2,
 	},
 	resurrect_ally:{
 		description: 	'When an ally creature unit\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 1 health.',
@@ -7147,6 +7280,33 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 		level_cost_structure: 1.5,
+	},
+	resurrect_hero:{
+		description: 	'When your hero\'s health reaches 0, this will bring it back to life with {LEVEL} health. Can be used once.',
+		proc: 			'ally_death',
+		remove_skill_after_use: 'resurrect_hero',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				max_hp: 		0,
+				min_total_hp: 	1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'resurrect',
+				type: 			'healing',
+				subtypes: 		['resurrect'],
+				amount: 		'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
 	},
 	retreat:{
 		description: 	'When this survives damage, it return to its owner\'s hand. If this was summoned, it disappears.',
@@ -7317,34 +7477,6 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		1,
-	},
-	revive_hero:{
-		description: 	'When your hero\'s health reaches 0, this will bring it back to life with 10% health. Can be used {LEVEL} time(s).',
-		proc: 			'ally_death',
-		reduce_skill_after_use: 'revive_hero',
-		cannot_proc_while_stunned: true,
-		targets:	{
-			0:{
-				target: 		'hero',
-				target_amount: 	1,
-				position: 		'random',
-				origin_unit: 	true,
-				max_hp: 		0,
-				min_total_hp: 	1,
-				side: 			'ally',
-			},
-		},
-		effects:{
-			0:{
-				projectile: 	'resurrect',
-				type: 			'healing',
-				subtypes: 		['resurrect'],
-				amount: 		'target_max_health',
-				amount_factor: 	0.1,
-			},
-		},
-		animation: 			'combat_zoom',
-		level_cost: 		2,
 	},
 	run_away:{
 		description: 	'If there is an opposing unit, this unit will move to a slot with no opposing unit when played, any enemy unit enters the game, an enemy moved or on its turn. Can be used once each round.',
@@ -7939,6 +8071,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		12,
+		level_cost_hero: 	10,
 		average_hits: 		3,
 	},
 	spell_bolt:{
@@ -8540,7 +8673,7 @@ var all_abilities = {
 		},
 		level_cost: 		0.75,
 		min_cost: 			3,
-		level_cost_hero: 	3,
+		level_cost_hero: 	1.5,
 		cost_factor: 		'health',
 	},
 	summon_conscript:{
@@ -8670,7 +8803,7 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		8,
+		level_cost: 		10,
 	},
 	summon_locust:{
 		description: 	'Summons up to {LEVEL} locust(s).',
@@ -8694,7 +8827,7 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 10,
+		level_cost: 8,
 	},
 	summon_locust_on_kill:{
 		description: 	'When this destroys a unit, it summons {LEVEL} locust(s).',
@@ -8892,8 +9025,8 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		16,
-		level_cost_spell: 	8,
+		level_cost: 		12,
+		level_cost_spell: 	6,
 	},
 	summon_sporeling:{
 		description: 	'Summons {LEVEL} sporeling(s).',
@@ -9090,7 +9223,7 @@ var all_abilities = {
 			}
 		},
 		level_cost: 		4,
-		level_cost_spell: 	2,
+		level_cost_spell: 	2.5,
 	},
 	unsummon_dead:{
 		description: 	'When any ally creature unit dies, there is a {LEVEL}0% chance it returns to your hand. Will not unsummon summoned units.',
@@ -9652,6 +9785,8 @@ $.each(all_abilities, function(ability_id, ability_info){
 			{
 				all_abilities[ability_id]['uses_power'] = true;
 			}
+			ability_subtype_id++;
+			all_abilities[ability_id]['ability_subtypes'][ability_subtype_id] = 'type_' + ability_effect['type'];
 			var found_craft_effect_type = false;
 			$.each(ability_effect['subtypes'], function(subtype_id, subtype_name){
 				

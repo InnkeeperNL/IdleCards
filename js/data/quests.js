@@ -2,7 +2,7 @@ var all_quests = {
 	stinger:{
 		name: 			'stinger',
 		description: 	'Have allies deal damage to the enemy hero {AMOUNT} time(s).',
-		image: 			"cards/dream_TradingCard26.jpg",
+		image: 			"cards/dream_TradingCard-2023-03-12T074521.jpg",
 		objective: 		'enemy_hero_damaged',
 		min_amount: 	10,
 		max_amount: 	20,
@@ -275,6 +275,20 @@ var all_chained_achievements = {
 		card_back: 		'peasant',
 		steps: 			6,
 	},
+	attunement:{
+		name: 			'attunement',
+		description: 	'Have allies perform a magical ability {AMOUNT} time(s).',
+		objective: 		'ally_performed_magical',
+		amount: 		2,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'fire_apprentice',
+		steps: 			6,
+	},
 	avoidance:{
 		name: 			'avoidance',
 		description: 	'Have allies avoid an enemy ability in any way {AMOUNT} time(s).',
@@ -317,19 +331,23 @@ var all_chained_achievements = {
 		card_back: 		'hearty_meal',
 		steps: 			6,
 	},
-	plunder:{
-		name: 			'plunder',
-		description: 	'Have allies break or plunder an artifact or structure {AMOUNT} time(s).',
-		objective: 		'ally_performed_break',
-		amount: 		0.2,
+	bored:{
+		name: 			'bored',
+		description: 	'Defeat an enemy at 100% power or more no sooner then turn {MIN_AMOUNT}.',
+		objective: 		'battle_won_any_turn_count',
+		min_amount: 	80,
+		amount: 		1,
 		rewards:{
 			0:{
-				reward_id: 			'stash',
+				reward_id: 			'trove',
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'pirate',
+		card_back: 		'giant_slug',
 		steps: 			6,
+		step_effect: 	'min_amount',
+		step_amount: 	10,
+		no_quest: 		true,
 	},
 	burn:{
 		name: 			'burn',
@@ -342,8 +360,38 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'arsonist',
+		card_back: 		'arson',
 		steps: 			6,
+	},
+	buy:{
+		name: 			'buy',
+		description: 	'Buy {AMOUNT} card(s) from a merchant.',
+		objective: 		'buy_card_in_town',
+		amount: 		0.1,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'box_of_tricks',
+		steps: 			6,
+		no_quest: 		true,
+	},
+	chester:{
+		name: 			'chester',
+		description: 	'Open {AMOUNT} chest(s).',
+		objective: 		'used_consumable_chest',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'chest',
+		steps: 			6,
+		no_quest: 		true,
 	},
 	city:{
 		name: 			'city',
@@ -477,6 +525,21 @@ var all_chained_achievements = {
 		card_back: 		'oracle',
 		steps: 			6,
 	},
+	dragon:{
+		name: 			'dragon',
+		description: 	'Play or summon {AMOUNT} dragon card(s).',
+		objective: 		'dragon_card_played',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'trove',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'blue_dragon',
+		steps: 			6,
+		no_quest: 		true,
+	},
 	draw:{
 		name: 			'draw',
 		description: 	'Have allies draw an additional card {AMOUNT} time(s).',
@@ -532,6 +595,20 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'flag_carrier',
+		steps: 			6,
+	},
+	eternal:{
+		name: 			'eternal',
+		description: 	'Have allies return {AMOUNT} card(s) from your grave to your deck.',
+		objective: 		'ally_performed_move_ally_to_deck_from_grave',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'raise_dead',
 		steps: 			6,
 	},
 	fear:{
@@ -696,6 +773,24 @@ var all_chained_achievements = {
 		},
 		card_back: 		'medic',
 		steps: 			6,
+	},
+	heavy_hitter: {
+		name: 			'heavy hitter',
+		description: 	'Deal {MIN_AMOUNT} or more damage to an enemy in one hit.',
+		objective: 		'dealt_damage',
+		min_amount: 	10,
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'barbarian',
+		steps: 			6,
+		step_effect: 	'min_amount',
+		step_amount: 	5,
+		no_quest: 		true,
 	},
 	heist:{
 		name: 			'heist',
@@ -872,6 +967,34 @@ var all_chained_achievements = {
 		card_back: 		'sporeling',
 		steps: 			6,
 	},
+	munchies:{
+		name: 			'munchies',
+		description: 	'Play or summon {AMOUNT} food card(s).',
+		objective: 		'food_card_played',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'fastfood',
+		steps: 			6,
+	},
+	mundane:{
+		name: 			'mundane',
+		description: 	'Have allies perform a physical ability {AMOUNT} time(s).',
+		objective: 		'ally_performed_physical',
+		amount: 		2,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'smasher',
+		steps: 			6,
+	},
 	museum:{
 		name: 			'museum',
 		description: 	'Play or summon {AMOUNT} artifact card(s).',
@@ -898,6 +1021,20 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'soldier',
+		steps: 			6,
+	},
+	plunder:{
+		name: 			'plunder',
+		description: 	'Have allies break or plunder an artifact or structure {AMOUNT} time(s).',
+		objective: 		'ally_performed_break',
+		amount: 		0.2,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'pirate',
 		steps: 			6,
 	},
 	poison:{
@@ -927,6 +1064,24 @@ var all_chained_achievements = {
 		},
 		card_back: 		'righteous_lady',
 		steps: 			6,
+	},
+	quick:{
+		name: 			'quick',
+		description: 	'Defeat an enemy at 100% power or more no later then turn {MAX_AMOUNT}.',
+		objective: 		'battle_won_any_turn_count',
+		max_amount: 	30,
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'trove',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'front_runner',
+		steps: 			6,
+		step_effect: 	'max_amount',
+		step_amount: 	-5,
+		no_quest: 		true,
 	},
 	resist_magic:{
 		name: 			'resist magic',
@@ -1026,6 +1181,21 @@ var all_chained_achievements = {
 		card_back: 		'scavanger',
 		steps: 			6,
 	},
+	sell:{
+		name: 			'sell',
+		description: 	'Sell {AMOUNT} card(s) to a merchant.',
+		objective: 		'sell_card_in_town',
+		amount: 		0.1,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'pirate_aspirant',
+		steps: 			6,
+		no_quest: 		true,
+	},
 	shards:{
 		name: 			'shards',
 		description: 	'Collect {AMOUNT} shard(s).',
@@ -1112,9 +1282,23 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'striker',
+		card_back: 		'hornet',
 		steps: 			6,
 		no_quest: 		true,
+	},
+	striker:{
+		name: 			'striker',
+		description: 	'Have allies perform a melee ability {AMOUNT} time(s).',
+		objective: 		'ally_performed_melee',
+		amount: 		2,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'striker',
+		steps: 			6,
 	},
 	stun:{
 		name: 			'stun',
@@ -1221,6 +1405,21 @@ var all_chained_achievements = {
 		step_amount: 	30,
 		no_quest: 		true,
 	},
+	trover:{
+		name: 			'trover',
+		description: 	'Open {AMOUNT} trove(s).',
+		objective: 		'used_consumable_trove',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'trove',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'trove',
+		steps: 			6,
+		no_quest: 		true,
+	},
 	unholy_rite:{
 		name: 			'unholy rite',
 		description: 	'Have allies apply {MIN_AMOUNT} curse in a single battle.',
@@ -1267,6 +1466,24 @@ var all_chained_achievements = {
 		},
 		card_back: 		'warder',
 		steps: 			6,
+	},
+	wave_crasher:{
+		name: 			'wave crasher',
+		description: 	'Defeat wave number {MIN_AMOUNT}.',
+		objective: 		'battle_won_number_wave',
+		min_amount: 	5,
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'wall_of_water',
+		steps: 			6,
+		step_effect: 	'min_amount',
+		step_amount: 	5,
+		no_quest: 		true,
 	},
 	waves:{
 		name: 			'waves',
@@ -1395,6 +1612,12 @@ $.each(all_chained_achievements, function(achievement_id, achievement_info){
 			description = all_achievements[achievement_id + '_' + i]['description'] + '';
 			var min_amount = all_achievements[achievement_id + '_' + i]['min_amount'];
 			all_achievements[achievement_id + '_' + i]['description'] = check_plural(description.split("{MIN_AMOUNT}").join(numberWithCommas(min_amount)),min_amount);
+		}
+		if(all_achievements[achievement_id + '_' + i]['max_amount'] != undefined)
+		{
+			description = all_achievements[achievement_id + '_' + i]['description'] + '';
+			var max_amount = all_achievements[achievement_id + '_' + i]['max_amount'];
+			all_achievements[achievement_id + '_' + i]['description'] = check_plural(description.split("{MAX_AMOUNT}").join(numberWithCommas(max_amount)),max_amount);
 		}
 		if(all_achievements[achievement_id + '_' + i]['step_amount'] != undefined)
 		{

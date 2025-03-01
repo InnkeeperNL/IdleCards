@@ -97,8 +97,8 @@ var all_buildings = {
 		show_potions: true,
 		productions:{
 			flask:{
-				base_time: 		2 * 5 * 24 * 3600,
-				base_storage: 	2 * 1,
+				base_time: 		4 * 5 * 24 * 3600,
+				base_storage: 	1 * 1,
 				upgrade_cost_speed:{
 					scraps: 		100,
 				},
@@ -136,8 +136,8 @@ var all_buildings = {
 				production_achievement_bonus: 0.1,
 			},
 			stash:{
-				base_time: 		2 * 2 * 24 * 3600,
-				base_storage: 	2 * 5,
+				base_time: 		4 * 2 * 24 * 3600,
+				base_storage: 	1 * 5,
 				upgrade_cost_speed:{
 					scraps: 		100,
 				},
@@ -170,8 +170,8 @@ var all_buildings = {
 		},
 		productions:{
 			trove:{
-				base_time: 		2 * 5 * 24 * 3600,
-				base_storage: 	2 * 1,
+				base_time: 		4 * 10 * 24 * 3600,
+				base_storage: 	1 * 1,
 				upgrade_cost_speed:{
 					scraps: 		100,
 				},

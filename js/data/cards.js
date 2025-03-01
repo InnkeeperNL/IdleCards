@@ -15,6 +15,7 @@ var all_available_cards = {
 		subtypes: 			['undead','zombie'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['type_structure','type_spell'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -161,7 +162,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{fortify_hero: 1, fortify_entries: 1},
+		abilities: 			{fortify_hero: 1, fortify_arrivals: 1},
 		quote: '\"Used by ancient warrior queens.\"',
 	},
 	android:{
@@ -747,6 +748,29 @@ var all_available_cards = {
 		},
 		quote: '\"This will keep you safe.\"',
 	},
+	armored_archer:{
+		name: 				'armored archer',
+		type: 				'creature',
+		subtypes: 			['human','archer'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-23T052621.814.jpg',
+		power: 				2,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{shoot: 1, plated: 1},
+		hero_version: 			{
+			theme: 				['projectile_ability','subtype_human'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{shoot_unit: 1, plated: 1},
+		},
+		quote: '\"Dangerous at a distance. Hard to strike down.\"',
+	},
 	armored_cavalry:{
 		name: 				'armored cavalry',
 		type: 				'creature',
@@ -827,7 +851,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{burn_all: 4, minimum_enemies: 3, echo: 1},
+		abilities: 			{burn_all: 3, minimum_enemies: 3},
 		quote: '\"Burn, baby!\"',
 	},
 	arson_golem:{
@@ -998,6 +1022,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{doom_all: 1, echo: 1},
 		quote: '\"Just ignore it. What\'s the worst that can happen?\"',
+		verified: 			true,
 	},
 	badger:{
 		name: 				'badger',
@@ -1867,7 +1892,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, blessed_deaths: 1, resurrect: 1, undead: 1},
 		hero_version: 			{
 			theme: 				['curse_ability','resurrect_ability','deaths','ally_creature_death_proc_ability','own_death_proc_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, blessed_deaths: 1, resurrect: 1, undead: 1},
@@ -2269,6 +2294,54 @@ var all_available_cards = {
 		},
 		quote: '\"A tasty treat... if you have gloves.\"',
 	},
+	bramble_druid:{
+		name: 				'bramble druid',
+		type: 				'creature',
+		subtypes: 			['human','cleric'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			['type_structure'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-23T062726.770.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, heal: 1, thorns: 1},
+		hero_version: 			{
+			theme: 				['healing_ability','fortify_ability','type_creature','thorns_ability'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, heal: 1, thorns: 1},
+		},
+		quote: '\"Let the forest heal you. Unless you do not deserve it.\"',
+	},
+	bramble_mage:{
+		name: 				'bramble mage',
+		type: 				'creature',
+		subtypes: 			['human','mage'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		['arcane_bolts'],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-23T061434.470.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{arcane_bolt: 1, thorns: 1},
+		verified: 			true,
+		hero_version: 			{
+			theme: 				['arcane_bolts_ability','çurse_ability','thorns_ability'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{arcane_bolt_hv: 1, thorns: 1},
+		},
+		quote: '\"Prickly magic.\"',
+	},
 	bramble_witch:{
 		name: 				'bramble witch',
 		type: 				'creature',
@@ -2336,7 +2409,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{break: 5},
+		abilities: 			{break: 1, echo: 1},
 		quote: '\"Don\'t point it at a mirror.\"',
 		max_in_deck: 		1,
 	},
@@ -2581,7 +2654,7 @@ var all_available_cards = {
 		image: 				'cards/dream_TradingCard-2024-11-21T143436.771.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			5,
+		health: 			1,
 		abilities: 			{strike: 1, run_away: 1, steal: 1},
 		hero_version: 			{
 			theme: 				['evade_ability','subtype_rogue','steal_ability'],
@@ -2690,13 +2763,13 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			8,
-		abilities: 			{trap: 1, thorns: 1, feast: 4},
+		abilities: 			{thorns: 1, stunning_touch: 1, feast: 4},
 		hero_version: 			{
 			theme: 				['subtype_animal','subtype_plant','receive_damage_proc_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{trap: 1, thorns: 1, feast: 1},
+			abilities: 			{thorns: 1, stunning_touch: 1, feast: 1},
 		},
 		quote: '\"It swallowed Jimmy whole!\"',
 	},
@@ -2743,7 +2816,8 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{fortify_all: 2, plated: 1},
+			abilities: 			{fortify_all: 1, plated: 1},
+			verified: true,
 		},
 		quote: '\"You can feel safe here.\"',
 	},
@@ -2830,7 +2904,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{hero_channels_life: 10},
+		abilities: 			{hero_channels_life: 6},
 		quote: '\"It will cost you!\"',
 	},
 	channeler:{
@@ -3079,7 +3153,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{ice_blast: 5, minimum_enemies: 3},
+		abilities: 			{ice_blast: 3, minimum_enemies: 3},
 		quote: '\"Look! It\'s all white outside!\"',
 	},
 	commander:{
@@ -3105,6 +3179,30 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, empower_ally: 1},
 		},
 		quote: '\"She demands respect.\"',
+	},
+	condor:{
+		name: 				'condor',
+		type: 				'creature',
+		subtypes: 			['animal','bird'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-03-01T065414.465.jpg',
+		image_position: 	'top left',
+		power: 				1,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{strike: 1, feast: 2, flying: 1},
+		hero_version: 			{
+			theme: 				['curse_ability','subtype_animal'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, feast: 1, flying: 1},
+		},
+		quote: '\"If they keep killing, they keep eating.\"',
 	},
 	conscript:{
 		name: 				'conscript',
@@ -3308,7 +3406,7 @@ var all_available_cards = {
 		health: 			7,
 		abilities: 			{cursed_aura: 1},
 		hero_version: 			{
-			theme: 				['curse_ability','subtype_witch','arcane_bolts_ability','arcane_bolts_ability'],
+			theme: 				['projectile_ability','type_damage_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -3402,7 +3500,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, cursed_deaths: 1, resurrect: 1, undead: 1},
 		hero_version: 			{
 			theme: 				['curse_ability','resurrect_ability','deaths','ally_creature_death_proc_ability','own_death_proc_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, cursed_deaths_hv: 1, resurrect: 1, undead: 1},
@@ -3549,7 +3647,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{bless: 5, echo: 1},
+		abilities: 			{bless: 10, echo: 1},
 		quote: '\"Have you seen the light?\"',
 	},
 	divine_power:{
@@ -3740,7 +3838,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, submerged: 1, resurrect: 1, undead: 1},
 		hero_version: 			{
 			theme: 				['resurrect_ability','undead_ability','subtype_undead','subtype_aquatic'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, submerged: 1, resurrect: 1, undead: 1},
@@ -3956,6 +4054,30 @@ var all_available_cards = {
 		},
 		quote: '\"It migth not be fair, but it works.\"',
 	},
+	elf_bramble_druid:{
+		name: 				'elf bramble druid',
+		type: 				'creature',
+		subtypes: 			['elf','cleric'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			['type_structure'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-23T063005.541.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{strike: 1, heal: 1, thorns: 1, resist_magic: 1},
+		hero_version: 			{
+			theme: 				['healing_ability','fortify_ability','type_creature','thorns_ability'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, heal: 1, thorns: 1, resist_magic: 1},
+		},
+		quote: '\"Let the forest heal you. Unless you do not deserve it.\"',
+	},
 	elf_channeler:{
 		name: 				'elf channeler',
 		type: 				'creature',
@@ -4111,7 +4233,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{spell_bolt: 2, resist_magic: 1},
 		hero_version: 			{
-			theme: 				['subtype_elf','type_spell'],
+			theme: 				['subtype_elf','type_spell','type_draw_card_ability','type_damage_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -4225,7 +4347,7 @@ var all_available_cards = {
 		image: 				'cards/dream_TradingCard-2024-12-15T074238.729.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			4,
+		health: 			1,
 		abilities: 			{strike: 1, steal: 1, resist_magic: 1},
 		hero_version: 			{
 			theme: 				['subtype_elf','subtype_rogue'],
@@ -4759,7 +4881,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{bolster_creature: 4, draw_on_act: 1},
+		abilities: 			{bolster_creature: 2, draw_on_act: 1},
 		quote: '\"Just a quick bite!\"',
 	},
 	fear:{
@@ -4777,6 +4899,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{fear: 1, echo: 1},
 		quote: '\"It\'s scary out there!\"',
+		verified: true,
 	},
 	fearful_mask:{
 		name: 				'fearful mask',
@@ -6005,7 +6128,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, bolstering_deaths: 1, undead: 1, resurrect: 1},
 		hero_version: 			{
 			theme: 				['resurrect_ability','summon_creature_ability','own_death_proc_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, bolstering_deaths: 1, undead: 1, resurrect: 1},
@@ -6028,7 +6151,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, corpse_feast: 1, undead: 1},
 		hero_version: 			{
-			theme: 				['curse_ability','subtype_undead'],
+			theme: 				['curse_ability','subtype_undead','type_creature'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -6165,8 +6288,9 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{revive_hero: 1},
+		abilities: 			{resurrect_hero: 2},
 		quote: '\"The date marked is not today.\"',
+		selfdestructs: 		true,
 	},
 	greater_worm:{
 		name: 				'greater worm',
@@ -6249,7 +6373,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{strike: 1, retreat_on_spell_cast: 1},
 		hero_version: 			{
-			theme: 				['type_spell','subtype_genie','draw_cards_ability','summon_ally_ability','subtype_warrior'],
+			theme: 				['type_spell','subtype_genie','type_draw_card_ability','type_damage_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -6311,7 +6435,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{summon_spike_pod: 5, maximum_allies: 0},
+		abilities: 			{summon_spike_pod: 2, maximum_allies: 3},
 		quote: '\"They will have to reach us first!\"',
 	},
 	guard:{
@@ -6559,7 +6683,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{restore: 1, echo: 1},
+		abilities: 			{restore: 2, echo: 1},
 		quote: '\"Just what I needed!\"',
 	},
 	hearty_meal:{
@@ -6576,7 +6700,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{bolster_creature: 8},
+		abilities: 			{bolster_creature: 6},
 		quote: '\"I could eat that all day!\"',
 	},
 	heatblade:{
@@ -6615,7 +6739,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{water_blast: 5, fire_blast: 5, minimum_enemies: 3},
+		abilities: 			{water_blast: 3, fire_blast: 3, minimum_enemies: 3},
 		quote: '\"A wave of fire!\"',
 	},
 	heavy_javelineer:{
@@ -6697,7 +6821,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{hex: 5, minimum_enemy_creatures: 3},
+		abilities: 			{hex: 2},
 		quote: '\"Ribbit!\"',
 	},
 	hexing_witch:{
@@ -6762,7 +6886,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, reclaim_spell: 1},
 		hero_version: 			{
-			theme: 				['subtype_clerk','type_spell'],
+			theme: 				['type_spell','type_damage_ability','type_draw_card_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -7023,7 +7147,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{build_palisade: 5, maximum_allies: 0},
+		abilities: 			{build_palisade: 3, maximum_allies: 2},
 		quote: '\"It should keep them out for a little while.\"',
 		max_in_deck: 		1,
 	},
@@ -7079,7 +7203,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{burn: 2, echo: 1},
+		abilities: 			{burn_all: 1, echo: 1},
 		quote: '\"Some like it hot.\"',
 	},
 	imp:{
@@ -7295,7 +7419,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{doom_all: 9, minimum_enemies: 3},
+		abilities: 			{doom_all: 5, minimum_enemies: 3},
 		quote: '\"Your days are numbered!\"',
 	},
 	incinerator:{
@@ -7336,7 +7460,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{strike_hero: 3, backstab: 10},
+		abilities: 			{strike_hero: 3, backstab: 3},
 		quote: '\"Strike from within!\"',
 	},
 	infirmary:{
@@ -7780,6 +7904,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{levitate: 1, echo: 1},
 		quote: '\"I can fly!\"',
+		max_in_deck: 1,
 	},
 	librarian:{
 		name: 				'librarian',
@@ -7874,6 +7999,22 @@ var all_available_cards = {
 			abilities: 			{lightning_hv: 2},
 		},
 		quote: '\"The air is crackling!\"',
+	},
+	
+	lightning_storm:{
+		name: 				'lightning storm',
+		type: 				'spell',
+		subtypes: 			['weather'],
+		color: 				['colorless'],
+		theme: 				['aoe'],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-23T043301.520.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{lightning_storm: 5},
+		quote: '\"Bolt after bolt...\"',
 	},
 	lightning_witch:{
 		name: 				'lightning witch',
@@ -8002,7 +8143,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{summon_locust: 1, echo: 1},
+		abilities: 			{destroy_ally: 5, summon_locust: 5},
 		quote: '\"They will eat everything.\"',
 	},
 	lost_horse:{
@@ -8045,7 +8186,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, run_away: 1, undead: 1, resurrect: 1},
 		hero_version: 			{
 			theme: 				['subtype_undead'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, evade: 1, undead: 1, resurrect: 1},
@@ -8090,7 +8231,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{hasten: 1, echo: 1},
+		abilities: 			{hasten: 2, echo: 1},
 		quote: '\"That will get you up in the morning!\"',
 	},
 	magpie:{
@@ -8105,7 +8246,7 @@ var all_available_cards = {
 		image: 				'cards/dream_TradingCard-2024-12-08T082818.528.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			3,
+		health: 			1,
 		abilities: 			{strike: 1, flying: 1, steal: 1},
 		hero_version: 			{
 			theme: 				['flying_ability','subtype_animal'],
@@ -8148,7 +8289,7 @@ var all_available_cards = {
 		health: 			3,
 		abilities: 			{strike: 1, spellpower: 1, final_hasten: 5},
 		hero_version: 			{
-			theme: 				['subtype_animal','type_spell'],
+			theme: 				['subtype_animal','type_spell','type_draw_card_ability','type_damage_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -8189,7 +8330,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{spell_bolt: 2},
 		hero_version: 			{
-			theme: 				['type_spell','subtype_human'],
+			theme: 				['type_spell','subtype_human','type_draw_card_ability','type_damage_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -8214,7 +8355,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, spell_bolt: 1, evade: 1},
 		hero_version: 			{
-			theme: 				['subtype_rogue','type_spell'],
+			theme: 				['subtype_rogue','type_spell','type_draw_card_ability','type_damage_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -8238,7 +8379,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{spell_bolt: 1},
 		hero_version: 			{
-			theme: 				['type_spell','subtype_human'],
+			theme: 				['type_spell','subtype_human','type_draw_card_ability','type_damage_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -8282,7 +8423,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{destroy_creature: 5},
+		abilities: 			{destroy_ally: 5, destroy: 5, minimum_enemies: 3},
 		quote: '\"Kill them! Kill them all!\"',
 	},
 	mason:{
@@ -8566,7 +8707,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, submerged: 1},
 		hero_version: 			{
 			theme: 				['subtype_aquatic','subtype_mermaid','submerge_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, submerged: 1},
@@ -8820,7 +8961,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{discard_enemy: 1, draw_on_act: 2},
+		abilities: 			{discard_enemy: 1, draw_on_act: 1},
 		quote: '\"I like your way of thinking!\"',
 	},
 	mind_shard:{
@@ -8869,7 +9010,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{discard: 2, fire_blast: 10, damage_hero: 10, minimum_enemies: 3, min_hand_cards: 2},
+		abilities: 			{discard: 2, fire_blast: 5, damage_hero: 5, minimum_enemies: 3, min_hand_cards: 2},
 		quote: '\"What is a bit of insanity worth to you?\"',
 	},
 	monstrous_crab:{
@@ -9266,7 +9407,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{slow: 1, echo: 1},
+		abilities: 			{slow: 4},
 		quote: '\"Does it never end?!\"',
 	},
 	peasant:{
@@ -9353,7 +9494,7 @@ var all_available_cards = {
 		image: 				'cards/dream_TradingCard-2024-11-21T142950.573.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			3,
+		health: 			1,
 		abilities: 			{strike: 1, steal: 1, hide: 1},
 		hero_version: 			{
 			theme: 				['stealth_ability','evade_ability','steal_ability'],
@@ -9386,6 +9527,30 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, flying: 1},
 		},
 		quote: '\"I keep selling them. Somehow I never run out.\"',
+	},
+	piranhas:{
+		name: 				'piranhas',
+		type: 				'creature',
+		subtypes: 			['animal','aquatic'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-03-01T070250.664.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 3, feast: 3, submerged: 1},
+		hero_version: 			{
+			theme: 				['subtype_aquatic','subtype_animal','submerge_ability'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 2, feast: 1, submerged: 1},
+		},
+		quote: '\"Get out of the water!\"',
 	},
 	pirate:{
 		name: 				'pirate',
@@ -9826,7 +9991,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{jolt: 5, echo: 1},
+		abilities: 			{jolt: 4, echo: 1},
 		quote: '\"This will sting a little.\"',
 	},
 	power_mage:{
@@ -9932,7 +10097,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, purifying_deaths: 1, resurrect: 1, undead: 1},
 		hero_version: 			{
 			theme: 				['cleanse_ally_ability','resurrect_ability','ally_creature_death_proc_ability','own_death_proc_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, purifying_deaths: 1, resurrect: 1, undead: 1},
@@ -10068,6 +10233,29 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, raging_deaths: 1, undead: 1, resurrect: 1},
 		},
 		quote: '\"Leave us be!\"',
+	},
+	raider:{
+		name: 				'raider',
+		type: 				'creature',
+		subtypes: 			['human','warrior'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-26T061849.195.jpg',
+		power: 				3,
+		armor: 				0,
+		health: 			6,
+		abilities: 			{strike: 1, plunder: 1},
+		hero_version: 			{
+			theme: 				['subtype_warrior','subtype_human'],
+			power: 				3,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1},
+		},
+		quote: '\"We will take it by force!\"',
 	},
 	rain_witch:{
 		name: 				'rain witch',
@@ -10691,7 +10879,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{earth_blast: 1, echo: 1},
+		abilities: 			{earth_blast: 1, long_echo: 1},
 		quote: '\"Those can last for days...\"',
 	},
 	sapling:{
@@ -11040,7 +11228,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{fortify: 2, echo: 1},
+		abilities: 			{fortify: 3, echo: 1},
 		quote: '\"Usefull, when needed.\"',
 	},
 	shielding_spirit:{
@@ -11059,7 +11247,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, fortify: 1, undead: 1, resurrect: 1},
 		hero_version: 			{
 			theme: 				['resurrect_ability','summon_creature_ability','own_death_proc_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, fortify: 1, undead: 1, resurrect: 1},
@@ -11221,7 +11409,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, flying: 1, undead: 1, resurrect: 1},
 		hero_version: 			{
 			theme: 				['resurrect_ability','subtype_dragon'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			30,
 			abilities: 			{strike_unit: 1, flying: 1, undead: 1, resurrect: 1},
@@ -11312,6 +11500,30 @@ var all_available_cards = {
 		abilities: 			{raise_skeleton: 5, maximum_allies: 0, minimum_dead_ally_creatures: 5},
 		quote: '\"Bones... bones everywhere.\"',
 		max_in_deck: 		1,
+	},
+	skeletal_pirate:{
+		name: 				'skeletal pirate',
+		type: 				'creature',
+		subtypes: 			['undead','skeleton','rogue'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-26T061012.462.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			1,
+		abilities: 			{strike: 1, plunder: 1, undead: 1, resurrect: 1},
+		hero_version: 			{
+			theme: 				['subtype_undead','subtype_skeleton','on_death_proc_ability','subtype_rogue'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, undead: 1, resurrect: 1},
+		},
+		quote: '\"Didn\'t that used to be Jack?\"',
 	},
 	skeletal_rogue:{
 		name: 				'skeletal rogue',
@@ -11425,6 +11637,29 @@ var all_available_cards = {
 		},
 		quote: '\"Didn\'t that used to be Nikky?\"',
 	},
+	skeletal_thief:{
+		name: 				'skeletal thief',
+		type: 				'creature',
+		subtypes: 			['undead','skeleton','rogue'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-26T061357.894.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			1,
+		abilities: 			{strike: 1, steal: 1, undead: 1, resurrect: 1},
+		hero_version: 			{
+			theme: 				['subtype_undead','subtype_skeleton','on_death_proc_ability','subtype_rogue'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, undead: 1, resurrect: 1},
+		},
+		quote: '\"Didn\'t that used to be Hank?\"',
+	},
 	skeletal_warrior:{
 		name: 				'skeletal warrior',
 		type: 				'creature',
@@ -11463,7 +11698,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, flying: 1, undead: 1, resurrect: 1},
 		hero_version: 			{
 			theme: 				['resurrect_ability','subtype_dragon'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			30,
 			abilities: 			{strike_unit: 1, flying: 1, undead: 1, resurrect: 1},
@@ -11677,8 +11912,9 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{ally_runs_away: 3, echo: 1},
+		abilities: 			{ally_runs_away: 1, echo: 1},
 		quote: '\"Move around them!\"',
+		verified: true,
 	},
 	snowballer:{
 		name: 				'snowballer',
@@ -11763,7 +11999,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{resurrect_ally: 1},
+		abilities: 			{resurrect_ally: 2},
 		quote: '\"Do not let it get away!\"',
 	},
 	soul_orb:{
@@ -11822,7 +12058,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, resurrect: 1, final_pay_life: 1},
 		hero_version: 			{
 			theme: 				['undead_ability','subtype_warrior'],
-			power: 				2,
+			power: 				3,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, resurrect: 1},
@@ -11845,7 +12081,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, flying: 1, run_away: 1},
 		hero_version: 			{
 			theme: 				['flying_ability','subtype_animal','evade_ability'],
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, flying: 1, evade: 1},
@@ -11884,7 +12120,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, spellpower: 1},
 		hero_version: 			{
-			theme: 				['subtype_warrior','type_spell'],
+			theme: 				['subtype_warrior','type_spell','type_draw_card_ability','type_damage_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -11908,7 +12144,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{spellblast: 1},
 		hero_version: 			{
-			theme: 				['subtype_mage','type_spell'],
+			theme: 				['subtype_mage','type_spell','type_draw_card_ability','type_damage_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -11921,7 +12157,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['weapon'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['type_spell','type_spell'],
 		not_theme: 			['arcane_bolts_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -11988,6 +12224,29 @@ var all_available_cards = {
 		},
 		quote: '\"Watch out for webs!\"',
 	},
+	spike_knight:{
+		name: 				'spike knight',
+		type: 				'creature',
+		subtypes: 			['human','warrior'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-23T055401.645.jpg',
+		power: 				4,
+		armor: 				0,
+		health: 			6,
+		abilities: 			{strike: 1, plated: 1, thorns: 1},
+		hero_version: 			{
+			theme: 				['plated_ability','subtype_warrior','thorns_ability'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, plated: 1, thorns: 1},
+		},
+		quote: '\"Years of spiky training.\"',
+	},
 	spike_pod:{
 		name: 				'spike pod',
 		type: 				'structure',
@@ -12034,6 +12293,29 @@ var all_available_cards = {
 		},
 		quote: '\"Let them come!\"',
 	},
+	spiked_rogue:{
+		name: 				'spiked rogue',
+		type: 				'creature',
+		subtypes: 			['human','rogue'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-23T053259.700.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, thorns: 1, evade: 1},
+		hero_version: 			{
+			theme: 				['evade_ability','subtype_rogue','thorns_ability'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, thorns: 1, evade: 1},
+		},
+		quote: '\"If you catch me, it will sting.\"',
+	},
 	spiked_shield:{
 		name: 				'spiked shield',
 		type: 				'artifact',
@@ -12050,6 +12332,30 @@ var all_available_cards = {
 		abilities: 			{fortify_hero: 1, thorned_hero: 1},
 		quote: '\"Come at me now!\"',
 	},
+	spiked_warrior:{
+		name: 				'spiked warrior',
+		type: 				'creature',
+		subtypes: 			['human','warrior'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-23T055143.230.jpg',
+		power: 				3,
+		armor: 				0,
+		health: 			6,
+		abilities: 			{strike: 1, thorns: 1},
+		hero_version: 			{
+			theme: 				['subtype_warrior','thorns_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, thorns: 1},
+		},
+		quote: '\"I attack you or you attack me. Either way, you are getting hurt.\"',
+	},
+	
 	spirit_cauldron:{
 		name: 				'spirit cauldron',
 		type: 				'artifact',
@@ -12225,7 +12531,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, submerged: 1},
 		hero_version: 			{
 			theme: 				['subtype_aquatic','subtype_animal','submerge_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, submerged: 1},
@@ -12254,6 +12560,29 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, plated: 1},
 		},
 		quote: '\"Made from steel.\"',
+	},
+	storm_mage:{
+		name: 				'storm mage',
+		type: 				'creature',
+		subtypes: 			['human','mage'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2025-02-23T045229.805.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			7,
+		abilities: 			{lightning_storm: 3},
+		hero_version: 			{
+			theme: 				['curse_ability','subtype_mage'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{lightning_storm: 2},
+		},
+		quote: '\"Can you hear the thunder?\"',
 	},
 	storm_witch:{
 		name: 				'storm witch',
@@ -12331,7 +12660,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{empower_hero: 2, echo: 1},
+		abilities: 			{empower_hero: 3, echo: 1},
 		quote: '\"Get me another one!\"',
 	},
 	strongshot:{
@@ -12372,6 +12701,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{bolster_hero: 2, echo: 1},
 		quote: '\"Ready for a long day!\"',
+		verified: true,
 	},
 	summon_imp:{
 		name: 				'summon imp',
@@ -12510,7 +12840,7 @@ var all_available_cards = {
 		image: 				'cards/dream_TradingCard34.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			5,
+		health: 			1,
 		abilities: 			{strike: 1, steal: 1},
 		hero_version: 			{
 			theme: 				['subtype_rogue'],
@@ -12640,7 +12970,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, poisonous_deaths: 1, undead: 1, resurrect: 1},
 		hero_version: 			{
 			theme: 				['subtype_undead','poison_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, poisonous_deaths_hv: 1, undead: 1, resurrect: 1},
@@ -12808,7 +13138,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{blood_rage: 3, empower_hero: 3, minimum_ally_creatures: 1},
+		abilities: 			{empower_ally: 4, empower_hero: 4, minimum_ally_creatures: 1},
 		quote: '\"We will end you!\"',
 	},
 	unholy_night:{
@@ -12865,29 +13195,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, cursed_deaths_hv: 1},
 		},
 		quote: '\"I will note the date in the ledger.\"',
-	},
-	vampire_bat:{
-		name: 				'vampire bat',
-		type: 				'creature',
-		subtypes: 			['animal','bat'],
-		color: 				['colorless'],
-		theme: 				[],
-		craft_theme: 		[],
-		pick_chance: 		1,
-		time: 				1,
-		image: 				'cards/dream_TradingCard-2024-12-01T090040.441.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, feast: 2, flying: 1},
-		hero_version: 			{
-			theme: 				['curse_ability','subtype_animal'],
-			power: 				2,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_unit: 1, feast: 1, flying: 1},
-		},
-		quote: '\"Flying rats... great...\"',
 	},
 	venom_rogue:{
 		name: 				'venom rogue',
@@ -13153,6 +13460,7 @@ var all_available_cards = {
 		subtypes: 			['wall','undead'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -13485,7 +13793,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, retreat_on_spell_cast: 1},
 		hero_version: 			{
-			theme: 				['type_spell','subtype_genie','draw_cards_ability','summon_ally_ability'],
+			theme: 				['type_spell','subtype_genie','type_draw_card_ability','type_damage_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -13955,7 +14263,7 @@ var all_available_cards = {
 		description: 		'Can be used to boost the current enemy. Increases rewards by 50%.',
 		value: 				10,
 		//months_available: 	[0,1,2,3,4,5,6,7,8,9,10,11,12],
-		type: 				'treasure',
+		type: 				'consumable',
 		basic_reward: 		true,
 		color: 				['none'],
 		pick_chance: 		0,
@@ -13977,7 +14285,7 @@ var all_available_cards = {
 		description: 		'Can be used to boost the current enemy. Increases rewards by 10%.',
 		value: 				2,
 		//months_available: 	[0,1,2,3,4,5,6,7,8,9,10,11,12],
-		type: 				'treasure',
+		type: 				'consumable',
 		basic_reward: 		true,
 		color: 				['none'],
 		pick_chance: 		0,
@@ -13999,7 +14307,7 @@ var all_available_cards = {
 		description: 		'Can be used to boost the current enemy. Increases rewards by 250%.',
 		value: 				50,
 		//months_available: 	[0,1,2,3,4,5,6,7,8,9,10,11,12],
-		type: 				'treasure',
+		type: 				'consumable',
 		basic_reward: 		true,
 		color: 				['none'],
 		pick_chance: 		0,
@@ -14228,7 +14536,7 @@ var all_available_cards = {
 	},
 	stash:{
 		name: 				'stash',
-		value: 				25,
+		value: 				15,
 		type: 				'consumable',
 		basic_reward: 		true,
 		color: 				['none'],
@@ -14251,7 +14559,7 @@ var all_available_cards = {
 	},
 	chest:{
 		name: 				'chest',
-		value: 				100,
+		value: 				50,
 		type: 				'consumable',
 		basic_reward: 		true,
 		color: 				['none'],
@@ -14274,7 +14582,7 @@ var all_available_cards = {
 	},
 	trove:{
 		name: 				'trove',
-		value: 				50,
+		value: 				25,
 		type: 				'consumable',
 		basic_reward: 		true,
 		color: 				['none'],
@@ -14880,9 +15188,10 @@ function calculate_card_time(card_id, show_calc, hero_version){
 	{
 		if(card['type'] == 'spell')
 		{
-			calculated_time /= 3;
-			if(show_calc!=undefined){console.log('spell: /3 = ' + calculated_time);}
-			//calculated_time -= 4;
+			//calculated_time /= 3;
+			//if(show_calc!=undefined){console.log('spell: /3 = ' + calculated_time);}
+			calculated_time -= 6;
+			if(show_calc!=undefined){console.log('spell: -6 = ' + calculated_time);}
 			/*calculated_time -= 5;
 			if(show_calc!=undefined){console.log('spell: -5 = ' + calculated_time);}*/
 			/*calculated_time = calculated_time / 2;
@@ -14977,6 +15286,7 @@ function show_time_correction(fromtime, totime){
 }
 
 var ideal_hero_hp = 40;
+var hero_hp_cost_factor = 4;
 
 
 
@@ -15002,7 +15312,8 @@ function check_card(card_id){
 			if(card_info['hero_version']['image_position'] == undefined && card_info['image_position'] != undefined){card_info['hero_version']['image_position'] = card_info['image_position'];};
 			var hero_time = calculate_card_time(card_id, undefined, true);
 			//var hero_hp = 50 - ((hero_time - 6) * 5);
-			var hero_hp = ideal_hero_hp / (hero_time / 6);
+			//var hero_hp = ideal_hero_hp / (hero_time / 6);
+			var hero_hp = ideal_hero_hp - (hero_time * hero_hp_cost_factor) + (6 * hero_hp_cost_factor);
 			if(hero_hp > ideal_hero_hp && card_info['hero_version']['verified'] == undefined)
 			{
 				console.log(card_id + ' hero hp: ' + hero_hp);
