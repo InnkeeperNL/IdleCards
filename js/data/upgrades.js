@@ -118,7 +118,7 @@ var all_upgrades = {
 		name: 			'Altar',
 		description: 	'Unlocks the altar.',
 		needed_upgrades:{
-			aaa_rewards: 	10,
+			aaa_rewards: 	5,
 		},
 		card_image: 	'skeletal_sacrifice',
 		type: 			'show_altar',
@@ -162,7 +162,7 @@ var all_upgrades = {
 		name: 			'Summon tries',
 		description: 	'Increases the number of times you can try to defeat the same summoned enemy.',
 		needed_upgrades:{
-			aaa_rewards: 	10,
+			aaa_rewards: 	4,
 		},
 		card_image: 	'archer',
 		type: 			'summon_tries',
@@ -222,7 +222,7 @@ var all_upgrades = {
 		name: 			'Quest difficulty',
 		description: 	'Increases the maximum difficulty and rewards of quests by 50%. This may unlock new possible rewards.',
 		needed_upgrades:{
-			aaa_rewards: 5,
+			aaa_rewards: 3,
 		},
 		card_image: 	'battle_plans',
 		type: 			'quest_amount',
