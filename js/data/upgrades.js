@@ -46,7 +46,7 @@ var all_upgrades = {
 		type: 			'summon_reward',
 		subtypes:  		['any'],
 		amount: 		0.05,
-		level_cost_scale: 	2,
+		level_cost_scale: 	1.1,
 		cost: 			{shard:5,},
 	},
 	aab_summon_rarity:{
@@ -69,7 +69,7 @@ var all_upgrades = {
 		card_image: 	'clover',
 		type: 			'summon_loot_rarity',
 		subtypes:  		['any'],
-		level_cost_scale: 	2,
+		level_cost_scale: 	1.1,
 		cost: 			{scraps:10,},
 	},
 	floating_chance:{
@@ -82,13 +82,13 @@ var all_upgrades = {
 		type: 			'floating_chance',
 		subtypes:  		['any'],
 		amount: 		0.025,
-		level_cost_scale: 	2,
+		level_cost_scale: 	1.5,
 		cost: 			{scraps:25,},
 		max_level: 		40,
 	},
 	floating_scraps:{
 		name: 			'Floating scraps',
-		description: 	'Increases the scraps gained when picking up floating scraps during combat. (base is 1)',
+		description: 	'Increases the scraps gained by 1 when picking up floating scraps during combat.',
 		needed_upgrades:{
 			floating_chance: 	5,
 		},
@@ -96,8 +96,8 @@ var all_upgrades = {
 		type: 			'floating_scraps',
 		subtypes:  		['any'],
 		amount: 		1,
-		level_cost_scale: 	2,
-		cost: 			{scraps:100,},
+		level_cost_scale: 	1.1,
+		cost: 			{scraps:10,},
 		max_level: 		50,
 	},
 	game_speed:{
@@ -110,7 +110,7 @@ var all_upgrades = {
 		type: 			'max_game_speed',
 		subtypes:  		['any'],
 		amount: 		0.1,
-		level_cost_scale: 	2,
+		level_cost_scale: 	1.5,
 		cost: 			{scraps:25,},
 		max_level: 		40,
 	},
@@ -131,7 +131,7 @@ var all_upgrades = {
 	},
 	summon_altar_rarity:{
 		name: 			'Altar rarity',
-		description: 	'Increases the maximum rarity of cards sacrificed at the altar by 10%.',
+		description: 	'Increases the maximum rarity of cards sacrificed at the altar by 5%.',
 		needed_upgrades:{
 			summon_altar: 	1,
 		},
@@ -139,9 +139,9 @@ var all_upgrades = {
 		type: 			'altar_rarity',
 		subtypes:  		['any'],
 		level_cost_scale: 	2,
-		amount: 		0.1,
+		amount: 		0.05,
 		cost: 			{scraps:25,},
-		max_level: 		30,
+		max_level: 		50,
 	},
 	summon_buffs:{
 		name: 			'Summon buffs',
@@ -154,7 +154,7 @@ var all_upgrades = {
 		subtypes:  		['any'],
 		amount: 		1,
 		amount_fixed: 	true,
-		level_cost_scale: 	2,
+		level_cost_scale: 	1.1,
 		cost: 			{treasure_map:2,},
 		max_level: 		4,
 	},
@@ -214,7 +214,7 @@ var all_upgrades = {
 		type: 			'loot',
 		subtypes:  		['peasant'],
 		amount: 		0.05,
-		level_cost_scale: 	2,
+		level_cost_scale: 	1.1,
 		cost: 			{scraps:10,},
 		max_level: 		20,
 	},
@@ -228,7 +228,7 @@ var all_upgrades = {
 		type: 			'quest_amount',
 		subtypes:  		['any'],
 		amount: 		0.5,
-		level_cost_scale: 	2,
+		level_cost_scale: 	1.1,
 		cost: 			{scraps:10,},
 		max_level: 		100,
 	},
@@ -243,7 +243,7 @@ var all_upgrades = {
 		subtypes:  		['any'],
 		amount: 		100,
 		amount_fixed: 	true,
-		cost: 			{scraps:100,},
+		cost: 			{scraps:250,},
 		max_level: 		1,
 		//hide_if_maxed: 	true,
 	},
@@ -271,7 +271,7 @@ var all_upgrades = {
 		card_image: 	'fear',
 		type: 			'wave_power_increase',
 		subtypes:  		['any'],
-		level_cost_scale: 	2,
+		level_cost_scale: 	1.1,
 		amount: 		0.025,
 		amount_fixed: 	true,
 		cost: 			{scraps:10,},
@@ -288,7 +288,7 @@ var all_upgrades = {
 		subtypes:  		['any'],
 		amount: 		100,
 		amount_fixed: 	true,
-		cost: 			{scraps:10,},
+		cost: 			{scraps:50,},
 		max_level: 		1,
 		//hide_if_maxed: 	true,
 	},
@@ -348,7 +348,7 @@ var all_upgrades = {
 		type: 			'loot_drop_chance',
 		subtypes:  		['trove'],
 		amount: 		1,
-		level_cost_scale: 	5,
+		level_cost_scale: 	1.5,
 		cost: 			{shard: 5},
 		max_level: 		10,
 		//hide_if_maxed: 	true,
@@ -562,6 +562,15 @@ var all_upgrades = {
 			cup_of_blood:  	1,
 		}
 	},
+	enchanted_net:{
+		upgrade_type: 	'passive',
+		type: 			'floating_scraps',
+		subtypes:  		['any'],
+		amount:  		0.01,
+		cost:{
+			enchanted_net:  	1,
+		}
+	},
 	endless_pouch_bonus:{
 		upgrade_type: 	'passive',
 		type: 			'loot',
@@ -569,6 +578,24 @@ var all_upgrades = {
 		amount:  		0.01,
 		cost:{
 			endless_pouch:  	1,
+		}
+	},
+	gloves_of_midas:{
+		upgrade_type: 	'passive',
+		type: 			'loot',
+		subtypes:  		['trove'],
+		amount:  		0.01,
+		cost:{
+			gloves_of_midas:  	1,
+		}
+	},
+	golden_saddle:{
+		upgrade_type: 	'passive',
+		type: 			'summon_reward',
+		subtypes:  		['any'],
+		amount:  		0.01,
+		cost:{
+			golden_saddle:  	1,
 		}
 	},
 	loupe_bonus:{
@@ -587,6 +614,24 @@ var all_upgrades = {
 		amount:  		0.01,
 		cost:{
 			rope_of_binding:  	1,
+		}
+	},
+	thieves_cloak:{
+		upgrade_type: 	'passive',
+		type: 			'merchant_buy',
+		subtypes:  		['any'],
+		amount:  		0.01,
+		cost:{
+			thieves_cloak:  	1,
+		}
+	},
+	war_banner:{
+		upgrade_type: 	'passive',
+		type: 			'summon_max_rarity',
+		subtypes:  		['any'],
+		amount:  		0.01,
+		cost:{
+			war_banner:  	1,
 		}
 	},
 	

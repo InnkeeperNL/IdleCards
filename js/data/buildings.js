@@ -79,12 +79,12 @@ var all_buildings = {
 		recipes:{
 			clover:{
 				costs:{
-					horseshoe: 	5,
+					horseshoe: 	4,
 				}
 			},
 			jar_of_luck:{
 				costs:{
-					clover: 	5,
+					clover: 	4,
 				}
 			},
 			/*flask:{
