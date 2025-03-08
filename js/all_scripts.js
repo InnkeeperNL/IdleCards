@@ -4794,7 +4794,7 @@ this_card_counter=0;$.each(random_deck,function(useless_key,count_card_info){if(
 {var allready_not_these=false;$.each(not_these,function(not_these_key,not_these_id){if(not_these_id==card_id){allready_not_these=true;}});if(allready_not_these==false)
 {not_these[get_highest_key_in_object(not_these)+1]=card_id;}}
 if(this_card_counter>4||(randomized!=undefined&&randomized==true))
-{card_id=get_random_card('any',max_time,deck_color,second_color,min_time,deck_theme,not_these,not_types);if(all_available_cards[card_id]!=undefined&&((all_available_cards[card_id]['type']=='artifact'&&artifact_count>3&&(all_available_cards[card_id]['selfdestructs']==undefined||all_available_cards[card_id]['selfdestructs']==false))||(all_available_cards[card_id]['type']=='spell'&&spell_count>10)))
+{card_id=get_random_card('any',max_time,deck_color,second_color,min_time,deck_theme,not_these,not_types);if(all_available_cards[card_id]!=undefined&&((all_available_cards[card_id]['type']=='artifact'&&artifact_count>4&&(all_available_cards[card_id]['selfdestructs']==undefined||all_available_cards[card_id]['selfdestructs']==false))||(all_available_cards[card_id]['type']=='spell'&&spell_count>10)))
 {card_id=get_random_card('any',max_time,deck_color,second_color,min_time,deck_theme,not_these,not_types);}
 if(all_available_cards[card_id]!=undefined&&all_available_cards[card_id]['type']=='artifact'&&(all_available_cards[card_id]['selfdestructs']==undefined||all_available_cards[card_id]['selfdestructs']==false))
 {artifact_count++;if(artifact_count>4&&match_array_values(not_types,['artifact'])==false)
@@ -4809,6 +4809,9 @@ if(color!=deck_color&&color!='colorless')
 {second_color=color;}});random_deck[t]={card_id:card_id,status:'deck',time_left:all_available_cards[card_id]['time'],};}
 else
 {console.log(card_id);}}
+if(artifact_count==0)
+{var chosen_artifact=get_random_card('artifact',undefined,undefined,undefined,undefined,deck_theme);if(all_available_cards[chosen_artifact]!=undefined)
+{random_deck[0]={card_id:chosen_artifact,status:'deck',time_left:all_available_cards[chosen_artifact]['time'],};}}
 random_deck=check_deck_min_enemy_targets(random_deck,deck_theme);if(show_deck_construction==true)
 {console.log('DECK CONSTRUCTION');console.log('Theme:');console.log(deck_theme);var counted_deck_cards={};var average_card_time=0;$.each(random_deck,function(deck_card_id,deck_card_info){if(counted_deck_cards[deck_card_info['card_id']]==undefined)
 {counted_deck_cards[deck_card_info['card_id']]=1;}
