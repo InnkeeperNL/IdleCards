@@ -2773,8 +2773,8 @@ function reset_temp_skills(side){$.each(battle_info.combat_units,function(unit_i
 function reset_temp_health(side){$.each(battle_info.combat_units,function(unit_id,current_unit){if(combat_alive==true&&current_unit['side']==side&&current_unit['armor']!=undefined&&current_unit['armor']!=0)
 {total_timeout+=500*battle_speed;current_unit['armor']=0;check_unit_hp(unit_id);}
 if(combat_alive==true&&current_unit['side']==side&&current_unit['temp_health']!=undefined&&current_unit['temp_health']!=0)
-{total_timeout+=500*battle_speed;if(current_unit['temp_health']>0){current_unit['temp_health']-=1;}
-if(current_unit['temp_health']<0){current_unit['temp_health']+=1;}
+{total_timeout+=500*battle_speed;if(current_unit['temp_health']>0){current_unit['temp_health']=Math.floor(current_unit['temp_health']*0.75);}
+if(current_unit['temp_health']<0){current_unit['temp_health']=Math.ceil(current_unit['temp_health']*0.75);}
 check_unit_hp(unit_id);check_unit_alive(unit_id);}});}
 function reset_temp_power(side){$.each(battle_info.combat_units,function(unit_id,current_unit){if(combat_alive==true&&current_unit['side']==side&&current_unit['temp_power']!=undefined&&current_unit['temp_power']<0)
 {total_timeout+=500*battle_speed;current_unit['temp_power']=0;check_unit_power(unit_id);}});}
@@ -4752,7 +4752,7 @@ fake_hero=create_hero(enemy_hero);fake_hero['slot']=0;fake_hero['side']=1;fake_h
 {base_card=get_random_hero();}
 if(size==undefined)
 {size=30;}
-var fake_hero=create_fake_hero(base_card);var fake_deck=construct_random_deck(size,base_card,true);console.log((fake_hero));console.log('-------------');console.log((fake_deck));};var random_deck_times={basic:{percent_main:10,percent_slow:90,percent_massive:200,},fast:{percent_main:30,percent_slow:90,percent_massive:200,},slow:{percent_main:10,percent_slow:70,percent_massive:200,},cheap:{percent_main:55,percent_slow:90,percent_massive:200,},muscle:{percent_main:0,percent_slow:75,percent_massive:200,},cheap_only:{percent_main:90,percent_slow:90,percent_massive:200,}}
+var fake_hero=create_fake_hero(base_card);var fake_deck=construct_random_deck(size,base_card,true);console.log((fake_hero));console.log('-------------');console.log((fake_deck));};var random_deck_times={basic:{percent_main:0,percent_slow:70,percent_massive:90,},fast:{percent_main:30,percent_slow:70,percent_massive:90,},slow:{percent_main:0,percent_slow:70,percent_massive:85,},cheap:{percent_main:55,percent_slow:90,percent_massive:200,},muscle:{percent_main:0,percent_slow:75,percent_massive:90,},cheap_only:{percent_main:85,percent_slow:90,percent_massive:95,}}
 function get_active_deck_speed(){var active_deck_speed=0;var active_deck=gamedata['decks'][gamedata['current_deck']];var active_deck_card_count=count_object(active_deck)-1;var total_card_times=0;if(active_deck_card_count>0){active_deck_card_count=0;$.each(active_deck,function(card_id,card_count){if(card_id!='hero'&&all_available_cards[card_id]!=undefined)
 {total_card_times+=all_available_cards[card_id]['time']*card_count;active_deck_card_count+=card_count;}});active_deck_speed=total_card_times/active_deck_card_count;}
 return active_deck_speed;}
@@ -4781,12 +4781,12 @@ if(size<30)
 {var deck_size_ratio=30/size;$.each(deck_times,function(deck_time_type,deck_time_percent){deck_times[deck_time_type]*=deck_size_ratio;});}
 for(var t=0;t<size;t++){var card_weight=1;if(card_weight>0)
 {this_card_counter+=1/card_weight;}
-var deck_percent=(t/size)*100;min_time=0;max_time=4;if(deck_percent>=deck_times['percent_main'])
-{min_time=5;max_time=9;}
+var deck_percent=(t/size)*100;min_time=0;max_time=3;if(deck_percent>=deck_times['percent_main'])
+{min_time=4;max_time=8;}
 if(deck_percent>=deck_times['percent_slow'])
-{min_time=10;max_time=150;}
+{min_time=9;max_time=12;}
 if(deck_percent>=deck_times['percent_massive'])
-{min_time=16;max_time=100;}
+{min_time=13;max_time=100;}
 if(second_color!=undefined)
 {}
 this_card_counter=0;$.each(random_deck,function(useless_key,count_card_info){if(count_card_info['card_id']==card_id)
