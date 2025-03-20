@@ -292,15 +292,16 @@ var all_upgrades = {
 		max_level: 		1,
 		//hide_if_maxed: 	true,
 	},
-	z_b_alchemist_access:{
-		name: 			'Alchemist',
-		description: 	'Unlocks the alchemist lab.',
+	
+	z_b_bank_access:{
+		name: 			'Banking',
+		description: 	'Unlocks the bank.',
 		needed_upgrades:{
 			z_a_town_access: 1,
 			wave_access: 1,
 		},
-		card_image: 	'alchemy_lab',
-		type: 			'alchemist_access',
+		card_image: 	'bank',
+		type: 			'bank_access',
 		subtypes:  		['any'],
 		amount: 		100,
 		amount_fixed: 	true,
@@ -308,14 +309,14 @@ var all_upgrades = {
 		max_level: 		1,
 		//hide_if_maxed: 	true,
 	},
-	z_c_bank_access:{
-		name: 			'Banking',
-		description: 	'Unlocks the bank.',
+	z_c_alchemist_access:{
+		name: 			'Alchemist',
+		description: 	'Unlocks the alchemist lab.',
 		needed_upgrades:{
-			z_b_alchemist_access: 1,
+			z_b_bank_access: 1,
 		},
-		card_image: 	'bank',
-		type: 			'bank_access',
+		card_image: 	'alchemy_lab',
+		type: 			'alchemist_access',
 		subtypes:  		['any'],
 		amount: 		100,
 		amount_fixed: 	true,
@@ -327,7 +328,7 @@ var all_upgrades = {
 		name: 			'Treasury',
 		description: 	'Unlocks the treasury.',
 		needed_upgrades:{
-			z_c_bank_access: 1,
+			z_c_alchemist_access: 1,
 		},
 		card_image: 	'trove',
 		type: 			'treasure_access',
@@ -359,7 +360,7 @@ var all_upgrades = {
 		needed_upgrades:{
 			z_a_town_access: 1,
 			wave_access: 1,
-			z_b_alchemist_access: 1,
+			z_b_bank_access: 1,
 		},
 		card_image: 	'carpenter',
 		type: 			'quick_craft',

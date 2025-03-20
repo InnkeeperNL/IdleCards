@@ -64,53 +64,6 @@ var all_buildings = {
 
 		//expeditions: 	['send_in_peasants','conscript_soldiers'],
 	},
-	a2_alchemist:{
-		name: 			'alchemist lab',
-		fragment_id: 	'shard',
-		image: 			'cards/dream_TradingCard-2025-02-05T060919.678.jpg',
-		description: 	'<i>Allows you to brew potions.</i>',
-		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
-		type: 			'none',
-		needed_upgrades:{
-			z_b_alchemist_access: 1,
-		},
-		new_mission_title: 'BREW',
-		expeditions: 	['research_new_potion'],
-		recipes:{
-			clover:{
-				costs:{
-					horseshoe: 	4,
-				}
-			},
-			jar_of_luck:{
-				costs:{
-					clover: 	4,
-				}
-			},
-			/*flask:{
-				costs:{
-					clover: 		1,
-					jar_of_luck: 	2,
-				}
-			},*/
-		},
-		show_potions: true,
-		productions:{
-			flask:{
-				base_time: 		4 * 5 * 24 * 3600,
-				base_storage: 	1 * 1,
-				upgrade_cost_speed:{
-					scraps: 		100,
-				},
-				upgrade_cost_storage:{
-					scraps: 		100,
-				},
-				defeated_heroes_speed_bonusses:{
-				},
-				production_achievement_bonus: 0.1,
-			},
-		}
-	},
 	a3_bank:{
 		name: 			'bank',
 		fragment_id: 	'shard',
@@ -119,7 +72,7 @@ var all_buildings = {
 		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
 		type: 			'shop',
 		needed_upgrades:{
-			z_c_bank_access: 1,
+			z_b_bank_access: 1,
 		},
 		productions:{
 			scraps_placeholder:{
@@ -158,6 +111,54 @@ var all_buildings = {
 		},*/
 		shop_type: 		['structure'],
 	},
+	a2_alchemist:{
+		name: 			'alchemist lab',
+		fragment_id: 	'shard',
+		image: 			'cards/dream_TradingCard-2025-02-05T060919.678.jpg',
+		description: 	'<i>Allows you to brew potions.</i>',
+		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
+		type: 			'none',
+		needed_upgrades:{
+			z_c_alchemist_access: 1,
+		},
+		new_mission_title: 'BREW',
+		expeditions: 	['research_new_potion'],
+		recipes:{
+			clover:{
+				costs:{
+					horseshoe: 	4,
+				}
+			},
+			jar_of_luck:{
+				costs:{
+					clover: 	4,
+				}
+			},
+			/*flask:{
+				costs:{
+					clover: 		1,
+					jar_of_luck: 	2,
+				}
+			},*/
+		},
+		show_potions: true,
+		productions:{
+			flask:{
+				base_time: 		4 * 5 * 24 * 3600,
+				base_storage: 	1 * 1,
+				upgrade_cost_speed:{
+					scraps: 		100,
+				},
+				upgrade_cost_storage:{
+					scraps: 		100,
+				},
+				defeated_heroes_speed_bonusses:{
+				},
+				production_achievement_bonus: 0.1,
+			},
+		}
+	},
+	
 	a4_treasury:{
 		name: 			'treasury',
 		fragment_id: 	'shard',
