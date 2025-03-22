@@ -1577,13 +1577,13 @@ function complete_offer(offer_key){var current_building=gamedata['town'][current
 {owned_amount=gamedata['owned_cards'][offer_info['card_id']];}
 if(offer_info['buysell']=='buy')
 {if(owned_amount>=offer_info['card_amount']&&offer_info['sold']==undefined)
-{gamedata['owned_cards'][offer_info['card_id']]-=offer_info['card_amount'];gamedata['scraps']+=offer_info['offer_price'];offer_info['sold']=true;check_quests('sell_card_in_town');if(new Date().addMinutes(10)<new Date(offer_info['offer_expires']))
+{gamedata['owned_cards'][offer_info['card_id']]-=offer_info['card_amount'];gamedata['scraps']+=offer_info['offer_price'];offer_info['sold']=true;check_quests('sell_card_in_town',undefined,offer_info['card_amount']);if(new Date().addMinutes(10)<new Date(offer_info['offer_expires']))
 {offer_info['offer_expires']=new Date().addMinutes(10);}
 saveToLocalStorage();}}
 if(offer_info['buysell']=='sell')
 {if(gamedata['scraps']>=offer_info['offer_price']&&offer_info['sold']==undefined)
 {if(gamedata['owned_cards'][offer_info['card_id']]==undefined){gamedata['owned_cards'][offer_info['card_id']]=0;}
-gamedata['owned_cards'][offer_info['card_id']]+=offer_info['card_amount'];gamedata['scraps']-=offer_info['offer_price'];offer_info['sold']=true;check_quests('buy_card_in_town');if(new Date().addMinutes(10)<new Date(offer_info['offer_expires']))
+gamedata['owned_cards'][offer_info['card_id']]+=offer_info['card_amount'];gamedata['scraps']-=offer_info['offer_price'];offer_info['sold']=true;check_quests('buy_card_in_town',undefined,offer_info['card_amount']);if(new Date().addMinutes(10)<new Date(offer_info['offer_expires']))
 {offer_info['offer_expires']=new Date().addMinutes(10);}
 saveToLocalStorage();}}
 show_single_building();}
