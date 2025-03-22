@@ -55,7 +55,7 @@ var all_upgrades = {
 		card_image: 	'death_warrant',
 		type: 			'summon_max_rarity',
 		subtypes:  		['any'],
-		level_cost_scale: 	5,
+		level_cost_scale: 	8,
 		amount: 		1,
 		amount_fixed: 	true,
 		cost: 			{scraps:2,},
