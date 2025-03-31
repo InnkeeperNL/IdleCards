@@ -76,8 +76,8 @@ var all_buildings = {
 		},
 		productions:{
 			scraps_placeholder:{
-				base_time: 		2 * 1 * 3600,
-				base_storage: 	2 * 100,
+				base_time: 		8 * 1 * 3600,
+				base_storage: 	0.5 * 100,
 				upgrade_cost_speed:{
 					scraps: 		100,
 				},
@@ -89,8 +89,8 @@ var all_buildings = {
 				production_achievement_bonus: 0.1,
 			},
 			stash:{
-				base_time: 		4 * 2 * 24 * 3600,
-				base_storage: 	1 * 5,
+				base_time: 		16 * 2 * 24 * 3600,
+				base_storage: 	1 * 1.25,
 				upgrade_cost_speed:{
 					scraps: 		100,
 				},
