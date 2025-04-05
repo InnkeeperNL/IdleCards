@@ -317,7 +317,8 @@ button:focus
 .menu_button.slim
 {
 	width:180px;
-	height:40px;
+	height: auto;
+	min-height:40px;
 	padding-top:10px;
 	background-color:rgba(0,0,0,0.2);
 	text-align:center;
