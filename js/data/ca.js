@@ -7059,6 +7059,7 @@ var all_abilities = {
 	sacrifice_unit:{
 		description: 	'Destroy up to {LEVEL} random ally unit(s). Will target units with the lowest cost first.',
 		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
 		remove_skill_after_use: 'sacrifice_unit',
 		targets:	{
 			0:{
