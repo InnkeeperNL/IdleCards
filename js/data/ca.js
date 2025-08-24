@@ -166,7 +166,7 @@ var all_abilities = {
 		targets:	{
 			0:{
 				target: 		'any',
-				target_amount: 	1,
+				target_amount: 	5,
 				position: 		'random',
 				origin_unit: 	true,
 				side: 			'any',
@@ -619,7 +619,7 @@ var all_abilities = {
 		targets:	{
 			0:{
 				target: 		'unit',
-				target_amount: 	1,
+				target_amount: 	5,
 				position: 		'random',
 				min_hp: 		1,
 				side: 			'ally'
