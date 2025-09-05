@@ -47,6 +47,19 @@ h2,h3
 	margin-right:2%;
 }
 
+.plain_text
+{
+	font-family: times;
+	font-size:24px;
+	line-height: 1.1;
+	color:#eee;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+.red_text
+{
+	color:#f77;
+}
+
 .hidden
 {
 	display:none !important;
@@ -793,7 +806,7 @@ div.menu_button.widest
 	cursor:pointer;
 }
 
-.reset_button
+/*.reset_button
 {
 	position:absolute;
 	left:200px;
@@ -805,7 +818,7 @@ div.menu_button.widest
 	box-sizing: border-box;
 	padding-top:80px;
 	text-align:center;
-}
+}*/
 
 .start_campaign
 {
@@ -1701,4 +1714,12 @@ div.menu_button.widest
 .saving_icon.save_bad
 {
 	background-color: rgba(255,0,0,0.5);
+}
+
+.importexport_input
+{
+	width:80%;
+	height:50px;
+	margin-bottom:10px;
+	text-align: center;
 }

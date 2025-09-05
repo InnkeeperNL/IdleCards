@@ -236,3 +236,68 @@ function set_current_deck(deck){
 		saveToLocalStorage();
 	}
 }
+
+function test_atob(object){
+	var object_json = JSON.stringify(object);
+	//console.log(object_json);
+	var atob_object = btoa(object_json);
+	//console.log(atob_object);
+	var btoa_object = atob(atob_object);
+	if(btoa_object == object_json)
+	{
+		console.log(JSON.parse(btoa_object));
+	}
+}
+
+function export_gamedata(){
+	$('.detail_overlay .card_detail').html('<div class="big_text">Exporting to clipboard</div>');
+	$('.detail_overlay').addClass('non_clickable');
+	$('.detail_overlay').removeClass('hidden');
+	var temp_gamedata = true_copyobject(gamedata);
+	$.each(all_available_cards, function(card_id, card_info){
+		if(card_info['type'] == 'consumable')
+		{
+			if(temp_gamedata['owned_cards'][card_id] != undefined)
+			{
+				delete temp_gamedata['owned_cards'][card_id];
+				console.log('deleting ' + card_id);
+			}
+		}
+	});
+	var json_gamedata = JSON.stringify(temp_gamedata);
+	var encoded_gamedata = btoa(json_gamedata);
+	$('#importexport_input').val(encoded_gamedata);
+	copyToClipboard('importexport_input');
+	setTimeout(function(){
+		show_message('game successfully exported to clipboard');
+		$('.detail_overlay').addClass('hidden');
+		$('.detail_overlay').removeClass('non_clickable');
+	},400);
+	$('#importexport_input').val('');
+	return encoded_gamedata;
+}
+
+function import_gamedata(){
+	if($('#importexport_input').val() != '')
+	{
+		var json_gamedata = atob($('#importexport_input').val());
+		var temp_gamedata = JSON.parse(json_gamedata);
+		if(temp_gamedata['owned_cards'] != undefined)
+		{
+			$('.detail_overlay .card_detail').html('<div class="big_text">Importing game</div>');
+			$('.detail_overlay').addClass('non_clickable');
+			$('.detail_overlay').removeClass('hidden');
+			gamedata = true_copyobject(temp_gamedata);
+			saveToLocalStorage();
+			$('#importexport_input').val('');
+			setTimeout(function(){
+				show_content('home');
+				show_message('game successfully imported');
+				$('.detail_overlay').addClass('hidden');
+				$('.detail_overlay').removeClass('non_clickable');
+			},400);
+			console.log('ding');
+		}
+		return temp_gamedata;
+	}
+}

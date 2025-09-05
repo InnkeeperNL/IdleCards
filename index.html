@@ -497,10 +497,26 @@
 			</div>
 			<div class="home_section" style="text-align:center;">
 				<button class="menu_button" onclick="set_game_speed()" data-target-content="options">GAME SPEED<span class="current_game_speed"></span></button>
+				<!-- <button class="menu_button" data-target-content="options" onclick="run_intro(true)">INTRO</button> -->
+				<!-- <button class="menu_button" data-target-content="icons">ICONS</button> -->
+				<button class="menu_button" data-target-content="importexport">IMPORT<br/>EXPORT</button>
 				<button class="menu_button" data-target-content="reset_game">RESET ACCOUNT</button>
-				<button class="menu_button" data-target-content="options" onclick="run_intro(true)">INTRO</button>
-				<button class="menu_button" data-target-content="icons">ICONS</button>
 
+			</div>
+		</div>
+		<div id="content_importexport" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="options">BACK</div>
+				<h2>Import / Export</h2>
+			</div>
+			<div class="home_section" style="text-align:center;">
+				<br/>
+				<div class="plain_text">Use the export button to export your game to the clipboard. You can paste it in a text file.<br/><span class="red_text">Note:</span> Consumables like chests, stashes and troves will not be exported.</div><br/><br/>
+				<button class="menu_button" onclick="export_gamedata()" data-target-content="importexport">EXPORT</button><br/>
+				<br/><br/>
+				<div class="plain_text">Paste a saved game in the box below. Then use the import button to overwrite your current game. <span class="red_text">This cannot be undone!</span></div><br/><br/>
+				<input id="importexport_input" class="importexport_input" type="text" placeholder="paste text here"><br/>
+				<button class="menu_button" onclick="import_gamedata()" data-target-content="importexport">IMPORT</button>
 			</div>
 		</div>
 		<div id="content_icons" class="page_container">
@@ -858,8 +874,9 @@
 				<h2>Reset Account</h2>
 
 			</div>
-			<div class="home_section">
-				<div class="danger reset_button" onclick="clearLocalStorage();saveToLocalStorage();loadLocalStorage();show_content('home');location.reload();">RESET</div>
+			<div class="home_section" style="text-align:center;">
+				<div class="plain_text"><br/><br/>Press the button to completely reset the game.<br/><span class="red_text">This cannot be undone!</span></div><br/><br/><br/><br/>
+				<button class="menu_button" onclick="clearLocalStorage();saveToLocalStorage();loadLocalStorage();show_content('home');location.reload();">RESET</button>
 
 			</div>
 
