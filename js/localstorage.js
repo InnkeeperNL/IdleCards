@@ -273,7 +273,7 @@ function export_gamedata(){
 		$('.detail_overlay').addClass('hidden');
 		$('.detail_overlay').removeClass('non_clickable');
 	},400);
-	$('#importexport_input').val('');
+	//$('#importexport_input').val('');
 	return encoded_gamedata;
 }
 
