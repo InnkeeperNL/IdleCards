@@ -511,12 +511,13 @@
 			</div>
 			<div class="home_section" style="text-align:center;">
 				<br/>
-				<div class="plain_text">Use the export button to export your game to the clipboard. You can paste it in a text file.<br/><span class="red_text">Note:</span> Consumables like chests, stashes and troves will not be exported.</div><br/><br/>
+				<div class="plain_text">Use the export button to export your game to the box below. You can copy it and paste it into a text file.<br/><span class="red_text">Note:</span> Consumables like chests, stashes and troves will not be exported.</div><br/><br/>
 				<button class="menu_button" onclick="export_gamedata()" data-target-content="importexport">EXPORT</button><br/>
 				<br/><br/>
 				<div class="plain_text">Paste a saved game in the box below. Then use the import button to overwrite your current game. <span class="red_text">This cannot be undone!</span></div><br/><br/>
-				<input id="importexport_input" class="importexport_input" type="text" placeholder="paste text here"><br/>
 				<button class="menu_button" onclick="import_gamedata()" data-target-content="importexport">IMPORT</button>
+				<input id="importexport_input" class="importexport_input" type="text" placeholder="import/export here"><br/>
+				
 			</div>
 		</div>
 		<div id="content_icons" class="page_container">

@@ -269,7 +269,7 @@ function export_gamedata(){
 	$('#importexport_input').val(encoded_gamedata);
 	copyToClipboard('importexport_input');
 	setTimeout(function(){
-		show_message('game successfully exported to clipboard');
+		show_message('game successfully exported');
 		$('.detail_overlay').addClass('hidden');
 		$('.detail_overlay').removeClass('non_clickable');
 	},400);
