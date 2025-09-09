@@ -1082,6 +1082,10 @@
 			gamedata['highest_wave_reset'] = next_midnight;
 			//saveToLocalStorage();
 		}
+		if(new Date(gamedata['highest_wave_reset']).toString() == 'Invalid Date')
+		{
+			gamedata['highest_wave_reset'] = last_midnight;
+		}
 		if(gamedata['saved_waves'] == undefined)
 		{
 			gamedata['saved_waves'] = {};
