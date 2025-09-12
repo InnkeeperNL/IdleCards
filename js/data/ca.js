@@ -8470,6 +8470,33 @@ var all_abilities = {
 		level_cost: 		16,
 		level_cost_spell: 	4,
 	},
+	summon_skeleton_on_act:{
+		name: 			'summon skeleton',
+		description: 	'Summons {LEVEL} skeleton(s) if this used another ability.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		has_used_ability: 	true,
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'skeleton',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		16,
+		level_cost_spell: 	4,
+	},
 	summon_skeleton_on_kill:{
 		description: 	'When this destroys a unit, it summons up to a total of {LEVEL} skeleton(s).',
 		proc: 			'ally_creature_death',
@@ -21331,7 +21358,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{sacrifice_living_creature: 1, summon_skeleton_on_kill: 2, maximum_allies: 4},
+		abilities: 			{sacrifice_living_creature: 1, summon_skeleton_on_act: 2, maximum_allies: 4},
 		quote: '\"The living bore me. Bring me more death!\"',
 	},
 	skeletal_scout:{
