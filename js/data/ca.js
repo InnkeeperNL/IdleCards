@@ -5270,6 +5270,36 @@ var all_abilities = {
 		level_cost_spell: 	1.25,
 		average_hits: 		'ability_level',
 	},
+	lightning_storm_hv:{
+		name: 			'lightning storm',
+		description: 	'Deals 1 magical air damage to the enemy unit with the highest current health {LEVEL} time(s). Will not target the enemy hero.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				highest_hp: 	true,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				self_projectile: 	'lightning goes_up',
+				target_projectile: 	'lightning comes_down',
+				type: 				'damage',
+				subtypes: 			['magical','air','elemental','lightning'],
+				amount: 			1,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		5,
+		level_cost_spell: 	1.25,
+		average_hits: 		'ability_level',
+	},
 	long_echo:{
 		description: 	'This card has a 75% chance to return to its owners deck.',
 		proc: 			'basic',
@@ -22334,7 +22364,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{lightning_storm: 2},
+			abilities: 			{lightning_storm_hv: 2},
 		},
 		quote: '\"Can you hear the thunder?\"',
 	},
