@@ -6848,7 +6848,7 @@ function check_current_offers(){
 		gamedata['town'][current_building_id]['current_offers'] = {};
 	}
 	for (var i = 0; i < /*building_level*/ 1; i++) {
-		if(new Date(current_building['current_offers'][i]['offer_expires']).toString() == 'Invalid Date')
+		if(current_building['current_offers'][i] != undefined && new Date(current_building['current_offers'][i]['offer_expires']).toString() == 'Invalid Date')
 		{
 			current_building['current_offers'][i]['offer_expires'] = new Date().addMinutes(10);
 		}
