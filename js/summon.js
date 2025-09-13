@@ -98,10 +98,14 @@ function show_summon(just_summoned){
 	}
 	if(gamedata['current_summon'] != undefined || (just_summoned != undefined && just_summoned == true))
 	{
+		var shown_recipe_drop_chance = '';
 		var drop_chance = Math.floor((((gamedata['current_summon']['loot_rarity'] * gamedata['current_summon']['reward_count']) / card_drop_chance_reduction) / all_available_cards[gamedata['current_summon']['hero']]['value']) * 100);
-		if(all_available_cards[gamedata['current_summon']['hero']]['recipe'] == undefined || gamedata['known_recipes'][gamedata['current_summon']['hero']] != undefined)
+		if(all_available_cards[gamedata['current_summon']['hero']]['recipe'] != undefined && gamedata['known_recipes'][gamedata['current_summon']['hero']] == undefined)
 		{
-			drop_chance = Math.floor((((gamedata['current_summon']['loot_rarity'] * gamedata['current_summon']['reward_count']) / card_drop_chance_reduction) / all_available_cards[gamedata['current_summon']['hero']]['value']) * 100);
+			//drop_chance = Math.floor((((gamedata['current_summon']['loot_rarity'] * gamedata['current_summon']['reward_count']) / card_drop_chance_reduction) / all_available_cards[gamedata['current_summon']['hero']]['value']) * 100);
+			var recipe_drop_chance = Math.floor(drop_chance / recipe_drop_chance_reduction);
+			if(recipe_drop_chance > max_recipe_drop_chance){recipe_drop_chance = max_recipe_drop_chance;}
+			shown_recipe_drop_chance = ' <span class="shown_recipe_drop_chance"> (' + recipe_drop_chance + '%)</span>';
 		}
 		if(drop_chance > 100){drop_chance = 100;}
 		parsed_summon += '<div class="summon_hero_container ' + just_summoned_class + '">';
@@ -118,7 +122,7 @@ function show_summon(just_summoned){
 			{
 				parsed_summon += 	'Power: ' + Math.floor(gamedata['current_summon']['level'] * 10) + '%<br/>';
 			}
-			parsed_summon += 	'Drop: ' + drop_chance + '%<br/>';
+			parsed_summon += 	'Drop: ' + drop_chance + '%' + shown_recipe_drop_chance + '<br/>';
 			parsed_summon += 	'Tries: ' + gamedata['current_summon']['tries'] + '<br/>';
 			parsed_summon += 	'Reward: ' + nFormatter(gamedata['current_summon']['reward_count'],3) + '<br/>';
 			parsed_summon += 	'<br/>';

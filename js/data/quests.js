@@ -586,7 +586,7 @@ var all_chained_achievements = {
 	empower:{
 		name: 			'empower',
 		description: 	'Have allies empower an ally {AMOUNT} time(s).',
-		objective: 		'ally_performed_empower_ally',
+		objective: 		'ally_performed_empower_any',
 		amount: 	1,
 		rewards:{
 			0:{
@@ -748,7 +748,7 @@ var all_chained_achievements = {
 	},
 	hunger:{
 		name: 			'hunger',
-		description: 	'Have allies feast on a creature {AMOUNT} time(s).',
+		description: 	'Have allies feast or leech {AMOUNT} time(s).',
 		objective: 		'ally_performed_feast',
 		amount: 		0.5,
 		rewards:{
@@ -763,7 +763,7 @@ var all_chained_achievements = {
 	healing:{
 		name: 			'healing',
 		description: 	'Have allies heal themselves or allies {AMOUNT} time(s).',
-		objective: 		'ally_performed_active_healing',
+		objective: 		'ally_performed_healing',
 		amount: 		1,
 		rewards:{
 			0:{

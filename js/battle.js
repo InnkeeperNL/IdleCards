@@ -336,26 +336,26 @@ function construct_random_enemy_deck(base_card, size){
 	var fake_hero = create_fake_hero(base_card);
 	var fake_deck = construct_random_deck(size, base_card, true);
 
-	console.log( JSON.stringify(fake_hero));
+	console.log( /*JSON.stringify*/(fake_hero));
 	console.log('-------------');
-	console.log( JSON.stringify(fake_deck));
+	console.log( /*JSON.stringify*/(fake_deck));
 };
 
 var random_deck_times = {
 	basic:{
-		percent_main: 		10,
-	 	percent_slow: 		90,
-	 	percent_massive: 	200,
+		percent_main: 		0,
+	 	percent_slow: 		70,
+	 	percent_massive: 	90,
 	},
 	fast:{
 		percent_main: 		30,
-	 	percent_slow: 		90,
-	 	percent_massive: 	200,
+	 	percent_slow: 		70,
+	 	percent_massive: 	90,
 	},
 	slow:{
-		percent_main: 		10,
+		percent_main: 		0,
 	 	percent_slow: 		70,
-	 	percent_massive: 	200,
+	 	percent_massive: 	85,
 	},
 	cheap:{
 		percent_main: 		55,
@@ -365,12 +365,12 @@ var random_deck_times = {
 	muscle:{
 		percent_main: 		0,
 	 	percent_slow: 		75,
-	 	percent_massive: 	200,
+	 	percent_massive: 	90,
 	},
 	cheap_only:{
-		percent_main: 		90,
+		percent_main: 		85,
 	 	percent_slow: 		90,
-	 	percent_massive: 	200,
+	 	percent_massive: 	95,
 	}
 }
 
@@ -516,20 +516,20 @@ function construct_random_deck(size, hero, randomized){
 			min_time = 13;
 		}*/
 		min_time = 0;
-		max_time = 4;
+		max_time = 3;
 		if(deck_percent >= deck_times['percent_main'])
 		{
-			min_time = 5;
-			max_time = 9;
+			min_time = 4;
+			max_time = 8;
 		}
 		if(deck_percent >= deck_times['percent_slow'])
 		{
-			min_time = 10;
-			max_time = 150;
+			min_time = 9;
+			max_time = 12;
 		}
 		if(deck_percent >= deck_times['percent_massive'])
 		{
-			min_time = 16;
+			min_time = 13;
 			max_time = 100;
 		}
 		if(second_color != undefined)
@@ -559,7 +559,7 @@ function construct_random_deck(size, hero, randomized){
 		if(this_card_counter > 4 || (randomized != undefined && randomized == true))
 		{
 			card_id = get_random_card('any', max_time, deck_color, second_color, min_time, deck_theme, not_these, not_types);
-			if(all_available_cards[card_id] != undefined && ((all_available_cards[card_id]['type'] == 'artifact' && artifact_count > 3 && (all_available_cards[card_id]['selfdestructs'] == undefined || all_available_cards[card_id]['selfdestructs'] == false)) || (all_available_cards[card_id]['type'] == 'spell' && spell_count > 10)))
+			if(all_available_cards[card_id] != undefined && ((all_available_cards[card_id]['type'] == 'artifact' && artifact_count > 4 && (all_available_cards[card_id]['selfdestructs'] == undefined || all_available_cards[card_id]['selfdestructs'] == false)) || (all_available_cards[card_id]['type'] == 'spell' && spell_count > 10)))
 			{
 				card_id = get_random_card('any', max_time, deck_color, second_color, min_time, deck_theme, not_these, not_types);
 			}
@@ -614,6 +614,18 @@ function construct_random_deck(size, hero, randomized){
 			};
 		}
 	}*/
+	if(artifact_count == 0)
+	{
+		var chosen_artifact = get_random_card('artifact', undefined, undefined, undefined, undefined, deck_theme);
+		if(all_available_cards[chosen_artifact] != undefined)
+		{
+			random_deck[0] = {
+				card_id: 	chosen_artifact,
+				status: 	'deck',
+				time_left: 	all_available_cards[chosen_artifact]['time'],
+			};
+		}
+	}
 
 	random_deck = check_deck_min_enemy_targets(random_deck, deck_theme);
 

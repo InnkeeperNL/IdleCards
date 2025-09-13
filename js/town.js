@@ -1202,6 +1202,7 @@ function complete_offer(offer_key){
 			gamedata['owned_cards'][offer_info['card_id']] -= offer_info['card_amount'];
 			gamedata['scraps'] += offer_info['offer_price'];
 			offer_info['sold'] = true;
+			check_quests('sell_card_in_town', undefined, offer_info['card_amount']);
 			if(new Date().addMinutes(10) < new Date(offer_info['offer_expires']))
 			{
 				offer_info['offer_expires'] = new Date().addMinutes(10);
@@ -1217,6 +1218,7 @@ function complete_offer(offer_key){
 			gamedata['owned_cards'][offer_info['card_id']] += offer_info['card_amount'];
 			gamedata['scraps'] -= offer_info['offer_price'];
 			offer_info['sold'] = true;
+			check_quests('buy_card_in_town', undefined, offer_info['card_amount']);
 			if(new Date().addMinutes(10) < new Date(offer_info['offer_expires']))
 			{
 				offer_info['offer_expires'] = new Date().addMinutes(10);
@@ -1238,6 +1240,10 @@ function check_current_offers(){
 		gamedata['town'][current_building_id]['current_offers'] = {};
 	}
 	for (var i = 0; i < /*building_level*/ 1; i++) {
+		if(new Date(current_building['current_offers'][i]['offer_expires']).toString() == 'Invalid Date')
+		{
+			current_building['current_offers'][i]['offer_expires'] = new Date().addMinutes(10);
+		}
 		if(current_building['current_offers'][i] != undefined && new Date(current_building['current_offers'][i]['offer_expires']) < new Date())
 		{
 			delete current_building['current_offers'][i];

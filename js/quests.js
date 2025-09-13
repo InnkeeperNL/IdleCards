@@ -625,7 +625,7 @@ function claim_quest(current_quest_id){
 function claim_daily_quest(current_quest_id){
 	if(gamedata['daily_quests'][current_quest_id] != undefined && gamedata['daily_quests'][current_quest_id]['amount'] <= gamedata['daily_quests'][current_quest_id]['progress'] && gamedata['daily_quests'][current_quest_id]['completed'] == false)
 	{
-		current_quest_info = gamedata['daily_quests'][current_quest_id];
+		var current_quest_info = gamedata['daily_quests'][current_quest_id];
 		all_current_rewards = {};
 		current_reward_origin 	= 'daily_quests';
 		current_reward_text 	= 'For completing the daily quest <b>"' + capitalizeFirstLetter(all_quests[current_quest_info['quest_id']]['name']) + '"</b><br/>You have been rewarded with:<br/>';

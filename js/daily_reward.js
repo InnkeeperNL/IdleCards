@@ -30,7 +30,7 @@ function show_daily_reward(forced_month){
 	if(gamedata['daily_rewards']['available_rewards'] == undefined || count_object(gamedata['daily_rewards']['available_rewards']) < 18)
 	{
 		gamedata['daily_rewards']['available_rewards'] = {};
-		for(i = 1;i <= 18; i++)
+		for(var i = 1;i <= 18; i++)
 		{
 			if(i == 18)
 			{

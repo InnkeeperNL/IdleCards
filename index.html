@@ -496,6 +496,7 @@
 				<h2>Options</h2>
 			</div>
 			<div class="home_section" style="text-align:center;">
+				<button class="menu_button" data-target-content="stats">STATS</button>
 				<button class="menu_button" onclick="set_game_speed()" data-target-content="options">GAME SPEED<span class="current_game_speed"></span></button>
 				<!-- <button class="menu_button" data-target-content="options" onclick="run_intro(true)">INTRO</button> -->
 				<!-- <button class="menu_button" data-target-content="icons">ICONS</button> -->
@@ -518,6 +519,14 @@
 				<button class="menu_button" onclick="import_gamedata()" data-target-content="importexport">IMPORT</button><br/><br/>
 				<input id="importexport_input" class="importexport_input" type="text" placeholder="import/export here">
 				
+			</div>
+		</div>
+		<div id="content_stats" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="options">BACK</div>
+				<h2>Stats</h2>
+			</div>
+			<div class="home_section stats_container" style="text-align:center;">
 			</div>
 		</div>
 		<div id="content_icons" class="page_container">
@@ -1095,9 +1104,9 @@
 		{
 			gamedata['daily_quests'] = {};
 			gamedata['highest_wave_reset'] = next_midnight;
-			gamedata['highest_wave'] = 1;
-			gamedata['current_wave'] = 1;
-			gamedata['saved_waves'] = {};
+			//gamedata['highest_wave'] = 1;
+			//gamedata['current_wave'] = 1;
+			//gamedata['saved_waves'] = {};
 			gamedata['wins_today'] = 0;
 			//saveToLocalStorage();
 		}
@@ -1245,6 +1254,47 @@
 			}
 		};
 		//$('.deck_' + gamedata['current_deck']).addClass('active');
+	}
+
+	function show_stats(){
+		var parsed_stats = '';
+		parsed_stats += '<div class="stats_title">Combat</div>';
+		if(gamedata['battles_won'] != undefined){parsed_stats += '<div class="left_stats">Battles won:</div><div class="right_stats">' + nFormatter(gamedata['battles_won'],3) + '</div>';}
+		if(gamedata['battles_lost'] != undefined){parsed_stats += '<div class="left_stats">Battles lost:</div><div class="right_stats">' + nFormatter(gamedata['battles_lost'],3) + '</div>';}
+		if(gamedata['highest_summon_won'] != undefined && gamedata['highest_summon_won'] > 0){parsed_stats += '<div class="left_stats">Highest summon:</div><div class="right_stats">' + nFormatter(gamedata['highest_summon_won'] * 100,1) + '%</div>';}
+		if(gamedata['highest_wave_ever'] != undefined && gamedata['highest_wave_ever'] > 1){parsed_stats += '<div class="left_stats">Highest wave:</div><div class="right_stats">' + nFormatter(gamedata['highest_wave_ever'],3) + '</div>';}
+		parsed_stats += '<div class="stats_title">Cards</div>';
+		if(gamedata['owned_cards'] != undefined){parsed_stats += '<div class="left_stats">Cards owned:</div><div class="right_stats">' + nFormatter(count_owned_cards(),3) + '</div>';}
+		if(gamedata['decks'] != undefined){parsed_stats += '<div class="left_stats">Decks owned:</div><div class="right_stats">' + nFormatter(count_object(gamedata['decks']),3) + '</div>';}
+		if(gamedata['known_recipes'] != undefined){parsed_stats += '<div class="left_stats">Recipes known:</div><div class="right_stats">' + nFormatter(count_object(gamedata['known_recipes']),3) + '</div>';}
+		if(gamedata['known_recipes'] != undefined){parsed_stats += '<div class="left_stats">Card backs:</div><div class="right_stats">' + nFormatter(count_object(gamedata['owned_card_backs']),3) + '</div>';}
+		parsed_stats += '<div class="stats_title">Upgrades</div>';
+		if(gamedata['upgrades'] != undefined){parsed_stats += '<div class="left_stats">Upgrades bought:</div><div class="right_stats">' + nFormatter(count_upgrades_bought(),3) + '</div>';}
+
+
+		$('.stats_container').html(parsed_stats);
+	}
+
+	function count_owned_cards(){
+		var total_owned = 0;
+		if(gamedata['owned_cards'] != undefined){
+			$.each(gamedata['owned_cards'], function(card_id, owned_amount){
+				if(all_available_cards[card_id]['pick_chance'] != undefined && all_available_cards[card_id]['pick_chance'] > 0)
+				{
+					total_owned += owned_amount;
+				}
+			});
+		}
+		return total_owned;
+	}
+	function count_upgrades_bought(){
+		var total_owned = 0;
+		if(gamedata['upgrades'] != undefined){
+			$.each(gamedata['upgrades'], function(upgrade_id, owned_amount){
+				total_owned += owned_amount;
+			});
+		}
+		return total_owned;
 	}
 
 	function get_deck_slot_price(){
