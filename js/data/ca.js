@@ -25503,6 +25503,16 @@ $.each(all_available_cards, function(card_id, card_info){
 all_available_cards = sortObj(all_available_cards);
 all_card_backs = sortObj(all_card_backs);
 
+function learn_recipe(recipe_id){
+	if(gamedata['known_recipes'] == undefined){gamedata['known_recipes'] = {};}
+	$.each(all_available_cards, function(card_id, card_info){
+		if(card_id == recipe_id && card_info['recipe'] != undefined && card_info['type'] != 'recipe')
+		{
+			gamedata['known_recipes'][card_id] = true;
+		}
+	});
+}
+
 function learn_all_recipes(){
 	if(gamedata['known_recipes'] == undefined){gamedata['known_recipes'] = {};}
 	$.each(all_available_cards, function(card_id, card_info){

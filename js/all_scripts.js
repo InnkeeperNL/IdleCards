@@ -3183,7 +3183,7 @@ function show_craft(){
 		saveToLocalStorage();
 	}
 
-	$('.tinker_view').show();
+	//$('.tinker_view').show();
 
 	gamedata['known_recipes'] = sortObj(gamedata['known_recipes']);
 
@@ -3195,9 +3195,15 @@ function show_craft(){
 	var tinkering_list = '';
 	var cards_displayed = 0;
 
-	$.each(gamedata['known_recipes'], function(recipe_id, amount){
+	$.each(all_available_cards, function(recipe_id, card_info){
 		
 		var card_filtered = false;
+		var amount = gamedata['known_recipes'][recipe_id];
+
+		if(gamedata['known_recipes'][recipe_id] == undefined && (gamedata['owned_cards'][recipe_id] == undefined || gamedata['owned_cards'][recipe_id] < 25))
+		{
+			card_filtered = true;
+		}
 
 		if(all_available_cards[recipe_id]['recipe'] == undefined)
 		{
@@ -3218,7 +3224,7 @@ function show_craft(){
 			
 
 			var possible_tinker_count = 0;
-			$.each(all_available_cards, function(current_card_id, current_card_info){
+			/*$.each(all_available_cards, function(current_card_id, current_card_info){
 				if(gamedata['known_recipes'][current_card_id] == undefined && current_card_info['recipe'] != undefined && typeof(current_card_info['recipe']) == 'object' && current_card_info['recipe'][recipe_id] != undefined)
 				{
 					var can_tinker = true;
@@ -3233,7 +3239,7 @@ function show_craft(){
 						possible_tinker_count++;
 					}
 				}
-			});
+			});*/
 			
 			if(possible_tinker_count > 0 || view_tinkerable == false)
 			{
@@ -3251,10 +3257,21 @@ function show_craft(){
 					}
 					else
 					{*/
+					if(gamedata['known_recipes'][recipe_id] != undefined)
+					{
 						var parsed_card = parse_card(recipe_id, owned_amount);
 					/*}*/
 					
-					tinkering_list += '<span class="can_craft_' + can_craft + '" onclick="show_card_recipe(\'' + recipe_id + '\')">' + parsed_card + '</span>';
+						tinkering_list += '<span class="can_craft_' + can_craft + '" onclick="show_card_recipe(\'' + recipe_id + '\')">' + parsed_card + '</span>';
+					}
+					else
+					{
+						if(gamedata['owned_cards'][recipe_id] >= 25)
+						{
+							var parsed_card = parse_card('recipe_' + recipe_id, '');
+							tinkering_list += '<span class="" onclick="show_card_recipe(\'' + 'recipe_' + recipe_id + '\')">' + parsed_card + '</span>';
+						}
+					}
 				}
 			}
 			else
@@ -3306,128 +3323,142 @@ function show_card_recipe(recipe_id){
 	gamedata['known_recipes'] = sortObj(gamedata['known_recipes']);
 
 	current_craft = recipe_id;
-
 	var recipe_details = '';
-	var can_craft = true;
-	var recipe_cost_count = count_object(all_available_cards[recipe_id]['recipe']);
-	$('.craft_container').removeClass('cost_1');
-	$('.craft_container').removeClass('cost_2');
-	$('.craft_container').removeClass('cost_3');
-	$('.craft_container').removeClass('cost_4');
-	$('.craft_container').addClass('cost_' + recipe_cost_count);
-
-	var costs_just_peasants = true;
-
-	$.each(all_available_cards[recipe_id]['recipe'], function(card_cost_id, cost_amount){
-		if(card_cost_id != 'peasant'){costs_just_peasants = false;}
-		var parsed_cost_card = '';
+	if(gamedata['known_recipes'][recipe_id] != undefined)
+	{
 		
-		parsed_cost_card += '<div class="single_cost_container">';
-		if(gamedata['owned_cards'][card_cost_id] == undefined || gamedata['owned_cards'][card_cost_id] < cost_amount)
-		{
-			can_craft = false;
-			var owned_amount = gamedata['owned_cards'][card_cost_id];
-			if(owned_amount == undefined)
+		var can_craft = true;
+		var recipe_cost_count = count_object(all_available_cards[recipe_id]['recipe']);
+		$('.craft_container').removeClass('cost_1');
+		$('.craft_container').removeClass('cost_2');
+		$('.craft_container').removeClass('cost_3');
+		$('.craft_container').removeClass('cost_4');
+		$('.craft_container').addClass('cost_' + recipe_cost_count);
+
+		var costs_just_peasants = true;
+
+		$.each(all_available_cards[recipe_id]['recipe'], function(card_cost_id, cost_amount){
+			if(card_cost_id != 'peasant'){costs_just_peasants = false;}
+			var parsed_cost_card = '';
+			
+			parsed_cost_card += '<div class="single_cost_container">';
+			if(gamedata['owned_cards'][card_cost_id] == undefined || gamedata['owned_cards'][card_cost_id] < cost_amount)
 			{
-				owned_amount = 0;
+				can_craft = false;
+				var owned_amount = gamedata['owned_cards'][card_cost_id];
+				if(owned_amount == undefined)
+				{
+					owned_amount = 0;
+				}
+				parsed_cost_card += '<div class="craft_not_enough"  onclick="show_card_details(\'' + card_cost_id + '\')">' + parse_card(card_cost_id, '<span style="color:rgba(255,0,0,1)">' + owned_amount + '</span>/' + cost_amount) + '</div>';
 			}
-			parsed_cost_card += '<div class="craft_not_enough"  onclick="show_card_details(\'' + card_cost_id + '\')">' + parse_card(card_cost_id, '<span style="color:rgba(255,0,0,1)">' + owned_amount + '</span>/' + cost_amount) + '</div>';
+			else
+			{
+				parsed_cost_card += '<div class=""  onclick="show_card_details(\'' + card_cost_id + '\')">' + parse_card(card_cost_id, gamedata['owned_cards'][card_cost_id] + '/' + cost_amount) + '</div>';
+			}
+			if(gamedata['known_recipes'][card_cost_id] != undefined && all_available_cards[card_cost_id]['recipe'] != undefined)
+			{
+				parsed_cost_card += '<div class="menu_button slim recipe_button" no-new-page="true" onclick="show_card_recipe(\'' + card_cost_id + '\')">RECIPE</div>';
+			}
+			parsed_cost_card += '</div>';
+			recipe_details += parsed_cost_card;
+		});
+		recipe_details += '<br/>';
+		var owned_result = gamedata['owned_cards'][recipe_id];
+		if(owned_result == undefined){owned_result = 0;}
+		recipe_details += '<div class="recipe_result active" onclick="show_card_details(\'' + recipe_id + '\')">' + parse_card(recipe_id, owned_result) + '</div>';
+		if(all_available_cards[recipe_id]['hero_version'] != undefined){
+			recipe_details += '<div class="recipe_hero_result" onclick="show_card_details(\'' + recipe_id + '\', true)">' + parse_card(recipe_id, owned_result, true) + '</div>';
+			recipe_details += '<div class="swap_hero_button" onclick="swap_hero_preview()">SWAP CARDS</div>'
+		};
+		recipe_details += '<br/>';
+		if(can_craft == true)
+		{
+			recipe_details += '<div class="menu_button slim craft_button" onclick="craft_current_card()" no-new-page="true">CRAFT</div><br/>';
 		}
 		else
 		{
-			parsed_cost_card += '<div class=""  onclick="show_card_details(\'' + card_cost_id + '\')">' + parse_card(card_cost_id, gamedata['owned_cards'][card_cost_id] + '/' + cost_amount) + '</div>';
+			recipe_details += '<div class="menu_button slim craft_button not_enough" no-new-page="true">CRAFT</div><br/>';
 		}
-		if(gamedata['known_recipes'][card_cost_id] != undefined && all_available_cards[card_cost_id]['recipe'] != undefined)
+		if(costs_just_peasants == false && get_upgrade_factor('quick_craft', 'any', true) > 1)
 		{
-			parsed_cost_card += '<div class="menu_button slim recipe_button" no-new-page="true" onclick="show_card_recipe(\'' + card_cost_id + '\')">RECIPE</div>';
+			if(gamedata['owned_cards']['peasant'] >= all_available_cards[recipe_id]['value'])
+			{
+				recipe_details += '<br/><div class="menu_button slim craft_button" onclick="quick_craft_current_card()" no-new-page="true">QUICK CRAFT<br/><span>(' + nFormatter(gamedata['owned_cards']['peasant'], 3) + ' / ' + all_available_cards[recipe_id]['value'] + ' peasants)</span></div>';
+			}
+			else
+			{
+				recipe_details += '<br/><div class="menu_button slim craft_button" no-new-page="true">QUICK CRAFT<br/><span class="button_subtext not_enough">(' + nFormatter(gamedata['owned_cards']['peasant'], 3) + ' / ' + all_available_cards[recipe_id]['value'] + ' peasants)</span></div>';
+			}
 		}
-		parsed_cost_card += '</div>';
-		recipe_details += parsed_cost_card;
-	});
-	recipe_details += '<br/>';
-	var owned_result = gamedata['owned_cards'][recipe_id];
-	if(owned_result == undefined){owned_result = 0;}
-	recipe_details += '<div class="recipe_result active" onclick="show_card_details(\'' + recipe_id + '\')">' + parse_card(recipe_id, owned_result) + '</div>';
-	if(all_available_cards[recipe_id]['hero_version'] != undefined){
-		recipe_details += '<div class="recipe_hero_result" onclick="show_card_details(\'' + recipe_id + '\', true)">' + parse_card(recipe_id, owned_result, true) + '</div>';
-		recipe_details += '<div class="swap_hero_button" onclick="swap_hero_preview()">SWAP CARDS</div>'
-	};
-	recipe_details += '<br/>';
-	if(can_craft == true)
-	{
-		recipe_details += '<div class="menu_button slim craft_button" onclick="craft_current_card()" no-new-page="true">CRAFT</div><br/>';
+
+		var possible_tinker_count = 0;
+		var max_recipes = 0;
+		$.each(all_available_cards, function(current_card_id, current_card_info){
+			if(gamedata['known_recipes'][current_card_id] == undefined && current_card_info['recipe'] != undefined && typeof(current_card_info['recipe']) == 'object' && current_card_info['recipe'][recipe_id] != undefined)
+			{
+				var can_tinker = true;
+				$.each(current_card_info['recipe'], function(recipe_cost_card_id, recipe_cost_amount){
+					if(gamedata['known_recipes'][recipe_cost_card_id] == undefined && all_available_cards[recipe_cost_card_id]['recipe'] != undefined)
+					{
+						can_tinker = false;
+					}
+				});
+				if(can_tinker == true)
+				{
+					possible_tinker_count++;
+				}
+				max_recipes++;
+			}
+		});
+
+		/*if(max_recipes > 0)
+		{
+			recipe_details += '<div class="max_tinker">You can currently discover ' + possible_tinker_count + ' new recipes out of the ' + max_recipes + ' unknown recipes with this card.</div>';
+		}*/
+
+		
+		var craftable_with_this = 0;
+		var parsed_craftable_with_this = ''
+		$.each(gamedata['known_recipes'], function(known_recipe_id, useless_info){
+			if(all_available_cards[known_recipe_id]['recipe'] != undefined && all_available_cards[known_recipe_id]['recipe'][recipe_id] != undefined)
+			{
+				craftable_with_this++;
+				if(craftable_with_this < 900)
+				{
+					var parsed_card = parse_card(known_recipe_id);
+					parsed_craftable_with_this += '<span onclick="show_card_recipe(\'' + known_recipe_id + '\')">' + parsed_card + '</span>';
+				}
+			}
+		});
+		if(craftable_with_this > 0)
+		{
+			recipe_details += '<div class="craftable_with_this">';
+			if(craftable_with_this > 800)
+			{
+				recipe_details += '<div class="craftable_with_this_title">This card can be used to craft these and ' + (craftable_with_this - 8) + ' more:</div>';
+			}
+			else
+			{
+				recipe_details += '<div class="craftable_with_this_title">This card can be used to craft:</div>';
+			}
+			
+			recipe_details += parsed_craftable_with_this;
+			recipe_details += '</div>';
+		}
 	}
 	else
 	{
-		recipe_details += '<div class="menu_button slim craft_button not_enough" no-new-page="true">CRAFT</div><br/>';
-	}
-	if(costs_just_peasants == false && get_upgrade_factor('quick_craft', 'any', true) > 1)
-	{
-		if(gamedata['owned_cards']['peasant'] >= all_available_cards[recipe_id]['value'])
+		if(all_available_cards[recipe_id]['type'] == 'recipe' && gamedata['owned_cards'][all_available_cards[recipe_id]['recipe']] >= 25)
 		{
-			recipe_details += '<br/><div class="menu_button slim craft_button" onclick="quick_craft_current_card()" no-new-page="true">QUICK CRAFT<br/><span>(' + nFormatter(gamedata['owned_cards']['peasant'], 3) + ' / ' + all_available_cards[recipe_id]['value'] + ' peasants)</span></div>';
-		}
-		else
-		{
-			recipe_details += '<br/><div class="menu_button slim craft_button" no-new-page="true">QUICK CRAFT<br/><span class="button_subtext not_enough">(' + nFormatter(gamedata['owned_cards']['peasant'], 3) + ' / ' + all_available_cards[recipe_id]['value'] + ' peasants)</span></div>';
+			var recipe_result_id = all_available_cards[recipe_id]['recipe'];
+			recipe_details += '<div class="single_cost_container">';
+			recipe_details += '<div class=""  onclick="show_card_details(\'' + recipe_result_id + '\')">' + parse_card(recipe_result_id, gamedata['owned_cards'][recipe_result_id] + '/' + 25) + '</div>';
+			recipe_details += '</div>';
+			recipe_details += '<br/><br/>';
+			recipe_details += '<div class="menu_button slim craft_button" onclick="gain_card(\'' + recipe_result_id + '\', -25);learn_recipe(\'' + recipe_result_id + '\')" data-target-content="craft">LEARN</div><br/>';
 		}
 	}
-
-	var possible_tinker_count = 0;
-	var max_recipes = 0;
-	$.each(all_available_cards, function(current_card_id, current_card_info){
-		if(gamedata['known_recipes'][current_card_id] == undefined && current_card_info['recipe'] != undefined && typeof(current_card_info['recipe']) == 'object' && current_card_info['recipe'][recipe_id] != undefined)
-		{
-			var can_tinker = true;
-			$.each(current_card_info['recipe'], function(recipe_cost_card_id, recipe_cost_amount){
-				if(gamedata['known_recipes'][recipe_cost_card_id] == undefined && all_available_cards[recipe_cost_card_id]['recipe'] != undefined)
-				{
-					can_tinker = false;
-				}
-			});
-			if(can_tinker == true)
-			{
-				possible_tinker_count++;
-			}
-			max_recipes++;
-		}
-	});
-
-	/*if(max_recipes > 0)
-	{
-		recipe_details += '<div class="max_tinker">You can currently discover ' + possible_tinker_count + ' new recipes out of the ' + max_recipes + ' unknown recipes with this card.</div>';
-	}*/
-
-	
-	var craftable_with_this = 0;
-	var parsed_craftable_with_this = ''
-	$.each(gamedata['known_recipes'], function(known_recipe_id, useless_info){
-		if(all_available_cards[known_recipe_id]['recipe'] != undefined && all_available_cards[known_recipe_id]['recipe'][recipe_id] != undefined)
-		{
-			craftable_with_this++;
-			if(craftable_with_this < 900)
-			{
-				var parsed_card = parse_card(known_recipe_id);
-				parsed_craftable_with_this += '<span onclick="show_card_recipe(\'' + known_recipe_id + '\')">' + parsed_card + '</span>';
-			}
-		}
-	});
-	if(craftable_with_this > 0)
-	{
-		recipe_details += '<div class="craftable_with_this">';
-		if(craftable_with_this > 800)
-		{
-			recipe_details += '<div class="craftable_with_this_title">This card can be used to craft these and ' + (craftable_with_this - 8) + ' more:</div>';
-		}
-		else
-		{
-			recipe_details += '<div class="craftable_with_this_title">This card can be used to craft:</div>';
-		}
-		
-		recipe_details += parsed_craftable_with_this;
-		recipe_details += '</div>';
-	}
-	
 	$('.craft_container').html(recipe_details);
 
 	/*if(can_craft == true)
@@ -6179,6 +6210,14 @@ function show_single_building(){
 
 		$('#content_single_building h2').html( capitalizeFirstLetter(building_info['name']) /*+ ' level ' + current_building['level']*/);
 
+		if(building_info['upgradable'] != undefined && building_info['upgradable'] == false)
+		{
+			$('.upgrade_building_button').hide();
+		}
+		else
+		{
+			$('.upgrade_building_button').show();
+		}
 		$('.upgrade_building_button').removeClass('click_me');
 		var upgrade_cost = calculate_upgrade_cost(building_level);
 		if(gamedata['owned_cards'][building_info['fragment_id']] >= upgrade_cost && gamedata['scraps'] >= upgrade_cost * building_scraps_cost)
@@ -6447,6 +6486,12 @@ function show_single_building(){
 					}
 				}
 			});
+		}
+		if(building_info['type'] != undefined && building_info['type'] == 'research')
+		{
+			var parsed_research = parse_research();
+
+			complete_building_list += parsed_research;
 		}
 		if(building_info['shop_type'] != undefined)
 		{
@@ -7446,6 +7491,35 @@ function show_new_adventure(){
 			});
 		}
 	}
+}
+
+function parse_research(){
+	var parsed_research = '';
+	if(gamedata['town'][current_building_id] == undefined)
+	{
+		show_content('town');
+	}
+	else
+	{
+		if(gamedata['town'][current_building_id]['research'] == undefined){
+			gamedata['town'][current_building_id]['research'] = {
+				card_1: 	'none',
+				card_2: 	'none',
+				result: 	'none',
+				done_time: 	'none',
+			};
+		}
+		var current_building = 	gamedata['town'][current_building_id];
+		var building_info = 	all_buildings[current_building['building_id']];
+		var building_level = 	current_building['level'];
+		parsed_research += '<div class="single_new_expedition">';
+		parsed_research += 	'<div class="single_new_expedition_name">Research</div>';
+		if(gamedata['town'][current_building_id]['research']['card_1'] == 'none'){
+
+		}
+		parsed_research += 	'</div>';
+	}
+	return parsed_research;
 }
 
 var current_adventure_units_page = 1;
