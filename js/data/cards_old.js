@@ -1174,7 +1174,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{empower_all: 1, long_echo: 1, righthand: 1},
+		abilities: 			{empower_all: 2, long_echo: 1, righthand: 1},
 		quote: '\"Blood was spilled tonight.\"',
 		use_old: true,
 	},
@@ -4111,7 +4111,7 @@ var all_old_available_cards = {
 		abilities: 			{strike: 1, counter: 1, plated: 1},
 		hero_version: 			{
 			theme: 				['subtype_warrior','counter_ability','melee_ability'],
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			30,
 			abilities: 			{strike_unit: 1, counter: 1, plated: 1},
@@ -4925,7 +4925,7 @@ var all_old_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, consume_creature: 3, spawn_sporeling: 1},
+			abilities: 			{strike_unit: 1, consume_creature: 1, spawn_sporeling: 1},
 		},
 		quote: '\"They eat their own when hungry.\"',
 		use_old: true,
@@ -4972,7 +4972,7 @@ var all_old_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{spawn_sporeling: 2, fortify_ally: 2},
+			abilities: 			{spawn_sporeling: 2, fortify_ally: 4},
 		},
 		quote: '\"Something is blocking our path. And it smells weird.\"',
 		use_old: true,
@@ -5841,7 +5841,7 @@ var all_old_available_cards = {
 		},
 		quote: '\"A wish for death, you say?\"',
 	},
-	grinning_imp:{
+	/*grinning_imp:{
 		name: 				'grinning imp',
 		type: 				'creature',
 		subtypes: 			['daemon','imp'],
@@ -5862,7 +5862,7 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, burn_hv: 1},
 		},
 		quote: '\"He has a surprise for you...\"',
-	},
+	},*/
 	grinning_reaper:{
 		name: 				'grinning reaper',
 		type: 				'creature',
@@ -7879,6 +7879,7 @@ var all_old_available_cards = {
 			armor: 				0,
 			health: 			40,
 			abilities: 			{slow: 1, cold_aura: 1, plated: 1},
+			verified: 			true,
 		},
 		quote: '\"It takes a long time to climb it.\"',
 		use_old: true,
@@ -7990,7 +7991,7 @@ var all_old_available_cards = {
 		},
 		quote: '\"She feels safe that way.\"',
 	},
-	ocotopus:{
+	/*ocotopus:{
 		name: 				'ocotopus',
 		type: 				'creature',
 		subtypes: 			['animal','aquatic'],
@@ -8013,7 +8014,7 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, stunning_touch: 1},
 		},
 		quote: '\"Not to confuse with an octopus, which only has 8 arms.\"',
-	},
+	},*/
 	ornate_owl:{
 		name: 				'ornate owl',
 		type: 				'creature',
@@ -9032,11 +9033,12 @@ var all_old_available_cards = {
 			armor: 				0,
 			health: 			30,
 			abilities: 			{earth_blast: 1},
+			verified: 			true,
 		},
 		quote: '\"The sand will devour you.\"',
 		use_old: true,
 	},
-	sand_whelp:{
+	/*sand_whelp:{
 		name: 				'sand whelp',
 		type: 				'creature',
 		subtypes: 			['reptile','dragon'],
@@ -9057,7 +9059,7 @@ var all_old_available_cards = {
 			abilities: 			{earth_blast: 1},
 		},
 		quote: '\"And that is just a whelp?\"',
-	},
+	},*/
 	sandstorm:{
 		name: 				'sandstorm',
 		type: 				'spell',
@@ -9223,7 +9225,7 @@ var all_old_available_cards = {
 		abilities: 			{strike: 1, charming_touch: 1},
 		hero_version: 			{
 			theme: 				['subtype_human','charm_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, charming_touch: 1},
@@ -10069,7 +10071,7 @@ var all_old_available_cards = {
 		abilities: 			{strike: 1, stunning_touch: 1, resist_cold: 1},
 		hero_version: 			{
 			theme: 				['stun_ability','cold'],
-			power: 				2,
+			power: 				3,
 			armor: 				0,
 			health: 			30,
 			abilities: 			{strike_unit: 1, stunning_touch: 1},
@@ -13213,87 +13215,144 @@ var all_old_available_cards = {
 
 }
 
-$.each(all_old_available_cards, function(card_id, card_info){
-	if(false && all_available_cards[card_id] == undefined && card_info['use_old'] != undefined && card_info['use_old'] == true)
-	{
-		var use_old_card = true;
-		if(card_info['type'] != 'artifact' && card_info['type'] != 'spell' && card_info['type'] != 'creature' && card_info['type'] != 'structure'){use_old_card = false;}
-		//if(card_info.name.replace('icatu','') != card_info.name){use_old_card = false;}
-		//if(card_info.name.replace('jotnar','') != card_info.name){use_old_card = false;}
-		//if(card_info.name.replace('thief','') != card_info.name){use_old_card = false;}
+var unavailable_abilities = {};
 
-		var matched_new_card = false;
-		if(use_old_card == true)
+var replacement_abilities = {
+	strike_nearest: 	'strike_unit',
+	cleanse: 			'purify',
+	draw_once: 			'draw',
+}
+
+var ignored_abilities = {
+	delay: 	true,
+	righthand: true,
+}
+
+function add_old_cards(old_cards, image_folder){
+	var added_old_cards = {};
+	$.each(old_cards, function(card_id, card_info){
+		if(all_available_cards[card_id] == undefined/* && card_info['use_old'] != undefined && card_info['use_old'] == true*/)
 		{
-			$.each(all_available_cards, function(new_card_id, new_card_info){
-				if(matched_new_card == false)
+			var use_old_card = true;
+			if(card_info['type'] != 'artifact' && card_info['type'] != 'spell' && card_info['type'] != 'creature' && card_info['type'] != 'structure'){use_old_card = false;}
+			//if(card_info.name.replace('icatu','') != card_info.name){use_old_card = false;}
+			//if(card_info.name.replace('jotnar','') != card_info.name){use_old_card = false;}
+			//if(card_info.name.replace('thief','') != card_info.name){use_old_card = false;}
+
+			$.each(card_info['abilities'], function(ability_id, ability_level){
+				if(all_abilities[ability_id] == undefined && replacement_abilities[ability_id] == undefined && ignored_abilities[ability_id] == undefined)
 				{
-					var matched_this = true;
-					if(new_card_info['power'] != card_info['power']){matched_this = false;}
-					if(new_card_info['health'] != card_info['health']){matched_this = false;}
-					if(new_card_info['type'] != card_info['type']){matched_this = false;}
-					if(count_object(card_info['abilities']) == count_object(new_card_info['abilities']))
-					{
-						$.each(card_info['abilities'], function(ability_id, ability_level){
-							if(new_card_info['abilities'][ability_id] == undefined || new_card_info['abilities'][ability_id] != ability_level)
-							{
-								matched_this = false;
-							}
-						});
-					}
-					else
-					{
-						matched_this = false;
-					}
-					if(matched_this == true)
-					{
-						matched_new_card = true;
-						console.log(card_id + ' is the same as ' + new_card_id);
-					}
+					use_old_card = false;
+					if(unavailable_abilities[ability_id] == undefined){unavailable_abilities[ability_id] = 0;}
+					unavailable_abilities[ability_id] += 1;
 				}
 			});
-		}
-		if(matched_new_card == true){use_old_card = false;}
-
-		if(use_old_card == true)
-		{
-			var new_card = true_copyobject(all_old_available_cards[card_id]);
-			$.each(new_card['abilities'], function(ability_id, ability_level){
-				if(all_abilities[ability_id] == undefined)
-				{
-					delete new_card['abilities'][ability_id];
-				}
-				else
-				{
-					if(all_abilities[ability_id]['max_level'] != undefined && ability_level > all_abilities[ability_id]['max_level'])
-					{
-						new_card['abilities'][ability_id] = all_abilities[ability_id]['max_level'];
-					}
-				}
-			});
-			if(new_card['hero_version'] != undefined)
+			if(card_info['hero_version'] != undefined)
 			{
-				$.each(new_card['hero_version']['abilities'], function(ability_id, ability_level){
+				$.each(card_info['hero_version']['abilities'], function(ability_id, ability_level){
+					if(all_abilities[ability_id] == undefined && replacement_abilities[ability_id] == undefined && ignored_abilities[ability_id] == undefined)
+					{
+						use_old_card = false;
+						if(unavailable_abilities[ability_id] == undefined){unavailable_abilities[ability_id] = 0;}
+						unavailable_abilities[ability_id] += 1;
+					}
+				});
+			}
+
+			var matched_new_card = false;
+			if(use_old_card == true)
+			{
+				$.each(all_available_cards, function(new_card_id, new_card_info){
+					if(matched_new_card == false)
+					{
+						var matched_this = true;
+						if(new_card_info['power'] != card_info['power']){matched_this = false;}
+						if(new_card_info['health'] != card_info['health']){matched_this = false;}
+						if(new_card_info['type'] != card_info['type']){matched_this = false;}
+						if(count_object(card_info['abilities']) == count_object(new_card_info['abilities']))
+						{
+							$.each(card_info['abilities'], function(ability_id, ability_level){
+								if(new_card_info['abilities'][ability_id] == undefined || new_card_info['abilities'][ability_id] != ability_level)
+								{
+									matched_this = false;
+								}
+							});
+						}
+						else
+						{
+							matched_this = false;
+						}
+						if(matched_this == true)
+						{
+							matched_new_card = true;
+							//console.log(card_id + ' is the same as ' + new_card_id);
+						}
+					}
+				});
+			}
+			if(matched_new_card == true){use_old_card = false;}
+
+			if(use_old_card == true)
+			{
+				var new_card = true_copyobject(old_cards[card_id]);
+				$.each(new_card['abilities'], function(ability_id, ability_level){
 					if(all_abilities[ability_id] == undefined)
 					{
-						delete new_card['hero_version']['abilities'][ability_id];
+						delete new_card['abilities'][ability_id];
+						if(replacement_abilities[ability_id] != undefined)
+						{
+							new_card['abilities'][replacement_abilities[ability_id]] = ability_level;
+						}
 					}
 					else
 					{
 						if(all_abilities[ability_id]['max_level'] != undefined && ability_level > all_abilities[ability_id]['max_level'])
 						{
-							new_card['hero_version']['abilities'][ability_id] = all_abilities[ability_id]['max_level'];
+							new_card['abilities'][ability_id] = all_abilities[ability_id]['max_level'];
 						}
 					}
 				});
+				if(new_card['hero_version'] != undefined)
+				{
+					$.each(new_card['hero_version']['abilities'], function(ability_id, ability_level){
+						if(all_abilities[ability_id] == undefined)
+						{
+							delete new_card['hero_version']['abilities'][ability_id];
+							if(replacement_abilities[ability_id] != undefined)
+						{
+							new_card['hero_version']['abilities'][replacement_abilities[ability_id]] = ability_level;
+						}
+						}
+						else
+						{
+							if(all_abilities[ability_id]['max_level'] != undefined && ability_level > all_abilities[ability_id]['max_level'])
+							{
+								new_card['hero_version']['abilities'][ability_id] = all_abilities[ability_id]['max_level'];
+							}
+						}
+					});
+				}
+				var old_image_string = new_card['image']
+				new_card['image'] = old_image_string.replace('cards/',image_folder);
+				new_card['old'] = true;
+				if(new_card['recipe'] != undefined){delete new_card['recipe'];}
+				//console.log('added ' + card_id);
+				added_old_cards[card_id] = true;
+				all_available_cards[card_id] = new_card;
 			}
-			var old_image_string = new_card['image']
-			new_card['image'] = old_image_string.replace('cards/','cards_old/');
-			new_card['old'] = true;
-			all_available_cards[card_id] = new_card;
 		}
-	}
-});
+	});
+	console.log('added ' + count_object(added_old_cards) + ' old cards');
+	console.log(added_old_cards);
+	all_available_cards = sortObj(all_available_cards);
+}
+
+add_old_cards(all_old_available_cards, 'cards_old/');
+add_old_cards(all_older_available_cards, 'cards_old2/');
+add_old_cards(all_oldest_available_cards, 'cards_old2a/');
+unavailable_abilities = sortObj(unavailable_abilities);
+
+
 
 function check_using_old_abilities(){
 	$.each(all_available_cards, function(card_id, card_info){
