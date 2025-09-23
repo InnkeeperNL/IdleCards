@@ -13335,6 +13335,7 @@ function add_old_cards(old_cards, image_folder){
 				var old_image_string = new_card['image']
 				new_card['image'] = old_image_string.replace('cards/',image_folder);
 				new_card['old'] = true;
+				new_card['color'] = ['none'];
 				if(new_card['recipe'] != undefined){delete new_card['recipe'];}
 				//console.log('added ' + card_id);
 				added_old_cards[card_id] = true;
