@@ -61,7 +61,7 @@ var all_old_available_cards = {
 		},
 		quote: '\"The mages of Gu\'nar have mastered the element of air.\"',
 	},
-	alchemists_lab:{
+	/*alchemists_lab:{
 		name: 				'alchemist\'s lab',
 		type: 				'structure',
 		subtypes: 			['laboratory'],
@@ -83,7 +83,7 @@ var all_old_available_cards = {
 			abilities: 			{poison_hv: 4},
 		},
 		quote: '\"Science!\"',
-	},
+	},*/
 	ambush:{
 		name: 				'ambush',
 		type: 				'spell',
