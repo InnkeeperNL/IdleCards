@@ -13235,6 +13235,7 @@ function add_old_cards(old_cards, image_folder){
 		{
 			var use_old_card = true;
 			if(card_info['type'] != 'artifact' && card_info['type'] != 'spell' && card_info['type'] != 'creature' && card_info['type'] != 'structure'){use_old_card = false;}
+
 			//if(card_info.name.replace('icatu','') != card_info.name){use_old_card = false;}
 			//if(card_info.name.replace('jotnar','') != card_info.name){use_old_card = false;}
 			//if(card_info.name.replace('thief','') != card_info.name){use_old_card = false;}
@@ -13242,6 +13243,7 @@ function add_old_cards(old_cards, image_folder){
 			$.each(card_info['abilities'], function(ability_id, ability_level){
 				if(all_abilities[ability_id] == undefined && replacement_abilities[ability_id] == undefined && ignored_abilities[ability_id] == undefined)
 				{
+
 					use_old_card = false;
 					if(unavailable_abilities[ability_id] == undefined){unavailable_abilities[ability_id] = 0;}
 					unavailable_abilities[ability_id] += 1;
@@ -13252,6 +13254,7 @@ function add_old_cards(old_cards, image_folder){
 				$.each(card_info['hero_version']['abilities'], function(ability_id, ability_level){
 					if(all_abilities[ability_id] == undefined && replacement_abilities[ability_id] == undefined && ignored_abilities[ability_id] == undefined)
 					{
+
 						use_old_card = false;
 						if(unavailable_abilities[ability_id] == undefined){unavailable_abilities[ability_id] = 0;}
 						unavailable_abilities[ability_id] += 1;
@@ -13260,6 +13263,7 @@ function add_old_cards(old_cards, image_folder){
 			}
 
 			var matched_new_card = false;
+
 			if(use_old_card == true)
 			{
 				$.each(all_available_cards, function(new_card_id, new_card_info){
@@ -13285,7 +13289,7 @@ function add_old_cards(old_cards, image_folder){
 						if(matched_this == true)
 						{
 							matched_new_card = true;
-							//console.log(card_id + ' is the same as ' + new_card_id);
+							console.log(card_id + ' is the same as ' + new_card_id);
 						}
 					}
 				});
@@ -13295,6 +13299,7 @@ function add_old_cards(old_cards, image_folder){
 			if(use_old_card == true)
 			{
 				var new_card = true_copyobject(old_cards[card_id]);
+				var old_image_string = new_card['image'];
 				$.each(new_card['abilities'], function(ability_id, ability_level){
 					if(all_abilities[ability_id] == undefined)
 					{
@@ -13314,6 +13319,7 @@ function add_old_cards(old_cards, image_folder){
 				});
 				if(new_card['hero_version'] != undefined)
 				{
+					new_card['hero_version']['image'] = old_image_string.replace('cards/',image_folder);
 					$.each(new_card['hero_version']['abilities'], function(ability_id, ability_level){
 						if(all_abilities[ability_id] == undefined)
 						{
@@ -13332,10 +13338,10 @@ function add_old_cards(old_cards, image_folder){
 						}
 					});
 				}
-				var old_image_string = new_card['image']
+				
 				new_card['image'] = old_image_string.replace('cards/',image_folder);
 				new_card['old'] = true;
-				new_card['color'] = ['none'];
+				new_card['color'] = ['white'];
 				if(new_card['recipe'] != undefined){delete new_card['recipe'];}
 				//console.log('added ' + card_id);
 				added_old_cards[card_id] = true;
@@ -13348,10 +13354,7 @@ function add_old_cards(old_cards, image_folder){
 	all_available_cards = sortObj(all_available_cards);
 }
 
-add_old_cards(all_old_available_cards, 'cards_old/');
-add_old_cards(all_older_available_cards, 'cards_old2/');
-add_old_cards(all_oldest_available_cards, 'cards_old2a/');
-unavailable_abilities = sortObj(unavailable_abilities);
+
 
 
 

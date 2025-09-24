@@ -2587,7 +2587,7 @@ var all_available_cards = {
 	bulky_bush:{
 		name: 				'bulky bush',
 		type: 				'structure',
-		subtypes: 			['plant','wall'],
+		subtypes: 			['plant'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -5668,7 +5668,7 @@ var all_available_cards = {
 	flying_fortress:{
 		name: 				'flying fortress',
 		type: 				'structure',
-		subtypes: 			['fort'],
+		subtypes: 			['wall'],
 		color: 				['colorless'],
 		theme: 				[],
 		pick_chance: 		1,
@@ -15284,6 +15284,11 @@ var all_available_cards = {
 
 }
 
+add_old_cards(all_old_available_cards, 'cards_old/');
+add_old_cards(all_older_available_cards, 'cards_old2/');
+add_old_cards(all_oldest_available_cards, 'cards_old2a/');
+unavailable_abilities = sortObj(unavailable_abilities);
+
 $.each(all_available_cards, function(card_id, card_info){
 	if(card_info['color'] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
 	if(card_info['color'][0] != undefined && card_info['color'][0] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
@@ -16143,6 +16148,16 @@ $.each(all_available_cards, function(card_id, card_info){
 
 all_available_cards = sortObj(all_available_cards);
 all_card_backs = sortObj(all_card_backs);
+
+function learn_recipe(recipe_id){
+	if(gamedata['known_recipes'] == undefined){gamedata['known_recipes'] = {};}
+	$.each(all_available_cards, function(card_id, card_info){
+		if(card_id == recipe_id && card_info['recipe'] != undefined && card_info['type'] != 'recipe')
+		{
+			gamedata['known_recipes'][card_id] = true;
+		}
+	});
+}
 
 function learn_all_recipes(){
 	if(gamedata['known_recipes'] == undefined){gamedata['known_recipes'] = {};}
