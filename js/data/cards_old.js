@@ -13236,6 +13236,7 @@ function add_old_cards(old_cards, image_folder){
 	var added_old_cards = {};
 
 	$.each(old_cards, function(card_id, new_card){
+		var should_delete = false;
 		$.each(new_card['abilities'], function(ability_id, ability_level){
 			if(all_abilities[ability_id] == undefined)
 			{
@@ -13243,6 +13244,10 @@ function add_old_cards(old_cards, image_folder){
 				if(replacement_abilities[ability_id] != undefined)
 				{
 					old_cards[card_id]['abilities'][replacement_abilities[ability_id]] = ability_level;
+				}
+				if(count_object(new_card['abilities']) == 1)
+				{
+					should_delete = true;
 				}
 			}
 			else
@@ -13273,7 +13278,7 @@ function add_old_cards(old_cards, image_folder){
 				}
 			});
 		}
-		if(count_object(old_cards[card_id]['abilities']) == 0)
+		if(count_object(old_cards[card_id]['abilities']) == 0 || should_delete == true)
 		{
 			delete old_cards[card_id];
 		}
