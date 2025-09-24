@@ -24648,7 +24648,7 @@ add_old_cards(all_older_available_cards, 'cards_old2/');
 add_old_cards(all_oldest_available_cards, 'cards_old2a/');
 unavailable_abilities = sortObj(unavailable_abilities);
 
-$.each(all_available_cards, function(card_id, card_info){
+eachoa(all_available_cards, function(card_id, card_info){
 	if(card_info['color'] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
 	if(card_info['color'][0] != undefined && card_info['color'][0] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
 });
@@ -24674,7 +24674,7 @@ function calculate_card_value(card_id, show_calc){
 		if(show_calc != undefined && show_calc == true){console.log('time: ' + current_card_value);}
 		var ability_count = count_object(all_available_cards[card_id]['abilities']);
 		/*var ability_count =  0;
-		$.each(all_available_cards[card_id]['abilities'], function(ability_id, ability_level){
+		eachoa(all_available_cards[card_id]['abilities'], function(ability_id, ability_level){
 			ability_count +=  0.8 + (ability_level / 5);
 		});*/
 		current_card_value *= (ability_count * ability_count);
@@ -24698,7 +24698,7 @@ function calculate_card_value(card_id, show_calc){
 	}
 	else
 	{
-		$.each(all_available_cards[card_id]['recipe'], function(card_cost_id, card_cost_amount){
+		eachoa(all_available_cards[card_id]['recipe'], function(card_cost_id, card_cost_amount){
 			if(all_available_cards[card_cost_id]['value'] == undefined)
 			{
 				all_available_cards[card_cost_id]['value'] = calculate_card_value(card_cost_id);
@@ -24733,7 +24733,7 @@ function calculate_card_value(card_id, show_calc){
 }
 
 function find_ability(find_ability_id, hero_version){
-	$.each(all_available_cards, function(unit_id, unit){
+	eachoa(all_available_cards, function(unit_id, unit){
 		if(hero_version == undefined && unit['abilities'][find_ability_id] != undefined)
 		{
 			console.log(unit['name']);
@@ -24746,10 +24746,10 @@ function find_ability(find_ability_id, hero_version){
 }
 
 function count_recipe_count(card_id){
-	$.each(all_available_cards, function(unit_id, unit){
+	eachoa(all_available_cards, function(unit_id, unit){
 		var recipe_count = 0;
 		var recipe_list = '';
-		$.each(all_available_cards, function(unit_id_2, unit_2){
+		eachoa(all_available_cards, function(unit_id_2, unit_2){
 			if(unit_2['recipe'] != undefined && unit_2['recipe'][unit_id] != undefined)
 			{
 				recipe_count++;
@@ -24770,7 +24770,7 @@ function find_used_in_recipes(min, max, color){
 	if(min == undefined){min = 0;}
 	if(max == undefined){max = 10000;}
 	var amount_found = 0;
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if((color == undefined || match_array_values(color, card_info['color']) == true) && min <= card_info['used_in_recipes'] && max >= card_info['used_in_recipes'] && card_info['type'] != 'fragment' && card_info['type'] != 'consumable')
 		{
 			console.log(card_info['used_in_recipes'] + ' - ' + card_id + '(' + card_info['value'] + ')');
@@ -24784,7 +24784,7 @@ function check_not_used_in_recipes(){
 	var min_value = 0;
 	var min_card_id = '';
 	var not_used_amount = 0;
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['used_in_recipes'] == undefined && (card_info['type'] == 'creature' || card_info['type'] == 'structure' || card_info['type'] == 'artifact' || card_info['type'] == 'spell') && card_info['pick_chance'] > 0)
 		{
 			if(card_info['value'] < min_value || min_value == 0)
@@ -24802,7 +24802,7 @@ function check_not_used_in_recipes(){
 
 function show_cards_with_value(min,max,color){
 	var card_count = 0;
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if((min == undefined || card_info['value'] >= min) && (max == undefined || card_info['value'] <= max) && (color == undefined || card_info['color'][0] == color))
 		{
 			console.log(card_id + ': ' + card_info['value']);
@@ -24817,8 +24817,8 @@ var namechanges = {
 }
 
 function check_card_namechanges(gamedata){
-	$.each(gamedata['owned_cards'], function(owned_card_id, owned_amount){
-		$.each(namechanges, function(old_name, new_name){
+	eachoa(gamedata['owned_cards'], function(owned_card_id, owned_amount){
+		eachoa(namechanges, function(old_name, new_name){
 			if(owned_card_id == old_name)
 			{
 				if(gamedata['owned_cards'][new_name] == undefined)
@@ -24838,8 +24838,8 @@ function check_card_namechanges(gamedata){
 			delete gamedata['owned_cards'][owned_card_id];
 		}
 	});
-	$.each(gamedata['known_recipes'], function(owned_card_id, owned_amount){
-		$.each(namechanges, function(old_name, new_name){
+	eachoa(gamedata['known_recipes'], function(owned_card_id, owned_amount){
+		eachoa(namechanges, function(old_name, new_name){
 			if(owned_card_id == old_name)
 			{
 				if(gamedata['known_recipes'][new_name] == undefined)
@@ -24850,9 +24850,9 @@ function check_card_namechanges(gamedata){
 			}
 		});
 	});
-	$.each(gamedata['decks'], function(owned_deck_id, deck){
-		$.each(deck, function(card_id, card_amount){
-			$.each(namechanges, function(old_name, new_name){
+	eachoa(gamedata['decks'], function(owned_deck_id, deck){
+		eachoa(deck, function(card_id, card_amount){
+			eachoa(namechanges, function(old_name, new_name){
 				if(card_id == old_name)
 				{
 					if(gamedata['decks'][owned_deck_id][new_name] == undefined)
@@ -24865,7 +24865,7 @@ function check_card_namechanges(gamedata){
 		});
 	});
 
-	$.each(namechanges, function(old_name, new_name){
+	eachoa(namechanges, function(old_name, new_name){
 
 		//delete all_available_cards[old_name];
 		
@@ -24885,7 +24885,7 @@ function calc_next(show_rounded){
 	var found_next = false;
 	var found_current = false;
 	var last_card = '';
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if((found_current == true && found_next == false) || (last_card_calculated == '' && found_next == false))
 		{
 			if(card_info['type'] != 'cardback' && card_info['pick_chance'] > 0)
@@ -24961,21 +24961,21 @@ function calculate_card_time(card_id, show_calc, hero_version){
 	var average_hits = 0;
 	var average_hit_cost = 0;
 
-	$.each(card['abilities'], function(ability_id, ability_level){
+	eachoa(card['abilities'], function(ability_id, ability_level){
 		if(all_abilities[ability_id] == undefined){console.log(ability_id);}
 		var ability = all_abilities[ability_id];
 		var level_cost = 1;
 
 		// CHECK USED
 		/*all_abilities[ability_id]['used'] = true;
-		$.each(ability['effects'], function(effect_id, effect_info){
+		eachoa(ability['effects'], function(effect_id, effect_info){
 			if((effect_info['type'] == 'grant_skill' || effect_info['type'] == 'set_skill') && all_abilities[effect_info['skill_id']] != undefined)
 			{
 				all_abilities[effect_info['skill_id']]['used'] = true;
 			}
 			if(effect_info['type'] == 'random_ability')
 			{
-				$.each(effect_info['ability_options'], function(option_id, ability_option){
+				eachoa(effect_info['ability_options'], function(option_id, ability_option){
 					if(all_abilities[ability_option] != undefined)
 					{
 						all_abilities[ability_option]['used'] = true;
@@ -25077,7 +25077,7 @@ function calculate_card_time(card_id, show_calc, hero_version){
 				if(show_calc!=undefined){console.log(ability_id + ': x' + card[ability['cost_factor']] + '');}
 			}
 		}
-		$.each(ability['ability_level_cost_factors'], function(ability_cost_factor_id, ability_cost_factor_amount){
+		eachoa(ability['ability_level_cost_factors'], function(ability_cost_factor_id, ability_cost_factor_amount){
 			if(card['abilities'][ability_cost_factor_id] != undefined)
 			{
 				level_cost *= (ability_cost_factor_amount * card['abilities'][ability_cost_factor_id]);
@@ -25267,7 +25267,7 @@ function calculate_card_time(card_id, show_calc, hero_version){
 		if(cost_left > 0 && (hero_version == undefined || hero_version == false))
 		{
 			//console.log(min_level_costs);
-			$.each(min_level_costs, function(ability_key, min_level_cost){
+			eachoa(min_level_costs, function(ability_key, min_level_cost){
 				if(min_level_cost <= cost_left && min_level_cost > 0)
 				{
 					console.log(card_id + hero_text + ' could use more ' + ability_key + ' (' + min_level_cost + '/' + cost_left + ')');
@@ -25356,20 +25356,20 @@ function check_card(card_id){
 		if(card_info['craft_theme'] == undefined || card_info['craft_theme'][0] == undefined){card_info['craft_theme'] = ['type_' + card_info['type']];};
 		card_info['theme'][get_highest_key_in_object(card_info['theme']) + 1] = 'type_' + card_info['type'];
 
-		$.each(card_info['subtypes'], function(subtype_id, current_subtype){
+		eachoa(card_info['subtypes'], function(subtype_id, current_subtype){
 			card_info['theme'][get_highest_key_in_object(card_info['theme']) + 1] = 'subtype_' + current_subtype;
 			card_info['craft_theme'][get_highest_key_in_object(card_info['craft_theme']) + 1] = 'subtype_' + current_subtype;
 		});
 
-		$.each(card_info['abilities'], function(ability_id, ability_level){
+		eachoa(card_info['abilities'], function(ability_id, ability_level){
 			//card_info['craft_theme'][get_highest_key_in_object(card_info['craft_theme']) + 1] = '' + ability_id + '_ability_name';
-			$.each(all_abilities[ability_id]['ability_subtypes'], function(ability_subtype_id, ability_subtype_name){
+			eachoa(all_abilities[ability_id]['ability_subtypes'], function(ability_subtype_id, ability_subtype_name){
 				if(match_array_values(['' + ability_subtype_name + '_ability'], card_info['theme']) == false)
 				{
 					card_info['theme'][get_highest_key_in_object(card_info['theme']) + 1] = '' + ability_subtype_name + '_ability';
 				}
 			});
-			$.each(all_abilities[ability_id]['ability_craft_subtypes'], function(ability_subtype_id, ability_subtype_name){
+			eachoa(all_abilities[ability_id]['ability_craft_subtypes'], function(ability_subtype_id, ability_subtype_name){
 				if(match_array_values(['' + ability_subtype_name /*+ '_ability'*/], card_info['craft_theme']) == false && (match_array_values(not_craft_themes, ability_subtype_name) == false))
 				{
 					card_info['craft_theme'][get_highest_key_in_object(card_info['craft_theme']) + 1] = '' + ability_subtype_name /*+ '_ability'*/;
@@ -25395,7 +25395,7 @@ function check_card(card_id){
 	    	card_info['value'] = calculate_card_value(card_id);
 	    }
 	    /*var used_in_recipes = 0;
-	    $.each(all_available_cards, function(other_card_id, other_card_info){
+	    eachoa(all_available_cards, function(other_card_id, other_card_info){
 	    	if(other_card_info['recipe'] != undefined && other_card_info['recipe'][card_id] != undefined)
 	    	{
 	    		used_in_recipes++;
@@ -25416,7 +25416,7 @@ var card_check_timeouts = {};
 function check_all_cards(){
 	
 	var cards_checked = 0;
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 	    /*if(card_info['version'] == undefined || card_info['version'] < 2)
 	    {
 	    	console.log(card_info['name'] + ' is not version 2');
@@ -25442,7 +25442,7 @@ var all_available_boosts = {};
 var all_card_backs = {};
 var random_loot_drops = {};
 
-$.each(all_available_cards, function(card_id, card_info){
+eachoa(all_available_cards, function(card_id, card_info){
 	if(card_info['basic_reward'] != undefined && card_info['basic_reward'] == true && random_loot_drops[card_id] == undefined /*match_array_values(card_id, random_loot_drops) == false*/)
 	{
 		random_loot_drops[card_id] = 1 / Math.sqrt(Math.sqrt(card_info['value'] * (1 + (card_info['value'] / 10))));
@@ -25463,7 +25463,7 @@ $.each(all_available_cards, function(card_id, card_info){
 	}
 
 	var no_card_back_yet = true;
-	$.each(all_card_backs, function(card_back_id, card_back_image){
+	eachoa(all_card_backs, function(card_back_id, card_back_image){
 		if(card_back_image == card_info['image'])
 		{
 			no_card_back_yet = false;
@@ -25510,7 +25510,7 @@ all_card_backs = sortObj(all_card_backs);
 
 function learn_recipe(recipe_id){
 	if(gamedata['known_recipes'] == undefined){gamedata['known_recipes'] = {};}
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_id == recipe_id && card_info['recipe'] != undefined && card_info['type'] != 'recipe')
 		{
 			gamedata['known_recipes'][card_id] = true;
@@ -25520,7 +25520,7 @@ function learn_recipe(recipe_id){
 
 function learn_all_recipes(){
 	if(gamedata['known_recipes'] == undefined){gamedata['known_recipes'] = {};}
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['recipe'] != undefined && card_info['type'] != 'recipe')
 		{
 			gamedata['known_recipes'][card_id] = true;
@@ -25531,12 +25531,12 @@ function learn_all_recipes(){
 function check_no_achievement_yet(card_theme, max_shown){
 	var achievable_cardbacks = {};
 	var shown = 0;
-	$.each(all_achievements, function(achievement_id, achievement_info){
-		$.each(achievement_info['rewards'], function(rewards_id, rewards_info){
+	eachoa(all_achievements, function(achievement_id, achievement_info){
+		eachoa(achievement_info['rewards'], function(rewards_id, rewards_info){
 			achievable_cardbacks[rewards_info['reward_id']] = true;
 		});
 	});
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if((max_shown == undefined || max_shown > shown) && achievable_cardbacks['card_back_' + card_id] == undefined && (card_theme == undefined || match_array_values(card_theme, card_info['theme'])))
 		{
 			shown++;
@@ -25547,10 +25547,10 @@ function check_no_achievement_yet(card_theme, max_shown){
 
 function get_all_hero_themes(){
 	var all_hero_themes = {};
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['hero_version'] != undefined && card_info['hero_version']['theme'] != undefined)
 		{
-			$.each(card_info['hero_version']['theme'], function(theme_id, theme_name){
+			eachoa(card_info['hero_version']['theme'], function(theme_id, theme_name){
 				if(all_hero_themes[theme_name] == undefined)
 				{
 					all_hero_themes[theme_name] = 0;
@@ -25565,10 +25565,10 @@ function get_all_hero_themes(){
 
 function get_all_aoe_themes(){
 	var all_aoe_themes = {};
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['theme'] != undefined && match_array_values(['aoe'], card_info['theme']))
 		{
-			$.each(card_info['theme'], function(theme_id, theme_name){
+			eachoa(card_info['theme'], function(theme_id, theme_name){
 				if(all_aoe_themes[theme_name] == undefined)
 				{
 					all_aoe_themes[theme_name] = 0;
@@ -25583,10 +25583,10 @@ function get_all_aoe_themes(){
 
 function get_all_artifact_themes(){
 	var all_aoe_themes = {};
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['theme'] != undefined && card_info['type'] == 'artifact')
 		{
-			$.each(card_info['theme'], function(theme_id, theme_name){
+			eachoa(card_info['theme'], function(theme_id, theme_name){
 				if(all_aoe_themes[theme_name] == undefined)
 				{
 					all_aoe_themes[theme_name] = 0;
@@ -25601,9 +25601,9 @@ function get_all_artifact_themes(){
 
 function check_no_aoe_yet(show_found){
 	/*var all_hero_themes = get_all_hero_themes();
-	$.each(all_hero_themes, function(theme, theme_count){
+	eachoa(all_hero_themes, function(theme, theme_count){
 		var found_aoe = false;
-		$.each(all_available_cards, function(card_id, card_info){
+		eachoa(all_available_cards, function(card_id, card_info){
 			if(match_array_values(theme, card_info['theme']) && match_array_values('aoe', card_info['theme']))
 			{
 				if(show_found != undefined && show_found == true){console.log(theme + ' aoe found');}
@@ -25616,9 +25616,9 @@ function check_no_aoe_yet(show_found){
 		}
 	});*/
 	/*var all_aoe_themes = get_all_aoe_themes();
-	$.each(all_aoe_themes, function(theme, theme_count){
+	eachoa(all_aoe_themes, function(theme, theme_count){
 		var found_aoe = false;
-		$.each(all_available_cards, function(card_id, card_info){
+		eachoa(all_available_cards, function(card_id, card_info){
 			var hero_can_use_aoe = false;
 			if(card_info['hero_version'] != undefined && card_info['hero_version']['theme'] != undefined)
 			if(match_array_values(theme, card_info['hero_version']['theme']))
@@ -25635,11 +25635,11 @@ function check_no_aoe_yet(show_found){
 	var all_aoe_themes = get_all_aoe_themes();
 	var good_aoe_themes = {};
 	var incomplete_count = 0;
-	$.each(all_available_cards, function(card_id, card_info){	
+	eachoa(all_available_cards, function(card_id, card_info){	
 		if(card_info['hero_version'] != undefined && card_info['hero_version']['theme'] != undefined)
 		{
 			var hero_can_use_aoe = false;
-			$.each(all_aoe_themes, function(theme, theme_count){
+			eachoa(all_aoe_themes, function(theme, theme_count){
 				if(theme != 'aoe' && match_array_values(theme, card_info['hero_version']['theme']))
 				{
 					hero_can_use_aoe = true;
@@ -25650,7 +25650,7 @@ function check_no_aoe_yet(show_found){
 			{
 				incomplete_count++;
 				console.log('Needs aoe: ' + card_id);
-				/*$.each(card_info['hero_version']['theme'], function(them_id, theme_name){
+				/*eachoa(card_info['hero_version']['theme'], function(them_id, theme_name){
 					if(theme_name != 'muscle' && theme_name != 'defense' && theme_name != 'aoe')
 					{
 						if(good_aoe_themes[theme_name] == undefined)
@@ -25679,11 +25679,11 @@ function check_no_artifact_yet(show_found){
 	var all_aoe_themes = get_all_artifact_themes();
 	var good_aoe_themes = {};
 	var incomplete_count = 0;
-	$.each(all_available_cards, function(card_id, card_info){	
+	eachoa(all_available_cards, function(card_id, card_info){	
 		if(card_info['hero_version'] != undefined && card_info['hero_version']['theme'] != undefined)
 		{
 			var hero_can_use_aoe = false;
-			$.each(all_aoe_themes, function(theme, theme_count){
+			eachoa(all_aoe_themes, function(theme, theme_count){
 				if(theme != 'aoe' && match_array_values(theme, card_info['hero_version']['theme']))
 				{
 					hero_can_use_aoe = true;
@@ -25694,7 +25694,7 @@ function check_no_artifact_yet(show_found){
 			{
 				incomplete_count++;
 				console.log('Needs artifact: ' + card_id);
-				$.each(card_info['hero_version']['theme'], function(them_id, theme_name){
+				eachoa(card_info['hero_version']['theme'], function(them_id, theme_name){
 					if(theme_name != 'muscle' && theme_name != 'defense' && theme_name != 'aoe')
 					{
 						if(good_aoe_themes[theme_name] == undefined)
@@ -25796,7 +25796,7 @@ function count_card_themes(themes, show_me){
 	var lowest_id = '';
 	if(themes != undefined && typeof(themes) == 'string' && all_card_themes[themes] != undefined){themes = all_card_themes[themes];}
 	if(themes == undefined){themes = all_card_themes;}
-	$.each(themes, function(theme_key, theme_id){
+	eachoa(themes, function(theme_key, theme_id){
 		var temp_lowest = 0;
 		if(typeof(theme_id) == 'string')
 		{
@@ -25827,7 +25827,7 @@ function count_card_themes(themes, show_me){
 
 function count_card_theme(theme, show_me){
 	var total_theme_count = 0;
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['theme'] != undefined && match_array_values(card_info['theme'], theme)){
 			total_theme_count++;
 		};
@@ -25838,9 +25838,9 @@ function count_card_theme(theme, show_me){
 
 function count_all_card_themes(){
 	var all_card_themes = {};
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['theme'] != undefined){
-			$.each(card_info['theme'], function(theme_id, theme_name){
+			eachoa(card_info['theme'], function(theme_id, theme_name){
 				if(theme_name != undefined && theme_name.replaceAll('type_','') == theme_name)
 				{
 					if(all_card_themes[theme_name] == undefined){all_card_themes[theme_name] = 0;}
@@ -25854,7 +25854,7 @@ function count_all_card_themes(){
 
 function count_card_times(){
 	var card_times = {};
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if((card_info['type'] == 'creature' || card_info['type'] == 'structure' || card_info['type'] == 'spell' || card_info['type'] == 'artifact') && card_info['pick_chance'] > 0)
 		{
 			if(card_times[card_info['time']] == undefined){card_times[card_info['time']] = 0;}
@@ -25866,10 +25866,10 @@ function count_card_times(){
 
 function count_card_subtypes(type){
 	var card_subtypes = {};
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if((type == undefined || card_info['type'] == type) && (card_info['type'] == 'creature' || card_info['type'] == 'structure' || card_info['type'] == 'spell' || card_info['type'] == 'artifact') && card_info['pick_chance'] > 0)
 		{
-			$.each(card_info['subtypes'], function(useless_key, current_subtype){
+			eachoa(card_info['subtypes'], function(useless_key, current_subtype){
 				if(card_subtypes[current_subtype] == undefined){card_subtypes[current_subtype] = 0;}
 				card_subtypes[current_subtype]++;
 			});
@@ -25881,7 +25881,7 @@ function count_card_subtypes(type){
 function show_card_times(card_time){
 	if(card_time != undefined)
 	{
-		$.each(all_available_cards, function(card_id, card_info){
+		eachoa(all_available_cards, function(card_id, card_info){
 			if((card_info['type'] == 'creature' || card_info['type'] == 'structure' || card_info['type'] == 'spell' || card_info['type'] == 'artifact') && card_info['pick_chance'] > 0)
 			{
 				if(card_info['time'] == card_time)
@@ -25920,7 +25920,7 @@ var default_card = {
 
 function get_stat_based_on_type_and_theme(stat, type, themes, hero_version){
 	var possible_powers = {};
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		var matches = false;
 		if(themes == undefined || count_object(themes) == 0)
 		{
@@ -25928,10 +25928,10 @@ function get_stat_based_on_type_and_theme(stat, type, themes, hero_version){
 		}
 		else
 		{
-			$.each(card_info['theme'], function(theme_key, theme_name){
+			eachoa(card_info['theme'], function(theme_key, theme_name){
 				if(theme_name != undefined)
 				{
-					$.each(themes, function(theme_key_2, theme_name_2){
+					eachoa(themes, function(theme_key_2, theme_name_2){
 						if(theme_name.indexOf(theme_name_2) !== -1)
 						{
 							matches = true;
@@ -25975,14 +25975,14 @@ function get_stat_based_on_type_and_theme(stat, type, themes, hero_version){
 function get_skills_based_on_type_and_themes(type, themes, hero_version){
 	var possible_skills = {};
 	var matched_cards_count = 0;
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['type'] == type || type == undefined)
 		{
 			var matches = 0;
-			$.each(card_info['theme'], function(theme_key, theme_name){
+			eachoa(card_info['theme'], function(theme_key, theme_name){
 				if(theme_name != undefined)
 				{
-					$.each(themes, function(theme_key_2, theme_name_2){
+					eachoa(themes, function(theme_key_2, theme_name_2){
 						if(theme_name.indexOf(theme_name_2) !== -1)
 						{
 							matches += 1;
@@ -25994,7 +25994,7 @@ function get_skills_based_on_type_and_themes(type, themes, hero_version){
 			{
 				if(hero_version == undefined || hero_version == false)
 				{
-					$.each(card_info['abilities'], function(ability_id, ability_level){
+					eachoa(card_info['abilities'], function(ability_id, ability_level){
 						if(possible_skills[ability_id] == undefined)
 						{
 							possible_skills[ability_id] = 0;
@@ -26007,7 +26007,7 @@ function get_skills_based_on_type_and_themes(type, themes, hero_version){
 				{
 					if(card_info['hero_version'] != undefined)
 					{
-						$.each(card_info['hero_version']['abilities'], function(ability_id, ability_level){
+						eachoa(card_info['hero_version']['abilities'], function(ability_id, ability_level){
 						if(possible_skills[ability_id] == undefined)
 						{
 							possible_skills[ability_id] = 0;
@@ -26020,12 +26020,12 @@ function get_skills_based_on_type_and_themes(type, themes, hero_version){
 			}
 		}
 	});
-	$.each(all_abilities, function(ability_id, ability_info){
+	eachoa(all_abilities, function(ability_id, ability_info){
 		var matches = 0;
-		$.each(ability_info['ability_subtypes'], function(theme_key, theme_name){
+		eachoa(ability_info['ability_subtypes'], function(theme_key, theme_name){
 			if(theme_name != undefined)
 			{
-				$.each(themes, function(theme_key_2, theme_name_2){
+				eachoa(themes, function(theme_key_2, theme_name_2){
 					if(theme_name.indexOf(theme_name_2) !== -1)
 					{
 						matches += 1;
@@ -26044,7 +26044,7 @@ function get_skills_based_on_type_and_themes(type, themes, hero_version){
 		}
 	});
 	var chosen_skills = {};
-	$.each(possible_skills, function(skill_id, skill_count){
+	eachoa(possible_skills, function(skill_id, skill_count){
 		if(Math.random() * matched_cards_count < skill_count || skill_count > matched_cards_count / 2)
 		{
 			chosen_skills[skill_id] = 1;
@@ -26055,12 +26055,12 @@ function get_skills_based_on_type_and_themes(type, themes, hero_version){
 
 function get_name_parts(theme, type){
 	var all_name_parts = {};
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['pick_chance'] > 0 && match_array_values(theme, card_info['theme']) > 0 && (type == undefined || card_info['type'] == type))
 		{
 			var current_card_name = card_info['name'];
 			var current_name_parts = current_card_name.split(' ');
-			$.each(current_name_parts, function(useless_key, name_part){
+			eachoa(current_name_parts, function(useless_key, name_part){
 				if(all_name_parts[name_part] == undefined){all_name_parts[name_part] = 0;}
 				all_name_parts[name_part]++;
 			});
@@ -26136,7 +26136,7 @@ function generate_card(name, subtypes, themes, type, image){
 	if(chosen_health != 'false'){new_card['health'] = parseInt(chosen_health);}
 	var chosen_abilities = get_skills_based_on_type_and_themes(type, themes, false);
 	if(count_object(chosen_abilities) == 0){chosen_abilities = get_skills_based_on_type_and_themes(undefined, themes, false);}
-	$.each(chosen_abilities, function(ability_id, ability_level){
+	eachoa(chosen_abilities, function(ability_id, ability_level){
 		new_card['abilities'][ability_id] = 1;
 	});
 
@@ -26145,17 +26145,17 @@ function generate_card(name, subtypes, themes, type, image){
 		var chosen_power = get_stat_based_on_type_and_theme('power',type, themes, true);
 		if(chosen_power != 'false'){new_card['hero_version']['power'] = parseInt(chosen_power);}
 		
-		$.each(subtypes, function(subtypes_id, subtype_name){
+		eachoa(subtypes, function(subtypes_id, subtype_name){
 			new_card['hero_version']['theme'][get_highest_key_in_object(new_card['hero_version']['theme']) +1] = 'subtype_' + subtype_name;
 		});
 		var chosen_abilities = get_skills_based_on_type_and_themes(type, themes, true);
-		$.each(chosen_abilities, function(ability_id, ability_level){
+		eachoa(chosen_abilities, function(ability_id, ability_level){
 			new_card['hero_version']['abilities'][ability_id] = 1;
 			var temp_ability_subtypes = {};
-			$.each(all_abilities[ability_id]['ability_subtypes'], function(ability_subtype_key, ability_subtype_name){
+			eachoa(all_abilities[ability_id]['ability_subtypes'], function(ability_subtype_key, ability_subtype_name){
 				temp_ability_subtypes[ability_subtype_name] = true;
 			});
-			$.each(temp_ability_subtypes, function(ability_subtype_name, ability_subtype_count){
+			eachoa(temp_ability_subtypes, function(ability_subtype_name, ability_subtype_count){
 				new_card['hero_version']['theme'][get_highest_key_in_object(new_card['hero_version']['theme']) +1] = ability_subtype_name + '_ability';
 			});
 			
@@ -26178,7 +26178,7 @@ function generate_card(name, subtypes, themes, type, image){
 
 function parse_card_object(card, newline){
 	var parsed_object = '';
-	$.each(card, function(stat_id, stat){
+	eachoa(card, function(stat_id, stat){
 		var parsed_stat_id = parseInt(stat_id);
 		if(parsed_stat_id != stat_id)
 		{
@@ -26219,7 +26219,7 @@ function parse_card_object(card, newline){
 
 function show_peasant_recipes(){
 	var prec = 0;
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['recipe'] != undefined && card_info['recipe']['peasant'] != undefined && count_object(card_info['recipe']) < 2)
 		{
 			console.log(card_id);
@@ -26231,7 +26231,7 @@ function show_peasant_recipes(){
 
 function show_no_recipe(){
 	var prec = 0;
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['recipe'] == undefined && card_info['pick_chance'] > 0)
 		{
 			console.log(card_id);
@@ -26243,7 +26243,7 @@ function show_no_recipe(){
 
 function generate_all_recipes(){
 	var cards_checked = 0;
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		cards_checked++;
 	    var card_checking_progress = Math.floor((cards_checked / total_available_card_count) * 100);
 	   	card_check_timeouts[cards_checked] = setTimeout(function(){
@@ -26304,14 +26304,14 @@ function generate_recipe(card_id, cost_left, current_recipe, subtypes_left){
 		{
 			subtypes_left = true_copyobject(current_card['subtypes']);
 		}
-		$.each(subtypes_left, function(subtype_key, current_subtype){
+		eachoa(subtypes_left, function(subtype_key, current_subtype){
 			if(current_subtype == 'human')
 			{
 				delete subtypes_left[subtype_key];
 			}
 		});
 		
-		$.each(all_available_cards, function(cost_id, cost_info){
+		eachoa(all_available_cards, function(cost_id, cost_info){
 			if(/*cost_id != 'peasant' && */(cost_info['value'] < cost_left || (cost_info['value'] <= cost_left && recipe_size > 0)) /*&& (recipe_size > 0 || cost_info['value'] > all_available_cards[card_id]['value'] * 0.4 || all_available_cards[card_id]['value'] < 10)*/ && (recipe_size > 0 || cost_info['value'] <= all_available_cards[card_id]['value'] * 0.9 || all_available_cards[card_id]['value'] < 10) && cost_info['pick_chance'] > 0 && current_recipe[cost_id] == undefined)
 			{
 				var matched_amount = (match_array_values(current_card['craft_theme'], cost_info['craft_theme'], true));
@@ -26378,7 +26378,7 @@ function generate_recipe(card_id, cost_left, current_recipe, subtypes_left){
 			{
 				cost_amount = 10;
 			}*/
-			$.each(subtypes_left, function(subtype_id, subtype_name){
+			eachoa(subtypes_left, function(subtype_id, subtype_name){
 				if(match_array_values(subtype_name, all_available_cards[best_match_id]['subtypes']))
 				{
 					delete subtypes_left[subtype_id];
@@ -26397,7 +26397,7 @@ function generate_recipe(card_id, cost_left, current_recipe, subtypes_left){
 		{
 			/*if(count_object(current_recipe) == 1)
 			{
-				$.each(current_recipe, function(recipe_cost_id, recipe_cost_amount){
+				eachoa(current_recipe, function(recipe_cost_id, recipe_cost_amount){
 					current_recipe[recipe_cost_id] = Math.floor(all_available_cards[card_id]['value'] / all_available_cards[recipe_cost_id]['value']);
 					var value_left = all_available_cards[card_id]['value'] - (current_recipe[recipe_cost_id] * all_available_cards[recipe_cost_id]['value']);
 					if(current_recipe[recipe_cost_id] == 1 && value_left > 1)
@@ -26423,7 +26423,7 @@ function find_cards_not_used_in_recipe(value_max, value_min, show_each){
 	if(value_max == undefined){value_max = 100000000;}
 	if(value_min == undefined){value_min = 0;}
 	var not_used_amount = 0;
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['pick_chance'] > 0 && (card_info['used_in_recipes'] == undefined || card_info['used_in_recipes'] == 0) && card_info['value'] <= value_max && card_info['value'] >= value_min)
 		{
 			if(show_each != undefined && show_each == true)
@@ -26437,7 +26437,7 @@ function find_cards_not_used_in_recipe(value_max, value_min, show_each){
 }
 
 function set_all_enemy_deck_cards(card_id){
-	$.each(gamedata['current_summon']['deck'], function(card_key, card_info){
+	eachoa(gamedata['current_summon']['deck'], function(card_key, card_info){
 		gamedata['current_summon']['deck'][card_key]['card_id'] = card_id;
 	});
 }
@@ -26445,11 +26445,11 @@ function set_all_enemy_deck_cards(card_id){
 function check_unused_abilities(card_type, show_unused){
 	if(card_type != undefined){console.log('checking ' + card_type + ' for unused abilities');}
 	var unused_amount = 0;
-	$.each(all_abilities, function(ability_id, ability_info){
+	eachoa(all_abilities, function(ability_id, ability_info){
 		if(ability_info['not_used'] == undefined)
 		{
 			var ability_used = false;
-			$.each(all_available_cards, function(card_id, card_info){
+			eachoa(all_available_cards, function(card_id, card_info){
 				if(card_type == undefined || card_type == card_info['type'])
 				{
 					if(card_info['abilities'][ability_id] != undefined || (card_info['hero_version'] != undefined && card_info['hero_version']['abilities'][ability_id] != undefined))

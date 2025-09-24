@@ -13424,6 +13424,7 @@ function add_old_cards(old_cards, image_folder){
 				if(new_card['pick_chance'] == undefined){new_card['pick_chance'] = 1;}
 				new_card['color'] = ['white'];
 				if(new_card['recipe'] != undefined){delete new_card['recipe'];}
+				if(new_card['basic_reward'] != undefined){delete new_card['basic_reward'];}
 				//console.log('added ' + card_id);
 				added_old_cards[card_id] = true;
 				all_available_cards[card_id] = new_card;

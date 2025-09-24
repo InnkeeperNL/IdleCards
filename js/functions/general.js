@@ -1,3 +1,9 @@
+function eachoa(object, func){
+  for (var k in object) {
+      func(k, object[k]);
+  }
+}
+
 function count_object(object){
 	var count = 0;
 	for (var k in object) {

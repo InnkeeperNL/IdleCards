@@ -11083,7 +11083,7 @@ function start_next_turn(){
 		total_timeout += 500;
 		$('.total_turn_counter_container').css('color', '#f00');
 		for (var i = 0; i <= 5; i++) {
-			$.each(battle_info['combat_units'], function(combat_unit_id, combat_unit){
+			eachoa(battle_info['combat_units'], function(combat_unit_id, combat_unit){
 				if(combat_unit['slot'] == i && combat_unit['side'] == active_turn)
 				{
 					receive_damage(combat_unit_id, undefined, (Math.floor(total_turn_counter / 5) - 15), [/*'ignores_armor','ignore_shields'*/]);
@@ -11355,7 +11355,7 @@ function find_next_phase(){
 	var next_phase = false;
 	var next_phase_procs = false;
 	var found_current_phase = false;
-	$.each(turn_phases, function(phase_id, proc_effects){
+	eachoa(turn_phases, function(phase_id, proc_effects){
 		if(found_current_phase == true && next_phase == false){next_phase = phase_id;next_phase_procs = proc_effects;}
 		if(phase_id == current_phase && next_phase == false){found_current_phase = true;}
 	});
@@ -11366,7 +11366,7 @@ function find_next_unit_to_act(side){
 	var next_unit_id = false;
 	for(var unit_slot=-5;unit_slot<=5;unit_slot++)
 	{
-		$.each(battle_info.combat_units, function(unit_id, unit){
+		eachoa(battle_info.combat_units, function(unit_id, unit){
 			if(next_unit_id == false && /*unit['side'] == side &&*/ unit['acted_this_turn'] < 1 && unit['slot'] == unit_slot && combat_alive == true && (unit['failed_to_act_this_phase'] == undefined || unit['failed_to_act_this_phase'] == false))
 			{
 				next_unit_id = unit_id;
@@ -11533,7 +11533,7 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 	{
 		if(all_enemy_heroes[fixed_hero] != undefined && all_enemy_heroes[fixed_hero]['drops'] != undefined)
 		{
-			$.each(all_enemy_heroes[fixed_hero]['drops'], function(drop_id, drop_amount){
+			eachoa(all_enemy_heroes[fixed_hero]['drops'], function(drop_id, drop_amount){
 				var max_drop = drop_amount;
 				var actual_drop = round_by_percent(Math.random() * max_drop);
 				if(actual_drop > 0)
@@ -11590,7 +11590,7 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 			$('.unit_id_1').addClass('side_2');
 			$('.unit_id_1').addClass('won_hero');
 		}
-		$.each(all_available_cards[chance_card_id]['loot'], function(loot_id, loot_chance){
+		eachoa(all_available_cards[chance_card_id]['loot'], function(loot_id, loot_chance){
 			if(Math.random() * 100 < loot_chance)
 			{
 				all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
@@ -11608,7 +11608,7 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 	{
 		var hero_value = all_available_cards[chance_card_id]['value'];
 		var possible_extra_drops = {};
-		$.each(all_available_cards, function(drop_card_id, drop_card_info){
+		eachoa(all_available_cards, function(drop_card_id, drop_card_info){
 			if(drop_card_info['value'] <= hero_value /*&& (gamedata['known_recipes'] == undefined || gamedata['known_recipes'][drop_card_id] == undefined || drop_card_info['recipe'] == undefined)*/ /*&& drop_card_info['value'] >= hero_value / 4*/ && drop_card_info['pick_chance'] > 0 && (drop_card_info['type'] == 'spell' || drop_card_info['type'] == 'artifact' || ((drop_card_info['type'] == 'structure' || drop_card_info['type'] == 'creature') && drop_card_info['pick_chance'] > 0 && drop_card_info['hero_version'] == undefined)))
 			{
 				if(drop_card_info['recipe'] != undefined && (gamedata['known_recipes'] == undefined || gamedata['known_recipes'][drop_card_id] == undefined))
@@ -11650,7 +11650,7 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 	if(current_battle_type != 'daily')
 	{
 		var random_loot_id = get_random_key_from_object_based_on_num_value(random_loot_drops) /*random_loot_drops[get_random_key_from_object(random_loot_drops)]*/;
-		/*$.each(random_loot_drops, function(random_loot_id, random_loot)
+		/*eachoa(random_loot_drops, function(random_loot_id, random_loot)
 		{*/
 			if(random_loot_id != undefined && all_available_cards[random_loot_id] != undefined)
 			{
@@ -11670,7 +11670,7 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 	}
 	else
 	{
-		$.each(random_loot_drops, function(random_loot_id, random_loot)
+		eachoa(random_loot_drops, function(random_loot_id, random_loot)
 		{
 			if(random_loot_id != undefined && all_available_cards[random_loot_id] != undefined)
 			{
@@ -11757,7 +11757,7 @@ function process_single_unit(unit_id, activate_on_play, do_not_process_effects, 
 	    {
 	    	current_unit['ability_delays'] = {};
 	    }
-	    $.each(current_unit['ability_delays'], function(delay_id, delay_amount){
+	    eachoa(current_unit['ability_delays'], function(delay_id, delay_amount){
 	    	current_unit['ability_delays'][delay_id] -= 1;
 	    });
 	    var parsed_abilities = parse_abilities(unit_id);
@@ -11768,7 +11768,7 @@ function process_single_unit(unit_id, activate_on_play, do_not_process_effects, 
 	}*/
 	if(current_unit['acted_this_turn'] < 1 && combat_alive == true && (current_unit['effects'] == undefined || current_unit['effects']['stunned'] == undefined || current_unit['effects']['stunned'] == 0 || (do_not_process_effects != undefined && do_not_process_effects == true)))
 	{   
-	    /*$.each(current_unit['abilities'], function(ability_id, ability_level){
+	    /*eachoa(current_unit['abilities'], function(ability_id, ability_level){
 			var current_ability = all_abilities[ability_id];
 
 			if(battle_info.combat_units[unit_id] != undefined && (current_unit['effects']['stunned'] == undefined || current_unit['effects']['stunned'] == 0 || (do_not_process_effects != undefined && do_not_process_effects == true))){
@@ -11787,7 +11787,7 @@ function process_single_unit(unit_id, activate_on_play, do_not_process_effects, 
 			
 		});*/
 
-		$.each(current_unit['abilities'], function(ability_id, ability_level){
+		eachoa(current_unit['abilities'], function(ability_id, ability_level){
 			var current_ability = all_abilities[ability_id];
 
 			if(battle_info.combat_units[unit_id] != undefined && (current_unit['effects']['stunned'] == undefined || current_unit['effects']['stunned'] == 0 || (do_not_process_effects != undefined && do_not_process_effects == true))){
@@ -11853,7 +11853,7 @@ function process_single_unit(unit_id, activate_on_play, do_not_process_effects, 
 	    process_single_unit(unit_id, undefined, true);
 	}*/
 	if(battle_info.combat_units[unit_id] != undefined && (do_not_process_effects == undefined || do_not_process_effects == false)){
-		$.each(current_unit['effects'], function(effect, amount){
+		eachoa(current_unit['effects'], function(effect, amount){
 			if(amount > 0)
 			{
 				if(battle_info.combat_units[unit_id] != undefined && effect != 'stunned'){
@@ -11871,10 +11871,10 @@ function process_single_unit(unit_id, activate_on_play, do_not_process_effects, 
 }
 
 function reset_temp_skills(side){
-	$.each(battle_info.combat_units, function(unit_id, current_unit){
+	eachoa(battle_info.combat_units, function(unit_id, current_unit){
 		if(combat_alive == true && current_unit['side'] == side && current_unit['temp_skills'] != undefined && count_object(current_unit['temp_skills']) > 0)
 		{
-			$.each(current_unit['temp_skills'], function(skill_id, temp_level){
+			eachoa(current_unit['temp_skills'], function(skill_id, temp_level){
 				grant_skill(unit_id, unit_id, (-1 * temp_level), skill_id, false);
 				delete current_unit['temp_skills'][skill_id];
 			});
@@ -11885,7 +11885,7 @@ function reset_temp_skills(side){
 }
 
 function reset_temp_health(side){
-	$.each(battle_info.combat_units, function(unit_id, current_unit){
+	eachoa(battle_info.combat_units, function(unit_id, current_unit){
 		if(combat_alive == true && current_unit['side'] == side && current_unit['armor'] != undefined && current_unit['armor'] != 0)
 		{
 			total_timeout += 500 * battle_speed;
@@ -11906,7 +11906,7 @@ function reset_temp_health(side){
 }
 
 function reset_temp_power(side){
-	$.each(battle_info.combat_units, function(unit_id, current_unit){
+	eachoa(battle_info.combat_units, function(unit_id, current_unit){
 		if(combat_alive == true && current_unit['side'] == side && current_unit['temp_power'] != undefined && current_unit['temp_power'] < 0)
 		{
 			total_timeout += 500 * battle_speed;
@@ -11918,7 +11918,7 @@ function reset_temp_power(side){
 
 function reduce_all_ability_delays(side){
 
-	$.each(battle_info.combat_units, function(unit_id, current_unit){
+	eachoa(battle_info.combat_units, function(unit_id, current_unit){
 		if(combat_alive == true && current_unit['side'] == side)
 		{
 			var something_changed = false;
@@ -11926,7 +11926,7 @@ function reduce_all_ability_delays(side){
 		    {
 		    	current_unit['ability_delays'] = {};
 		    }
-		    $.each(current_unit['ability_delays'], function(delay_id, delay_amount){
+		    eachoa(current_unit['ability_delays'], function(delay_id, delay_amount){
 		    	if(current_unit['ability_delays'][delay_id] > 0)
 		    	{
 		    		current_unit['ability_delays'][delay_id] -= 1;
@@ -12005,7 +12005,7 @@ function check_unopposed_ally(side){
 	{
 		var found_ally = false;
 		var found_enemy = false;	
-		$.each(battle_info.combat_units, function(unit_id, unit_info){
+		eachoa(battle_info.combat_units, function(unit_id, unit_info){
 			if(unit_info['side'] == side && unit_info['slot'] == slot)
 			{
 				found_ally = true;
@@ -12105,7 +12105,7 @@ function update_passive_effects(unit_id){
 	all_timeouts[timeout_key] = setTimeout(function(){
 	$('.unit_id_' + unit_id + ' .unit_effects').html('');
 	},total_timeout);		
-	$.each(battle_info.combat_units[unit_id]['effects'], function(effect, amount){
+	eachoa(battle_info.combat_units[unit_id]['effects'], function(effect, amount){
 		if(amount > 0)
 		{
 			timeout_key ++;
@@ -12114,7 +12114,7 @@ function update_passive_effects(unit_id){
 			},total_timeout);		
 		}
 	});
-	$.each(battle_info.combat_units[unit_id]['abilities'], function(ability_id, ability_level){
+	eachoa(battle_info.combat_units[unit_id]['abilities'], function(ability_id, ability_level){
 		if(ability_level > 0 && skills_to_show_icon[ability_id] != undefined)
 		{
 			timeout_key ++;
@@ -12174,7 +12174,7 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 
 		if(current_ability['origin_does_not_have_ability'] != undefined && battle_info.combat_units[origin_id] != undefined)
 		{
-			$.each(battle_info.combat_units[origin_id]['abilities'], function(temp_key, temp_value){
+			eachoa(battle_info.combat_units[origin_id]['abilities'], function(temp_key, temp_value){
 				if(match_array_values(current_ability['origin_does_not_have_ability'], [temp_key]) == true)
 				{
 					ability_can_fire = false;
@@ -12330,7 +12330,7 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 		
 		if(current_ability['ability_effects'] != undefined && ability_can_fire == true)
 		{
-			$.each(current_ability['ability_effects'], function(useless_key, ability_effect){
+			eachoa(current_ability['ability_effects'], function(useless_key, ability_effect){
 				any_effect_fired = process_ability(unit_id, ability_effect, level, origin_id, any_effect_fired, current_proc);
 			});
 		}
@@ -12391,7 +12391,7 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 					{
 						if(battle_info.combat_units[unit_id] != undefined && (battle_info.combat_units[unit_id]['current_health'] > 0 || battle_info.combat_units[unit_id]['health'] === false ||(current_ability['proc_while_dead'] != undefined && current_ability['proc_while_dead'] == true))){
 							var all_targets = {};
-							$.each(current_ability['targets'], function(useless_key, target_peramaters){
+							eachoa(current_ability['targets'], function(useless_key, target_peramaters){
 								if((count_object(all_targets) == 0 || (target_peramaters['add_targets'] != undefined && target_peramaters['add_targets'] == true)) && combat_alive == true)
 								{
 									all_targets = find_targets(unit_id, target_peramaters, origin_id, level, current_ability, all_targets);
@@ -12416,7 +12416,7 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 									}
 									else
 									{
-										$.each(current_ability['animation'], function(animation_id, animation_name){
+										eachoa(current_ability['animation'], function(animation_id, animation_name){
 											timeout_key ++;
 											all_timeouts[timeout_key] = setTimeout(function(){
 												$('.unit_id_' + current_unit_id).addClass(animation_name);
@@ -12433,10 +12433,10 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 
 								
 								var latest_effect_hit = true;
-								$.each(all_targets, function(target_id, target_unit_id){
+								eachoa(all_targets, function(target_id, target_unit_id){
 									ability_can_fire = check_ability_can_fire(unit_id, current_ability, level, origin_id);
 									if(battle_info.combat_units[unit_id] != undefined && ability_can_fire == true){
-										$.each(current_ability['effects'], function(useless_key, effect){
+										eachoa(current_ability['effects'], function(useless_key, effect){
 											if(effect['check_target_alive'] != undefined && (battle_info.combat_units[target_unit_id] == undefined || battle_info.combat_units[target_unit_id]['current_health'] < 1))
 											{
 												latest_effect_hit = false;
@@ -12498,7 +12498,7 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 									}
 									else
 									{
-										$.each(current_ability['animation'], function(animation_id, animation_name){
+										eachoa(current_ability['animation'], function(animation_id, animation_name){
 											timeout_key ++;
 											all_timeouts[timeout_key] = setTimeout(function(){
 												$('.unit_id_' + current_unit_id).removeClass(animation_name);
@@ -12574,7 +12574,7 @@ function check_adjacent(unit_id, adjacent_type){
 	var current_unit = battle_info['combat_units'][unit_id];
 	var unit_side = current_unit['side'];
 	var has_adjacent = false;
-	$.each(battle_info['combat_units'], function(combat_unit_id, combat_unit){
+	eachoa(battle_info['combat_units'], function(combat_unit_id, combat_unit){
 		if((combat_unit['slot'] == current_unit['slot'] + 1 || combat_unit['slot'] == current_unit['slot'] - 1) && combat_unit['side'] == unit_side && (adjacent_type == 'any' || adjacent_type == combat_unit['type']))
 		{
 			has_adjacent = true;
@@ -12648,7 +12648,7 @@ function check_ability_can_fire(unit_id, current_ability, level, origin_id){
 
 function count_units(){
 	var unit_count = 0;
-	$.each(battle_info['combat_units'], function(unit_id, unit_info){
+	eachoa(battle_info['combat_units'], function(unit_id, unit_info){
 		if(unit_info['slot'] > 0 && unit_info['current_health'] != undefined && unit_info['current_health'] > 0)
 		{
 			unit_count++;
@@ -12659,7 +12659,7 @@ function count_units(){
 
 function count_enemy_units(side, type){
 	var enemy_unit_count = 0;
-	$.each(battle_info['combat_units'], function(unit_id, unit_info){
+	eachoa(battle_info['combat_units'], function(unit_id, unit_info){
 		if(unit_info['side'] != side && unit_info['slot'] > 0 && unit_info['current_health'] != undefined && unit_info['current_health'] > 0 && (type == undefined || type == 'any' || type == unit_info['type']))
 		{
 			enemy_unit_count++;
@@ -12670,11 +12670,11 @@ function count_enemy_units(side, type){
 
 function count_unopposed_enemy_units(side){
 	var enemy_unit_count = 0;
-	$.each(battle_info['combat_units'], function(unit_id, unit_info){
+	eachoa(battle_info['combat_units'], function(unit_id, unit_info){
 		if(unit_info['side'] != side && unit_info['slot'] > 0 && unit_info['current_health'] != undefined && unit_info['current_health'] > 0)
 		{
 			var no_opposing = true;
-			$.each(battle_info['combat_units'], function(unit_id_2, unit_info_2){
+			eachoa(battle_info['combat_units'], function(unit_id_2, unit_info_2){
 				if(unit_info['slot'] == unit_info_2['slot'] && unit_info_2['side'] == side)
 				{
 					no_opposing = false;
@@ -12693,7 +12693,7 @@ function count_double_free_slots(){
 	var double_free_slots = 0;
 	for (var slot = 1; slot <= 5; slot++) {
 		var this_slot_free = true;
-		$.each(battle_info['combat_units'], function(unit_id, unit_info){
+		eachoa(battle_info['combat_units'], function(unit_id, unit_info){
 			if(unit_info['slot'] == slot)
 			{
 				this_slot_free = false;
@@ -12709,7 +12709,7 @@ function count_double_free_slots(){
 
 function count_ally_units(side, type){
 	var ally_unit_count = 0;
-	$.each(battle_info['combat_units'], function(unit_id, unit_info){
+	eachoa(battle_info['combat_units'], function(unit_id, unit_info){
 		if(unit_info['side'] == side && unit_info['slot'] > 0 && unit_info['current_health'] != undefined && unit_info['current_health'] > 0 && (type == undefined || type == 'any' || type == unit_info['type']))
 		{
 			ally_unit_count++;
@@ -12720,7 +12720,7 @@ function count_ally_units(side, type){
 
 function count_ally_artifacts(side){
 	var enemy_unit_count = 0;
-	$.each(battle_info['combat_units'], function(unit_id, unit_info){
+	eachoa(battle_info['combat_units'], function(unit_id, unit_info){
 		if(unit_info['side'] == side && unit_info['slot'] < 0 && unit_info['type'] == 'artifact')
 		{
 			enemy_unit_count++;
@@ -12731,7 +12731,7 @@ function count_ally_artifacts(side){
 
 function count_enemy_artifacts(side){
 	var enemy_unit_count = 0;
-	$.each(battle_info['combat_units'], function(unit_id, unit_info){
+	eachoa(battle_info['combat_units'], function(unit_id, unit_info){
 		if(unit_info['side'] != side && unit_info['slot'] < 0 && unit_info['type'] == 'artifact')
 		{
 			enemy_unit_count++;
@@ -12756,7 +12756,7 @@ function process_effect(target_id, origin_id, effect, level){
 		}
 
 		
-		$.each(battle_info.combat_units[target_id]['abilities'], function(ability_id, ability_level){
+		eachoa(battle_info.combat_units[target_id]['abilities'], function(ability_id, ability_level){
 			var immunities = all_abilities[ability_id]['grants_immunities'];
 
 			if(immunities != undefined && match_array_values(immunities, effect['subtypes']) == true && (all_abilities[ability_id]['cannot_proc_while_stunned'] == undefined || (battle_info.combat_units[target_id]['effects']['stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == 0)))
@@ -12765,7 +12765,7 @@ function process_effect(target_id, origin_id, effect, level){
 			}
 			if(battle_info.combat_units[origin_id] != undefined && all_abilities[ability_id]['negated_by_ability'] != undefined)
 			{	
-				$.each(battle_info.combat_units[origin_id]['abilities'], function(ability_key, useless_data){
+				eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, useless_data){
 					if(ability_key == all_abilities[ability_id]['negated_by_ability'])
 					{
 						target_immune = false;
@@ -12789,7 +12789,7 @@ function process_effect(target_id, origin_id, effect, level){
 	{
 		if(battle_info.combat_units[target_id] != undefined)
 		{
-			$.each(battle_info.combat_units[target_id]['abilities'], function(ability_key, ability_level){
+			eachoa(battle_info.combat_units[target_id]['abilities'], function(ability_key, ability_level){
 				if(match_array_values(all_abilities[ability_key]['proc'], ['targeted_by']) == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], effect['subtypes']) == true))
 				{
 					process_ability(target_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'targeted_by');
@@ -12816,7 +12816,7 @@ function process_effect(target_id, origin_id, effect, level){
 			{
 
 				
-				$.each(battle_info.combat_units[target_id]['abilities'], function(ability_id, ability_level){
+				eachoa(battle_info.combat_units[target_id]['abilities'], function(ability_id, ability_level){
 					var has_avoid = all_abilities[ability_id]['proc'];
 					if(match_array_values(has_avoid, 'avoid_effect'))
 					{
@@ -12830,11 +12830,11 @@ function process_effect(target_id, origin_id, effect, level){
 							}
 							else
 							{
-								$.each(all_abilities[ability_id]['subtypes_while_origin_has_ability'], function(subtype_id, origin_has_ability){
+								eachoa(all_abilities[ability_id]['subtypes_while_origin_has_ability'], function(subtype_id, origin_has_ability){
 									if(match_array_values(subtype_id, effect['subtypes']))
 									{
 										var origin_has_current_ability = false;
-										$.each(battle_info.combat_units[origin_id]['abilities'], function(origin_ability_key, origin_ability_level){
+										eachoa(battle_info.combat_units[origin_id]['abilities'], function(origin_ability_key, origin_ability_level){
 											if(origin_ability_level > 0 && match_array_values(origin_ability_key, origin_has_ability))
 											{
 												origin_has_current_ability = true;
@@ -12862,8 +12862,8 @@ function process_effect(target_id, origin_id, effect, level){
 			        			{
 			        			    if(all_abilities[ability_id]['negated_by_ability'] != undefined)
 			            			{	
-			            				$.each(all_abilities[ability_id]['negated_by_ability'], function(useless_key, negated_ability_key){
-			            					$.each(battle_info.combat_units[origin_id]['abilities'], function(ability_key, useless_data){
+			            				eachoa(all_abilities[ability_id]['negated_by_ability'], function(useless_key, negated_ability_key){
+			            					eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, useless_data){
 			            						if(ability_key == negated_ability_key)
 			            						{
 			            							effect_negated = true;
@@ -12937,14 +12937,14 @@ function process_effect(target_id, origin_id, effect, level){
 				{
 					if((battle_info['combat_units'][origin_id] != undefined && battle_info['combat_units'][origin_id]['side'] == 2) || origin_side == 2)
 					{
-						$.each(effect['subtypes'], function(useless_key, effect_subtype){
+						eachoa(effect['subtypes'], function(useless_key, effect_subtype){
 							var possible_quest_string = battle_info['combat_units'][target_id]['card_type'] + '_affected_by_' + effect_subtype;
 							if(all_achievement_goals[possible_quest_string] != undefined){
 								check_quests(possible_quest_string);
 							};
 							if(battle_info['combat_units'][target_id] != undefined)
 							{
-								$.each(battle_info['combat_units'][target_id]['subtypes'], function(subtype_key, quest_subtype){
+								eachoa(battle_info['combat_units'][target_id]['subtypes'], function(subtype_key, quest_subtype){
 									var possible_quest_string = quest_subtype + '_affected_by_' + effect_subtype;
 									if(all_achievement_goals[possible_quest_string] != undefined){
 										check_quests(possible_quest_string);
@@ -13438,7 +13438,7 @@ function process_effect(target_id, origin_id, effect, level){
 			}
 			if(battle_info.combat_units[origin_id] != undefined)
 			{
-				$.each(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
+				eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
 					if(match_array_values(all_abilities[ability_key]['proc'], 'been_avoided') == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], subtypes) == true) && (all_abilities[ability_key]['not_subtypes'] == undefined || match_array_values(all_abilities[ability_key]['not_subtypes'], subtypes) == false))
 					{
 						process_ability(origin_id, all_abilities[ability_key], ability_level, target_id, undefined, 'been_avoided');
@@ -13466,15 +13466,15 @@ function process_effect(target_id, origin_id, effect, level){
 			}
 			if((battle_info['combat_units'][origin_id] != undefined && battle_info['combat_units'][origin_id]['side'] == 2) || origin_side == 2)
 			{
-				$.each(effect['subtypes'], function(useless_key, effect_subtype){
+				eachoa(effect['subtypes'], function(useless_key, effect_subtype){
 					check_quests('ally_performed_' + effect_subtype);
 					add_battle_stats('ally_performed_' + effect_subtype, calculated_amount);
 				});
 			}
 			if(battle_info.combat_units[origin_id] != undefined)
 			{
-				$.each(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
-					$.each(effect['subtypes'], function(useless_key, effect_subtype){
+				eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
+					eachoa(effect['subtypes'], function(useless_key, effect_subtype){
 						if(match_array_values(all_abilities[ability_key]['proc'], 'performed_' + effect_subtype) == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], effect_subtype) == true) && (all_abilities[ability_key]['not_subtypes'] == undefined || match_array_values(all_abilities[ability_key]['not_subtypes'], effect_subtype) == false))
 						{
 							process_ability(origin_id, all_abilities[ability_key], ability_level, target_id, undefined, 'performed_' + effect_subtype);
@@ -13594,7 +13594,7 @@ function absorb(target_id, origin_id, absorb_specs){
 				absorb_amount = absorb_specs['absorb_abilities_amount'] + 0;
 			}
 
-			$.each(battle_info.combat_units[target_id]['abilities'], function(ability_id, ability_level){
+			eachoa(battle_info.combat_units[target_id]['abilities'], function(ability_id, ability_level){
 				if(absorb_amount > 0 && (absorb_specs['absorb_negative_abilities'] == undefined || absorb_specs['absorb_negative_abilities'] == true || all_abilities[ability_id]['negative_ability'] == undefined))
 				{
 					if(battle_info.combat_units[origin_id]['abilities'][ability_id] == undefined)
@@ -13715,7 +13715,7 @@ function set_effect_amount(target_id, calculated_amount, origin_id, effect_info)
 		{
 			current_unit['effects'] = {};
 		}
-		$.each(effect_info['effect_names'], function(effect_name, effect_level){
+		eachoa(effect_info['effect_names'], function(effect_name, effect_level){
 			current_unit['effects'][effect_name] = effect_level;
 			if(effect_level < 1){delete	current_unit['effects'][effect_name];}
 		});
@@ -14058,7 +14058,7 @@ function change_side(target_id, origin_id){
 			$('.unit_id_' + target_id).addClass('side_' + unit_new_side);
 		},total_timeout);
 		var units_at_this_slot = 0;
-		$.each(battle_info.combat_units, function(unit_id, unit_info){
+		eachoa(battle_info.combat_units, function(unit_id, unit_info){
 			if(unit_info['side'] == current_unit['side'] && unit_info['slot'] == current_unit['slot'])
 			{
 				units_at_this_slot++;
@@ -14343,7 +14343,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 
 		if(origin_unit != undefined)
 		{
-			$.each(origin_unit['abilities'], function(ability_key, ability_level){
+			eachoa(origin_unit['abilities'], function(ability_key, ability_level){
 				if(match_array_values(all_abilities[ability_key]['proc'], 'add_subtype_to_damage') == true)
 				{
 					subtypes = subtypes.concat(all_abilities[ability_key]['subtypes']);
@@ -14436,7 +14436,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 
 		if(calculated_amount > 0)
     	{
-			$.each(target_unit['abilities'], function(ability_id, ability_level){
+			eachoa(target_unit['abilities'], function(ability_id, ability_level){
 				if(match_array_values(all_abilities[ability_id]['proc'], 'max_incoming_damage') == true && (match_array_values(subtypes,all_abilities[ability_id]['subtypes']) == true || all_abilities[ability_id]['subtypes'] == undefined) && match_array_values(subtypes,all_abilities[ability_id]['negated_by']) == false && (all_abilities[ability_id]['origin_not_self'] == undefined || target_id != origin_id) && (all_abilities[ability_id]['has_origin_unit'] == undefined || (origin_unit != undefined && origin_unit['current_health'] > 0)) && (all_abilities[ability_id]['cannot_proc_while_stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == 0))
 	    		{
 	    			if(all_abilities[ability_id]['reduce_chance'] == undefined || Math.random() * 100 <= calculate_effect({amount:all_abilities[ability_id]['reduce_chance']}, target_id, origin_id, ability_level))
@@ -14493,7 +14493,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 	    	}
 	    }
     
-    	$.each(target_unit['abilities'], function(ability_id, ability_level){
+    	eachoa(target_unit['abilities'], function(ability_id, ability_level){
     		if(match_array_values(all_abilities[ability_id]['proc'], 'reduce_incoming_damage') == true && (match_array_values(subtypes,all_abilities[ability_id]['subtypes']) == true || all_abilities[ability_id]['subtypes'] == undefined) && match_array_values(subtypes,all_abilities[ability_id]['negated_by']) == false && (all_abilities[ability_id]['origin_not_self'] == undefined || target_id != origin_id) && (all_abilities[ability_id]['has_origin_unit'] == undefined || (origin_unit != undefined && origin_unit['current_health'] > 0)) && (all_abilities[ability_id]['cannot_proc_while_stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == 0))
     		{
     			if(check_ability_can_fire(target_id, all_abilities[ability_id], ability_level, origin_id) == true)
@@ -14610,7 +14610,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 
     		if(battle_info.combat_units[origin_id] != undefined && (temp_damage_dealt > 0 /*|| armor_reduced > 0*/))
     		{
-    			$.each(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
+    			eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
     				if(match_array_values(all_abilities[ability_key]['proc'], 'dealt_damage') == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], subtypes) == true) && (all_abilities[ability_key]['not_subtypes'] == undefined || match_array_values(all_abilities[ability_key]['not_subtypes'], subtypes) == false))
     				{
     					process_ability(origin_id, all_abilities[ability_key], ability_level, target_id, undefined, 'dealt_damage', false);
@@ -14620,7 +14620,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
     		}
     		if(battle_info.combat_units[origin_id] != undefined && (temp_damage_dealt > 0 /*|| armor_reduced > 0*/) && target_id < 3 && battle_info.combat_units[origin_id]['side'] != battle_info.combat_units[target_id]['side'])
     		{
-    			$.each(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
+    			eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
     				if(match_array_values(all_abilities[ability_key]['proc'], 'dealt_damage_to_hero') == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], subtypes) == true) && (all_abilities[ability_key]['not_subtypes'] == undefined || match_array_values(all_abilities[ability_key]['not_subtypes'], subtypes) == false))
     				{
     					process_ability(origin_id, all_abilities[ability_key], ability_level, target_id, undefined, 'dealt_damage_to_hero', true);
@@ -14632,7 +14632,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 
     		if(battle_info.combat_units[target_id] != undefined && (temp_damage_dealt > 0 || armor_reduced > 0))
     		{
-    			$.each(target_unit['abilities'], function(ability_key, ability_level){
+    			eachoa(target_unit['abilities'], function(ability_key, ability_level){
     				
     				if(match_array_values(all_abilities[ability_key]['proc'], 'receive_damage') == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], subtypes) == true) && (all_abilities[ability_key]['not_subtypes'] == undefined || match_array_values(all_abilities[ability_key]['not_subtypes'], subtypes) == false))
     				{
@@ -14655,7 +14655,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 
     		if(battle_info.combat_units[origin_id] != undefined && overkill > 0)
     		{
-    			$.each(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
+    			eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
     				if(match_array_values(all_abilities[ability_key]['proc'], 'overkill') == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], subtypes) == true) && (all_abilities[ability_key]['not_subtypes'] == undefined || match_array_values(all_abilities[ability_key]['not_subtypes'], subtypes) == false))
     				{
     					process_ability(origin_id, all_abilities[ability_key], overkill, target_id, undefined, 'overkill', false);
@@ -14812,7 +14812,7 @@ function go_again(target_id, origin_id, calculated_amount,subtypes){
 
 
     /*var current_unit = battle_info.combat_units[target_id];
-    $.each(current_unit['abilities'], function(ability_id, ability_level){
+    eachoa(current_unit['abilities'], function(ability_id, ability_level){
 		var current_ability = all_abilities[ability_id];
 		if(battle_info.combat_units[target_id] != undefined){
 			if(current_ability['proc'] != undefined && current_ability['proc'] == 'basic')
@@ -14839,7 +14839,7 @@ function go_again(target_id, origin_id, calculated_amount,subtypes){
 
 	if(target_unit['type'] == 'spell')
     {
-    	$.each(target_unit['abilities'], function(ability_id, ability_level){
+    	eachoa(target_unit['abilities'], function(ability_id, ability_level){
 			var current_ability = all_abilities[ability_id];
 			if(battle_info.combat_units[target_id] != undefined){
 				if(current_ability['proc'] != undefined && current_ability['proc'] == 'basic')
@@ -15229,7 +15229,7 @@ function grant_skill(target_id, origin_id, calculated_amount, skill_id, visible_
 		{
 			var temp_abilities = {};
 			temp_abilities[skill_id] = calculated_amount;
-			$.each(target_unit['abilities'], function(temp_ability_id, temp_ability_level){
+			eachoa(target_unit['abilities'], function(temp_ability_id, temp_ability_level){
 				temp_abilities[temp_ability_id] = temp_ability_level + 0;
 			});
 			target_unit['abilities'] = true_copyobject(temp_abilities);
@@ -15522,7 +15522,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 			if(battle_info.combat_units[unit_id] != undefined && (unit['current_health'] === 0 || unit['current_health'] + unit['temp_health'] <= 0))
 			{
 				//if(battle_info.combat_units[origin_id] != undefined){
-					$.each(battle_info.combat_units[unit_id]['abilities'], function(ability_key, ability_level){
+					eachoa(battle_info.combat_units[unit_id]['abilities'], function(ability_key, ability_level){
 						if(match_array_values(all_abilities[ability_key]['proc'], ['pre_own_death']) == true)
 						{
 							process_ability(unit_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'pre_own_death');
@@ -15534,7 +15534,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 			if(battle_info.combat_units[unit_id] != undefined && (unit['current_health'] === 0 || unit['current_health'] + unit['temp_health'] <= 0))
 			{
 				if(battle_info.combat_units[origin_id] != undefined){
-					$.each(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
+					eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
 						if(match_array_values(all_abilities[ability_key]['proc'], ['prekill','prekill_' + unit['type']]) == true)
 						{
 							process_ability(origin_id, all_abilities[ability_key], ability_level, unit_id, undefined, 'prekill');
@@ -15545,7 +15545,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 
 			if(battle_info.combat_units[unit_id] != undefined && (unit['current_health'] === 0 || unit['current_health'] + unit['temp_health'] <= 0))
 			{
-				$.each(battle_info.combat_units[unit_id]['abilities'], function(ability_key, ability_level){
+				eachoa(battle_info.combat_units[unit_id]['abilities'], function(ability_key, ability_level){
 					if(match_array_values(all_abilities[ability_key]['proc'], ['own_death']) == true)
 					{
 						process_ability(unit_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'own_death');
@@ -15580,7 +15580,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 			if(battle_info.combat_units[unit_id] != undefined)
 			{
 				if(battle_info.combat_units[origin_id] != undefined){
-					$.each(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
+					eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
 						if(match_array_values(all_abilities[ability_key]['proc'], ['kill','kill_' + temp_unit_type]) == true)
 						{
 							process_ability(origin_id, all_abilities[ability_key], ability_level, unit_id, undefined, 'kill');
@@ -15596,7 +15596,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 
 			if(battle_info.combat_units[unit_id] != undefined && (unit['current_health'] === 0 || unit['current_health'] + unit['temp_health'] <= 0))
 			{
-				$.each(battle_info.combat_units[unit_id]['abilities'], function(ability_key, ability_level){
+				eachoa(battle_info.combat_units[unit_id]['abilities'], function(ability_key, ability_level){
 					if(match_array_values(all_abilities[ability_key]['proc'], ['post_own_death']) == true)
 					{
 						process_ability(unit_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'post_own_death');
@@ -15667,7 +15667,7 @@ function check_ability_procs(side, string, origin_id, subtypes, slot_id){
 	{
 		if(slot_id == undefined){slot_id = -10;}
 		/*for(temp_i = -10;temp_i<=5;temp_i++){*/
-			$.each(battle_info.combat_units, function(unit_id, unit){
+			eachoa(battle_info.combat_units, function(unit_id, unit){
 				if(unit['slot'] == slot_id){
 					check_single_unit_proc(unit_id, side, string, origin_id, subtypes);
 				}
@@ -15688,7 +15688,7 @@ function check_single_unit_proc(unit_id, side, string, origin_id, subtypes){
 	if(battle_info.combat_units[unit_id] != undefined)
 	{
 		var unit = battle_info.combat_units[unit_id];
-		$.each(unit['abilities'], function(ability_key, ability_level){
+		eachoa(unit['abilities'], function(ability_key, ability_level){
 			if(unit['ability_delays'][ability_key] == undefined || unit['ability_delays'][ability_key] < 1)
 			{
 				if(all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], subtypes) == true)
@@ -15850,7 +15850,7 @@ function calculate_effect(effect, target_id, origin_id, level){
 		if(calculated_amount == 'ally_burn_count')
 		{
 			var temp_amount = 0;
-			$.each(battle_info['combat_units'], function(temp_unit_id, temp_unit_info){
+			eachoa(battle_info['combat_units'], function(temp_unit_id, temp_unit_info){
 				if(temp_unit_info['side'] == battle_info.combat_units[origin_id]['side'] && temp_unit_info['effects'] != undefined && temp_unit_info['effects']['burning'] != undefined && temp_unit_info['effects']['burning'] > 0)
 				{
 					temp_amount += temp_unit_info['effects']['burning'];
@@ -16061,7 +16061,7 @@ function calculate_effect(effect, target_id, origin_id, level){
 
 	if(effect['amount_factors'] != undefined)
 	{
-		$.each(effect['amount_factors'], function(amount_factor_key, amount_factor_amount){
+		eachoa(effect['amount_factors'], function(amount_factor_key, amount_factor_amount){
 			if(amount_factor_amount == 'ability_level')
 			{
 				calculated_amount  = /*round_by_percent*/(calculated_amount * level);
@@ -16090,7 +16090,7 @@ function calculate_effect(effect, target_id, origin_id, level){
 
 	if(effect['crit_on_has_skills'] != undefined && effect['crit_amount_factor'] != undefined && target_id != undefined && battle_info.combat_units[target_id] != undefined)
 	{
-		$.each(effect['crit_on_has_skills'], function(crit_on_key, crit_on_skill){
+		eachoa(effect['crit_on_has_skills'], function(crit_on_key, crit_on_skill){
 			if(battle_info.combat_units[target_id]['abilities'] != undefined && battle_info.combat_units[target_id]['abilities'][crit_on_skill] != undefined)
 			{
 				calculated_amount  = /*round_by_percent*/(calculated_amount * effect['crit_amount_factor']);
@@ -16168,7 +16168,7 @@ function calculate_effect(effect, target_id, origin_id, level){
 
 function count_adjacent(slot, side, type){
 	var adjacent_count = 0;
-	$.each(battle_info['combat_units'], function(unit_id, unit){
+	eachoa(battle_info['combat_units'], function(unit_id, unit){
 		if(unit['side'] == side && (unit['slot'] == slot + 1 || unit['slot'] == slot - 1) && (type == undefined || unit['type'] == type))
 		{
 			adjacent_count++;
@@ -16232,7 +16232,7 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 			for(var slot = starting_slot;slot <= ending_slot;slot++)
 			{
 				
-				$.each(battle_info.combat_units, function(unit_id, unit_info){
+				eachoa(battle_info.combat_units, function(unit_id, unit_info){
 					if((unit_info['side'] == target_side || target_side == 'any') && unit_info['slot'] == slot)
 					{
 						all_targets[all_targets_slot] = unit_info['unit_id'];
@@ -16246,7 +16246,7 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 			for(var slot = ending_slot;slot >= starting_slot;slot--)
 			{
 				
-				$.each(battle_info.combat_units, function(unit_id, unit_info){
+				eachoa(battle_info.combat_units, function(unit_id, unit_info){
 					if((unit_info['side'] == target_side || target_side == 'any') && unit_info['slot'] == slot)
 					{
 						all_targets[all_targets_slot] = unit_info['unit_id'];
@@ -16259,7 +16259,7 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 		if(target_peramaters['origin_unit'] != undefined && target_peramaters['origin_unit'] == true)
 		{
 			var found_origin = false;
-			$.each(all_targets, function(target_id, unit_id){
+			eachoa(all_targets, function(target_id, unit_id){
 				if(unit_id == origin_id)
 				{
 					all_targets = {0:origin_id};
@@ -16281,7 +16281,7 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 
 		if(target_peramaters['specific_slots'] != undefined)
 		{
-			$.each(all_targets, function(all_slots_id, temp_unit_id){
+			eachoa(all_targets, function(all_slots_id, temp_unit_id){
 				if(match_array_values(battle_info['combat_units'][temp_unit_id]['slot'], target_peramaters['specific_slots']) == false)
 				{
 					delete all_targets[all_slots_id];
@@ -16539,7 +16539,7 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 		var all_targets_slot = 0;
 		if(target_peramaters['status'] != 'hand')
 		{
-			$.each(battle_info['deck_' + target_side], function(card_id, card_info){
+			eachoa(battle_info['deck_' + target_side], function(card_id, card_info){
 				if((card_info['status'] == target_peramaters['status'] || target_peramaters['status'] == 'any') && (target_peramaters['status'] != 'hand' || card_info['time_left'] > 0 || target_peramaters['can_target_zero'] != undefined))
 				{
 					all_targets[all_targets_slot] = card_id;
@@ -16550,7 +16550,7 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 		else
 		{
 			for (var hand_slot = 1; hand_slot <= 10; hand_slot++) {
-				$.each(battle_info['deck_' + target_side], function(card_id, card_info){
+				eachoa(battle_info['deck_' + target_side], function(card_id, card_info){
 					if(card_info['hand_slot'] == hand_slot && (card_info['status'] == target_peramaters['status'] || target_peramaters['status'] == 'any') && (target_peramaters['status'] != 'hand' || card_info['time_left'] > 0 || target_peramaters['can_target_zero'] != undefined))
 					{
 						all_targets[all_targets_slot] = card_id;
@@ -16563,7 +16563,7 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 		if(target_peramaters['origin_unit'] != undefined && target_peramaters['origin_unit'] == true)
 		{
 			var found_origin = false;
-			$.each(all_targets, function(target_id, unit_id){
+			eachoa(all_targets, function(target_id, unit_id){
 				if(unit_id == origin_id)
 				{
 					all_targets = {0:origin_id};
@@ -16605,7 +16605,7 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 
 	if(target_peramaters['add_targets'] != undefined && target_peramaters['add_targets'] == true && added_targets != undefined && count_object(added_targets) > 0)
 	{
-		$.each(added_targets, function(added_id, added_target){
+		eachoa(added_targets, function(added_id, added_target){
 			all_targets[get_highest_key_in_object(all_targets)+1] = added_target;
 		});
 	}
@@ -16631,18 +16631,18 @@ function filter_targets_by_redirect(all_targets, current_ability, origin_id){
 	}
 	var allready_redirected = {};
 
-	$.each(all_targets, function(target_id, target_card_id){
+	eachoa(all_targets, function(target_id, target_card_id){
 		if(count_object(allready_redirected) == 0)
 		{
 			for (var i = -5; i <= 5; i++) {		
-				$.each(battle_info['combat_units'], function(unit_id, unit_info){
+				eachoa(battle_info['combat_units'], function(unit_id, unit_info){
 					if(unit_info['slot'] == i)
 					{
-						$.each(unit_info['abilities'], function(ability_id, ability_level){
+						eachoa(unit_info['abilities'], function(ability_id, ability_level){
 							if((all_abilities[ability_id]['proc_chance'] == undefined || all_abilities[ability_id]['proc_chance'] >= Math.random() * 100) && match_array_values(all_abilities[ability_id]['proc'], ['redirect']) == true && match_array_values(prime_types, all_abilities[ability_id]['subtypes']) == true && allready_redirected[target_id] == undefined && check_ability_can_fire(unit_id, all_abilities[ability_id], ability_level, target_id) == true)
 							{
 								var redirect_from_targets = find_targets(unit_id, all_abilities[ability_id]['from_targets'], target_card_id, ability_level, all_abilities[ability_id]);
-								$.each(redirect_from_targets, function(redirect_from_target_id, redirect_from_target_unit_id){
+								eachoa(redirect_from_targets, function(redirect_from_target_id, redirect_from_target_unit_id){
 									if(redirect_from_target_unit_id == target_card_id)
 									{
 										var redirect_to_targets = find_targets(unit_id, all_abilities[ability_id]['to_target'], origin_id, ability_level, all_abilities[ability_id]);
@@ -16677,7 +16677,7 @@ function filter_targets_by_redirect(all_targets, current_ability, origin_id){
 }
 
 function filter_targets_by_has_origin_card(all_targets, has_origin_card){
-	$.each(all_targets, function(target_id, target_card_id){
+	eachoa(all_targets, function(target_id, target_card_id){
 		if((has_origin_card == undefined || has_origin_card == true) && battle_info.combat_units[target_card_id]['card_id'] == undefined)
 		{
 			delete all_targets[target_id];
@@ -16692,7 +16692,7 @@ function filter_targets_by_has_origin_card(all_targets, has_origin_card){
 }
 
 function filter_targets_by_slot_free(all_targets){
-	$.each(all_targets, function(target_id, target_card_id){
+	eachoa(all_targets, function(target_id, target_card_id){
 		
 		if(check_slot_free(battle_info.combat_units[target_card_id]['slot'], battle_info.combat_units[target_card_id]['side']) == false)
 		{
@@ -16704,7 +16704,7 @@ function filter_targets_by_slot_free(all_targets){
 }
 
 function filter_targets_by_not_self(all_targets, unit_id){
-	$.each(all_targets, function(target_id, target_card_id){
+	eachoa(all_targets, function(target_id, target_card_id){
 		
 		if(target_card_id == unit_id)
 		{
@@ -16716,7 +16716,7 @@ function filter_targets_by_not_self(all_targets, unit_id){
 }
 
 function filter_targets_by_has_theme(all_targets, has_theme){
-	$.each(all_targets, function(target_id, target_card_id){
+	eachoa(all_targets, function(target_id, target_card_id){
 		
 		if(match_array_values(battle_info.combat_units[target_card_id]['theme'], has_theme) == false)
 		{
@@ -16728,7 +16728,7 @@ function filter_targets_by_has_theme(all_targets, has_theme){
 }
 
 function filter_targets_by_has_ability(all_targets, has_ability){
-	$.each(all_targets, function(target_id, target_card_id){
+	eachoa(all_targets, function(target_id, target_card_id){
 		
 		if(battle_info.combat_units[target_card_id]['abilities'][has_ability] == undefined)
 		{
@@ -16740,7 +16740,7 @@ function filter_targets_by_has_ability(all_targets, has_ability){
 }
 
 function filter_targets_by_does_not_have_ability(all_targets, has_ability){
-	$.each(all_targets, function(target_id, target_card_id){
+	eachoa(all_targets, function(target_id, target_card_id){
 		
 		if(battle_info.combat_units[target_card_id]['abilities'][has_ability] != undefined)
 		{
@@ -16752,8 +16752,8 @@ function filter_targets_by_does_not_have_ability(all_targets, has_ability){
 }
 
 function filter_targets_by_max_abilities(all_targets, max_abilities, level){
-	$.each(all_targets, function(target_id, target_card_id){
-		$.each(max_abilities, function(ability_id, ability_level){
+	eachoa(all_targets, function(target_id, target_card_id){
+		eachoa(max_abilities, function(ability_id, ability_level){
 			var max_level = ability_level;
 			if(max_level == 'ability_level'){max_level = level - 1;}
 			if(battle_info.combat_units[target_card_id]['abilities'][ability_id] != undefined && battle_info.combat_units[target_card_id]['abilities'][ability_id] > max_level)
@@ -16767,9 +16767,9 @@ function filter_targets_by_max_abilities(all_targets, max_abilities, level){
 }
 
 function filter_target_cards_by_max_abilities(all_targets, max_abilities, level, target_side){
-	$.each(all_targets, function(target_id, target_card_id){
+	eachoa(all_targets, function(target_id, target_card_id){
 		var current_card = all_available_cards[battle_info['deck_' + target_side][target_card_id]['card_id']];
-		$.each(max_abilities, function(ability_id, ability_level){
+		eachoa(max_abilities, function(ability_id, ability_level){
 			var max_level = ability_level;
 			if(max_level == 'ability_level'){max_level = level - 1;}
 			if(current_card['abilities'][ability_id] != undefined && current_card['abilities'][ability_id] > max_level)
@@ -16785,11 +16785,11 @@ function filter_target_cards_by_max_abilities(all_targets, max_abilities, level,
 
 function filter_targets_by_immunities(all_targets, unit_id, current_ability, origin_id){
 	
-	$.each(all_targets, function(target_id, target_card_id){	
+	eachoa(all_targets, function(target_id, target_card_id){	
 		var target_immune = false;
-		$.each(battle_info.combat_units[target_card_id]['abilities'], function(ability_id, ability_level){
+		eachoa(battle_info.combat_units[target_card_id]['abilities'], function(ability_id, ability_level){
 			var immunities = all_abilities[ability_id]['grants_immunities'];
-			$.each(current_ability['effects'], function(effect_id, effect){	
+			eachoa(current_ability['effects'], function(effect_id, effect){	
 				if(immunities != undefined && (match_array_values(immunities, [effect['type']]) == true || match_array_values(immunities, effect['subtypes']) == true || (battle_info.combat_units[origin_id] != undefined && match_array_values(immunities, [battle_info.combat_units[origin_id]['type']]) == true)))
 				{
 					target_immune = true;
@@ -16798,7 +16798,7 @@ function filter_targets_by_immunities(all_targets, unit_id, current_ability, ori
 			
 			if(all_abilities[ability_id]['negated_by_ability'] != undefined && battle_info.combat_units[origin_id] != undefined)
 			{	
-				$.each(battle_info.combat_units[origin_id]['abilities'], function(ability_key, useless_data){
+				eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, useless_data){
 					if(ability_key == all_abilities[ability_id]['negated_by_ability'])
 					{
 						target_immune = false;
@@ -16818,13 +16818,13 @@ function filter_targets_by_immunities(all_targets, unit_id, current_ability, ori
 
 function filter_targets_by_highest_time_left(all_targets, side){
 	var highest_cost = false;
-	$.each(all_targets, function(target_id, target_card_id){
+	eachoa(all_targets, function(target_id, target_card_id){
 		if(battle_info['deck_' + side][target_card_id]['time_left'] > highest_cost || highest_cost == false)
 		{
 			highest_cost = battle_info['deck_' + side][target_card_id]['time_left'];
 		}
 	});
-	$.each(all_targets, function(target_id, target_card_id){
+	eachoa(all_targets, function(target_id, target_card_id){
 		if(battle_info['deck_' + side][target_card_id]['time_left'] < highest_cost)
 		{
 			delete all_targets[target_id];
@@ -16836,13 +16836,13 @@ function filter_targets_by_highest_time_left(all_targets, side){
 
 function filter_targets_by_lowest_time_left(all_targets, side){
 	var lowest_cost = false;
-	$.each(all_targets, function(target_id, target_card_id){
+	eachoa(all_targets, function(target_id, target_card_id){
 		if(battle_info['deck_' + side][target_card_id]['time_left'] < lowest_cost || lowest_cost == false)
 		{
 			lowest_cost = battle_info['deck_' + side][target_card_id]['time_left'];
 		}
 	});
-	$.each(all_targets, function(target_id, target_card_id){
+	eachoa(all_targets, function(target_id, target_card_id){
 		if(battle_info['deck_' + side][target_card_id]['time_left'] > lowest_cost)
 		{
 			delete all_targets[target_id];
@@ -16852,7 +16852,7 @@ function filter_targets_by_lowest_time_left(all_targets, side){
 }
 
 function filter_targets_by_card_type(all_targets, types, side){
-	$.each(all_targets, function(target_id, target_card_id){
+	eachoa(all_targets, function(target_id, target_card_id){
 		
 		var card_type_array = [all_available_cards[battle_info['deck_' + side][target_card_id]['card_id']]['type']];
 		if(match_array_values(card_type_array, types) == false)
@@ -16865,7 +16865,7 @@ function filter_targets_by_card_type(all_targets, types, side){
 }
 
 function filter_targets_by_not_types(all_targets, types){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var card_type_array = [battle_info.combat_units[target_unit_id]['type']];
 		if(match_array_values(card_type_array, types) == true)
 		{
@@ -16881,7 +16881,7 @@ function filter_targets_by_not_types(all_targets, types){
 }
 
 function filter_targets_by_subtypes(all_targets, subtypes){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var card_type_array = battle_info.combat_units[target_unit_id]['subtypes'];
 		if(card_type_array == undefined || match_array_values(card_type_array, subtypes) == false)
 		{
@@ -16893,7 +16893,7 @@ function filter_targets_by_subtypes(all_targets, subtypes){
 }
 
 function filter_targets_by_not_subtypes(all_targets, subtypes){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var card_type_array = battle_info.combat_units[target_unit_id]['subtypes'];
 		if(card_type_array != undefined && match_array_values(card_type_array, subtypes) == true)
 		{
@@ -16905,7 +16905,7 @@ function filter_targets_by_not_subtypes(all_targets, subtypes){
 }
 
 function filter_targets_by_card_ids(all_targets, ids, filter_this){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var card_type_array = [battle_info.combat_units[target_unit_id]['card_type']];
 		if(match_array_values(card_type_array, ids) == filter_this)
 		{
@@ -16917,7 +16917,7 @@ function filter_targets_by_card_ids(all_targets, ids, filter_this){
 }
 
 function filter_targets_by_not_card_ids(all_targets, ids){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var card_type_array = [battle_info.combat_units[target_unit_id]['name']];
 		if(match_array_values(card_type_array, ids) == true)
 		{
@@ -16930,7 +16930,7 @@ function filter_targets_by_not_card_ids(all_targets, ids){
 
 
 function filter_targets_by_damaged(all_targets){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['current_health'] >= battle_info.combat_units[target_unit_id]['health'])
 		{
 			delete all_targets[target_id];
@@ -16941,7 +16941,7 @@ function filter_targets_by_damaged(all_targets){
 }
 
 function filter_targets_by_not_damaged(all_targets){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['current_health'] != battle_info.combat_units[target_unit_id]['health'])
 		{
 			delete all_targets[target_id];
@@ -16952,7 +16952,7 @@ function filter_targets_by_not_damaged(all_targets){
 }
 
 function filter_targets_by_is_transformed(all_targets){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['original_card_type'] == undefined)
 		{
 			delete all_targets[target_id];
@@ -16963,7 +16963,7 @@ function filter_targets_by_is_transformed(all_targets){
 }
 
 function filter_targets_by_has_negative_effect(all_targets){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['effects'] == undefined ||
 		((battle_info.combat_units[target_unit_id]['effects']['burning'] == undefined || battle_info.combat_units[target_unit_id]['effects']['burning'] == 0) &&
 			(battle_info.combat_units[target_unit_id]['effects']['poisoned'] == undefined || battle_info.combat_units[target_unit_id]['effects']['poisoned'] == 0) &&
@@ -16982,7 +16982,7 @@ function filter_targets_by_has_negative_effect(all_targets){
 function filter_targets_by_has_effect(all_targets, effect_paramaters, level){
 	var real_amount = effect_paramaters['amount'];
 	if(real_amount == 'ability_level'){real_amount = level;};
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['effects'] == undefined && real_amount != 0 && effect_paramaters['limit'] == 'min')
 		{
 			delete all_targets[target_id];
@@ -16993,7 +16993,7 @@ function filter_targets_by_has_effect(all_targets, effect_paramaters, level){
 			{
 				delete all_targets[target_id];
 			}
-			$.each(battle_info.combat_units[target_unit_id]['effects'], function(effect_name, effect_amount){
+			eachoa(battle_info.combat_units[target_unit_id]['effects'], function(effect_name, effect_amount){
 				var temp_amount = real_amount;
 				if(temp_amount == 'ability_level' && level != undefined)
 				{
@@ -17011,7 +17011,7 @@ function filter_targets_by_has_effect(all_targets, effect_paramaters, level){
 }
 
 function filter_targets_by_not_stunned(all_targets, effect_paramaters){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['effects']['stunned'] != undefined && battle_info.combat_units[target_unit_id]['effects']['stunned'] > 0)
 		{
 			delete all_targets[target_id];
@@ -17022,7 +17022,7 @@ function filter_targets_by_not_stunned(all_targets, effect_paramaters){
 }
 
 function filter_targets_by_min_cost(all_targets, min_cost, origin_id, level){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var real_min_cost = calculate_effect(min_cost, target_id, origin_id, level);
 		if(battle_info.combat_units[target_unit_id]['time'] < real_min_cost)
 		{
@@ -17033,7 +17033,7 @@ function filter_targets_by_min_cost(all_targets, min_cost, origin_id, level){
 }
 
 function filter_targets_by_max_cost(all_targets, max_cost, origin_id, level){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var real_max_cost = calculate_effect(max_cost, target_id, origin_id, level);
 		if(battle_info.combat_units[target_unit_id]['time'] > real_max_cost)
 		{
@@ -17044,7 +17044,7 @@ function filter_targets_by_max_cost(all_targets, max_cost, origin_id, level){
 }
 
 function filter_targets_by_min_hp(all_targets, min_hp){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var current_total_hp = battle_info.combat_units[target_unit_id]['current_health'];
 		if(battle_info.combat_units[target_unit_id]['temp_health'] != undefined)
 		{
@@ -17059,7 +17059,7 @@ function filter_targets_by_min_hp(all_targets, min_hp){
 }
 
 function filter_targets_by_min_total_hp(all_targets, min_hp){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['health'] < min_hp && battle_info.combat_units[target_unit_id]['health'] !== false/* && (battle_info.combat_units[target_unit_id]['slot'] != 0 || battle_info.combat_units[target_unit_id]['current_health'] > 0)*/)
 		{
 			delete all_targets[target_id];
@@ -17069,7 +17069,7 @@ function filter_targets_by_min_total_hp(all_targets, min_hp){
 }
 
 function filter_targets_by_max_hp(all_targets, max_hp, origin_id, level){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var current_max_hp = calculate_effect({amount:max_hp}, target_unit_id, origin_id, level);
 		var current_total_hp = battle_info.combat_units[target_unit_id]['current_health'];
 		if(battle_info.combat_units[target_unit_id]['temp_health'] != undefined)
@@ -17085,7 +17085,7 @@ function filter_targets_by_max_hp(all_targets, max_hp, origin_id, level){
 }
 
 function filter_targets_by_min_armor(all_targets, min_armor){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['armor'] < min_armor)
 		{
 			delete all_targets[target_id];
@@ -17095,7 +17095,7 @@ function filter_targets_by_min_armor(all_targets, min_armor){
 }
 
 function filter_targets_by_max_armor(all_targets, min_armor){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['armor'] >= min_armor)
 		{
 			delete all_targets[target_id];
@@ -17106,7 +17106,7 @@ function filter_targets_by_max_armor(all_targets, min_armor){
 
 
 function filter_targets_by_min_power(all_targets, min_power){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var current_power = calculate_effect({amount:'target_power'}, target_unit_id, undefined, undefined);
 		if(current_power < min_power || current_power === false)
 		{
@@ -17117,7 +17117,7 @@ function filter_targets_by_min_power(all_targets, min_power){
 }
 
 function filter_targets_by_max_power(all_targets, max_power){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var current_power = calculate_effect({amount:'target_power'}, target_unit_id, undefined, undefined);
 		if(current_power > max_power)
 		{
@@ -17129,7 +17129,7 @@ function filter_targets_by_max_power(all_targets, max_power){
 
 function filter_targets_by_lowest_hp(all_targets){
 	var lowest_hp = false;
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var current_total_hp = battle_info.combat_units[target_unit_id]['current_health'];
 		if(battle_info.combat_units[target_unit_id]['temp_health'] != undefined)
 		{
@@ -17140,7 +17140,7 @@ function filter_targets_by_lowest_hp(all_targets){
 			lowest_hp = current_total_hp;
 		}
 	});
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var current_total_hp = battle_info.combat_units[target_unit_id]['current_health'];
 		if(battle_info.combat_units[target_unit_id]['temp_health'] != undefined)
 		{
@@ -17157,7 +17157,7 @@ function filter_targets_by_lowest_hp(all_targets){
 
 function filter_targets_by_highest_hp(all_targets){
 	var highest_hp = false;
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var current_total_hp = battle_info.combat_units[target_unit_id]['current_health'];
 		if(battle_info.combat_units[target_unit_id]['temp_health'] != undefined)
 		{
@@ -17168,7 +17168,7 @@ function filter_targets_by_highest_hp(all_targets){
 			highest_hp = current_total_hp;
 		}
 	});
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var current_total_hp = battle_info.combat_units[target_unit_id]['current_health'];
 		if(battle_info.combat_units[target_unit_id]['temp_health'] != undefined)
 		{
@@ -17185,13 +17185,13 @@ function filter_targets_by_highest_hp(all_targets){
 
 function filter_targets_by_highest_max_hp(all_targets){
 	var highest_hp = false;
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['health'] > highest_hp || highest_hp == false)
 		{
 			highest_hp = battle_info.combat_units[target_unit_id]['health'];
 		}
 	});
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['health'] < highest_hp)
 		{
 			delete all_targets[target_id];
@@ -17203,13 +17203,13 @@ function filter_targets_by_highest_max_hp(all_targets){
 
 function filter_targets_by_highest_armor(all_targets){
 	var highest_armor = false;
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['armor'] > highest_armor || highest_armor == false)
 		{
 			highest_armor = battle_info.combat_units[target_unit_id]['armor'];
 		}
 	});
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['armor'] < highest_armor)
 		{
 			delete all_targets[target_id];
@@ -17221,7 +17221,7 @@ function filter_targets_by_highest_armor(all_targets){
 
 function filter_targets_by_lowest_power(all_targets){
 	var lowest_power = false;
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['power'] < lowest_power || lowest_power == false)
 		{
 			if(battle_info.combat_units[target_unit_id]['power'] === false)
@@ -17234,7 +17234,7 @@ function filter_targets_by_lowest_power(all_targets){
 			}
 		}
 	});
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['power'] > lowest_power)
 		{
 			delete all_targets[target_id];
@@ -17246,13 +17246,13 @@ function filter_targets_by_lowest_power(all_targets){
 
 function filter_targets_by_highest_power(all_targets){
 	var highest_power = false;
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['power'] > highest_power || highest_power == false)
 		{
 			highest_power = battle_info.combat_units[target_unit_id]['power'];
 		}
 	});
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['power'] < highest_power)
 		{
 			delete all_targets[target_id];
@@ -17264,13 +17264,13 @@ function filter_targets_by_highest_power(all_targets){
 
 function filter_targets_by_highest_cost(all_targets){
 	var highest_cost = false;
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['time'] > highest_cost || highest_cost == false)
 		{
 			highest_cost = battle_info.combat_units[target_unit_id]['time'];
 		}
 	});
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['time'] < highest_cost)
 		{
 			delete all_targets[target_id];
@@ -17282,13 +17282,13 @@ function filter_targets_by_highest_cost(all_targets){
 
 function filter_targets_by_lowest_cost(all_targets){
 	var lowest_cost = -1;
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['time'] < lowest_cost || lowest_cost == -1)
 		{
 			lowest_cost = battle_info.combat_units[target_unit_id]['time'];
 		}
 	});
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['time'] > lowest_cost && lowest_cost > -1)
 		{
 			delete all_targets[target_id];
@@ -17300,13 +17300,13 @@ function filter_targets_by_lowest_cost(all_targets){
 
 function filter_targets_by_lowest_cost_card(all_targets, side){
 	var lowest_cost = false;
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(all_available_cards[battle_info['deck_' + side][target_unit_id]['card_id']]['time'] < lowest_cost || lowest_cost == false)
 		{
 			lowest_cost = all_available_cards[battle_info['deck_' + side][target_unit_id]['card_id']]['time'];
 		}
 	});
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		if(all_available_cards[battle_info['deck_' + side][target_unit_id]['card_id']]['time'] > lowest_cost && lowest_cost != false)
 		{
 			delete all_targets[target_id];
@@ -17316,9 +17316,9 @@ function filter_targets_by_lowest_cost_card(all_targets, side){
 }
 
 function filter_targets_by_has_no_opposing(all_targets, type){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var found_opposing = false;
-		$.each(battle_info.combat_units, function(unit_id, unit_info){
+		eachoa(battle_info.combat_units, function(unit_id, unit_info){
 			if(unit_info['side'] != battle_info.combat_units[target_unit_id]['side'] && unit_info['slot'] == battle_info.combat_units[target_unit_id]['slot'] && unit_info['current_health'] > 0 && (type == undefined || unit_info['type'] == type))
 			{
 				found_opposing = true;
@@ -17333,9 +17333,9 @@ function filter_targets_by_has_no_opposing(all_targets, type){
 }
 
 function filter_targets_by_has_opposing(all_targets, type){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var found_opposing = false;
-		$.each(battle_info.combat_units, function(unit_id, unit_info){
+		eachoa(battle_info.combat_units, function(unit_id, unit_info){
 			if(unit_info['side'] != battle_info.combat_units[target_unit_id]['side'] && unit_info['slot'] == battle_info.combat_units[target_unit_id]['slot'] && unit_info['current_health'] > 0 && (type == undefined || unit_info['type'] == type))
 			{
 				found_opposing = true;
@@ -17350,9 +17350,9 @@ function filter_targets_by_has_opposing(all_targets, type){
 }
 
 function filter_targets_by_has_adjacent(all_targets, type){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var found_opposing = false;
-		$.each(battle_info.combat_units, function(unit_id, unit_info){
+		eachoa(battle_info.combat_units, function(unit_id, unit_info){
 			if(unit_info['side'] == battle_info.combat_units[target_unit_id]['side'] && (unit_info['slot'] == battle_info.combat_units[target_unit_id]['slot'] + 1 || unit_info['slot'] == battle_info.combat_units[target_unit_id]['slot'] - 1) && unit_info['slot'] != 0 && unit_info['current_health'] > 0 && (type == undefined || unit_info['type'] == type))
 			{
 				found_opposing = true;
@@ -17367,9 +17367,9 @@ function filter_targets_by_has_adjacent(all_targets, type){
 }
 
 function filter_targets_by_has_no_adjacent(all_targets, type){
-	$.each(all_targets, function(target_id, target_unit_id){
+	eachoa(all_targets, function(target_id, target_unit_id){
 		var found_opposing = false;
-		$.each(battle_info.combat_units, function(unit_id, unit_info){
+		eachoa(battle_info.combat_units, function(unit_id, unit_info){
 			if(unit_info['side'] == battle_info.combat_units[target_unit_id]['side'] && (unit_info['slot'] == battle_info.combat_units[target_unit_id]['slot'] + 1 || unit_info['slot'] == battle_info.combat_units[target_unit_id]['slot'] - 1) && unit_info['slot'] != 0 && unit_info['current_health'] > 0 && (type == undefined || unit_info['type'] == type))
 			{
 				found_opposing = true;
@@ -17398,7 +17398,7 @@ function filter_targets_by_position(all_targets, unit_id, position, origin_slot)
 
 	if(position == 'self')
 	{
-		$.each(all_targets, function(target_id, target_unit_id){
+		eachoa(all_targets, function(target_id, target_unit_id){
 			if(target_unit_id != unit_id)
 			{
 				delete all_targets[target_id];
@@ -17407,7 +17407,7 @@ function filter_targets_by_position(all_targets, unit_id, position, origin_slot)
 	}
 	if(position == 'opposing')
 	{
-		$.each(all_targets, function(target_id, target_unit_id){
+		eachoa(all_targets, function(target_id, target_unit_id){
 			if(battle_info.combat_units[target_unit_id]['slot'] != temp_origin_slot)
 			{
 				delete all_targets[target_id];
@@ -17416,7 +17416,7 @@ function filter_targets_by_position(all_targets, unit_id, position, origin_slot)
 	}
 	if(position == 'opposing_wide')
 	{
-		$.each(all_targets, function(target_id, target_unit_id){
+		eachoa(all_targets, function(target_id, target_unit_id){
 			if(battle_info.combat_units[target_unit_id]['slot'] > temp_origin_slot + 1 || battle_info.combat_units[target_unit_id]['slot'] < temp_origin_slot - 1)
 			{
 				delete all_targets[target_id];
@@ -17425,7 +17425,7 @@ function filter_targets_by_position(all_targets, unit_id, position, origin_slot)
 	}
 	if(position == 'adjacent')
 	{
-		$.each(all_targets, function(target_id, target_unit_id){
+		eachoa(all_targets, function(target_id, target_unit_id){
 			if(battle_info.combat_units[target_unit_id]['slot'] != temp_origin_slot -1 &&
 			battle_info.combat_units[target_unit_id]['slot'] != temp_origin_slot + 1)
 			{
@@ -17435,7 +17435,7 @@ function filter_targets_by_position(all_targets, unit_id, position, origin_slot)
 	}
 	if(position == 'not_adjacent')
 	{
-		$.each(all_targets, function(target_id, target_unit_id){
+		eachoa(all_targets, function(target_id, target_unit_id){
 			if(battle_info.combat_units[target_unit_id]['slot'] == temp_origin_slot -1 ||
 			battle_info.combat_units[target_unit_id]['slot'] == temp_origin_slot + 1)
 			{
@@ -17446,7 +17446,7 @@ function filter_targets_by_position(all_targets, unit_id, position, origin_slot)
 	if(position == 'nearest')
 	{
 		var nearest = 10;
-		$.each(all_targets, function(target_id, target_unit_id){
+		eachoa(all_targets, function(target_id, target_unit_id){
 			var distance = battle_info.combat_units[target_unit_id]['slot'] - temp_origin_slot;
 			if(distance < 0){distance *= -1;}
 			if(distance < nearest)
@@ -17454,7 +17454,7 @@ function filter_targets_by_position(all_targets, unit_id, position, origin_slot)
 				nearest = distance;
 			}
 		});
-		$.each(all_targets, function(target_id, target_unit_id){
+		eachoa(all_targets, function(target_id, target_unit_id){
 			var distance = battle_info.combat_units[target_unit_id]['slot'] - temp_origin_slot;
 			if(distance < 0){distance *= -1;}
 			if(distance > nearest)
@@ -17467,13 +17467,13 @@ function filter_targets_by_position(all_targets, unit_id, position, origin_slot)
 	if(position == 'right')
 	{
 		var highest_slot = 0;
-		$.each(all_targets, function(target_id, target_unit_id){
+		eachoa(all_targets, function(target_id, target_unit_id){
 			if(battle_info.combat_units[target_unit_id]['slot'] > highest_slot)
 			{
 				highest_slot = battle_info.combat_units[target_unit_id]['slot'];
 			}
 		});
-		$.each(all_targets, function(target_id, target_unit_id){
+		eachoa(all_targets, function(target_id, target_unit_id){
 			if(battle_info.combat_units[target_unit_id]['slot'] < highest_slot)
 			{
 				delete all_targets[target_id];
@@ -17484,13 +17484,13 @@ function filter_targets_by_position(all_targets, unit_id, position, origin_slot)
 	if(position == 'left')
 	{
 		var lowest_slot = 10;
-		$.each(all_targets, function(target_id, target_unit_id){
+		eachoa(all_targets, function(target_id, target_unit_id){
 			if(battle_info.combat_units[target_unit_id]['slot'] < lowest_slot)
 			{
 				lowest_slot = battle_info.combat_units[target_unit_id]['slot'];
 			}
 		});
-		$.each(all_targets, function(target_id, target_unit_id){
+		eachoa(all_targets, function(target_id, target_unit_id){
 			if(battle_info.combat_units[target_unit_id]['slot'] > lowest_slot)
 			{
 				delete all_targets[target_id];
@@ -17504,7 +17504,7 @@ function filter_targets_by_position(all_targets, unit_id, position, origin_slot)
 function process_combat_units(side, proc, do_not_process_effects){
 	for(var unit_slot=-5;unit_slot<=5;unit_slot++)
 	{
-		$.each(battle_info.combat_units, function(unit_id, unit){
+		eachoa(battle_info.combat_units, function(unit_id, unit){
 			if(unit['side'] == side && unit['acted_this_turn'] < 1 && unit['slot'] == unit_slot && combat_alive == true)
 			{
 				process_single_unit(unit_id, undefined, do_not_process_effects, proc);
@@ -17514,7 +17514,7 @@ function process_combat_units(side, proc, do_not_process_effects){
 	}
 
 	var any_unit_left = false;
-	$.each(battle_info.combat_units, function(unit_id, unit){
+	eachoa(battle_info.combat_units, function(unit_id, unit){
 		if(unit['side'] == side && unit['acted_this_turn'] < 1)
 		{
 			any_unit_left = true;
@@ -17528,7 +17528,7 @@ function process_combat_units(side, proc, do_not_process_effects){
 }
 
 function enable_all_units_to_act(reset_ability_use, side){
-	$.each(battle_info.combat_units, function(unit_id, unit){
+	eachoa(battle_info.combat_units, function(unit_id, unit){
 		if(side == undefined || unit['side'] == side)
 		{
 			unit['failed_to_act_this_phase'] = false;
@@ -17550,7 +17550,7 @@ function check_all_ready_cards(side){
 		if(side == undefined || side == t)
 		{
 			for(var slot_id=1;slot_id<=10;slot_id++){
-				$.each(battle_info['deck_' + t], function(card_id, card_info){
+				eachoa(battle_info['deck_' + t], function(card_id, card_info){
 					if(card_info['time_left'] <= 0 && card_info['status'] == 'hand' && card_info['hand_slot'] == slot_id && combat_alive == true)
 					{
 						play_card(t, card_id);
@@ -17564,7 +17564,7 @@ function check_all_ready_cards(side){
 	for(var t=1;t<=2;t++){
 		if(side == undefined || side == t)
 		{
-			$.each(battle_info['deck_' + t], function(card_id, card_info){
+			eachoa(battle_info['deck_' + t], function(card_id, card_info){
 				if(card_info['time_left'] <= 0 && card_info['status'] == 'hand')
 				{
 					no_ready_cards_left = false;
@@ -17750,7 +17750,7 @@ function clone_unit(side, origin_id, stunned, origin_unit, effect_info){
 		highest_unit_id++;
 		var next_combat_unit_id = highest_unit_id;
 		battle_info.combat_units[next_combat_unit_id] = true_copyobject(battle_info.combat_units[origin_id]);
-		/*$.each(battle_info.combat_units[origin_id], function(key, value){
+		/*eachoa(battle_info.combat_units[origin_id], function(key, value){
 		    if(key != 'effects' && key != 'abilities')
 		    {
 		        if(typeof(value) == 'object')
@@ -17763,7 +17763,7 @@ function clone_unit(side, origin_id, stunned, origin_unit, effect_info){
     		        else
     		        {
     		            battle_info.combat_units[next_combat_unit_id][key] = {};
-        		        $.each(battle_info.combat_units[origin_id], function(subkey, subvalue){
+        		        eachoa(battle_info.combat_units[origin_id], function(subkey, subvalue){
         		            battle_info.combat_units[next_combat_unit_id][key][subkey] = subvalue;
         		        });
     		        }
@@ -17775,7 +17775,7 @@ function clone_unit(side, origin_id, stunned, origin_unit, effect_info){
 		    }
 		});*/
 		battle_info.combat_units[next_combat_unit_id]['abilities'] = {};
-		$.each(battle_info.combat_units[origin_id]['abilities'], function(key, value){
+		eachoa(battle_info.combat_units[origin_id]['abilities'], function(key, value){
 			if(key != 'bring_clone' && (effect_info['remove_skills'] == undefined || match_array_values(effect_info['remove_skills'], key) == false))
 			{
 				battle_info.combat_units[next_combat_unit_id]['abilities'][key] = value;
@@ -17791,7 +17791,7 @@ function clone_unit(side, origin_id, stunned, origin_unit, effect_info){
 // 		{
 		    //battle_info.combat_units[next_combat_unit_id]['effects'] = {};
 		//}
-		/*$.each(battle_info.combat_units[origin_id]['effects'], function(subkey, subvalue){
+		/*eachoa(battle_info.combat_units[origin_id]['effects'], function(subkey, subvalue){
             battle_info.combat_units[next_combat_unit_id]['effects'][subkey] = subvalue;
         });*/
 		
@@ -17839,7 +17839,7 @@ function clone_unit(side, origin_id, stunned, origin_unit, effect_info){
 		check_unit_hp(next_combat_unit_id);
 		update_passive_effects(next_combat_unit_id);
 		total_timeout += 500 * battle_speed;
-		$.each(battle_info.combat_units[next_combat_unit_id]['abilities'], function(ability_key, ability_level){
+		eachoa(battle_info.combat_units[next_combat_unit_id]['abilities'], function(ability_key, ability_level){
 			if(match_array_values(all_abilities[ability_key]['proc'], ['on_play']) == true && ability_key != 'bring_clone')
 			{
 				if(true || battle_info.combat_units[next_combat_unit_id]['used_ability'] == undefined || battle_info.combat_units[next_combat_unit_id]['used_ability'] == false)
@@ -17875,7 +17875,7 @@ function turn_into(target_id, effect, origin_id, level){
 		}
 		if(effect['additional_subtypes'] != undefined)
 		{
-			$.each(effect['additional_subtypes'], function(subtype_key, subtype){
+			eachoa(effect['additional_subtypes'], function(subtype_key, subtype){
 				card_subtypes[get_highest_key_in_object(card_subtypes)+1] = subtype;
 			});
 		}
@@ -17890,7 +17890,7 @@ function turn_into(target_id, effect, origin_id, level){
 			{
 				temp_new_unit = create_hero(turns_into_id, original_unit['side']);
 			}
-			$.each(temp_new_unit, function(key, value){
+			eachoa(temp_new_unit, function(key, value){
 				battle_info.combat_units[target_id][key] = value;
 			});
 			battle_info.combat_units[target_id]['card_type'] = turns_into_id;
@@ -17899,7 +17899,7 @@ function turn_into(target_id, effect, origin_id, level){
 				battle_info.combat_units[target_id]['original_card_type'] = original_card_type;
 			}
 			battle_info.combat_units[target_id]['current_health'] = battle_info.combat_units[target_id]['health'];
-			$.each(battle_info.combat_units[target_id]['abilities'], function(ability_id, ability_level){
+			eachoa(battle_info.combat_units[target_id]['abilities'], function(ability_id, ability_level){
 				if(all_abilities[ability_id]['remove_on_transform'] != undefined && all_abilities[ability_id]['remove_on_transform'] == true)
 				{
 					delete battle_info.combat_units[target_id]['abilities'][ability_id];
@@ -17963,7 +17963,7 @@ function turn_into_original(target_id, origin_id){
 		var temp_new_unit = true_copyobject(battle_info.combat_units[target_id]['original_unit']);
 		var original_unit_effects = true_copyobject(battle_info.combat_units[target_id]['effects']);
 		battle_info.combat_units[target_id]['card_type'] = battle_info.combat_units[target_id]['original_card_type'];
-		$.each(temp_new_unit, function(key, value){
+		eachoa(temp_new_unit, function(key, value){
 			battle_info.combat_units[target_id][key] = value;
 		});
 		battle_info.combat_units[target_id]['slot'] = temp_old_unit['slot'];
@@ -17971,7 +17971,7 @@ function turn_into_original(target_id, origin_id){
 		delete battle_info.combat_units[target_id]['original_card_type'];
 		//console.log(battle_info.combat_units[target_id]);
 		//battle_info.combat_units[target_id]['current_health'] = battle_info.combat_units[target_id]['health'];
-		$.each(battle_info.combat_units[target_id]['abilities'], function(ability_id, ability_level){
+		eachoa(battle_info.combat_units[target_id]['abilities'], function(ability_id, ability_level){
 			if(all_abilities[ability_id]['remove_on_transform'] != undefined && all_abilities[ability_id]['remove_on_transform'] == true)
 			{
 				delete battle_info.combat_units[target_id]['abilities'][ability_id];
@@ -18114,7 +18114,7 @@ function play_unit_card(side, card_id, origin_id, forced_play, origin_unit){
 		update_passive_effects(next_combat_unit_id);
 		total_timeout += 1000 * battle_speed;
 		if(battle_info.combat_units[origin_unit] != undefined){
-			$.each(battle_info.combat_units[origin_unit]['abilities'], function(ability_key, ability_level){
+			eachoa(battle_info.combat_units[origin_unit]['abilities'], function(ability_key, ability_level){
 				if(match_array_values(all_abilities[ability_key]['proc'], ['played_unit']) == true)
 				{
 					process_ability(origin_unit, all_abilities[ability_key], ability_level, next_combat_unit_id, undefined, 'played_unit');
@@ -18127,13 +18127,13 @@ function play_unit_card(side, card_id, origin_id, forced_play, origin_unit){
 		{
 			check_quests(all_available_cards[card_id]['type'] + '_card_played');
 			add_battle_stats(all_available_cards[card_id]['type'] + '_card_played');
-			$.each(all_available_cards[card_id]['subtypes'], function(subtype_key, current_subtype){
+			eachoa(all_available_cards[card_id]['subtypes'], function(subtype_key, current_subtype){
 				check_quests(current_subtype + '_card_played');
 			});
 		}
 		if(battle_info.combat_units[next_combat_unit_id] != undefined)
 		{
-			$.each(battle_info.combat_units[next_combat_unit_id]['abilities'], function(ability_key, ability_level){
+			eachoa(battle_info.combat_units[next_combat_unit_id]['abilities'], function(ability_key, ability_level){
 				if(match_array_values(all_abilities[ability_key]['proc'], ['on_play']) == true)
 				{
 					if(true || battle_info.combat_units[next_combat_unit_id]['used_ability'] == undefined || battle_info.combat_units[next_combat_unit_id]['used_ability'] == false)
@@ -18249,7 +18249,7 @@ function play_action_card(side, card_id, origin_id, forced_play){
 				{
 					check_quests(all_available_cards[card_id]['type'] + '_card_played');
 					add_battle_stats(all_available_cards[card_id]['type'] + '_card_played');
-					$.each(all_available_cards[card_id]['subtypes'], function(subtype_key, current_subtype){
+					eachoa(all_available_cards[card_id]['subtypes'], function(subtype_key, current_subtype){
 						check_quests(current_subtype + '_card_played');
 					});
 				}
@@ -18340,7 +18340,7 @@ function play_artifact_card(side, card_id, origin_id, forced_play){
 			all_timeouts[timeout_key] = setTimeout(function(){
 				//$('.battle_container .unit_id_' + next_combat_unit_id).remove();
 			},total_timeout);
-			$.each(battle_info['combat_units'], function(unit_id, unit){
+			eachoa(battle_info['combat_units'], function(unit_id, unit){
 				if(unit['type'] == 'artifact' && unit['side'] == side && unit_id != next_combat_unit_id)
 				{
 					//check_unit_alive(unit_id, undefined, true);
@@ -18360,11 +18360,11 @@ function play_artifact_card(side, card_id, origin_id, forced_play){
 			{
 				check_quests(all_available_cards[card_id]['type'] + '_card_played');
 				add_battle_stats(all_available_cards[card_id]['type'] + '_card_played');
-				$.each(all_available_cards[card_id]['subtypes'], function(subtype_key, current_subtype){
+				eachoa(all_available_cards[card_id]['subtypes'], function(subtype_key, current_subtype){
 					check_quests(current_subtype + '_card_played');
 				});
 			}
-			$.each(battle_info.combat_units[next_combat_unit_id]['abilities'], function(ability_key, ability_level){
+			eachoa(battle_info.combat_units[next_combat_unit_id]['abilities'], function(ability_key, ability_level){
 				if(match_array_values(all_abilities[ability_key]['proc'], ['on_play']) == true)
 				{
 					if(true || battle_info.combat_units[next_combat_unit_id]['used_ability'] == undefined || battle_info.combat_units[next_combat_unit_id]['used_ability'] == false)
@@ -18452,7 +18452,7 @@ function find_free_slot(side, card_id, forced_safe_slot, forced_placement, oppos
 
 	if(filters != undefined)
 	{
-		$.each(filters, function(slot_filter, slot_filter_value){
+		eachoa(filters, function(slot_filter, slot_filter_value){
 			if(slot_filter == 'has_adjacent_structure' && slot_filter_value == true)
 			{
 				all_free_slots = filter_free_slots_by_has_adjacent(all_free_slots, 'structure', origin_id);
@@ -18541,9 +18541,9 @@ function find_free_slot(side, card_id, forced_safe_slot, forced_placement, oppos
 
 function filter_free_slots_by_opposing(all_slots, unit_type, origin_id, has_it)
 {
-	$.each(all_slots, function(useless_key, slot_id){
+	eachoa(all_slots, function(useless_key, slot_id){
 		var has_opposing_type = false;
-		$.each(battle_info.combat_units, function(unit_id, unit_info){
+		eachoa(battle_info.combat_units, function(unit_id, unit_info){
 			if(unit_info['slot'] == slot_id && (unit_type == undefined || unit_type == unit_info['type']))
 			{
 				has_opposing_type = true;
@@ -18559,9 +18559,9 @@ function filter_free_slots_by_opposing(all_slots, unit_type, origin_id, has_it)
 
 function filter_free_slots_by_has_adjacent(all_slots, unit_type, origin_id)
 {
-	$.each(all_slots, function(useless_key, slot_id){
+	eachoa(all_slots, function(useless_key, slot_id){
 		var has_adjacent_type = false;
-		$.each(battle_info.combat_units, function(unit_id, unit_info){
+		eachoa(battle_info.combat_units, function(unit_id, unit_info){
 			if((unit_info['slot'] == slot_id + 1 || unit_info['slot'] == slot_id - 1) && (unit_type == undefined || unit_type == unit_info['type']) && (origin_id == undefined || origin_id != unit_info['unit_id']) && unit_info['side'] == battle_info['combat_units'][origin_id]['side'])
 			{
 				has_adjacent_type = true;
@@ -18577,7 +18577,7 @@ function filter_free_slots_by_has_adjacent(all_slots, unit_type, origin_id)
 
 function check_slot_free(slot, side){
 	var this_slot_free = true;
-	$.each(battle_info.combat_units, function(unit_id, unit_info){
+	eachoa(battle_info.combat_units, function(unit_id, unit_info){
 		var unit_health = 0;
 		if(unit_info['current_health'] != undefined && unit_info['current_health'] > 0 && unit_info['dead'] == undefined)
 		{
@@ -18597,8 +18597,8 @@ function check_slot_free(slot, side){
 
 function filter_free_slots_by_safe(all_slots, opposing_type){
 
-	$.each(all_slots, function(useless_key, slot_id){
-		$.each(battle_info.combat_units, function(unit_id, unit_info){
+	eachoa(all_slots, function(useless_key, slot_id){
+		eachoa(battle_info.combat_units, function(unit_id, unit_info){
 			if(unit_info['slot'] == slot_id && (opposing_type == undefined || opposing_type == unit_info['type']))
 			{
 				delete all_slots[useless_key];
@@ -18610,9 +18610,9 @@ function filter_free_slots_by_safe(all_slots, opposing_type){
 }
 
 function filter_free_slots_by_not_safe(all_slots, opposing_type){
-	$.each(all_slots, function(useless_key, slot_id){
+	eachoa(all_slots, function(useless_key, slot_id){
 		var found_opponent = false;
-		$.each(battle_info.combat_units, function(unit_id, unit_info){
+		eachoa(battle_info.combat_units, function(unit_id, unit_info){
 			if(unit_info['slot'] == slot_id && (opposing_type == undefined || opposing_type == unit_info['type']) && unit_info['current_health'] > 0)
 			{
 				found_opponent = true;
@@ -18630,7 +18630,7 @@ function filter_free_slots_by_not_safe(all_slots, opposing_type){
 function pick_left_most_slot(all_slots){
 	var left_most_slot = false;
 
-	$.each(all_slots, function(useless_key, slot_id){
+	eachoa(all_slots, function(useless_key, slot_id){
 		if(left_most_slot == false || slot_id < left_most_slot)
 		{
 			left_most_slot = slot_id;
@@ -18643,7 +18643,7 @@ function pick_left_most_slot(all_slots){
 function pick_right_most_slot(all_slots){
 	var right_most_slot = false;
 
-	$.each(all_slots, function(useless_key, slot_id){
+	eachoa(all_slots, function(useless_key, slot_id){
 		if(right_most_slot == false || slot_id > right_most_slot)
 		{
 			right_most_slot = slot_id;
@@ -18662,7 +18662,7 @@ function pick_furthest_slot(all_slots, origin_id){
 	}
 	var biggest_distance = 0;
 
-	$.each(all_slots, function(useless_key, slot_id){
+	eachoa(all_slots, function(useless_key, slot_id){
 		var this_distance = slot_id - origin_slot;
 		if(this_distance < 0){this_distance*=-1;}
 		if(this_distance >= biggest_distance)
@@ -18687,7 +18687,7 @@ function pick_adjacent_slot(all_slots, unit_id){
 	var adjacent_slot = false;
 	var origin_slot = battle_info['combat_units'][unit_id]['slot'];
 
-	$.each(all_slots, function(free_slot_id, slot){
+	eachoa(all_slots, function(free_slot_id, slot){
 		if(slot != origin_slot - 1 && slot != origin_slot + 1)
 		{
 			delete all_slots[free_slot_id];
@@ -18709,7 +18709,7 @@ function pick_origin_old_slot(all_slots, unit_id){
 		origin_slot = battle_info['combat_units'][unit_id]['old_slot'];
 	}
 
-	$.each(all_slots, function(free_slot_id, slot){
+	eachoa(all_slots, function(free_slot_id, slot){
 		if(slot != origin_slot)
 		{
 			delete all_slots[free_slot_id];
@@ -18727,7 +18727,7 @@ function reduce_all_hand_times(side){
 
 	var adjusted_any = false;
 /*	for(t=1;t<=2;t++){*/
-		$.each(battle_info['deck_' + side], function(card_id, card_info){
+		eachoa(battle_info['deck_' + side], function(card_id, card_info){
 			if(card_info['status'] == 'hand' && card_info['time_left'] > 0 && combat_alive == true)
 			{
 				adjusted_any = true;
@@ -18791,7 +18791,7 @@ function draw_card(side, specific_card_id, card_type, damage_on_fail, show_drawn
 	if(first_free_hand_slot != false && deck_card_count > 0 && combat_alive == true)
 	{
 
-		$.each(deck, function(deck_card_id, deck_card){
+		eachoa(deck, function(deck_card_id, deck_card){
 			if((deck_card['status'] == 'deck' || specific_card_id != undefined) && (card_type == undefined || all_available_cards[deck_card['card_id']]['type'] == card_type))
 			{
 				chosen_card_number--;
@@ -18884,7 +18884,7 @@ function parse_hand_card(side, deck_card_id, just_drawn, hand_slot_id){
 	{
 		if(count_object(card_base_info['color']) > 1)
 		{
-			$.each(card_base_info['color'], function(useless_key, color){
+			eachoa(card_base_info['color'], function(useless_key, color){
 				parsed_card += 	'<div class="card_color color_' + color + ' color_number_' + useless_key + '"></div>';
 			});
 		}
@@ -18917,7 +18917,7 @@ function parse_hand_card(side, deck_card_id, just_drawn, hand_slot_id){
 
 function show_unit_details(side, slot){
 	var unit_to_show = '';
-	$.each($('.unit.slot_' + slot + '.side_' + side), function(div_id, div_info){
+	eachoa($('.unit.slot_' + slot + '.side_' + side), function(div_id, div_info){
 		var current_card = div_info.getAttribute('data-card_type');
 		if(all_available_cards[current_card] != undefined)
 		{
@@ -18927,7 +18927,7 @@ function show_unit_details(side, slot){
 	
 	if(unit_to_show != '')
 	{
-		$.each(battle_info['combat_units'], function(unit_id, unit_info){
+		eachoa(battle_info['combat_units'], function(unit_id, unit_info){
 			if(unit_info['side'] == side && unit_info['slot'] == slot)
 			{
 				unit_to_show = unit_info['card_type'];
@@ -18954,7 +18954,7 @@ function get_first_free_hand_slot(deck){
 	for(var t=1;t<11;t++){
 		var this_slot_free = true;
 		if(found_free_slot == false){
-			$.each(deck, function(deck_card_id, deck_card_info){
+			eachoa(deck, function(deck_card_id, deck_card_info){
 				if(deck_card_info['status'] == 'hand' && deck_card_info['hand_slot'] != undefined && deck_card_info['hand_slot'] == t)
 				{
 					this_slot_free = false;
@@ -18978,7 +18978,7 @@ function get_last_free_hand_slot(deck){
 	for(var t=10;t>0;t--){
 		var this_slot_free = true;
 		if(found_free_slot == false){
-			$.each(deck, function(deck_card_id, deck_card_info){
+			eachoa(deck, function(deck_card_id, deck_card_info){
 				if(deck_card_info['status'] == 'hand' && deck_card_info['hand_slot'] != undefined && deck_card_info['hand_slot'] == t)
 				{
 					this_slot_free = false;
@@ -18999,7 +18999,7 @@ function get_last_free_hand_slot(deck){
 
 
 function clear_all_timeouts(){
-	$.each(all_timeouts, function(timeout_id, useless_data){
+	eachoa(all_timeouts, function(timeout_id, useless_data){
 		clearTimeout(all_timeouts[timeout_id]);
 		delete all_timeouts[timeout_id];
 	});
@@ -19008,7 +19008,7 @@ function clear_all_timeouts(){
 }
 
 function set_all_enemy_cards(card_id){
-	$.each(battle_info.deck_1, function(card_key, card_info){
+	eachoa(battle_info.deck_1, function(card_key, card_info){
 		card_info['card_id'] = card_id;
 	});
 }
@@ -19117,7 +19117,7 @@ function process_player_combat_boosts(){
 
 		gamedata['combat_boosts'] = sortObj(gamedata['combat_boosts']);
 
-		$.each(gamedata['combat_boosts'], function(card_id, amount){
+		eachoa(gamedata['combat_boosts'], function(card_id, amount){
 			if(amount > 0)
 			{
 				if(all_available_cards[card_id]['type'] == 'creature' || all_available_cards[card_id]['type'] == 'structure' || all_available_cards[card_id]['type'] == 'object')
@@ -19143,7 +19143,7 @@ function process_player_combat_boosts(){
 function process_enemy_combat_boosts(){
 	if(battle_info['enemy_combat_boosts'] != undefined){
 		
-		$.each(battle_info['enemy_combat_boosts'], function(card_id, amount){
+		eachoa(battle_info['enemy_combat_boosts'], function(card_id, amount){
 			if(amount > 0)
 			{
 				for (var i = amount - 1; i >= 0; i--) {
@@ -19289,7 +19289,7 @@ function claim_pickups(counter){
 			gamedata['scraps'] += pickup_rewards[counter]['card_amount'];
 		}
 	}
-	/*$.each(pickup_rewards, function(card_id, card_amount){
+	/*eachoa(pickup_rewards, function(card_id, card_amount){
 		check_quests('claimed_pickup');
 		if(all_available_cards[card_id] != undefined)
 		{
@@ -19308,7 +19308,7 @@ function claim_pickups(counter){
 function get_all_possible_pickups(){
 	var all_possible_pickups = {};
 	var month = new Date().getMonth() + 1;
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(match_array_values(month, card_info['months_available']) && card_info['type'] == 'currency')
 		{
 			all_possible_pickups[card_id] = 1 / Math.sqrt(card_info['value']);
