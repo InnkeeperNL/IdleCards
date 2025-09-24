@@ -349,6 +349,21 @@ var all_chained_achievements = {
 		step_amount: 	10,
 		no_quest: 		true,
 	},
+	bureaucrat:{
+		name: 			'bureaucrat',
+		description: 	'Play or summon {AMOUNT} clerk card(s).',
+		objective: 		'clerk_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'bureaucrat',
+		steps: 			6,
+		no_quest: 		true,
+	},
 	burn:{
 		name: 			'burn',
 		description: 	'Have allies apply burn {AMOUNT} time(s).',
@@ -406,6 +421,21 @@ var all_chained_achievements = {
 		},
 		card_back: 		'haunted_house',
 		steps: 			6,
+	},
+	clergy:{
+		name: 			'clergy',
+		description: 	'Play or summon {AMOUNT} cleric card(s).',
+		objective: 		'cleric_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'nun',
+		steps: 			6,
+		no_quest: 		true,
 	},
 	close_call:{
 		name: 			'close call',
@@ -672,6 +702,20 @@ var all_chained_achievements = {
 		card_back: 		'hawk',
 		steps: 			6,
 	},
+	forecaster:{
+		name: 			'forecaster',
+		description: 	'Play {AMOUNT} weather card(s).',
+		objective: 		'weather_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'hurricane',
+		steps: 			6,
+	},
 	fortify:{
 		name: 			'fortify',
 		description: 	'Have allies fortify an ally {AMOUNT} time(s).',
@@ -712,6 +756,20 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'carnivorous_plant',
+		steps: 			6,
+	},
+	golemancer:{
+		name: 			'golemancer',
+		description: 	'Play or summon {AMOUNT} golem card(s).',
+		objective: 		'golem_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'dreadnought',
 		steps: 			6,
 	},
 	greed:{
@@ -1111,6 +1169,20 @@ var all_chained_achievements = {
 		card_back: 		'skeleton',
 		steps: 			6,
 	},
+	ritualist:{
+		name: 			'ritualist',
+		description: 	'Play {AMOUNT} ritual card(s).',
+		objective: 		'ritual_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'impending_doom',
+		steps: 			6,
+	},
 	rogue:{
 		name: 			'rogue',
 		description: 	'Play or summon {AMOUNT} rogue card(s).',
@@ -1451,6 +1523,20 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'berserker',
+		steps: 			6,
+	},
+	walled:{
+		name: 			'walled',
+		description: 	'Play or summon {AMOUNT} wall card(s).',
+		objective: 		'wall_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'castle',
 		steps: 			6,
 	},
 	warder:{
