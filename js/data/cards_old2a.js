@@ -36,7 +36,7 @@ var all_oldest_available_cards = {
 		},
 		quote: '\"Some say it holds ages of rage\"'
 	},
-	amethyst:{
+	/*amethyst:{
 		name: 				'amethyst',
 		type: 				'artifact',
 		color: 				['purple'],
@@ -53,7 +53,7 @@ var all_oldest_available_cards = {
 			bones: 				1
 		},
 		quote: '\"Ancient queens used to adorn their crowns with these\"'
-	},
+	},*/
 	angel_of_light:{
 		name: 				'angel of light',
 		type: 				'creature',
@@ -651,7 +651,7 @@ var all_oldest_available_cards = {
 			book_of_nature: 	1,
 		}
 	},
-	blue_elf:{
+	/*blue_elf:{
 		name: 				'blue elf',
 		type: 				'creature',
 		color: 				['blue'],
@@ -676,7 +676,7 @@ var all_oldest_available_cards = {
 			magic_attunement: 	1,
 			mana_orb: 			1
 		}
-	},
+	},*/
 	
 	boar:{
 		name: 				'boar',
@@ -3473,10 +3473,6 @@ var all_oldest_available_cards = {
 			health: 			50,
 			abilities: 			{strike_nearest: 1, resist_magic: 1},
 		},
-		recipe:{
-			amethyst: 			1,
-			bones: 				1,
-		}
 	},
 	goblin_alchemist:{
 		name: 				'goblin alchemist',

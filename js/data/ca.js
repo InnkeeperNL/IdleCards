@@ -1444,7 +1444,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	2,
-		level_cost_spell: 	0.5,
+		level_cost_spell: 	1,
 		level_cost_hero: 1,
 	},
 	charmed:{
@@ -8829,7 +8829,7 @@ var all_abilities = {
 				max_amount: 	'ability_level',
 			}
 		},
-		level_cost: 		1,
+		level_cost: 		2,
 	},
 	vengeance:{
 		description: 	'When any ally creature is destroyed, deals {LEVEL} physical melee damage to the nearest enemy unit. Will target the enemy hero if there are no enemy units.',
@@ -24642,6 +24642,11 @@ var all_available_cards = {
 	
 
 }
+
+add_old_cards(all_old_available_cards, 'cards_old/');
+add_old_cards(all_older_available_cards, 'cards_old2/');
+add_old_cards(all_oldest_available_cards, 'cards_old2a/');
+unavailable_abilities = sortObj(unavailable_abilities);
 
 $.each(all_available_cards, function(card_id, card_info){
 	if(card_info['color'] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}

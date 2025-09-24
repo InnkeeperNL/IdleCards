@@ -13228,8 +13228,82 @@ var ignored_abilities = {
 	righthand: true,
 }
 
+var racial_abilities = {
+	elf: 				'resist_magic',
+}
+
 function add_old_cards(old_cards, image_folder){
 	var added_old_cards = {};
+
+	$.each(old_cards, function(card_id, new_card){
+		$.each(new_card['abilities'], function(ability_id, ability_level){
+			if(all_abilities[ability_id] == undefined)
+			{
+				delete new_card['abilities'][ability_id];
+				if(replacement_abilities[ability_id] != undefined)
+				{
+					old_cards[card_id]['abilities'][replacement_abilities[ability_id]] = ability_level;
+				}
+			}
+			else
+			{
+				if(all_abilities[ability_id]['max_level'] != undefined && ability_level > all_abilities[ability_id]['max_level'])
+				{
+					old_cards[card_id]['abilities'][ability_id] = all_abilities[ability_id]['max_level'];
+				}
+			}
+		});
+		if(new_card['hero_version'] != undefined)
+		{
+			$.each(new_card['hero_version']['abilities'], function(ability_id, ability_level){
+				if(all_abilities[ability_id] == undefined)
+				{
+					delete old_cards[card_id]['hero_version']['abilities'][ability_id];
+					if(replacement_abilities[ability_id] != undefined)
+				{
+					old_cards[card_id]['hero_version']['abilities'][replacement_abilities[ability_id]] = ability_level;
+				}
+				}
+				else
+				{
+					if(all_abilities[ability_id]['max_level'] != undefined && ability_level > all_abilities[ability_id]['max_level'])
+					{
+						old_cards[card_id]['hero_version']['abilities'][ability_id] = all_abilities[ability_id]['max_level'];
+					}
+				}
+			});
+		}
+		if(count_object(old_cards[card_id]['abilities']) == 0)
+		{
+			delete old_cards[card_id];
+		}
+		else
+		{
+			if(old_cards[card_id]['hero_version'] != undefined)
+			{
+				if(count_object(old_cards[card_id]['hero_version']['abilities']) == 0){delete old_cards[card_id];}
+			}
+		}
+		if(old_cards[card_id] != undefined)
+		{
+			$.each(racial_abilities, function(race, racial_ability){
+				if(match_array_values(old_cards[card_id]['subtypes'], race))
+				{
+					if(old_cards[card_id]['abilities'][racial_ability] == undefined)
+					{
+						old_cards[card_id]['abilities'][racial_ability] = 1;
+					}
+					if(old_cards[card_id]['hero_version'] != undefined)
+					{
+						if(old_cards[card_id]['hero_version']['abilities'][racial_ability] == undefined)
+						{
+							old_cards[card_id]['hero_version']['abilities'][racial_ability] = 1;
+						}
+					}
+				};
+			});
+		}
+	});
 	$.each(old_cards, function(card_id, card_info){
 		if(all_available_cards[card_id] == undefined/* && card_info['use_old'] != undefined && card_info['use_old'] == true*/)
 		{
@@ -13273,6 +13347,7 @@ function add_old_cards(old_cards, image_folder){
 						if(new_card_info['power'] != card_info['power']){matched_this = false;}
 						if(new_card_info['health'] != card_info['health']){matched_this = false;}
 						if(new_card_info['type'] != card_info['type']){matched_this = false;}
+						if(match_array_values(new_card_info['subtypes'], card_info['subtypes']) < count_object(new_card_info['subtypes'])){matched_this = false;}
 						if(count_object(card_info['abilities']) == count_object(new_card_info['abilities']))
 						{
 							$.each(card_info['abilities'], function(ability_id, ability_level){
@@ -13341,6 +13416,7 @@ function add_old_cards(old_cards, image_folder){
 				
 				new_card['image'] = old_image_string.replace('cards/',image_folder);
 				new_card['old'] = true;
+				if(new_card['pick_chance'] == undefined){new_card['pick_chance'] = 1;}
 				new_card['color'] = ['white'];
 				if(new_card['recipe'] != undefined){delete new_card['recipe'];}
 				//console.log('added ' + card_id);
