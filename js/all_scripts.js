@@ -11624,7 +11624,7 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 		if(count_object(possible_extra_drops) > 0)
 		{
 			var chosen_extra_drop = get_random_key_from_object_based_on_num_value(possible_extra_drops);
-			var current_drop_chance = (((effective_rarity * basic_to_pick) / card_drop_chance_reduction / recipe_drop_chance_reduction) / all_available_cards[chosen_extra_drop]['value']);
+			var current_drop_chance = (((effective_rarity * basic_to_pick) / card_drop_chance_reduction) / all_available_cards[chosen_extra_drop]['value']);
 			if(all_available_cards[chosen_extra_drop]['type'] == 'recipe')
 			{
 				current_drop_chance /= recipe_drop_chance_reduction;
