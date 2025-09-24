@@ -18917,7 +18917,7 @@ function parse_hand_card(side, deck_card_id, just_drawn, hand_slot_id){
 
 function show_unit_details(side, slot){
 	var unit_to_show = '';
-	eachoa($('.unit.slot_' + slot + '.side_' + side), function(div_id, div_info){
+	$.each($('.unit.slot_' + slot + '.side_' + side), function(div_id, div_info){
 		var current_card = div_info.getAttribute('data-card_type');
 		if(all_available_cards[current_card] != undefined)
 		{
