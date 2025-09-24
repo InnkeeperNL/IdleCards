@@ -4605,15 +4605,15 @@ var all_oldest_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			3,
-		abilities: 			{strike: 1, flying: 1, dying_rush: 2},
+		abilities: 			{strike: 1, flying: 1, hasten: 1},
 		hero_version: 			{
 			name: 				'mana fairy',
 			type: 				'creature',
 			image: 				'cards/dreamland-1060880_640.jpg',
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, flying: 1},
+			abilities: 			{strike_nearest: 1, flying: 1, hasten: 1},
 		},
 		recipe:{
 			innocent_fairy: 	1,
