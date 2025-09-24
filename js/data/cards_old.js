@@ -11,7 +11,7 @@ var all_old_available_cards = {
 		image: 				'cards/dream_TradingCard-2023-04-25T060308.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			5,
+		health: 			1,
 		abilities: 			{strike: 1, slow_enemy_draws: 1},
 		hero_version: 			{
 			theme: 				['slow_ability','hasten_ability','draw_cards_ability'],
@@ -115,7 +115,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{cursed_deaths_hv: 1},
+		abilities: 			{curse_all: 1},
 		quote: '\"Beloved by dark queens.\"',
 	},
 	ancient_shield:{
@@ -254,8 +254,8 @@ var all_old_available_cards = {
 		image: 				'cards/girl-1464038_640.jpg',
 		power: 				false,
 		armor: 				0,
-		health: 			5,
-		abilities: 			{arcane_bolt: 1},
+		health: 			4,
+		abilities: 			{arcane_bolt: 1, fire_bolt: 1},
 		hero_version: 			{
 			name: 				'apprentice',
 			type: 				'creature',
@@ -265,7 +265,7 @@ var all_old_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{arcane_bolt_hv: 2},
+			abilities: 			{arcane_bolt_hv: 1, fire_bolt_hv: 1},
 		},
 		quote: '\"Am I doing this right?\"',
 		max_in_deck: 		2,
@@ -576,13 +576,13 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, final_burn_all: 2, resurrect: 1},
+		abilities: 			{strike: 1, final_burn: 2, resurrect: 1},
 		hero_version: 			{
 			theme: 				['burn_ability','resurrect_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, burning_aura: 1, resurrect: 1},
+			abilities: 			{strike_unit: 1, burn: 1, resurrect: 1},
 		},
 		quote: '\"She rises from the ashes.\"',
 	},
@@ -1485,7 +1485,7 @@ var all_old_available_cards = {
 		quote: '\"Breathe in.... and breathe out.\"',
 		use_old: true,
 	},
-	candle:{
+	/*candle:{
 		name: 				'candle',
 		type: 				'artifact',
 		subtypes: 			['trinket','fire'],
@@ -1500,7 +1500,7 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{burn_hv: 1},
 		quote: '\"A small flame can start a large fire.\"',
-	},
+	},*/
 	candle_bearer:{
 		name: 				'candle bearer',
 		type: 				'creature',
@@ -1756,7 +1756,7 @@ var all_old_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, plated: 1, release_artifact: 1},
+		abilities: 			{strike: 1, plated: 1, summon_artifact: 1},
 		hero_version: 			{
 			theme: 				['type_structure','own_death_proc_ability'],
 			power: 				2,
@@ -2437,7 +2437,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{hasten_all: 4, minimum_enemies: 3, no_allies: 1},
+		abilities: 			{draw: 2, hasten_all: 2, minimum_enemies: 3},
 		quote: '\"Desperate times call for, well... this.\"',
 		max_in_deck: 		2,
 	},
@@ -2454,7 +2454,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{quickdraw: 6},
+		abilities: 			{draw: 6, max_hand_cards: 4},
 		quote: '\"A thought just came to me.\"',
 		use_old: true,
 	},
@@ -2470,7 +2470,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{ghost_strike: 5, trophy_kill: 2, minimum_enemies: 3, no_allies: 1},
+		abilities: 			{destroy: 1, trophy_kill: 2},
 		quote: '\"It may happen to you.\"',
 		max_in_deck: 		1,
 	},
@@ -2487,13 +2487,13 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{swoop: 2, strike: 1, flying: 1},
+		abilities: 			{charge: 1, strike: 1, flying: 1},
 		hero_version: 			{
 			theme: 				['flying_ability','subtype_golem'],
-			power: 				1,
+			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{swoop_hv: 2, strike_unit: 1, flying: 1},
+			abilities: 			{strike_unit: 1, flying: 1},
 		},
 		quote: '\"Engineered for risky manoeuvres.\"',
 		use_old: true,
@@ -2678,7 +2678,7 @@ var all_old_available_cards = {
 		pick_chance: 		1,
 		time: 				5,
 		image: 				'cards/dream_TradingCard-2023-03-13T151256.jpg',
-		power: 				2,
+		power: 				4,
 		armor: 				0,
 		health: 			5,
 		abilities: 			{charge: 1, strike: 1, resist_earth: 2},
@@ -2858,13 +2858,13 @@ var all_old_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, draw_once: 1, resist_earth: 2},
+		abilities: 			{strike: 1, draw: 1, resist_earth: 2},
 		hero_version: 			{
 			theme: 				['subtype_dwarf','hasten_ability','draw_cards_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, marred_draw: 1, resist_earth: 1},
+			abilities: 			{strike_unit: 1, draw_on_act: 1, resist_earth: 1},
 		},
 		quote: '\"The great dwarven library holds many secrets.\"',
 	},
@@ -3357,13 +3357,13 @@ var all_old_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, final_beastform: 1, striking_entry: 1},
+		abilities: 			{strike: 1, morph_ally: 1, striking_entry: 1},
 		hero_version: 			{
 			theme: 				['shift_ability','subtype_elf','subtype_animal'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, morph_ally: 4},
+			abilities: 			{strike_unit: 1, morph_ally: 1},
 		},
 		quote: '\"Just wait until she shows her true form.\"',
 	},
@@ -4748,7 +4748,7 @@ var all_old_available_cards = {
 		power: 				3,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, final_pay_life: 2, final_burn_all: 4, final_sacrifice: 1},
+		abilities: 			{strike: 1, burn_all: 1, final_pay_life: 1},
 		hero_version: 			{
 			theme: 				['subtype_daemon','burn_ability'],
 			power: 				2,
@@ -4972,7 +4972,7 @@ var all_old_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{spawn_sporeling: 2, fortify_ally: 4},
+			abilities: 			{spawn_sporeling: 1, regenerate: 2},
 		},
 		quote: '\"Something is blocking our path. And it smells weird.\"',
 		use_old: true,
@@ -5364,7 +5364,7 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			3,
-		abilities: 			{revealing_entry: 1, strike: 1, hide: 1},
+		abilities: 			{reveal: 1, strike: 1, hide: 1},
 		hero_version: 			{
 			theme: 				['subtype_gnome','evade_ability'],
 			power: 				2,
@@ -5624,7 +5624,7 @@ var all_old_available_cards = {
 	goblin_lair:{
 		name: 				'goblin lair',
 		type: 				'structure',
-		subtypes: 			['goblin','land'],
+		subtypes: 			['goblin','wall'],
 		color: 				['colorless'],
 		theme: 				[],
 		pick_chance: 		1,
@@ -5633,13 +5633,13 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			8,
-		abilities: 			{poison_aura: 1, release_goblin: 1, resist_magic: 1},
+		abilities: 			{poison_aura: 1, resist_magic: 1},
 		hero_version: 			{
 			theme: 				['subtype_goblin','subtype_goblin','subtype_goblin','subtype_goblin'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{poison_aura: 1, marred_goblins: 1, resist_magic: 1},
+			abilities: 			{poison_hv: 2, poison_aura: 2, resist_magic: 1},
 		},
 		quote: '\"That place is too foul for magic.\"',
 	},
@@ -5700,13 +5700,13 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, marring_discard: 1, resist_magic: 1},
+		abilities: 			{strike: 1, steal: 1, resist_magic: 1},
 		hero_version: 			{
 			theme: 				['subtype_goblin','resist_magic_ability','discard_enemy_ability'],
-			power: 				2,
+			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, painful_discards: 1, resist_magic: 1},
+			abilities: 			{strike_unit: 1, resist_magic: 1},
 		},
 		quote: '\"Those creatures use foul magic to steal what isn\'t theirs.\"',
 	},
@@ -5972,7 +5972,7 @@ var all_old_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{marred_ghosts: 1, cursed_deaths_hv: 1, plated: 1},
+			abilities: 			{summon_ghost: 1, cursed_deaths_hv: 1, plated: 1},
 		},
 		quote: '\"They say ghosts roam around there.\"',
 	},
@@ -6177,13 +6177,13 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{empowered_by_adjacent: 1, strike: 1, trample: 1},
+		abilities: 			{charge: 1, strike: 1, trample: 1},
 		hero_version: 			{
 			theme: 				['enrage_ability','subtype_animal'],
-			power: 				2,
+			power: 				3,
 			armor: 				0,
 			health: 			35,
-			abilities: 			{empowered_by_adjacent: 2, strike_unit: 1},
+			abilities: 			{strike_unit: 1},
 		},
 		quote: '\"One hoofbeast, no problem...\"',
 		use_old: true,
@@ -6763,13 +6763,13 @@ var all_old_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, shield: 1, stunning_touch: 1, resist_cold: 1},
+		abilities: 			{strike: 1, plated: 1, stunning_touch: 1, resist_cold: 1},
 		hero_version: 			{
 			theme: 				['subtype_jotnar','subtype_human', 'shield_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, shield: 1, stunning_touch: 1, resist_cold: 1},
+			abilities: 			{strike_unit: 1, plated: 1, stunning_touch: 1, resist_cold: 1},
 		},
 		quote: '\"The knights of the mountain are strong warriors\"',
 	},
@@ -6891,7 +6891,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{cold_bolt: 1, stunning_touch: 1, echo: 1},
+		abilities: 			{frost_bolt_hv: 1, echo: 1},
 		quote: '\"The mountain will freeze you to the bone.\"',
 	},
 	jotnar_striker:{
@@ -7033,10 +7033,10 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, run_away: 1, summon_guard: 1, command_ally: 1},
+		abilities: 			{strike: 1, run_away: 1, summon_conscript: 1, command_ally: 1},
 		hero_version: 			{
 			theme: 				['subtype_royal','subtype_guard','run_away_ability','summon_ally_ability','ally_creature_card_played_proc_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			30,
 			abilities: 			{strike_unit: 1, command_ally: 1},
@@ -7209,7 +7209,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{lightning: 1},
+		abilities: 			{lightning_hv: 1},
 		quote: '\"The giants failed their assault on Gu\'nar because of those.\"',
 		use_old: true,
 	},
@@ -7500,13 +7500,13 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, final_hasten: 3},
+		abilities: 			{strike: 1, final_hasten: 4},
 		hero_version: 			{
 			theme: 				['hasten_ability','draw_cards_ability','subtype_animal'],
 			power: 				2,
 			armor: 				0,
 			health: 			35,
-			abilities: 			{strike_unit: 1, raging_haste: 1},
+			abilities: 			{strike_unit: 1, hasten: 1},
 		},
 		quote: '\"Most usefull when stepped on.\"',
 	},
@@ -7568,7 +7568,7 @@ var all_old_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{reap: 1, withering_deaths_hv: 1, withering_aura: 1},
+			abilities: 			{reap: 1, withering_deaths: 1, withering_aura: 1},
 		},
 		quote: '\"Lost souls are placed to rest here.\"',
 		use_old: true,
@@ -7958,13 +7958,13 @@ var all_old_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{run_away: 1, strike: 1, marring_discard: 1, marring_selfdestruct: 1},
+		abilities: 			{run_away: 1, strike: 1, chaos_touch: 1},
 		hero_version: 			{
 			theme: 				['subtype_nightmare','discard_enemy_ability','enemy_discarded_proc_ability','draw_cards_ability','hasten_ability','slow_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, painful_discards: 1},
+			abilities: 			{strike_unit: 1, chaos_strikes: 1},
 		},
 		quote: '\"Its touch will send you spinning.\"',
 	},
@@ -7981,13 +7981,13 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, run_away: 1, summon_guard: 1},
+		abilities: 			{strike: 1, run_away: 1, summon_conscript: 1},
 		hero_version: 			{
 			theme: 				['subtype_royal','subtype_warrior','run_away_ability','summon_ally_ability','ally_creature_card_played_proc_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, marred_guards: 1},
+			abilities: 			{strike_unit: 1, evade: 1},
 		},
 		quote: '\"She feels safe that way.\"',
 	},
@@ -8816,7 +8816,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{empower_ally: 5, grant_seek_enemy_also: 1, grant_feast_also: 4, maximum_allies: 1, righthand: 1},
+		abilities: 			{ally_charges: 5, maximum_allies: 1, minimum_enemies: 3},
 		quote: '\"The lone warrior.\"',
 	},
 	rock_cannon:{
@@ -9608,7 +9608,7 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, resurrect: 1, undead: 1, release_sporeling: 1},
+		abilities: 			{strike: 1, resurrect: 1, undead: 1, spawn_sporeling: 1},
 		hero_version: 			{
 			theme: 				['subtype_skeleton','subtype_fungus','summon_creature_ability','ally_creature_death_proc_ability'],
 			power: 				2,
@@ -9692,13 +9692,13 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, final_draw: 1, resurrect: 1, undead: 1},
+		abilities: 			{strike: 1, doom: 1, resurrect: 1, undead: 1},
 		hero_version: 			{
 			theme: 				['subtype_skeleton','resurrect_ability','hasten_ability','move_ally_to_deck_from_grave_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, marred_draw: 1, resurrect: 1, undead: 1},
+			abilities: 			{strike_unit: 1, doom: 1, resurrect: 1, undead: 1},
 		},
 		quote: '\"Bones... just bones. Bones that can see the future.\"',
 		use_old: true,
@@ -9782,13 +9782,13 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, resurrect: 1, undead: 1, skeletonise: 1},
+		abilities: 			{strike: 1, resurrect: 1, undead: 1, raise_skeleton: 1},
 		hero_version: 			{
 			theme: 				['deaths','ally_creature_death_proc_ability','summon_creature_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, resurrect: 1, undead: 1, skeletonise: 1},
+			abilities: 			{strike_unit: 1, resurrect: 1, undead: 1, raise_skeleton: 1},
 		},
 		quote: '\"The master of bones.\"',
 		use_old: true,
@@ -10131,7 +10131,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{cold_blast: 3, stunning_touch: 1, minimum_enemies: 3},
+		abilities: 			{ice_blast: 10, minimum_enemies: 3},
 		quote: '\"It bites like ice.\"',
 		max_in_deck: 		2,
 	},
@@ -10176,7 +10176,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{restore_hero: 5, draw_on_act: 1, maximum_hero_health: 20, echo: 1},
+		abilities: 			{restore: 5, draw_on_act: 1, echo: 1},
 		quote: '\"Such beauty is these dire times.\"',
 		max_in_deck: 		2,
 	},
@@ -11572,7 +11572,7 @@ var all_old_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, ignites: 1, burning_aura: 1},
+			abilities: 			{strike_unit: 1, ignites: 1, fire_aura: 1},
 		},
 		quote: '\"They worship the fire of the lord of hell.\"',
 	},
@@ -11699,13 +11699,13 @@ var all_old_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, burning_entry: 1, marring_discard: 1},
+		abilities: 			{strike: 1, burning_entry: 1, steal: 1},
 		hero_version: 			{
 			theme: 				['discard_enemy_ability','hell','subtype_wanton'],
-			power: 				2,
+			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, ignites: 1, painful_discards: 1},
+			abilities: 			{strike_unit: 1, ignites: 1},
 		},
 		quote: '\"She steals for the lord of hell.\"',
 	},
@@ -12322,7 +12322,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{fortify_ally: 1, echo: 1},
+		abilities: 			{fortify_hero: 2, echo: 1},
 		quote: '\"A simple protection spell.\"',
 	},
 	workshop:{
@@ -12343,7 +12343,7 @@ var all_old_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{repair_self: 1, repair: 1},
+			abilities: 			{regenerate: 1, repair: 1},
 		},
 		quote: '\"They can build you anything!\"',
 	},
@@ -12577,7 +12577,7 @@ var all_old_available_cards = {
 	//########################################################## REWARDS ###############################################################################################
 	//##################################################################################################################################################################
 
-	empty_card:{
+	/*empty_card:{
 		name: 				'',
 		value: 				1,
 		type: 				'',
@@ -12734,8 +12734,8 @@ var all_old_available_cards = {
 			text: 			'&nbsp;',
 			amount_used: 	[1,5,'all'],
 		},
-	},
-	map:{
+	},*/
+	/*map:{
 		name: 				'map',
 		description: 		'Can be used to boost the current enemy. Increases rewards by 10%.',
 		value: 				20,
@@ -12749,18 +12749,13 @@ var all_old_available_cards = {
 		armor: 				0,
 		health: 			false,
 		abilities: 			{},
-		/*reward: 			{
-			type: 			'loot_charges',
-			amount: 		5,
-			description: 	'Increases the value of the loot from the next battle you win by 5.',
-			amount_used: 	[1,5,10,'all'],
-		},*/
+
 		summon_post_buff:{
 			buff_type: 			'reward_count',
 			buff_amount: 		10,
 			buff_amount_type:  'percent',
 		}
-	},
+	},*/
 	
 	/*bed:{
 		name: 				'bed',
@@ -12782,7 +12777,7 @@ var all_old_available_cards = {
 			buff_amount_type:  'fixed',
 		}
 	},*/
-	pillow:{
+	/*pillow:{
 		name: 				'pillow',
 		description: 		'Can be used to adjust the current enemy. Reduces the power of the current enemy by 10%.',
 		value: 				25,
@@ -12817,20 +12812,15 @@ var all_old_available_cards = {
 		armor: 				0,
 		health: 			false,
 		abilities: 			{},
-		/*reward: 			{
-			type: 			'loot_rarity',
-			amount: 		100,
-			description: 	'Increases the chance of rare loot from the next battle you win by 100%.',
-			amount_used: 	[1,5,10,'all'],
-		},*/
-	},
+
+	},*/
 
 	//##################################################################################################################################################################
 	//########################################################## GEMS ###############################################################################################
 	//##################################################################################################################################################################
 	
 	
-	cracked_opal:{
+	/*cracked_opal:{
 		name: 				'cracked opal',
 		description: 		'Can be used to boost a summon. Increases the maximum rarity by 10%.',
 		value: 				5,
@@ -12856,7 +12846,7 @@ var all_old_available_cards = {
 				buff_amount_type:  'percent',
 			}
 		}
-	},
+	},*/
 	/*cracked_tourmaline:{
 		name: 				'cracked tourmaline',
 		description: 		'Can be used to boost a summon. Increases the minimum level by 1.',
@@ -12884,7 +12874,7 @@ var all_old_available_cards = {
 			}
 		}
 	},*/
-	dark_opal:{
+	/*dark_opal:{
 		name: 				'dark opal',
 		description: 		'Can be used to boost a summon. Increases the maximum rarity by 100%.',
 		value: 				50,
@@ -13031,7 +13021,7 @@ var all_old_available_cards = {
 				buff_amount_type:  'percent',
 			}
 		}
-	},
+	},*/
 	/*benitoite:{
 		name: 				'benitoite',
 		description: 		'Can be used to boost a summon. Increases the maximum level by 25%.',
@@ -13082,7 +13072,7 @@ var all_old_available_cards = {
 			}
 		}
 	},*/
-	opal:{
+	/*opal:{
 		name: 				'opal',
 		description: 		'Can be used to boost a summon. Increases the maximum rarity by 20%.',
 		value: 				10,
@@ -13108,7 +13098,7 @@ var all_old_available_cards = {
 				buff_amount_type:  'percent',
 			}
 		}
-	},
+	},*/
 	/*tourmaline:{
 		name: 				'tourmaline',
 		description: 		'Can be used to boost a summon. Increases the minimum level by 25%.',
@@ -13138,7 +13128,7 @@ var all_old_available_cards = {
 	//##################################################################################################################################################################
 	
 	
-	shard:{
+	/*shard:{
 		name: 				'shard',
 		value: 				5,
 		months_available: 	[0,1,2,3,4,5,6,7,8,9,10,11,12],
@@ -13153,7 +13143,7 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{},
 		quote: '\"Used for upgrades.\"',
-	},
+	},*/
 
 	/*chick:{
 		name: 				'chick',
@@ -13221,6 +13211,18 @@ var replacement_abilities = {
 	strike_nearest: 	'strike_unit',
 	cleanse: 			'purify',
 	draw_once: 			'draw',
+	fortify_ally: 		'fortify',
+	cold_bolt: 			'frost_bolt',
+	cold_bolt_hv: 		'frost_bolt_hv',
+	restore_hero: 		'restore',
+	shield: 			'fortify_self',
+	command_ally: 		'empower_ally',
+	flank: 				'run_away',
+	armored: 			'plated',
+	cold_blast: 		'ice_blast',
+	burn_hero: 			'burn_hv',
+	weaken: 			'weakness',
+	cover: 				'submerged',
 }
 
 var ignored_abilities = {
@@ -13352,7 +13354,7 @@ function add_old_cards(old_cards, image_folder){
 						if(new_card_info['power'] != card_info['power']){matched_this = false;}
 						if(new_card_info['health'] != card_info['health']){matched_this = false;}
 						if(new_card_info['type'] != card_info['type']){matched_this = false;}
-						if(match_array_values(new_card_info['subtypes'], card_info['subtypes']) < count_object(new_card_info['subtypes'])){matched_this = false;}
+						if(new_card_info['type'] != 'artifact' && new_card_info['type'] != 'spell' && match_array_values(new_card_info['subtypes'], card_info['subtypes']) < count_object(new_card_info['subtypes'])){matched_this = false;}
 						if(count_object(card_info['abilities']) == count_object(new_card_info['abilities']))
 						{
 							$.each(card_info['abilities'], function(ability_id, ability_level){
@@ -13380,6 +13382,7 @@ function add_old_cards(old_cards, image_folder){
 			{
 				var new_card = true_copyobject(old_cards[card_id]);
 				var old_image_string = new_card['image'];
+				if(new_card['armor'] > 0){new_card['armor'] = 0;}
 				$.each(new_card['abilities'], function(ability_id, ability_level){
 					if(all_abilities[ability_id] == undefined)
 					{
@@ -13399,6 +13402,7 @@ function add_old_cards(old_cards, image_folder){
 				});
 				if(new_card['hero_version'] != undefined)
 				{
+					if(new_card['hero_version']['armor'] > 0){new_card['hero_version']['armor'] = 0;}
 					new_card['hero_version']['image'] = old_image_string.replace('cards/',image_folder);
 					$.each(new_card['hero_version']['abilities'], function(ability_id, ability_level){
 						if(all_abilities[ability_id] == undefined)
@@ -13425,6 +13429,8 @@ function add_old_cards(old_cards, image_folder){
 				new_card['color'] = ['white'];
 				if(new_card['recipe'] != undefined){delete new_card['recipe'];}
 				if(new_card['basic_reward'] != undefined){delete new_card['basic_reward'];}
+				if(new_card['placement'] != undefined){delete new_card['placement'];}
+				
 				//console.log('added ' + card_id);
 				added_old_cards[card_id] = true;
 				all_available_cards[card_id] = new_card;

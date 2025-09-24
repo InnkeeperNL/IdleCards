@@ -292,7 +292,22 @@ var all_upgrades = {
 		max_level: 		1,
 		//hide_if_maxed: 	true,
 	},
-	
+	/*z_aa_library_access:{
+		name: 			'Reasearch',
+		description: 	'Unlocks the library.',
+		needed_upgrades:{
+			z_a_town_access: 1,
+			wave_access: 1,
+		},
+		card_image: 	'library',
+		type: 			'library_access',
+		subtypes:  		['any'],
+		amount: 		100,
+		amount_fixed: 	true,
+		cost: 			{shard: 5, scraps:250,},
+		max_level: 		1,
+		//hide_if_maxed: 	true,
+	},*/
 	z_b_bank_access:{
 		name: 			'Banking',
 		description: 	'Unlocks the bank.',

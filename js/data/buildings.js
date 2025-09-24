@@ -198,7 +198,41 @@ var all_buildings = {
 		},
 		shop_type: 		['artifact'],
 	},
-	
+	a1_library:{
+		name: 			'library',
+		fragment_id: 	'shard',
+		image: 			'cards/dream_TradingCard72.jpg',
+		description: 	'<i>Research new recipes here.</i>',
+		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
+		upgradable:  	false,
+		type: 			'research',
+		needed_upgrades:{
+			z_aa_library_access: 1,
+		},
+		/*productions:{
+			scraps_placeholder:{
+				base_time: 		8 * 1 * 3600,
+				base_storage: 	0.5 * 100,
+				upgrade_cost_speed:{
+					scraps: 		100,
+				},
+				upgrade_cost_storage:{
+					scraps: 		100,
+				},
+				defeated_heroes_speed_bonusses:{
+				},
+				production_achievement_bonus: 0.1,
+			},
+		},*/
+		/*recipes:{
+			chest:{
+				costs:{
+					stash: 		5,
+				}
+			},
+		},*/
+		shop_type: 		['spell','artifact'],
+	},
 }
 
 /*var all_adventures = {

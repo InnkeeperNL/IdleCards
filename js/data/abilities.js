@@ -1128,6 +1128,34 @@ var all_abilities = {
 		level_cost: 		6,
 		level_cost_spell: 	1.5,
 	},
+	burning_aura:{
+		description: 	'Applies {LEVEL} burn to any enemy unit or hero that deals melee damage to it. {BURN}',
+		proc: 			'receive_damage',
+		subtypes: 		['melee'],
+		scales: 		true,
+		proc_while_dead: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'burn',
+				type: 			'apply_burn',
+				subtypes: 		['burn'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+		level_cost_hero: 	2,
+	},
 	burning_deaths:{
 		description: 	'Applies {LEVEL} burn to a random enemy unit or hero when any ally creature is destroyed.',
 		proc: 			'ally_creature_death',
@@ -1443,7 +1471,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	2,
-		level_cost_spell: 	0.5,
+		level_cost_spell: 	1,
 		level_cost_hero: 1,
 	},
 	charmed:{
@@ -3629,6 +3657,41 @@ var all_abilities = {
 		level_cost: 		1,
 		level_cost_artifact: 0.5,
 	},
+	final_burn:{
+		description: 	'When destroyed, applies {LEVEL} burn to a random enemy unit. Will target the enemy hero if there are no enemy units.{BURN}',
+		proc: 			'own_death',
+		proc_while_dead: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+			1:{
+				target: 	'hero',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'burn',
+				type: 		'apply_burn',
+				subtypes: 	['burn'],
+				amount: 	'ability_level',
+				increase_timeout: 500,
+				pause_before: 500,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+		level_cost_spell: 	0.5,
+	},
 	final_curse:{
 		description: 	'When destroyed, applies {LEVEL} curse to a random enemy unit or hero.{CURSE}',
 		proc: 			'own_death',
@@ -4826,6 +4889,31 @@ var all_abilities = {
 		level_cost: 		4,
 		level_cost_hero: 	2,
 		level_cost_spell: 	1,
+	},
+	hide_on_kill:{
+		description: 	'Grants itself stealth when it destroys a unit.',
+		proc: 			'kill',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				max_abilities: 	{stealth: 0},
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'dodge',
+				type: 			'set_skill',
+				subtypes: 		['on_kill','grant_stealth'],
+				skill_id: 		'stealth',
+				amount: 		1
+			}
+		},
+		animation: 		'combat_zoom',
 	},
 	homebound:{
 		description: 	'Has a 50% chance to return to its owner\'s hand. If this was summoned, it disappears.',
@@ -8191,6 +8279,34 @@ var all_abilities = {
 		level_cost_hero: 	1.5,
 		cost_factor: 		'health',
 	},
+	summon_artifact:{
+		description: 	'Summons up to {LEVEL} artifact(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_artifacts: 4,
+		reduce_skill_after_use:'summon_artifact',
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_artifact'],
+				card_id: 	'random',
+				card_type: 	'artifact',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		12,
+		level_cost_hero: 	4,
+		level_cost_spell: 	3
+	},
 	summon_conscript:{
 		description: 	'Summons {LEVEL} conscript(s).',
 		proc: 			'basic',
@@ -8640,6 +8756,30 @@ var all_abilities = {
 		average_hits: 		1,
 		cost_factor: 		'health',
 	},
+	trample:{
+		description: 	'When this kills a unit with physical melee damage, the excess damage is dealt to the enemy hero.',
+		proc: 			'overkill',
+		subtypes: 		['melee','physical'],
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 	'hero',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'hoof',
+				type: 		'damage',
+				subtypes: 	['melee','physical'],
+				amount: 	'ability_level'
+			}
+		},
+		level_cost: 	1,
+	},
 	trap:{
 		description: 	'Any enemy unit or hero that deals melee damage to this has a 25% chance to be stunned for {LEVEL} round(s).',
 		proc: 			'receive_damage',
@@ -8694,6 +8834,34 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 		level_cost_spell: 	0.5,
+	},
+	trophy_kill:{
+		description: 	'Restores {LEVEL} health to your hero whenever it destroys an enemy unit.',
+		proc: 			'kill',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	1,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'hero',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'ally',
+				damaged: 	true,
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'healing',
+				type: 		'healing',
+				subtypes: 	['healing','trophy_kill'],
+				amount: 	'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
+		level_cost_hero: 	2,
 	},
 	undead:{
 		name_color: 		'rgba(255,255,255,0.9)',
@@ -8828,7 +8996,7 @@ var all_abilities = {
 				max_amount: 	'ability_level',
 			}
 		},
-		level_cost: 		1,
+		level_cost: 		2,
 	},
 	vengeance:{
 		description: 	'When any ally creature is destroyed, deals {LEVEL} physical melee damage to the nearest enemy unit. Will target the enemy hero if there are no enemy units.',

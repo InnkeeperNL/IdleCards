@@ -435,7 +435,7 @@ var all_older_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{restore_hero: 2, draw_on_act: 1},
+		abilities: 			{restore: 2, draw_on_act: 1},
 		quote: '',
 		recipe:{
 			carrier_pigeon: 		1,
@@ -454,7 +454,7 @@ var all_older_available_cards = {
 		power: 				4,
 		armor: 				0,
 		health: 			11,
-		abilities: 			{strike: 1},
+		abilities: 			{strike: 1, withering_touch: 1},
 		hero_version: 			{
 			name: 				'blood horror',
 			type: 				'creature',
@@ -464,7 +464,7 @@ var all_older_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1},
+			abilities: 			{strike_unit: 1, withering_touch: 1},
 		},
 		recipe:{
 			skeleton: 				1,
@@ -510,7 +510,6 @@ var all_older_available_cards = {
 		theme: 				['deaths'],
 		pick_chance: 		1,
 		time: 				1,
-		basic_reward: 		true,
 		image: 				'cards/bone-664596_640.jpg',
 		power: 				false,
 		armor: 				false,
@@ -593,8 +592,8 @@ var all_older_available_cards = {
 		image: 				'cards/devil-1674605_640.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			2,
-		abilities: 			{strike: 1, burning_entry: 2},
+		health: 			4,
+		abilities: 			{strike: 1, burning_entry: 3},
 		hero_version: 			{
 			name: 				'burning imp',
 			type: 				'creature',
@@ -602,7 +601,7 @@ var all_older_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, burn_hero: 1},
+			abilities: 			{strike_unit: 1, burn_hv: 1},
 		},
 		recipe:{
 			fire_imp: 		1,
@@ -639,7 +638,7 @@ var all_older_available_cards = {
 		},
 		quote: '\"Sit still!\"'
 	},*/
-	candle:{
+	/*candle:{
 		name: 				'candle',
 		version: 			2,
 		type: 				'artifact',
@@ -647,18 +646,13 @@ var all_older_available_cards = {
 		theme: 				['burn'],
 		pick_chance: 		1,
 		time: 				2,
-		basic_reward: 		true,
 		image: 				'cards/candle-4477021_640.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
 		abilities: 			{burn_hero: 1, delay: 1},
 		quote: '',
-		/*recipe:{
-			lumber: 			1,
-			ore: 				1
-		}*/
-	},
+	},*/
 	candle_bearer:{
 		name: 				'candle bearer',
 		version: 			2,
@@ -1841,15 +1835,15 @@ var all_older_available_cards = {
 		power: 				3,
 		armor: 				0,
 		health: 			9,
-		abilities: 			{strike: 1, reach: 1, trap: 1},
+		abilities: 			{strike: 1, trap: 1},
 		hero_version: 			{
 			name: 				'giant spider',
 			type: 				'creature',
 			image: 				'cards/european-garden-spider-5530397_640.jpg',
-			power: 				2,
+			power: 				3,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, reach: 1, trap: 1},
+			abilities: 			{strike_unit: 1, trap: 1},
 		},
 		recipe:{
 			spider: 			1,
@@ -2481,7 +2475,7 @@ var all_older_available_cards = {
 			type: 				'creature',
 			theme: 				['muscle','direct_damage','burn'],
 			image: 				'cards/planet-2967684_640.jpg',
-			power: 				2,
+			power: 				3,
 			armor: 				0,
 			health: 			35,
 			abilities: 			{strike_unit: 1, trample: 1, ignites: 1},
@@ -3869,7 +3863,7 @@ var all_older_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			3,
-		abilities: 			{burn: 1, run_away: 1},
+		abilities: 			{burn: 1, run_away: 1, homebound: 1},
 		hero_version: 			{
 			name: 				'trickster imp',
 			type: 				'creature',
@@ -3878,7 +3872,7 @@ var all_older_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{evade: 1, burn_hero: 2},
+			abilities: 			{burn_hero: 2, evade: 1},
 		},
 		recipe:{
 			burning_imp: 		1,

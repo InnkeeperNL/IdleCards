@@ -449,7 +449,7 @@ var all_oldest_available_cards = {
 		power: 				2,
 		armor: 				2,
 		health: 			5,
-		abilities: 			{seek_enemy: 1, swipe: 1, enrage:1},
+		abilities: 			{seek_enemy: 1, strike: 1, enrage:1},
 		hero_version: 			{
 			name: 				'barbarian elite',
 			type: 				'creature',
@@ -458,7 +458,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				5,
 			health: 			55,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_nearest: 1, enrage: 1},
 		},
 		recipe:{
 			barbarian_axeman: 	1,
@@ -501,16 +501,16 @@ var all_oldest_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{enrage_enemy: 1, empower_ally: 1, strike: 1},
+		abilities: 			{empower_ally: 1, strike: 1},
 		hero_version: 			{
 			name: 				'bard',
 			type: 				'creature',
 			image: 				'cards/fantasy-4103064_640.jpg',
 			image_position: 		'top',
-			power: 				false,
+			power: 				2,
 			armor: 				0,
 			health: 			45,
-			abilities: 			{enrage_enemy: 1, empower_ally: 1},
+			abilities: 			{strike_unit: 1, empower_ally: 1},
 		},
 		recipe:{
 			peasant: 		 	1,
@@ -729,7 +729,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{resurrect_ally: 2},
+		abilities: 			{resurrect_ally: 1},
 	},
 	
 	book_of_fire:{
@@ -857,7 +857,7 @@ var all_oldest_available_cards = {
 		image: 				'cards/devil-1674605_640.jpg',
 		power: 				2,
 		armor: 				0,
-		health: 			2,
+		health: 			3,
 		abilities: 			{strike: 1, burning_entry: 2, resist_fire: 1},
 		hero_version: 			{
 			name: 				'burning imp',
@@ -866,7 +866,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, burn: 1, resist_fire: 1},
+			abilities: 			{strike_nearest: 1, burn: 2, resist_fire: 1},
 		},
 		recipe:{
 			fire_imp: 		1,
@@ -1045,7 +1045,7 @@ var all_oldest_available_cards = {
 			sandstorm: 			2,
 		}
 	},
-	candle:{
+	/*candle:{
 		name: 				'candle',
 		type: 				'artifact',
 		color: 				['red'],
@@ -1057,7 +1057,7 @@ var all_oldest_available_cards = {
 		armor: 				false,
 		health: 			false,
 		abilities: 			{burn: 1, delay: 3},
-	},
+	},*/
 
 	caravan:{
 		name: 				'caravan',
@@ -1325,7 +1325,7 @@ var all_oldest_available_cards = {
 			type: 				'creature',
 			image: 				'cards/fantasy-2899611_640.jpg',
 			image_position: 		'top',
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			30,
 			abilities: 			{strike_nearest: 1, restore_hero: 1, draw_once: 1},
@@ -1413,7 +1413,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{curse_all: 1},
+		abilities: 			{curse_all: 2},
 		recipe:{
 			magic_attunement: 	1,
 			deaths_call: 		1,
@@ -2484,7 +2484,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{sacrifice: 1},
+		abilities: 			{sacrifice_unit: 1, burn_all: 10, minimum_allies: 1, minimum_enemies: 3},
 		recipe:{
 			burning_rage: 			1,
 			mana_crystal: 			1
@@ -2738,7 +2738,7 @@ var all_oldest_available_cards = {
 		power: 				3,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, fire_shield: 1, flying: 1, resurrect: 5},
+		abilities: 			{strike: 1, fire_aura: 1, flying: 1, resurrect: 1},
 		hero_version: 			{
 			name: 				'flame deamon',
 			type: 				'creature',
@@ -2747,7 +2747,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			20,
-			abilities: 			{strike_nearest: 1, flying: 1, resurrect: 5},
+			abilities: 			{strike_nearest: 1, flying: 1, resurrect: 1},
 		},
 		recipe:{
 			bones: 				1,
@@ -2855,7 +2855,7 @@ var all_oldest_available_cards = {
 		}
 	},
 	
-	flame_summoner:{
+	/*flame_summoner:{
 		name: 				'flame summoner',
 		type: 				'creature',
 		color: 				['red'],
@@ -2888,7 +2888,7 @@ var all_oldest_available_cards = {
 			fire_mage: 		1,
 			fire_imp: 		1
 		}
-	},
+	},*/
 	
 	force_pull:{
 		name: 				'force pull',
@@ -3536,7 +3536,7 @@ var all_oldest_available_cards = {
 		armor: 				0,
 		health: 			4,
 		placement: 			'right',
-		abilities: 			{fortify_hero: 1, undead: 1, flank: 1},
+		abilities: 			{fortify_hero: 1, undead: 1, run_away: 1},
 		hero_version: 			{
 			name: 				'golden spirit',
 			type: 				'creature',
@@ -3545,7 +3545,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{fortify_hero: 1, undead: 1},
+			abilities: 			{fortify_hero: 1, evade: 1, undead: 1},
 		},
 		recipe:{
 			yellow_spirit: 			1,
@@ -3797,7 +3797,7 @@ var all_oldest_available_cards = {
 		power: 				1,
 		armor: 				2,
 		health: 			6,
-		abilities: 			{fire_breath: 2, strike: 1, armored: 1},
+		abilities: 			{burn_all: 2, strike: 1, armored: 1},
 		hero_version: 			{
 			name: 				'heat wurm',
 			type: 				'creature',
@@ -3805,7 +3805,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				10,
 			health: 			20,
-			abilities: 			{fire_breath: 1, strike_nearest: 1, armored: 1},
+			abilities: 			{burn_all: 1, strike_nearest: 1, armored: 1},
 		},
 		recipe:{
 			hellfire: 			1,
@@ -3931,7 +3931,7 @@ var all_oldest_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, elemental_resistance: 1, stealth: 1},
+		abilities: 			{strike: 1, venom: 1, stealth: 1},
 		hero_version: 			{
 			name: 				'hidden lizard',
 			type: 				'creature',
@@ -3940,7 +3940,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, elemental_resistance: 1, stealth: 1},
+			abilities: 			{strike_nearest: 1, venom: 1, hide: 1},
 		},
 		recipe:{
 			sandstorm: 			1,
@@ -4141,7 +4141,7 @@ var all_oldest_available_cards = {
 		power: 				3,
 		armor: 				0,
 		health: 			8,
-		abilities: 			{strike: 1, brutal: 1, enrage: 1},
+		abilities: 			{strike: 1, enrage: 1},
 		hero_version: 			{
 			name: 				'huge orc',
 			type: 				'creature',
@@ -4149,7 +4149,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, brutal: 1},
+			abilities: 			{strike_nearest: 1, enrage: 1},
 		},
 		recipe:{
 			dancing_devil: 		1,
@@ -4191,16 +4191,16 @@ var all_oldest_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, clone_self: 1},
+		abilities: 			{strike: 1, bring_clone: 2},
 		hero_version: 			{
 			name: 				'illusionist',
 			type: 				'creature',
 			image: 				'cards/fantasy-4122171_640.jpg',
 			image_position:     'top',
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, evade: 1},
+			abilities: 			{strike_nearest: 2, evade: 1},
 		},
 		recipe:{
 			pure_mage: 			1,
@@ -4628,10 +4628,10 @@ var all_oldest_available_cards = {
 		color: 				['purple'],
 		time: 				1,
 		image: 				'cards/crocodile-630231_1280.jpg',
-		power: 				4,
+		power: 				3,
 		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, discard: 1},
+		health: 			6,
+		abilities: 			{strike: 1, submerged: 1, discard: 1},
 		hero_version: 			{
 			name: 				'marsh crocodile',
 			type: 				'creature',
@@ -4639,7 +4639,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_nearest: 1, submerged: 1},
 		},
 		recipe:{
 			fire_salamander: 	1,
@@ -5038,7 +5038,7 @@ var all_oldest_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, plunder: 1, gamble: 1},
+		abilities: 			{strike: 1, plunder: 1, restore: 1},
 		hero_version: 			{
 			name: 				'pirate lady',
 			type: 				'creature',
@@ -5046,7 +5046,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			45,
-			abilities: 			{strike_nearest: 1, plunder: 1, gamble: 1},
+			abilities: 			{strike_nearest: 1, restore: 1},
 		},
 		recipe:{
 			pirate: 			1,
@@ -5272,7 +5272,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{curse: 1, undead: 1},
+			abilities: 			{curse: 2, evade: 1, undead: 1},
 		},
 		recipe:{
 			ghost_bride: 		1,
@@ -5305,7 +5305,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{empower_all: 1},
+		abilities: 			{empower_all: 2},
 		recipe:{
 			amber: 			2,
 		}
@@ -5436,7 +5436,7 @@ var all_oldest_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, elemental_resistance: 1, ignites: 1},
+		abilities: 			{strike: 1, resist_fire: 1, ignites: 1},
 		hero_version: 			{
 			name: 				'red lizard',
 			type: 				'creature',
@@ -5445,7 +5445,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, elemental_resistance: 1, ignites: 1},
+			abilities: 			{strike_nearest: 1, resist_fire: 1, ignites: 1},
 		},
 		recipe:{
 			sandstorm: 			1,
@@ -5881,7 +5881,7 @@ var all_oldest_available_cards = {
 			bones: 				1,
 		}
 	},
-	skulking_skeleton:{
+	/*skulking_skeleton:{
 		name: 				'skulking skeleton',
 		type: 				'creature',
 		color: 				['purple'],
@@ -5890,21 +5890,21 @@ var all_oldest_available_cards = {
 		power: 				1,
 		armor: 				4,
 		health: 			1,
-		abilities: 			{strike: 1, undead: 1, unhealable: 1, resurrect: 5},
+		abilities: 			{strike: 1, undead: 1, resurrect: 1},
 		hero_version: 			{
 			name: 				'skulking skeleton',
 			type: 				'creature',
 			image: 				'cards/fantasy-3471272_1280.jpg',
-			power: 				2,
+			power: 				3,
 			armor: 				20,
 			health: 			10,
-			abilities: 			{strike_nearest: 1, undead: 1, unhealable: 1, resurrect: 5},
+			abilities: 			{strike_nearest: 1, undead: 1, resurrect: 1},
 		},
 		recipe:{
 			skeleton: 			1,
 			raise_dead: 		1
 		}
-	},
+	},*/
 	
 	sky_burner:{
 		name: 				'sky burner',
@@ -6142,7 +6142,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				4,
 		health: 			6,
-		abilities: 			{cleanse: 3, cover: 2, fireproof: 1},
+		abilities: 			{cleanse: 1, submerged: 1, fireproof: 1},
 		hero_version: 			{
 			name: 				'sunken ruins',
 			type: 				'structure',
@@ -6150,7 +6150,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				6,
 			health: 			50,
-			abilities: 			{cleanse: 3, cover: 2, fireproof: 1},
+			abilities: 			{cleanse: 1, submerged: 1, fireproof: 1},
 		},
 		recipe:{
 			cleansing_water: 	1,
