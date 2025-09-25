@@ -11614,10 +11614,11 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 				if(drop_card_info['recipe'] != undefined && (gamedata['known_recipes'] == undefined || gamedata['known_recipes'][drop_card_id] == undefined))
 				{
 					possible_extra_drops['recipe_' + drop_card_id] = 1;
+					possible_extra_drops[drop_card_id] = 1;
 				}
 				/*else
 				{*/
-					possible_extra_drops[drop_card_id] = 1;
+					
 				/*}*/
 			}
 		});
