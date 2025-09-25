@@ -3457,6 +3457,30 @@ var all_abilities = {
 		},
 		level_cost: 		2,
 	},
+	eternal:		{
+		description: 	'Returns to its owner\'s deck when destroyed.',
+		proc: 			'post_own_death',
+		proc_while_dead: true,
+		targets:	{
+			0:{
+				target: 	'any',
+				target_amount: 1,
+				position: 	'self',
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'teleport',
+				type: 		'move_to_deck',
+				subtypes: 	['move_ally_to_deck'],
+				new_status: 'deck',
+				side: 		'ally',
+			}
+		},
+		level_cost: 	2,
+		cost_factor: 	'full',
+	},
 	evade:{
 		description: 	'Gives this unit a 35% chance to avoid any incoming melee or projectile effect.',
 		proc: 			'avoid_effect',
@@ -9085,6 +9109,33 @@ var all_abilities = {
 		},
 		level_cost: 		0,
 		average_hit_cost: 	0.75,
+	},
+	victory_rush:{
+		description: 	'Gains {LEVEL} additional turn(s) when it destroys an enemy.',
+		proc: 			'kill',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'go_again',
+				type: 		'go_again',
+				subtypes: 	['victory_rush'],
+				amount: 	1
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	0.25,
+		level_cost_hero: 0.5,
+		cost_factor: 'full',
 	},
 	water_blast:{
 		description: 	'Deals {LEVEL} physical water damage to all non-flying enemy units.',

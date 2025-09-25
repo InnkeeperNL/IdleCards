@@ -2015,7 +2015,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{wither_all: 5, minimum_enemies: 3},
+		abilities: 			{wither_hv: 2, echo: 1},
 		quote: '\"Do you feel the breath of death?\"',
 		use_old: true,
 	},
@@ -7586,13 +7586,13 @@ var all_old_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, resist_fire: 1},
+		abilities: 			{strike: 1},
 		hero_version: 			{
 			theme: 				['subtype_mermaid','resist_fire_ability','water'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, resist_fire: 1},
+			abilities: 			{strike_unit: 1},
 		},
 		quote: '\"Pretty, aren\'t they?\"',
 	},
@@ -12408,13 +12408,13 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, resist_fire: 1},
+		abilities: 			{strike: 1},
 		hero_version: 			{
 			theme: 				['subtype_mermaid','resist_fire_ability','water'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, resist_fire: 1},
+			abilities: 			{strike_unit: 1},
 		},
 		quote: '\"They love to play with sailors.\"',
 	},
@@ -12539,13 +12539,13 @@ var all_old_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, undead: 1, feast: 4, resist_fire: 1},
+		abilities: 			{strike: 1, undead: 1, feast: 4},
 		hero_version: 			{
 			theme: 				['feast_ability','subtype_zombie','subtype_mermaid','subtype_undead'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, undead: 1, feast: 2, resist_fire: 1},
+			abilities: 			{strike_unit: 1, undead: 1, feast: 1},
 		},
 		quote: '\"It\'s beaty has faded and a hunger has grown.\"',
 	},
@@ -13223,6 +13223,13 @@ var replacement_abilities = {
 	burn_hero: 			'burn_hv',
 	weaken: 			'weakness',
 	cover: 				'submerged',
+	poisonous: 			'venom',
+	return_soul: 		'reclaim_creature',
+	deaths_curse: 		'cursed_deaths_hv',
+	death_curse: 		'final_curse',
+	protect: 			'fortify',
+	life_cost_once: 	'pay_life',
+	spell_echo: 		'echo',
 }
 
 var ignored_abilities = {
@@ -13232,6 +13239,7 @@ var ignored_abilities = {
 
 var racial_abilities = {
 	elf: 				'resist_magic',
+	mermaid: 			'submerged',
 }
 
 function add_old_cards(old_cards, image_folder){

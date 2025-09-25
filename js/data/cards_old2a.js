@@ -1355,6 +1355,7 @@ var all_oldest_available_cards = {
 	crypt_elf:{
 		name: 				'crypt elf',
 		type: 				'creature',
+		subtypes: 			['elf','cleric'],
 		color: 				['purple','green'],
 		time: 				6,
 		image: 				'cards/fantasy-3699102_640.jpg',
@@ -1370,7 +1371,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, poisonous: 1},
+			abilities: 			{strike_nearest: 1, poisonous: 1, reclaim_creatures: 1},
 		},
 		recipe:{
 			forest_elf: 		1,
@@ -1586,10 +1587,10 @@ var all_oldest_available_cards = {
 			name: 				'dark seer',
 			type: 				'creature',
 			image: 				'cards/gothic-3264763_640.jpg',
-			power: 				1,
+			power: 				3,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, return_souls: 1},
+			abilities: 			{strike_nearest: 1, reclaim_creatures: 1},
 		},
 		recipe:{
 			dark_warrior: 		1,
@@ -5363,7 +5364,7 @@ var all_oldest_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{counter: 1, poisonous: 1, pierces: 1},
+		abilities: 			{strike_unit: 1, counter: 1, poisonous: 1},
 		hero_version: 			{
 			name: 				'rattlesnake',
 			type: 				'creature',
@@ -5371,7 +5372,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{counter: 1, poisonous: 1, pierces: 1},
+			abilities: 			{strike_unit: 1, counter: 1, poisonous: 1},
 		},
 		recipe:{
 			herbalists_lab: 	1,
@@ -6787,7 +6788,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			45,
-			abilities: 			{strike_nearest: 1, victory_rush: 1},
+			abilities: 			{strike_nearest: 1, victory_rush: 1, reclaim_creatures: 1},
 		},
 		recipe:{
 			viking: 			1,
