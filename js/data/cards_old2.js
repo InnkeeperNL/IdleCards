@@ -653,7 +653,7 @@ var all_older_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			7,
-		abilities: 			{strike: 1, deaths_curse: 1},
+		abilities: 			{strike: 1, cursed_deaths: 1},
 		hero_version: 			{
 			name: 				'dark seer',
 			type: 				'creature',
@@ -662,7 +662,7 @@ var all_older_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, deaths_curse: 1},
+			abilities: 			{strike_unit: 1, cursed_deaths_hv: 1},
 		},
 		recipe:{
 			blood_horror: 		1,
