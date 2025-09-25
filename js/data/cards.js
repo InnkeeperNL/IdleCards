@@ -716,7 +716,7 @@ var all_available_cards = {
 			health: 			40,
 			abilities: 			{arcane_bolt_hv: 2, ignites: 1},
 		},
-		quote: '\"Overlord of magic.\"',
+		quote: '\"Master of magic.\"',
 	},
 	armadillo:{
 		name: 				'armadillo',

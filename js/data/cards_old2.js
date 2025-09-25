@@ -315,125 +315,6 @@ var all_older_available_cards = {
 		abilities: 			{strike: 1, poisonous: 1, one_hit: 1, flying: 1},
 		quote: '\"Bzzz\"'
 	},
-	black_crow:{
-		name: 				'black crow',
-		version: 			2,
-		type: 				'creature',
-		subtypes: 			['animal','bird'],
-		color: 				['orange'],
-		theme: 				['evasion','muscle','on_play','grave_control'],
-		pick_chance: 		1,
-		time: 				4,
-		image: 				'cards/raven-988218_640.jpg',
-		image_position: 	'top',
-		power: 				1,
-		armor: 				0,
-		health: 			1,
-		abilities: 			{grave_power: 1, strike: 1, flying: 1},
-		hero_version: 			{
-			name: 				'black crow',
-			type: 				'creature',
-			theme: 				['muscle','grave_control'],
-			image: 				'cards/raven-988218_640.jpg',
-			image_position: 	'top',
-			power: 				1,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{grave_power: 1, strike_unit: 1, flying: 1},
-		},
-		recipe:{
-			assassin: 			1,
-			backstabber: 		1
-		}
-	},
-	black_dragon:{
-		name: 				'black dragon',
-		version: 			2,
-		type: 				'creature',
-		subtypes: 			['dragon'],
-		color: 				['purple'],
-		theme: 				['muscle','curse','ranged'],
-		pick_chance: 		0.5,
-		time: 				46,
-		image: 				'cards/fantasy-3756975_640.jpg',
-		power: 				3,
-		armor: 				0,
-		health: 			15,
-		abilities: 			{curse_all: 1, strike: 1, flying: 1},
-		hero_version: 			{
-			name: 				'black dragon',
-			type: 				'creature',
-			theme: 				['muscle'],
-			image: 				'cards/fantasy-3756975_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			25,
-			abilities: 			{curse_hero: 1, strike_unit: 1, flying: 1},
-		},
-		recipe:{
-			blood_horror: 		1,
-			dark_seer: 			1
-		}
-	},
-	/*blademaster:{
-		name: 				'blademaster',
-		version:            2,
-		type: 				'creature',
-		color: 				['orange'],
-		theme: 				['muscle','empower'],
-		pick_chance: 		1,
-		time: 				7,
-		image: 				'cards/woman-3274296_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 2},
-		hero_version: 			{
-			name: 				'blademaster',
-			type: 				'creature',
-			image: 				'cards/woman-3274296_640.jpg',
-			image_position: 	'top',
-			power: 				1,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_nearest: 2},
-		},
-		recipe:{
-			//gladiator: 				1,
-			seeking_warrior: 		2
-		},
-		quote: '\"She knows her blades\"'
-	},*/
-	/*blade_warrior:{
-		name: 				'blade warrior',
-		version:            2,
-		type: 				'creature',
-		color: 				['orange'],
-		theme: 				['muscle'],
-		pick_chance: 		1,
-		time: 				2,
-		image: 				'cards/woman-3373175_640.jpg',
-		image_position: 	'top',
-		power: 				2,
-		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1},
-		hero_version: 			{
-			name: 				'blade warrior',
-			type: 				'creature',
-			theme: 				['muscle'],
-			image: 				'cards/woman-3373175_640.jpg',
-			image_position: 	'top',
-			power: 				3,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_unit: 1},
-		},
-		recipe:{
-			dagger: 			2,
-		},
-	},*/
-	
 	blessed_wine:{
 		name: 				'blessed wine',
 		version: 			2,
@@ -484,37 +365,6 @@ var all_older_available_cards = {
 			zombie: 				1,
 		},
 	},
-	boar:{
-		name: 				'boar',
-		version: 			2,
-		type: 				'creature',
-		subtypes: 			['animal'],
-		color: 				['green'],
-		theme: 				['muscle','growth'],
-		pick_chance: 		1,
-		time: 				3,
-		image: 				'cards/boar-3240210_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1, enrage: 1},
-		hero_version: 			{
-			name: 				'boar',
-			type: 				'creature',
-			theme: 				['growth','muscle'],
-			image: 				'cards/boar-3240210_640.jpg',
-			power: 				3,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_unit: 1},
-		},
-		recipe:{
-			//fertile_dirt: 		1,
-			herbs: 				1,
-			natures_touch: 		1
-		},
-		quote: '\"Oink\"'
-	},
 	bones:{
 		name: 				'bones',
 		version: 			2,
@@ -528,12 +378,8 @@ var all_older_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{resurrect_boost: 1},
+		abilities: 			{resurrect_ally: 1},
 		quote: '',
-		/*recipe:{
-			fertile_dirt: 		1,
-			peasant: 			1
-		}*/
 	},
 	brigands:{
 		name: 				'brigands',
@@ -548,7 +394,7 @@ var all_older_available_cards = {
 		power: 				4,
 		armor: 				0,
 		health: 			2,
-		abilities: 			{strike: 1, hide_on_kill: 1, seeking_entry: 1},
+		abilities: 			{strike: 1, hide_on_kill: 1},
 		hero_version: 			{
 			name: 				'brigands',
 			type: 				'creature',
@@ -624,80 +470,6 @@ var all_older_available_cards = {
 		},
 		quote: '\"Teehee!\"'
 	},
-	/*butterfly_hunter:{
-		name: 				'butterfly hunter',
-		version: 			2,
-		type: 				'creature',
-		color: 				['orange'],
-		theme: 				['empower','muscle'],
-		pick_chance: 		1,
-		time: 				2,
-		image: 				'cards/fantasy-3378504_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			3,
-		abilities: 			{strike: 1, relentless: 1},
-		hero_version: 			{
-			name: 				'butterfly hunter',
-			type: 				'creature',
-			image: 				'cards/fantasy-3378504_640.jpg',
-			image_position: 		'top',
-			power: 				3,
-			armor: 				0,
-			health: 			35,
-			abilities: 			{strike_unit: 1, relentless: 1},
-		},
-		recipe:{
-			ravine: 			1,
-			seeking_warrior: 	1,
-		},
-		quote: '\"Sit still!\"'
-	},*/
-	/*candle:{
-		name: 				'candle',
-		version: 			2,
-		type: 				'artifact',
-		color: 				['red'],
-		theme: 				['burn'],
-		pick_chance: 		1,
-		time: 				2,
-		image: 				'cards/candle-4477021_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{burn_hero: 1, delay: 1},
-		quote: '',
-	},*/
-	candle_bearer:{
-		name: 				'candle bearer',
-		version: 			2,
-		type: 				'creature',
-		subtypes: 			['human','cleric'],
-		color: 				['purple'],
-		theme: 				['deaths','protection','destruction'],
-		pick_chance: 		1,
-		time: 				5,
-		image: 				'cards/woman-885848_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			7,
-		abilities: 			{strike: 1, restoring_deaths: 1},
-		hero_version: 			{
-			name: 				'candle bearer',
-			type: 				'creature',
-			theme: 				['deaths','swarm','destruction','life','deck_control'],
-			image: 				'cards/woman-885848_640.jpg',
-			image_position: 	'center',
-			power: 				2,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_unit: 1, restoring_deaths: 1},
-		},
-		recipe:{
-			dark_seer: 			1,
-			execution: 			1,
-		},
-	},
 	carrier_pigeon:{
 		name: 				'carrier pigeon',
 		version: 			2,
@@ -727,152 +499,6 @@ var all_older_available_cards = {
 			young_angel: 		1
 		}
 	},
-	castle:{
-		name: 				'castle',
-		version: 			2,
-		type: 				'structure',
-		subtypes: 			['wall'],
-		color: 				['yellow'],
-		theme: 				['protection','structures','restoration','damage_reduction'],
-		pick_chance: 		1,
-		time: 				10,
-		image: 				'cards/castle-832543_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			9,
-		abilities: 			{restore_hero: 1, armored: 1},
-		hero_version: 			{
-			name: 				'castle',
-			type: 				'structure',
-			theme: 				['protection','structures'],
-			image: 				'cards/castle-832543_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{restore_hero: 1, armored: 1},
-		},
-		recipe:{
-			fort: 				1,
-			masked_lady: 		1,
-		},
-		quote: '\"It can defend itself\"'
-	},
-	champion:{
-		name: 				'champion',
-		version: 			2,
-		type: 				'creature',
-		subtypes: 			['human','warrior'],
-		color: 				['yellow'],
-		theme: 				['muscle','damage_reduction'],
-		pick_chance: 		1,
-		time: 				15,
-		image: 				'cards/knight-1506878_640.jpg',
-		power: 				4,
-		armor: 				0,
-		health: 			7,
-		abilities: 			{strike: 1, shield: 1},
-		hero_version: 			{
-			name: 				'champion',
-			type: 				'creature',
-			theme: 				['muscle','protection'],
-			image: 				'cards/knight-1506878_640.jpg',
-			power: 				3,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_unit: 1, shield: 1},
-		},
-		recipe:{
-			shield_maiden: 			1,
-			holy_relic: 			1
-		}
-	},
-	citrine:{
-		name: 				'citrine',
-		version: 			2,
-		type: 				'artifact',
-		subtypes: 			['gem'],
-		color: 				['yellow'],
-		theme: 				['protection','protection'],
-		pick_chance: 		1,
-		time: 				2,
-		image: 				'cards/citrine-3201605_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{restore_hero: 1, delay: 1},
-		recipe:{
-			holy_relic: 		1,
-			golden_light: 		1
-		},
-		quote: '\"Many kings adorned their crowns with these\"'
-	},
-	clear_crystal:{
-		name: 				'clear crystal',
-		version:            2,
-		type: 				'artifact',
-		subtypes: 			['gem'],
-		color: 				['orange'],
-		theme: 				['protection','evasion'],
-		pick_chance: 		1,
-		time: 				4,
-		image: 				'cards/crystal-2723145_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{obscure_chance: 1},
-		recipe:{
-			ambush: 		1,
-			pirate_scout: 	1,
-		},
-		quote: '\"It refracts the light\"'
-	},
-	cleric:{
-		name: 				'cleric',
-		version: 			2,
-		type: 				'creature',
-		subtypes: 			['human','cleric'],
-		color: 				['yellow'],
-		theme: 				['protection','damage_reduction'],
-		pick_chance: 		1,
-		time: 				4,
-		image: 				'cards/background-6298985_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			7,
-		abilities: 			{strike: 1, cleanse: 2, protect: 1},
-		hero_version: 			{
-			name: 				'cleric',
-			type: 				'creature',
-			theme: 				['muscle','protection','damage_reduction','damage_reduction'],
-			image: 				'cards/background-6298985_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_unit: 1, cleanse: 1, protect: 1},
-		},
-		recipe:{
-			conscription: 		1,
-			monk: 				1
-		}
-	},
-	
-	/*cleansing_water:{
-		name: 				'cleansing water',
-		version: 			2,
-		type: 				'spell',
-		color: 				['colorless'],
-		theme: 				['protection','spells'],
-		pick_chance: 		0.05,
-		basic_reward: 		true,
-		time: 				1,
-		image: 				'cards/air-bubbles-230014_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{cleanse: 10, spell_echo: 1, righthand: 1},
-		quote: 'Basic crafting ingredient',
-	},*/
-	
 	cockroach:{
 		name: 				'cockroach',
 		version: 			2,
@@ -902,26 +528,6 @@ var all_older_available_cards = {
 			painful_sacrifice: 		1
 		},
 		quote: '\"They just keep coming back\"'
-	},
-
-	conscription:{
-		name: 				'conscription',
-		version: 			2,
-		type: 				'spell',
-		subtypes: 			['tactic'],
-		color: 				['yellow'],
-		theme: 				['protection','spells','deaths','movement','deck_control'],
-		pick_chance: 		1,
-		time: 				4,
-		image: 				'cards/persons-4853861_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{summon_conscript: 1, spell_echo: 1},
-		recipe:{
-			castle: 			1,
-			soldier_of_faith: 	1,
-		},
 	},
 	crusader:{
 		name: 				'crusader',
@@ -1004,24 +610,6 @@ var all_older_available_cards = {
 			ravine: 			1,
 		},
 	},
-	curse_of_the_lich:{
-		name: 				'curse of the lich',
-		version: 			2,
-		type: 				'spell',
-		color: 				['purple'],
-		theme: 				['muscle','spells','destruction','deck_control'],
-		pick_chance: 		0.4,
-		time: 				1,
-		image: 				'cards/art-3084798_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{minimum_enemies: 3, grant_fade_all: 1, spell_echo: 1},
-		recipe:{
-			black_dragon: 	1,
-			mausoleum: 		1
-		},
-	},
 	daemon:{
 		name: 				'daemon',
 		version: 			2,
@@ -1052,75 +640,11 @@ var all_older_available_cards = {
 		},
 		quote: '\"It will take you to hell\"'
 	},
-	dagger:{
-		name: 				'dagger',
-		version: 			2,
-		type: 				'artifact',
-		color: 				['orange'],
-		theme: 				['muscle'],
-		pick_chance: 		1,
-		time: 				8,
-		image: 				'cards/knife-2317960_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{stab: 1, delay: 3},
-		/*recipe:{
-			discarded_weapon: 		2,
-		}*/
-	},
-	dance_of_the_butterfly:{
-		name: 				'dance of the butterfly',
-		version: 			2,
-		type: 				'spell',
-		color: 				['green'],
-		theme: 				['protection','growth','spells'],
-		pick_chance: 		0.5,
-		time: 				8,
-		image: 				'cards/abstract-979682_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{minimum_allies: 3, bolster_all: 2, righthand: 1},
-		recipe:{
-			dryad: 				1,
-			forest_owl: 	 	1
-		},
-		quote: '\"Look! A butterfly!\"'
-	},
-	dark_angel:{
-		name: 				'dark angel',
-		version: 			2,
-		type: 				'creature',
-		color: 				['purple'],
-		theme: 				['curse','evasion'],
-		pick_chance: 		1,
-		time: 				2,
-		image: 				'cards/angel-2048642_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			1,
-		abilities: 			{strike: 1, cursed_entry: 3, flying: 1},
-		hero_version: 			{
-			name: 				'dark angel',
-			type: 				'creature',
-			theme: 				['curse','ranged','restoration'],
-			image: 				'cards/angel-2048642_640.jpg',
-			image_position: 		'top',
-			power: 				2,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_unit: 1, curse_hero: 1, flying: 1},
-		},
-		recipe:{
-			curse_of_the_lich: 	1,
-			zombie_mage: 		1,
-		}
-	},
 	dark_seer:{
 		name: 				'dark seer',
 		version: 			2,
 		type: 				'creature',
+		subtypes: 			['human','cleric'],
 		color: 				['purple'],
 		theme: 				['curse','deaths'],
 		pick_chance: 		1,
@@ -1150,6 +674,7 @@ var all_older_available_cards = {
 		name: 				'dark warrior',
 		version: 			2,
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['orange'],
 		theme: 				['muscle'],
 		pick_chance: 		1,
@@ -1174,30 +699,11 @@ var all_older_available_cards = {
 		},
 		quote: '\"She fights for a dark cause\"'
 	},
-	/*discarded_weapon:{
-		name: 				'discarded weapon',
-		version: 			2,
-		type: 				'artifact',
-		color: 				['orange'],
-		theme: 				['direct_damage'],
-		pick_chance: 		1,
-		time: 				1,
-		basic_reward: 		true,
-		image: 				'cards/weapon-1729865_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{empower_arrival: 5},
-		recipe:{
-			ore: 				1,
-			stone: 				1
-		},
-		quote: '\"You never know...\"'
-	},*/
 	dryad:{
 		name: 				'dryad',
 		version: 			2,
 		type: 				'creature',
+		subtypes: 			['plant'],
 		color: 				['green'],
 		theme: 				['protection','wall'],
 		pick_chance: 		1,
@@ -1229,6 +735,7 @@ var all_older_available_cards = {
 		name: 				'elephant\'s might',
 		version: 			2,
 		type: 				'spell',
+		subtypes: 			['tactic'],
 		color: 				['green'],
 		theme: 				['muscle','spells','empower'],
 		pick_chance: 		1,
@@ -1247,8 +754,8 @@ var all_older_available_cards = {
 		name: 				'elf archer',
 		version: 			2,
 		type: 				'creature',
+		subtypes: 			['elf','archer'],
 		color: 				['green'],
-		subtypes: 			['elf'],
 		theme: 				['ranged','elves'],
 		pick_chance: 			0.7,
 		time: 				1,
@@ -1284,7 +791,7 @@ var all_older_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			2,
-		abilities: 			{strike: 1, bolstering_entry: 1, evade: 1},
+		abilities: 			{strike: 1, evade: 1, stealth: 1},
 		hero_version: 			{
 			name: 				'elf scout',
 			type: 				'creature',
@@ -1292,100 +799,18 @@ var all_older_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, bolster: 1},
+			abilities: 			{strike_unit: 1, hide: 1},
 		},
 		recipe:{
 			forest_elf: 		1,
 			natures_touch: 		1
    		}
 	},
-	elven_tavern:{
-		name: 				'elven tavern',
-		version: 			2,
-		type: 				'structure',
-		color: 				['green'],
-		theme: 				['protection','swarm','deaths','elves','wall','structures'],
-		pick_chance: 		0.7,
-		time: 				6,
-		image: 				'cards/human-3337604_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			5,
-		abilities: 			{summon_elf: 1, random_spot: 1},
-		placement: 			'random',
-		hero_version: 			{
-			name: 				'elven tavern',
-			type: 				'structure',
-			theme: 				['restoration','swarm','deaths','elves'],
-			image: 				'cards/human-3337604_640.jpg',
-			image_position: 	'center',
-			power: 				false,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{summon_elf: 1},
-		},
-		recipe:{
-			elf_archer:			1,
-			elf_scout: 			1
-		},
-		quote: '\"Come have a drink\"'
-	},
-	execution:{
-		name: 				'execution',
-		version: 			2,
-		type: 				'spell',
-		color: 				['purple'],
-		theme: 				['deck_control','muscle','spells','deaths'],
-		pick_chance: 		0.5,
-		time: 				8,
-		image: 				'cards/vietnam-1649490_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{execute: 1},
-		recipe:{
-			amethyst: 			1,
-			blood_horror: 		1
-		}
-	},
-	/*fertile_dirt:{
-		name: 				'fertile dirt',
-		version: 			2,
-		type: 				'spell',
-		color: 				['colorless'],
-		theme: 				['structures'],
-		basic_reward: 		true,
-		pick_chance: 		0.05,
-		time: 				0,
-		image: 				'cards/dirt-947985_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{hasten_structure: 5},
-		quote: 'Basic crafting ingredient',
-	},*/
-	/*fiery_sacrifice:{
-		name: 				'fiery sacrifice',
-		version: 			2,
-		type: 				'spell',
-		color: 				['red'],
-		theme: 				['deck_control','spells','deaths','sacrifice'],
-		pick_chance: 		0.1,
-		time: 				2,
-		image: 				'cards/fire-2648873_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{sacrifice: 1},
-		recipe:{
-			lava_whelp: 			1,
-			orc_apprentice: 		1
-		}
-	},*/
 	fire_ball:{
 		name: 				'fire ball',
 		version: 			2,
 		type: 				'spell',
+		subtypes: 			['fire'],
 		color: 				['red'],
 		theme: 				['muscle','spells','destruction'],
 		pick_chance: 		1,
@@ -1398,25 +823,6 @@ var all_older_available_cards = {
 		recipe:{
 			heart_of_fire: 	1,
 			plasma_strike: 	1
-		}
-	},
-	fire_bolt:{
-		name: 				'fire bolt',
-		version: 			2,
-		type: 				'spell',
-		color: 				['red'],
-		theme: 				['muscle','spells'],
-		pick_chance: 		0.5,
-		time: 				1,
-		image: 				'cards/flame-726268_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{fire_bolt: 5},
-		quote: '',
-		recipe:{
-			candle: 			2,
-			//lumber: 			1
 		}
 	},
 	fire_devil:{
@@ -1448,69 +854,11 @@ var all_older_available_cards = {
 			flame_lover: 	1
 		}
 	},
-	fire_imp:{
-		name: 				'fire imp',
-		version: 			2,
-		type: 				'creature',
-		subtypes: 			['imp'],
-		color: 				['red'],
-		theme: 				['quick','ranged'],
-		pick_chance: 		0.8,
-		time: 				1,
-		image: 				'cards/fantasy-3422153_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{fire_bolt: 1},
-		hero_version: 			{
-			name: 				'fire imp',
-			type: 				'creature',
-			theme: 				['swarm','ranged'],
-			image: 				'cards/fantasy-3422153_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{fire_bolt_hero: 2},
-		},
-		recipe:{
-			fire_bolt: 		2,
-			//lumber: 		1
-		}
-	},
-	fire_mage:{
-		name: 				'fire mage',
-		version: 			2,
-		type: 				'creature',
-		subtypes: 			['mage'],
-		color: 				['red'],
-		theme: 				['muscle','ranged'],
-		pick_chance: 		1,
-		time: 				6,
-		image: 				'cards/portrait-3377271_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			8,
-		abilities: 			{fire_bolt: 2},
-		hero_version: 			{
-			name: 				'fire mage',
-			type: 				'creature',
-			theme: 				['muscle','ranged'],
-			image: 				'cards/portrait-3377271_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{fire_bolt_hero: 2},
-		},
-		recipe:{
-			flame_lover: 		1,
-			tower_of_fire: 		1,
-		}
-	},
-	
 	flame_dancer:{
 		name: 				'flame dancer',
 		version: 			2,
 		type: 				'creature',
+		subtypes: 			['human'],
 		color: 				['red'],
 		theme: 				['muscle','destruction','movement'],
 		pick_chance: 		1,
@@ -1529,7 +877,7 @@ var all_older_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, evade: 1},
+			abilities: 			{strike_unit: 1, fire_aura: 1, evade: 1},
 		},
 		recipe:{
 			servant_of_fire: 	1,
@@ -1540,6 +888,7 @@ var all_older_available_cards = {
 		name: 				'flame lover',
 		version: 			2,
 		type: 				'creature',
+		subtypes: 			['human'],
 		color: 				['red'],
 		theme: 				['burn'],
 		pick_chance: 		1,
@@ -1562,44 +911,6 @@ var all_older_available_cards = {
 		recipe:{
 			candle: 		1,
 			fire_bolt: 		1
-		}
-	},
-	
-	flare:{
-		name: 				'flare',
-		version: 			2,
-		type: 				'spell',
-		color: 				['red'],
-		theme: 				['muscle','spells','deck_control'],
-		pick_chance: 		1,
-		time: 				2,
-		image: 				'cards/abstract-1868624_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{fire_bolt: 2, draw_on_act: 1},
-		recipe:{
-			arson: 				1,
-			incineration: 		1,
-		}
-	},
-	force_pull:{
-		name: 				'force pull',
-		version: 			2,
-		type: 				'spell',
-		color: 				['blue'],
-		theme: 				['spells'],
-		pick_chance: 		0.2,
-		time: 				6,
-		image: 				'cards/amazone-5178719_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{force_pull: 1},
-		recipe:{
-			skybreak: 			1,
-			unsummon: 			1,
-			arcane_missiles: 	1
 		}
 	},
 	forest_elf:{
@@ -1635,7 +946,7 @@ var all_older_available_cards = {
 		name: 				'forest owl',
 		version: 			2,
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','bird'],
 		color: 				['green'],
 		theme: 				['protection','healing','evasion'],
 		pick_chance: 		1,
@@ -1660,70 +971,11 @@ var all_older_available_cards = {
 			brown_bear: 		1
 		}
 	},
-	fort:{
-		name: 				'fort',
-		version: 			2,
-		type: 				'structure',
-		color: 				['yellow'],
-		theme: 				['protection','structures','damage_reduction'],
-		pick_chance: 		1,
-		time: 				5,
-		image: 				'cards/castle-3493566_1280.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			8,
-		abilities: 			{fortify_adjacent: 2},
-		hero_version: 			{
-			name: 				'fort',
-			type: 				'structure',
-			theme: 				['protection'],
-			image: 				'cards/castle-3493566_1280.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{protect: 4},
-		},
-		recipe:{
-			golden_light: 	1,
-			holy_relic: 	1,
-
-			//stone: 		1,
-			//lumber: 	1
-		}
-	},
-	frost_mage:{
-		name: 				'frost mage',
-		version: 			2,
-		type: 				'creature',
-		subtypes: 			['mage'],
-		color: 				['blue'],
-		theme: 				['ranged','control','frost','damage_reduction'],
-		pick_chance: 		2,
-		time: 				4,
-		image: 				'cards/escaping-1582369_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			6,
-		abilities: 			{frost_bolt: 1, resist_cold: 1},
-		hero_version: 			{
-			name: 				'frost mage',
-			type: 				'creature',
-			image: 				'cards/escaping-1582369_640.jpg',
-			theme: 				['ranged','protection','frost'],
-			power: 				false,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{frost_bolt_hero: 1, resist_cold: 1},
-		},
-		recipe:{		
-			polar_bear: 	1,
-			pure_mage: 		1,
-		}
-	},
 	frozen_claw:{
 		name: 				'frozen claw',
 		version: 			2,
 		type: 				'spell',
+		subtypes: 			['cold'],
 		color: 				['blue'],
 		theme: 				['spells','frost','control'],
 		pick_chance: 		0.8,
@@ -1738,103 +990,11 @@ var all_older_available_cards = {
 			mana_crystal: 	1
 		}
 	},
-	frozen_creature:{
-		name: 				'frozen creature',
-		version: 			2,
-		months_available: 	[1],
-		type: 				'creature',
-		color: 				['blue'],
-		pick_chance: 		0,
-		time: 				2,
-		image: 				'cards/blue-ice-4024976_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			2,
-		abilities: 			{shatter: 1, resist_cold: 1, fade: 1},
-		recipe:{
-		}
-	},
-	ghost:{
-		name: 				'ghost',
-		version: 			2,
-		type: 				'creature',
-		color: 				['purple'],
-		theme: 				['evasion','undead'],
-		pick_chance: 		0.8,
-		time: 				1,
-		image: 				'cards/ghost-1675154_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			2,
-		abilities: 			{strike: 1, evade: 1},
-		hero_version: 			{
-			name: 				'ghost',
-			type: 				'creature',
-			image: 				'cards/ghost-1675154_640.jpg',
-			theme: 				['evasion'],
-			image_position: 		'top',
-			power: 				2,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_unit: 1, evade: 1},
-		},
-		quote: '',
-		recipe:{
-			bones: 			2,
-			//twine: 			1
-		}
-	},
-	ghost_skull:{//
-		name: 				'ghost skull',
-		version: 			2,
-		type: 				'artifact',
-		color: 				['purple'],
-		theme: 				['deaths','swarm','life'],
-		pick_chance: 		1,
-		time: 				1,
-		image: 				'cards/skull-3891005_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{gain_life_deaths: 1},
-		recipe:{
-			zombie: 			1,
-			wandering_soul: 	1
-		}
-	},
-	ghoul:{
-		name: 				'ghoul',
-		version: 			2,
-		type: 				'creature',
-		color: 				['purple'],
-		theme: 				['deaths','muscle','poison','undead'],
-		pick_chance: 			1,
-		time: 				6,
-		image: 				'cards/monster-5369480_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, poisonous: 2, resurrect: 1},
-		hero_version: 			{
-			name: 				'ghoul',
-			type: 				'creature',
-			image: 				'cards/monster-5369480_640.jpg',
-			theme: 				['deaths','muscle','poison'],
-			image_position: 		'top',
-			power: 				2,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_unit: 1, poisonous: 1, resurrect: 1},
-		},
-		recipe:{
-			blood_horror: 		1,
-			swamp_knight: 		1
-		}
-	},
 	giant_growth:{
 		name: 				'giant growth',
 		version: 			2,
 		type: 				'spell',
+		subtypes: 			['tactic'],
 		color: 				['green'],
 		theme: 				['muscle','spells','growth','empower','deck_control'],
 		pick_chance: 		0.8,
@@ -1843,7 +1003,7 @@ var all_older_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{growth: 3, spell_echo: 1, righthand: 1},
+		abilities: 			{boost_ally: 3},
 		recipe:{
 			green_dragon: 	1,
 			monsoon: 		1
@@ -1877,38 +1037,11 @@ var all_older_available_cards = {
 			giant_growth: 		1,
 		}
 	},
-	/*gladiator:{
-		name: 				'gladiator',
-		version: 			2,
-		type: 				'creature',
-		color: 				['orange'],
-		theme: 				['muscle'],
-		pick_chance: 		1,
-		time: 				4,
-		image: 				'cards/amazone-2148910_640.jpg',
-		power: 				3,
-		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1},
-		hero_version: 			{
-			name: 				'gladiator',
-			type: 				'creature',
-			theme: 				['muscle'],
-			image: 				'cards/amazone-2148910_640.jpg',
-			power: 				3,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_unit: 1},
-		},
-		recipe:{
-			blade_warrior: 		1,
-			dagger: 			1
-		}
-	},*/
 	golden_light:{
 		name: 				'golden light',
 		version: 			2,
 		type: 				'spell',
+		subtypes: 			['animal'],
 		color: 				['yellow'],
 		theme: 				['protection','spells','restoration'],
 		pick_chance: 		0.8,
@@ -1924,98 +1057,11 @@ var all_older_available_cards = {
 			//stone: 					1
 		}
 	},
-	
-	graveyard:{
-		name: 				'graveyard',
-		version: 			2,
-		type: 				'structure',
-		color: 				['purple'],
-		theme: 				['deaths'],
-		pick_chance: 		1,
-		time: 				3,
-		image: 				'cards/girl-2265962_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			6,
-		abilities: 			{deaths_call: 1, flank: 1},
-		placement: 			'right',
-		hero_version: 			{
-			name: 				'graveyard',
-			type: 				'structure',
-			theme: 				['deaths','swarm'],
-			image: 				'cards/girl-2265962_640.jpg',
-			image_position: 	'top',
-			power: 				false,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{deaths_call: 1, deaths_curse: 1},
-		},
-		recipe:{
-			ghoul: 				1,
-			mausoleum: 			1
-		}
-	},
-	green_dragon:{
-		name: 				'green dragon',
-		version: 			2,
-		type: 				'creature',
-		color: 				['green'],
-		theme: 				['muscle','protection','evasion'],
-		pick_chance: 		0.5,
-		time: 				46,
-		image: 				'cards/outdoors-3106126_640.jpg',
-		power: 				3,
-		armor: 				0,
-		health: 			15,
-		abilities: 			{strike: 1, regenerate: 3, flying: 1},
-		hero_version: 			{
-			name: 				'green dragon',
-			type: 				'creature',
-			theme: 				['muscle','healing'],
-			image: 				'cards/outdoors-3106126_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_unit: 1, regenerate: 1, flying: 1},
-		},
-		recipe:{
-			forest_owl: 				1,
-			dance_of_the_butterfly: 	1
-		}
-	},
-	
-	/*griffin:{
-		name: 				'griffin',
-		version: 			2,
-		type: 				'creature',
-		color: 				['orange'],
-		theme: 				['muscle','evasion'],
-		pick_chance: 		1,
-		time: 				5,
-		image: 				'cards/being-4803333_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, flying: 1},
-		hero_version: 			{
-			name: 				'griffin',
-			type: 				'creature',
-			theme: 				['muscle','evasion','protection'],
-			image: 				'cards/being-4803333_640.jpg',
-			power: 				3,
-			armor: 				0,
-			health: 			25,
-			abilities: 			{strike_unit: 1, flying: 1},
-		},
-		recipe:{
-			ambush: 		1,
-			ravine: 		1
-		}
-	},*/
 	grove_mystic:{
 		name: 				'grove mystic',
 		version: 			2,
 		type: 				'creature',
+		subtypes: 			['human','cleric'],
 		color: 				['green'],
 		theme: 				['muscle','protection','healing'],
 		pick_chance: 		2,
@@ -2040,23 +1086,11 @@ var all_older_available_cards = {
 			forest_elf: 	1,
 		}
 	},
-	guard:{
-		name: 				'guard',
-		version: 			2,
-		type: 				'creature',
-		color: 				['yellow'],
-		pick_chance: 		0,
-		time: 				1,
-		image: 				'cards/persons-4853861_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, guard: 1},
-	},
 	guardian_dragon:{
 		name: 				'guardian dragon',
 		version: 			2,
 		type: 				'creature',
+		subtypes: 			['dragon'],
 		color: 				['yellow'],
 		theme: 				['muscle','protection','evasion','restoration'],
 		pick_chance: 		0.5,
@@ -2086,6 +1120,7 @@ var all_older_available_cards = {
 		name: 				'guiding angel',
 		version: 			2,
 		type: 				'creature',
+		subtypes: 			['angel'],
 		color: 				['yellow'],
 		theme: 				['protection','evasion','on_play'],
 		pick_chance: 		1,
@@ -2099,7 +1134,6 @@ var all_older_available_cards = {
 			name: 				'guiding angel',
 			type: 				'creature',
 			theme: 				['on_play','deck_control','muscle','protection'],
-			deck_times: 		{percent_main:30,percent_slow:80,percent_massive:100},
 			image: 				'cards/angel-2046708_1280.jpg',
 			image_position: 		'center',
 			power: 				2,
@@ -2116,15 +1150,16 @@ var all_older_available_cards = {
 		name: 				'haunting spirit',
 		version: 			2,
 		type: 				'creature',
+		subtypes: 			['undead','spirit'],
 		color: 				['purple'],
 		theme: 				['undead','control','muscle'],
 		pick_chance: 		1,
 		time: 				2,
 		image: 				'cards/ghost-2935132_640.jpg',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, haunts: 1},
+		health: 			1,
+		abilities: 			{strike: 1, stunning_touch: 1, undead: 1, resurrect: 1},
 		hero_version: 			{
 			name: 				'haunting spirit',
 			type: 				'creature',
@@ -2134,7 +1169,7 @@ var all_older_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, haunts: 1},
+			abilities: 			{strike_unit: 1, stunning_touch: 1, undead: 1, resurrect: 1},
 		},
 		recipe:{
 			execution: 			1,
@@ -2146,6 +1181,7 @@ var all_older_available_cards = {
 		name: 				'heart of fire',
 		version: 			2,
 		type: 				'spell',
+		subtypes: 			['tactic'],
 		color: 				['red'],
 		theme: 				['spells','deaths','swarm','destruction'],
 		pick_chance: 		0.7,
@@ -2154,31 +1190,11 @@ var all_older_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{minimum_enemies: 3, heart_of_fire: 4, righthand: 1},
+		abilities: 			{grant_explode: 5, minimum_enemies: 3},
 		recipe:{
 			fire_mage: 			1,
 			servant_of_fire: 	1
 		}
-	},
-	herbs:{
-		name: 				'herbs',
-		version: 			2,
-		type: 				'artifact',
-		color: 				['green'],
-		theme: 				['protection','growth','healing'],
-		pick_chance: 		1,
-		time: 				2,
-		basic_reward: 		true,
-		image: 				'cards/herbs-2523119_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{heal: 1, delay: 2},
-		quote: 'Delicate, but powerfull',
-		/*recipe:{
-			fertile_dirt: 				1,
-			cleansing_water: 			1
-		}*/
 	},
 	hexing_spirit:{
 		name: 				'hexing spirit',
@@ -2193,7 +1209,7 @@ var all_older_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{final_wither: 3, resurrect: 1},
+		abilities: 			{wither: 1, undead: 1, resurrect: 1},
 		hero_version: 			{
 			name: 				'hexing spirit',
 			type: 				'creature',
@@ -2203,7 +1219,7 @@ var all_older_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{wither: 2},
+			abilities: 			{wither: 2, undead: 1, resurrect: 1},
 		},
 		recipe:{
 			ghoul: 				1,
@@ -2214,7 +1230,7 @@ var all_older_available_cards = {
 		name: 				'hexing witch',
 		version: 			2,
 		type: 				'creature',
-		subtypes: 			['witch'],
+		subtypes: 			['human','witch'],
 		color: 				['purple'],
 		theme: 				['wither','deaths'],
 		pick_chance: 		1,
@@ -2223,17 +1239,17 @@ var all_older_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			8,
-		abilities: 			{strike: 1, withering_aura: 1, withering_deaths: 1},
+		abilities: 			{strike: 1, withering_touch: 1, withering_deaths: 1},
 		hero_version: 			{
 			name: 				'hexing witch',
 			type: 				'creature',
 			theme: 				['protection','muscle','wither'],
 			image: 				'cards/witch-3202467_640.jpg',
 			image_position: 	'top',
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, withering_aura: 1},
+			abilities: 			{strike_unit: 1, withering_touch: 1, withering_deaths: 1},
 		},
 		recipe:{
 			ghost_skull: 		1,
@@ -2271,61 +1287,11 @@ var all_older_available_cards = {
 			dagger: 		2,
 		}
 	},*/
-	historian:{
-		name: 				'historian',
-		version: 			2,
-		type: 				'creature',
-		color: 				['blue'],
-		theme: 				['deck_control','spells','on_play'],
-		pick_chance: 		1,
-		time: 				5,
-		image: 				'cards/book-4133988_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			7,
-		abilities: 			{strike: 1, reclaim_spell: 1},
-		hero_version: 			{
-			name: 				'historian',
-			type: 				'creature',
-			theme: 				['protection','spells','spells','deck_control','deck_control'],
-			deck_times: 		{percent_main:30,percent_slow:80,percent_massive:100},
-			image: 				'cards/book-4133988_640.jpg',
-			image_position: 	'top',
-			power: 				2,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_unit: 1, redraw_spell: 1},
-		},
-		recipe:{
-			crystal_keeper: 	1,
-			pure_mage: 			1,
-			frozen_claw: 		1
-		}
-	},
-	holy_relic:{
-		name: 				'holy relic',
-		version: 			2,
-		type: 				'artifact',
-		color: 				['yellow'],
-		theme: 				['protection','cleansing'],
-		pick_chance: 		1,
-		time: 				1,
-		basic_reward: 		true,
-		image: 				'cards/ank-1215054_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{cleanse: 2},
-		quote: '',
-		/*recipe:{
-			lumber: 					1,
-			stone: 						1
-		}*/
-	},
 	honorbound_warrior:{
 		name: 				'honorbound warrior',
 		version: 			2,
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['yellow'],
 		theme: 				['muscle','protection'],
 		pick_chance: 		1,
@@ -2334,7 +1300,7 @@ var all_older_available_cards = {
 		power: 				6,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, honor_enemy: 1},
+		abilities: 			{strike: 1, restore_enemy: 1},
 		hero_version: 			{
 			name: 				'honorbound warrior',
 			type: 				'creature',
@@ -2344,95 +1310,41 @@ var all_older_available_cards = {
 			power: 				4,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, honor_enemy: 1},
+			abilities: 			{strike_unit: 1, restore_enemy: 1},
 		},
 		recipe:{
 			armor: 				1,
 			soldier_of_faith: 	1,
 		}
 	},
-	
-	imps_call:{
-		name: 				'imp\'s call',
-		version: 			2,
-		type: 				'spell',
-		color: 				['red'],
-		theme: 				['swarm','protection','deaths'],
-		pick_chance: 		1,
-		time: 				12,
-		image: 				'cards/fire-716321_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{no_allies: 1, call_fire_imp: 5},
-		recipe:{
-			burning_imp: 		1,
-			trickster_imp: 		1,
-		}
-	},
-	incineration:{
-		name: 				'incineration',
-		version: 			2,
-		type: 				'spell',
-		color: 				['red'],
-		theme: 				['burn'],
-		pick_chance: 		0.8,
-		time: 				2,
-		image: 				'cards/woman-3514923_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{incinerate: 1, spell_echo: 1, righthand: 1},
-		recipe:{
-			candle: 			1,
-			flame_lover:		1,
-		}
-	},
 	lava_whelp:{
 		name: 				'lava whelp',
 		version: 			2,
 		type: 				'creature',
+		subtypes: 			['reptile','dragon'],
 		color: 				['red'],
 		theme: 				['muscle','ranged'],
 		pick_chance: 		1,
 		time: 				4,
 		image: 				'cards/dragon-4547732_640.jpg',
-		power: 				1,
+		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{fire_breath: 1, strike: 1},
+		abilities: 			{fire_breath: 1, fire_aura: 1},
 		hero_version: 			{
 			name: 				'lava whelp',
 			type: 				'creature',
 			theme: 				['muscle','ranged','swarm','protection'],
 			image: 				'cards/dragon-4547732_640.jpg',
 			image_position: 	'top',
-			power: 				1,
+			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, fire_bolt_hero: 2},
+			abilities: 			{fire_bolt_hero: 2, fire_aura: 1},
 		},
 		recipe:{
 			daemon: 			1,
 			fire_mage: 			1
-		}
-	},
-	levitate:{
-		name: 				'levitate',
-		version: 			2,
-		type: 				'spell',
-		color: 				['blue'],
-		theme: 				['spells','protection','evasion','deck_control'],
-		pick_chance: 		0.5,
-		time: 				3,
-		image: 				'cards/wings-2595717_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{grant_flying:1, righthand: 1, spell_echo: 1},
-		recipe:{
-			pure_mage:	1,
-			waterfall: 	1
 		}
 	},
 	lone_elephant:{
@@ -2464,39 +1376,20 @@ var all_older_available_cards = {
 			tree_basilisk: 		1
 		}
 	},
-	magic_dust:{
-		name: 				'magic dust',
-		version: 			2,
-		type: 				'artifact',
-		color: 				['blue'],
-		theme: 				['spells'],
-		pick_chance: 		1,
-		time: 				1,
-		basic_reward: 		true,
-		image: 				'cards/bokeh-1916807_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{counter_spell: 1},
-		quote: '',
-		recipe:{
-			historian: 		1,
-			research: 		1
-		}
-	},
 	magma_boulder:{
 		name: 				'magma boulder',
 		version: 			2,
-		type: 				'creature',
+		type: 				'structure',
+		subtypes: 			['boulder'],
 		color: 				['red'],
 		theme: 				['muscle','direct_damage','burn','movement','empower'],
 		pick_chance: 		1,
 		time: 				4,
 		image: 				'cards/planet-2967684_640.jpg',
-		power: 				4,
+		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{seek_enemy: 1, strike: 1, trample: 1, ignites: 2},
+		abilities: 			{charge: 2, strike: 1, trample: 1, ignites: 1},
 		hero_version: 			{
 			name: 				'magma boulder',
 			type: 				'creature',
@@ -2511,26 +1404,6 @@ var all_older_available_cards = {
 			flare: 					1,
 			plasma_strike: 			1
 		}
-	},
-	mana_crystal:{
-		name: 				'mana crystal',
-		version: 			2,
-		type: 				'artifact',
-		color: 				['blue'],
-		theme: 				['spells','spells','spells'],
-		pick_chance: 		1,
-		time: 				2,
-		basic_reward: 		true,
-		image: 				'cards/crystal-758818_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{spellrush: 1},
-		quote: '',
-		/*recipe:{
-			cleansing_water: 		1,
-			twine: 					1
-		}*/
 	},
 	mana_elf:{
 		name: 				'mana elf',
@@ -2562,58 +1435,11 @@ var all_older_available_cards = {
 		},
 		quote: '\"They live on magical energy\"'
 	},
-	mana_mage:{
-		name: 				'mana mage',
-		version: 			2,
-		type: 				'creature',
-		subtypes: 			['mage'],
-		color: 				['blue'],
-		theme: 				['spells','ranged'],
-		pick_chance: 		1,
-		time: 				6,
-		image: 				'cards/composing-5394355_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			8,
-		abilities: 			{strike: 1, spellbolt: 1},
-		hero_version: 			{
-			name: 				'mana mage',
-			type: 				'creature',
-			theme: 				['spells','spells','muscle'],
-			image: 				'cards/composing-5394355_640.jpg',
-			image_position: 	'top',
-			power: 				2,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_unit: 1, spellbolt_hero: 1},
-		},
-		recipe:{
-			historian: 			1,
-			pure_mage: 			1,
-		}
-	},
-	mana_orb:{
-		name: 				'mana orb',
-		version: 			2,
-		type: 				'artifact',
-		color: 				['blue'],
-		theme: 				['spells','spells','spells'],
-		pick_chance: 		1,
-		time: 				1,
-		image: 				'cards/ball-3528226_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{spellbolt: 1},
-		recipe:{
-			crystal_keeper: 	1,
-			mana_crystal: 		1,
-		}
-	},
 	masked_lady:{
 		name: 				'masked lady',
 		version: 			2,
 		type: 				'creature',
+		subtypes: 			['human','clerk'],
 		color: 				['yellow'],
 		theme: 				['muscle','protection','restoration'],
 		pick_chance: 		1,
@@ -2642,6 +1468,7 @@ var all_older_available_cards = {
 		name: 				'mausoleum',
 		version: 			2,
 		type: 				'structure',
+		subtypes: 			['wall'],
 		color: 				['purple'],
 		theme: 				['deaths'],
 		pick_chance: 		0.5,
@@ -2650,7 +1477,7 @@ var all_older_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{resurrect_boost: 1, flank: 1},
+		abilities: 			{withering_deaths: 1},
 		placement: 			'right',
 		hero_version: 			{
 			name: 				'mausoleum',
@@ -2660,47 +1487,18 @@ var all_older_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{resurrect_boost: 1, deaths_curse: 1},
+			abilities: 			{withering_deaths: 3},
 		},
 		recipe:{
 			amethyst:		1,
 			execution:		1
 		}
 	},
-	
-	mermaid:{
-		name: 				'mermaid',
-		version: 			2,
-		type: 				'creature',
-		color: 				['blue'],
-		theme: 				['deck_control','evasion','on_play'],
-		pick_chance: 		1,
-		time: 				5,
-		image: 				'cards/mermaid-2787088_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			6,
-		abilities: 			{strike: 1, flee: 1},
-		hero_version: 			{
-			name: 				'mermaid',
-			type: 				'creature',
-			theme: 				['deck_control','muscle'],
-			image: 				'cards/mermaid-2787088_640.jpg',
-			image_position: 	'top',
-			power: 				2,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_unit: 1, evade: 1},
-		},
-		recipe:{
-			pure_mage: 			1,
-			wall_of_kelp: 		1,
-		}
-	},
 	monk:{
 		name: 				'monk',
 		version: 			2,
 		type: 				'creature',
+		subtypes: 			['human','cleric'],
 		color: 				['yellow'],
 		theme: 				['protection','muscle','cleansing'],
 		pick_chance: 		1,
@@ -2730,6 +1528,7 @@ var all_older_available_cards = {
 		name: 				'monsoon',
 		version: 			2,
 		type: 				'spell',
+		subtypes: 			['weather'],
 		color: 				['green'],
 		theme: 				['muscle','spells','destruction'],
 		pick_chance: 		1,
@@ -2779,6 +1578,7 @@ var all_older_available_cards = {
 		name: 				'nature\'s touch',
 		version: 			2,
 		type: 				'spell',
+		subtypes: 			['ritual'],
 		color: 				['green'],
 		theme: 				['protection','growth','spells'],
 		pick_chance: 		0.6,
@@ -2798,6 +1598,7 @@ var all_older_available_cards = {
 		name: 				'orc apprentice',
 		version: 			2,
 		type: 				'creature',
+		subtypes: 			['orc'],
 		color: 				['red'],
 		theme: 				['muscle','ranged'],
 		pick_chance: 		1,
@@ -2817,7 +1618,7 @@ var all_older_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, fire_ritual_hero: 1},
+			abilities: 			{strike_unit: 1, fire_ritual_hero: 2},
 		},
 		recipe:{
 			flare: 				1,
@@ -2828,6 +1629,7 @@ var all_older_available_cards = {
 		name: 				'overgrown ruin',
 		version: 			2,
 		type: 				'structure',
+		subtypes: 			['wall'],
 		color: 				['green'],
 		theme: 				['protection','poison','wall'],
 		pick_chance: 		1,
@@ -2846,7 +1648,7 @@ var all_older_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{poison_cloud: 1, regenerate: 1},
+			abilities: 			{poison_cloud: 1, regenerate: 2},
 		},
 		recipe:{
 			elven_tavern: 		1,
@@ -2858,6 +1660,7 @@ var all_older_available_cards = {
 		name: 				'painful sacrifice',
 		version: 			2,
 		type: 				'spell',
+		subtypes: 			['ritual'],
 		color: 				['purple'],
 		theme: 				['muscle','spells','deaths','sacrifice','destruction','life'],
 		pick_chance: 		0.5,
@@ -2866,7 +1669,7 @@ var all_older_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{destroy_enemy: 1, life_cost_maybe: 1},
+		abilities: 			{sacrifice: 1, damage_hero: 5, minimum_allies: 1},
 		recipe:{
 			black_dragon: 	1,
 			execution: 		1

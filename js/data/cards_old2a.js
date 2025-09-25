@@ -718,7 +718,7 @@ var all_oldest_available_cards = {
 		}
 	},
 	
-	bones:{
+	/*bones:{
 		name: 				'bones',
 		type: 				'artifact',
 		color: 				['purple'],
@@ -730,7 +730,7 @@ var all_oldest_available_cards = {
 		armor: 				false,
 		health: 			false,
 		abilities: 			{resurrect_ally: 1},
-	},
+	},*/
 	
 	book_of_fire:{
 		name: 				'book of fire',
@@ -3102,7 +3102,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{boost_ally: 1},
+		abilities: 			{boost_ally: 1, echo: 1},
 		recipe:{
 			peasant: 			1,
 			wood_trinket: 		1,
@@ -3849,7 +3849,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{poison_cloud: 1},
+			abilities: 			{poison_cloud: 6},
 		},
 		recipe:{
 			stone: 				1,
