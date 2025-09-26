@@ -416,7 +416,7 @@ var all_old_available_cards = {
 	archer_pupil:{
 		name: 				'archer pupil',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','archer'],
 		color: 				['colorless'],
 		theme: 				['ranged'],
 		pick_chance: 		1,
@@ -7888,7 +7888,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{fire_blast: 6, minimum_enemies: 3},
+		abilities: 			{fire_blast: 6, withering_touch: 1, minimum_enemies: 3},
 		quote: '\"As hot as the sun.\"',
 		use_old: true,
 	},
@@ -12079,14 +12079,14 @@ var all_old_available_cards = {
 		image_position: 	'center',
 		power: 				1,
 		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1, curse: 2},
+		health: 			3,
+		abilities: 			{curse: 2, strike: 1},
 		hero_version: 			{
 			theme: 				['subtype_witch','curse_ability','sandstorm_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, curse_hv: 2},
+			abilities: 			{curse_hv: 2, strike_unit: 1},
 		},
 		quote: '\"Be nice to her.\"',
 	},
@@ -12836,6 +12836,8 @@ var replacement_abilities = {
 	fire_bolt_hero: 	'fire_bolt_hv',
 	poison_cloud: 		'poison_aura',
 	deaths_revenge: 	'vengeance',
+	snipe_hero: 		'snipe_hv',
+	recall_ally: 		'unsummon_ally',
 }
 
 var ignored_abilities = {

@@ -1591,30 +1591,6 @@ var all_oldest_available_cards = {
 			amethyst: 			1,
 		}
 	},
-	dark_warrior:{
-		name: 				'dark warrior',
-		type: 				'creature',
-		color: 				['purple'],
-		time: 				2,
-		image: 				'cards/joan-of-arc-4022017_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1},
-		hero_version: 			{
-			name: 				'dark warrior',
-			type: 				'creature',
-			image: 				'cards/joan-of-arc-4022017_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			60,
-			abilities: 			{strike_nearest: 1},
-		},
-		recipe:{
-			peasant: 			1,
-			bones: 				1,
-		}
-	},
 	darkling:{
 		name: 				'darkling',
 		type: 				'creature',

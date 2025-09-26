@@ -3967,6 +3967,35 @@ var all_abilities = {
 			resurrect: 		2,
 		},
 	},
+	final_draw:{
+		description: 	'When destroyed, draws {LEVEL} card(s).',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		min_cards_in_deck: 	1,
+		max_hand_cards: 	9,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 				'draw_card',
+				subtypes: 			['draw_cards','deck_control'],
+				amount: 			1
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	6,
+		level_cost_artifact: 3,
+		ability_level_cost_factors:{
+			resurrect: 		2,
+		},
+	},
 	final_grant_charge:{
 		name: 			'final grant: charge',
 		ability_subtypes: ['movement','charge'],
