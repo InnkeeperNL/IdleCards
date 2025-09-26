@@ -2789,7 +2789,7 @@ var all_abilities = {
 	},
 	destroy_non_flying:{
 		name: 			'destroy non-flying',
-		description: 	'Destroys {LEVEL} random enemy unit(s) that do not have the flying ability.',
+		description: 	'Destroys {LEVEL} random enemy unit(s) without the flying ability.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use: 'destroy',
@@ -2814,7 +2814,7 @@ var all_abilities = {
 		level_cost: 	5,
 	},
 	destroy_non_flying_ally:{
-		description: 	'Destroy up to {LEVEL} random ally unit(s) that do not have the flying ability.',
+		description: 	'Destroy up to {LEVEL} random ally unit(s) without the flying ability.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		remove_skill_after_use: 'sacrifice_unit',
