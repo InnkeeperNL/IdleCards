@@ -3743,7 +3743,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{curse_hv: 2, fearful_aura: 1},
+			abilities: 			{curse_hv: 3, fearful_aura: 1},
 		},
 		recipe:{
 			amethyst: 			1,
