@@ -2842,7 +2842,7 @@ var all_abilities = {
 	},
 	
 	discard:{
-		description: 	'Discards up to {LEVEL} card(s) from the your hand to the grave.',
+		description: 	'Discards up to {LEVEL} card(s) from your hand to the grave.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use:'discard',
