@@ -742,7 +742,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{fire_bolt: 1, burn: 1, delay: 4},
+		abilities: 			{fire_bolt_hv: 1, burn_hv: 1, delay: 4},
 		recipe:{
 			burning_ring: 		1,
 			candle: 			1,
