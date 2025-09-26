@@ -9543,7 +9543,7 @@ var all_old_available_cards = {
 		quote: '\"I keep track of anyone who joins the effort.\"',
 		use_old: true,
 	},
-	snake:{
+/*	snake:{
 		name: 				'snake',
 		type: 				'creature',
 		subtypes: 			['animal','reptile'],
@@ -9564,7 +9564,7 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, venom: 2},
 		},
 		quote: '\"Get the antidote!\"',
-	},
+	},*/
 	sniper:{
 		name: 				'sniper',
 		type: 				'creature',
@@ -12835,6 +12835,7 @@ var replacement_abilities = {
 	protect_arrivals: 	'fortify_arrivals',
 	fire_bolt_hero: 	'fire_bolt_hv',
 	poison_cloud: 		'poison_aura',
+	deaths_revenge: 	'vengeance',
 }
 
 var ignored_abilities = {

@@ -1431,10 +1431,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{deaths_revenge: 2, flank: 1},
-		effects:{
-    		   cursed: 1,
-    	},
+		abilities: 			{deaths_revenge: 2},
     	placement: 			'right',
 		hero_version: 			{
 			name: 				'cursed crypt',
@@ -1444,9 +1441,6 @@ var all_oldest_available_cards = {
 			armor: 				0,
 			health: 			80,
 			abilities: 			{deaths_revenge: 2},
-			effects:{
-    		    cursed: 1,
-    		},
 		},
 		recipe:{
 			curse_of_the_leech: 1,
@@ -1514,7 +1508,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			45,
-			abilities: 			{strike_nearest: 1, flying: 1},
+			abilities: 			{strike_nearest: 1, curse_arrivals: 1, flying: 1},
 		},
 		recipe:{
 			young_angel: 		1,
@@ -3741,7 +3735,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{curse_opposing: 1, send_away: 1},
+		abilities: 			{curse: 1, fearful_aura: 1},
 		hero_version: 			{
 			name: 				'haunted forest',
 			type: 				'structure',
@@ -3749,7 +3743,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{curse: 1},
+			abilities: 			{curse_hv: 2, fearful_aura: 1},
 		},
 		recipe:{
 			amethyst: 			1,
@@ -4648,35 +4642,6 @@ var all_oldest_available_cards = {
 			amethyst: 			1
 		}
 	},
-	
-	mausoleum:{
-		name: 				'mausoleum',
-		type: 				'structure',
-		color: 				['purple'],
-		pick_chance: 		0.5,
-		time: 				4,
-		image: 				'cards/dexter-mausoleum-1005284_1280.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			6,
-		abilities: 			{return_souls: 1, deaths_curse: 1, safe_spot: 1},
-		reset_time: 		1,
-		safe_slot: 			true,
-		hero_version: 			{
-			name: 				'mausoleum',
-			type: 				'structure',
-			image: 				'cards/dexter-mausoleum-1005284_1280.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{deaths_curse: 1, return_souls: 1},
-		},
-		recipe:{
-			stone: 				1,
-			bones: 				1
-		}
-	},
-	
 	mind_control:{
 		name: 				'mind control',
 		type: 				'spell',
@@ -5273,7 +5238,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{curse: 2, evade: 1, undead: 1},
+			abilities: 			{curse_hv: 2, evade: 1, undead: 1},
 		},
 		recipe:{
 			ghost_bride: 		1,

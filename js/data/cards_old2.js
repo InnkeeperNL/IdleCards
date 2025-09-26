@@ -1196,36 +1196,6 @@ var all_older_available_cards = {
 			servant_of_fire: 	1
 		}
 	},
-	hexing_spirit:{
-		name: 				'hexing spirit',
-		version: 			2,
-		type: 				'creature',
-		subtypes: 			['undead','spirit'],
-		color: 				['purple'],
-		theme: 				['deaths','protection','wither'],
-		pick_chance: 		1,
-		time: 				2,
-		image: 				'cards/abstract-1042463_1280.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			1,
-		abilities: 			{wither: 1, undead: 1, resurrect: 1},
-		hero_version: 			{
-			name: 				'hexing spirit',
-			type: 				'creature',
-			theme: 				['protection','restoration','healing','wither'],
-			image: 				'cards/abstract-1042463_1280.jpg',
-			image_position: 	'top',
-			power: 				false,
-			armor: 				0,
-			health: 			50,
-			abilities: 			{wither: 2, undead: 1, resurrect: 1},
-		},
-		recipe:{
-			ghoul: 				1,
-			painful_sacrifice: 	1
-		}
-	},
 	hexing_witch:{
 		name: 				'hexing witch',
 		version: 			2,
