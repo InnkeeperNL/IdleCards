@@ -1777,7 +1777,7 @@ var all_older_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{sacrifice_unit: 1, destroy: 1},
+		abilities: 			{destroy_non_flying: 1, destroy_non_flying_ally: 1},
 	},
 	red_salamander:{
 		name: 				'red salamander',

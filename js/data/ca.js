@@ -2787,6 +2787,60 @@ var all_abilities = {
 		level_cost: 	5,
 		level_cost_artifact: 2.5,
 	},
+	destroy_non_flying:{
+		name: 			'destroy non-flying',
+		description: 	'Destroys {LEVEL} random enemy unit(s) that do not have the flying ability.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		reduce_skill_after_use: 'destroy',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				max_abilities: 	{flying: 0},
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['destroy'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	5,
+	},
+	destroy_non_flying_ally:{
+		description: 	'Destroy up to {LEVEL} random ally unit(s) that do not have the flying ability.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		remove_skill_after_use: 'sacrifice_unit',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 'ability_level',
+				position: 	'random',
+				max_abilities: 	{flying: 0},
+				not_self: 	true,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['sacrifice'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	-3,
+		average_hits: 	'ability_level',
+	},
+	
 	discard:{
 		description: 	'Discards up to {LEVEL} card(s) from the your hand to the grave.',
 		cannot_proc_while_stunned: true,
