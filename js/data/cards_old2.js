@@ -1770,7 +1770,7 @@ var all_older_available_cards = {
 		type: 				'spell',
 		subtypes: 			['tactic'],
 		color: 				['orange'],
-		theme: 				['muscle','destruction'],
+		theme: 				['flying_ability','flying_ability'],
 		pick_chance: 		1,
 		time: 				6,
 		image: 				'cards/gorge-802110_640.jpg',
