@@ -12821,9 +12821,11 @@ var replacement_abilities = {
 	command_ally: 		'empower_ally',
 	flank: 				'run_away',
 	armored: 			'plated',
+	block: 				'fortify_self',
 	cold_blast: 		'ice_blast',
 	burn_hero: 			'burn_hv',
 	weaken: 			'weakness',
+	lull: 				'weakness',
 	cover: 				'submerged',
 	poisonous: 			'venom',
 	return_soul: 		'reclaim_creature',
@@ -12838,6 +12840,8 @@ var replacement_abilities = {
 	deaths_revenge: 	'vengeance',
 	snipe_hero: 		'snipe_hv',
 	recall_ally: 		'unsummon_ally',
+	bolster: 			'bolster_creature',
+	fire_shield: 		'fire_aura',
 }
 
 var ignored_abilities = {

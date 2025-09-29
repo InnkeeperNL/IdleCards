@@ -3,6 +3,7 @@ var all_oldest_available_cards = {
 	agate:{
 		name: 				'agate',
 		type: 				'artifact',
+		subtypes: 			['gem'],
 		color: 				['blue'],
 		pick_chance: 		0.5,
 		time: 				4,
@@ -18,60 +19,25 @@ var all_oldest_available_cards = {
 		},
 		quote: '\"It has a mesmerizing effect\"'
 	},
-	amber:{
-		name: 				'amber',
-		type: 				'artifact',
-		color: 				['orange'],
-		pick_chance: 		0.5,
-		time: 				4,
-		image: 				'cards/bernstein-6579_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{empower_ally: 1, delay: 3},
-		recipe:{
-			mana_crystal: 		1,
-			stone: 				1,
-			sandstorm: 			1
-		},
-		quote: '\"Some say it holds ages of rage\"'
-	},
-	/*amethyst:{
-		name: 				'amethyst',
-		type: 				'artifact',
-		color: 				['purple'],
-		pick_chance: 		0.5,
-		time: 				4,
-		image: 				'cards/amethyst-1607247_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{curse: 1, delay: 2},
-		recipe:{
-			mana_crystal: 		1,
-			stone: 				1,
-			bones: 				1
-		},
-		quote: '\"Ancient queens used to adorn their crowns with these\"'
-	},*/
 	angel_of_light:{
 		name: 				'angel of light',
 		type: 				'creature',
+		subtypes: 			['angel'],
 		color: 				['yellow'],
 		time: 				13,
 		image: 				'cards/fantasy-3361394_1280.jpg',
 		power: 				3,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, healing_wave: 2, restore_hero: 2, flying: 1},
+		abilities: 			{strike: 1, restore_hero: 1, flying: 1},
 		hero_version: 			{
 			name: 				'angel of light',
 			type: 				'creature',
 			image: 				'cards/fantasy-3361394_1280.jpg',
-			power: 				false,
+			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{heal: 2, flying: 1},
+			abilities: 			{strike_unit: 1, restore: 1, flying: 1},
 		},
 		recipe:{
 			young_angel: 		1,
@@ -80,98 +46,25 @@ var all_oldest_available_cards = {
 		},
 		quote: '\"She comes down from the heavens to shine her light\"'
 	},
-	
-	angel_statue:{
-		name: 				'angel statue',
-		type: 				'structure',
-		color: 				['yellow'],
-		time: 				3,
-		image: 				'cards/angel-2665661_640.jpg',
-		power: 				false,
-		armor: 				3,
-		health: 			3,
-		abilities: 			{heal_all: 1},
-		hero_version: 			{
-			name: 				'angel statue',
-			type: 				'structure',
-			image: 				'cards/angel-2665661_640.jpg',
-			image_position: 		'top',
-			power: 				false,
-			armor: 				4,
-			health: 			40,
-			abilities: 			{heal_all: 1},
-		},
-		recipe:{
-			stone: 				2,
-			angelic_blessing: 	1,
-			young_angel: 		1
-		},
-		quote: '\"Many of these were built to honor the heavens\"'
-	},
-	angelic_blessing:{
-		name: 				'angelic blessing',
-		type: 				'spell',
-		color: 				['yellow'],
-		pick_chance: 		1,
-		time: 				4,
-		image: 				'cards/fantasy-3311091_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{bless: 2},
-		recipe:{
-			holy_relic: 	3
-		},
-		quote: '\"Only the worthy will receive the blessing of the Lord\"'
-	},
 	apothercarys_tome:{
 		name: 				'apothercary\'s tome',
-		type: 				'object',
+		type: 				'artifact',
+		subtypes: 			['tome'],
 		color: 				['colorless'],
-		pick_chance: 		0.2,
+		pick_chance: 		1,
 		time: 				2,
 		image: 				'cards/book-1210027_1280.jpg',
 		power: 				false,
 		armor: 				0,
-		health: 			3,
-		abilities: 			{heal: 3, safe_spot: 1},
-		reset_time: 		1,
-		safe_slot: 			true,
-		hero_version: 			{
-			name: 				'apothercary\'s tome',
-			type: 				'object',
-			image: 				'cards/book-1210027_1280.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{heal: 3},
-		},
-		recipe:{
-			paper: 			2,
-			healing_oil: 	1
-		},
-		quote: '\"Anyone with such a tome can become a healer\"'
-	},
-	
-	arcane_missiles:{
-		name: 				'arcane missiles',
-		type: 				'spell',
-		color: 				['blue'],
-		pick_chance: 		0.5,
-		time: 				1,
-		image: 				'cards/wave-81840_640.jpg',
-		power: 				false,
-		armor: 				false,
 		health: 			false,
-		abilities: 			{arcane_bolts: 4},
-		recipe:{
-			mana_crystal: 		3,
-		},
-		quote: '\"The basic weapon of any mage\"'
+		abilities: 			{heal: 1, poison_hv: 1},
+		reset_time: 		1,
+		quote: '\"Anyone with such a tome can become a healer.\"'
 	},
 	archeologist:{
 		name: 				'archeologist',
 		type: 				'creature',
+		subtypes: 			['human','clerk'],
 		color: 				['yellow'],
 		pick_chance: 		0.5,
 		time: 				5,
@@ -179,7 +72,7 @@ var all_oldest_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, bring_artifact: 1},
+		abilities: 			{strike: 1, summon_artifact: 1},
 		hero_version: 			{
 			name: 				'archeologist',
 			type: 				'creature',
@@ -187,7 +80,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, bring_artifact: 1},
+			abilities: 			{strike_nearest: 1, summon_artifact: 1},
 		},
 		recipe:{
 			stone: 				2,
@@ -196,49 +89,25 @@ var all_oldest_available_cards = {
 		},
 		quote: '\"Look at what I found!\" - Borick, archeologist'
 	},
-	archer:{
-		name: 				'archer',
-		type: 				'creature',
-		color: 				['yellow'],
-		time: 				2,
-		image: 				'cards/people-2561105_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{shoot: 1},
-		hero_version: 			{
-			name: 				'archer',
-			type: 				'creature',
-			image: 				'cards/people-2561105_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{shoot: 1},
-		},
-		recipe:{
-			quiver: 			1,
-			peasant: 			1
-		},
-		quote: '\"The kingdom prizes itself for it\'s well trained archers\"'
-	},
 	archer_battalion:{
 		name: 				'archer battalion',
 		type: 				'creature',
+		subtypes: 			['human','archer'],
 		color: 				['yellow'],
 		time: 				3,
 		image: 				'cards/archer-5339094_640.jpg',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{barrage: 1},
+		abilities: 			{shoot: 3},
 		hero_version: 			{
 			name: 				'archer battalion',
 			type: 				'creature',
 			image: 				'cards/archer-5339094_640.jpg',
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{barrage: 1},
+			abilities: 			{shoot_unit: 2},
 		},
 		recipe:{
 			archer: 	2,
@@ -248,22 +117,23 @@ var all_oldest_available_cards = {
 	arjuna:{
 		name: 				'arjuna',
 		type: 				'creature',
+		subtypes: 			['human','archer'],
 		color: 				['orange'],
 		time: 				10,
 		image: 				'cards/arjuna-5415282_640.jpg',
 		power: 				2,
-		armor: 				4,
+		armor: 				0,
 		health: 			5,
-		abilities: 			{shoot: 1, pierces: 1, precision: 1},
+		abilities: 			{snipe: 1, trophy_kill: 1, feast: 1},
 		hero_version: 			{
 			name: 				'arjuna',
 			type: 				'creature',
 			image: 				'cards/arjuna-5415282_640.jpg',
 			image_position: 	'top',
 			power: 				2,
-			armor: 				5,
+			armor: 				0,
 			health: 			25,
-			abilities: 			{shoot: 1, pierces: 1},
+			abilities: 			{snipe_hv: 1, feast: 1},
 		},
 		recipe:{
 			archer: 		1,
@@ -272,7 +142,8 @@ var all_oldest_available_cards = {
 	},
 	armor:{
 		name: 				'armor',
-		type: 				'attack',
+		type: 				'spell',
+		subtypes: 			['tactic'],
 		color: 				['yellow'],
 		time: 				2,
 		image: 				'cards/activity-3767542_640.jpg',
@@ -287,40 +158,39 @@ var all_oldest_available_cards = {
 	armored_tribesman:{
 		name: 				'armored tribesman',
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['orange'],
 		time: 				5,
 		image: 				'cards/warrior-3551483_640.jpg',
 		power: 				2,
-		armor: 				2,
-		health: 			2,
-		abilities: 			{strike: 1, armored: 1},
+		armor: 				0,
+		health: 			4,
+		abilities: 			{strike: 1, armored: 1, hide_on_kill: 1},
 		hero_version: 			{
 			name: 				'armored tribesman',
 			type: 				'creature',
 			image: 				'cards/warrior-3551483_640.jpg',
 			power: 				2,
-			armor: 				10,
+			armor: 				0,
 			health: 			15,
-			abilities: 			{strike_nearest: 1, armored: 1},
+			abilities: 			{strike_nearest: 1, armored: 1, hide_on_kill: 1},
 		},
 		recipe:{
 			tribal_warrior:		1,
 			plate_armor: 		1
 		}
 	},
-	
-	
-	
 	ash_lady:{
 		name: 				'ash lady',
 		type: 				'creature',
+		subtypes: 			['human','witch'],
 		color: 				['red','green'],
 		time: 				5,
 		image: 				'cards/woman-5270382_640.jpg',
 		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{cleanse: 1, burn: 2},
+		abilities: 			{burn: 2, cleanse: 1},
 		hero_version: 			{
 			name: 				'ash lady',
 			type: 				'creature',
@@ -330,22 +200,18 @@ var all_oldest_available_cards = {
 			health: 			50,
 			abilities: 			{burn: 2, cleanse: 1},
 		},
-		recipe:{
-			peasant: 		1,
-			burning_ring: 	1,
-			healing_oil: 	1
-		}
 	},
 	assassin:{
 		name: 				'assassin',
 		type: 				'creature',
+		subtypes: 			['human','rogue'],
 		color: 				['purple'],
 		time: 				4,
 		image: 				'cards/fantasy-5432467_640.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 2, poisonous: 1, retreat: 1},
+		abilities: 			{strike: 2, poisonous: 1, homebound: 1},
 		hero_version: 			{
 			name: 				'assassin',
 			type: 				'creature',
@@ -365,13 +231,14 @@ var all_oldest_available_cards = {
 	astral_archer:{
 		name: 				'astral archer',
 		type: 				'creature',
+		subtypes: 			['human','archer'],
 		color: 				['blue'],
 		time: 				5,
 		image: 				'cards/girl-5440572_640.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{snipe: 1, pierces: 1, victory_rush: 1},
+		abilities: 			{snipe: 1, victory_rush: 1},
 		hero_version: 			{
 			name: 				'astral archer',
 			type: 				'creature',
@@ -380,7 +247,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{snipe: 1, pierces: 1, victory_rush: 1},
+			abilities: 			{snipe: 1, victory_rush: 1},
 		},
 		recipe:{
 			magic_attunement: 	1,
@@ -391,6 +258,7 @@ var all_oldest_available_cards = {
 	barbarian_archer:{
 		name: 				'barbarian archer',
 		type: 				'creature',
+		subtypes: 			['human','archer'],
 		color: 				['orange'],
 		time: 				6,
 		image: 				'cards/warrior-5207128_640.jpg',
@@ -415,6 +283,7 @@ var all_oldest_available_cards = {
 	barbarian_axeman:{
 		name: 				'barbarian axeman',
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['orange'],
 		time: 				5,
 		image: 				'cards/barbarian-4616094_640.jpg',
@@ -422,7 +291,7 @@ var all_oldest_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{swipe: 1},
+		abilities: 			{strike: 2},
 		hero_version: 			{
 			name: 				'barbarian axeman',
 			type: 				'creature',
@@ -431,7 +300,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_unit: 2},
 		},
 		recipe:{
 			lumberjacks_axe: 	1,
@@ -442,13 +311,14 @@ var all_oldest_available_cards = {
 	barbarian_elite:{
 		name: 				'barbarian elite',
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['orange'],
 		time: 				11,
 		image: 				'cards/amazone-5178696_640.jpg',
 		image_position: 		'top',
-		power: 				2,
-		armor: 				2,
-		health: 			5,
+		power: 				3,
+		armor: 				0,
+		health: 			8,
 		abilities: 			{seek_enemy: 1, strike: 1, enrage:1},
 		hero_version: 			{
 			name: 				'barbarian elite',
@@ -456,7 +326,7 @@ var all_oldest_available_cards = {
 			image: 				'cards/amazone-5178696_640.jpg',
 			image_position: 		'top',
 			power: 				2,
-			armor: 				5,
+			armor: 				0,
 			health: 			55,
 			abilities: 			{strike_nearest: 1, enrage: 1},
 		},
@@ -469,6 +339,7 @@ var all_oldest_available_cards = {
 	barbarian_shieldman:{
 		name: 				'barbarian shieldman',
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['orange'],
 		time: 				11,
 		image: 				'cards/barbarian-2159912_640.jpg',
@@ -476,7 +347,7 @@ var all_oldest_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{swipe: 1, block: 1},
+		abilities: 			{strike: 1, block: 1},
 		hero_version: 			{
 			name: 				'barbarian shieldman',
 			type: 				'creature',
@@ -485,7 +356,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, block: 1},
+			abilities: 			{strike_unit: 1, block: 1},
 		},
 		recipe:{
 			barbarian_axeman: 	1,
@@ -495,6 +366,7 @@ var all_oldest_available_cards = {
 	bard:{
 		name: 				'bard',
 		type: 				'creature',
+		subtypes: 			['human'],
 		color: 				['yellow','red'],
 		time: 				3,
 		image: 				'cards/fantasy-4103064_640.jpg',
@@ -522,15 +394,16 @@ var all_oldest_available_cards = {
 	
 	bear_trap:{
 		name: 				'bear trap',
-		type: 				'object',
+		type: 				'structure',
+		subtypes: 			['trap'],
 		color: 				['yellow'],
-		pick_chance: 		0.5,
+		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/bear-trap-413397_640.jpg',
 		power: 				false,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{final_strike: 10, guard: 1},
+		abilities: 			{thorns: 10, guard: 1},
 		reset_time: 		1,
 		safe_slot: 			false,
 		recipe:{
@@ -578,14 +451,14 @@ var all_oldest_available_cards = {
 	black_striker:{
 		name: 				'black striker',
 		type: 				'creature',
+		subtypes: 			['human','rogue'],
 		color: 				['purple'],
 		time: 				3,
 		image: 				'cards/assassin-2182084_640.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, flank: 1, evade: 1},
-		placement: 			'right',
+		abilities: 			{strike: 1, run_away: 1, evade: 1},
 		hero_version: 			{
 			name: 				'black striker',
 			type: 				'creature',
@@ -604,13 +477,14 @@ var all_oldest_available_cards = {
 	blessed_angel:{
 		name: 				'blessed angel',
 		type: 				'creature',
+		subtypes: 			['angel'],
 		color: 				['yellow'],
 		time: 				9,
 		image: 				'cards/angel-749625_640.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, blessed_entry: 1, healing_wave: 1, flying: 1},
+		abilities: 			{strike: 1, bless: 1, heal: 1, flying: 1},
 		hero_version: 			{
 			name: 				'blessed angel',
 			type: 				'creature',
@@ -619,7 +493,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{heal: 1, blessed_arrivals: 3, flying: 1},
+			abilities: 			{heal: 1, bless: 3, flying: 1},
 		},
 		recipe:{
 			angel_of_light: 	1,
@@ -629,6 +503,7 @@ var all_oldest_available_cards = {
 	blue_butterflies:{
 		name: 				'blue butterflies',
 		type: 				'creature',
+		subtypes: 			['animal','insect'],
 		color: 				['green'],
 		pick_chance: 		0.5,
 		time: 				2,
@@ -636,7 +511,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{flying: 1, evade: 1, bolster: 1},
+		abilities: 			{bolster: 1, flying: 1, evade: 1},
 		hero_version: 			{
 			name: 				'blue butterflies',
 			type: 				'creature',
@@ -644,97 +519,17 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{flying: 1, evade: 1},
+			abilities: 			{bolster: 1, flying: 1, evade: 1},
 		},
 		recipe:{
 			natures_touch: 		1,
 			book_of_nature: 	1,
 		}
 	},
-	/*blue_elf:{
-		name: 				'blue elf',
-		type: 				'creature',
-		color: 				['blue'],
-		time: 				3,
-		image: 				'cards/dark-2971931_1280.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1, spellrush: 1},
-		hero_version: 			{
-			name: 				'blue elf',
-			type: 				'creature',
-			image: 				'cards/dark-2971931_1280.jpg',
-			image_position: 	'top',
-			power: 				2,
-			armor: 				0,
-			health: 			50,
-			abilities: 			{strike_nearest: 1, spellrush: 1},
-		},
-		recipe:{
-			forest_elf: 		1,
-			magic_attunement: 	1,
-			mana_orb: 			1
-		}
-	},*/
-	
-	boar:{
-		name: 				'boar',
-		type: 				'creature',
-		color: 				['green'],
-		time: 				2,
-		image: 				'cards/boar-3240210_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1},
-		hero_version: 			{
-			name: 				'boar',
-			type: 				'creature',
-			image: 				'cards/boar-3240210_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			60,
-			abilities: 			{strike_nearest: 1},
-		},
-		recipe:{
-			firtile_dirt: 		2,
-			natures_touch: 		1,
-		}
-	},
-	bomb:{
-		name: 				'bomb',
-		type: 				'attack',
-		color: 				['red'],
-		time: 				3,
-		image: 				'cards/abandoned-place-3413932_1280.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{bombard: 6},
-		recipe:{
-			burning_ring: 	1,
-			ore: 			1,
-		}
-	},
-	
-	/*bones:{
-		name: 				'bones',
-		type: 				'artifact',
-		color: 				['purple'],
-		pick_chance: 		1,
-		basic_reward: 		true,
-		time: 				2,
-		image: 				'cards/bone-664596_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{resurrect_ally: 1},
-	},*/
-	
 	book_of_fire:{
 		name: 				'book of fire',
 		type: 				'artifact',
+		subtypes: 			['tome'],
 		color: 				['red'],
 		pick_chance: 		0.5,
 		time: 				6,
@@ -752,6 +547,7 @@ var all_oldest_available_cards = {
 	book_of_nature:{
 		name: 				'book of nature',
 		type: 				'artifact',
+		subtypes: 			['tome'],
 		color: 				['green'],
 		pick_chance: 		0.5,
 		time: 				3,
@@ -766,69 +562,16 @@ var all_oldest_available_cards = {
 			paper: 				1
 		}
 	},
-	
-	brigands:{
-		name: 				'brigands',
-		type: 				'creature',
-		color: 				['yellow'],
-		time: 				6,
-		image: 				'cards/medieval-5463404_640.jpg',
-		power: 				2,
-		armor: 				4,
-		health: 			5,
-		abilities: 			{strike: 1, pilfer: 1, gamble: 1},
-		hero_version: 			{
-			name: 				'brigands',
-			type: 				'creature',
-			image: 				'cards/medieval-5463404_640.jpg',
-			power: 				2,
-			armor: 				10,
-			health: 			40,
-			abilities: 			{strike_nearest: 1, gamble: 1},
-		},
-		recipe:{
-			peasant: 			1,
-			poverty: 			1,
-			roll_the_dice: 		1
-		}
-	},
-	brown_bear:{
-		name: 				'brown bear',
-		type: 				'creature',
-		color: 				['green','orange'],
-		time: 				5,
-		image: 				'cards/bear-422682_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			8,
-		abilities: 			{strike: 1, enrage: 1},
-		hero_version: 			{
-			name: 				'brown bear',
-			type: 				'creature',
-			image: 				'cards/bear-422682_640.jpg',
-			power: 				3,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_nearest: 1},
-		},
-		recipe:{
-			wolf: 				1,
-			wood_trinket: 		1,
-			amber: 				1
-		}
-	},
 	burning_angel:{
 		name: 				'burning angel',
 		type: 				'creature',
+		subtypes: 			['angel'],
 		color: 				['red'],
 		time: 				9,
 		image: 				'cards/angel-1284369_640.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		effects: 			{
-			burning: 		3
-		},
 		abilities: 			{strike: 1, fire_blast: 1, flying: 1},
 		hero_version: 			{
 			name: 				'burning angel',
@@ -838,75 +581,17 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			50,
-			effects: 			{
-				burning: 		8
-			},
-			abilities: 			{strike_nearest: 1, fire_bolt: 1, flying: 1},
+			abilities: 			{strike_nearest: 1, fire_bolt_hv: 1, flying: 1},
 		},
 		recipe:{
 			angel_of_light: 	1,
 			burning_ring: 		1,
 		}
 	},
-	
-	burning_imp:{
-		name: 				'burning imp',
-		type: 				'creature',
-		color: 				['red'],
-		time: 				4,
-		image: 				'cards/devil-1674605_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			3,
-		abilities: 			{strike: 1, burning_entry: 2, resist_fire: 1},
-		hero_version: 			{
-			name: 				'burning imp',
-			type: 				'creature',
-			image: 				'cards/devil-1674605_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_nearest: 1, burn: 2, resist_fire: 1},
-		},
-		recipe:{
-			fire_imp: 		1,
-			candle: 		1
-		}
-	},
-	burning_owl:{
-		name: 				'burning owl',
-		type: 				'creature',
-		color: 				['red'],
-		time: 				1,
-		image: 				'cards/art-1034408_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			3,
-		effects: 			{
-			burning: 		2
-		},
-		abilities: 			{strike: 1, explode: 2, flying: 1},
-		hero_version: 			{
-			name: 				'burning owl',
-			type: 				'creature',
-			image: 				'cards/art-1034408_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			50,
-			effects: 			{
-				burning: 		5
-			},
-			abilities: 			{strike_nearest: 1, flying: 1},
-		},
-		recipe:{
-			natures_touch: 		1,
-			bomb: 				1,
-		}
-	},
-	
 	burning_rage:{
 		name: 				'burning rage',
 		type: 				'spell',
+		subtypes: 			['tactic'],
 		color: 				['red'],
 		pick_chance: 		0.1,
 		time: 				1,
@@ -914,7 +599,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{burning_rage: 2},
+		abilities: 			{empower_ally: 2, burn_all: 1, minimum_allies: 1, minimum_enemies: 3},
 		recipe:{
 			burning_imp: 	1,
 			amber: 			1,
@@ -923,6 +608,7 @@ var all_oldest_available_cards = {
 	burning_ring:{
 		name: 				'burning ring',
 		type: 				'artifact',
+		subtypes: 			['trinket'],
 		color: 				['red'],
 		pick_chance: 		0.5,
 		time: 				4,
@@ -930,7 +616,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{fire_bolt: 1, delay: 2},
+		abilities: 			{fire_bolt_hv: 1, ignites: 1},
 		recipe:{
 			fire_bolt: 		2,
 			ore: 			1,
@@ -940,15 +626,13 @@ var all_oldest_available_cards = {
 	burning_ruins:{
 		name: 				'burning ruins',
 		type: 				'structure',
+		subtypes: 			['wall'],
 		color: 				['red'],
 		time: 				3,
 		image: 				'cards/braunschweig-3815570_640.jpg',
 		power: 				false,
 		armor: 				0,
 		health: 			6,
-		effects: 			{
-			burning: 		3
-		},
 		abilities: 			{fire_shield: 2, burning_entry: 2},
 		hero_version: 			{
 			name: 				'burning ruins',
@@ -957,10 +641,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			60,
-			effects: 			{
-				burning: 		6
-			},
-			abilities: 			{fire_shield: 1, burn_opponent: 1},
+			abilities: 			{fire_shield: 1, burn_hv: 1},
 		},
 		recipe:{
 			hellfire: 			1,
