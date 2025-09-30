@@ -391,26 +391,6 @@ var all_oldest_available_cards = {
 			magic_attunement: 	1
 		}
 	},
-	
-	bear_trap:{
-		name: 				'bear trap',
-		type: 				'structure',
-		subtypes: 			['trap'],
-		color: 				['yellow'],
-		pick_chance: 		1,
-		time: 				1,
-		image: 				'cards/bear-trap-413397_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			1,
-		abilities: 			{thorns: 10, guard: 1},
-		reset_time: 		1,
-		safe_slot: 			false,
-		recipe:{
-			ore: 			1,
-			lumber: 		1,
-		}
-	},
 	bee:{
 		name: 				'bee',
 		type: 				'creature',
@@ -649,35 +629,10 @@ var all_oldest_available_cards = {
 			crumble: 			1
 		}
 	},
-	
-	calm_druid:{
-		name: 				'calm druid',
-		type: 				'creature',
-		color: 				['green'],
-		time: 				2,
-		image: 				'cards/fantasy-2961723_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1, bolster: 1},
-		hero_version: 			{
-			name: 				'calm druid',
-			type: 				'creature',
-			image: 				'cards/fantasy-2961723_640.jpg',
-			image_position: 		'top',
-			power: 				1,
-			armor: 				0,
-			health: 			60,
-			abilities: 			{strike_nearest: 1, bolster: 1},
-		},
-		recipe:{
-			druid: 		 		1,
-			book_of_nature: 	1,
-		}
-	},
 	calm_recaller:{
 		name: 				'calm recaller',
 		type: 				'creature',
+		subtypes: 			['human','mage'],
 		color: 				['blue'],
 		time: 				1,
 		image: 				'cards/fantasy-2790666_1280.jpg',
@@ -704,22 +659,23 @@ var all_oldest_available_cards = {
 	camel:{
 		name: 				'camel',
 		type: 				'creature',
+		subtypes: 			['animal'],
 		color: 				['orange'],
 		time: 				3,
 		image: 				'cards/camel-3314724_1280.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{move_away: 1, spit: 1},
+		abilities: 			{run_away: 1, strike: 1},
 		hero_version: 			{
 			name: 				'camel',
 			type: 				'creature',
 			image: 				'cards/camel-3314724_1280.jpg',
 			image_position: 		'top',
-			power: 				2,
+			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{spit: 1},
+			abilities: 			{strike_nearest: 1},
 		},
 		recipe:{
 			natures_touch: 		1,
@@ -743,13 +699,14 @@ var all_oldest_available_cards = {
 	caravan:{
 		name: 				'caravan',
 		type: 				'creature',
+		subtypes: 			['human','animal'],
 		color: 				['orange'],
 		time: 				1,
 		image: 				'cards/beach-5437910_640.png',
 		power: 				false,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{slow_own: 1, turncoat: 1},
+		abilities: 			{turncoat: 1, slow_own: 1},
 		hero_version: 			{
 			name: 				'caravan',
 			type: 				'creature',
@@ -758,7 +715,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{hasten: 1},
+			abilities: 			{hasten: 1, slow: 1},
 		},
 		recipe:{
 			poverty: 			1,
@@ -770,6 +727,7 @@ var all_oldest_available_cards = {
 	caretaking_druid:{
 		name: 				'caretaking druid',
 		type: 				'creature',
+		subtypes: 			['human','cleric'],
 		color: 				['green'],
 		time: 				6,
 		image: 				'cards/druid-3442618_1280.jpg',
@@ -784,7 +742,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			45,
-			abilities: 			{strike_nearest: 1, heal: 1, repair: 1},
+			abilities: 			{strike_unit: 1, heal: 1, repair: 1},
 		},
 		recipe:{
 			calm_druid: 		1,
@@ -792,122 +750,43 @@ var all_oldest_available_cards = {
 			book_of_nature: 	1
 		}
 	},
-	
-	carnivorous_plant:{
-		name: 				'carnivorous plant',
-		type: 				'object',
-		color: 				['green'],
-		time: 				6,
-		image: 				'cards/carnivorous-plant-217187_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			6,
-		abilities: 			{thorns: 2, feast: 4, trap: 1},
-		hero_version: 			{
-			name: 				'carnivorous plant',
-			type: 				'object',
-			image: 				'cards/carnivorous-plant-217187_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{thorns: 1, feast: 4, trap: 1},
-		},
-		recipe:{
-			thorned_tree: 		1,
-			healing_oil: 		1,
-			book_of_nature: 	1
-		}
-	},
-	castle:{
-		name: 				'castle',
-		type: 				'structure',
-		color: 				['yellow'],
-		time: 				4,
-		image: 				'cards/castle-832543_640.jpg',
-		power: 				1,
-		armor: 				4,
-		health: 			4,
-		abilities: 			{restore_hero: 1, counter: 1},
-		hero_version: 			{
-			name: 				'castle',
-			type: 				'structure',
-			image: 				'cards/castle-832543_640.jpg',
-			power: 				1,
-			armor: 				6,
-			health: 			40,
-			abilities: 			{restore_hero: 1, counter: 1},
-		},
-		recipe:{
-			court_lady: 		1,
-			fort: 				1,
-		}
-	},
-	
 	chain_lightning:{
 		name: 				'chain lightning',
 		type: 				'spell',
+		subtypes: 			['weather'],
 		color: 				['blue'],
 		time: 				1,
 		image: 				'cards/norman-79860_1280.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{lightning_bolt: 2, go_again: 1},
+		abilities: 			{lightning: 2, go_again: 1},
 		recipe:{
 			lightning_bolt: 	1,
 			lightning_storm: 	1
 		}
 	},
-	citrine:{
-		name: 				'citrine',
-		type: 				'artifact',
-		color: 				['yellow'],
-		pick_chance: 		0.5,
-		time: 				1,
-		image: 				'cards/citrine-3201605_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{restore_hero: 1, delay: 3},
-		recipe:{
-			mana_crystal: 		1,
-			stone: 				1,
-			holy_relic: 		1
-		}
-	},
-	cleansing_water:{
-		name: 				'cleansing water',
-		type: 				'spell',
-		color: 				['blue'],
-		pick_chance: 		0.5,
-		basic_reward: 		true,
-		time: 				1,
-		image: 				'cards/air-bubbles-230014_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{cleanse_all: 6},
-	},
 	
 	clockwork_automaton:{
 		name: 				'clockwork automaton',
-		type: 				'object',
+		type: 				'structure',
+		subtypes: 			['golem'],
 		color: 				['blue'],
 		pick_chance: 		1,
 		time: 				11,
 		image: 				'cards/fantasy-2513222_1280.jpg',
 		power: 				0,
-		armor: 				4,
+		armor: 				0,
 		health: 			8,
-		abilities: 			{gather_energy: 1, energize_self: 1, strike: 1},
+		abilities: 			{enrage: 3, strike: 1, plated: 1},
 		hero_version: 			{
 			name: 				'clockwork automaton',
-			type: 				'object',
+			type: 				'structure',
 			image: 				'cards/fantasy-2513222_1280.jpg',
-			power: 				2,
-			armor: 				8,
+			power: 				0,
+			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_nearest: 1, enrage: 2, plated: 1},
 		},
 		recipe:{
 			ore: 				1,
@@ -917,23 +796,24 @@ var all_oldest_available_cards = {
 	},
 	clockwork_hummingbird:{
 		name: 				'clockwork hummingbird',
-		type: 				'object',
+		type: 				'structure',
+		subtypes: 			['golem','animal','bird'],
 		color: 				['blue'],
 		pick_chance: 		1,
 		time: 				2,
 		image: 				'cards/clockwork-4171696_640.jpg',
-		power: 				1,
+		power: 				0,
 		armor: 				0,
-		health: 			2,
-		abilities: 			{gather_energy: 1, energy_strike: 1, flying: 1},
+		health: 			3,
+		abilities: 			{enrage: 3, strike: 1, plated: 1, flying: 1},
 		hero_version: 			{
 			name: 				'clockwork hummingbird',
-			type: 				'object',
+			type: 				'structure',
 			image: 				'cards/clockwork-4171696_640.jpg',
-			power: 				1,
+			power: 				0,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 2, flying: 1},
+			abilities: 			{strike_nearest: 1, enrage: 2, plated: 1, flying: 1},
 		},
 		recipe:{
 			clockwork_automaton: 		1,
@@ -1762,13 +1642,14 @@ var all_oldest_available_cards = {
 	elf_mystic:{
 		name: 				'elf mystic',
 		type: 				'creature',
+		subtypes: 			['elf','cleric'],
 		color: 				['green','blue'],
 		time: 				3,
 		image: 				'cards/composing-5394355_640.jpg',
 		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{arcane_bolts: 1, lull: 1, cleanse: 1},
+		abilities: 			{arcane_bolt: 1, lull: 1, cleanse: 1},
 		hero_version: 			{
 			name: 				'elf mystic',
 			type: 				'creature',
@@ -1777,7 +1658,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{arcane_bolts: 1, lull: 1, cleanse: 1},
+			abilities: 			{arcane_bolt_hv: 1, lull: 1, cleanse: 1},
 		},
 		recipe:{
 			elf_healer: 		1,
@@ -1965,7 +1846,7 @@ var all_oldest_available_cards = {
 	},
 	explosive_barrel:{
 		name: 				'explosive barrel',
-		type: 				'object',
+		type: 				'structure',
 		color: 				['red'],
 		time: 				1,
 		image: 				'cards/wooden-258622_640.jpg',
@@ -1975,7 +1856,7 @@ var all_oldest_available_cards = {
 		abilities: 			{explode: 4},
 		hero_version: 			{
 			name: 				'explosive barrel',
-			type: 				'object',
+			type: 				'structure',
 			image: 				'cards/wooden-258622_640.jpg',
 			power: 				false,
 			armor: 				0,
@@ -3905,13 +3786,14 @@ var all_oldest_available_cards = {
 	jousting_knight:{
 		name: 				'jousting knight',
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['yellow'],
 		time: 				11,
 		image: 				'cards/knight-4593849_640.jpg',
 		power: 				2,
 		armor: 				2,
 		health: 			5,
-		abilities: 			{charge: 1, block: 1},
+		abilities: 			{charge: 1, strike: 1, block: 1, plated: 1},
 		hero_version: 			{
 			name: 				'jousting knight',
 			type: 				'creature',
@@ -3920,7 +3802,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, block: 1},
+			abilities: 			{strike_nearest: 1, block: 1, plated: 1},
 		},
 		recipe:{
 			shield_maiden: 		1,
@@ -4089,19 +3971,6 @@ var all_oldest_available_cards = {
 			giants_foot: 		1
 		}
 	},
-	lumber:{
-		name: 				'lumber',
-		type: 				'object',
-		color: 				['colorless'],
-		pick_chance: 		0,
-		basic_reward: 		true,
-		time: 				0,
-		image: 				'cards/wood-5348427_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			7,
-		abilities: 			{},
-	},
 	
 	lumberjacks_axe:{
 		name: 				'lumberjack\'s axe',
@@ -4201,7 +4070,7 @@ var all_oldest_available_cards = {
 	},
 	mana_orb:{
 		name: 				'mana orb',
-		type: 				'object',
+		type: 				'structure',
 		color: 				['blue'],
 		pick_chance: 		0.5,
 		time: 				1,
@@ -4212,7 +4081,7 @@ var all_oldest_available_cards = {
 		abilities: 			{gather_energy: 1, release_energy: 1},
 		hero_version: 			{
 			name: 				'mana orb',
-			type: 				'object',
+			type: 				'structure',
 			image: 				'cards/ball-3528226_640.jpg',
 			power: 				false,
 			armor: 				0,
@@ -5703,19 +5572,6 @@ var all_oldest_available_cards = {
 		}
 	},
 	
-	stone:{
-		name: 				'stone',
-		type: 				'object',
-		color: 				['colorless'],
-		pick_chance: 		0,
-		basic_reward: 		true,
-		time: 				0,
-		image: 				'cards/rocks-233011_640.jpg',
-		power: 				false,
-		armor: 				3,
-		health: 			3,
-		abilities: 			{fireproof: 1},
-	},
 	stormy_castle:{
 		name: 				'stormy castle',
 		type: 				'structure',
@@ -5890,19 +5746,20 @@ var all_oldest_available_cards = {
 	thaculla:{
 		name: 				'thaculla',
 		type: 				'creature',
+		subtypes: 			['animal','daemon'],
 		color: 				['purple'],
 		time: 				2,
 		image: 				'cards/monster-4803514_640.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, fade: 1, go_again: 1},
+		abilities: 			{strike: 1, doom_self: 1, go_again: 1},
 		hero_version: 			{
 			name: 				'thaculla',
 			type: 				'creature',
 			image: 				'cards/monster-4803514_640.jpg',
 			image_position: 	'top',
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			60,
 			abilities: 			{strike_nearest: 1, go_again: 1},
@@ -5912,31 +5769,7 @@ var all_oldest_available_cards = {
 			deaths_call: 		1
 		}
 	},
-	
-	thorned_tree:{
-		name: 				'thorned tree',
-		type: 				'object',
-		color: 				['green'],
-		time: 				2,
-		image: 				'cards/bark-4689424_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			7,
-		abilities: 			{thorns: 1, regenerate: 1},
-		hero_version: 			{
-			name: 				'thorned tree',
-			type: 				'object',
-			image: 				'cards/bark-4689424_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{thorns: 2, regenerate: 1},
-		},
-		recipe:{
-			firtile_dirt: 		1,
-			lumber: 			1
-		}
-	},
+
 	tiger_huntress:{
 		name: 				'tiger huntress',
 		type: 				'creature',
@@ -6641,30 +6474,6 @@ var all_oldest_available_cards = {
 		abilities: 			{bolster: 1, delay: 3},
 		recipe:{
 			lumber: 			2,
-		}
-	},
-	workshop:{
-		name: 				'workshop',
-		type: 				'structure',
-		color: 				['yellow'],
-		time: 				5,
-		image: 				'cards/fantasy-3049543_1920.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			5,
-		abilities: 			{shoot: 1, bring_object: 1},
-		hero_version: 			{
-			name: 				'workshop',
-			type: 				'structure',
-			image: 				'cards/fantasy-3049543_1920.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{draw_object: 1},
-		},
-		recipe:{
-			fort: 				1,
-			old_tome: 			1
 		}
 	},
 	

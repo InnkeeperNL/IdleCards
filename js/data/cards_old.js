@@ -12840,8 +12840,8 @@ var replacement_abilities = {
 	deaths_revenge: 	'vengeance',
 	snipe_hero: 		'snipe_hv',
 	recall_ally: 		'unsummon_ally',
-	bolster: 			'bolster_creature',
 	fire_shield: 		'fire_aura',
+	lightning_bolt: 	'lightning',
 }
 
 var ignored_abilities = {

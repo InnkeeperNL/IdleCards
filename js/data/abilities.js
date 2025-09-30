@@ -2786,8 +2786,62 @@ var all_abilities = {
 		level_cost: 	5,
 		level_cost_artifact: 2.5,
 	},
+	destroy_non_flying:{
+		name: 			'destroy non-flying',
+		description: 	'Destroys {LEVEL} random enemy unit(s) without the flying ability.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		reduce_skill_after_use: 'destroy',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				max_abilities: 	{flying: 0},
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['destroy'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	5,
+	},
+	destroy_non_flying_ally:{
+		description: 	'Destroy up to {LEVEL} random ally unit(s) without the flying ability.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		remove_skill_after_use: 'sacrifice_unit',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 'ability_level',
+				position: 	'random',
+				max_abilities: 	{flying: 0},
+				not_self: 	true,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['sacrifice'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	-3,
+		average_hits: 	'ability_level',
+	},
+	
 	discard:{
-		description: 	'Discards up to {LEVEL} card(s) from the your hand to the grave.',
+		description: 	'Discards up to {LEVEL} card(s) from your hand to the grave.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use:'discard',
@@ -4852,6 +4906,31 @@ var all_abilities = {
 		level_cost_spell: 	0.75,
 		average_hits: 		1,
 		cost_adjustment: 	1,
+	},
+	go_again:{
+		description: 	'Has a 50% chance to get another turn.',
+		proc_chance: 	50,
+		cannot_proc_while_stunned: true,
+		has_used_ability: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 	'any',
+				target_amount: 1,
+				position: 	'self',
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'go_again',
+				type: 		'go_again',
+				amount: 	1,
+				increase_timeout: -250,
+			},
+		},
+		level_cost: 	0.5,
+		cost_factor: 	'full',
 	},
 	grant_explode:{
 		name: 			'grant: explode',
@@ -8093,6 +8172,31 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	4,
 	},
+	slow_own:{
+		description: 	'Increases the ready time of a random ally card by {LEVEL}.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 	'card',
+				target_amount: 1,
+				status: 	'hand',
+				can_target_zero: true,
+				side: 		'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'slow',
+				projectile_target: 	'deck',
+				type: 				'increase_ready_time',
+				subtypes: 			['slow','deck_control'],
+				amount: 			'ability_level',
+				side: 				'ally',
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: -1,
+	},
 	snipe:{
 		description: 	'Deals physical projectile damage equal to its power to the enemy unit or hero with the lowest health.',
 		cannot_proc_while_stunned: true,
@@ -9405,6 +9509,34 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	1,
 		level_cost_hero: 	2,
+	},
+	turncoat:{
+		description: 	'If there are no more then 4 enemy units, this unit changes sides. This effect will trigger up to {LEVEL} times.',
+		proc: 		'basic',
+		proc_amount: 	1,
+		max_enemy_units: 4,
+		cannot_proc_while_stunned: true,
+		reduce_skill_after_use:'turncoat',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'self',
+				min_hp: 	1,
+				side: 		'any'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'change_side',
+				subtypes: 	['movement','change_side'],
+				amount: 	1,
+			},
+		},
+		level_cost: 	1,
+		ability_level_cost_factors:{
+			slow_own: 		2,
+		},
 	},
 	turn_enemy:{
 		description: 	'Turns a random enemy non-undead creature into an ally.',
