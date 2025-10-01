@@ -2452,7 +2452,7 @@ var all_old_available_cards = {
 	dwarf_warden:{
 		name: 				'dwarf warden',
 		type: 				'creature',
-		subtypes: 			['dwarf','guard'],
+		subtypes: 			['dwarf','warrior'],
 		color: 				['colorless'],
 		theme: 				['muscle'],
 		pick_chance: 		1,
@@ -5510,51 +5510,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, enrage: 1, shield: 1},
 		},
 		quote: '\"If you hurt me, I will hurt you.\"',
-	},
-	guard:{
-		name: 				'guard',
-		type: 				'creature',
-		subtypes: 			['human','warrior'],
-		color: 				['colorless'],
-		theme: 				[],
-		pick_chance: 		1,
-		time: 				1,
-		image: 				'cards/persons-4853861_640.jpg',
-		image_position: 	'top',
-		power: 				1,
-		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1, guard: 1},
-		hero_version: 			{
-			theme: 				['guard_ability','subtype_warrior','active_healing_ability'],
-			power: 				3,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_unit: 1},
-		},
-		quote: '\"Expendable protection.\"',
-	},
-	guard_dog:{
-		name: 				'guard dog',
-		type: 				'creature',
-		subtypes: 			['animal','canine'],
-		color: 				['colorless'],
-		theme: 				[],
-		pick_chance: 		1,
-		time: 				1,
-		image: 				'cards/dream_TradingCard-2023-04-07T062417.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{guard: 1, strike: 1},
-		hero_version: 			{
-			theme: 				['enrage_ability','subtype_animal','active_healing_ability','subtype_guard'],
-			power: 				2,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_unit: 1, empower_ally: 1},
-		},
-		quote: '\"They warn you of incoming threats.\"',
 	},
 	haunted_castle:{
 		name: 				'haunted castle',
@@ -10072,7 +10027,7 @@ var all_old_available_cards = {
 	steelguard:{
 		name: 				'steelguard',
 		type: 				'creature',
-		subtypes: 			['human','guard'],
+		subtypes: 			['human','warrior'],
 		color: 				['colorless'],
 		theme: 				[],
 		pick_chance: 		1,
@@ -12845,6 +12800,7 @@ var replacement_abilities = {
 	blessed_arrivals: 	'bless_arrivals',
 	surprise_strike: 	'striking_entry',
 	recall_soul: 		'unsummon_dead',
+	move_away: 			'run_away',
 }
 
 var ignored_abilities = {
@@ -12977,7 +12933,7 @@ function add_old_cards(old_cards, image_folder){
 						if(new_card_info['power'] != card_info['power']){matched_this = false;}
 						if(new_card_info['health'] != card_info['health']){matched_this = false;}
 						if(new_card_info['type'] != card_info['type']){matched_this = false;}
-						if(new_card_info['type'] != 'artifact' && new_card_info['type'] != 'spell' && match_array_values(new_card_info['subtypes'], card_info['subtypes']) < count_object(new_card_info['subtypes'])){matched_this = false;}
+						if(new_card_info['type'] != 'artifact' && new_card_info['type'] != 'spell' && match_array_values(new_card_info['subtypes'], card_info['subtypes'], true) < count_object(new_card_info['subtypes'])){matched_this = false;}
 						if(count_object(card_info['abilities']) == count_object(new_card_info['abilities']))
 						{
 							eachoa(card_info['abilities'], function(ability_id, ability_level){

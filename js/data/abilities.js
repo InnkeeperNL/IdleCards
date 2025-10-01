@@ -4390,7 +4390,6 @@ var all_abilities = {
 	},
 	fire_bolt_hv:{
 		name: 			'fire bolt',
-		name_color: 	'rgba(255,55,55,0.9)',
 		description: 	'Deals {LEVEL} magical fire projectile damage to a random enemy unit.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -4418,11 +4417,7 @@ var all_abilities = {
 	},
 	fire_breath:{
 		description: 	'Deals {LEVEL} magical fire damage to all nearby enemy units. Targets the enemy hero if there are no units in range.',
-		proc: 		'basic',
 		cannot_proc_while_stunned: true,
-		do_not_pause_between: true,
-		proc_amount: 	1,
-		not_on_hero: 	true,
 		scales: 		true,
 		targets:	{
 			0:{
@@ -5291,6 +5286,35 @@ var all_abilities = {
 		level_cost: 	12,
 		level_cost_structure: 9,
 		level_cost_spell: 3,
+	},
+	hellfire:{
+		description: 	'Deals {LEVEL} magical fire damage, multiplied by the distance form their hero, to the enemy unit furthest from their hero.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'right',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				self_projectile: 	'fire goes_up',
+				target_projectile: 	'fire from_below',
+				type: 			'damage',
+				subtypes: 		['magical','fire'],
+				amount: 		'target_slot',
+				amount_factor: 'ability_level'
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		6,
+		level_cost_spell: 	1.5,
+		level_cost_hero: 	6,
+		average_hits: 		1,
 	},
 	hero_resists_magic:{
 		name: 			'hero resists magic',
@@ -7270,8 +7294,9 @@ var all_abilities = {
 		level_cost_spell: 1,
 	},
 	resist_cold:{
-		description: 	'Reduces all cold damage to 0.',
+		description: 	'Has a 50% chance to reduce incoming cold damage to 0.',
 		proc: 			'max_incoming_damage',
+		reduce_chance: 	50,
 		subtypes: 		['cold'],
 		negated_by: 	['ignores_armor'],
 		amount: 		0,
@@ -7291,7 +7316,7 @@ var all_abilities = {
 				increase_timeout: 	-1500,
 			}
 		},
-		level_cost: 		0.25,
+		level_cost: 		0.125,
 		min_cost: 			1,
 		cost_factor: 		'health',
 		max_level: 			1,
@@ -9121,7 +9146,7 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		24,
+		level_cost: 		6,
 		level_cost_spell: 	6,
 	},
 	summon_locust:{
@@ -9146,7 +9171,7 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		20,
+		level_cost: 		5,
 		level_cost_spell: 	5,
 	},
 	summon_locust_on_kill:{
@@ -9198,7 +9223,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		16,
+		level_cost: 		4,
 		level_cost_spell: 	4,
 	},
 	summon_structure:{

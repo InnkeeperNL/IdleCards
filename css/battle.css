@@ -662,6 +662,30 @@
     animation-timing-function: ease-out;
 }
 
+@keyframes from_below {
+    0%   {
+    	margin-top: 100px;
+		opacity: 0;
+		transform: scale(1,0.25);
+    }
+    100%   {
+    	margin-top: 0px;
+		opacity: 0.7;
+		transform: scale(1,1);
+    }
+}
+
+.battle_container .from_below
+{
+	margin-top: 100px;
+	opacity: 0;
+	transform-origin: center;
+	transform: scale(0.25,1);
+	animation-name: from_below;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+}
+
 .game_speed_fast .battle_container .goes_up
 {
 	animation-duration: 0.25s;

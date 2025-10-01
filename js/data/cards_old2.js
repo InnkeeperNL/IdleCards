@@ -925,8 +925,8 @@ var all_older_available_cards = {
 		image: 				'cards/woman-3407771_640.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1, heal: 1},
+		health: 			3,
+		abilities: 			{strike: 1, evade: 1},
 		hero_version: 			{
 			name: 				'forest elf',
 			type: 				'creature',
@@ -935,7 +935,7 @@ var all_older_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, heal: 1},
+			abilities: 			{strike_unit: 1, evade: 1},
 		},
 		recipe:{
 			//herbs: 			1,

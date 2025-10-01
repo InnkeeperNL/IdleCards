@@ -1790,74 +1790,10 @@ var all_oldest_available_cards = {
 			burning_ruins: 		1
 		}
 	},
-	
-	fire_salamander:{
-		name: 				'fire salamander',
-		type: 				'creature',
-		color: 				['red'],
-		time: 				3,
-		image: 				'cards/amphibia-87916_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			6,
-		abilities: 			{strike: 1, fire_shield: 1, resist_fire: 1},
-		hero_version: 			{
-			name: 				'fire salamander',
-			type: 				'creature',
-			image: 				'cards/amphibia-87916_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			55,
-			abilities: 			{fire_shield: 2, resist_fire: 1},
-		},
-		recipe:{
-			boar: 				1,
-			cleansing_water: 	1,
-			hellfire: 			1,
-		}
-	},
-	
-	fire_mage:{
-		name: 				'fire mage',
-		type: 				'creature',
-		color: 				['red'],
-		time: 				10,
-		image: 				'cards/portrait-3377271_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			6,
-		abilities: 			{fire_ball: 2, fireproof: 1},
-		hero_version: 			{
-			name: 				'fire mage',
-			type: 				'creature',
-			image: 				'cards/portrait-3377271_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{fire_ball: 2, fireproof: 1},
-		},
-		recipe:{
-			flame_lover: 		1,
-			fire_ball: 			1
-		}
-	},
-	firtile_dirt:{
-		name: 				'firtile dirt',
-		type: 				'spell',
-		color: 				['green'],
-		basic_reward: 		true,
-		pick_chance: 		0.2,
-		time: 				1,
-		image: 				'cards/dirt-947985_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{hasten_structure: 5},
-	},
-	
 	flame_archer:{
 		name: 				'flame archer',
 		type: 				'creature',
+		subtypes: 			['human','archer'],
 		color: 				['yellow','red'],
 		time: 				3,
 		image: 				'cards/woman-2209887_640.jpg',
@@ -1879,10 +1815,10 @@ var all_oldest_available_cards = {
 			burning_ring: 		1
 		}
 	},
-	
 	flame_child:{
 		name: 				'flame child',
 		type: 				'creature',
+		subtypes: 			['human','mage'],
 		color: 				['red'],
 		time: 				5,
 		image: 				'cards/woman-2593264_640.jpg',
@@ -1907,6 +1843,7 @@ var all_oldest_available_cards = {
 	flame_deamon:{
 		name: 				'flame deamon',
 		type: 				'creature',
+		subtypes: 			['daemon'],
 		color: 				['red','purple'],
 		time: 				15,
 		image: 				'cards/dragon-955348_640.jpg',
@@ -1930,36 +1867,10 @@ var all_oldest_available_cards = {
 			levitate: 			1
 		}
 	},
-	
-	flame_fairy:{
-		name: 				'flame fairy',
-		type: 				'creature',
-		color: 				['red','green'],
-		time: 				3,
-		image: 				'cards/fantasy-3350952_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, fire_bolt: 1, flying: 1},
-		hero_version: 			{
-			name: 				'flame fairy',
-			type: 				'creature',
-			image: 				'cards/fantasy-3350952_640.jpg',
-			image_position: 	'top',
-			power: 				1,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_nearest: 1, fire_bolt: 1, flying: 1},
-		},
-		recipe:{
-			fairy_mystic: 		1,
-			fire_ball: 			1
-		}
-	},
-	
 	flame_greeter:{
 		name: 				'flame greeter',
 		type: 				'creature',
+		subtypes: 			['human','mage'],
 		color: 				['red'],
 		time: 				2,
 		image: 				'cards/woman-3461565_640.jpg',
@@ -1984,6 +1895,7 @@ var all_oldest_available_cards = {
 	flame_horn:{
 		name: 				'flame horn',
 		type: 				'creature',
+		subtypes: 			['animal','goat'],
 		color: 				['red'],
 		time: 				5,
 		image: 				'cards/dark-4958784_640.jpg',
@@ -2004,47 +1916,19 @@ var all_oldest_available_cards = {
 			fire_salamander: 		1,
 			surprise_attack: 		1
 		}
-	},
-	flame_lover:{
-		name: 				'flame lover',
-		type: 				'creature',
-		color: 				['red'],
-		time: 				4,
-		image: 				'cards/phoenix-4354737_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, burning_fire: 1, fireproof: 1},
-		hero_version: 			{
-			name: 				'flame lover',
-			type: 				'creature',
-			image: 				'cards/phoenix-4354737_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_nearest: 1, burning_fire: 1, fireproof: 1},
-		},
-		recipe:{
-			peasant: 				1,
-			candle: 				1
-		}
-	},
-	
-	/*flame_summoner:{
+	},	
+	flame_summoner:{
 		name: 				'flame summoner',
 		type: 				'creature',
+		subtypes: 			['human','mage'],
 		color: 				['red'],
+		theme: 				['subtype_imp','subtype_imp'],
 		time: 				5,
 		image: 				'cards/fantasy-4862558_640.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			7,
-		abilities: 			{call_fire_imp: {
-			level: 	1,
-			delay: 	3,
-			starting_delay: 3,
-			additional_text: 	'This ability is used every third turn.'
-		}, strike: 1, ignites: 1},
+		abilities: 			{summon_imp: 1, strike: 1, ignites: 1},
 		hero_version: 			{
 			name: 				'flame summoner',
 			type: 				'creature',
@@ -2052,44 +1936,24 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{call_fire_imp: {
-				level: 	1,
-				delay: 	3,
-				starting_delay: 3,
-				additional_text: 	'This ability is used every third turn.'
-			}, strike_nearest: 1, ignites: 1},
+			abilities: 			{strike_unit: 1, ignites: 4},
 		},
 		recipe:{
 			fire_mage: 		1,
 			fire_imp: 		1
 		}
-	},*/
-	
-	force_pull:{
-		name: 				'force pull',
-		type: 				'spell',
-		color: 				['blue'],
-		time: 				1,
-		image: 				'cards/amazone-5178719_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{force_pull: 2},
-		recipe:{
-			magic_attunement: 	1,
-			arcane_missiles: 	1
-		}
 	},
 	forest_burner:{
 		name: 				'forest burner',
 		type: 				'creature',
+		subtypes: 			['human','rogue'],
 		color: 				['red'],
 		time: 				1,
 		image: 				'cards/druid-3442656_640.jpg',
 		power: 				false,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{burn_opponent: 3},
+		abilities: 			{guard: 1, burning_entry: 5, burning_aura: 5},
 		hero_version: 			{
 			name: 				'forest burner',
 			type: 				'creature',
@@ -2097,7 +1961,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{fire_ball: 2},
+			abilities: 			{burn_all: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -2105,35 +1969,10 @@ var all_oldest_available_cards = {
 			lumber: 			1
 		}
 	},
-	
-	forest_elf:{
-		name: 				'forest elf',
-		type: 				'creature',
-		color: 				['green'],
-		time: 				1,
-		image: 				'cards/woman-3407771_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			3,
-		abilities: 			{strike: 1, healing_wave: 1, evade: 1},
-		hero_version: 			{
-			name: 				'forest elf',
-			type: 				'creature',
-			image: 				'cards/woman-3407771_640.jpg',
-			power: 				1,
-			armor: 				0,
-			health: 			20,
-			abilities: 			{strike_nearest: 1, heal: 1, evade: 1},
-		},
-		recipe:{
-			natures_touch: 		1,
-			herbs: 				1,
-			firtile_dirt: 		1
-		}
-	},
 	forest_noble:{
 		name: 				'forest noble',
 		type: 				'creature',
+		subtypes: 			['human'],
 		color: 				['green','yellow'],
 		time: 				6,
 		image: 				'cards/fantasy-2125792_640.jpg',
@@ -2155,44 +1994,18 @@ var all_oldest_available_cards = {
 			wood_trinket: 		1,
 		}
 	},
-	forest_owl:{
-		name: 				'forest owl',
-		type: 				'creature',
-		color: 				['green'],
-		time: 				2,
-		image: 				'cards/bengal-eagle-owl-3452925_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike:1, heal: 1, flying: 1},
-		hero_version: 			{
-			name: 				'forest owl',
-			type: 				'creature',
-			image: 				'cards/bengal-eagle-owl-3452925_640.jpg',
-			power: 				1,
-			armor: 				0,
-			health: 			25,
-			abilities: 			{strike_nearest: 1, heal: 1, flying: 1},
-		},
-		recipe:{
-			boar: 				1,
-			levitate: 			1,
-			herbs: 				1
-		}
-	},
 	forest_saint:{
 		name: 				'forest saint',
 		type: 				'creature',
+		subtypes: 			['human','cleric'],
 		color: 				['green'],
 		time: 				9,
 		image: 				'cards/woman-5444731_640.jpg',
+		image_position: 	'top',
 		power: 				false,
 		armor: 				0,
 		health: 			8,
-		abilities: 			{thorns:1, heal: 1},
-		effects: 			{
-			blessed: 		1
-		},
+		abilities: 			{thorns:1, heal: 1, blessed: 5},
 		hero_version: 			{
 			name: 				'forest saint',
 			type: 				'creature',
@@ -2200,66 +2013,33 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			20,
-			abilities: 			{thorns: 1, heal: 1},
-			effects: 			{
-				blessed: 		1
-			},
+			abilities: 			{thorns: 1, heal: 1, bless: 1},
 		},
 		recipe:{
 			grove_mystic: 		1,
 			angelic_blessing: 	1
 		}
 	},
-	
-	fort:{
-		name: 				'fort',
-		type: 				'structure',
-		color: 				['yellow'],
-		time: 				4,
-		image: 				'cards/castle-3493566_1280.jpg',
-		power: 				1,
-		armor: 				3,
-		health: 			3,
-		abilities: 			{shoot: 1, fortify: 1},
-		hero_version: 			{
-			name: 				'fort',
-			type: 				'structure',
-			image: 				'cards/castle-3493566_1280.jpg',
-			power: 				1,
-			armor: 				0,
-			health: 			50,
-			abilities: 			{shoot: 1, fortify: 1},
-		},
-		recipe:{
-			stone: 				2,
-			ore: 				1,
-		}
-	},
-	
 	friendly_shaman:{
 		name: 				'friendly shaman',
 		type: 				'creature',
+		subtypes: 			['human','cleric'],
 		color: 				['blue'],
 		time: 				11,
 		image: 				'cards/fantasy-2657122_1280.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, redraw_spell: 2},
+		abilities: 			{strike: 1, reclaim_spell: 2},
 		hero_version: 			{
 			name: 				'friendly shaman',
 			type: 				'creature',
 			image: 				'cards/fantasy-2657122_1280.jpg',
 			image_position: 	'top',
-			power: 				false,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{cast_spell: {
-				level: 				1,
-				delay: 				4,
-				starting_delay: 	4,
-				additional_text: 	'This ability is used every fourth turn.'
-			}},
+			abilities: 			{strike_unit: 1, reclaim_spells: 2},
 		},
 		recipe:{
 			shaman: 			1,
@@ -2270,6 +2050,7 @@ var all_oldest_available_cards = {
 	friendship:{
 		name: 				'friendship',
 		type: 				'spell',
+		subtypes: 			['ritual'],
 		color: 				['green'],
 		time: 				4,
 		image: 				'cards/boy-2910371_640.jpg',
@@ -2287,13 +2068,14 @@ var all_oldest_available_cards = {
 	frost_giant:{
 		name: 				'frost giant',
 		type: 				'creature',
+		subtypes: 			['giant'],
 		color: 				['blue'],
 		time: 				20,
 		image: 				'cards/fantasy-2925250_640.jpg',
 		power: 				4,
 		armor: 				0,
 		health: 			7,
-		abilities: 			{swipe: 1, reach: 1, resist_cold: 3},
+		abilities: 			{cold_strike: 1, resist_cold: 1},
 		hero_version: 			{
 			name: 				'frost giant',
 			type: 				'creature',
@@ -2301,7 +2083,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			35,
-			abilities: 			{strike_nearest: 1, reach: 1, resist_cold: 3},
+			abilities: 			{cold_strike_hv: 1, resist_cold: 1},
 		},
 		recipe:{
 			frozen_claw: 		1,
@@ -2309,57 +2091,20 @@ var all_oldest_available_cards = {
 			giants_foot: 		1
 		}
 	},
-	frost_mage:{
-		name: 				'frost mage',
-		type: 				'creature',
-		color: 				['blue'],
-		time: 				6,
-		image: 				'cards/escaping-1582369_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			6,
-		abilities: 			{frost_bolt: 2, resist_cold: 3},
-		hero_version: 			{
-			name: 				'frost mage',
-			type: 				'creature',
-			image: 				'cards/escaping-1582369_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{frost_bolt: 2, resist_cold: 3},
-		},
-		recipe:{
-			peasant: 			1,
-			frozen_claw: 		1,
-		}
-	},
-	frozen_claw:{
-		name: 				'frozen claw',
-		type: 				'spell',
-		color: 				['blue'],
-		time: 				4,
-		image: 				'cards/beast-3534347_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{weaken_random: 2, slow: 2},
-		recipe:{
-			mana_crystal: 		1,
-			cleansing_water: 	1
-		}
-	},
 	
 	gemmed_ring:{
 		name: 				'gemmed ring',
 		type: 				'artifact',
+		subtypes: 			['trinket'],
 		color: 				['yellow','green'],
 		pick_chance: 		0.5,
 		time: 				6,
 		image: 				'cards/drusy-665522_640.jpg',
+		image_position: 	'right',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{restore_hero: 1, bolster: 1, delay: 3},
+		abilities: 			{restore: 1, bolster: 1},
 		recipe:{
 			mana_crystal: 		1,
 			stone: 				1,
@@ -2370,76 +2115,39 @@ var all_oldest_available_cards = {
 	genie:{
 		name: 				'genie',
 		type: 				'creature',
+		subtypes: 			['genie'],
 		color: 				['blue'],
 		time: 				8,
 		image: 				'cards/blue-3481766_1280.png',
 		power: 				3,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, hasten: 1, resist_magic: 1},
+		abilities: 			{strike: 1, return_on_spell_cast: 1},
 		hero_version: 			{
 			name: 				'genie',
 			type: 				'creature',
 			image: 				'cards/blue-3481766_1280.png',
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, resist_magic: 1},
+			abilities: 			{strike_nearest: 1, spellrush: 1},
 		},
 		recipe:{
 			magic_attunement: 	1,
 			mana_crystal: 		5
 		}
 	},
-	
-	ghost:{
-		name: 				'ghost',
-		type: 				'creature',
-		color: 				['purple'],
-		pick_chance: 		0,
-		time: 				0,
-		image: 				'cards/ghost-1675154_640.jpg',
-		power: 				0,
-		armor: 				0,
-		health: 			3,
-		abilities: 			{strike: 1, undead: 1, fade: 2},
-	},
-	ghost_bride:{
-		name: 				'ghost bride',
-		type: 				'creature',
-		color: 				['purple'],
-		time: 				3,
-		image: 				'cards/fantasy-2913983_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			3,
-		abilities: 			{sorrow: 2, resurrect: 5, undead: 1},
-		hero_version: 			{
-			name: 				'ghost bride',
-			type: 				'creature',
-			image: 				'cards/fantasy-2913983_640.jpg',
-			image_position: 	'top',
-			power: 				false,
-			armor: 				0,
-			health: 			10,
-			abilities: 			{resurrect: 10, undead: 1},
-		},
-		recipe:{
-			deaths_call: 		1,
-			mausoleum: 			1,
-		}
-	},
-	
 	ghost_mage:{
 		name: 				'ghost mage',
 		type: 				'creature',
+		subtypes: 			['undead','spirit','mage'],
 		color: 				['purple','red'],
 		time: 				9,
 		image: 				'cards/fantasy-4055030_640.jpg',
 		power: 				false,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{fire_bolt: 2, undead: 1, evade: 1},
+		abilities: 			{fire_bolt: 2, undead: 1, resurrect: 1},
 		hero_version: 			{
 			name: 				'ghost mage',
 			type: 				'creature',
@@ -2448,7 +2156,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			20,
-			abilities: 			{fire_bolt: 1, undead: 1, evade: 1},
+			abilities: 			{fire_bolt: 2, undead: 1, resurrect: 1},
 		},
 		recipe:{
 			fire_ball: 			1,
@@ -2459,21 +2167,22 @@ var all_oldest_available_cards = {
 	ghost_mistress:{
 		name: 				'ghost mistress',
 		type: 				'creature',
+		subtypes: 			['human','witch'],
 		color: 				['purple'],
 		time: 				7,
 		image: 				'cards/door-3633138_640.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, command_undead: 1},
+		abilities: 			{strike: 1, resurrect_ally: 1},
 		hero_version: 			{
 			name: 				'ghost mistress',
 			type: 				'creature',
 			image: 				'cards/door-3633138_640.jpg',
-			power: 				1,
+			power: 				3,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, command_undead: 1},
+			abilities: 			{strike_unit: 1, resurrect_ally: 1},
 		},
 		recipe:{
 			ghost_mage: 		1,
@@ -2481,36 +2190,10 @@ var all_oldest_available_cards = {
 			force_pull: 		1
 		}
 	},
-	ghoul:{
-		name: 				'ghoul',
-		type: 				'creature',
-		color: 				['purple'],
-		time: 				5,
-		image: 				'cards/monster-5369480_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, poisonous: 1, feast: 2, undead: 1},
-		hero_version: 			{
-			name: 				'ghoul',
-			type: 				'creature',
-			image: 				'cards/monster-5369480_640.jpg',
-			image_position: 	'top',
-			power: 				2,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_nearest: 1, poisonous: 1, feast: 1, undead: 1},
-		},
-		recipe:{
-			peasant: 			1,
-			deaths_call: 		1,
-			herbalists_lab: 	1
-		}
-	},
-	
 	giant_gull:{
 		name: 				'giant gull',
 		type: 				'creature',
+		subtypes: 			['animal','bird'],
 		color: 				['blue'],
 		time: 				4,
 		image: 				'cards/fantasy-3028501_1280.jpg',
@@ -2535,31 +2218,17 @@ var all_oldest_available_cards = {
 			giants_foot: 		1
 		}
 	},
-	giants_foot:{
-		name: 				'giant\'s foot',
-		type: 				'spell',
-		color: 				['orange'],
-		time: 				1,
-		image: 				'cards/fantasy-3186483_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{stomp: 10},
-		recipe:{
-			stone: 				3,
-		}
-	},
-	
 	giant_spider:{
 		name: 				'giant spider',
 		type: 				'creature',
+		subtypes: 			['animal','spider'],
 		color: 				['green'],
 		time: 				5,
 		image: 				'cards/european-garden-spider-5530397_640.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, reach: 1, trap: 1},
+		abilities: 			{strike: 1, trap: 1},
 		hero_version: 			{
 			name: 				'giant spider',
 			type: 				'creature',
@@ -2567,7 +2236,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, reach: 1, trap: 1},
+			abilities: 			{strike_nearest: 1, trap: 1},
 		},
 		recipe:{
 			natures_touch: 		1,
@@ -2579,6 +2248,7 @@ var all_oldest_available_cards = {
 	giraffe:{
 		name: 				'giraffe',
 		type: 				'creature',
+		subtypes: 			['animal'],
 		color: 				['orange'],
 		pick_chance: 		1,
 		time: 				2,
@@ -2586,7 +2256,7 @@ var all_oldest_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, move_away: 1},
+		abilities: 			{reveal: 1, strike: 1, run_away: 1},
 		hero_version: 			{
 			name: 				'giraffe',
 			type: 				'creature',
@@ -2595,7 +2265,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{reveal: 1, strike_unit: 1, evade: 1},
 		},
 		recipe:{
 			boar: 				1,
@@ -2606,21 +2276,22 @@ var all_oldest_available_cards = {
 	gladiator:{
 		name: 				'gladiator',
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['orange'],
 		time: 				3,
 		image: 				'cards/amazone-2148910_640.jpg',
 		power: 				3,
 		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1},
+		health: 			5,
+		abilities: 			{strike: 1, counter: 1},
 		hero_version: 			{
 			name: 				'gladiator',
 			type: 				'creature',
 			image: 				'cards/amazone-2148910_640.jpg',
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_unit: 1, counter: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -2628,64 +2299,17 @@ var all_oldest_available_cards = {
 			ore: 				1,
 		}
 	},
-	
-	goblin:{
-		name: 				'goblin',
-		type: 				'creature',
-		color: 				['purple'],
-		time: 				1,
-		image: 				'cards/goblin-4747149_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			3,
-		abilities: 			{strike: 1, resist_magic: 1},
-		hero_version: 			{
-			name: 				'goblin',
-			type: 				'creature',
-			image: 				'cards/goblin-4747149_640.jpg',
-			power: 				3,
-			armor: 				0,
-			health: 			50,
-			abilities: 			{strike_nearest: 1, resist_magic: 1},
-		},
-	},
-	goblin_alchemist:{
-		name: 				'goblin alchemist',
-		type: 				'creature',
-		color: 				['purple'],
-		time: 				6,
-		image: 				'cards/goblin-5393644_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{poison: 1, hide: 1, resist_magic: 1},
-		hero_version: 			{
-			name: 				'goblin alchemist',
-			type: 				'creature',
-			image: 				'cards/goblin-5393644_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			35,
-			abilities: 			{poison: 1, hide: 1, resist_magic: 1},
-		},
-		recipe:{
-			goblin: 			1,
-			herbalists_lab: 	1,
-			amethyst: 			1
-		}
-	},
-	
 	golden_keeper:{
 		name: 				'golden keeper',
 		type: 				'structure',
+		subtypes: 			['wall'],
 		color: 				['yellow'],
 		time: 				8,
 		image: 				'cards/fantasy-3000308_1280.jpg',
 		power: 				3,
 		armor: 				0,
-		health: 			6,
-		abilities: 			{strike: 1, call_ally: 1, healing_aura: 1},
-		/*placement: 			'random',*/
+		health: 			12,
+		abilities: 			{strike: 1, bolster_creature: 2},
 		hero_version: 			{
 			name: 				'golden keeper',
 			type: 				'structure',
@@ -2694,7 +2318,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, call_ally: 1, healing_aura: 1},
+			abilities: 			{strike_unit: 1, bolster_creature: 2},
 		},
 		recipe:{
 			stone: 				3,
@@ -2704,13 +2328,13 @@ var all_oldest_available_cards = {
 	golden_spirit:{
 		name: 				'golden spirit',
 		type: 				'creature',
+		subtypes: 			['undead','spirit'],
 		color: 				['yellow'],
 		time: 				3,
 		image: 				'cards/woman-5551326_640.jpg',
 		power: 				false,
 		armor: 				0,
 		health: 			4,
-		placement: 			'right',
 		abilities: 			{fortify_hero: 1, undead: 1, run_away: 1},
 		hero_version: 			{
 			name: 				'golden spirit',
@@ -2730,6 +2354,7 @@ var all_oldest_available_cards = {
 	golden_temple:{
 		name: 				'golden temple',
 		type: 				'structure',
+		subtypes: 			['wall'],
 		color: 				['orange'],
 		pick_chance: 		0.5,
 		time: 				14,
@@ -2737,8 +2362,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			10,
-		abilities: 			{empower_all: 1, safe_spot: 1},
-		safe_slot: 			true,
+		abilities: 			{empower_all: 1},
 		hero_version: 			{
 			name: 				'golden temple',
 			type: 				'structure',
@@ -2747,7 +2371,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{empower_ally: 1},
+			abilities: 			{empower_all: 1},
 		},
 		recipe:{
 			fort: 				1,
@@ -2755,43 +2379,17 @@ var all_oldest_available_cards = {
 			amber: 				1,
 		}
 	},
-	green_dragon:{
-		name: 				'green dragon',
-		type: 				'creature',
-		color: 				['green'],
-		time: 				18,
-		image: 				'cards/dragon-3009174_640.png',
-		power: 				3,
-		armor: 				0,
-		health: 			10,
-		abilities: 			{strike: 1, regenerate: 3, flying: 1},
-		hero_version: 			{
-			name: 				'green dragon',
-			type: 				'creature',
-			image: 				'cards/dragon-3009174_640.png',
-			power: 				1,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_nearest: 1, regenerate: 1, flying: 1},
-		},
-		recipe:{
-			forest_owl: 		1,
-			giants_foot: 		1,
-			wood_trinket: 		1
-		}
-	},
-
 	green_spirit:{
 		name: 				'green spirit',
 		type: 				'creature',
+		subtypes: 			['undead','spirit'],
 		color: 				['green'],
 		time: 				1,
 		image: 				'cards/fantasy-2824500_1920.jpg',
 		power: 				false,
 		armor: 				0,
 		health: 			4,
-		placement: 			'right',
-		abilities: 			{heal: 1, undead: 1, flank: 1},
+		abilities: 			{heal: 1, undead: 1, run_away: 1},
 		hero_version: 			{
 			name: 				'green spirit',
 			type: 				'creature',
@@ -2799,7 +2397,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{heal: 2, undead: 1},
+			abilities: 			{heal: 1, undead: 1, evade: 1},
 		},
 		recipe:{
 			herbs: 				1,
@@ -2809,6 +2407,7 @@ var all_oldest_available_cards = {
 	grove_mystic:{
 		name: 				'grove mystic',
 		type: 				'creature',
+		subtypes: 			['human','cleric'],
 		color: 				['green'],
 		time: 				4,
 		image: 				'cards/fantasy-4240045_640.jpg',
@@ -2830,24 +2429,24 @@ var all_oldest_available_cards = {
 			herbs: 				1,
 		}
 	},
-	
 	guards:{
 		name: 				'guards',
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['yellow'],
 		time: 				8,
 		image: 				'cards/persons-4853861_640.jpg',
 		power: 				1,
 		armor: 				3,
 		health: 			4,
-		abilities: 			{bring_clone: 1, strike: 1},
+		abilities: 			{guard: 1, bring_clone: 1, strike: 1},
 		hero_version: 			{
 			name: 				'guards',
 			type: 				'creature',
 			image: 				'cards/persons-4853861_640.jpg',
 			image_position: 	'top',
 			power: 				3,
-			armor: 				10,
+			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_nearest: 1},
 		},
@@ -2855,35 +2454,11 @@ var all_oldest_available_cards = {
 			peasant: 			2,
 			plate_armor: 		1,
 		}
-	},
-	guiding_angel:{
-		name: 				'guiding angel',
+	},	
+	half_daemon:{
+		name: 				'half daemon',
 		type: 				'creature',
-		color: 				['yellow'],
-		time: 				2,
-		image: 				'cards/angel-2046708_1280.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, return_soul: 1, flying: 1},
-		hero_version: 			{
-			name: 				'guiding angel',
-			type: 				'creature',
-			image: 				'cards/angel-2046708_1280.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_nearest: 1, flying: 1},
-		},
-		recipe:{
-			young_angel: 		1,
-			mausoleum: 			1,
-		}
-	},
-	
-	half_deamon:{
-		name: 				'half deamon',
-		type: 				'creature',
+		subtypes: 			['human','daemon'],
 		color: 				['red'],
 		time: 				4,
 		image: 				'cards/daemon-2980812_640.jpg',
@@ -2898,7 +2473,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_unit: 1},
 		},
 		recipe:{
 			fire_imp: 			1,
@@ -2909,6 +2484,7 @@ var all_oldest_available_cards = {
 	haunted_forest:{
 		name: 				'haunted forest',
 		type: 				'structure',
+		subtypes: 			['wall'],
 		color: 				['purple'],
 		time: 				1,
 		image: 				'cards/forest-5167332_640.jpg',
@@ -2930,57 +2506,26 @@ var all_oldest_available_cards = {
 			firtile_dirt: 		1,
 			lumber: 			1
 		}
-	},
-	healing_oil:{
-		name: 				'healing oil',
-		type: 				'artifact',
-		color: 				['green'],
-		pick_chance: 		0.5,
-		time: 				1,
-		image: 				'cards/essential-oils-3084952_1280.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{cleanse: 1, delay: 2},
-		recipe:{
-			herbs: 				1,
-			cleansing_water: 	1
-		}
-	},
-	
-	heart_of_fire:{
-		name: 				'heart of fire',
-		type: 				'spell',
-		color: 				['red'],
-		time: 				3,
-		image: 				'cards/heart-1783918_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{plant_explosives: 6},
-		recipe:{
-			candle: 			1,
-			explosive_barrel: 	1
-		}
-	},
+	},	
 	heat_wurm:{
 		name: 				'heat wurm',
 		type: 				'creature',
+		subtypes: 			['animal'],
 		color: 				['red'],
 		time: 				19,
 		image: 				'cards/dragon-4758109_640.jpg',
 		power: 				1,
-		armor: 				2,
+		armor: 				0,
 		health: 			6,
-		abilities: 			{burn_all: 2, strike: 1, armored: 1},
+		abilities: 			{fire_breath: 3, strike: 1, ignites: 3, plated: 1},
 		hero_version: 			{
 			name: 				'heat wurm',
 			type: 				'creature',
 			image: 				'cards/dragon-4758109_640.jpg',
 			power: 				1,
-			armor: 				10,
+			armor: 				0,
 			health: 			20,
-			abilities: 			{burn_all: 1, strike_nearest: 1, armored: 1},
+			abilities: 			{burn_all: 1, strike_unit: 1, plated: 1},
 		},
 		recipe:{
 			hellfire: 			1,
@@ -2992,13 +2537,14 @@ var all_oldest_available_cards = {
 	hellfire:{
 		name: 				'hellfire',
 		type: 				'spell',
+		subtypes: 			['fire'],
 		color: 				['red'],
 		time: 				5,
 		image: 				'cards/devil-3709219_640.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{hellfire: 8},
+		abilities: 			{hellfire: 1, ignites: 1, echo: 1},
 		recipe:{
 			fire_bolt: 			1,
 			arcane_missiles: 	1
@@ -3008,6 +2554,7 @@ var all_oldest_available_cards = {
 	herbalists_lab:{
 		name: 				'herbalist\'s lab',
 		type: 				'structure',
+		subtypes: 			['wall'],
 		color: 				['purple','green'],
 		time: 				2,
 		image: 				'cards/candle-3272201_640.jpg',
@@ -3030,7 +2577,6 @@ var all_oldest_available_cards = {
 			herbs: 				1,
 		}
 	},
-	
 	herbs:{
 		name: 				'herbs',
 		type: 				'artifact',
@@ -3042,7 +2588,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{heal: 1, delay: 3},
+		abilities: 			{heal: 1},
 	},
 	hero_stalker:{
 		name: 				'hero stalker',
@@ -3570,64 +3116,6 @@ var all_oldest_available_cards = {
 		recipe:{
 			peasant: 			1,
 			lightning_storm: 	1
-		}
-	},
-	lightning_storm:{
-		name: 				'lightning storm',
-		type: 				'spell',
-		color: 				['blue'],
-		time: 				6,
-		image: 				'cards/colorado-2235819_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{lightning_storm: 2},
-		recipe:{
-			lightning_bolt: 	2,
-		}
-	},
-	
-	lion_warrior:{
-		name: 				'lion warrior',
-		type: 				'creature',
-		color: 				['red','orange'],
-		time: 				11,
-		image: 				'cards/fantasy-3002301_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			8,
-		abilities: 			{strike: 2, adrenaline: 1},
-		hero_version: 			{
-			name: 				'lion warrior',
-			type: 				'creature',
-			image: 				'cards/fantasy-3002301_640.jpg',
-			power: 				1,
-			armor: 				0,
-			health: 			60,
-			abilities: 			{strike_nearest: 2},
-		},
-		recipe:{
-			boar: 				1,
-			surprise_attack:	1,
-			amber: 				1,
-			giants_foot: 		1
-		}
-	},
-	
-	lumberjacks_axe:{
-		name: 				'lumberjack\'s axe',
-		type: 				'artifact',
-		color: 				['colorless'],
-		pick_chance: 		0.5,
-		time: 				2,
-		image: 				'cards/axe-1644155_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{order_strike: 1, delay: 3},
-		recipe:{
-			lumber: 		1,
-			ore: 			1
 		}
 	},
 	magic_attunement:{
