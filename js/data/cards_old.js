@@ -6828,7 +6828,7 @@ var all_old_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, empower_adjacent: 1},
+		abilities: 			{strike: 1, empower_ally: 1},
 		hero_version: 			{
 			theme: 				['melee_ability','empower_ally_ability','on_kill_ability'],
 			power: 				2,
@@ -12843,6 +12843,8 @@ var replacement_abilities = {
 	fire_shield: 		'fire_aura',
 	lightning_bolt: 	'lightning',
 	blessed_arrivals: 	'bless_arrivals',
+	surprise_strike: 	'striking_entry',
+	recall_soul: 		'unsummon_dead',
 }
 
 var ignored_abilities = {
@@ -13021,6 +13023,18 @@ function add_old_cards(old_cards, image_folder){
 						}
 					}
 				});
+				if(new_card['type'] == 'creature' || new_card['type'] == 'structure')
+				{
+					if(new_card['theme'] != undefined)
+					{
+						eachoa(new_card['theme'], function(theme_key, theme_id){
+							if(theme_id == 'muscle' || theme_id == 'defense')
+							{
+								delete new_card['theme'][theme_key];
+							}
+						});
+					}
+				}
 				if(new_card['hero_version'] != undefined)
 				{
 					if(new_card['hero_version']['armor'] > 0){new_card['hero_version']['armor'] = 0;}
@@ -13042,6 +13056,19 @@ function add_old_cards(old_cards, image_folder){
 							}
 						}
 					});
+					if(new_card['hero_version']['theme'] != undefined)
+					{
+						eachoa(new_card['hero_version']['theme'], function(theme_key, theme_id){
+							if(theme_id == 'muscle' || theme_id == 'defense')
+							{
+								delete new_card['hero_version']['theme'][theme_key];
+							}
+						});
+					}
+					if(new_card['hero_version']['image_position'] != undefined)
+					{
+						new_card['image_position'] = new_card['hero_version']['image_position'];
+					}
 				}
 				
 				new_card['image'] = old_image_string.replace('cards/',image_folder);

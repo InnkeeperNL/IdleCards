@@ -1,5 +1,31 @@
 var all_abilities = {
-	
+	adrenaline:{
+		description: 	'Gains {LEVEL} temporary power whenever it destroys another unit.',
+		proc: 			'kill',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit_or_hero',
+				target_amount: 1,
+				position: 	'self',
+				min_hp: 	1,
+				min_power: 	0,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 		'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 	'ability_level'
+			},
+		},
+		animation: 	'combat_zoom',
+		level_cost: 	1,
+		cost_factor: 	'none',
+	},
 	air_blast:{
 		description: 	'Deals {LEVEL} physical damage to all enemy units. Deals double damage to flying units.',
 		cannot_proc_while_stunned: true,
@@ -546,6 +572,31 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	0.75,
 		level_cost_artifact: 1.6,
+	},
+	blessed_entry:{
+		description:'When played, a random ally unit gains {LEVEL} blessing(s). Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally',
+				max_abilities: 	{blessed: 9},
+				has_origin_card: true,
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bless',
+				type: 			'grant_skill',
+				subtypes: 		['bless','grant_bless','deck_control'],
+				skill_id: 		'blessed',
+				amount: 		'ability_level',
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	0.175,
 	},
 	blood_rage:{
 		description: 	'A random living ally creature unit with at least 2 health gains {LEVEL} power and looses 1 health permanently.',
@@ -5986,7 +6037,7 @@ var all_abilities = {
 	max_hand_cards:{
 		name: 		'hand cards:',
 		post_name: 	'-',
-		description: 	'This card will not be played if there are more then {LEVEL} cards in your hand.',
+		description: 	'This card will not be played if there\'s more then {LEVEL} cards in your hand.',
 		proc: 			'on_play',
 		remove_skill: 	'max_hand_cards',
 		show_amount_adjustment: 0,
@@ -6017,7 +6068,7 @@ var all_abilities = {
 	minimum_allies:{
 		name: 			'allies:',
 		post_name: 		'+',
-		description: 	'This card will not be played if there are at least less than {LEVEL} ally unit(s) in play.',
+		description: 	'This card will not be played if there\'s less than {LEVEL} ally unit(s) in play.',
 		proc: 			'on_play',
 		remove_skill: 	'minimum_allies',
 		show_amount_adjustment: 0,
@@ -6037,7 +6088,7 @@ var all_abilities = {
 	minimum_dead_ally_creatures:{
 		name: 			'dead ally creatures:',
 		post_name: 		'+',
-		description: 	'This card will not be played if there are less then {LEVEL} ally creatures in your grave.',
+		description: 	'This card will not be played if there\'s less then {LEVEL} ally creatures in your grave.',
 		proc: 			'on_play',
 		remove_skill: 	'minimum_dead_ally_creatures',
 		show_amount_adjustment: 0,
