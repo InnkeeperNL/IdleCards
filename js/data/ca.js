@@ -4023,6 +4023,8 @@ var all_abilities = {
 	},
 	final_draw:{
 		description: 	'When destroyed, draws {LEVEL} card(s).',
+		proc: 			'own_death',
+		proc_while_dead: true,
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		min_cards_in_deck: 	1,
@@ -6324,6 +6326,31 @@ var all_abilities = {
 		},
 		level_cost: 	-2,
 		level_cost_spell: -1,
+	},
+	pilfer:{
+		description: 	'Gain control over an enemy artifact. Can only be used up to {LEVEL} time(s) and only if you have less than 5 artifacts in play.',
+		cannot_proc_while_stunned: true,
+		max_ally_artifacts: 4,
+		reduce_skill_after_use: 'pilfer',
+		targets:	{
+			0:{
+				target: 	'artifact',
+				target_amount: 1,
+				position: 	'random',
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'dodge',
+				type: 		'change_side',
+				subtypes: 	['steal','sneaky'],
+				amount: 	1,
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	7,
+		level_cost_hero: 3,
 	},
 	plated:{
 		description: 	'Reduces incoming physical damage down to {LEVEL}.',

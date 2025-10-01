@@ -823,6 +823,7 @@ var all_oldest_available_cards = {
 	combat_medic:{
 		name: 				'combat medic',
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['orange','yellow'],
 		time: 				4,
 		image: 				'cards/amazone-2148911_640.jpg',
@@ -848,13 +849,14 @@ var all_oldest_available_cards = {
 	corrupt_merchant:{
 		name: 				'corrupt merchant',
 		type: 				'creature',
+		subtypes: 			['human','rogue'],
 		color: 				['purple','yellow'],
 		time: 				3,
 		image: 				'cards/mystical-5398548_640.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			3,
-		abilities: 			{strike: 1, steal_artifact: 1},
+		abilities: 			{strike: 1, pilfer: 1},
 		hero_version: 			{
 			name: 				'corrupt merchant',
 			type: 				'creature',
@@ -862,7 +864,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, steal_artifact: 5},
+			abilities: 			{strike_nearest: 1, pilfer: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -870,10 +872,10 @@ var all_oldest_available_cards = {
 			diamond: 			1
 		}
 	},
-	
 	court_lady:{
 		name: 				'court lady',
 		type: 				'creature',
+		subtypes: 			['human'],
 		color: 				['yellow'],
 		time: 				4,
 		image: 				'cards/fantasy-2899611_640.jpg',
@@ -943,11 +945,12 @@ var all_oldest_available_cards = {
 	crystal_dragon:{
 		name: 				'crystal dragon',
 		type: 				'creature',
+		subtypes: 			['reptile','dragon'],
 		color: 				['blue'],
 		time: 				23,
 		image: 				'cards/isolated-4788969_640.jpg',
 		power: 				4,
-		armor: 				4,
+		armor: 				0,
 		health: 			8,
 		abilities: 			{strike: 1, flying: 1, hasten: 1},
 		hero_version: 			{
@@ -955,7 +958,7 @@ var all_oldest_available_cards = {
 			type: 				'creature',
 			image: 				'cards/isolated-4788969_640.jpg',
 			power: 				2,
-			armor: 				4,
+			armor: 				0,
 			health: 			20,
 			abilities: 			{strike_nearest: 1, flying: 1, hasten: 1},
 		},
@@ -969,13 +972,14 @@ var all_oldest_available_cards = {
 	curse_of_the_leech:{
 		name: 				'curse of the leech',
 		type: 				'spell',
+		subtypes: 			['ritual'],
 		color: 				['purple'],
 		time: 				3,
 		image: 				'cards/art-3084798_640.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{curse_all: 2},
+		abilities: 			{curse_all: 1, echo: 1},
 		recipe:{
 			magic_attunement: 	1,
 			deaths_call: 		1,
@@ -985,6 +989,7 @@ var all_oldest_available_cards = {
 	cursed_crypt:{
 		name: 				'cursed crypt',
 		type: 				'structure',
+		subtypes: 			['wall', 'undead'],
 		color: 				['purple'],
 		pick_chance: 		0.5,
 		time: 				2,
@@ -992,7 +997,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{deaths_revenge: 2},
+		abilities: 			{vengeance: 1, cursed_aura: 1},
     	placement: 			'right',
 		hero_version: 			{
 			name: 				'cursed crypt',
@@ -1001,7 +1006,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			80,
-			abilities: 			{deaths_revenge: 2},
+			abilities: 			{vengeance: 1, cursed_aura: 1},
 		},
 		recipe:{
 			curse_of_the_leech: 1,
@@ -1009,33 +1014,18 @@ var all_oldest_available_cards = {
 			bones: 				1
 		}
 	},
-	dance_of_the_butterfly:{
-		name: 				'dance of the butterfly',
-		type: 				'spell',
-		color: 				['green','blue'],
-		pick_chance: 		0.5,
-		time: 				6,
-		image: 				'cards/abstract-979682_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{weaken_all: 1},
-		recipe:{
-			blue_butterflies: 	1,
-			soften: 			1,
-		}
-	},
 	
 	dancing_devil:{
 		name: 				'dancing devil',
 		type: 				'creature',
+		subtypes: 			['deamon', 'imp'],
 		color: 				['red'],
 		time: 				5,
 		image: 				'cards/devil-3852875_640.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, move: 1, resist_fire: 2},
+		abilities: 			{strike: 1, move: 1, resist_fire: 1},
 		hero_version: 			{
 			name: 				'dancing devil',
 			type: 				'creature',
@@ -1051,42 +1041,17 @@ var all_oldest_available_cards = {
 			force_pull: 		1,
 		}
 	},
-	dark_angel:{
-		name: 				'dark angel',
-		type: 				'creature',
-		color: 				['purple'],
-		time: 				3,
-		image: 				'cards/angel-2048642_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, cursed_entry: 2, flying: 1},
-		hero_version: 			{
-			name: 				'dark angel',
-			type: 				'creature',
-			image: 				'cards/angel-2048642_640.jpg',
-			image_position: 		'top',
-			power: 				2,
-			armor: 				0,
-			health: 			45,
-			abilities: 			{strike_nearest: 1, curse_arrivals: 1, flying: 1},
-		},
-		recipe:{
-			young_angel: 		1,
-			cursed_crypt: 		1,
-		}
-	},
-	
 	dark_shaman:{
 		name: 				'dark shaman',
 		type: 				'creature',
+		subtypes: 			['human','cleric'],
 		color: 				['purple','blue'],
 		time: 				5,
 		image: 				'cards/beauty-354575_640.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, erase_spell: 1},
+		abilities: 			{wither: 1, strike: 1, counter_spell: 1},
 		hero_version: 			{
 			name: 				'dark shaman',
 			type: 				'creature',
@@ -1094,67 +1059,17 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, erase_spell: 3},
+			abilities: 			{wither_hv: 1, strike_unit: 1, counter_spells: 3},
 		},
 		recipe:{
 			shaman: 			1,
 			embrace_pain: 		1,
 		}
 	},
-
-	dark_scout:{
-		name: 				'dark scout',
-		type: 				'creature',
-		color: 				['purple'],
-		time: 				1,
-		image: 				'cards/gothic-2966458_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{shoot: 1, flank: 1},
-		placement: 			'right',
-		hero_version: 			{
-			name: 				'dark scout',
-			type: 				'creature',
-			image: 				'cards/gothic-2966458_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{shoot: 1},
-		},
-		recipe:{
-			archer: 			1,
-			amethyst: 			1,
-		}
-	},
-	
-	dark_seer:{
-		name: 				'dark seer',
-		type: 				'creature',
-		color: 				['purple'],
-		time: 				1,
-		image: 				'cards/gothic-3264763_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, return_soul: 1},
-		hero_version: 			{
-			name: 				'dark seer',
-			type: 				'creature',
-			image: 				'cards/gothic-3264763_640.jpg',
-			power: 				3,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_nearest: 1, reclaim_creatures: 1},
-		},
-		recipe:{
-			dark_warrior: 		1,
-			amethyst: 			1,
-		}
-	},
 	darkling:{
 		name: 				'darkling',
 		type: 				'creature',
+		subtypes: 			['human','witch'],
 		color: 				['purple'],
 		time: 				1,
 		image: 				'cards/portrait-4558524_640.jpg',
@@ -1180,6 +1095,7 @@ var all_oldest_available_cards = {
 	daughter_of_light:{
 		name: 				'daughter of light',
 		type: 				'creature',
+		subtypes: 			['human','cleric'],
 		color: 				['yellow'],
 		time: 				3,
 		image: 				'cards/fantasy-3471481_1280.jpg',
@@ -1201,53 +1117,25 @@ var all_oldest_available_cards = {
 			holy_relic: 		1
 		}
 	},
-	deamon:{
-		name: 				'deamon',
+	daemon_lord:{
+		name: 				'daemon lord',
 		type: 				'creature',
-		color: 				['red'],
-		time: 				3,
-		image: 				'cards/demon-454476_640.jpg',
-		power: 				6,
-		armor: 				0,
-		health: 			2,
-		effects:{
-			burning: 		3,
-		},
-		abilities: 			{seek_enemy:1, strike: 1, reach: 1},
-		hero_version: 			{
-			name: 				'deamon',
-			type: 				'creature',
-			image: 				'cards/demon-454476_640.jpg',
-			power: 				4,
-			armor: 				0,
-			health: 			20,
-			effects:{
-				burning: 		3,
-			},
-			abilities: 			{strike_nearest: 1, precision:1, reach: 1},
-		},
-		recipe:{
-			half_deamon: 		2
-		}
-	},
-	deamon_lord:{
-		name: 				'deamon lord',
-		type: 				'creature',
+		subtypes: 			['daemon','warrior'],
 		color: 				['red'],
 		time: 				8,
 		image: 				'cards/fantasy-5521222_640.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			8,
-		abilities: 			{strike: 1, fireproof: 1, burning_rage: 1},
+		abilities: 			{strike: 1, fireproof: 1, burn_all: 1},
 		hero_version: 			{
-			name: 				'deamon lord',
+			name: 				'daemon lord',
 			type: 				'creature',
 			image: 				'cards/fantasy-5521222_640.jpg',
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, fireproof: 1, burning_rage: 1},
+			abilities: 			{strike_nearest: 1, fireproof: 1, burn_all: 1},
 		},
 		recipe:{
 			princess: 		1,
@@ -1258,13 +1146,14 @@ var all_oldest_available_cards = {
 	deaths_call:{
 		name: 				'death\'s call',
 		type: 				'spell',
+		subtypes: 			['ritual'],
 		color: 				['purple'],
 		time: 				2,
 		image: 				'cards/fantasy-2881646_640.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{true_curse: 1},
+		abilities: 			{doom: 5, echo: 1},
 		recipe:{
 			amethyst: 			1,
 			bones: 				1
@@ -1274,21 +1163,22 @@ var all_oldest_available_cards = {
 	demolitionist:{
 		name: 				'demolitionist',
 		type: 				'creature',
+		subtypes: 			['human','laborer'],
 		color: 				['red'],
 		time: 				3,
 		image: 				'cards/man-405478_640.jpg',
-		power: 				false,
+		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{plant_explosives: 1},
+		abilities: 			{strike: 1, demolish: 1, grant_explode: 1},
 		hero_version: 			{
 			name: 				'demolitionist',
 			type: 				'creature',
 			image: 				'cards/man-405478_640.jpg',
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, plant_explosives: 1},
+			abilities: 			{strike_unit: 1, demolish: 1, grant_explode: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -1298,15 +1188,14 @@ var all_oldest_available_cards = {
 	desert_fox:{
 		name: 				'desert fox',
 		type: 				'creature',
+		subtypes: 			['animal'],
 		color: 				['orange'],
 		time: 				4,
 		image: 				'cards/desert-fox-2444230_640.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, move_away: 1, guard: 1},
-		reset_time: 		1,
-		safe_slot: 			false,
+		abilities: 			{move_away: 1, strike: 1, guard: 1},
 		hero_version: 			{
 			name: 				'desert fox',
 			type: 				'creature',
@@ -1314,7 +1203,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_nearest: 1, evade: 1},
 		},
 		recipe:{
 			boar: 				1,

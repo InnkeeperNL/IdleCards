@@ -1906,7 +1906,7 @@ var all_old_available_cards = {
 	dark_scout:{
 		name: 				'dark scout',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','rogue'],
 		color: 				['colorless'],
 		theme: 				[],
 		pick_chance: 		1,
@@ -10515,7 +10515,7 @@ var all_old_available_cards = {
 	tree_of_thought:{
 		name: 				'tree of thought',
 		type: 				'structure',
-		subtypes: 			['wall','tree'],
+		subtypes: 			['wall','plant'],
 		color: 				['colorless'],
 		theme: 				['deck_control'],
 		craft_theme: 		['deck_control','deck_control','hasten','hasten'],
@@ -12842,6 +12842,7 @@ var replacement_abilities = {
 	recall_ally: 		'unsummon_ally',
 	fire_shield: 		'fire_aura',
 	lightning_bolt: 	'lightning',
+	blessed_arrivals: 	'bless_arrivals',
 }
 
 var ignored_abilities = {
@@ -12857,9 +12858,9 @@ var racial_abilities = {
 function add_old_cards(old_cards, image_folder){
 	var added_old_cards = {};
 
-	$.each(old_cards, function(card_id, new_card){
+	eachoa(old_cards, function(card_id, new_card){
 		var should_delete = false;
-		$.each(new_card['abilities'], function(ability_id, ability_level){
+		eachoa(new_card['abilities'], function(ability_id, ability_level){
 			if(all_abilities[ability_id] == undefined)
 			{
 				delete new_card['abilities'][ability_id];
@@ -12882,7 +12883,7 @@ function add_old_cards(old_cards, image_folder){
 		});
 		if(new_card['hero_version'] != undefined)
 		{
-			$.each(new_card['hero_version']['abilities'], function(ability_id, ability_level){
+			eachoa(new_card['hero_version']['abilities'], function(ability_id, ability_level){
 				if(all_abilities[ability_id] == undefined)
 				{
 					delete old_cards[card_id]['hero_version']['abilities'][ability_id];
@@ -12913,7 +12914,7 @@ function add_old_cards(old_cards, image_folder){
 		}
 		if(old_cards[card_id] != undefined)
 		{
-			$.each(racial_abilities, function(race, racial_ability){
+			eachoa(racial_abilities, function(race, racial_ability){
 				if(match_array_values(old_cards[card_id]['subtypes'], race))
 				{
 					if(old_cards[card_id]['abilities'][racial_ability] == undefined)
@@ -12931,7 +12932,7 @@ function add_old_cards(old_cards, image_folder){
 			});
 		}
 	});
-	$.each(old_cards, function(card_id, card_info){
+	eachoa(old_cards, function(card_id, card_info){
 		if(all_available_cards[card_id] == undefined/* && card_info['use_old'] != undefined && card_info['use_old'] == true*/)
 		{
 			var use_old_card = true;
@@ -12941,7 +12942,7 @@ function add_old_cards(old_cards, image_folder){
 			//if(card_info.name.replace('jotnar','') != card_info.name){use_old_card = false;}
 			//if(card_info.name.replace('thief','') != card_info.name){use_old_card = false;}
 
-			$.each(card_info['abilities'], function(ability_id, ability_level){
+			eachoa(card_info['abilities'], function(ability_id, ability_level){
 				if(all_abilities[ability_id] == undefined && replacement_abilities[ability_id] == undefined && ignored_abilities[ability_id] == undefined)
 				{
 
@@ -12952,7 +12953,7 @@ function add_old_cards(old_cards, image_folder){
 			});
 			if(card_info['hero_version'] != undefined)
 			{
-				$.each(card_info['hero_version']['abilities'], function(ability_id, ability_level){
+				eachoa(card_info['hero_version']['abilities'], function(ability_id, ability_level){
 					if(all_abilities[ability_id] == undefined && replacement_abilities[ability_id] == undefined && ignored_abilities[ability_id] == undefined)
 					{
 
@@ -12967,7 +12968,7 @@ function add_old_cards(old_cards, image_folder){
 
 			if(use_old_card == true)
 			{
-				$.each(all_available_cards, function(new_card_id, new_card_info){
+				eachoa(all_available_cards, function(new_card_id, new_card_info){
 					if(matched_new_card == false)
 					{
 						var matched_this = true;
@@ -12977,7 +12978,7 @@ function add_old_cards(old_cards, image_folder){
 						if(new_card_info['type'] != 'artifact' && new_card_info['type'] != 'spell' && match_array_values(new_card_info['subtypes'], card_info['subtypes']) < count_object(new_card_info['subtypes'])){matched_this = false;}
 						if(count_object(card_info['abilities']) == count_object(new_card_info['abilities']))
 						{
-							$.each(card_info['abilities'], function(ability_id, ability_level){
+							eachoa(card_info['abilities'], function(ability_id, ability_level){
 								if(new_card_info['abilities'][ability_id] == undefined || new_card_info['abilities'][ability_id] != ability_level)
 								{
 									matched_this = false;
@@ -13003,7 +13004,7 @@ function add_old_cards(old_cards, image_folder){
 				var new_card = true_copyobject(old_cards[card_id]);
 				var old_image_string = new_card['image'];
 				if(new_card['armor'] > 0){new_card['armor'] = 0;}
-				$.each(new_card['abilities'], function(ability_id, ability_level){
+				eachoa(new_card['abilities'], function(ability_id, ability_level){
 					if(all_abilities[ability_id] == undefined)
 					{
 						delete new_card['abilities'][ability_id];
@@ -13024,7 +13025,7 @@ function add_old_cards(old_cards, image_folder){
 				{
 					if(new_card['hero_version']['armor'] > 0){new_card['hero_version']['armor'] = 0;}
 					new_card['hero_version']['image'] = old_image_string.replace('cards/',image_folder);
-					$.each(new_card['hero_version']['abilities'], function(ability_id, ability_level){
+					eachoa(new_card['hero_version']['abilities'], function(ability_id, ability_level){
 						if(all_abilities[ability_id] == undefined)
 						{
 							delete new_card['hero_version']['abilities'][ability_id];
@@ -13067,9 +13068,9 @@ function add_old_cards(old_cards, image_folder){
 
 
 function check_using_old_abilities(){
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		//console.log(card_id);
-		$.each(card_info['abilities'], function(ability_id, ability_info){
+		eachoa(card_info['abilities'], function(ability_id, ability_info){
 			if(all_abilities[ability_id]['old'] != undefined)
 			{
 				console.log(card_id + ' using old ability: ' + ability_id);
@@ -13077,7 +13078,7 @@ function check_using_old_abilities(){
 		});
 		if(card_info['hero_version'] != undefined)
 		{
-			$.each(card_info['hero_version']['abilities'], function(ability_id, ability_info){
+			eachoa(card_info['hero_version']['abilities'], function(ability_id, ability_info){
 				if(all_abilities[ability_id]['old'] != undefined)
 				{
 					console.log(card_id + ' hero using old ability: ' + ability_id);
