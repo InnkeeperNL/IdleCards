@@ -737,7 +737,7 @@ var all_older_available_cards = {
 		type: 				'spell',
 		subtypes: 			['tactic'],
 		color: 				['green'],
-		theme: 				['muscle','spells','empower'],
+		theme: 				['subtype_animal'],
 		pick_chance: 		1,
 		time: 				4,
 		image: 				'cards/elephant-2894633_640.jpg',
@@ -2280,7 +2280,6 @@ var all_older_available_cards = {
 		abilities: 			{fear: 1, draw_on_act: 1},
 		recipe:{
 			historian:			1,
-			pure_mage: 			1,
 		}
 	},
 	wall_of_kelp:{

@@ -11331,7 +11331,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{upkeep_creature: 1, empower_hero: 1, restore: 1},
+		abilities: 			{withering_deaths: 1, restoring_deaths: 1},
 		quote: '\"Keep the lambs coming...\"',
 	},
 	sailing_ship:{

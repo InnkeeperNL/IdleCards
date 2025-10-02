@@ -2484,7 +2484,7 @@ var all_oldest_available_cards = {
 	haunted_forest:{
 		name: 				'haunted forest',
 		type: 				'structure',
-		subtypes: 			['wall'],
+		subtypes: 			['wall','plant'],
 		color: 				['purple'],
 		time: 				1,
 		image: 				'cards/forest-5167332_640.jpg',
@@ -2580,6 +2580,7 @@ var all_oldest_available_cards = {
 	herbs:{
 		name: 				'herbs',
 		type: 				'artifact',
+		subtypes: 			['trinket'],
 		color: 				['green'],
 		pick_chance: 		0.5,
 		basic_reward: 		true,
@@ -2588,18 +2589,19 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{heal: 1},
+		abilities: 			{heal: 1, purify: 1},
 	},
 	hero_stalker:{
 		name: 				'hero stalker',
 		type: 				'creature',
+		subtypes: 			['human','rogue'],
 		color: 				['purple'],
 		time: 				8,
 		image: 				'cards/fantasy-2546695_1280.jpg',
 		power: 				3,
 		armor: 				0,
 		health: 			3,
-		abilities: 			{move_away: 1, strike: 1, evade: 1, resist_magic: 2},
+		abilities: 			{run_away: 1, strike: 1, evade: 1, resist_magic: 1},
 		hero_version: 			{
 			name: 				'hero stalker',
 			type: 				'creature',
@@ -2608,7 +2610,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			20,
-			abilities: 			{strike: 1, evade: 1, resist_magic: 2},
+			abilities: 			{strike_unit: 1, evade: 1, resist_magic: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -2616,42 +2618,16 @@ var all_oldest_available_cards = {
 			magic_attunement: 	1
 		}
 	},
-	hexing_witch:{
-		name: 				'hexing witch',
-		type: 				'creature',
-		color: 				['purple'],
-		time: 				4,
-		image: 				'cards/witch-3202467_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			6,
-		abilities: 			{strike: 1, cursed_touch: 1, reflect: 1},
-		hero_version: 			{
-			name: 				'hexing witch',
-			type: 				'creature',
-			image: 				'cards/witch-3202467_640.jpg',
-			image_position: 	'top',
-			power: 				1,
-			armor: 				0,
-			health: 			20,
-			abilities: 			{strike_nearest: 1, cursed_touch: 1, reflect: 1},
-		},
-		recipe:{
-			dark_seer: 			1,
-			amethyst: 			1,
-			voodoo_doll: 		1
-		}
-	},
-	
 	hidden_lizard:{
 		name: 				'hidden lizard',
 		type: 				'creature',
+		subtypes: 			['animal','reptile'],
 		color: 				['orange'],
 		time: 				4,
 		image: 				'cards/lizards-5119251_640.jpg',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
-		health: 			5,
+		health: 			3,
 		abilities: 			{strike: 1, venom: 1, stealth: 1},
 		hero_version: 			{
 			name: 				'hidden lizard',
@@ -2661,7 +2637,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, venom: 1, hide: 1},
+			abilities: 			{strike_unit: 1, venom: 1, hide: 1},
 		},
 		recipe:{
 			sandstorm: 			1,
@@ -2672,6 +2648,7 @@ var all_oldest_available_cards = {
 	hidden_swamp:{
 		name: 				'hidden swamp',
 		type: 				'structure',
+		subtypes: 			['wall','plant'],
 		color: 				['purple'],
 		pick_chance: 		0.5,
 		time: 				4,
@@ -2679,7 +2656,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{slow: 2, resist_fire: 2},
+		abilities: 			{slow: 2, resist_fire: 1},
 		hero_version: 			{
 			name: 				'hidden swamp',
 			type: 				'structure',
@@ -2698,13 +2675,14 @@ var all_oldest_available_cards = {
 	highwayman:{
 		name: 				'highwayman',
 		type: 				'creature',
+		subtypes: 			['human','rogue'],
 		color: 				['yellow'],
 		time: 				4,
 		image: 				'cards/fighter-5369481_640.jpg',
 		power: 				3,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, evade: 1, defect: 1, stealth: 1},
+		abilities: 			{strike: 1, striking_entry: 3, defect: 1},
 		hero_version: 			{
 			name: 				'highwayman',
 			type: 				'creature',
@@ -2713,55 +2691,17 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, evade: 1, stealth: 1},
+			abilities: 			{strike_unit: 2},
 		},
 		recipe:{
 			brigands: 			1,
 			surprise_attack: 	1,
 		}
 	},
-	
-	historian:{
-		name: 				'historian',
-		type: 				'creature',
-		color: 				['blue'],
-		time: 				4,
-		image: 				'cards/book-4133988_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1, reclaim: 1},
-		hero_version: 			{
-			name: 				'historian',
-			type: 				'creature',
-			image: 				'cards/book-4133988_640.jpg',
-			image_position: 	'top',
-			power: 				2,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_nearest: 1, reclaim: 1},
-		},
-		recipe:{
-			pure_mage: 			1,
-			old_tome: 			1
-		}
-	},
-	holy_relic:{
-		name: 				'holy relic',
-		type: 				'artifact',
-		color: 				['yellow'],
-		pick_chance: 		1,
-		basic_reward: 		true,
-		time: 				2,
-		image: 				'cards/ank-1215054_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{blessed_arrivals: 2},
-	},
 	holy_sacrifice:{
 		name: 				'holy sacrifice',
 		type: 				'spell',
+		subtypes: 			['ritual'],
 		color: 				['yellow'],
 		pick_chance: 		0.5,
 		time: 				7,
@@ -2769,57 +2709,32 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{holy_sacrifice: 5},
+		abilities: 			{bless_all: 5, sacrifice_unit: 1, restore_on_act: 5},
 		recipe:{
 			holy_relic: 		1,
 			angelic_blessing: 	1
 		}
 	},
-	
-	honorbound_warrior:{
-		name: 				'honorbound warrior',
-		type: 				'creature',
-		color: 				['orange'],
-		time: 				2,
-		image: 				'cards/fantasy-3311161_1920.jpg',
-		power: 				4,
-		armor: 				0,
-		health: 			6,
-		abilities: 			{strike: 1, honor_enemy: 3},
-		hero_version: 			{
-			name: 				'honorbound warrior',
-			type: 				'creature',
-			image: 				'cards/fantasy-3311161_1920.jpg',
-			image_position: 	'top',
-			power: 				3,
-			armor: 				0,
-			health: 			60,
-			abilities: 			{strike_nearest: 1, honor_enemy: 2},
-		},
-		recipe:{
-			gladiator: 			1,
-			angelic_blessing: 	1,
-		}
-	},
 	horned_griffin:{
 		name: 				'horned griffin',
 		type: 				'creature',
+		subtypes: 			['animal','bird','lion'],
 		color: 				['orange'],
 		time: 				10,
 		image: 				'cards/being-4803333_640.jpg',
 		power: 				3,
 		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1, counter: 1, flying: 1},
+		health: 			6,
+		abilities: 			{strike: 1, thorns: 1, flying: 1},
 		hero_version: 			{
 			name: 				'horned griffin',
 			type: 				'creature',
 			image: 				'cards/being-4803333_640.jpg',
 			image_position: 	'top',
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			20,
-			abilities: 			{strike_nearest: 1, counter: 1, flying: 1},
+			abilities: 			{strike_unit: 1, thorns: 1, flying: 1},
 		},
 		recipe:{
 			yellow_ara: 		1,
@@ -2830,13 +2745,14 @@ var all_oldest_available_cards = {
 	horned_lizard:{
 		name: 				'horned lizard',
 		type: 				'creature',
+		subtypes: 			['animal','lizard'],
 		color: 				['orange'],
 		time: 				4,
 		image: 				'cards/horned-toad-1531806_640.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, elemental_resistance: 1, thorns: 1},
+		abilities: 			{strike: 1, venom: 1, thorns: 1},
 		hero_version: 			{
 			name: 				'horned lizard',
 			type: 				'creature',
@@ -2844,7 +2760,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, elemental_resistance: 1, thorns: 1},
+			abilities: 			{strike_unit: 1, venom: 1, thorns: 1},
 		},
 		recipe:{
 			sandstorm: 			1,
@@ -2856,21 +2772,22 @@ var all_oldest_available_cards = {
 	huge_orc:{
 		name: 				'huge orc',
 		type: 				'creature',
+		subtypes: 			['goblin'],
 		color: 				['red','orange'],
 		time: 				10,
 		image: 				'cards/fantasy-3389041_1280.jpg',
 		power: 				3,
 		armor: 				0,
 		health: 			8,
-		abilities: 			{strike: 1, enrage: 1},
+		abilities: 			{strike: 1, stunning_touch: 1},
 		hero_version: 			{
 			name: 				'huge orc',
 			type: 				'creature',
 			image: 				'cards/fantasy-3389041_1280.jpg',
-			power: 				2,
+			power: 				3,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, enrage: 1},
+			abilities: 			{strike_unit: 1, stunning_touch: 1},
 		},
 		recipe:{
 			dancing_devil: 		1,
@@ -2881,21 +2798,22 @@ var all_oldest_available_cards = {
 	hungering_ghost:{
 		name: 				'hungering ghost',
 		type: 				'creature',
+		subtypes: 			['undead','spirit'],
 		color: 				['purple'],
 		time: 				2,
 		image: 				'cards/eye-4528085_640.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{seek_creature: 1, strike: 1, feast: 2, undead: 1},
+		abilities: 			{seek_creature: 1, strike: 1, feast: 3, undead: 1},
 		hero_version: 			{
 			name: 				'hungering ghost',
 			type: 				'creature',
 			image: 				'cards/eye-4528085_640.jpg',
-			power: 				2,
+			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, feast: 3, undead: 1},
+			abilities: 			{strike_unit: 1, feast: 1, undead: 1},
 		},
 		recipe:{
 			ghost_bride: 		1,
@@ -2906,6 +2824,7 @@ var all_oldest_available_cards = {
 	illusionist:{
 		name: 				'illusionist',
 		type: 				'creature',
+		subtypes: 			['human','mage'],
 		color: 				['blue'],
 		time: 				2,
 		image: 				'cards/fantasy-4122171_640.jpg',
@@ -2921,7 +2840,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 2, evade: 1},
+			abilities: 			{strike_unit: 2, evade: 1},
 		},
 		recipe:{
 			pure_mage: 			1,
@@ -2929,31 +2848,16 @@ var all_oldest_available_cards = {
 			magic_attunement: 	1
 		}
 	},
-	
-	incite_animosity:{
-		name: 				'incite animosity',
-		type: 				'spell',
-		color: 				['blue'],
-		time: 				5,
-		image: 				'cards/confrontation-930744_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{blind_rage: 10},
-		recipe:{
-			soften: 			1,
-			burning_rage: 		1,
-		}
-	},
 	innocent_fairy:{
 		name: 				'innocent fairy',
 		type: 				'creature',
+		subtypes: 			['fairy'],
 		color: 				['green'],
 		time: 				1,
 		image: 				'cards/fee-5276183_640.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			4,
+		health: 			1,
 		abilities: 			{move: 1, strike: 1, flying: 1},
 		hero_version: 			{
 			name: 				'inncocent fairy',
@@ -2963,7 +2867,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, flying: 1},
+			abilities: 			{strike_unit: 1, flying: 1},
 		},
 		recipe:{
 			natures_touch: 		1,
@@ -3002,125 +2906,48 @@ var all_oldest_available_cards = {
 	lava_crab:{
 		name: 				'lava crab',
 		type: 				'creature',
+		subtypes: 			['animal','crustacean'],
 		color: 				['red'],
 		time: 				5,
 		image: 				'cards/crab-63084_1280.jpg',
 		power: 				2,
-		armor: 				3,
+		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, fire_shield: 1},
+		abilities: 			{strike: 1, plated: 1, fire_shield: 1},
 		hero_version: 			{
 			name: 				'lava crab',
 			type: 				'creature',
 			image: 				'cards/crab-63084_1280.jpg',
 			power: 				2,
-			armor: 				4,
+			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, fire_shield: 1},
+			abilities: 			{strike_unit: 1, plated: 1, fire_shield: 1},
 		},
 		recipe:{
 			fire_salamander: 	1,
 			plate_armor: 		1,
 		}
 	},
-	
-	levitate:{
-		name: 				'levitate',
-		type: 				'spell',
-		color: 				['blue'],
-		pick_chance: 		0.5,
-		time: 				1,
-		image: 				'cards/wings-2595717_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{grant_flying:1},
-		recipe:{
-			magic_attunement: 	1,
-			paper: 				1,
-		}
-	},
-	library:{
-		name: 				'library',
-		type: 				'structure',
-		color: 				['blue'],
-		pick_chance: 		0.5,
-		time: 				6,
-		image: 				'cards/bookshelf-1082309_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			6,
-		abilities: 			{draw: 1, flammable:1},
-		hero_version: 			{
-			name: 				'library',
-			type: 				'structure',
-			image: 				'cards/bookshelf-1082309_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{draw: {
-				level: 			1,
-				delay: 			2,
-				starting_delay: 2,
-				additional_text: 'This ability is used every third turn.',
-			}, flammable: 1},
-		},
-		recipe:{
-			research: 			1,
-			lumber: 			1,
-			stone: 				1
-		}
-	},
 	lightning_bolt:{
 		name: 				'lightning bolt',
 		type: 				'spell',
+		subtypes: 			['weather'],
 		color: 				['blue'],
 		time: 				4,
 		image: 				'cards/witch-2733223_640.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{lightning_bolt: 4},
+		abilities: 			{lightning: 1, echo: 1},
 		recipe:{
 			magic_attunement: 	1,
 			sandstorm: 			1
 		}
 	},
-	lightning_mage:{
-		name: 				'lightning mage',
-		type: 				'creature',
-		color: 				['blue'],
-		time: 				5,
-		image: 				'cards/fantasy-1711528_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			6,
-		abilities: 			{lightning_bolt: 2},
-		hero_version: 			{
-			name: 				'lightning mage',
-			type: 				'creature',
-			image: 				'cards/fantasy-1711528_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{lightning_bolt: 2 
-			/*{
-				level: 		2,
-				level_2: 	3,
-				delay: 		4,
-				starting_delay: 4,
-				additional_text: 	'Will fire once every fourth turn.'
-			}*/
-			},
-		},
-		recipe:{
-			peasant: 			1,
-			lightning_storm: 	1
-		}
-	},
 	magic_attunement:{
 		name: 				'magic attunement',
 		type: 				'spell',
+		subtypes: 			['ritual'],
 		color: 				['blue'],
 		pick_chance: 		0.5,
 		time: 				8,
@@ -3128,7 +2955,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{hasten_all: 1},
+		abilities: 			{draw: 1, hasten_all: 1},
 		recipe:{
 			mana_crystal: 	1,
 			cleansing_water: 1
@@ -3137,13 +2964,14 @@ var all_oldest_available_cards = {
 	mesmer:{
 		name: 				'mesmer',
 		type: 				'creature',
+		subtypes: 			['human','mage'],
 		color: 				['blue'],
 		time: 				5,
 		image: 				'cards/fantasy-5410210_640.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, mesmerise: 1},
+		abilities: 			{strike: 1, charming_touch: 1},
 		hero_version: 			{
 			name: 				'mesmer',
 			type: 				'creature',
@@ -3152,7 +2980,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{strike_nearest: 1, mesmerise: 1},
+			abilities: 			{strike_unit: 1, charming_touch: 1},
 		},
 		recipe:{
 			bard: 				1,
@@ -3163,13 +2991,14 @@ var all_oldest_available_cards = {
 	mammoth:{
 		name: 				'mammoth',
 		type: 				'creature',
+		subtypes: 			['animal'],
 		color: 				['blue'],
 		time: 				11,
 		image: 				'cards/fantasy-2785017_1280.jpg',
 		power: 				4,
 		armor: 				0,
 		health: 			8,
-		abilities: 			{strike: 1, trample: 1, resist_cold: 3},
+		abilities: 			{strike: 1, trample: 1, resist_cold: 1},
 		hero_version: 			{
 			name: 				'mammoth',
 			type: 				'creature',
@@ -3177,7 +3006,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, trample: 1, resist_cold: 3},
+			abilities: 			{strike_nearest: 1, trample: 1, resist_cold: 1},
 		},
 		recipe:{
 			brown_bear: 		1,
@@ -3185,42 +3014,18 @@ var all_oldest_available_cards = {
 			giants_foot: 		1
 		}
 	},
-	mana_crystal:{
-		name: 				'mana crystal',
-		type: 				'artifact',
-		color: 				['blue'],
-		basic_reward: 		true,
-		pick_chance: 		0.5,
-		time: 				2,
-		image: 				'cards/crystal-758818_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{hasten: 1, delay: 3},
-	},
 	mana_orb:{
 		name: 				'mana orb',
-		type: 				'structure',
+		type: 				'artifact',
+		subtypes: 			['trinket'],
 		color: 				['blue'],
 		pick_chance: 		0.5,
 		time: 				1,
 		image: 				'cards/ball-3528226_640.jpg',
 		power: 				false,
 		armor: 				0,
-		health: 			2,
-		abilities: 			{gather_energy: 1, release_energy: 1},
-		hero_version: 			{
-			name: 				'mana orb',
-			type: 				'structure',
-			image: 				'cards/ball-3528226_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			60,
-			abilities: 			{hasten: 1},
-		},
-		recipe:{
-			mana_crystal: 		2,
-		}
+		health: 			false,
+		abilities: 			{energising_spells: 1, energised_haste: 1},
 	},
 	
 	mana_dragon:{
@@ -3859,8 +3664,8 @@ var all_oldest_available_cards = {
 		image: 				'cards/fantasy-1390177_1280.jpg',
 		power: 				false,
 		armor: 				0,
-		health: 			5,
-		abilities: 			{arcane_bolts: 2},
+		health: 			7,
+		abilities: 			{arcane_bolts: 2, purify: 1},
 		hero_version: 			{
 			name: 				'pure mage',
 			type: 				'creature',
@@ -3869,7 +3674,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{arcane_bolts: 2},
+			abilities: 			{arcane_bolts: 1, purify: 1},
 		},
 		recipe:{
 			peasant: 			1,

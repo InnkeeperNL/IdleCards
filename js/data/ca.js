@@ -2656,6 +2656,30 @@ var all_abilities = {
 		level_cost: 		18,
 		level_cost_spell: 	4.5,
 	},
+	defect:{
+		description: 	'When this receives damage, and there are no more then 4 enemy units, it changes sides.',
+		proc: 		'receive_damage',
+		cannot_proc_while_stunned: true,
+		proc_while_dead: true,
+		max_enemy_units: 4,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'self',
+				min_hp: 	1,
+				side: 		'any'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'change_side',
+				subtypes: 	['mental','movement','change_side'],
+				amount: 	1,
+			},
+		},
+		level_cost: 	-4,
+	},
 	demolish:{
 		description: 	'Destroys any non-golem structure unit it deals damage to.',
 		proc: 			'dealt_damage',
@@ -3671,6 +3695,30 @@ var all_abilities = {
 		description: 	'Gains {LEVEL} energy when an ally creature is destroyed.',
 		proc: 			'ally_creature_death',
 		origin_not_self: true,
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 	'any',
+				target_amount: 1,
+				position: 	'self',
+				side: 		'any'
+			},
+		},
+		effects:{
+			0:{
+				self_projectile: 'energize',
+				type: 		'apply_energy',
+				subtypes: 	['gain_energy'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+		level_cost_structure: 0.75,
+	},
+	energising_spells:{
+		description: 	'Gains {LEVEL} energy when any spell card is played.',
+		proc: 			'any_spell_card_played',
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
@@ -21695,7 +21743,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{upkeep_creature: 1, empower_hero: 1, restore: 1},
+		abilities: 			{withering_deaths: 1, restoring_deaths: 1},
 		quote: '\"Keep the lambs coming...\"',
 	},
 	sailing_ship:{
