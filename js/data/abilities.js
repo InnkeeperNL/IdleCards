@@ -10296,8 +10296,8 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	2.5,
-		level_cost_artifact: 5,
+		level_cost: 	3,
+		level_cost_artifact: 6,
 	},
 	withering_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, this reduces the maximum health of that enemy by {LEVEL}.',

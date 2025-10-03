@@ -10297,8 +10297,8 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	2.5,
-		level_cost_artifact: 5,
+		level_cost: 	3,
+		level_cost_artifact: 6,
 	},
 	withering_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, this reduces the maximum health of that enemy by {LEVEL}.',
@@ -10752,7 +10752,7 @@ var all_available_cards = {
 		abilities: 			{curse: 1, strike: 1, withering_deaths: 1},
 		hero_version: 			{
 			theme: 				['subtype_witch','wither_ability','curse_ability'],
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{curse_hv: 1, strike_unit: 1, withering_deaths: 1},
@@ -21795,7 +21795,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{withering_deaths: 1, restoring_deaths: 1},
+		abilities: 			{cursed_deaths: 1, restoring_deaths: 1},
 		quote: '\"Keep the lambs coming...\"',
 	},
 	sailing_ship:{
