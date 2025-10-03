@@ -2129,6 +2129,31 @@ var all_abilities = {
 		level_cost: 	0.25,
 		level_cost_hero: 2,
 	},
+	convert_pain:{
+		description: 	'Summons {LEVEL} ghost(s) when your hero is damaged.',
+		proc: 		'ally_hero_damaged',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 	'hero',
+				target_amount: 1,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'resurrect',
+				type: 		'summon_unit',
+				card_id: 	'ghost',
+				amount: 	1
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	4,
+		cost_factor: 	'none',
+	},
 	counter:{
 		description: 	'If this survives melee damage from an enemy unit or hero, this deals physical melee damage equal to its power to it, {LEVEL} time(s). This cannot counter a counter.',
 		proc: 			'receive_damage',
@@ -2808,6 +2833,32 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	6,
 		level_cost_artifact: 3,
+	},
+	destroy_artifact:{
+		description: 	'Destroys up to {LEVEL} random enemy artifact(s).',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		reduce_skill_after_use: 'destroy_artifact',
+		targets:	{
+			0:{
+				target: 	'artifact',
+				target_amount: 1,
+				position: 	'random',
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'broken',
+				type: 		'destroy',
+				subtypes: 	['break'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	3,
+		level_cost_hero: 1.5,
+		level_cost_artifact: 1.5,
 	},
 	destroy_creature:{
 		description: 	'Destroys {LEVEL} random enemy creature unit(s).',
@@ -7176,6 +7227,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 		level_cost_spell: 	0.5,
+		level_cost_artifact: 1,
 	},
 	reclaim_spells:{
 		description: 	'Has a 25% chance to return {LEVEL} spell card(s) in your grave to your deck.',

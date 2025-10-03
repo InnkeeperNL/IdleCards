@@ -80,7 +80,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, summon_artifact: 1},
+			abilities: 			{strike_unit: 1, summon_artifact: 1},
 		},
 		recipe:{
 			stone: 				2,
@@ -173,7 +173,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			15,
-			abilities: 			{strike_nearest: 1, armored: 1, hide_on_kill: 1},
+			abilities: 			{strike_unit: 1, armored: 1, hide_on_kill: 1},
 		},
 		recipe:{
 			tribal_warrior:		1,
@@ -220,7 +220,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, poisonous: 1, evade: 1},
+			abilities: 			{strike_unit: 1, poisonous: 1, evade: 1},
 		},
 		recipe:{
 			herbalists_lab: 	1,
@@ -247,7 +247,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{snipe: 1, victory_rush: 1},
+			abilities: 			{snipe_hv: 1, victory_rush: 1},
 		},
 		recipe:{
 			magic_attunement: 	1,
@@ -273,7 +273,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{shoot: 1},
+			abilities: 			{shoot_unit: 1},
 		},
 		recipe:{
 			barbarian_axeman: 	1,
@@ -328,7 +328,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			55,
-			abilities: 			{strike_nearest: 1, enrage: 1},
+			abilities: 			{strike_unit: 1, enrage: 1},
 		},
 		recipe:{
 			barbarian_axeman: 	1,
@@ -446,7 +446,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, evade: 1},
+			abilities: 			{strike_unit: 1, evade: 1},
 		},
 		recipe:{
 			dark_scout: 		1,
@@ -561,7 +561,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, fire_bolt_hv: 1, flying: 1},
+			abilities: 			{strike_unit: 1, fire_bolt_hv: 1, flying: 1},
 		},
 		recipe:{
 			angel_of_light: 	1,
@@ -648,7 +648,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, recall_ally: 1},
+			abilities: 			{strike_unit: 1, recall_ally: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -675,7 +675,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_unit: 1},
 		},
 		recipe:{
 			natures_touch: 		1,
@@ -786,7 +786,7 @@ var all_oldest_available_cards = {
 			power: 				0,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, enrage: 2, plated: 1},
+			abilities: 			{strike_unit: 1, enrage: 2, plated: 1},
 		},
 		recipe:{
 			ore: 				1,
@@ -813,7 +813,7 @@ var all_oldest_available_cards = {
 			power: 				0,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, enrage: 2, plated: 1, flying: 1},
+			abilities: 			{strike_unit: 1, enrage: 2, plated: 1, flying: 1},
 		},
 		recipe:{
 			clockwork_automaton: 		1,
@@ -839,7 +839,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, heal: 1},
+			abilities: 			{strike_unit: 1, heal: 1},
 		},
 		recipe:{
 			gladiator: 			1,
@@ -864,7 +864,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, pilfer: 1},
+			abilities: 			{strike_unit: 1, pilfer: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -891,7 +891,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, restore_hero: 1, draw_once: 1},
+			abilities: 			{strike_unit: 1, restore_hero: 1, draw_once: 1},
 		},
 		recipe:{
 			royal_servant: 		1,
@@ -934,7 +934,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, poisonous: 1, reclaim_creatures: 1},
+			abilities: 			{strike_unit: 1, poisonous: 1, reclaim_creatures: 1},
 		},
 		recipe:{
 			forest_elf: 		1,
@@ -960,7 +960,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			20,
-			abilities: 			{strike_nearest: 1, flying: 1, hasten: 1},
+			abilities: 			{strike_unit: 1, flying: 1, hasten: 1},
 		},
 		recipe:{
 			mana_orb: 			1,
@@ -1034,7 +1034,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			55,
-			abilities: 			{strike_nearest: 1, resist_fire: 1},
+			abilities: 			{strike_unit: 1, resist_fire: 1},
 		},
 		recipe:{
 			fire_imp: 			1,
@@ -1084,7 +1084,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{strike_nearest: 1, discard: 1, discard_enemy: 1},
+			abilities: 			{strike_unit: 1, discard: 1, discard_enemy: 1},
 		},
 		recipe:{
 			dark_warrior: 			1,
@@ -1134,7 +1134,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, fireproof: 1, burn_all: 1},
+			abilities: 			{strike_unit: 1, fireproof: 1, burn_all: 1},
 		},
 		recipe:{
 			princess: 		1,
@@ -1202,7 +1202,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, evade: 1},
+			abilities: 			{strike_unit: 1, evade: 1},
 		},
 		recipe:{
 			boar: 				1,
@@ -1230,7 +1230,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, hide_ally: 1, first_aid: 1},
+			abilities: 			{strike_unit: 1, hide_ally: 1, first_aid: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -1318,7 +1318,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			20,
-			abilities: 			{strike_nearest: 1, flying: 1},
+			abilities: 			{strike_unit: 1, flying: 1},
 		},
 		recipe:{
 			yellow_ara: 		1,
@@ -1343,7 +1343,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			25,
-			abilities: 			{strike_nearest: 1, evade: 1},
+			abilities: 			{strike_unit: 1, evade: 1},
 		},
 		recipe:{
 			forest_elf: 		1,
@@ -1371,7 +1371,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			45,
-			abilities: 			{strike_nearest: 1, regenerate: 1, deaths_curse: 1},
+			abilities: 			{strike_unit: 1, regenerate: 1, deaths_curse: 1},
 		},
 		recipe:{
 			fallen_elf: 		1,
@@ -1398,7 +1398,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			45,
-			abilities: 			{strike_nearest: 1, recall_soul: 1},
+			abilities: 			{strike_unit: 1, recall_soul: 1},
 		},
 		recipe:{
 			elf_death_druid: 	1,
@@ -1597,7 +1597,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, counter: 1},
+			abilities: 			{strike_unit: 1, counter: 1},
 		},
 		recipe:{
 			court_lady: 		1,
@@ -1649,7 +1649,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, flying: 1, resurrect_ally: 1},
+			abilities: 			{strike_unit: 1, flying: 1, resurrect_ally: 1},
 		},
 		recipe:{
 			innocent_fairy: 	1,
@@ -1700,7 +1700,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			25,
-			abilities: 			{strike_nearest: 1, evade: 1, cursed_touch: 1},
+			abilities: 			{strike_unit: 1, evade: 1, cursed_touch: 1},
 		},
 		recipe:{
 			forest_elf: 		1,
@@ -1808,7 +1808,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{shoot: 1, ignites: 1},
+			abilities: 			{shoot_unit: 1, ignites: 1},
 		},
 		recipe:{
 			archer: 			1,
@@ -1833,7 +1833,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, resist_fire: 1, fire_bolt: 1},
+			abilities: 			{strike_unit: 1, resist_fire: 1, fire_bolt: 1},
 		},
 		recipe:{
 			flame_lover: 			1,
@@ -1859,7 +1859,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			20,
-			abilities: 			{strike_nearest: 1, flying: 1, resurrect: 1},
+			abilities: 			{strike_unit: 1, flying: 1, resurrect: 1},
 		},
 		recipe:{
 			bones: 				1,
@@ -1885,7 +1885,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{strike_nearest: 1, burn_arrivals: 1},
+			abilities: 			{strike_unit: 1, burn_arrivals: 1},
 		},
 		recipe:{
 			fire_mage: 			1,
@@ -1910,7 +1910,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, counter: 1, ignites: 1},
+			abilities: 			{strike_unit: 1, counter: 1, ignites: 1},
 		},
 		recipe:{
 			fire_salamander: 		1,
@@ -1987,7 +1987,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, regenerate: 1},
+			abilities: 			{strike_unit: 1, regenerate: 1},
 		},
 		recipe:{
 			court_lady: 		1,
@@ -2130,7 +2130,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, spellrush: 1},
+			abilities: 			{strike_unit: 1, spellrush: 1},
 		},
 		recipe:{
 			magic_attunement: 	1,
@@ -2209,7 +2209,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			20,
-			abilities: 			{strike_nearest: 1, flying: 1, feast: 2},
+			abilities: 			{strike_unit: 1, flying: 1, feast: 2},
 		},
 		recipe:{
 			natures_touch: 		1,
@@ -2236,7 +2236,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, trap: 1},
+			abilities: 			{strike_unit: 1, trap: 1},
 		},
 		recipe:{
 			natures_touch: 		1,
@@ -2334,8 +2334,8 @@ var all_oldest_available_cards = {
 		image: 				'cards/woman-5551326_640.jpg',
 		power: 				false,
 		armor: 				0,
-		health: 			4,
-		abilities: 			{fortify_hero: 1, undead: 1, run_away: 1},
+		health: 			1,
+		abilities: 			{fortify_hero: 1, undead: 1, resurrect: 1},
 		hero_version: 			{
 			name: 				'golden spirit',
 			type: 				'creature',
@@ -2344,7 +2344,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{fortify_hero: 1, evade: 1, undead: 1},
+			abilities: 			{fortify_hero: 1, fortify_all: 1, resurrect: 1, undead: 1},
 		},
 		recipe:{
 			yellow_spirit: 			1,
@@ -2388,8 +2388,8 @@ var all_oldest_available_cards = {
 		image: 				'cards/fantasy-2824500_1920.jpg',
 		power: 				false,
 		armor: 				0,
-		health: 			4,
-		abilities: 			{heal: 1, undead: 1, run_away: 1},
+		health: 			1,
+		abilities: 			{heal: 1, undead: 1, resurrect: 1},
 		hero_version: 			{
 			name: 				'green spirit',
 			type: 				'creature',
@@ -2397,7 +2397,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{heal: 1, undead: 1, evade: 1},
+			abilities: 			{heal: 1, undead: 1, resurrect: 1},
 		},
 		recipe:{
 			herbs: 				1,
@@ -2422,7 +2422,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, heal: 1},
+			abilities: 			{strike_unit: 1, heal: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -2448,7 +2448,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_unit: 1},
 		},
 		recipe:{
 			peasant: 			2,
@@ -2805,7 +2805,7 @@ var all_oldest_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{seek_creature: 1, strike: 1, feast: 3, undead: 1},
+		abilities: 			{seek_creature: 1, strike: 1, feast: 3, undead: 1, resurrect: 1},
 		hero_version: 			{
 			name: 				'hungering ghost',
 			type: 				'creature',
@@ -2813,7 +2813,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, feast: 1, undead: 1},
+			abilities: 			{strike_unit: 1, feast: 1, undead: 1, resurrect: 1},
 		},
 		recipe:{
 			ghost_bride: 		1,
@@ -2894,7 +2894,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, block: 1, plated: 1},
+			abilities: 			{strike_unit: 1, block: 1, plated: 1},
 		},
 		recipe:{
 			shield_maiden: 		1,
@@ -3006,7 +3006,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, trample: 1, resist_cold: 1},
+			abilities: 			{strike_unit: 1, trample: 1, resist_cold: 1},
 		},
 		recipe:{
 			brown_bear: 		1,
@@ -3031,6 +3031,7 @@ var all_oldest_available_cards = {
 	mana_dragon:{
 		name: 				'mana dragon',
 		type: 				'creature',
+		subtypes: 			['reptile','dragon'],
 		color: 				['blue'],
 		time: 				22,
 		image: 				'cards/fantasy-2747066_640.jpg',
@@ -3045,7 +3046,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			25,
-			abilities: 			{strike_nearest: 1, flying: 1, hasten: 1},
+			abilities: 			{strike_unit: 1, flying: 1, hasten: 1},
 		},
 		recipe:{
 			mana_orb: 			2,
@@ -3055,6 +3056,7 @@ var all_oldest_available_cards = {
 	mana_fairy:{
 		name: 				'mana fairy',
 		type: 				'creature',
+		subtypes: 			['fairy','mage'],
 		color: 				['blue','green'],
 		time: 				3,
 		image: 				'cards/dreamland-1060880_640.jpg',
@@ -3069,7 +3071,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, flying: 1, hasten: 1},
+			abilities: 			{strike_unit: 1, flying: 1, hasten: 1},
 		},
 		recipe:{
 			innocent_fairy: 	1,
@@ -3081,6 +3083,7 @@ var all_oldest_available_cards = {
 	marsh_crocodile:{
 		name: 				'marsh crocodile',
 		type: 				'creature',
+		subtypes: 			['animal','reptile'],
 		color: 				['purple'],
 		time: 				1,
 		image: 				'cards/crocodile-630231_1280.jpg',
@@ -3095,7 +3098,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, submerged: 1},
+			abilities: 			{strike_unit: 1, submerged: 1},
 		},
 		recipe:{
 			fire_salamander: 	1,
@@ -3106,13 +3109,14 @@ var all_oldest_available_cards = {
 	mind_control:{
 		name: 				'mind control',
 		type: 				'spell',
+		subtypes: 			['tactic'],
 		color: 				['blue'],
 		time: 				10,
 		image: 				'cards/face-1247955_640.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{convert: 1},
+		abilities: 			{turn_enemy: 1},
 		recipe:{
 			mesmer: 			1,
 			magic_attunement: 	1
@@ -3121,86 +3125,23 @@ var all_oldest_available_cards = {
 	mind_grind:{
 		name: 				'mind grind',
 		type: 				'spell',
+		subtypes: 			['ritual'],
 		color: 				['purple'],
 		time: 				4,
 		image: 				'cards/fantasy-2615450_640.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{mill_enemy: 2},
+		abilities: 			{discard_enemy: 2},
 		recipe:{
 			deaths_call: 		1,
 			embrace_pain: 		1
 		}
 	},
-	mountain_elf:{
-		name: 				'mountain elf',
-		type: 				'creature',
-		color: 				['red'],
-		time: 				1,
-		image: 				'cards/elf-girl-1950103_640.jpg',
-		image_position: 	'top',
-		power: 				1,
-		armor: 				0,
-		health: 			3,
-		abilities: 			{strike: 1, evade: 1, final_strike: 2},
-		hero_version: 			{
-			name: 				'mountain elf',
-			type: 				'creature',
-			image: 				'cards/elf-girl-1950103_640.jpg',
-			image_position: 	'top',
-			power: 				2,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_nearest: 1, evade: 1},
-		},
-		recipe:{
-			forest_elf: 		1,
-			bear_trap: 			1,
-			stone: 				1
-		}
-	},
-	mushroom_soldier:{
-		name: 				'mushroom soldier',
-		type: 				'creature',
-		color: 				['green'],
-		pick_chance: 		0,
-		time: 				1,
-		image: 				'cards/woman-2407142_640.jpg',
-		image_position: 	'top',
-		power: 				1,
-		armor: 				0,
-		health: 			1,
-		abilities: 			{strike: 1, poison_entry: 1},
-		hero_version: 			{
-			name: 				'mushroom soldier',
-			type: 				'creature',
-			image: 				'cards/woman-2407142_640.jpg',
-			image_position: 	'top',
-			power: 				1,
-			armor: 				0,
-			health: 			60,
-			abilities: 			{strike_nearest: 1, poisonous: 1},
-		},
-	},
-	
-	natures_touch:{
-		name: 				'nature\'s touch',
-		type: 				'spell',
-		color: 				['green'],
-		pick_chance: 		1,
-		basic_reward: 		true,
-		time: 				4,
-		image: 				'cards/butterfly-22999_1280.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{bolster: 4},
-	},
-	
 	ninja:{
 		name: 				'ninja',
 		type: 				'creature',
+		subtypes: 			['human','rogue'],
 		color: 				['purple'],
 		pick_chance: 		1,
 		time: 				6,
@@ -3208,8 +3149,7 @@ var all_oldest_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			2,
-		placement: 			'right',
-		abilities: 			{strike_nearest: 1, flank: 1, hide: 1},
+		abilities: 			{strike_unit: 1, run_away: 1, hide: 1},
 		hero_version: 			{
 			name: 				'ninja',
 			type: 				'creature',
@@ -3217,7 +3157,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, hide: 1},
+			abilities: 			{strike_unit: 1, hide: 1},
 		},
 		recipe:{
 			black_striker: 		1,
@@ -3226,48 +3166,21 @@ var all_oldest_available_cards = {
 	},
 	old_tome:{
 		name: 				'old tome',
-		type: 				'object',
+		type: 				'artifact',
+		subtypes: 			['tome'],
 		color: 				['blue'],
 		pick_chance: 		0.5,
 		time: 				5,
 		image: 				'cards/book-2005394_640.jpg',
 		power: 				false,
 		armor: 				0,
-		health: 			4,
-		abilities: 			{reclaim: 1, safe_spot: 1, bring_spell: 1},
-		reset_time: 		1,
-		safe_slot: 			true,
-		hero_version: 			{
-			name: 				'old tome',
-			type: 				'object',
-			image: 				'cards/book-2005394_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			50,
-			abilities: 			{reclaim: 1, draw_once: 1, bring_spell: 1},
-		},
-		recipe:{
-			paper: 				1,
-			magic_attunement: 	1
-		}
-	},
-	
-	ore:{
-		name: 				'ore',
-		type: 				'artifact',
-		color: 				['colorless'],
-		pick_chance: 		0.5,
-		basic_reward: 		true,
-		time: 				1,
-		image: 				'cards/stone-2854417_640.jpg',
-		power: 				false,
-		armor: 				0,
 		health: 			false,
-		abilities: 			{break_armor: 1},
+		abilities: 			{draw: 1, reclaim_spell: 2},
 	},
 	pain_catcher:{
 		name: 				'pain catcher',
 		type: 				'creature',
+		subtypes: 			['human','cleric'],
 		color: 				['purple'],
 		pick_chance: 		1,
 		time: 				5,
@@ -3284,7 +3197,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{strike_nearest: 1, convert_pain: 1},
+			abilities: 			{strike_unit: 1, convert_pain: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -3292,36 +3205,10 @@ var all_oldest_available_cards = {
 			ghost_bride: 		1
 		}
 	},
-	paladin:{
-		name: 				'paladin',
-		type: 				'creature',
-		color: 				['yellow'],
-		pick_chance: 		1,
-		time: 				11,
-		image: 				'cards/knight-5326398_640.jpg',
-		power: 				2,
-		armor: 				2,
-		health: 			4,
-		abilities: 			{strike: 1, block: 1, blessed_entry: 1, seek_enemy: 1},
-		hero_version: 			{
-			name: 				'paladin',
-			type: 				'creature',
-			image: 				'cards/knight-5326398_640.jpg',
-			image_position: 	'top',
-			power: 				1,
-			armor: 				5,
-			health: 			50,
-			abilities: 			{strike_nearest: 1, block: 1, blessed_arrivals: 1},
-		},
-		recipe:{
-			jousting_knight: 	1,
-			angelic_blessing: 	1
-		}
-	},
-	
 	paper:{
 		name: 				'paper',
 		type: 				'artifact',
+		subtypes: 			['tome'],
 		color: 				['colorless'],
 		pick_chance: 		0.2,
 		time: 				6,
@@ -3329,136 +3216,12 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{cast_spell: 1, delay: 7},
-		recipe:{
-			lumber: 		2
-		}
-	},
-	peasant:{
-		name: 				'peasant',
-		type: 				'creature',
-		color: 				['colorless'],
-		pick_chance: 		0,
-		basic_reward: 		true,
-		time: 				0,
-		image: 				'cards/arabic-1615262_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1},
-		hero_version: 			{
-			name: 				'peasant',
-			type: 				'creature',
-			image: 				'cards/arabic-1615262_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			60,
-			abilities: 			{strike_nearest: 1},
-		},
-	},
-	
-	peaceful_dove:{
-		name: 				'peaceful dove',
-		type: 				'creature',
-		color: 				['yellow','blue'],
-		pick_chance: 		0.1,
-		time: 				1,
-		image: 				'cards/dove-2516641_1280.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			1,
-		abilities: 			{weaken_everyone: 1, flying: 1},
-		hero_version: 			{
-			name: 				'peaceful dove',
-			type: 				'creature',
-			image: 				'cards/dove-2516641_1280.jpg',
-			image_position: 	'top',
-			power: 				false,
-			armor: 				0,
-			health: 			25,
-			abilities: 			{weaken_random: 1, flying: 1},
-		},
-		recipe:{
-			yellow_ara: 		1,
-			agate: 				1
-		}
-	},
-	peaceful_druid:{
-		name: 				'peaceful druid',
-		type: 				'creature',
-		color: 				['green'],
-		time: 				1,
-		image: 				'cards/autumn-2837843_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1, send_away: 1},
-		hero_version: 			{
-			name: 				'peaceful druid',
-			type: 				'creature',
-			image: 				'cards/autumn-2837843_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			60,
-			abilities: 			{strike_nearest: 1},
-		},
-		recipe:{
-			druid: 				1,
-			force_pull: 		1
-		}
-	},
-	pegasus:{
-		name: 				'pegasus',
-		type: 				'creature',
-		color: 				['yellow'],
-		time: 				3,
-		image: 				'cards/angelic-2743045_640.jpg',
-		power: 				3,
-		armor: 				0,
-		health: 			3,
-		abilities: 			{strike: 1, flying: 1},
-		hero_version: 			{
-			name: 				'pegasus',
-			type: 				'creature',
-			image: 				'cards/angelic-2743045_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_nearest: 1, flying: 1},
-		},
-		recipe:{
-			yellow_ara: 		1,
-			holy_relic: 		1
-		}
-	},
-	pirate:{
-		name: 				'pirate',
-		type: 				'creature',
-		color: 				['yellow'],
-		time: 				3,
-		image: 				'cards/pirate-2136258_640.jpg',
-		power: 				3,
-		armor: 				0,
-		health: 			3,
-		abilities: 			{seek_structure: 1, strike: 1, plunder: 1},
-		hero_version: 			{
-			name: 				'pirate',
-			type: 				'creature',
-			image: 				'cards/pirate-2136258_640.jpg',
-			image_position: 	'top',
-			power: 				1,
-			armor: 				0,
-			health: 			60,
-			abilities: 			{strike_nearest: 1, plunder: 1},
-		},
-		recipe:{
-			highwayman: 		1,
-			poverty: 			1
-		}
+		abilities: 			{reclaim_spell: 1},
 	},
 	pirate_lady:{
 		name: 				'pirate lady',
 		type: 				'creature',
+		subtypes: 			['human','rogue'],
 		color: 				['yellow'],
 		time: 				3,
 		image: 				'cards/steampunk-4651251_640.jpg',
@@ -3473,150 +3236,29 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			45,
-			abilities: 			{strike_nearest: 1, restore: 1},
+			abilities: 			{strike_unit: 1, restore: 1},
 		},
 		recipe:{
 			pirate: 			1,
 			roll_the_dice: 		1
 		}
-	},
-	pirate_scout:{
-		name: 				'pirate scout',
-		type: 				'creature',
-		color: 				['yellow'],
-		time: 				2,
-		image: 				'cards/model-2321778_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{seek_structure: 1, strike: 1, plunder: 1, evade: 1},
-		hero_version: 			{
-			name: 				'pirate scout',
-			type: 				'creature',
-			image: 				'cards/model-2321778_640.jpg',
-			image_position: 	'top',
-			power: 				2,
-			armor: 				0,
-			health: 			25,
-			abilities: 			{strike_nearest: 1, plunder: 1, evade: 1},
-		},
-		recipe:{
-			pirate: 			1,
-			firtile_dirt: 		1
-		}
-	},
-	
-	plasma_mage:{
-		name: 				'plasma mage',
-		type: 				'creature',
-		color: 				['red'],
-		time: 				3,
-		image: 				'cards/gothic-3156462_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{fire_blast: 1},
-		hero_version: 			{
-			name: 				'plasma mage',
-			type: 				'creature',
-			image: 				'cards/gothic-3156462_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			45,
-			abilities: 			{fire_blast: 1},
-		},
-		recipe:{
-			pure_mage: 			1,
-			plasma_strike: 		1
-		}
-	},
-	
-	plasma_strike:{
-		name: 				'plasma strike',
-		type: 				'spell',
-		color: 				['red'],
-		time: 				3,
-		image: 				'cards/all-703516_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{fire_blast: 3},
-		recipe:{
-			magic_attunement: 	1,
-			hellfire: 			1
-		}
-	},
-	
+	},	
 	plate_armor:{
 		name: 				'plate armor',
 		type: 				'artifact',
+		subtypes: 			['gear'],
 		color: 				['colorless'],
 		time: 				3,
 		image: 				'cards/knight-1283910_640.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{fortify_hero: 1, delay: 3},
-		recipe:{
-			armor: 			2,
-		}
-	},
-	
-	poacher:{
-		name: 				'poacher',
-		type: 				'creature',
-		color: 				['yellow'],
-		time: 				4,
-		image: 				'cards/woman-3353689_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			3,
-		abilities: 			{snipe: 1, faithkill: 1, feast: 1},
-		hero_version: 			{
-			name: 				'poacher',
-			type: 				'creature',
-			image: 				'cards/woman-3353689_640.jpg',
-			image_position: 	'top',
-			power: 				2,
-			armor: 				0,
-			health: 			25,
-			abilities: 			{snipe: 1, faithkill: 1, feast: 1},
-		},
-		recipe:{
-			archer: 			1,
-			lumber: 			1,
-			poverty: 			1
-		}
-	},
-	
-	polar_bear:{
-		name: 				'polar bear',
-		type: 				'creature',
-		color: 				['blue'],
-		time: 				3,
-		image: 				'cards/manipulation-4718960_640.jpg',
-		power: 				3,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1},
-		hero_version: 			{
-			name: 				'polar bear',
-			type: 				'creature',
-			image: 				'cards/manipulation-4718960_640.jpg',
-			image_position: 	'bottom', 
-			power: 				3,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_nearest: 1},
-		},
-		recipe:{
-			boar: 				1,
-			frozen_claw: 		1,
-		}
+		abilities: 			{fortify_hero: 2},
 	},
 	poverty:{
 		name: 				'poverty',
 		type: 				'spell',
+		subtypes: 			['tactic'],
 		color: 				['yellow'],
 		pick_chance: 		0.5,
 		basic_reward: 		true,
@@ -3627,71 +3269,17 @@ var all_oldest_available_cards = {
 		health: 			false,
 		abilities: 			{destroy_artifact: 5},
 	},
-	princess:{
-		name: 				'princess',
-		type: 				'creature',
-		color: 				['yellow'],
-		pick_chance: 		0.5,
-		time: 				4,
-		image: 				'cards/fairy-tale-2321777_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{restore_hero: 2, beloved: 1, safe_spot: 1},
-		reset_time: 		1,
-		safe_slot: 			true,
-		hero_version: 			{
-			name: 				'princess',
-			type: 				'creature',
-			image: 				'cards/fairy-tale-2321777_640.jpg',
-			image_position: 	'top',
-			power: 				false,
-			armor: 				0,
-			health: 			60,
-			abilities: 			{restore_hero: 2},
-		},
-		recipe:{
-			court_lady: 		1,
-			peasant: 			1
-		}
-	},
-	
-	pure_mage:{
-		name: 				'pure mage',
-		type: 				'creature',
-		color: 				['blue'],
-		time: 				3,
-		image: 				'cards/fantasy-1390177_1280.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			7,
-		abilities: 			{arcane_bolts: 2, purify: 1},
-		hero_version: 			{
-			name: 				'pure mage',
-			type: 				'creature',
-			image: 				'cards/fantasy-1390177_1280.jpg',
-			image_position: 	'top',
-			power: 				false,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{arcane_bolts: 1, purify: 1},
-		},
-		recipe:{
-			peasant: 			1,
-			arcane_missiles: 	1
-		}
-	},
 	purple_spirit:{
 		name: 				'purple spirit',
 		type: 				'creature',
+		subtypes: 			['undead','spirit'],
 		color: 				['purple'],
 		time: 				1,
 		image: 				'cards/abstract-1042463_1280.jpg',
 		power: 				false,
 		armor: 				0,
-		health: 			4,
-		placement: 			'right',
-		abilities: 			{curse: 1, undead: 1, flank: 1},
+		health: 			1,
+		abilities: 			{curse: 2, undead: 1, resurrect: 1},
 		hero_version: 			{
 			name: 				'purple spirit',
 			type: 				'creature',
@@ -3699,12 +3287,8 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{curse_hv: 2, evade: 1, undead: 1},
+			abilities: 			{curse_hv: 3, resurrect: 1, undead: 1},
 		},
-		recipe:{
-			ghost_bride: 		1,
-			amethyst: 			1
-		}
 	},
 	quiver:{
 		name: 				'quiver',
@@ -3757,7 +3341,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_unit: 1},
 		},
 		recipe:{
 			gladiator: 			1,
@@ -3823,7 +3407,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			45,
-			abilities: 			{strike_nearest: 1, reap: 1, flying: 1},
+			abilities: 			{strike_unit: 1, reap: 1, flying: 1},
 		},
 		recipe:{
 			dark_angel: 		1,
@@ -3847,7 +3431,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			20,
-			abilities: 			{strike_nearest: 1, fire_breath: 1, flying: 1},
+			abilities: 			{strike_unit: 1, fire_breath: 1, flying: 1},
 		},
 		recipe:{
 			heat_wurm: 			1,
@@ -3872,7 +3456,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, resist_fire: 1, ignites: 1},
+			abilities: 			{strike_unit: 1, resist_fire: 1, ignites: 1},
 		},
 		recipe:{
 			sandstorm: 			1,
@@ -3933,7 +3517,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				4,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, brutal: 1},
+			abilities: 			{strike_unit: 1, brutal: 1},
 		},
 		recipe:{
 			gladiator: 			1,
@@ -3959,7 +3543,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_unit: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -3985,7 +3569,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, armored: 1},
+			abilities: 			{strike_unit: 1, armored: 1},
 		},
 		recipe:{
 			rock_ogre: 			1,
@@ -4027,7 +3611,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, restore_hero: 1},
+			abilities: 			{strike_unit: 1, restore_hero: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -4051,7 +3635,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, elemental_resistance: 1, victory_rush: 1},
+			abilities: 			{strike_unit: 1, elemental_resistance: 1, victory_rush: 1},
 		},
 		recipe:{
 			sandstorm: 			1,
@@ -4079,7 +3663,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_unit: 1},
 		},
 		recipe:{
 			gladiator: 			1,
@@ -4129,7 +3713,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, cover: 2, fireproof: 1},
+			abilities: 			{strike_unit: 1, cover: 2, fireproof: 1},
 		},
 		recipe:{
 			cleansing_water: 	10
@@ -4138,13 +3722,14 @@ var all_oldest_available_cards = {
 	sea_spirit:{
 		name: 				'sea spirit',
 		type: 				'creature',
+		subtypes: 			['undead','spirit'],
 		color: 				['blue'],
 		time: 				6,
 		image: 				'cards/woman-5352898_640.jpg',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1, undead: 1, fireproof: 1, cleanse: 1},
+		health: 			1,
+		abilities: 			{strike: 1, undead: 1, resurrect: 1, submerged: 1},
 		hero_version: 			{
 			name: 				'sea spirit',
 			type: 				'creature',
@@ -4152,7 +3737,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, undead: 1, fireproof: 1, cleanse: 1},
+			abilities: 			{strike_unit: 1, undead: 1, resurrect: 1, submerged: 1},
 		},
 		recipe:{
 			cleansing_water: 	1,
@@ -4178,7 +3763,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_unit: 1},
 		},
 		recipe:{
 			court_lady: 		1,
@@ -4203,7 +3788,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, resist_magic: 2},
+			abilities: 			{strike_unit: 1, resist_magic: 2},
 		},
 		recipe:{
 			peasant: 			1,
@@ -4246,7 +3831,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{strike_nearest: 1, block: 1},
+			abilities: 			{strike_unit: 1, block: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -4276,7 +3861,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{snipe: 1},
+			abilities: 			{snipe_hv: 1},
 		},
 		recipe:{
 			archer: 			1,
@@ -4302,7 +3887,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				40,
 			health: 			10,
-			abilities: 			{strike_nearest: 1, undead: 1, unhealable: 1},
+			abilities: 			{strike_unit: 1, undead: 1, unhealable: 1},
 		},
 		recipe:{
 			bones: 				1,
@@ -4325,7 +3910,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				20,
 			health: 			10,
-			abilities: 			{strike_nearest: 1, undead: 1, resurrect: 1},
+			abilities: 			{strike_unit: 1, undead: 1, resurrect: 1},
 		},
 		recipe:{
 			skeleton: 			1,
@@ -4351,7 +3936,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{sky_burn: 1, strike_nearest: 1},
+			abilities: 			{sky_burn: 1, strike_unit: 1},
 		},
 		recipe:{
 			fire_mage: 			1,
@@ -4407,7 +3992,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				1,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, faithkill: 1},
+			abilities: 			{strike_unit: 1, faithkill: 1},
 		},
 		recipe:{
 			shield_maiden: 		1,
@@ -4431,7 +4016,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, counter: 1},
+			abilities: 			{strike_unit: 1, counter: 1},
 		},
 		recipe:{
 			gladiator: 			1,
@@ -4456,7 +4041,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			20,
-			abilities: 			{strike_nearest: 1, regenerate: 1, thorns: 1, stealth: 1},
+			abilities: 			{strike_unit: 1, regenerate: 1, thorns: 1, stealth: 1},
 		},
 		recipe:{
 			amethyst: 			1,
@@ -4621,7 +4206,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				5,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, withering_touch: 1},
+			abilities: 			{strike_unit: 1, withering_touch: 1},
 		},
 		recipe:{
 			hidden_swamp: 		1,
@@ -4645,7 +4230,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_nearest: 1, resist_fire: 2},
+			abilities: 			{strike_unit: 1, resist_fire: 2},
 		},
 		recipe:{
 			peasant: 			1,
@@ -4670,7 +4255,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{obscure: 1, reveal: 1, strike_nearest: 1},
+			abilities: 			{obscure: 1, reveal: 1, strike_unit: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -4697,7 +4282,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{strike_nearest: 1, go_again: 1},
+			abilities: 			{strike_unit: 1, go_again: 1},
 		},
 		recipe:{
 			amethyst: 			1,
@@ -4714,7 +4299,7 @@ var all_oldest_available_cards = {
 		power: 				3,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike_nearest: 1, regenerate: 1},
+		abilities: 			{strike_unit: 1, regenerate: 1},
 		hero_version: 			{
 			name: 				'tiger huntress',
 			type: 				'creature',
@@ -4722,7 +4307,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, regenerate: 1},
+			abilities: 			{strike_unit: 1, regenerate: 1},
 		},
 		recipe:{
 			gladiator: 			1,
@@ -4791,7 +4376,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				4,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, resist_fire: 1, resist_cold: 1},
+			abilities: 			{strike_unit: 1, resist_fire: 1, resist_cold: 1},
 		},
 		recipe:{
 			natures_touch: 		1,
@@ -4819,7 +4404,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				10,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, regenerate: 1},
+			abilities: 			{strike_unit: 1, regenerate: 1},
 		},
 		recipe:{
 			druid: 				1,
@@ -4845,7 +4430,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				10,
 			health: 			25,
-			abilities: 			{strike_nearest: 1, fire_bolt: 1, vengeance: 1},
+			abilities: 			{strike_unit: 1, fire_bolt: 1, vengeance: 1},
 		},
 		recipe:{
 			tribal_warrior: 	1,
@@ -4870,7 +4455,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				10,
 			health: 			15,
-			abilities: 			{strike_nearest: 1, relentless: 1},
+			abilities: 			{strike_unit: 1, relentless: 1},
 		},
 		recipe:{
 			tribal_mage: 		1,
@@ -4894,7 +4479,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				20,
 			health: 			30,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_unit: 1},
 		},
 		recipe:{
 			tribesmen: 			1,
@@ -4918,7 +4503,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				20,
 			health: 			30,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_unit: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -4969,7 +4554,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				6,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, hunker_down: 6},
+			abilities: 			{strike_unit: 1, hunker_down: 6},
 		},
 		recipe:{
 			boar: 				1,
@@ -5037,7 +4622,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			15,
-			abilities: 			{strike_nearest: 1, vampiric: 1, flying: 1},
+			abilities: 			{strike_unit: 1, vampiric: 1, flying: 1},
 		},
 		recipe:{
 			yellow_ara: 		1,
@@ -5062,7 +4647,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_nearest: 1, counter: 1, vampiric: 1},
+			abilities: 			{strike_unit: 1, counter: 1, vampiric: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -5102,7 +4687,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			20,
-			abilities: 			{bring_clone: 1, strike_nearest: 1, vampiric: 1},
+			abilities: 			{bring_clone: 1, strike_unit: 1, vampiric: 1},
 		},
 		recipe:{
 			peasant: 			2,
@@ -5153,7 +4738,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			45,
-			abilities: 			{strike_nearest: 1, victory_rush: 1},
+			abilities: 			{strike_unit: 1, victory_rush: 1},
 		},
 		recipe:{
 			gladiator: 			1,
@@ -5178,7 +4763,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			45,
-			abilities: 			{strike_nearest: 1, victory_rush: 1, reclaim_creatures: 1},
+			abilities: 			{strike_unit: 1, victory_rush: 1, reclaim_creatures: 1},
 		},
 		recipe:{
 			viking: 			1,
@@ -5203,7 +4788,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_unit: 1},
 		},
 		recipe:{
 			gladiator: 			1,
@@ -5244,7 +4829,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			25,
-			abilities: 			{strike_nearest: 1, flying: 1, pierces: 1},
+			abilities: 			{strike_unit: 1, flying: 1, pierces: 1},
 		},
 		recipe:{
 			natures_touch: 		1,
@@ -5269,7 +4854,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1, elemental_resistance: 1, faithkill: 1},
+			abilities: 			{strike_unit: 1, elemental_resistance: 1, faithkill: 1},
 		},
 		recipe:{
 			sandstorm: 			1,
@@ -5281,14 +4866,14 @@ var all_oldest_available_cards = {
 	yellow_spirit:{
 		name: 				'yellow spirit',
 		type: 				'creature',
+		subtypes: 			['undead','spirit'],
 		color: 				['yellow'],
 		time: 				1,
 		image: 				'cards/fantasy-2437944_1280.jpg',
 		power: 				false,
 		armor: 				0,
-		health: 			4,
-		placement: 			'right',
-		abilities: 			{restore_hero: 2, undead: 1, flank: 1},
+		health: 			1,
+		abilities: 			{restore_hero: 2, undead: 1, resurrect: 1},
 		hero_version: 			{
 			name: 				'yellow spirit',
 			type: 				'creature',
@@ -5297,7 +4882,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{restore_hero: 3, undead: 1},
+			abilities: 			{restore_hero: 2, undead: 1, resurrect: 1},
 		},
 		recipe:{
 			ghost_bride: 			1,
@@ -5322,7 +4907,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			35,
-			abilities: 			{strike_nearest: 1, heal: 1, flying: 1},
+			abilities: 			{strike_unit: 1, heal: 1, flying: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -5389,7 +4974,7 @@ var all_oldest_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_nearest: 1},
+			abilities: 			{strike_unit: 1},
 		},
 		recipe:{
 			boar: 				1,
