@@ -14226,7 +14226,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{weaken_all: 1, echo: 1},
+		abilities: 			{weakness: 2, echo: 1},
 		quote: '\"You think you are strong?\"',
 	},
 	weasel:{

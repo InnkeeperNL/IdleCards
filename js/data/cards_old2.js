@@ -2277,7 +2277,7 @@ var all_older_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{fear: 1, draw_on_act: 1},
+		abilities: 			{unsummon_enemy: 1, draw_on_act: 1},
 		recipe:{
 			historian:			1,
 		}

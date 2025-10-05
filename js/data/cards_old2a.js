@@ -235,10 +235,10 @@ var all_oldest_available_cards = {
 		color: 				['orange'],
 		time: 				6,
 		image: 				'cards/warrior-5207128_640.jpg',
-		power: 				3,
+		power: 				1,
 		armor: 				0,
-		health: 			4,
-		abilities: 			{shoot: 1},
+		health: 			5,
+		abilities: 			{shoot: 1, enrage: 1},
 		hero_version: 			{
 			name: 				'barbarian archer',
 			type: 				'creature',
@@ -246,7 +246,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{shoot_unit: 1},
+			abilities: 			{shoot_unit: 1, enrage: 1},
 		},
 		recipe:{
 			barbarian_axeman: 	1,
@@ -263,17 +263,17 @@ var all_oldest_available_cards = {
 		image_position: 		'top',
 		power: 				2,
 		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 2},
+		health: 			5,
+		abilities: 			{strike: 2, enrage: 1},
 		hero_version: 			{
 			name: 				'barbarian axeman',
 			type: 				'creature',
 			image: 				'cards/barbarian-4616094_640.jpg',
 			image_position: 		'top',
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{strike_unit: 2},
+			abilities: 			{strike_unit: 2, enrage: 1},
 		},
 		recipe:{
 			lumberjacks_axe: 	1,
@@ -317,10 +317,10 @@ var all_oldest_available_cards = {
 		time: 				11,
 		image: 				'cards/barbarian-2159912_640.jpg',
 		image_position: 		'top',
-		power: 				2,
+		power: 				3,
 		armor: 				0,
-		health: 			5,
-		abilities: 			{strike: 1, block: 1},
+		health: 			6,
+		abilities: 			{strike: 1, fortify_self: 1, enrage: 1},
 		hero_version: 			{
 			name: 				'barbarian shieldman',
 			type: 				'creature',
@@ -329,7 +329,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, block: 1},
+			abilities: 			{strike_unit: 1, fortify_self: 1, enrage: 1},
 		},
 		recipe:{
 			barbarian_axeman: 	1,
@@ -2718,7 +2718,7 @@ var all_oldest_available_cards = {
 	horned_lizard:{
 		name: 				'horned lizard',
 		type: 				'creature',
-		subtypes: 			['animal','lizard'],
+		subtypes: 			['animal','reptile'],
 		color: 				['orange'],
 		time: 				4,
 		image: 				'cards/horned-toad-1531806_640.jpg',
@@ -3266,6 +3266,7 @@ var all_oldest_available_cards = {
 	quiver:{
 		name: 				'quiver',
 		type: 				'artifact',
+		subtypes: 			['weapon'],
 		color: 				['colorless'],
 		pick_chance: 		0.5,
 		time: 				3,
@@ -3273,7 +3274,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{order_shoot: 1, delay: 4},
+		abilities: 			{shoot_arrival: 3},
 		recipe:{
 			lumber: 			1,
 			ore: 				1
@@ -3283,6 +3284,7 @@ var all_oldest_available_cards = {
 	rage_moon:{
 		name: 				'rage moon',
 		type: 				'spell',
+		subtypes: 			['ritual'],
 		color: 				['orange'],
 		time: 				6,
 		image: 				'cards/composing-1192667_640.jpg',
@@ -3298,6 +3300,7 @@ var all_oldest_available_cards = {
 	raging_barbarian:{
 		name: 				'raging barbarian',
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['orange'],
 		time: 				4,
 		image: 				'cards/fantasy-3366526_640.jpg',
@@ -3305,49 +3308,34 @@ var all_oldest_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, enrage: 1},
+		abilities: 			{strike: 1, enrage: 2},
 		hero_version: 			{
 			name: 				'raging barbarian',
 			type: 				'creature',
 			image: 				'cards/fantasy-3366526_640.jpg',
 			image_position: 		'top',
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1},
+			abilities: 			{strike_unit: 1, enrage: 1},
 		},
 		recipe:{
 			gladiator: 			1,
 			amber: 				1
 		}
 	},
-	raise_dead:{
-		name: 				'raise dead',
-		type: 				'spell',
-		color: 				['purple'],
-		pick_chance: 		0.5,
-		time: 				8,
-		image: 				'cards/cemetery-2802233_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{redraw_creature: 2},
-		recipe:{
-			mausoleum: 			1,
-			bones: 				1
-		}
-	},
 	
 	rattlesnake:{
 		name: 				'rattlesnake',
 		type: 				'creature',
+		subtypes: 			['animal','reptile'],
 		color: 				['orange'],
 		time: 				1,
 		image: 				'cards/rattlesnake-653642_640.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike_unit: 1, counter: 1, poisonous: 1},
+		abilities: 			{strike_unit: 1, counter: 1, venom: 4},
 		hero_version: 			{
 			name: 				'rattlesnake',
 			type: 				'creature',
@@ -3355,7 +3343,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, counter: 1, poisonous: 1},
+			abilities: 			{strike_unit: 1, counter: 1, venom: 1},
 		},
 		recipe:{
 			herbalists_lab: 	1,
@@ -3365,6 +3353,7 @@ var all_oldest_available_cards = {
 	reaper_angel:{
 		name: 				'reaper angel',
 		type: 				'creature',
+		subtypes: 			['angel'],
 		color: 				['purple'],
 		time: 				2,
 		image: 				'cards/fairy-3778264_640.jpg',
@@ -3390,6 +3379,7 @@ var all_oldest_available_cards = {
 	red_dragon:{
 		name: 				'red dragon',
 		type: 				'creature',
+		subtypes: 			['reptile','dragon'],
 		color: 				['red'],
 		time: 				22,
 		image: 				'cards/dragons-1957156_640.jpg',
@@ -3414,6 +3404,7 @@ var all_oldest_available_cards = {
 	red_lizard:{
 		name: 				'red lizard',
 		type: 				'creature',
+		subtypes: 			['animal','reptile'],
 		color: 				['orange'],
 		time: 				5,
 		image: 				'cards/ring-tailed-dragon-2418232_640.jpg',
@@ -3436,27 +3427,11 @@ var all_oldest_available_cards = {
 			candle: 			1,
 			stone: 				1
 		}
-	},
-	
-	research:{
-		name: 				'research',
-		type: 				'spell',
-		color: 				['blue'],
-		pick_chance: 		0.5,
-		time: 				8,
-		image: 				'cards/books-1246674_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{draw: 3},
-		recipe:{
-			paper: 			2
-		}
-	},
-	
+	},	
 	reversal_of_time:{
 		name: 				'reversal of time',
 		type: 				'spell',
+		subtypes: 			['ritual'],
 		color: 				['blue'],
 		pick_chance: 		0.2,
 		time: 				30,
@@ -3464,33 +3439,33 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{reshuffle_all: 1},
+		abilities: 			{unsummon_ally: 5, unsummon_enemy: 5, minimum_enemies: 3},
 		recipe:{
 			time_thief: 			1,
 			unsummon: 				1,
 			mana_crystal: 			1
 		}
 	},
-	
 	rock_ogre:{
 		name: 				'rock ogre',
 		type: 				'creature',
+		subtypes: 			['ogre'],
 		color: 				['orange'],
 		time: 				6,
 		image: 				'cards/fantasy-3469541_1280.jpg',
-		power: 				2,
-		armor: 				4,
-		health: 			4,
-		abilities: 			{strike: 1, brutal: 1},
+		power: 				6,
+		armor: 				0,
+		health: 			6,
+		abilities: 			{strike: 1, stunning_touch: 1, plated: 1},
 		hero_version: 			{
 			name: 				'rock ogre',
 			type: 				'creature',
 			image: 				'cards/fantasy-3469541_1280.jpg',
 			image_position: 	'top',
 			power: 				2,
-			armor: 				4,
+			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, brutal: 1},
+			abilities: 			{strike_unit: 1, stunning_touch: 1, plated: 1},
 		},
 		recipe:{
 			gladiator: 			1,
@@ -3501,13 +3476,14 @@ var all_oldest_available_cards = {
 	rock_seer:{
 		name: 				'rock seer',
 		type: 				'creature',
+		subtypes: 			['human','cleric'],
 		color: 				['orange'],
 		time: 				2,
 		image: 				'cards/fantasy-3363955_1280.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			3,
-		abilities: 			{strike: 1, final_redraw: 1},
+		abilities: 			{strike: 1, final_draw: 1},
 		hero_version: 			{
 			name: 				'rock seer',
 			type: 				'creature',
@@ -3516,7 +3492,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{strike_unit: 1},
+			abilities: 			{strike_unit: 1, draw: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -3527,13 +3503,14 @@ var all_oldest_available_cards = {
 	rock_wurm:{
 		name: 				'rock wurm',
 		type: 				'creature',
+		subtypes: 			['animal'],
 		color: 				['orange'],
 		time: 				15,
 		image: 				'cards/fantasy-2697018_1280.jpg',
-		power: 				1,
-		armor: 				2,
-		health: 			6,
-		abilities: 			{strike: 1, enrage: 1, armored: 1},
+		power: 				2,
+		armor: 				0,
+		health: 			9,
+		abilities: 			{strike: 1, enrage: 1, plated: 1},
 		hero_version: 			{
 			name: 				'rock wurm',
 			type: 				'creature',
@@ -3542,7 +3519,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, armored: 1},
+			abilities: 			{strike_unit: 1, enrage: 1, plated: 1},
 		},
 		recipe:{
 			rock_ogre: 			1,
@@ -3552,31 +3529,31 @@ var all_oldest_available_cards = {
 	},
 	roll_the_dice:{
 		name: 				'roll the dice',
-		type: 				'attack',
+		type: 				'spell',
+		subtypes: 			['tactic'],
 		color: 				['yellow'],
 		time: 				1,
 		image: 				'cards/gambling-2423660_640.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{gamble: 10},
+		abilities: 			{experiment: 3, echo: 1},
 		recipe:{
 			stone: 			1,
 			poverty: 		1,
 		}
 	},
-	
 	royal_servant:{
 		name: 				'royal servant',
 		type: 				'creature',
-		subtypes:  			['human'],
+		subtypes:  			['human','clerk'],
 		color: 				['yellow'],
 		time: 				1,
 		image: 				'cards/girl-4258000_640.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			3,
-		abilities: 			{strike: 1, restore_hero: 1, retreat: 1},
+		abilities: 			{strike: 1, restore: 1, retreat: 1},
 		hero_version: 			{
 			name: 				'royal servant',
 			type: 				'creature',
@@ -3585,7 +3562,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_unit: 1, restore_hero: 1},
+			abilities: 			{strike_unit: 1, restore: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -3595,13 +3572,14 @@ var all_oldest_available_cards = {
 	rushing_lizard:{
 		name: 				'rushing lizard',
 		type: 				'creature',
+		subtypes:  			['animal','reptile'],
 		color: 				['orange'],
 		time: 				4,
 		image: 				'cards/the-lizard-466603_640.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, elemental_resistance: 1, victory_rush: 1},
+		abilities: 			{strike: 1, venom: 1, victory_rush: 1},
 		hero_version: 			{
 			name: 				'rushing lizard',
 			type: 				'creature',
@@ -3609,7 +3587,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, elemental_resistance: 1, victory_rush: 1},
+			abilities: 			{strike_unit: 1, venom: 1, victory_rush: 1},
 		},
 		recipe:{
 			sandstorm: 			1,
@@ -3621,6 +3599,7 @@ var all_oldest_available_cards = {
 	sand_warrior:{
 		name: 				'sand warrior',
 		type: 				'creature',
+		subtypes:  			['human','warrior'],
 		color: 				['orange'],
 		time: 				6,
 		image: 				'cards/fantasy-2861079_640.jpg',
@@ -3644,42 +3623,17 @@ var all_oldest_available_cards = {
 			sandstorm: 			1
 		}
 	},
-	sandstorm:{
-		name: 				'sandstorm',
-		type: 				'spell',
-		color: 				['orange'],
-		basic_reward: 		true,
-		time: 				1,
-		image: 				'cards/sandstorm-165332_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{sandstorm: 1},
-	},
-	scraps_placeholder:{
-		name: 				'scraps',
-		version: 			2,
-		value: 				1,
-		type: 				'currency',
-		color: 				['none'],
-		pick_chance: 		0,
-		time: 				0,
-		image: 				'cards/shredded-71381_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{},
-	},
 	sea_dragon:{
 		name: 				'sea dragon',
 		type: 				'creature',
+		subtypes:  			['reptile','dragon'],
 		color: 				['blue'],
 		time: 				15,
 		image: 				'cards/fantasy-5269106_640.jpg',
 		power: 				4,
 		armor: 				0,
 		health: 			10,
-		abilities: 			{strike: 1, cover: 2, fireproof: 1},
+		abilities: 			{strike: 1, submerged: 1, fireproof: 1},
 		hero_version: 			{
 			name: 				'sea dragon',
 			type: 				'creature',
@@ -3687,7 +3641,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, cover: 2, fireproof: 1},
+			abilities: 			{strike_unit: 1, submerged: 1, fireproof: 1},
 		},
 		recipe:{
 			cleansing_water: 	10
@@ -3719,60 +3673,10 @@ var all_oldest_available_cards = {
 			herbs: 				1
 		}
 	},
-	seductive_dutches:{
-		name: 				'seductive dutches',
-		type: 				'creature',
-		color: 				['yellow','blue'],
-		pick_chance: 		0.5,
-		time: 				6,
-		image: 				'cards/beautiful-3089385_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			7,
-		abilities: 			{weaken_opposing: 1, sway_opposing: 1},
-		hero_version: 			{
-			name: 				'seductive dutches',
-			type: 				'creature',
-			image: 				'cards/beautiful-3089385_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			60,
-			abilities: 			{strike_unit: 1},
-		},
-		recipe:{
-			court_lady: 		1,
-			agate: 				1,
-			mind_control: 		1
-		}
-	},
-	shaman:{
-		name: 				'shaman',
-		type: 				'creature',
-		color: 				['blue'],
-		time: 				6,
-		image: 				'cards/beauty-355157_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			6,
-		abilities: 			{strike: 1, redraw_spell: 1},
-		hero_version: 			{
-			name: 				'shaman',
-			type: 				'creature',
-			image: 				'cards/beauty-355157_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			50,
-			abilities: 			{strike_unit: 1, resist_magic: 2},
-		},
-		recipe:{
-			peasant: 			1,
-			old_tome: 			1
-		}
-	},
-	
 	shatter:{
 		name: 				'shatter',
 		type: 				'spell',
+		subtypes: 			['tactic'],
 		color: 				['blue'],
 		pick_chance: 		0.25,
 		time: 				4,
@@ -3780,173 +3684,66 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{break_armor: 30},
-		recipe:{
-			magic_attunement: 	1,
-			plate_armor: 		1
-		}
+		abilities: 			{destroy_artifact: 1, echo: 1},
 	},
-	shield_maiden:{
-		name: 				'shield maiden',
-		type: 				'creature',
-		color: 				['yellow'],
-		time: 				3,
-		image: 				'cards/amazone-2743945_640.jpg',
-		image_position: 		'top',
-		power: 				1,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, block: 1},
-		hero_version: 			{
-			name: 				'shield maiden',
-			type: 				'creature',
-			image: 				'cards/amazone-2743945_640.jpg',
-			image_position: 		'top',
-			power: 				1,
-			armor: 				0,
-			health: 			60,
-			abilities: 			{strike_unit: 1, block: 1},
-		},
-		recipe:{
-			peasant: 			1,
-			plate_armor: 		1
-		}
-	},
-	
-	sinister_archer:{
-		name: 				'sinister archer',
-		type: 				'creature',
-		color: 				['purple'],
-		time: 				6,
-		image: 				'cards/amazone-622498_640.jpg',
-		power: 				3,
-		armor: 				0,
-		health: 			1,
-		placement: 			'right',
-		abilities: 			{safe_spot: 1, flank: 1, snipe: 1},
-		reset_time: 		1,
-		reset_time: 		1,
-		safe_slot: 			true,
-		hero_version: 			{
-			name: 				'sinister archer',
-			type: 				'creature',
-			image: 				'cards/amazone-622498_640.jpg',
-			image_position: 		'top',
-			power: 				2,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{snipe_hv: 1},
-		},
-		recipe:{
-			archer: 			1,
-			deaths_call: 		1,
-			amethyst: 			1
-		}
-	},
-	
-	skeleton:{
-		name: 				'skeleton',
-		type: 				'creature',
-		color: 				['purple'],
-		time: 				1,
-		image: 				'cards/skeleton-1522620_640.jpg',
-		power: 				1,
-		armor: 				4,
-		health: 			1,
-		abilities: 			{strike: 1, undead: 1, unhealable: 1},
-		hero_version: 			{
-			name: 				'skeleton',
-			type: 				'creature',
-			image: 				'cards/skeleton-1522620_640.jpg',
-			power: 				2,
-			armor: 				40,
-			health: 			10,
-			abilities: 			{strike_unit: 1, undead: 1, unhealable: 1},
-		},
-		recipe:{
-			bones: 				1,
-		}
-	},
-	/*skulking_skeleton:{
+	skulking_skeleton:{
 		name: 				'skulking skeleton',
 		type: 				'creature',
+		subtypes: 			['undead','skeleton'],
 		color: 				['purple'],
 		time: 				4,
 		image: 				'cards/fantasy-3471272_1280.jpg',
 		power: 				1,
-		armor: 				4,
+		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, undead: 1, resurrect: 1},
+		abilities: 			{strike: 1, dooming_touch: 2, undead: 1, resurrect: 1},
 		hero_version: 			{
 			name: 				'skulking skeleton',
 			type: 				'creature',
 			image: 				'cards/fantasy-3471272_1280.jpg',
-			power: 				3,
-			armor: 				20,
+			power: 				2,
+			armor: 				0,
 			health: 			10,
-			abilities: 			{strike_unit: 1, undead: 1, resurrect: 1},
+			abilities: 			{strike_unit: 1, dooming_touch: 2, undead: 1, resurrect: 1},
 		},
-		recipe:{
-			skeleton: 			1,
-			raise_dead: 		1
-		}
-	},*/
-	
+	},
 	sky_burner:{
 		name: 				'sky burner',
 		type: 				'creature',
+		subtypes: 			['human','mage'],
 		color: 				['red'],
 		time: 				4,
 		image: 				'cards/woman-4665086_640.jpg',
-		power: 				1,
+		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{sky_burn: 2, strike: 1},
+		abilities: 			{air_bolt: 1, ignites: 4},
 		hero_version: 			{
 			name: 				'sky burner',
 			type: 				'creature',
 			image: 				'cards/woman-4665086_640.jpg',
 			image_position: 	'top',
-			power: 				2,
+			power: 				false,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{sky_burn: 1, strike_unit: 1},
+			abilities: 			{air_bolt: 1, ignites: 2},
 		},
 		recipe:{
 			fire_mage: 			1,
 			wing_burn: 			1,
 		}
 	},
-	snowfall:{
-		name: 				'snowfall',
-		type: 				'spell',
-		color: 				['blue'],
-		time: 				10,
-		image: 				'cards/christmas-1909947_6402.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{slow_all: 1},
-		recipe:{
-			frozen_claw: 		1,
-			magic_attunement: 	1
-		}
-	},
-	
 	soften:{
 		name: 				'soften',
 		type: 				'spell',
+		subtypes: 			['ritual'],
 		color: 				['blue'],
 		time: 				2,
 		image: 				'cards/feather-4718541_640.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{soften: 2},
-		recipe:{
-			agate: 				1,
-			magic_attunement: 	1
-		}
+		abilities: 			{weaken_all: 2, minimum_enemy_creatures: 3},
 	},
 	
 	soldier_of_faith:{

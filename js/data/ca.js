@@ -3715,6 +3715,7 @@ var all_abilities = {
 			}
 		},
 		level_cost: 		2,
+		level_cost_spell: 	0.5,
 	},
 	experiment_hv:{
 		name: 			'experiment',
@@ -3739,6 +3740,7 @@ var all_abilities = {
 			}
 		},
 		level_cost: 		2,
+		level_cost_spell: 	0.5,
 	},
 	explode:{
 		description: 	'When this unit is destroyed, it deals {LEVEL} physical damage to all nearby units.',
@@ -10007,6 +10009,31 @@ var all_abilities = {
 		level_cost: 		2,
 		level_cost_structure: 	1.5,
 	},
+	unsummon_enemy:{
+		description: 	'Returns a random enemy unit to their hand. Summoned units disappear.',
+		cannot_proc_while_stunned: true,
+		do_not_pause_between: 	true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'nearest',
+				side: 			'enemy',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'voodoo',
+				target_projectile: 	'voodoo',
+				type: 			'move_to_deck',
+				subtypes: 		['move_enemy_to_hand','unsummon','deck_control'],
+				new_status: 	'hand',
+				side: 			'enemy',
+			}
+		},
+		level_cost: 	3,
+	},
 	upkeep_creature:{
 		name: 			'upkeep: creature',
 		description: 	'Each turn, this destroys a random ally creature unit with no more than {LEVEL} health. If it cannot, this is stunned. Will target units with the lowest cost first.',
@@ -10286,7 +10313,7 @@ var all_abilities = {
 		average_hits: 	1,
 	},
 	weaken_all:{
-		description: 	'All enemy creature units with power loose {LEVEL} power temporarily.',
+		description: 	'All enemy units with power loose {LEVEL} power temporarily.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		targets:	{
@@ -10294,7 +10321,6 @@ var all_abilities = {
 				target: 		'unit',
 				target_amount: 	5,
 				position: 		'random',
-				not_types: 		['object','structure'],
 				not_self: 		true,
 				min_hp: 		1,
 				min_power: 		1,
@@ -10316,7 +10342,7 @@ var all_abilities = {
 		level_cost_hero: 	4,
 	},
 	weakness:{
-		description: 	'The enemy creature unit with the highest power looses {LEVEL} power temporarily.',
+		description: 	'The enemy unit with the highest power looses {LEVEL} power temporarily.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		targets:	{
@@ -10324,7 +10350,6 @@ var all_abilities = {
 				target: 		'unit',
 				target_amount: 	1,
 				position: 		'random',
-				not_types: 		['object','structure'],
 				not_self: 		true,
 				min_hp: 		1,
 				min_power: 		1,
@@ -24868,7 +24893,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{weaken_all: 1, echo: 1},
+		abilities: 			{weakness: 2, echo: 1},
 		quote: '\"You think you are strong?\"',
 	},
 	weasel:{
