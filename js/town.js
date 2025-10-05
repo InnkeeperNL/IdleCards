@@ -571,6 +571,14 @@ function show_single_building(){
 
 		$('#content_single_building h2').html( capitalizeFirstLetter(building_info['name']) /*+ ' level ' + current_building['level']*/);
 
+		if(building_info['upgradable'] != undefined && building_info['upgradable'] == false)
+		{
+			$('.upgrade_building_button').hide();
+		}
+		else
+		{
+			$('.upgrade_building_button').show();
+		}
 		$('.upgrade_building_button').removeClass('click_me');
 		var upgrade_cost = calculate_upgrade_cost(building_level);
 		if(gamedata['owned_cards'][building_info['fragment_id']] >= upgrade_cost && gamedata['scraps'] >= upgrade_cost * building_scraps_cost)
@@ -839,6 +847,12 @@ function show_single_building(){
 					}
 				}
 			});
+		}
+		if(building_info['type'] != undefined && building_info['type'] == 'research')
+		{
+			var parsed_research = parse_research();
+
+			complete_building_list += parsed_research;
 		}
 		if(building_info['shop_type'] != undefined)
 		{
@@ -1239,8 +1253,8 @@ function check_current_offers(){
 	{
 		gamedata['town'][current_building_id]['current_offers'] = {};
 	}
-	for (var i = 0; i < /*building_level*/ 1; i++) {
-		if(new Date(current_building['current_offers'][i]['offer_expires']).toString() == 'Invalid Date')
+	for (var i = 0; i < /*building_level*/ 2; i++) {
+		if(current_building['current_offers'][i] != undefined && new Date(current_building['current_offers'][i]['offer_expires']).toString() == 'Invalid Date')
 		{
 			current_building['current_offers'][i]['offer_expires'] = new Date().addMinutes(10);
 		}
@@ -1254,7 +1268,7 @@ function check_current_offers(){
 		}
 		if(current_building['current_offers'][i] == undefined)
 		{
-			current_building['current_offers'][i] = create_new_building_offer(building_info);
+			current_building['current_offers'][i] = create_new_building_offer(building_info, i);
 			any_new = true;
 		}
 	};
@@ -1265,16 +1279,17 @@ function check_current_offers(){
 	}
 }
 
-function create_new_building_offer(building_info){
+function create_new_building_offer(building_info, trade_slot){
 	var buysell = 'buy';
-	if(Math.random() > 0.75){buysell = 'sell';}
+	//if(Math.random() > 0.75){buysell = 'sell';}
+	if(trade_slot != undefined && trade_slot == 1){buysell = 'sell';}
 	var found_card = false;
 	if(buysell == 'buy')
 	{
-		if(Math.random() > 0.1)
+		if(found_card == false && gamedata['known_recipes'] != undefined && count_object(gamedata['known_recipes']) > 1 && Math.random() > 0.1)
 		{
 			var possible_cards = {};
-			$.each(gamedata['owned_cards'], function(recipe_id,useless_info){
+			$.each(gamedata['known_recipes'], function(recipe_id,useless_info){
 				if(match_array_values(all_available_cards[recipe_id]['type'], building_info['shop_type']))
 				{
 					possible_cards[recipe_id] = true;
@@ -1286,10 +1301,10 @@ function create_new_building_offer(building_info){
 				found_card = get_random_key_from_object(possible_cards);
 			}
 		}
-		if(found_card == false && gamedata['known_recipes'] != undefined && count_object(gamedata['known_recipes']) > 4 && Math.random() > 0.3)
+		if(found_card == false && Math.random() > 0.1)
 		{
 			var possible_cards = {};
-			$.each(gamedata['known_recipes'], function(recipe_id,useless_info){
+			$.each(gamedata['owned_cards'], function(recipe_id,useless_info){
 				if(match_array_values(all_available_cards[recipe_id]['type'], building_info['shop_type']))
 				{
 					possible_cards[recipe_id] = true;
@@ -1310,7 +1325,7 @@ function create_new_building_offer(building_info){
 	var found_offer = false;
 	if(found_card != false)
 	{
-		var offer_amount = /*Math.ceil(Math.random() * 2) + 0*/ 1;
+		var offer_amount = Math.ceil(Math.random() * 5) + 0;
 		if(buysell == 'buy' && gamedata['owned_cards'][found_card] != undefined && offer_amount < gamedata['owned_cards'][found_card] && gamedata['owned_cards'][found_card] > 0)
 		{
 			offer_amount = Math.ceil(Math.random() * gamedata['owned_cards'][found_card] * 1);
@@ -1838,6 +1853,35 @@ function show_new_adventure(){
 			});
 		}
 	}
+}
+
+function parse_research(){
+	var parsed_research = '';
+	if(gamedata['town'][current_building_id] == undefined)
+	{
+		show_content('town');
+	}
+	else
+	{
+		if(gamedata['town'][current_building_id]['research'] == undefined){
+			gamedata['town'][current_building_id]['research'] = {
+				card_1: 	'none',
+				card_2: 	'none',
+				result: 	'none',
+				done_time: 	'none',
+			};
+		}
+		var current_building = 	gamedata['town'][current_building_id];
+		var building_info = 	all_buildings[current_building['building_id']];
+		var building_level = 	current_building['level'];
+		parsed_research += '<div class="single_new_expedition">';
+		parsed_research += 	'<div class="single_new_expedition_name">Research</div>';
+		if(gamedata['town'][current_building_id]['research']['card_1'] == 'none'){
+
+		}
+		parsed_research += 	'</div>';
+	}
+	return parsed_research;
 }
 
 var current_adventure_units_page = 1;

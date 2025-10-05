@@ -45,7 +45,7 @@ var all_buildings = {
 			},
 		},*/
 
-		shop_type: 		['creature'],
+		shop_type: 		['creature','spell'],
 		
 		/*recipe_shop:{
 			natures_touch:{
@@ -109,7 +109,7 @@ var all_buildings = {
 				}
 			},
 		},*/
-		shop_type: 		['structure'],
+		shop_type: 		['structure','artifact'],
 	},
 	a2_alchemist:{
 		name: 			'alchemist lab',

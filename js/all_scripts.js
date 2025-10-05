@@ -6892,7 +6892,7 @@ function check_current_offers(){
 	{
 		gamedata['town'][current_building_id]['current_offers'] = {};
 	}
-	for (var i = 0; i < /*building_level*/ 1; i++) {
+	for (var i = 0; i < /*building_level*/ 2; i++) {
 		if(current_building['current_offers'][i] != undefined && new Date(current_building['current_offers'][i]['offer_expires']).toString() == 'Invalid Date')
 		{
 			current_building['current_offers'][i]['offer_expires'] = new Date().addMinutes(10);
@@ -6907,7 +6907,7 @@ function check_current_offers(){
 		}
 		if(current_building['current_offers'][i] == undefined)
 		{
-			current_building['current_offers'][i] = create_new_building_offer(building_info);
+			current_building['current_offers'][i] = create_new_building_offer(building_info, i);
 			any_new = true;
 		}
 	};
@@ -6918,16 +6918,17 @@ function check_current_offers(){
 	}
 }
 
-function create_new_building_offer(building_info){
+function create_new_building_offer(building_info, trade_slot){
 	var buysell = 'buy';
-	if(Math.random() > 0.75){buysell = 'sell';}
+	//if(Math.random() > 0.75){buysell = 'sell';}
+	if(trade_slot != undefined && trade_slot == 1){buysell = 'sell';}
 	var found_card = false;
 	if(buysell == 'buy')
 	{
-		if(Math.random() > 0.1)
+		if(found_card == false && gamedata['known_recipes'] != undefined && count_object(gamedata['known_recipes']) > 1 && Math.random() > 0.1)
 		{
 			var possible_cards = {};
-			$.each(gamedata['owned_cards'], function(recipe_id,useless_info){
+			$.each(gamedata['known_recipes'], function(recipe_id,useless_info){
 				if(match_array_values(all_available_cards[recipe_id]['type'], building_info['shop_type']))
 				{
 					possible_cards[recipe_id] = true;
@@ -6939,10 +6940,10 @@ function create_new_building_offer(building_info){
 				found_card = get_random_key_from_object(possible_cards);
 			}
 		}
-		if(found_card == false && gamedata['known_recipes'] != undefined && count_object(gamedata['known_recipes']) > 4 && Math.random() > 0.3)
+		if(found_card == false && Math.random() > 0.1)
 		{
 			var possible_cards = {};
-			$.each(gamedata['known_recipes'], function(recipe_id,useless_info){
+			$.each(gamedata['owned_cards'], function(recipe_id,useless_info){
 				if(match_array_values(all_available_cards[recipe_id]['type'], building_info['shop_type']))
 				{
 					possible_cards[recipe_id] = true;
@@ -6963,7 +6964,7 @@ function create_new_building_offer(building_info){
 	var found_offer = false;
 	if(found_card != false)
 	{
-		var offer_amount = /*Math.ceil(Math.random() * 2) + 0*/ 1;
+		var offer_amount = Math.ceil(Math.random() * 5) + 0;
 		if(buysell == 'buy' && gamedata['owned_cards'][found_card] != undefined && offer_amount < gamedata['owned_cards'][found_card] && gamedata['owned_cards'][found_card] > 0)
 		{
 			offer_amount = Math.ceil(Math.random() * gamedata['owned_cards'][found_card] * 1);
