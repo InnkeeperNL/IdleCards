@@ -198,35 +198,8 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{burn: 2, cleanse: 1},
+			abilities: 			{burn_hv: 2, cleanse: 1},
 		},
-	},
-	assassin:{
-		name: 				'assassin',
-		type: 				'creature',
-		subtypes: 			['human','rogue'],
-		color: 				['purple'],
-		time: 				4,
-		image: 				'cards/fantasy-5432467_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			1,
-		abilities: 			{strike: 2, poisonous: 1, homebound: 1},
-		hero_version: 			{
-			name: 				'assassin',
-			type: 				'creature',
-			image: 				'cards/fantasy-5432467_640.jpg',
-			image_position: 	'top',
-			power: 				1,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_unit: 1, poisonous: 1, evade: 1},
-		},
-		recipe:{
-			herbalists_lab: 	1,
-			unsummon: 			1,
-			black_striker: 		1
-		}
 	},
 	astral_archer:{
 		name: 				'astral archer',
@@ -3596,13 +3569,14 @@ var all_oldest_available_cards = {
 	royal_servant:{
 		name: 				'royal servant',
 		type: 				'creature',
+		subtypes:  			['human'],
 		color: 				['yellow'],
 		time: 				1,
 		image: 				'cards/girl-4258000_640.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			3,
-		abilities: 			{strike: 1, restore_hero: 1, flee: 1},
+		abilities: 			{strike: 1, restore_hero: 1, retreat: 1},
 		hero_version: 			{
 			name: 				'royal servant',
 			type: 				'creature',
@@ -4508,58 +4482,6 @@ var all_oldest_available_cards = {
 		recipe:{
 			peasant: 			1,
 			sandstorm: 			1
-		}
-	},
-	trickster_imp:{
-		name: 				'trickster imp',
-		type: 				'creature',
-		color: 				['red'],
-		time: 				3,
-		image: 				'cards/daemon-3051805_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{burn: 1, evade: 1, move_away: 1},
-		hero_version: 			{
-			name: 				'trickster imp',
-			type: 				'creature',
-			image: 				'cards/daemon-3051805_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			45,
-			abilities: 			{evade: 1, burn: 1},
-		},
-		recipe:{
-			fire_imp: 			1,
-			candle: 			1,
-			sandstorm: 			1
-		}
-	},
-	turtle:{
-		name: 				'turtle',
-		type: 				'creature',
-		color: 				['green'],
-		time: 				3,
-		image: 				'cards/amphibian-1850190_640.jpg',
-		power: 				1,
-		armor: 				4,
-		health: 			2,
-		abilities: 			{strike: 1, hunker_down: 4, guard: 1},
-		reset_time: 		1,
-		safe_slot: 			false,
-		hero_version: 			{
-			name: 				'turtle',
-			type: 				'creature',
-			image: 				'cards/amphibian-1850190_640.jpg',
-			power: 				1,
-			armor: 				6,
-			health: 			30,
-			abilities: 			{strike_unit: 1, hunker_down: 6},
-		},
-		recipe:{
-			boar: 				1,
-			plate_armor: 		1,
-			cleansing_water: 	1
 		}
 	},
 	

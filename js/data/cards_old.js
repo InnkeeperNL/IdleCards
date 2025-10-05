@@ -6121,7 +6121,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{incinerate: 1, echo: 1},
+		abilities: 			{conflagrate: 2, withering_touch: 1, echo: 1},
 		quote: '\"Nothing left but ashes.\"',
 		use_old: true,
 	},

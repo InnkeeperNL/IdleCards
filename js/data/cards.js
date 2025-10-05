@@ -4653,7 +4653,7 @@ var all_available_cards = {
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
 		theme: 				['plated_ability'],
-		not_theme: 			['subtype_elf'],
+		not_theme: 			['resist_magic_ability'],
 		craft_theme: 		['subtype_elf'],
 		pick_chance: 		1,
 		time: 				1,
@@ -15941,7 +15941,25 @@ function show_time_correction(fromtime, totime){
 var ideal_hero_hp = 40;
 var hero_hp_cost_factor = 4;
 
-
+var hero_subtype_themes = {
+	rogue: 			['subtype_rogue','evade_ability'],
+	clerk: 			['subtype_clerk','deck_control_ability'],
+	cleric: 		['subtype_cleric','cleanse_ally_ability','active_healing_ability'],
+	mermaid: 		['subtype_mermaid'],
+	reptile: 		['subtype_reptile'],
+	plant: 			['subtype_plant'],
+	golem: 			['subtype_golem','repairing_ability'],
+	witch: 			['subtype_witch','curse_ability'],
+	mage: 			['subtype_mage'],
+	undead: 		['subtype_undead'],
+	elf: 			['subtype_elf'],
+	goblin: 		['subtype_goblin'],
+	fairy: 			['subtype_fairy'],
+	warrior: 		['subtype_warrior','empower_ally_ability'],
+	animal: 		['subtype_animal'],
+	fungus: 		['subtype_fungus'],
+	daemon: 		['subtype_daemon'],
+}
 
 function check_card(card_id){
 	if(all_available_cards[card_id] != undefined)
@@ -15978,10 +15996,10 @@ function check_card(card_id){
 			card_info['hero_version']['health'] = Math.ceil(hero_hp);
 			if(card_info['hero_version']['theme'] != undefined)
 			{
-				if(match_array_values(card_info['hero_version']['theme'], 'muscle') == false)
+				/*if(match_array_values(card_info['hero_version']['theme'], 'muscle') == false)
 				{
 					card_info['hero_version']['theme'][get_highest_key_in_object(card_info['hero_version']['theme']) + 1] = 'muscle';
-				}
+				}*/
 				/*if(match_array_values(card_info['hero_version']['theme'], 'defense') == false)
 				{
 					card_info['hero_version']['theme'][get_highest_key_in_object(card_info['hero_version']['theme']) + 1] = 'defense';
@@ -15990,6 +16008,28 @@ function check_card(card_id){
 				{
 					card_info['hero_version']['theme'][get_highest_key_in_object(card_info['hero_version']['theme']) + 1] = 'aoe';
 				}*/
+			}
+			else
+			{
+				card_info['hero_version']['theme'] = {};
+				eachoa(card_info['hero_version']['subtypes'], function(subtype_key, subtype){
+					if(hero_subtype_themes[subtype] != undefined)
+					{
+						eachoa(hero_subtype_themes[subtype], function(new_subtype_key, new_subtype)
+						{
+							card_info['hero_version']['theme'][count_object(card_info['hero_version']['theme'])] = new_subtype;
+						});
+					}
+				});
+				eachoa(card_info['hero_version']['abilities'], function(ability_id, ability_level){
+					if(all_abilities[ability_id] != undefined && all_abilities[ability_id]['hero_tactics'] != undefined)
+					{
+						eachoa(all_abilities[ability_id]['hero_tactics'], function(tactic_key, tactic_id)
+						{
+							card_info['hero_version']['theme'][count_object(card_info['hero_version']['theme'])] = tactic_id;
+						});
+					}
+				});
 			}
 		}
 

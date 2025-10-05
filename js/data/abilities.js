@@ -4,6 +4,7 @@ var all_abilities = {
 		proc: 			'kill',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['empower_hero_ability'],
 		targets:	{
 			0:{
 				target: 	'unit_or_hero',
@@ -31,6 +32,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
+		hero_tactics: 	['flying_ability','air_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -44,7 +46,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'air',
 				type: 			'damage',
-				subtypes: 		['physical','air'],
+				subtypes: 		['physical','air','blast'],
 				amount: 		'ability_level',
 				crit_on_has_skills: ['flying'],
 				crit_amount_factor: 2,
@@ -61,6 +63,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
+		hero_tactics: 	['flying_ability','air_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -98,6 +101,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
+		hero_tactics: 	['flying_ability','air_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -128,6 +132,7 @@ var all_abilities = {
 		ability_subtypes: ['charge','movement'],
 		min_unopposed_enemy_units: 1,
 		scales: 		true,
+		hero_tactics: 	['melee_ability','run_away_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -158,6 +163,7 @@ var all_abilities = {
 		min_double_free_slots: 1,
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['charge_ability','projectile_ability','dealt_damage_to_hero_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -248,6 +254,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		scales: 		true,
+		hero_tactics: 	['curse_ability','hex_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -284,6 +291,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		scales: true,
+		hero_tactics: 	['curse_ability','hex_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -367,6 +375,7 @@ var all_abilities = {
 		description: 	'Deals 1 physical damage the ally creature unit with the highest current health that has power. That unit then gains {LEVEL} temporary power. Will only target units that have at least 2 health.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['melee_ability','active_healing_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -432,8 +441,9 @@ var all_abilities = {
 		},
 	},
 	bless:{
-		description:'A random ally unit gains {LEVEL} blessing(s). Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
-		targets:	{
+		description: 	'A random ally unit gains {LEVEL} blessing(s). Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
+		hero_tactics: 	['draw_cards_ability'],
+		targets:{
 			0:{
 				target: 		'unit',
 				target_amount: 	1,
@@ -461,6 +471,7 @@ var all_abilities = {
 	bless_all:{
 		description:'All ally units gains {LEVEL} blessing(s). Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
 		do_not_pause_between: true,
+		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -491,6 +502,7 @@ var all_abilities = {
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -549,6 +561,7 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['own_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -602,6 +615,7 @@ var all_abilities = {
 		description: 	'A random living ally creature unit with at least 2 health gains {LEVEL} power and looses 1 health permanently.',
 		cannot_proc_while_stunned: true,
 		scales: true,
+		hero_tactics: 	['melee_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -638,6 +652,7 @@ var all_abilities = {
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['bolster_ally_ability','active_healing_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -666,6 +681,7 @@ var all_abilities = {
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['bolster_ally_ability','active_healing_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -693,6 +709,7 @@ var all_abilities = {
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['bolster_ally_ability','active_healing_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -721,6 +738,7 @@ var all_abilities = {
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['bolster_ally_ability','active_healing_ability','type_creature'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -736,7 +754,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'bolster',
 				type: 			'grant_temp_health',
-				subtypes: 		['bolster','bolster_creature'],
+				subtypes: 		['bolster','bolster_creature','bolster_ally'],
 				amount: 		'ability_level'
 			},
 		},
@@ -752,6 +770,7 @@ var all_abilities = {
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -779,6 +798,7 @@ var all_abilities = {
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['bolster_structure_ability','repairing_ability','type_structure'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -794,7 +814,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'bolster',
 				type: 			'grant_temp_health',
-				subtypes: 		['bolster','bolster_structure'],
+				subtypes: 		['bolster','bolster_structure','bolster_ally'],
 				amount: 		'ability_level'
 			},
 		},
@@ -810,6 +830,7 @@ var all_abilities = {
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -837,6 +858,7 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['heal_hero_ability','own_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -866,6 +888,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
+		hero_tactics: 	['melee_ability','empower_ally_ability','bolster_ally_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -898,6 +921,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use: 'break',
+		hero_tactics: 	['break_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -1158,6 +1182,7 @@ var all_abilities = {
 		proc: 			'enemy_unit_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['burn_ability','conflagrate_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -1187,6 +1212,7 @@ var all_abilities = {
 		show_amount: 	true,
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['burn_ability','conflagrate_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -1215,6 +1241,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		do_not_pause_between: true,
+		hero_tactics: 	['burn_ability','conflagrate_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -1244,6 +1271,7 @@ var all_abilities = {
 		subtypes: 		['melee'],
 		scales: 		true,
 		proc_while_dead: true,
+		hero_tactics: 	['burn_ability','conflagrate_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -1271,6 +1299,7 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['burn_ability','conflagrate_ability','own_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -1305,6 +1334,7 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['burn_ability','conflagrate_ability','own_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -1367,6 +1397,7 @@ var all_abilities = {
 		//proc_chance: 	50,
 		scales: 		true,
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['burn_ability','conflagrate_ability','own_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -1440,6 +1471,7 @@ var all_abilities = {
 		description: 	'Reduces the time left of the card in your hand with the highest time left by {LEVEL}. If it does, this deals 1 damage to itself.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['heal_hero_ability','draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -1490,6 +1522,7 @@ var all_abilities = {
 		proc: 			'enemy_hero_damaged',
 		reduce_skill_after_use: 'chaos_strikes',
 		proc_amount: 	1,
+		hero_tactics: 	['discard_enemy_ability','draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -1519,6 +1552,7 @@ var all_abilities = {
 		proc: 			'dealt_damage_to_hero',
 		reduce_skill_after_use: 'chaos_touch',
 		proc_amount: 	1,
+		hero_tactics: 	['discard_enemy_ability','draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -1597,6 +1631,7 @@ var all_abilities = {
 		max_ally_units: 4,
 		proc_amount: 	1,
 		reduce_skill_after_use:'charm',
+		hero_tactics: 	['sacrifice_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -1661,6 +1696,7 @@ var all_abilities = {
 		proc: 			'dealt_damage',
 		max_ally_units: 4,
 		proc_chance: 	50,
+		hero_tactics: 	['sacrifice_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -1811,6 +1847,7 @@ var all_abilities = {
 		ability_subtypes: ['stun'],
 		proc_while_dead: true,
 		scales: 		true,
+		hero_tactics: 	['cold_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -1859,6 +1896,7 @@ var all_abilities = {
 		need_power: 	true,
 		proc_amount: 	'ability_level',
 		ability_subtypes: ['stun'],
+		hero_tactics: 	['cold_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -1916,6 +1954,7 @@ var all_abilities = {
 		need_power: 	true,
 		proc_amount: 	'ability_level',
 		ability_subtypes: ['stun'],
+		hero_tactics: 	['cold_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -1965,6 +2004,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		not_ability_subtypes:['fire'],
 		ability_craft_subtypes:['burn'],
+		hero_tactics: 	['burn_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2003,6 +2043,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		not_ability_subtypes:['fire'],
 		ability_craft_subtypes:['burn'],
+		hero_tactics: 	['burn_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2031,6 +2072,7 @@ var all_abilities = {
 	consume_creature:{
 		description: 	'Each turn, this destroys 1 random non-undead ally creature unit with no more than 1 health. If it does, This gains {LEVEL} temporary power and heals itself by {LEVEL}. Will target units with the lowest cost first.',
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['summon_creature_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -2086,6 +2128,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		origin_damaged: true,
+		hero_tactics: 	['summon_creature_ability'],
 		ability_effects:{
 			0:{
 				targets:{
@@ -2135,6 +2178,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['heal_hero_ability','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 	'hero',
@@ -2163,6 +2207,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		need_power: 	true,
+		hero_tactics: 	['heal_hero_ability','empower_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -2193,6 +2238,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		reduce_skill_after_use:'counter_spell',
+		hero_tactics: 	['counter_spell_ability'],
 		targets:	{
 			0:{
 				target: 		'any',
@@ -2222,6 +2268,7 @@ var all_abilities = {
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['counter_spell_ability'],
 		targets:	{
 			0:{
 				target: 		'any',
@@ -2249,6 +2296,7 @@ var all_abilities = {
 		min_ally_creature_cards_in_grave: 1,
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['type_creature'],
 		targets:	{
 			0:{
 				target: 		'any',
@@ -2311,6 +2359,7 @@ var all_abilities = {
 		description: 	'Applies {LEVEL} curse to a random enemy unit or hero.{CURSE}',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['projectile_ability','blast_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2345,6 +2394,7 @@ var all_abilities = {
 		do_not_pause_between: true,
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['projectile_ability','blast_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2373,6 +2423,7 @@ var all_abilities = {
 		proc: 			'enemy_unit_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['projectile_ability','blast_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2401,6 +2452,7 @@ var all_abilities = {
 		description: 	'Applies {LEVEL} curse to a random enemy unit.{CURSE}',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['projectile_ability','blast_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2429,6 +2481,7 @@ var all_abilities = {
 		subtypes: 		['melee'],
 		scales: 		true,
 		proc_while_dead: true,
+		hero_tactics: 	['projectile_ability','blast_ability','heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -2456,6 +2509,7 @@ var all_abilities = {
 		ability_subtypes:['on_death_proc'],
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['projectile_ability','blast_ability','type_creature','own_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2492,6 +2546,7 @@ var all_abilities = {
 		ability_subtypes:['on_death_proc'],
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['projectile_ability','blast_ability','type_creature','own_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2546,6 +2601,7 @@ var all_abilities = {
 		ability_subtypes: ['receive_damage_proc'],
 		scales: 		true,
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['projectile_ability','blast_ability','heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -2572,6 +2628,7 @@ var all_abilities = {
 		proc: 			'dealt_damage',
 		proc_while_dead: true,
 		scales: 		true,
+		hero_tactics: 	['projectile_ability','blast_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -2973,6 +3030,7 @@ var all_abilities = {
 		reduce_skill_after_use:'discard',
 		negative_ability: true,
 		min_enemy_hand_cards: 1,
+		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -3002,6 +3060,7 @@ var all_abilities = {
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use:'discard_enemy',
 		min_enemy_hand_cards: 1,
+		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -3033,6 +3092,7 @@ var all_abilities = {
 		reduce_skill_after_use:'discard_enemy',
 		min_enemy_hand_cards: 1,
 		has_used_ability: 	true,
+		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -3060,6 +3120,7 @@ var all_abilities = {
 		description: 	'If the enemy has {LEVEL} or more cards in its hand, this discards 1 cards from the enemy\'s hand to the grave.',
 		cannot_proc_while_stunned: true,
 		min_enemy_hand_cards: 'ability_level',
+		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -3087,6 +3148,7 @@ var all_abilities = {
 	doom:{
 		description: 	'Applies {LEVEL} doom to a random enemy unit.{DOOM}',
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['doom_ability','subtype_wall','heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -3114,6 +3176,7 @@ var all_abilities = {
 		description: 	'Applies {LEVEL} doom to all enemy units.{DOOM}',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
+		hero_tactics: 	['doom_ability','subtype_wall','heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -3167,6 +3230,7 @@ var all_abilities = {
 		description: 	'Applies {LEVEL} doom to any enemy unit that enters the game.',
 		proc: 			'enemy_unit_card_played',
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['doom_ability','subtype_wall','heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -3220,6 +3284,7 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		ability_subtypes:['on_death_proc'],
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['doom_ability','heal_hero_ability','own_death_proc_ability','type_creature','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -3248,6 +3313,7 @@ var all_abilities = {
 		description: 	'Applies {LEVEL} doom to any unit it deals damage to.{DOOM}',
 		proc: 			'dealt_damage',
 		proc_while_dead: true,
+		hero_tactics: 	['doom_ability','subtype_wall','heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -3276,6 +3342,7 @@ var all_abilities = {
 		remove_skill: 	'draw',
 		min_cards_in_deck: 	1,
 		max_hand_cards: 	9,
+		hero_tactics: 	['hasten_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -3309,6 +3376,7 @@ var all_abilities = {
 		min_cards_in_deck: 	1,
 		max_hand_cards: 	9,
 		has_used_ability: 	true,
+		hero_tactics: 	['hasten_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -3333,6 +3401,7 @@ var all_abilities = {
 	earth_blast:{
 		description: 	'Deals {LEVEL} physical earth damage to all enemy units.',
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['curse_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -3346,7 +3415,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'stone',
 				type: 			'damage',
-				subtypes: 		['physical','earth'],
+				subtypes: 		['physical','earth','blast'],
 				amount: 		'ability_level',
 			}
 		},
@@ -3387,6 +3456,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		ability_subtypes: ['stun','cold','fire','projectile'],
+		hero_tactics: 	['fire_ability','cold_ability','projectile_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -3415,6 +3485,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		ability_subtypes: ['stun','cold','fire','projectile'],
+		hero_tactics: 	['fire_ability','cold_ability','projectile_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -3440,6 +3511,7 @@ var all_abilities = {
 		description: 	'A random ally creature that has power gains {LEVEL} temporary power. Cannot affect heroes or itself.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['melee_ability','empower_ally_ability','trample_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -3471,6 +3543,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		do_not_pause_between: 	true,
+		hero_tactics: 	['melee_ability','empower_ally_ability','trample_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -3502,6 +3575,7 @@ var all_abilities = {
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['melee_ability','move_ally_to_hand_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -3622,6 +3696,7 @@ var all_abilities = {
 		description: 	'Does something random. Or not...',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['experiment_ability'],
 		targets:	{
 			0:{
 				target: 		'any',
@@ -3645,6 +3720,7 @@ var all_abilities = {
 		description: 	'Does something random. Or not...',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['experiment_ability'],
 		targets:	{
 			0:{
 				target: 		'any',
@@ -3746,6 +3822,7 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		origin_not_self: true,
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['type_creature'],
 		targets:	{
 			0:{
 				target: 	'any',
@@ -3770,6 +3847,7 @@ var all_abilities = {
 		description: 	'Gains {LEVEL} energy when any spell card is played.',
 		proc: 			'any_spell_card_played',
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['type_spell'],
 		targets:	{
 			0:{
 				target: 	'any',
@@ -3797,6 +3875,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_while_dead: true,
 		scales: 		true,
+		hero_tactics: 	['heal_hero_ability','bolster_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -3908,6 +3987,7 @@ var all_abilities = {
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
 		proc_amount: 	1,
+		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -3940,6 +4020,7 @@ var all_abilities = {
 		proc_chance: 	25,
 		proc_amount: 	1,
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -3971,6 +4052,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		origin_does_not_have_ability: ['undead'],
 		scales: 		true,
+		hero_tactics: 	['curse_ability','break_ability','stun_ability'],
 		ability_effects:{
 			0:{
 				targets:{
@@ -4353,6 +4435,7 @@ var all_abilities = {
 		ability_subtypes: ['receive_damage_proc'],
 		proc_while_dead: true,
 		scales: 		true,
+		hero_tactics: 	['heal_hero_ability','fire_ability','movement_ability','projectile_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -4431,6 +4514,7 @@ var all_abilities = {
 	fire_blast:{
 		description: 	'Deals {LEVEL} magical fire damage to all enemy units.',
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['curse_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -4444,7 +4528,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'fire',
 				type: 			'damage',
-				subtypes: 		['magical','fire'],
+				subtypes: 		['magical','fire','blast'],
 				amount: 		'ability_level',
 			}
 		},
@@ -4492,6 +4576,7 @@ var all_abilities = {
 		description: 	'Deals {LEVEL} magical fire projectile damage to a random enemy unit.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['curse_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -4549,6 +4634,7 @@ var all_abilities = {
 		description: 	'Deals {LEVEL} magical fire damage to a random enemy unit and 1 magical fire damage to itself. Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['curse_ability','heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -4603,6 +4689,7 @@ var all_abilities = {
 		description: 	'Deals {LEVEL} magical fire damage to a random enemy unit and 1 magical fire damage to itself.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['curse_ability','heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -4676,6 +4763,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		delay: 			1,
 		scales: 		true,
+		hero_tactics: 	['type_creature','plated_ability','fortify_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -4736,11 +4824,11 @@ var all_abilities = {
 	},
 	flame_strike_hv:{
 		name: 			'flame strike',
-		name_color: 	'rgba(255,255,255,0.9)',
 		description: 	'Deals melee magical fire damage equal to its power to the nearest unit. Will not target the enemy hero.',
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
+		hero_tactics: 	['empower_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -4828,6 +4916,7 @@ var all_abilities = {
 		description: 	'Grants a random ally unit {LEVEL} shield. Cannot affect heroes. {SHIELD}',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['active_healing_ability','plated_ability','cleanse_ally_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -4854,6 +4943,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: true,
 		scales: 		true,
+		hero_tactics: 	['active_healing_ability','plated_ability','cleanse_ally_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -4881,6 +4971,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		origin_not_self: 	true,
 		scales: 		true,
+		hero_tactics: 	['active_healing_ability','plated_ability','cleanse_ally_ability','move_ally_to_hand_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -5012,6 +5103,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		scales: 	true,
 		ability_subtypes: ['stun'],
+		hero_tactics: 	['cold_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -5086,6 +5178,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
+		hero_tactics: 	['own_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -5226,6 +5319,7 @@ var all_abilities = {
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
+		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -5254,6 +5348,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
 		proc_amount: 	1,
+		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -5282,6 +5377,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		has_used_ability: 	true,
 		proc_amount: 	1,
+		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -5334,6 +5430,7 @@ var all_abilities = {
 		description: 	'Heals a random damaged ally creature unit by {LEVEL}.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['cleanse_ally_ability','type_creature','plated_ability','resist_magic_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -5362,6 +5459,7 @@ var all_abilities = {
 		description: 	'Heals all damaged ally creature units by {LEVEL}.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['cleanse_ally_ability','type_creature','plated_ability','resist_magic_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -5450,6 +5548,7 @@ var all_abilities = {
 		description: 	'Turns {LEVEL} nearest non-undead enemy creature unit(s) into a frog until the end of their next turn.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['snipe_ability','blast_ability','wither_ability','break_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -5544,6 +5643,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['evade_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -5604,6 +5704,7 @@ var all_abilities = {
 		description: 	'Grants itself stealth when it destroys a unit.',
 		proc: 			'kill',
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['curse_ability','hex_ability','turn_enemy_into_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -5653,6 +5754,7 @@ var all_abilities = {
 		description: 	'Deals {LEVEL} physical cold damage to all enemy units. Has a 25% chance to stun any unit or hero it hits.',
 		cannot_proc_while_stunned: true,
 		ability_subtypes: ['stun'],
+		hero_tactics: 	['curse_ability','hex_ability','turn_enemy_into_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -5666,7 +5768,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'frost',
 				type: 			'damage',
-				subtypes: 		['physical','cold'],
+				subtypes: 		['physical','cold','blast'],
 				amount: 		'ability_level',
 				on_success:{
 					proc_chance:    25,
@@ -5701,6 +5803,7 @@ var all_abilities = {
 		ability_subtypes:['dealt_damage_proc'],
 		proc_while_dead: true,
 		scales: 		true,
+		hero_tactics: 	['burn_ability','conflagrate_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -5724,6 +5827,7 @@ var all_abilities = {
 	incinerate:{
 		description: 	'Destroys {LEVEL} burning enemy unit(s).',
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['burn_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -5752,6 +5856,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		proc_chance: 50,
+		hero_tactics: 	['melee_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -5978,6 +6083,7 @@ var all_abilities = {
 		description: 	'Deals {LEVEL} magical air damage to the enemy unit with the highest current health. Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['reap_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -6014,6 +6120,7 @@ var all_abilities = {
 		description: 	'Deals {LEVEL} magical air damage to the enemy unit with the highest current health.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['reap_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -6043,6 +6150,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['reap_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -6080,6 +6188,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['reap_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -6254,6 +6363,7 @@ var all_abilities = {
 	morph_ally:{
 		description: 	'Turns the ally creature with the lowest cost into a random creature with an equal or higher cost. Can be used once.',
 		remove_skill_after_use: 	'morph_ally',
+		hero_tactics: 	['type_creature'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -6353,6 +6463,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
+		hero_tactics: 	['active_healing_ability','plated_ability','resist_magic_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -6532,6 +6643,7 @@ var all_abilities = {
 		negated_by: 	['ignores_armor'],
 		amount: 		'ability_level',
 		scales: 		true,
+		hero_tactics: 	['heal_hero_ability','resist_magic_ability','cleanse_ally_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -6590,6 +6702,7 @@ var all_abilities = {
 	poison:{
 		description: 	'Applies {LEVEL} poison to a random enemy creature. Will only target the enemy hero if there are no enemy units.{POISON}',
 		scales: 		true,
+		hero_tactics: 	['poison_ability','break_ability','wither_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -6624,6 +6737,7 @@ var all_abilities = {
 		description: 	'Applies {LEVEL} poison to all enemy creatures. {POISON}',
 		scales: 		true,
 		do_not_pause_between: 	true,
+		hero_tactics: 	['poison_ability','break_ability','wither_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -6651,6 +6765,7 @@ var all_abilities = {
 		proc: 			'enemy_unit_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['poison_ability','break_ability','wither_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -6680,6 +6795,7 @@ var all_abilities = {
 		subtypes: 		['melee'],
 		scales: 		true,
 		proc_while_dead: true,
+		hero_tactics: 	['poison_ability','break_ability','wither_ability','heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -6703,9 +6819,9 @@ var all_abilities = {
 	},
 	poison_hv:{
 		name: 			'poison',
-		name_color: 	'rgba(202, 230, 48,0.9)',
 		description: 	'Applies {LEVEL} poison to a random enemy non-undead creature. Will not target the enemy hero.{POISON}',
 		scales: 		true,
+		hero_tactics: 	['poison_ability','break_ability','wither_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -6733,6 +6849,7 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['poison_ability','break_ability','wither_ability','ally_creature_death_proc_ability','type_creature'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -6769,6 +6886,7 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['poison_ability','break_ability','wither_ability','ally_creature_death_proc_ability','type_creature'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -6894,6 +7012,7 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['ally_creature_death_proc_ability','type_creature'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -6931,6 +7050,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_while_dead: true,
 		scales: 		true,
+		hero_tactics: 	['ally_creature_death_proc_ability','type_creature','summon_ally_creature_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -6964,6 +7084,7 @@ var all_abilities = {
 		min_ally_creature_cards_in_grave: 1,
 		reduce_skill_after_use:'raise_skeleton',
 		proc_amount: 'ability_level',
+		hero_tactics: 	['type_creature'],
 		targets:	{
 			0:{
 				target: 	'card',
@@ -7009,6 +7130,7 @@ var all_abilities = {
 		description: 	'Destroys an enemy creature with {LEVEL} or less health.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['break_ability','wither_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -7037,6 +7159,7 @@ var all_abilities = {
 		description: 	'Destroys all enemy creatures with {LEVEL} or less health.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['break_ability','wither_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -7065,6 +7188,7 @@ var all_abilities = {
 		description: 	'Returns {LEVEL} card(s) in your grave to your deck.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -7095,6 +7219,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		reduce_skill_after_use: 	'reclaim_artifact',
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['draw_cards_ability','type_artifact'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -7123,6 +7248,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_chance: 	25,
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['draw_cards_ability','type_artifact'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -7150,6 +7276,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		reduce_skill_after_use: 	'reclaim_creature',
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['draw_cards_ability','type_creature'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -7178,6 +7305,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
+		hero_tactics: 	['draw_cards_ability','type_creature'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -7205,6 +7333,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		reduce_skill_after_use: 	'reclaim_spell',
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['draw_cards_ability','type_spell'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -7234,6 +7363,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_chance: 	25,
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['draw_cards_ability','type_spell'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -7261,6 +7391,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		reduce_skill_after_use: 	'reclaim_structure',
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['draw_cards_ability','type_structure'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -7288,6 +7419,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_chance: 	25,
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['draw_cards_ability','type_structure'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -7368,6 +7500,7 @@ var all_abilities = {
 		description: 	'Repairs a random non-plant damaged ally structure by {LEVEL}. Cannot affect heroes.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['type_structure'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -7563,6 +7696,7 @@ var all_abilities = {
 		proc: 			'ally_creature_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['move_ally_to_hand_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -7591,6 +7725,7 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['own_death_proc_ability','summon_ally_creature_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -7648,6 +7783,7 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
+		hero_tactics: 	['own_death_proc_ability','type_creature'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -7999,6 +8135,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_while_dead: true,
 		scales: 		true,
+		hero_tactics: 	['type_structure','type_artifact','summon_structure_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -8179,6 +8316,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		need_power: 	true,
+		hero_tactics: 	['curse_ability','movement_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8208,6 +8346,7 @@ var all_abilities = {
 		proc: 			'enemy_unit_card_played',
 		remove_skill_after_use: 'shoot_arrival',
 		scales: 		true,
+		hero_tactics: 	['curse_ability','movement_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8235,6 +8374,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc: 			'enemy_unit_card_played',
 		scales: 		true,
+		hero_tactics: 	['curse_ability','movement_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8297,6 +8437,7 @@ var all_abilities = {
 		description: 	'Increases the time left of the enemy card with the lowest time left {LEVEL} time(s).',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['discard_enemy_ability','draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 			'card',
@@ -8325,6 +8466,7 @@ var all_abilities = {
 		description: 	'Increases the time left of all enemy cards by {LEVEL}.',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
+		hero_tactics: 	['discard_enemy_ability','draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 			'card',
@@ -8352,6 +8494,7 @@ var all_abilities = {
 		description: 	'When the enemy draws a card, this increases the time left of that card by {LEVEL}.',
 		proc: 			'enemy_card_drawn',
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['discard_enemy_ability','draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 			'card',
@@ -8404,6 +8547,7 @@ var all_abilities = {
 		description: 	'Deals physical projectile damage equal to its power to the enemy unit or hero with the lowest health.',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
+		hero_tactics: 	['hex_ability','wither_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -8433,6 +8577,7 @@ var all_abilities = {
 		description: 	'Deals physical projectile damage equal to its power to the enemy unit with the lowest health.',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
+		hero_tactics: 	['hex_ability','wither_ability','stun_ability','reveal_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8464,6 +8609,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
 		proc_amount: 'ability_level',
+		hero_tactics: 	['summon_creature_ability','consume_ability','ally_creature_death_proc_ability','ally_unit_card_played_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -8488,6 +8634,7 @@ var all_abilities = {
 		proc: 			'any_spell_card_played',
 		cannot_proc_while_stunned: true,
 		scales: true,
+		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8517,6 +8664,7 @@ var all_abilities = {
 		not_ability_subtypes:['arcane_bolts','projectile','magical'],
 		proc_amount: 	'ability_level',
 		scales: true,
+		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8554,6 +8702,7 @@ var all_abilities = {
 		not_ability_subtypes:['arcane_bolts','projectile','magical'],
 		proc_amount: 	'ability_level',
 		scales: true,
+		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8583,6 +8732,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		not_ability_subtypes:['empower_any','empower_ally'],
 		scales: 		true,
+		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -8607,6 +8757,7 @@ var all_abilities = {
 		description: 	'Reduces the time left of a random card in your hand by {LEVEL} after any spell card is played.',
 		proc: 			'any_spell_card_played',
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -8634,6 +8785,7 @@ var all_abilities = {
 		subtypes: 		['melee'],
 		proc_while_dead: true,
 		scales: 		true,
+		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -8661,6 +8813,7 @@ var all_abilities = {
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
+		hero_tactics: 	['empower_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8696,6 +8849,7 @@ var all_abilities = {
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
+		hero_tactics: 	['empower_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8806,6 +8960,7 @@ var all_abilities = {
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
+		hero_tactics: 	['empower_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8892,6 +9047,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		need_power: 	true,
+		hero_tactics: 	['empower_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8979,6 +9135,7 @@ var all_abilities = {
 		description: 	'Stuns a random enemy artifact or golem for {LEVEL} turn(s).',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['poison_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -9012,6 +9169,7 @@ var all_abilities = {
 		description: 	'Stuns a random living enemy creature unit for {LEVEL} turn(s).',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['break_ability','wither_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -9067,6 +9225,7 @@ var all_abilities = {
 		subtypes: 				['projectile','melee'],
 		subtypes_while_origin_has_ability: 	{melee: ['flying'],},
 		effect: 		50,
+		hero_tactics: 	['submerge_ability','water_ability'],
 		targets:	{
 			0:{
 				target: 	'unit_or_hero',
@@ -9123,6 +9282,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
 		proc_amount: 'ability_level',
+		hero_tactics: 	['ally_creature_card_played_proc_ability','movement_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -9148,6 +9308,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
 		proc_amount: 'ability_level',
+		hero_tactics: 	['ally_creature_card_played_proc_ability','movement_ability','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -9174,6 +9335,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
 		proc_amount: 'ability_level',
+		hero_tactics: 	['ally_creature_card_played_proc_ability','movement_ability','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -9307,6 +9469,7 @@ var all_abilities = {
 		max_ally_units: 4,
 		reduce_skill_after_use:'summon_peasant',
 		proc_amount: 'ability_level',
+		hero_tactics: 	['ally_creature_card_played_proc_ability','movement_ability','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -9485,6 +9648,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
 		proc_amount: 'ability_level',
+		hero_tactics: 	['ally_creature_card_played_proc_ability','movement_ability','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -9542,6 +9706,7 @@ var all_abilities = {
 		ability_subtypes: ['receive_damage_proc'],
 		proc_while_dead: true,
 		scales: 		true,
+		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -9569,8 +9734,8 @@ var all_abilities = {
 	trample:{
 		description: 	'When this kills a unit with physical melee damage, the excess damage is dealt to the enemy hero.',
 		proc: 			'overkill',
-		subtypes: 		['melee','physical'],
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['empower_hero_ability','stun_ability','reveal_ability'],
 		targets:	{
 			0:{
 				target: 	'hero',
@@ -9584,7 +9749,7 @@ var all_abilities = {
 			0:{
 				projectile: 'hoof',
 				type: 		'damage',
-				subtypes: 	['melee','physical'],
+				subtypes: 	['melee','physical','trample'],
 				amount: 	'ability_level'
 			}
 		},
@@ -9597,6 +9762,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
+		ability_subtypes: ['trample'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -9636,6 +9802,7 @@ var all_abilities = {
 		subtypes: 		['melee'],
 		proc_while_dead: true,
 		proc_chance:    25,
+		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -9691,6 +9858,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
+		hero_tactics: 	['curse_ability','hex_ability','stun_ability','reveal_ability'],
 		targets:	{
 			0:{
 				target: 	'hero',
@@ -9782,6 +9950,7 @@ var all_abilities = {
 	unsummon_ally:{
 		description: 	'Returns a damaged ally creature unit to your hand. Will not unsummon summoned units.',
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['ally_creature_card_played_proc_ability','hasten_ability','heal_hero_ability','on_play_proc_ability','type_creature'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -9811,6 +9980,7 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
+		hero_tactics: 	['type_creature'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -9887,6 +10057,7 @@ var all_abilities = {
 		subtypes: 		['physical'],
 		origin_type:    'creature',
 		origin_does_not_have_ability: ['undead'],
+		hero_tactics: 	['empower_hero_ability','break_ability','curse_ability','stun_ability','reveal_ability'],
 		targets:{
 			0:{
 				target: 		'unit_or_hero',
@@ -9914,6 +10085,7 @@ var all_abilities = {
 		proc_while_dead: false,
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['summon_creature_ability','own_death_proc_ability','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -9949,6 +10121,7 @@ var all_abilities = {
 		proc_while_dead: false,
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['summon_creature_ability','own_death_proc_ability','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -9976,6 +10149,7 @@ var all_abilities = {
 		ability_subtypes: 	['dealt_damage_proc'],
 		proc_while_dead: true,
 		scales: 		true,
+		hero_tactics: 	['poison_ability','break_ability','curse_ability','stun_ability','reveal_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -10001,6 +10175,7 @@ var all_abilities = {
 		proc: 			'kill',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['curse_ability','stun_ability','reveal_ability'],
 		targets:	{
 			0:{
 				target: 		'any',
@@ -10026,6 +10201,7 @@ var all_abilities = {
 	water_blast:{
 		description: 	'Deals {LEVEL} physical water damage to all non-flying enemy units.',
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['curse_ability','hex_ability','air_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -10040,7 +10216,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'water',
 				type: 			'damage',
-				subtypes: 		['physical','water'],
+				subtypes: 		['physical','water','blast'],
 				amount: 		'ability_level',
 			}
 		},
@@ -10278,6 +10454,7 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['ally_creature_death_proc_ability','own_death_proc_ability','summon_creature_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -10335,6 +10512,7 @@ var all_abilities = {
 		proc: 			'dealt_damage',
 		proc_while_dead: true,
 		proc_amount: 	1,
+		hero_tactics: 	['reveal_ability','stun_ability'],
 		targets:	{
 			0:{
 				target: 	'unit_or_hero',
