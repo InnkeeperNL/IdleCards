@@ -9050,7 +9050,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		need_power: 	true,
-		hero_tactics: 	['empower_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
