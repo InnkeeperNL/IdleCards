@@ -11925,7 +11925,7 @@ var all_old_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, experiment: 1},
+			abilities: 			{strike_unit: 1, experiment_hv: 1},
 		},
 		quote: '\"Did I do it right this time?\"',
 	},

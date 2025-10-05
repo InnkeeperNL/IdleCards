@@ -26661,6 +26661,7 @@ function check_card(card_id){
 				console.log(card_id + ' hero hp: ' + hero_hp);
 			}
 			card_info['hero_version']['health'] = Math.ceil(hero_hp);
+			delete card_info['hero_version']['theme'];
 			if(card_info['hero_version']['theme'] != undefined)
 			{
 				/*if(match_array_values(card_info['hero_version']['theme'], 'muscle') == false)
@@ -26675,6 +26676,7 @@ function check_card(card_id){
 				{
 					card_info['hero_version']['theme'][get_highest_key_in_object(card_info['hero_version']['theme']) + 1] = 'aoe';
 				}*/
+
 			}
 			else
 			{
