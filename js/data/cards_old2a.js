@@ -3928,7 +3928,7 @@ var all_oldest_available_cards = {
 	surprise_attack:{
 		name: 				'surprise attack',
 		type: 				'spell',
-		subtypes: 			['wall','aquatic'],
+		subtypes: 			['tactic'],
 		color: 				['orange'],
 		pick_chance: 		1,
 		time: 				1,
