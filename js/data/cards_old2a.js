@@ -987,11 +987,10 @@ var all_oldest_available_cards = {
 			bones: 				1
 		}
 	},
-	
 	dancing_devil:{
 		name: 				'dancing devil',
 		type: 				'creature',
-		subtypes: 			['deamon', 'imp'],
+		subtypes: 			['daemon', 'imp'],
 		color: 				['red'],
 		time: 				5,
 		image: 				'cards/devil-3852875_640.jpg',
@@ -1109,10 +1108,6 @@ var all_oldest_available_cards = {
 			health: 			30,
 			abilities: 			{strike_unit: 1, fireproof: 1, burn_all: 1},
 		},
-		recipe:{
-			princess: 		1,
-			deamon: 		1
-		}
 	},
 	
 	deaths_call:{
@@ -1813,8 +1808,8 @@ var all_oldest_available_cards = {
 			candle: 				1
 		}
 	},
-	flame_deamon:{
-		name: 				'flame deamon',
+	flame_daemon:{
+		name: 				'flame daemon',
 		type: 				'creature',
 		subtypes: 			['daemon'],
 		color: 				['red','purple'],
@@ -1825,7 +1820,7 @@ var all_oldest_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, fire_aura: 1, flying: 1, resurrect: 1},
 		hero_version: 			{
-			name: 				'flame deamon',
+			name: 				'flame daemon',
 			type: 				'creature',
 			image: 				'cards/dragon-955348_640.jpg',
 			image_position: 	'bottom',
@@ -1834,11 +1829,6 @@ var all_oldest_available_cards = {
 			health: 			20,
 			abilities: 			{strike_unit: 1, flying: 1, resurrect: 1},
 		},
-		recipe:{
-			bones: 				1,
-			deamon: 			1,
-			levitate: 			1
-		}
 	},
 	flame_greeter:{
 		name: 				'flame greeter',
@@ -2440,7 +2430,7 @@ var all_oldest_available_cards = {
 		health: 			2,
 		abilities: 			{seek_enemy: 1, strike: 1},
 		hero_version: 			{
-			name: 				'half deamon',
+			name: 				'half daemon',
 			type: 				'creature',
 			image: 				'cards/daemon-2980812_640.jpg',
 			power: 				3,
@@ -3546,7 +3536,7 @@ var all_oldest_available_cards = {
 	royal_servant:{
 		name: 				'royal servant',
 		type: 				'creature',
-		subtypes:  			['human','clerk'],
+		subtypes:  			['human','royal','clerk'],
 		color: 				['yellow'],
 		time: 				1,
 		image: 				'cards/girl-4258000_640.jpg',
@@ -3684,7 +3674,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{destroy_artifact: 1, echo: 1},
+		abilities: 			{destroy_artifact: 1},
 	},
 	skulking_skeleton:{
 		name: 				'skulking skeleton',
@@ -3749,6 +3739,7 @@ var all_oldest_available_cards = {
 	soldier_of_faith:{
 		name: 				'soldier of faith',
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['yellow'],
 		time: 				6,
 		image: 				'cards/woman-3489913_640.jpg',
@@ -3773,6 +3764,7 @@ var all_oldest_available_cards = {
 	sonja:{
 		name: 				'sonja',
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['orange'],
 		time: 				12,
 		image: 				'cards/celtic-woman-1880944_640.jpg',
@@ -3798,6 +3790,7 @@ var all_oldest_available_cards = {
 	spiked_horror:{
 		name: 				'spiked horror',
 		type: 				'creature',
+		subtypes: 			['horror'],
 		color: 				['purple','green'],
 		time: 				6,
 		image: 				'cards/monster-4803620_640.jpg',
@@ -3825,13 +3818,14 @@ var all_oldest_available_cards = {
 	spore_explosion:{
 		name: 				'spore explosion',
 		type: 				'spell',
+		subtypes: 			['fungus'],
 		color: 				['green'],
 		time: 				8,
 		image: 				'cards/bovist-184502_1280.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{summon_mushroom_soldier: 5},
+		abilities: 			{summon_sporeling: 5, maximum_allies: 0},
 		recipe:{
 			herbs: 				5,
 			natures_touch: 		5
@@ -3841,21 +3835,22 @@ var all_oldest_available_cards = {
 	steady_archer:{
 		name: 				'steady archer',
 		type: 				'creature',
+		subtypes: 			['human','archer'],
 		color: 				['yellow'],
 		time: 				1,
 		image: 				'cards/target-3825767_640.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			5,
-		abilities: 			{steady_shot: 1},
+		health: 			9,
+		abilities: 			{shoot: 1},
 		hero_version: 			{
 			name: 				'steady archer',
 			type: 				'creature',
 			image: 				'cards/target-3825767_640.jpg',
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{steady_shot: 1},
+			abilities: 			{shoot_unit: 1},
 		},
 		recipe:{
 			archer: 			1,
@@ -3866,21 +3861,22 @@ var all_oldest_available_cards = {
 	stormy_castle:{
 		name: 				'stormy castle',
 		type: 				'structure',
+		subtypes: 			['wall','mage'],
 		color: 				['blue'],
 		time: 				7,
 		image: 				'cards/castle-4155998_640.jpg',
 		power: 				false,
-		armor: 				2,
-		health: 			4,
-		abilities: 			{lightning_bolt: 2},
+		armor: 				0,
+		health: 			8,
+		abilities: 			{lightning_storm: 2},
 		hero_version: 			{
 			name: 				'stormy castle',
 			type: 				'structure',
 			image: 				'cards/castle-4155998_640.jpg',
 			power: 				false,
-			armor: 				20,
+			armor: 				0,
 			health: 			40,
-			abilities: 			{lightning_bolt: 1},
+			abilities: 			{lightning_storm_hv: 2},
 		},
 		recipe:{
 			lightning_mage: 	1,
@@ -3888,16 +3884,17 @@ var all_oldest_available_cards = {
 		}
 	},
 	
-	strangling_vine:{
-		name: 				'strangling vine',
+	strangling_vines:{
+		name: 				'strangling vines',
 		type: 				'spell',
+		subtypes: 			['plant'],
 		color: 				['green'],
 		time: 				2,
 		image: 				'cards/vine-4102328_640.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{strangle: 2},
+		abilities: 			{earth_blast: 1, stunning_touch: 1},
 		recipe:{
 			firtile_dirt: 		2
 		}
@@ -3905,13 +3902,14 @@ var all_oldest_available_cards = {
 	sunken_ruins:{
 		name: 				'sunken ruins',
 		type: 				'structure',
+		subtypes: 			['wall','aquatic'],
 		color: 				['blue'],
 		pick_chance: 		0.2,
 		time: 				11,
 		image: 				'cards/cathedral-3265697_1280.png',
 		power: 				false,
-		armor: 				4,
-		health: 			6,
+		armor: 				0,
+		health: 			8,
 		abilities: 			{cleanse: 1, submerged: 1, fireproof: 1},
 		hero_version: 			{
 			name: 				'sunken ruins',
@@ -3929,7 +3927,8 @@ var all_oldest_available_cards = {
 	},
 	surprise_attack:{
 		name: 				'surprise attack',
-		type: 				'attack',
+		type: 				'spell',
+		subtypes: 			['wall','aquatic'],
 		color: 				['orange'],
 		pick_chance: 		1,
 		time: 				1,
@@ -3937,37 +3936,17 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{order_strike: 4},
-		recipe:{
-			sandstorm: 		1,
-			ore: 			1
-		}
+		abilities: 			{strike_hero: 1},
 	},
-	surprise_throw:{
-		name: 				'surprise throw',
-		type: 				'attack',
-		color: 				['orange'],
-		pick_chance: 		1,
-		time: 				1,
-		image: 				'cards/nature-5325504_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{order_shoot: 3},
-		recipe:{
-			quiver: 			1,
-			surprise_attack: 	1
-		}
-	},
-	
 	swamp_knight:{
 		name: 				'swamp knight',
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['purple'],
 		time: 				7,
 		image: 				'cards/fantasy-3097517_640.jpg',
 		power: 				2,
-		armor: 				3,
+		armor: 				0,
 		health: 			6,
 		abilities: 			{strike: 1, withering_touch: 1},
 		hero_version: 			{
@@ -3975,7 +3954,7 @@ var all_oldest_available_cards = {
 			type: 				'creature',
 			image: 				'cards/fantasy-3097517_640.jpg',
 			power: 				2,
-			armor: 				5,
+			armor: 				0,
 			health: 			30,
 			abilities: 			{strike_unit: 1, withering_touch: 1},
 		},
@@ -3987,21 +3966,22 @@ var all_oldest_available_cards = {
 	swan_lady:{
 		name: 				'swan lady',
 		type: 				'creature',
+		subtypes: 			['human','aquatic'],
 		color: 				['blue','purple'],
 		time: 				3,
 		image: 				'cards/fantasy-5422246_640.jpg',
 		power: 				false,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{sorrow: 2, resist_fire: 2, recall_killer: 1},
+		abilities: 			{final_curse: 4, resist_fire: 1, fearful_aura: 1},
 		hero_version: 			{
 			name: 				'swan lady',
 			type: 				'creature',
 			image: 				'cards/fantasy-5422246_640.jpg',
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_unit: 1, resist_fire: 2},
+			abilities: 			{curse_hv: 1, strike_unit: 1, resist_fire: 1, fearful_aura: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -4012,13 +3992,14 @@ var all_oldest_available_cards = {
 	temple_oracle:{
 		name: 				'temple oracle',
 		type: 				'creature',
+		subtypes: 			['human','cleric'],
 		color: 				['orange'],
 		time: 				3,
 		image: 				'cards/woman-5459993_640.jpg',
 		power: 				false,
 		armor: 				0,
 		health: 			3,
-		abilities: 			{obscure: 1, reveal: 1},
+		abilities: 			{hide_ally: 1, reveal: 1},
 		hero_version: 			{
 			name: 				'temple oracle',
 			type: 				'creature',
@@ -4026,7 +4007,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{obscure: 1, reveal: 1, strike_unit: 1},
+			abilities: 			{hide_ally: 1, reveal: 1, strike_unit: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -4043,7 +4024,7 @@ var all_oldest_available_cards = {
 		image: 				'cards/monster-4803514_640.jpg',
 		power: 				2,
 		armor: 				0,
-		health: 			4,
+		health: 			2,
 		abilities: 			{strike: 1, doom_self: 1, go_again: 1},
 		hero_version: 			{
 			name: 				'thaculla',
@@ -4060,16 +4041,16 @@ var all_oldest_available_cards = {
 			deaths_call: 		1
 		}
 	},
-
 	tiger_huntress:{
 		name: 				'tiger huntress',
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['green'],
 		time: 				7,
 		image: 				'cards/woman-5375804_640.jpg',
-		power: 				3,
+		power: 				2,
 		armor: 				0,
-		health: 			5,
+		health: 			6,
 		abilities: 			{strike_unit: 1, regenerate: 1},
 		hero_version: 			{
 			name: 				'tiger huntress',
@@ -4090,13 +4071,14 @@ var all_oldest_available_cards = {
 	time_thief:{
 		name: 				'time thief',
 		type: 				'creature',
+		subtypes: 			['human','rogue'],
 		color: 				['blue'],
 		time: 				6,
 		image: 				'cards/girl-5535979_640.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			2,
-		abilities: 			{strike: 1, slow: 1, hasten: 1, retreat: 1},
+		health: 			1,
+		abilities: 			{strike: 1, slow: 1, hasten: 1, homebound: 1},
 		hero_version: 			{
 			name: 				'time thief',
 			type: 				'creature',
@@ -4104,7 +4086,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{slow: 1, hasten: 1},
+			abilities: 			{slow: 1, hasten: 1, evade: 1},
 		},
 		recipe:{
 			pure_mage: 			1,

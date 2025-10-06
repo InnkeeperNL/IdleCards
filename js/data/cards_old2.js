@@ -1090,7 +1090,7 @@ var all_older_available_cards = {
 		name: 				'guardian dragon',
 		version: 			2,
 		type: 				'creature',
-		subtypes: 			['dragon'],
+		subtypes: 			['reptile','dragon'],
 		color: 				['yellow'],
 		theme: 				['muscle','protection','evasion','restoration'],
 		pick_chance: 		0.5,

@@ -255,7 +255,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		scales: 		true,
-		hero_tactics: 	['curse_ability','hex_ability'],
+		hero_tactics: 	['curse_ability','hex_ability','arcane_bolts_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -292,7 +292,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		scales: true,
-		hero_tactics: 	['curse_ability','hex_ability'],
+		hero_tactics: 	['curse_ability','hex_ability','arcane_bolts_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2453,7 +2453,7 @@ var all_abilities = {
 		description: 	'Applies {LEVEL} curse to a random enemy unit.{CURSE}',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['projectile_ability','blast_ability'],
+		hero_tactics: 	['projectile_ability','blast_ability','curse_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2482,7 +2482,7 @@ var all_abilities = {
 		subtypes: 		['melee'],
 		scales: 		true,
 		proc_while_dead: true,
-		hero_tactics: 	['projectile_ability','blast_ability','heal_hero_ability'],
+		hero_tactics: 	['projectile_ability','blast_ability','heal_hero_ability','curse_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -2510,7 +2510,7 @@ var all_abilities = {
 		ability_subtypes:['on_death_proc'],
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['projectile_ability','blast_ability','type_creature','own_death_proc_ability'],
+		hero_tactics: 	['projectile_ability','blast_ability','type_creature','own_death_proc_ability','curse_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2547,7 +2547,7 @@ var all_abilities = {
 		ability_subtypes:['on_death_proc'],
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['projectile_ability','blast_ability','type_creature','own_death_proc_ability'],
+		hero_tactics: 	['projectile_ability','blast_ability','type_creature','own_death_proc_ability','curse_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2629,7 +2629,7 @@ var all_abilities = {
 		proc: 			'dealt_damage',
 		proc_while_dead: true,
 		scales: 		true,
-		hero_tactics: 	['projectile_ability','blast_ability'],
+		hero_tactics: 	['projectile_ability','blast_ability','curse_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -3278,7 +3278,7 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 	-2,
+		level_cost: 	-1,
 	},
 	dooming_deaths:{
 		description: 	'Applies {LEVEL} doom to a random enemy unit when any ally creature is destroyed.',
@@ -3930,6 +3930,7 @@ var all_abilities = {
 		negated_by_ability: 	['precision'],
 		effect: 		35,
 		cannot_proc_while_stunned: true,
+		hero_tactics: 	['movement_ability','evade_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -4579,7 +4580,7 @@ var all_abilities = {
 		description: 	'Deals {LEVEL} magical fire projectile damage to a random enemy unit.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['curse_ability'],
+		hero_tactics: 	['curse_ability','fire_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -4831,7 +4832,7 @@ var all_abilities = {
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
-		hero_tactics: 	['empower_hero_ability'],
+		hero_tactics: 	['fire_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -5616,6 +5617,7 @@ var all_abilities = {
 		description: 	'Grants itself stealth every turn.',
 		cannot_proc_while_stunned: true,
 		ability_subtypes: 	['evade'],
+		hero_tactics: 	['evade_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -6123,7 +6125,7 @@ var all_abilities = {
 		description: 	'Deals {LEVEL} magical air damage to the enemy unit with the highest current health.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['reap_ability'],
+		hero_tactics: 	['reap_ability','lightning_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -6191,7 +6193,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		proc_amount: 	'ability_level',
-		hero_tactics: 	['reap_ability'],
+		hero_tactics: 	['reap_ability','lightning_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -6916,6 +6918,7 @@ var all_abilities = {
 		description: 	'Removes all negative effects from {LEVEL} random ally unit(s) or your hero.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
+		hero_tactics: 	['cleanse_ally_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -7449,6 +7452,7 @@ var all_abilities = {
 		description: 	'Heals itself by {LEVEL} each turn.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['bolster_ability','regeneration_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -8580,7 +8584,7 @@ var all_abilities = {
 		description: 	'Deals physical projectile damage equal to its power to the enemy unit with the lowest health.',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
-		hero_tactics: 	['hex_ability','wither_ability','stun_ability','reveal_ability'],
+		hero_tactics: 	['hex_ability','wither_ability','stun_ability','reveal_ability','snipe_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8705,7 +8709,7 @@ var all_abilities = {
 		not_ability_subtypes:['arcane_bolts','projectile','magical'],
 		proc_amount: 	'ability_level',
 		scales: true,
-		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability'],
+		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability','arcane_bolts_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8735,7 +8739,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		not_ability_subtypes:['empower_any','empower_ally'],
 		scales: 		true,
-		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability'],
+		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability','melee_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -8760,7 +8764,7 @@ var all_abilities = {
 		description: 	'Reduces the time left of a random card in your hand by {LEVEL} after any spell card is played.',
 		proc: 			'any_spell_card_played',
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability'],
+		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability','summon_ally_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -8852,7 +8856,7 @@ var all_abilities = {
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
-		hero_tactics: 	['empower_hero_ability'],
+		hero_tactics: 	['empower_hero_ability','lightning_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8963,7 +8967,6 @@ var all_abilities = {
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
-		hero_tactics: 	['empower_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -10290,6 +10293,7 @@ var all_abilities = {
 		description: 	'Deals {LEVEL} physical water projectile damage to a random enemy unit.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		hero_tactics: 	['water_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -10433,6 +10437,7 @@ var all_abilities = {
 		description: 	'Reduces the maximum health of a random enemy unit by {LEVEL}. Will not target the enemy hero.',
 		proc: 			'basic',
 		scales: 		true,
+		hero_tactics: 	['wither_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -10537,7 +10542,7 @@ var all_abilities = {
 		proc: 			'dealt_damage',
 		proc_while_dead: true,
 		proc_amount: 	1,
-		hero_tactics: 	['reveal_ability','stun_ability'],
+		hero_tactics: 	['reveal_ability','stun_ability','wither_ability'],
 		targets:	{
 			0:{
 				target: 	'unit_or_hero',
@@ -26621,10 +26626,18 @@ var hero_subtype_themes = {
 	elf: 			['subtype_elf'],
 	goblin: 		['subtype_goblin'],
 	fairy: 			['subtype_fairy'],
-	warrior: 		['subtype_warrior','empower_ally_ability'],
+	warrior: 		['subtype_warrior','type_creature'],
 	animal: 		['subtype_animal'],
 	fungus: 		['subtype_fungus'],
 	daemon: 		['subtype_daemon'],
+	angel: 			['subtype_angel'],
+	wall: 			['subtype_wall','projectile_ability'],
+	aquatic: 		['subtype_aquatic'],
+	ship: 			['subtype_aquatic','subtype_ship'],
+	jotnar: 		['subtype_jotnar'],
+	gnome: 			['subtype_gnome'],
+	royal: 			['subtype_royal'],
+	horror: 		['subtype_horror'],
 }
 
 function check_card(card_id){
@@ -26698,6 +26711,7 @@ function check_card(card_id){
 						});
 					}
 				});
+				if(count_object(card_info['hero_version']['theme']) == 0){console.log(card_id + ' has no hero theme');}
 			}
 		}
 

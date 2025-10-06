@@ -15955,10 +15955,18 @@ var hero_subtype_themes = {
 	elf: 			['subtype_elf'],
 	goblin: 		['subtype_goblin'],
 	fairy: 			['subtype_fairy'],
-	warrior: 		['subtype_warrior','empower_ally_ability'],
+	warrior: 		['subtype_warrior','type_creature'],
 	animal: 		['subtype_animal'],
 	fungus: 		['subtype_fungus'],
 	daemon: 		['subtype_daemon'],
+	angel: 			['subtype_angel'],
+	wall: 			['subtype_wall','projectile_ability'],
+	aquatic: 		['subtype_aquatic'],
+	ship: 			['subtype_aquatic','subtype_ship'],
+	jotnar: 		['subtype_jotnar'],
+	gnome: 			['subtype_gnome'],
+	royal: 			['subtype_royal'],
+	horror: 		['subtype_horror'],
 }
 
 function check_card(card_id){
@@ -16032,6 +16040,7 @@ function check_card(card_id){
 						});
 					}
 				});
+				if(count_object(card_info['hero_version']['theme']) == 0){console.log(card_id + ' has no hero theme');}
 			}
 		}
 

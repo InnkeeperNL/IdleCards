@@ -6263,7 +6263,6 @@ var all_old_available_cards = {
 		},
 		quote: '\"A painful touch.\"',
 	},
-	
 	jotnar_druid:{
 		name: 				'jotnar druid',
 		type: 				'creature',
@@ -7483,7 +7482,7 @@ var all_old_available_cards = {
 	nightmare_ripper:{
 		name: 				'nightmare ripper',
 		type: 				'creature',
-		subtypes: 			['nightmare'],
+		subtypes: 			['horror'],
 		color: 				['colorless'],
 		theme: 				[],
 		pick_chance: 		1,
@@ -7991,7 +7990,7 @@ var all_old_available_cards = {
 	princess:{
 		name: 				'princess',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','royal'],
 		color: 				['colorless'],
 		theme: 				[],
 		pick_chance: 		1,
@@ -8942,7 +8941,7 @@ var all_old_available_cards = {
 	shield_lady:{
 		name: 				'shield lady',
 		type: 				'creature',
-		subtypes: 			['human','royal'],
+		subtypes: 			['human','royal','warrior'],
 		color: 				['colorless'],
 		theme: 				['muscle'],
 		pick_chance: 		1,
@@ -8990,7 +8989,7 @@ var all_old_available_cards = {
 	shield_maiden:{
 		name: 				'shield maiden',
 		type: 				'creature',
-		subtypes: 			['human','royal'],
+		subtypes: 			['human','royal','warrior'],
 		color: 				['colorless'],
 		theme: 				['muscle'],
 		pick_chance: 		1,
@@ -9601,13 +9600,13 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, stunning_touch: 1, resist_cold: 1},
+		abilities: 			{cold_strike: 1, resist_cold: 1},
 		hero_version: 			{
 			theme: 				['stun_ability','cold'],
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, stunning_touch: 1},
+			abilities: 			{cold_strike_hv: 1, resist_cold: 1},
 		},
 		quote: '\"She has a cold touch.\"',
 	},
@@ -10909,7 +10908,7 @@ var all_old_available_cards = {
 	viking:{
 		name: 				'viking',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','warrior'],
 		color: 				['colorless'],
 		theme: 				['muscle'],
 		pick_chance: 		1,
@@ -10921,12 +10920,6 @@ var all_old_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, shield: 1},
 		hero_version: 			{
-			name: 				'viking',
-			type: 				'creature',
-			subtypes: 			['human'],
-			theme: 				['shield_ability'],
-			image: 				'cards/ai-generated-7718746_640.jpg',
-			image_position: 	'center',
 			power: 				3,
 			armor: 				0,
 			health: 			30,
@@ -12777,6 +12770,7 @@ var replacement_abilities = {
 	surprise_strike: 	'striking_entry',
 	recall_soul: 		'unsummon_dead',
 	move_away: 			'run_away',
+	faithkill: 			'trophy_kill',
 }
 
 var ignored_abilities = {
