@@ -421,11 +421,6 @@ var all_oldest_available_cards = {
 			health: 			30,
 			abilities: 			{strike_unit: 1, evade: 1},
 		},
-		recipe:{
-			dark_scout: 		1,
-			amethyst: 			1,
-			surprise_attack: 	1
-		}
 	},
 	blessed_angel:{
 		name: 				'blessed angel',
@@ -1288,10 +1283,6 @@ var all_oldest_available_cards = {
 			health: 			20,
 			abilities: 			{strike_unit: 1, flying: 1},
 		},
-		recipe:{
-			yellow_ara: 		1,
-			surprise_attack: 	1,
-		}
 	},
 	elf_amazone:{
 		name: 				'elf amazone',
@@ -1476,10 +1467,6 @@ var all_oldest_available_cards = {
 			health: 			15,
 			abilities: 			{strike_unit: 2, evade: 1},
 		},
-		recipe:{
-			elf_scout: 			1,
-			surprise_attack: 	1,
-		}
 	},
 	embrace_pain:{
 		name: 				'embrace pain',
@@ -1567,10 +1554,6 @@ var all_oldest_available_cards = {
 			health: 			30,
 			abilities: 			{strike_unit: 1, counter: 1},
 		},
-		recipe:{
-			court_lady: 		1,
-			surprise_attack: 	1,
-		}
 	},
 	explosive_barrel:{
 		name: 				'explosive barrel',
@@ -1875,10 +1858,6 @@ var all_oldest_available_cards = {
 			health: 			30,
 			abilities: 			{strike_unit: 1, counter: 1, ignites: 1},
 		},
-		recipe:{
-			fire_salamander: 		1,
-			surprise_attack: 		1
-		}
 	},	
 	flame_summoner:{
 		name: 				'flame summoner',
@@ -2256,11 +2235,6 @@ var all_oldest_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, counter: 1},
 		},
-		recipe:{
-			peasant: 			1,
-			surprise_attack: 	1,
-			ore: 				1,
-		}
 	},
 	golden_keeper:{
 		name: 				'golden keeper',
@@ -2656,10 +2630,6 @@ var all_oldest_available_cards = {
 			health: 			30,
 			abilities: 			{strike_unit: 2},
 		},
-		recipe:{
-			brigands: 			1,
-			surprise_attack: 	1,
-		}
 	},
 	holy_sacrifice:{
 		name: 				'holy sacrifice',
@@ -2699,11 +2669,6 @@ var all_oldest_available_cards = {
 			health: 			20,
 			abilities: 			{strike_unit: 1, thorns: 1, flying: 1},
 		},
-		recipe:{
-			yellow_ara: 		1,
-			amber: 				1,
-			surprise_attack: 	1
-		}
 	},
 	horned_lizard:{
 		name: 				'horned lizard',
@@ -3781,11 +3746,6 @@ var all_oldest_available_cards = {
 			health: 			30,
 			abilities: 			{strike_unit: 1, counter: 1},
 		},
-		recipe:{
-			gladiator: 			1,
-			surprise_attack: 	1,
-			plate_armor: 		1
-		}
 	},
 	spiked_horror:{
 		name: 				'spiked horror',
@@ -3936,7 +3896,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{strike_hero: 1},
+		abilities: 			{strike_hero: 2},
 	},
 	swamp_knight:{
 		name: 				'swamp knight',
@@ -4097,6 +4057,7 @@ var all_oldest_available_cards = {
 	temper:{
 		name: 				'temper',
 		type: 				'spell',
+		subtypes: 			['tactic'],
 		color: 				['red'],
 		pick_chance: 		0.2,
 		time: 				1,
@@ -4104,23 +4065,20 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{temper: 1},
-		recipe:{
-			hellfire: 			1,
-			burning_rage: 		1
-		}
+		abilities: 			{backlash: 5, ignites: 2},
 	},
 	
 	toadman:{
 		name: 				'toadman',
 		type: 				'creature',
+		subtypes: 			['animal','warrior'],
 		color: 				['blue'],
 		time: 				5,
 		image: 				'cards/toads-man-5350708_640.jpg',
-		power: 				2,
-		armor: 				2,
-		health: 			5,
-		abilities: 			{strike: 1, elemental_resistance: 1},
+		power: 				3,
+		armor: 				0,
+		health: 			6,
+		abilities: 			{strike: 1, resist_fire: 1, resist_cold: 1},
 		hero_version: 			{
 			name: 				'toadman',
 			type: 				'creature',
@@ -4131,59 +4089,50 @@ var all_oldest_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, resist_fire: 1, resist_cold: 1},
 		},
-		recipe:{
-			natures_touch: 		1,
-			giants_foot: 		1,
-			armor: 				1,
-			burning_ring: 		1,
-			cleansing_water: 	1
-		}
 	},
 	tribal_druid:{
 		name: 				'tribal druid',
 		type: 				'creature',
+		subtypes: 			['human','tribal','cleric'],
 		color: 				['orange','green'],
 		time: 				7,
 		image: 				'cards/fantasy-3797188_640.jpg',
 		power: 				3,
-		armor: 				2,
-		health: 			3,
-		abilities: 			{strike: 1, regenerate: 1, return_soul: 1},
+		armor: 				0,
+		health: 			6,
+		abilities: 			{strike: 1, regenerate: 1, return_soul: 1, hide_on_kill: 1},
 		hero_version: 			{
 			name: 				'tribal druid',
 			type: 				'creature',
 			image: 				'cards/fantasy-3797188_640.jpg',
 			image_position:     'top',
 			power: 				2,
-			armor: 				10,
+			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, regenerate: 1},
+			abilities: 			{strike_unit: 1, regenerate: 1, hide_on_kill: 1},
 		},
-		recipe:{
-			druid: 				1,
-			tribesmen: 			1
-		}
 	},
 	
 	tribal_mage:{
 		name: 				'tribal mage',
 		type: 				'creature',
+		subtypes: 			['human','tribal','mage'],
 		color: 				['orange'],
 		time: 				4,
 		image: 				'cards/woman-3203394_640.jpg',
-		power: 				1,
-		armor: 				2,
-		health: 			2,
-		abilities: 			{strike: 1, fire_bolt: 1, vengeance: 1},
+		power: 				false,
+		armor: 				0,
+		health: 			6,
+		abilities: 			{fire_bolt: 1, vengeance: 1, hide_on_kill: 1},
 		hero_version: 			{
 			name: 				'tribal mage',
 			type: 				'creature',
 			image: 				'cards/woman-3203394_640.jpg',
 			image_position: 	'top',
-			power: 				1,
-			armor: 				10,
+			power: 				false,
+			armor: 				0,
 			health: 			25,
-			abilities: 			{strike_unit: 1, fire_bolt: 1, vengeance: 1},
+			abilities: 			{fire_bolt: 1, vengeance: 1, hide_on_kill: 1},
 		},
 		recipe:{
 			tribal_warrior: 	1,
@@ -4193,80 +4142,51 @@ var all_oldest_available_cards = {
 	tribal_valkyrie:{
 		name: 				'tribal valkyrie',
 		type: 				'creature',
+		subtypes: 			['human','tribal','warrior'],
 		color: 				['orange'],
 		time: 				11,
 		image: 				'cards/fantasy-4655269_1280.jpg',
 		power: 				3,
-		armor: 				3,
-		health: 			3,
-		abilities: 			{strike: 1, relentless: 1},
+		armor: 				0,
+		health: 			6,
+		abilities: 			{strike: 1, go_again: 1},
 		hero_version: 			{
 			name: 				'tribal valkyrie',
 			type: 				'creature',
 			image: 				'cards/fantasy-4655269_1280.jpg',
 			image_position: 	'top',
 			power: 				2,
-			armor: 				10,
+			armor: 				0,
 			health: 			15,
-			abilities: 			{strike_unit: 1, relentless: 1},
+			abilities: 			{strike_unit: 1, go_again: 1},
 		},
-		recipe:{
-			tribal_mage: 		1,
-			surprise_attack: 	1
-		}
-	},
-	tribal_warrior:{
-		name: 				'tribal warrior',
-		type: 				'creature',
-		color: 				['orange'],
-		time: 				5,
-		image: 				'cards/woman-2436287_640.jpg',
-		power: 				3,
-		armor: 				3,
-		health: 			3,
-		abilities: 			{strike: 1},
-		hero_version: 			{
-			name: 				'tribal warrior',
-			type: 				'creature',
-			image: 				'cards/woman-2436287_640.jpg',
-			power: 				3,
-			armor: 				20,
-			health: 			30,
-			abilities: 			{strike_unit: 1},
-		},
-		recipe:{
-			tribesmen: 			1,
-			surprise_attack: 	1
-		}
 	},
 	tribesmen:{
 		name: 				'tribesmen',
 		type: 				'creature',
+		subtypes: 			['human','tribal','warrior'],
 		color: 				['orange'],
 		time: 				2,
 		image: 				'cards/farewell-587277_1280.jpg',
 		power: 				2,
-		armor: 				2,
+		armor: 				0,
 		health: 			2,
-		abilities: 			{strike: 1, bring_armor: 1},
+		abilities: 			{strike: 1, hide_on_kill: 1, fortify_self: 1},
 		hero_version: 			{
 			name: 				'tribesmen',
 			type: 				'creature',
 			image: 				'cards/farewell-587277_1280.jpg',
-			power: 				2,
-			armor: 				20,
+			power: 				3,
+			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1},
+			abilities: 			{strike_unit: 1, hide_on_kill: 1, fortify_self: 1},
 		},
-		recipe:{
-			peasant: 			1,
-			sandstorm: 			1
-		}
 	},
 	
 	underground_forest:{
 		name: 				'underground forest',
 		type: 				'structure',
+		subtypes: 			['wall','plant'],
 		color: 				['green'],
 		time: 				3,
 		image: 				'cards/fantasy-2750995_1280.jpg',
@@ -4290,49 +4210,10 @@ var all_oldest_available_cards = {
 			stone: 				1
 		}
 	},
-	unsummon:{
-		name: 				'unsummon',
-		type: 				'spell',
-		color: 				['blue'],
-		time: 				1,
-		image: 				'cards/wailpaper-2111346_640.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{recall_enemy: 1},
-		recipe:{
-			mana_crystal:		1,
-			peasant: 			1
-		}
-	},
-	
-	vampire_bat:{
-		name: 				'vampire bat',
-		type: 				'creature',
-		color: 				['purple'],
-		time: 				2,
-		image: 				'cards/bat-3740971_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, vampiric: 1, flying: 1},
-		hero_version: 			{
-			name: 				'vampire bat',
-			type: 				'creature',
-			image: 				'cards/bat-3740971_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			15,
-			abilities: 			{strike_unit: 1, vampiric: 1, flying: 1},
-		},
-		recipe:{
-			yellow_ara: 		1,
-			amethyst: 			1,
-		}
-	},
 	vampire_duelist:{
 		name: 				'vampire duelist',
 		type: 				'creature',
+		subtypes: 			['undead','vampire','warrior'],
 		color: 				['purple'],
 		time: 				8,
 		image: 				'cards/dark-2869918_640.jpg',
@@ -4350,30 +4231,24 @@ var all_oldest_available_cards = {
 			health: 			30,
 			abilities: 			{strike_unit: 1, counter: 1, vampiric: 1},
 		},
-		recipe:{
-			peasant: 			1,
-			vampires_embrace: 	1,
-			surprise_attack: 	1
-		}
 	},
 	
 	vampires_embrace:{
 		name: 				'vampire\'s embrace',
 		type: 				'spell',
+		subtypes: 			['ritual'],
 		color: 				['purple'],
 		time: 				6,
 		image: 				'cards/gothic-1482950_640.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{grant_vampirism: 1},
-		recipe:{
-			vampire_bat: 		2,
-		}
+		abilities: 			{grant_vampirism: 1, echo: 1},
 	},
 	vampire_sisters:{
 		name: 				'vampire sisters',
 		type: 				'creature',
+		subtypes: 			['undead','vampire'],
 		color: 				['purple'],
 		time: 				6,
 		image: 				'cards/mirror-4528092_640.jpg',
@@ -4390,31 +4265,28 @@ var all_oldest_available_cards = {
 			health: 			20,
 			abilities: 			{bring_clone: 1, strike_unit: 1, vampiric: 1},
 		},
-		recipe:{
-			peasant: 			2,
-			vampires_embrace: 	1
-		}
 	},
 	
 	veteran_seer:{
 		name: 				'veteran seer',
 		type: 				'creature',
+		subtypes: 			['human','mage','cleric'],
 		color: 				['blue'],
 		time: 				8,
 		image: 				'cards/woman-5445574_640.jpg',
 		power: 				3,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{power_bolt: 1, draw_once: 1},
+		abilities: 			{power_bolt: 1, draw: 1},
 		hero_version: 			{
 			name: 				'veteran seer',
 			type: 				'creature',
 			image: 				'cards/woman-5445574_640.jpg',
 			image_position: 	'top',
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{power_bolt: 1, draw_once: 1},
+			abilities: 			{power_bolt_hv: 1, draw: 1},
 		},
 		recipe:{
 			rock_seer: 			1,
@@ -4425,6 +4297,7 @@ var all_oldest_available_cards = {
 	viking:{
 		name: 				'viking',
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['orange'],
 		time: 				4,
 		image: 				'cards/viking-5164299_640.jpg',
@@ -4450,6 +4323,7 @@ var all_oldest_available_cards = {
 	viking_druid:{
 		name: 				'viking druid',
 		type: 				'creature',
+		subtypes: 			['human','warrior','cleric'],
 		color: 				['orange'],
 		time: 				5,
 		image: 				'cards/viking-5151562_640.jpg',
@@ -4474,29 +4348,26 @@ var all_oldest_available_cards = {
 	wild_warrior:{
 		name: 				'wild warrior',
 		type: 				'creature',
+		subtypes: 			['human','warrior'],
 		color: 				['orange'],
 		time: 				5,
 		image: 				'cards/fighter-4760042_640.jpg',
 		power: 				3,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{wild_strike: 1},
+		abilities: 			{strike: 1, adrenaline: 1, victory_rush: 1},
 		hero_version: 			{
 			name: 				'wild warrior',
 			type: 				'creature',
 			image: 				'cards/fighter-4760042_640.jpg',
 			image_position: 	'top',
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1},
+			abilities: 			{strike_unit: 1, adrenaline: 1, victory_rush: 1},
 		},
-		recipe:{
-			gladiator: 			1,
-			enrage_enemy: 		1
-		}
 	},
-	wing_burn:{
+	/*wing_burn:{
 		name: 				'wing burn',
 		type: 				'spell',
 		color: 				['red'],
@@ -4510,27 +4381,28 @@ var all_oldest_available_cards = {
 			levitate: 			1,
 			hellfire: 			1,
 		}
-	},
+	},*/
 	
 	yellow_ara:{
 		name: 				'yellow ara',
 		type: 				'creature',
+		subtypes: 			['animal','bird'],
 		color: 				['green'],
 		time: 				1,
 		image: 				'cards/ara-3601194_1280.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			2,
-		abilities: 			{strike: 1, flying: 1, pierces: 1},
+		abilities: 			{strike: 1, flying: 1, final_restore: 1},
 		hero_version: 			{
 			name: 				'yellow ara',
 			type: 				'creature',
 			image: 				'cards/ara-3601194_1280.jpg',
 			image_position: 		'top',
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			25,
-			abilities: 			{strike_unit: 1, flying: 1, pierces: 1},
+			abilities: 			{strike_unit: 1, flying: 1, restore: 1},
 		},
 		recipe:{
 			natures_touch: 		1,
@@ -4540,13 +4412,14 @@ var all_oldest_available_cards = {
 	yellow_lizard:{
 		name: 				'yellow lizard',
 		type: 				'creature',
+		subtypes: 			['animal','reptile'],
 		color: 				['orange'],
 		time: 				3,
 		image: 				'cards/reptile-2372220_640.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, elemental_resistance: 1, faithkill: 1},
+		abilities: 			{strike: 1, venom: 1, faithkill: 1},
 		hero_version: 			{
 			name: 				'yellow lizard',
 			type: 				'creature',
@@ -4555,7 +4428,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, elemental_resistance: 1, faithkill: 1},
+			abilities: 			{strike_unit: 1, venom: 1, faithkill: 1},
 		},
 		recipe:{
 			sandstorm: 			1,
@@ -4593,13 +4466,14 @@ var all_oldest_available_cards = {
 	young_angel:{
 		name: 				'young angel',
 		type: 				'creature',
+		subtypes: 			['angel'],
 		color: 				['yellow'],
 		time: 				1,
 		image: 				'cards/angel-3464524_640.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			3,
-		abilities: 			{strike: 1, healing_wave: 2, flying: 1},
+		abilities: 			{strike: 1, final_restore: 2, flying: 1},
 		hero_version: 			{
 			name: 				'young angel',
 			type: 				'creature',
@@ -4608,7 +4482,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			35,
-			abilities: 			{strike_unit: 1, heal: 1, flying: 1},
+			abilities: 			{strike_unit: 1, restore: 1, flying: 1},
 		},
 		recipe:{
 			peasant: 			1,
@@ -4620,6 +4494,7 @@ var all_oldest_available_cards = {
 	unexpected_arrivals:{
 		name: 				'unexpected arrivals',
 		type: 				'spell',
+		subtypes: 			['tactic'],
 		color: 				['blue'],
 		time: 				8,
 		image: 				'cards/seal-1347886_1280.jpg',
@@ -4661,6 +4536,7 @@ var all_oldest_available_cards = {
 	wolf:{
 		name: 				'wolf',
 		type: 				'creature',
+		subtypes: 			['animal'],
 		color: 				['green'],
 		time: 				2,
 		image: 				'cards/wolf-1336224_640.jpg',
@@ -4685,6 +4561,7 @@ var all_oldest_available_cards = {
 	wood_trinket:{
 		name: 				'wood trinket',
 		type: 				'artifact',
+		subtypes: 			['trinket'],
 		color: 				['green'],
 		pick_chance: 		0.5,
 		time: 				2,

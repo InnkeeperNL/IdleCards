@@ -26,7 +26,6 @@ var all_abilities = {
 		},
 		animation: 	'combat_zoom',
 		level_cost: 	1,
-		cost_factor: 	'none',
 	},
 	air_blast:{
 		description: 	'Deals {LEVEL} physical damage to all enemy units. Deals double damage to flying units.',
@@ -1523,7 +1522,7 @@ var all_abilities = {
 		proc: 			'enemy_hero_damaged',
 		reduce_skill_after_use: 'chaos_strikes',
 		proc_amount: 	1,
-		hero_tactics: 	['discard_enemy_ability','draw_cards_ability'],
+		hero_tactics: 	['discard_enemy_ability','draw_cards_ability','direct_damage_ability','movement_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -1553,7 +1552,7 @@ var all_abilities = {
 		proc: 			'dealt_damage_to_hero',
 		reduce_skill_after_use: 'chaos_touch',
 		proc_amount: 	1,
-		hero_tactics: 	['discard_enemy_ability','draw_cards_ability'],
+		hero_tactics: 	['discard_enemy_ability','draw_cards_ability','direct_damage_ability','movement_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -3343,7 +3342,7 @@ var all_abilities = {
 		remove_skill: 	'draw',
 		min_cards_in_deck: 	1,
 		max_hand_cards: 	9,
-		hero_tactics: 	['hasten_ability'],
+		hero_tactics: 	['hasten_ability','move_ally_to_deck_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -5263,6 +5262,32 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		1,
 	},
+	grant_vampirism:		{
+		description: 	'Grants the vampiric ability to a random ally creature that does not have it and has at least 1 power. Cannot target your hero.<br/><i>Vampiric: When this deals physical damage to a non-undead creature, it heals iself by the amount of damage done, up to {LEVEL}.</i>',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				not_types: 	['object','structure'],
+				max_abilities: {vampiric: 0},
+				min_hp: 	1,
+				min_power: 	1,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'drain',
+				type: 		'grant_skill',
+				skill_id: 	'vampiric',
+				amount: 	'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	3,
+	},
 	grow:{
 		description: 	'This gains {LEVEL} power and health permanently.',
 		cannot_proc_while_stunned: true,
@@ -5323,7 +5348,7 @@ var all_abilities = {
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
-		hero_tactics: 	['draw_cards_ability'],
+		hero_tactics: 	['draw_cards_ability','move_ally_to_deck_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -5352,7 +5377,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
 		proc_amount: 	1,
-		hero_tactics: 	['draw_cards_ability'],
+		hero_tactics: 	['draw_cards_ability','move_ally_to_deck_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -5826,6 +5851,9 @@ var all_abilities = {
 				pause_before: 	-250,
 			}
 		},
+		ability_level_cost_factors:{
+			backlash: 		-1,
+		},
 		level_cost: 		0,
 		average_hit_cost: 	1,
 	},
@@ -6088,7 +6116,7 @@ var all_abilities = {
 		description: 	'Deals {LEVEL} magical air damage to the enemy unit with the highest current health. Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['reap_ability'],
+		hero_tactics: 	['reap_ability','air_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -6125,7 +6153,7 @@ var all_abilities = {
 		description: 	'Deals {LEVEL} magical air damage to the enemy unit with the highest current health.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['reap_ability','lightning_ability'],
+		hero_tactics: 	['reap_ability','lightning_ability','air_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -6155,7 +6183,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		proc_amount: 	'ability_level',
-		hero_tactics: 	['reap_ability'],
+		hero_tactics: 	['reap_ability','air_ability','lightning_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -6193,7 +6221,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		proc_amount: 	'ability_level',
-		hero_tactics: 	['reap_ability','lightning_ability'],
+		hero_tactics: 	['reap_ability','lightning_ability','air_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -6913,6 +6941,69 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	1,
 		level_cost_artifact: 2,
+	},
+	power_bolt:{
+		description: 	'Deals magical projectile damage equal to this units power to a random enemy unit. Will only target the enemy hero if there are no enemy units.',
+		proc_amount: 	'ability_level',
+		need_power: 	true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+			1:{
+				target: 	'hero',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'magic',
+				type: 		'damage',
+				subtypes: 	['magical','projectile'],
+				amount: 	'origin_power'
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 	4,
+		cost_factor: 	'power',
+		average_hits: 	'ability_level',
+		additional_levels_cost: 2,
+	},
+	power_bolt_hv:{
+		name: 			'power bolt',
+		description: 	'Deals magical projectile damage equal to this units power to a random enemy unit.',
+		proc_amount: 	'ability_level',
+		need_power: 	true,
+		hero_tactics: 	['curse_ability','movement_ability'],
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'magic',
+				type: 		'damage',
+				subtypes: 	['magical','projectile'],
+				amount: 	'origin_power'
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 	3,
+		cost_factor: 	'power',
+		average_hits: 	'ability_level',
+		additional_levels_cost: 1,
 	},
 	purify:{
 		description: 	'Removes all negative effects from {LEVEL} random ally unit(s) or your hero.',
@@ -8444,7 +8535,7 @@ var all_abilities = {
 		description: 	'Increases the time left of the enemy card with the lowest time left {LEVEL} time(s).',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
-		hero_tactics: 	['discard_enemy_ability','draw_cards_ability'],
+		hero_tactics: 	['discard_enemy_ability','draw_cards_ability','move_ally_to_deck_ability','hasten_ability'],
 		targets:	{
 			0:{
 				target: 			'card',
@@ -8501,7 +8592,7 @@ var all_abilities = {
 		description: 	'When the enemy draws a card, this increases the time left of that card by {LEVEL}.',
 		proc: 			'enemy_card_drawn',
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['discard_enemy_ability','draw_cards_ability'],
+		hero_tactics: 	['discard_enemy_ability','draw_cards_ability','move_ally_to_deck_ability','hasten_ability'],
 		targets:	{
 			0:{
 				target: 			'card',
@@ -8641,7 +8732,7 @@ var all_abilities = {
 		proc: 			'any_spell_card_played',
 		cannot_proc_while_stunned: true,
 		scales: true,
-		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability'],
+		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability','move_ally_to_deck_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8671,7 +8762,7 @@ var all_abilities = {
 		not_ability_subtypes:['arcane_bolts','projectile','magical'],
 		proc_amount: 	'ability_level',
 		scales: true,
-		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability'],
+		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability','move_ally_to_deck_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8709,7 +8800,7 @@ var all_abilities = {
 		not_ability_subtypes:['arcane_bolts','projectile','magical'],
 		proc_amount: 	'ability_level',
 		scales: true,
-		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability','arcane_bolts_ability'],
+		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability','arcane_bolts_ability','move_ally_to_deck_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8739,7 +8830,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		not_ability_subtypes:['empower_any','empower_ally'],
 		scales: 		true,
-		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability','melee_ability'],
+		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability','melee_ability','move_ally_to_deck_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -8764,7 +8855,7 @@ var all_abilities = {
 		description: 	'Reduces the time left of a random card in your hand by {LEVEL} after any spell card is played.',
 		proc: 			'any_spell_card_played',
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability','summon_ally_ability'],
+		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability','summon_ally_ability','move_ally_to_deck_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -8792,7 +8883,7 @@ var all_abilities = {
 		subtypes: 		['melee'],
 		proc_while_dead: true,
 		scales: 		true,
-		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability'],
+		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability','air_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -8820,7 +8911,7 @@ var all_abilities = {
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
-		hero_tactics: 	['empower_hero_ability'],
+		hero_tactics: 	['empower_hero_ability','air_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8840,7 +8931,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'lightning',
 				type: 			'damage',
-				subtypes: 		['magical','air','melee','elemental'],
+				subtypes: 		['magical','air','melee','elemental','air_ability'],
 				amount: 		'origin_power'
 			}
 		},
@@ -8856,7 +8947,7 @@ var all_abilities = {
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
-		hero_tactics: 	['empower_hero_ability','lightning_ability'],
+		hero_tactics: 	['empower_hero_ability','air_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -9306,6 +9397,32 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		12,
 		level_cost_spell: 	3,
+	},
+	summon_creature:{
+		description: 	'Summons {LEVEL} creature unit(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'random',
+				card_type: 	'creature',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		24,
+		level_cost_spell: 	6,
 	},
 	summon_frog:{
 		description: 	'Summons {LEVEL} frog(s).',
@@ -10224,9 +10341,9 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	0.25,
-		level_cost_hero: 0.5,
-		cost_factor: 'full',
+		level_cost: 		0.25,
+		level_cost_hero: 	0.5,
+		cost_factor: 		'full',
 	},
 	water_blast:{
 		description: 	'Deals {LEVEL} physical water damage to all non-flying enemy units.',
@@ -26619,7 +26736,7 @@ var hero_subtype_themes = {
 	mermaid: 		['subtype_mermaid'],
 	reptile: 		['subtype_reptile'],
 	plant: 			['subtype_plant'],
-	golem: 			['subtype_golem','repairing_ability'],
+	golem: 			['subtype_golem','repairing_ability','type_structure'],
 	witch: 			['subtype_witch','curse_ability'],
 	mage: 			['subtype_mage'],
 	undead: 		['subtype_undead'],
@@ -26628,7 +26745,7 @@ var hero_subtype_themes = {
 	fairy: 			['subtype_fairy'],
 	warrior: 		['subtype_warrior','type_creature'],
 	animal: 		['subtype_animal'],
-	fungus: 		['subtype_fungus'],
+	fungus: 		['subtype_fungus','ally_creature_death_proc_ability','ally_unit_card_played_proc_ability'],
 	daemon: 		['subtype_daemon'],
 	angel: 			['subtype_angel'],
 	wall: 			['subtype_wall','projectile_ability'],
