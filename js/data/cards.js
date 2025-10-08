@@ -16002,9 +16002,9 @@ function check_card(card_id){
 				console.log(card_id + ' hero hp: ' + hero_hp);
 			}
 			card_info['hero_version']['health'] = Math.ceil(hero_hp);
-			delete card_info['hero_version']['theme'];
-			if(card_info['hero_version']['theme'] != undefined)
-			{
+			//delete card_info['hero_version']['theme'];
+			/*if(card_info['hero_version']['theme'] != undefined)
+			{*/
 				/*if(match_array_values(card_info['hero_version']['theme'], 'muscle') == false)
 				{
 					card_info['hero_version']['theme'][get_highest_key_in_object(card_info['hero_version']['theme']) + 1] = 'muscle';
@@ -16018,30 +16018,33 @@ function check_card(card_id){
 					card_info['hero_version']['theme'][get_highest_key_in_object(card_info['hero_version']['theme']) + 1] = 'aoe';
 				}*/
 
-			}
+			/*}
 			else
+			{*/
+			if(card_info['hero_version']['theme'] == undefined)
 			{
 				card_info['hero_version']['theme'] = {};
-				eachoa(card_info['hero_version']['subtypes'], function(subtype_key, subtype){
-					if(hero_subtype_themes[subtype] != undefined)
-					{
-						eachoa(hero_subtype_themes[subtype], function(new_subtype_key, new_subtype)
-						{
-							card_info['hero_version']['theme'][count_object(card_info['hero_version']['theme'])] = new_subtype;
-						});
-					}
-				});
-				eachoa(card_info['hero_version']['abilities'], function(ability_id, ability_level){
-					if(all_abilities[ability_id] != undefined && all_abilities[ability_id]['hero_tactics'] != undefined)
-					{
-						eachoa(all_abilities[ability_id]['hero_tactics'], function(tactic_key, tactic_id)
-						{
-							card_info['hero_version']['theme'][count_object(card_info['hero_version']['theme'])] = tactic_id;
-						});
-					}
-				});
-				if(count_object(card_info['hero_version']['theme']) == 0){console.log(card_id + ' has no hero theme');}
 			}
+			eachoa(card_info['hero_version']['subtypes'], function(subtype_key, subtype){
+				if(hero_subtype_themes[subtype] != undefined)
+				{
+					eachoa(hero_subtype_themes[subtype], function(new_subtype_key, new_subtype)
+					{
+						card_info['hero_version']['theme'][count_object(card_info['hero_version']['theme'])] = new_subtype;
+					});
+				}
+			});
+			eachoa(card_info['hero_version']['abilities'], function(ability_id, ability_level){
+				if(all_abilities[ability_id] != undefined && all_abilities[ability_id]['hero_tactics'] != undefined)
+				{
+					eachoa(all_abilities[ability_id]['hero_tactics'], function(tactic_key, tactic_id)
+					{
+						card_info['hero_version']['theme'][count_object(card_info['hero_version']['theme'])] = tactic_id;
+					});
+				}
+			});
+			if(count_object(card_info['hero_version']['theme']) == 0){console.log(card_id + ' has no hero theme');}
+			/*}*/
 		}
 
 		if(card_info['theme'] == undefined){card_info['theme'] = {};};
@@ -17171,4 +17174,39 @@ function check_deck_building(){
 	{
 		not_used = find_cards_not_used_in_recipe(500, 0, true);
 	}
+}
+
+function check_double_card_images(){
+	eachoa(all_available_cards, function(card_id, card_info){
+		var current_card_image = '';
+		if(card_info['type'] != 'cardback' && card_info['type'] != 'recipe' && card_info['image'] != undefined)
+		{
+			current_card_image = get_card_image_filename(card_id);
+		}
+		if(current_card_image != '')
+		{
+			eachoa(all_available_cards, function(card_id_2, card_info_2){
+				if(card_id != card_id_2 && card_info_2['type'] != 'cardback' && card_info_2['type'] != 'recipe' && card_info_2['image'] != undefined)
+				{
+					var next_card_image = get_card_image_filename(card_id_2);
+					if(current_card_image == next_card_image && count_object(current_card_image.split('-')) > 1)
+					{
+						console.log(card_id + ' has the same image as ' + card_id_2 + ' (' + current_card_image + ')');
+					}
+				}
+			});
+		}
+	});
+}
+
+function get_card_image_filename(card_id){
+	var current_card_image = '';
+	if(all_available_cards[card_id] != undefined && all_available_cards[card_id]['image'] != undefined)
+	{
+		current_card_image = all_available_cards[card_id]['image'] + '';
+		current_card_image = current_card_image.split('/');
+		var last_key = count_object(current_card_image) - 1;
+		current_card_image = current_card_image[last_key];
+	}
+	return current_card_image;
 }
