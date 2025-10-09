@@ -4230,7 +4230,6 @@ var all_abilities = {
 		description: 	'When destroyed, applies {LEVEL} doom to a random enemy unit or hero.{DOOM}',
 		proc: 			'own_death',
 		proc_while_dead: true,
-		scales: 		true,
 		targets:	{
 			0:{
 				target: 		'unit',
