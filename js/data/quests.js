@@ -641,6 +641,20 @@ var all_chained_achievements = {
 		card_back: 		'raise_dead',
 		steps: 			6,
 	},
+	fairy_queen:{
+		name: 			'fairy queen',
+		description: 	'Play or summon {AMOUNT} fairy card(s).',
+		objective: 		'fairy_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'fairy',
+		steps: 			6,
+	},
 	fear:{
 		name: 			'fear',
 		description: 	'Have allies return an enemy to their hand {AMOUNT} time(s).',
@@ -756,6 +770,20 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'carnivorous_plant',
+		steps: 			6,
+	},
+	goblin_master:{
+		name: 			'goblin master',
+		description: 	'Play or summon {AMOUNT} goblin card(s).',
+		objective: 		'goblin_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'goblin',
 		steps: 			6,
 	},
 	golemancer:{

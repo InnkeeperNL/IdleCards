@@ -222,10 +222,6 @@ var all_oldest_available_cards = {
 			health: 			30,
 			abilities: 			{snipe_hv: 1, victory_rush: 1},
 		},
-		recipe:{
-			magic_attunement: 	1,
-			archer: 			1
-		}
 	},
 	
 	barbarian_archer:{
@@ -357,12 +353,6 @@ var all_oldest_available_cards = {
 			health: 			45,
 			abilities: 			{strike_unit: 1, empower_ally: 1},
 		},
-		recipe:{
-			peasant: 		 	1,
-			amber: 				1,
-			candle: 			1,
-			magic_attunement: 	1
-		}
 	},
 	bee:{
 		name: 				'bee',
@@ -618,11 +608,6 @@ var all_oldest_available_cards = {
 			health: 			30,
 			abilities: 			{strike_unit: 1, recall_ally: 1},
 		},
-		recipe:{
-			peasant: 			1,
-			magic_attunement: 	1,
-			unsummon: 			1
-		}
 	},
 	camel:{
 		name: 				'camel',
@@ -930,11 +915,6 @@ var all_oldest_available_cards = {
 			health: 			20,
 			abilities: 			{strike_unit: 1, flying: 1, hasten: 1},
 		},
-		recipe:{
-			mana_orb: 			1,
-			mana_crystal: 		1,
-			magic_attunement: 	1
-		}
 	},
 	
 	curse_of_the_leech:{
@@ -948,10 +928,6 @@ var all_oldest_available_cards = {
 		armor: 				false,
 		health: 			false,
 		abilities: 			{curse_all: 1, echo: 1},
-		recipe:{
-			magic_attunement: 	1,
-			deaths_call: 		1,
-		}
 	},
 	
 	cursed_crypt:{
@@ -1523,11 +1499,6 @@ var all_oldest_available_cards = {
 			health: 			20,
 			abilities: 			{fire_bolt_hv: 2, strike_unit: 1, adrenaline: 2},
 		},
-		recipe:{
-			pure_mage: 			1,
-			amber: 				1,
-			magic_attunement: 	1
-		}
 	},
 	
 	expert_fencer:{
@@ -1682,10 +1653,6 @@ var all_oldest_available_cards = {
 		armor: 				false,
 		health: 			false,
 		abilities: 			{fire_ball: 4},
-		recipe:{
-			magic_attunement: 			1,
-			bomb: 						1
-		}
 	},
 
 	fire_deer:{
@@ -1980,11 +1947,6 @@ var all_oldest_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, reclaim_spells: 2},
 		},
-		recipe:{
-			shaman: 			1,
-			magic_attunement: 	1,
-			research: 			1
-		}
 	},
 	friendship:{
 		name: 				'friendship',
@@ -2024,11 +1986,6 @@ var all_oldest_available_cards = {
 			health: 			35,
 			abilities: 			{cold_strike_hv: 1, resist_cold: 1},
 		},
-		recipe:{
-			frozen_claw: 		1,
-			magic_attunement: 	1,
-			giants_foot: 		1
-		}
 	},
 	
 	gemmed_ring:{
@@ -2071,10 +2028,6 @@ var all_oldest_available_cards = {
 			health: 			50,
 			abilities: 			{strike_unit: 1, spellrush: 1},
 		},
-		recipe:{
-			magic_attunement: 	1,
-			mana_crystal: 		5
-		}
 	},
 	ghost_mage:{
 		name: 				'ghost mage',
@@ -2546,11 +2499,6 @@ var all_oldest_available_cards = {
 			health: 			20,
 			abilities: 			{strike_unit: 1, evade: 1, resist_magic: 1},
 		},
-		recipe:{
-			peasant: 			1,
-			amethyst: 			1,
-			magic_attunement: 	1
-		}
 	},
 	hidden_lizard:{
 		name: 				'hidden lizard',
@@ -2767,11 +2715,6 @@ var all_oldest_available_cards = {
 			health: 			30,
 			abilities: 			{strike_unit: 2, evade: 1},
 		},
-		recipe:{
-			pure_mage: 			1,
-			unsummon: 			1,
-			magic_attunement: 	1
-		}
 	},
 	innocent_fairy:{
 		name: 				'innocent fairy',
@@ -2864,10 +2807,6 @@ var all_oldest_available_cards = {
 		armor: 				false,
 		health: 			false,
 		abilities: 			{lightning: 1, echo: 1},
-		recipe:{
-			magic_attunement: 	1,
-			sandstorm: 			1
-		}
 	},
 	magic_attunement:{
 		name: 				'magic attunement',
@@ -2876,7 +2815,8 @@ var all_oldest_available_cards = {
 		color: 				['blue'],
 		pick_chance: 		0.5,
 		time: 				8,
-		image: 				'cards/bokeh-1916807_640.jpg',
+		image: 				'cards/magic_attunement.jpg',
+		image_position: 	'top',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
@@ -3119,7 +3059,7 @@ var all_oldest_available_cards = {
 			type: 				'creature',
 			image: 				'cards/fantasy-4122305_640.jpg',
 			image_position: 	'top',
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			60,
 			abilities: 			{strike_unit: 1, convert_pain: 1},
@@ -3392,11 +3332,6 @@ var all_oldest_available_cards = {
 		armor: 				false,
 		health: 			false,
 		abilities: 			{unsummon_ally: 5, unsummon_enemy: 5, minimum_enemies: 3},
-		recipe:{
-			time_thief: 			1,
-			unsummon: 				1,
-			mana_crystal: 			1
-		}
 	},
 	rock_ogre:{
 		name: 				'rock ogre',
@@ -4282,11 +4217,6 @@ var all_oldest_available_cards = {
 			health: 			30,
 			abilities: 			{power_bolt_hv: 1, draw: 1},
 		},
-		recipe:{
-			rock_seer: 			1,
-			arcane_missiles: 	1,
-			magic_attunement: 	1
-		}
 	},
 	viking:{
 		name: 				'viking',
@@ -4496,10 +4426,6 @@ var all_oldest_available_cards = {
 		armor: 				false,
 		health: 			false,
 		abilities: 			{summon_creature: 1},
-		recipe:{
-			magic_attunement: 	1,
-			unsummon: 			1
-		}
 	},
 	voodoo_doll:{
 		name: 				'voodoo doll',

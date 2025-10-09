@@ -2173,8 +2173,9 @@ var all_abilities = {
 		level_cost_hero: 2,
 	},
 	convert_pain:{
-		description: 	'Summons {LEVEL} ghost(s) when your hero is damaged.',
-		proc: 		'ally_hero_damaged',
+		description: 	'Has a 50% chance to summon {LEVEL} ghost(s) when your hero is damaged.',
+		proc: 			'ally_hero_damaged',
+		proc_chance: 	50,
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
 		proc_amount: 	'ability_level',
@@ -2195,8 +2196,9 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	4,
-		cost_factor: 	'none',
+		level_cost: 		4,
+		level_cost_spell: 	1,
+		level_cost_hero: 	2,
 	},
 	counter:{
 		description: 	'If this survives melee damage from an enemy unit or hero, this deals physical melee damage equal to its power to it, {LEVEL} time(s). This cannot counter a counter.',
@@ -5263,7 +5265,7 @@ var all_abilities = {
 		level_cost: 		1,
 	},
 	grant_vampirism:		{
-		description: 	'Grants the vampiric ability to a random ally creature that does not have it and has at least 1 power. Cannot target your hero.<br/><i>Vampiric: When this deals physical damage to a non-undead creature, it heals iself by the amount of damage done, up to {LEVEL}.</i>',
+		description: 	'Grants the vampiric ability to a random ally creature that does not have it and has at least 1 power. Cannot target your hero.<br/><i>Vampiric: When this deals physical damage to a non-undead creature, it heals itself by the amount of damage done, up to {LEVEL}.</i>',
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
@@ -10199,7 +10201,7 @@ var all_abilities = {
 		level_cost: 	-6,
 	},
 	vampiric:{
-		description: 	'When this deals physical damage to a non-undead creature, it heals iself by the amount of damage done, up to {LEVEL}.',
+		description: 	'When this deals physical damage to a non-undead creature, it heals itself by the amount of damage done, up to {LEVEL}.',
 		proc: 			'dealt_damage',
 		subtypes: 		['physical'],
 		origin_type:    'creature',
@@ -26790,9 +26792,9 @@ function check_card(card_id){
 				console.log(card_id + ' hero hp: ' + hero_hp);
 			}
 			card_info['hero_version']['health'] = Math.ceil(hero_hp);
-			delete card_info['hero_version']['theme'];
-			if(card_info['hero_version']['theme'] != undefined)
-			{
+			//delete card_info['hero_version']['theme'];
+			/*if(card_info['hero_version']['theme'] != undefined)
+			{*/
 				/*if(match_array_values(card_info['hero_version']['theme'], 'muscle') == false)
 				{
 					card_info['hero_version']['theme'][get_highest_key_in_object(card_info['hero_version']['theme']) + 1] = 'muscle';
@@ -26806,30 +26808,33 @@ function check_card(card_id){
 					card_info['hero_version']['theme'][get_highest_key_in_object(card_info['hero_version']['theme']) + 1] = 'aoe';
 				}*/
 
-			}
+			/*}
 			else
+			{*/
+			if(card_info['hero_version']['theme'] == undefined)
 			{
 				card_info['hero_version']['theme'] = {};
-				eachoa(card_info['hero_version']['subtypes'], function(subtype_key, subtype){
-					if(hero_subtype_themes[subtype] != undefined)
-					{
-						eachoa(hero_subtype_themes[subtype], function(new_subtype_key, new_subtype)
-						{
-							card_info['hero_version']['theme'][count_object(card_info['hero_version']['theme'])] = new_subtype;
-						});
-					}
-				});
-				eachoa(card_info['hero_version']['abilities'], function(ability_id, ability_level){
-					if(all_abilities[ability_id] != undefined && all_abilities[ability_id]['hero_tactics'] != undefined)
-					{
-						eachoa(all_abilities[ability_id]['hero_tactics'], function(tactic_key, tactic_id)
-						{
-							card_info['hero_version']['theme'][count_object(card_info['hero_version']['theme'])] = tactic_id;
-						});
-					}
-				});
-				if(count_object(card_info['hero_version']['theme']) == 0){console.log(card_id + ' has no hero theme');}
 			}
+			eachoa(card_info['hero_version']['subtypes'], function(subtype_key, subtype){
+				if(hero_subtype_themes[subtype] != undefined)
+				{
+					eachoa(hero_subtype_themes[subtype], function(new_subtype_key, new_subtype)
+					{
+						card_info['hero_version']['theme'][count_object(card_info['hero_version']['theme'])] = new_subtype;
+					});
+				}
+			});
+			eachoa(card_info['hero_version']['abilities'], function(ability_id, ability_level){
+				if(all_abilities[ability_id] != undefined && all_abilities[ability_id]['hero_tactics'] != undefined)
+				{
+					eachoa(all_abilities[ability_id]['hero_tactics'], function(tactic_key, tactic_id)
+					{
+						card_info['hero_version']['theme'][count_object(card_info['hero_version']['theme'])] = tactic_id;
+					});
+				}
+			});
+			if(count_object(card_info['hero_version']['theme']) == 0){console.log(card_id + ' has no hero theme');}
+			/*}*/
 		}
 
 		if(card_info['theme'] == undefined){card_info['theme'] = {};};
@@ -27960,6 +27965,41 @@ function check_deck_building(){
 		not_used = find_cards_not_used_in_recipe(500, 0, true);
 	}
 }
+
+function check_double_card_images(){
+	eachoa(all_available_cards, function(card_id, card_info){
+		var current_card_image = '';
+		if(card_info['type'] != 'cardback' && card_info['type'] != 'recipe' && card_info['image'] != undefined)
+		{
+			current_card_image = get_card_image_filename(card_id);
+		}
+		if(current_card_image != '')
+		{
+			eachoa(all_available_cards, function(card_id_2, card_info_2){
+				if(card_id != card_id_2 && card_info_2['type'] != 'cardback' && card_info_2['type'] != 'recipe' && card_info_2['image'] != undefined)
+				{
+					var next_card_image = get_card_image_filename(card_id_2);
+					if(current_card_image == next_card_image && count_object(current_card_image.split('-')) > 1)
+					{
+						console.log(card_id + ' has the same image as ' + card_id_2 + ' (' + current_card_image + ')');
+					}
+				}
+			});
+		}
+	});
+}
+
+function get_card_image_filename(card_id){
+	var current_card_image = '';
+	if(all_available_cards[card_id] != undefined && all_available_cards[card_id]['image'] != undefined)
+	{
+		current_card_image = all_available_cards[card_id]['image'] + '';
+		current_card_image = current_card_image.split('/');
+		var last_key = count_object(current_card_image) - 1;
+		current_card_image = current_card_image[last_key];
+	}
+	return current_card_image;
+}
 var all_quests = {
 	stinger:{
 		name: 			'stinger',
@@ -28603,6 +28643,20 @@ var all_chained_achievements = {
 		card_back: 		'raise_dead',
 		steps: 			6,
 	},
+	fairy_queen:{
+		name: 			'fairy queen',
+		description: 	'Play or summon {AMOUNT} fairy card(s).',
+		objective: 		'fairy_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'fairy',
+		steps: 			6,
+	},
 	fear:{
 		name: 			'fear',
 		description: 	'Have allies return an enemy to their hand {AMOUNT} time(s).',
@@ -28718,6 +28772,20 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'carnivorous_plant',
+		steps: 			6,
+	},
+	goblin_master:{
+		name: 			'goblin master',
+		description: 	'Play or summon {AMOUNT} goblin card(s).',
+		objective: 		'goblin_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'goblin',
 		steps: 			6,
 	},
 	golemancer:{

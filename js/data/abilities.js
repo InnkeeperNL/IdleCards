@@ -2172,8 +2172,9 @@ var all_abilities = {
 		level_cost_hero: 2,
 	},
 	convert_pain:{
-		description: 	'Summons {LEVEL} ghost(s) when your hero is damaged.',
-		proc: 		'ally_hero_damaged',
+		description: 	'Has a 50% chance to summon {LEVEL} ghost(s) when your hero is damaged.',
+		proc: 			'ally_hero_damaged',
+		proc_chance: 	50,
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
 		proc_amount: 	'ability_level',
@@ -2194,8 +2195,9 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	4,
-		cost_factor: 	'none',
+		level_cost: 		4,
+		level_cost_spell: 	1,
+		level_cost_hero: 	2,
 	},
 	counter:{
 		description: 	'If this survives melee damage from an enemy unit or hero, this deals physical melee damage equal to its power to it, {LEVEL} time(s). This cannot counter a counter.',
@@ -5262,7 +5264,7 @@ var all_abilities = {
 		level_cost: 		1,
 	},
 	grant_vampirism:		{
-		description: 	'Grants the vampiric ability to a random ally creature that does not have it and has at least 1 power. Cannot target your hero.<br/><i>Vampiric: When this deals physical damage to a non-undead creature, it heals iself by the amount of damage done, up to {LEVEL}.</i>',
+		description: 	'Grants the vampiric ability to a random ally creature that does not have it and has at least 1 power. Cannot target your hero.<br/><i>Vampiric: When this deals physical damage to a non-undead creature, it heals itself by the amount of damage done, up to {LEVEL}.</i>',
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
@@ -10198,7 +10200,7 @@ var all_abilities = {
 		level_cost: 	-6,
 	},
 	vampiric:{
-		description: 	'When this deals physical damage to a non-undead creature, it heals iself by the amount of damage done, up to {LEVEL}.',
+		description: 	'When this deals physical damage to a non-undead creature, it heals itself by the amount of damage done, up to {LEVEL}.',
 		proc: 			'dealt_damage',
 		subtypes: 		['physical'],
 		origin_type:    'creature',

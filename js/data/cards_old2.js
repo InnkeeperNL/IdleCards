@@ -233,10 +233,6 @@ var all_older_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, strike_arrival: 5, poisonous: 1},
 		},
-		recipe:{
-			ravine: 			1,
-			sinister_archer: 	1,
-		},
 		quote: '\"She just needs one chance\"'
 	},
 	badger:{
@@ -292,10 +288,6 @@ var all_older_available_cards = {
 			armor: 				0,
 			health: 			40,
 			abilities: 			{counter: 1},
-		},
-		recipe:{
-			ambush: 			1,
-			sinister_archer: 	1,
 		},
 		quote: '\"Watch your back\"'
 	},
@@ -1972,10 +1964,6 @@ var all_older_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, counter_spell: 1},
 		},
-		recipe:{
-			magic_dust: 		1,
-			mana_mage: 			1
-		}
 	},
 	sinister_archer:{
 		name: 				'sinister archer',
@@ -1983,30 +1971,22 @@ var all_older_available_cards = {
 		type: 				'creature',
 		subtypes: 			['human','archer'],
 		color: 				['orange'],
-		theme: 				['direct_damage','evasion','ranged','empower'],
+		theme: 				[],
 		pick_chance: 		1,
 		time: 				7,
-		image: 				'cards/amazone-622498_640.jpg',
+		image: 				'cards/sinister_archer.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{snipe: 1, retreat_on_kill: 1},
+		abilities: 			{snipe: 1, dooming_touch: 3},
 		hero_version: 			{
-			name: 				'sinister archer',
-			type: 				'creature',
 			theme: 				['protection','direct_damage','ranged'],
-			image: 				'cards/amazone-622498_640.jpg',
-			image_position: 		'top',
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{snipe_hero: 1, hide_on_kill: 1},
+			abilities: 			{snipe_hero: 1, dooming_touch: 3},
 		},
-		recipe:{
-			dark_warrior: 		1,
-			pirate: 			1,
-			//raging_barbarian: 	1
-		}
+		quote: '\"Either way, lethal.\"',
 	},
 	/*skybreak:{
 		name: 				'skybreak',
@@ -2123,15 +2103,12 @@ var all_older_available_cards = {
 		theme: 				['spells','deck_control','deck_control','on_play'],
 		pick_chance: 		1,
 		time: 				30,
-		image: 				'cards/fantasy-2879946_640.jpg',
+		image: 				'cards/time_warp.jpg',
+		image_position: 	'top',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{recall_ally: 5, hasten_on_act: 5},
-		recipe:{
-			frozen_claw: 			1,
-			unsummon: 				1,
-		}
+		abilities: 			{unsummon_ally: 5, hasten_on_act: 5},
 	},
 	tower_of_fire:{
 		name: 				'tower of fire',
