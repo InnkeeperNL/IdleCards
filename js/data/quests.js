@@ -772,6 +772,20 @@ var all_chained_achievements = {
 		card_back: 		'carnivorous_plant',
 		steps: 			6,
 	},
+	gnomeling:{
+		name: 			'gnomeling',
+		description: 	'Play or summon {AMOUNT} gnome card(s).',
+		objective: 		'gnome_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'gnomeling',
+		steps: 			6,
+	},
 	goblin_master:{
 		name: 			'goblin master',
 		description: 	'Play or summon {AMOUNT} goblin card(s).',

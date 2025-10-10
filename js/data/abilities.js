@@ -9878,11 +9878,8 @@ var all_abilities = {
 		level_cost: 	1,
 	},
 	trampling_might:{
-		show_amount: 	false,
-		description: 	'A random ally unit that uses power and has the strike ability and an opposing unit, but does not have the trample ability, gains {LEVEL} temporary power and trample until end of turn.<br/><i>Trample: When this kills a unit with melee damage, the excess damage is dealt to the enemy hero.</i>',
-		proc: 		'basic',
+		description: 	'A random ally unit that uses power and has the strike ability and an opposing unit, but does not have the trample ability, gains {LEVEL} permanent power and the trample ability.<br/><i>Trample: When this kills a unit with melee damage, the excess damage is dealt to the enemy hero.</i>',
 		cannot_proc_while_stunned: true,
-		proc_amount: 	1,
 		scales: 		true,
 		ability_subtypes: ['trample'],
 		targets:	{
@@ -9901,22 +9898,21 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'power',
-				type: 			'grant_temp_power',
+				type: 			'increase_power',
 				subtypes: 		['enrage','empower_ally'],
 				amount: 		'ability_level',
 			},
 			1:{
-				type: 			'grant_temp_skill',
+				type: 			'grant_skill',
 				subtypes: 		['grant_trample'],
 				skill_id: 		'trample',
 				amount: 		1
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_spell: 	0.5,
-		cost_adjustment: 	1,
-		cost_factor: 		'none',
+		level_cost: 		4,
+		level_cost_spell: 	1,
+		cost_adjustment: 	2,
 	},
 	trap:{
 		description: 	'Any enemy unit or hero that deals melee damage to this has a 25% chance to be stunned for {LEVEL} round(s).',
