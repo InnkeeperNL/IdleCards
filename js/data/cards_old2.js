@@ -1367,24 +1367,17 @@ var all_older_available_cards = {
 		theme: 				['spells','deck_control'],
 		pick_chance: 		0.2,
 		time: 				1,
-		image: 				'cards/dark-2971931_1280.jpg',
+		image: 				'cards/mana_elf.jpg',
+		image_position: 	'top left',
 		power: 				1,
 		armor: 				0,
-		health: 			5,
+		health: 			4,
 		abilities: 			{strike: 1, spellrush: 1},
 		hero_version: 			{
-			name: 				'mana elf',
-			type: 				'creature',
-			image: 				'cards/dark-2971931_1280.jpg',
-			image_position: 	'top',
 			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, spellrush: 1},
-		},
-		recipe:{
-			mana_mage: 		1,
-			mermaid: 		1
 		},
 		quote: '\"They live on magical energy\"'
 	},

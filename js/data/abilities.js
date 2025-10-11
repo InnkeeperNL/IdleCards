@@ -6174,7 +6174,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		5,
+		level_cost: 		4,
 		level_cost_spell: 	1.25,
 		average_hits: 		1,
 	},
