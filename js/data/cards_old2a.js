@@ -874,11 +874,12 @@ var all_oldest_available_cards = {
 		subtypes: 			['elf','cleric'],
 		color: 				['purple','green'],
 		time: 				6,
-		image: 				'cards/fantasy-3699102_640.jpg',
+		image: 				'cards/crypt_elf.jpg',
+		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, poisonous: 1, return_soul: 1},
+		abilities: 			{strike: 1, venom: 1, reclaim_creature: 1},
 		hero_version: 			{
 			name: 				'crypt elf',
 			type: 				'creature',
@@ -887,13 +888,9 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, poisonous: 1, reclaim_creatures: 1},
+			abilities: 			{strike_unit: 1, venom: 1, reclaim_creatures: 1},
 		},
-		recipe:{
-			forest_elf: 		1,
-			cursed_crypt: 		1,
-			herbalists_lab: 	1
-		}
+		quote: '\"Deep within the forest are ancient crypts.\"',
 	},
 	crystal_dragon:{
 		name: 				'crystal dragon',
@@ -1051,10 +1048,6 @@ var all_oldest_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, blessed_arrivals: 3},
 		},
-		recipe:{
-			devout_nun: 		1,
-			holy_relic: 		1
-		}
 	},
 	daemon_lord:{
 		name: 				'daemon lord',
@@ -1181,24 +1174,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['human','cleric'],
 		color: 				['yellow'],
 		time: 				2,
-		image: 				'cards/nun-4018982_640.png',
+		image: 				'cards/devout_nun.jpg',
+		image_position: 	'top',
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, blessed_entry: 2},
+		abilities: 			{strike: 1, blessed_arrivals: 1},
 		hero_version: 			{
-			name: 				'devout nun',
-			type: 				'creature',
-			image: 				'cards/nun-4018982_640.png',
 			power: 				3,
 			armor: 				0,
 			health: 			60,
 			abilities: 			{strike_unit: 1, blessed_arrivals: 1},
 		},
-		recipe:{
-			peasant: 			1,
-			holy_relic: 		1,
-		}
+		quote: '\"Come here, child. I will welcome you.\"',
 	},
 	
 	diamond:{
@@ -1263,26 +1251,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['elf','warrior'],
 		color: 				['green'],
 		time: 				9,
-		image: 				'cards/dragon-3345081_1280.jpg',
+		image: 				'cards/elf_amazone.jpg',
+		image_position: 	'top',
 		power: 				3,
 		armor: 				0,
 		health: 			6,
 		abilities: 			{strike: 1, evade: 1},
 		hero_version: 			{
-			name: 				'elf amazone',
-			type: 				'creature',
-			image: 				'cards/dragon-3345081_1280.jpg',
 			power: 				2,
 			armor: 				0,
 			health: 			25,
 			abilities: 			{strike_unit: 1, evade: 1},
 		},
-		recipe:{
-			forest_elf: 		1,
-			elf_commander: 		1,
-			lumber: 			1,
-			ore: 				1
-		}
+		quote: '\"Trained by the forest.\"',
 	},
 	elf_death_druid:{
 		name: 				'elf death druid',
@@ -1305,10 +1286,6 @@ var all_oldest_available_cards = {
 			health: 			45,
 			abilities: 			{strike_unit: 1, regenerate: 1, deaths_curse: 1},
 		},
-		recipe:{
-			fallen_elf: 		1,
-			mausoleum: 			1
-		}
 	},
 	
 	elf_gravekeeper:{
@@ -1343,27 +1320,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['elf','cleric'],
 		color: 				['green'],
 		time: 				3,
-		image: 				'cards/fantasy-2944440_1280.jpg',
+		image: 				'cards/elf_healer.jpg',
 		image_position: 	'top',
 		power: 				false,
 		armor: 				0,
 		health: 			5,
 		abilities: 			{heal: 2, cleanse: 1},
 		hero_version: 			{
-			name: 				'elf healer',
-			type: 				'creature',
-			image: 				'cards/fantasy-2944440_1280.jpg',
-			
 			power: 				false,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{heal: 2, cleanse: 1},
 		},
-		recipe:{
-			elf_protector: 		1,
-			herbs: 				1,
-			healing_oil: 		1
-		}
+		quote: '\"Keeping the forest alive.\"',
 	},
 	
 	elf_mystic:{
@@ -1607,24 +1576,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['elf','warrior'],
 		color: 				['purple'],
 		time: 				5,
-		image: 				'cards/fantasy-5504870_640.jpg',
+		image: 				'cards/fallen_elf.jpg',
+		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
 		health: 			5,
 		abilities: 			{strike: 1, evade: 1, cursed_touch: 1},
 		hero_version: 			{
-			name: 				'fallen elf',
-			type: 				'creature',
-			image: 				'cards/fantasy-5504870_640.jpg',
 			power: 				2,
 			armor: 				0,
 			health: 			25,
 			abilities: 			{strike_unit: 1, evade: 1, cursed_touch: 1},
 		},
-		recipe:{
-			forest_elf: 		1,
-			amethyst: 			1,
-		}
+		quote: '\"She is no longer true to the forest.\"',
 	},
 	fiery_sacrifice:{
 		name: 				'fiery sacrifice',
