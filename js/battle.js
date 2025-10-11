@@ -140,7 +140,7 @@ function show_battle(){
 		//SET UP DECKS
 		battle_info.deck_2 = {};
 		var deck_card_counter = 0;
-		$.each(gamedata.decks[gamedata.current_deck], function(card_id, amount){
+		eachoa(gamedata.decks[gamedata.current_deck], function(card_id, amount){
 			if(card_id != 'hero'){
 				for(var t = 0;t < amount; t++){
 					battle_info.deck_2[deck_card_counter] = {
@@ -160,14 +160,14 @@ function show_battle(){
 				var enemy_deck_size = 30 * get_effective_power_factor();
 				if(enemy_deck_size > 30){enemy_deck_size = 30;}
 				if(enemy_deck_size < 1){enemy_deck_size = 1;}
-			    if(Math.random() > 1.5)
+			    /*if(Math.random() > 1.5)
 			    {
 				    battle_info.deck_1 = construct_random_deck(enemy_deck_size, enemy_hero);
 			    }
 			    else
-			    {
+			    {*/
 			        battle_info.deck_1 = construct_random_deck(enemy_deck_size, enemy_hero, true);
-			    }
+			    /*}*/
 			    if(endless_waves == false)
 			    {
 			    	gamedata['current_summon']['deck'] = true_copyobject(battle_info.deck_1);
@@ -214,8 +214,12 @@ function show_vs(){
 		enemy_subtext += '<br/><span>Wave ' + endless_wave_count + ' (' + Math.floor(difficulty_setting * 10) + '%)</span>';
 	}
 	parsed_vs += '<div class="vs_container">';
-	parsed_vs += '<div class="vs_player_image" style="background-image:url(images/' + battle_info['combat_units'][2]['image'] + ')"></div>';
-	parsed_vs += '<div class="vs_enemy_image" style="background-image:url(images/' + battle_info['combat_units'][1]['image'] + ')"></div>';
+	var player_image_position = '';
+	if(battle_info['combat_units'][2]['image_position'] != undefined){player_image_position = ';background-position:' + battle_info['combat_units'][2]['image_position'];}
+	var enemy_image_position = '';
+	if(battle_info['combat_units'][1]['image_position'] != undefined){enemy_image_position = ';background-position:' + battle_info['combat_units'][1]['image_position'];}
+	parsed_vs += '<div class="vs_player_image" style="background-image:url(images/' + battle_info['combat_units'][2]['image'] + ')' + player_image_position + '"></div>';
+	parsed_vs += '<div class="vs_enemy_image" style="background-image:url(images/' + battle_info['combat_units'][1]['image'] + ')' + enemy_image_position + '"></div>';
 	parsed_vs += '<div class="vs_player_name">' + capitalizeFirstLetter(battle_info['combat_units'][2]['name']) + '</div>';
 	parsed_vs += '<div class="vs_enemy_name">' + capitalizeFirstLetter(battle_info['combat_units'][1]['name']) + enemy_subtext + '</div>';
 	parsed_vs += '<div class="vs_vs">V&nbsp;<br/>&nbsp;S</div>';
@@ -286,7 +290,7 @@ function convert_deck(deck){
 
 	var converted_deck = {};
 	var deck_card_counter = 0;
-	$.each(deck['deck'], function(card_id, amount){
+	eachoa(deck['deck'], function(card_id, amount){
 		if(card_id != 'hero'){
 			for(var t = 0;t < amount; t++){
 				converted_deck[deck_card_counter] = {
@@ -381,7 +385,7 @@ function get_active_deck_speed(){
 	var total_card_times = 0;
 	if(active_deck_card_count > 0){
 		active_deck_card_count = 0;
-		$.each(active_deck, function(card_id, card_count){
+		eachoa(active_deck, function(card_id, card_count){
 			if(card_id != 'hero' && all_available_cards[card_id] != undefined)
 			{
 				total_card_times += all_available_cards[card_id]['time'] * card_count;
@@ -468,14 +472,14 @@ function construct_random_deck(size, hero, randomized){
 	
 	if(all_available_cards[hero]['hero_version']['deck_times'] != undefined)
 	{
-		$.each(all_available_cards[hero]['hero_version']['deck_times'], function(deck_time_type, deck_time_percent){
+		eachoa(all_available_cards[hero]['hero_version']['deck_times'], function(deck_time_type, deck_time_percent){
 			deck_times[deck_time_type] = deck_time_percent;
 		});
 	}
 	if(size < 30)
 	{
 		var deck_size_ratio = 30 / size;
-		$.each(deck_times, function(deck_time_type, deck_time_percent){
+		eachoa(deck_times, function(deck_time_type, deck_time_percent){
 			deck_times[deck_time_type] *= deck_size_ratio;
 		});
 	}
@@ -489,7 +493,7 @@ function construct_random_deck(size, hero, randomized){
 		/*if(this_card_counter > 4)
 		{
 			var allready_not_these = false;
-			$.each(not_these, function(not_these_key, not_these_id){
+			eachoa(not_these, function(not_these_key, not_these_id){
 				if(not_these_id == card_id){allready_not_these == true;}
 			});
 			if(allready_not_these == false)
@@ -537,7 +541,7 @@ function construct_random_deck(size, hero, randomized){
 			//console.log(second_color);
 		}
 		this_card_counter = 0;
-		$.each(random_deck, function(useless_key, count_card_info){
+		eachoa(random_deck, function(useless_key, count_card_info){
 			if(count_card_info['card_id'] == card_id)
 			{
 				this_card_counter += 1 / card_weight; 
@@ -546,7 +550,7 @@ function construct_random_deck(size, hero, randomized){
 		if(this_card_counter > 4 || (all_available_cards[card_id]['max_in_deck'] != undefined && this_card_counter >= all_available_cards[card_id]['max_in_deck']))
 		{
 			var allready_not_these = false;
-			$.each(not_these, function(not_these_key, not_these_id){
+			eachoa(not_these, function(not_these_key, not_these_id){
 				if(not_these_id == card_id){allready_not_these = true;}
 			});
 			if(allready_not_these == false)
@@ -581,7 +585,7 @@ function construct_random_deck(size, hero, randomized){
 		
 		if(all_available_cards[card_id] != undefined && all_available_cards[card_id]['pick_chance'] > 0)
 		{
-			$.each(all_available_cards[card_id]['color'], function(useless_key, color){
+			eachoa(all_available_cards[card_id]['color'], function(useless_key, color){
 				if(deck_color == 'colorless')
 				{
 					deck_color = color;
@@ -636,7 +640,7 @@ function construct_random_deck(size, hero, randomized){
 		console.log(deck_theme);
 		var counted_deck_cards = {};
 		var average_card_time = 0;
-		$.each(random_deck, function(deck_card_id, deck_card_info){
+		eachoa(random_deck, function(deck_card_id, deck_card_info){
 			if(counted_deck_cards[deck_card_info['card_id']] == undefined)
 			{
 				counted_deck_cards[deck_card_info['card_id']] = 1;
@@ -665,7 +669,7 @@ function check_deck_min_enemy_targets(random_deck, deck_theme){
 	var min_enemies_ability_count = 0;
 	var min_enemies_cards = {};
 	var non_min_enemy_cards = {};
-	$.each(random_deck, function(deck_id, deck_info){
+	eachoa(random_deck, function(deck_id, deck_info){
 		if(all_available_cards[deck_info['card_id']] != undefined && match_array_values(theme_to_check,all_available_cards[deck_info['card_id']]['theme']) == true)
 		{
 			min_enemies_ability_count++;
@@ -713,7 +717,7 @@ function count_enemy_deck_cards(){
 	if(battle_info != undefined && battle_info['deck_1'] != undefined)
 	{
 		var card_count = {};
-		$.each(battle_info['deck_1'], function(card_id, card_info){
+		eachoa(battle_info['deck_1'], function(card_id, card_info){
 			if(card_count[card_info['card_id']] == undefined)
 			{
 				card_count[card_info['card_id']] = 1;
@@ -742,7 +746,7 @@ function update_deck_counts(){
 
 function count_deck_cards(deck, card_type){
 	var deck_card_count = 0;
-	$.each(deck, function(card_id, card_info){
+	eachoa(deck, function(card_id, card_info){
 		if(card_info['status'] == 'deck' && (card_type == undefined || all_available_cards[card_info['card_id']]['type'] == card_type)){deck_card_count++;}
 	})
 	return deck_card_count;
@@ -750,7 +754,7 @@ function count_deck_cards(deck, card_type){
 
 function count_hand_cards(deck, card_type){
 	var hand_card_count = 0;
-	$.each(deck, function(card_id, card_info){
+	eachoa(deck, function(card_id, card_info){
 		if(card_info['status'] == 'hand' && (card_type == undefined || all_available_cards[card_info['card_id']]['type'] == card_type)){hand_card_count++;}
 	})
 	return hand_card_count;
@@ -758,7 +762,7 @@ function count_hand_cards(deck, card_type){
 
 function count_grave_cards(deck, card_type){
 	var grave_card_count = 0;
-	$.each(deck, function(card_id, card_info){
+	eachoa(deck, function(card_id, card_info){
 		if(card_info['status'] == 'grave' && (card_type == undefined || all_available_cards[card_info['card_id']]['type'] == card_type)){grave_card_count++;}
 	})
 	return grave_card_count;
@@ -768,7 +772,7 @@ function get_random_hero(on_value, min_rarity, max_rarity, common_reduction){
 	if(gamedata['known_recipes'] == undefined){gamedata['known_recipes'] = {};}
 	var picked_hero = false;
 	var available_hero_count = 0;
-	$.each(all_available_cards, function(card_id, card){
+	eachoa(all_available_cards, function(card_id, card){
 		if(card['hero_version'] != undefined && (max_rarity == undefined || card['value'] <= max_rarity) && (min_rarity == undefined || card['value'] >= min_rarity))
 		{
 			/*if(card['pick_chance'] == undefined)
@@ -796,7 +800,7 @@ function get_random_hero(on_value, min_rarity, max_rarity, common_reduction){
 		}
 	});
 	var picked_hero_number = (Math.random() * available_hero_count);
-	$.each(all_available_cards, function(card_id, card){
+	eachoa(all_available_cards, function(card_id, card){
 		if(card['hero_version'] != undefined && (max_rarity == undefined || card['value'] <= max_rarity) && (min_rarity == undefined || card['value'] >= min_rarity))
 		{
 			if(on_value == undefined || on_value == false)
@@ -841,7 +845,7 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 	var total_card_count = 0;
 	var picked_card = false;
 	var month = new Date().getMonth() + 1;
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['type'] != undefined && match_array_values(card_info['type'], not_types) == false && (match_array_values(card_info['type'], type) || type == 'any') && (max_time == undefined || max_time >= card_info['time']) && (min_time == undefined || min_time <= card_info['time']) && (card_info['months_available'] == undefined || match_array_values([month],card_info['months_available']) == true))
 		{
 			var can_pick = true;
@@ -852,7 +856,7 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 					can_pick = false;
 				}
 			
-				$.each(card_info['color'], function(useless_key, color){
+				eachoa(card_info['color'], function(useless_key, color){
 					if(color != color_restriction && second_color_restriction != false && color != second_color_restriction && color != 'colorless')
 					{
 						can_pick = false;
@@ -894,7 +898,7 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 	});
 
 	var picked_card_number = (Math.random() * total_card_count);
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['type'] != undefined && match_array_values(card_info['type'], not_types) == false && (match_array_values(card_info['type'], type) || type == 'any') && (max_time == undefined || max_time >= card_info['time']) && (min_time == undefined || min_time <= card_info['time']) && (card_info['months_available'] == undefined || match_array_values([month],card_info['months_available']) == true))
 		{
 			var can_pick = true;
@@ -905,7 +909,7 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 					can_pick = false;
 				}
 			
-				$.each(card_info['color'], function(useless_key, color){
+				eachoa(card_info['color'], function(useless_key, color){
 					if(color != color_restriction && second_color_restriction != false && color != second_color_restriction && color != 'colorless')
 					{
 						can_pick = false;
@@ -955,7 +959,7 @@ function get_random_card_based_on_time(type, max_time, color_restriction, second
 	var total_card_count = 0;
 	var picked_card = false;
 	var month = new Date().getMonth() + 1;
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['pick_chance'] > 0 && card_info['type'] != undefined && (not_subtypes == undefined || match_array_values(card_info['subtypes'], not_subtypes) == false || not_subtypes == 'any') && (card_info['type'] == type || type == 'any' || type == undefined) && (max_time == undefined || max_time >= card_info['time']) && (min_time == undefined || min_time <= card_info['time']) && (card_subtype == undefined || match_array_values(card_subtype,card_info['subtypes']) == true) && (card_info['months_available'] == undefined || match_array_values([month],card_info['months_available']) == true))
 		{
 			var can_pick = true;
@@ -966,7 +970,7 @@ function get_random_card_based_on_time(type, max_time, color_restriction, second
 					can_pick = false;
 				}
 			
-				$.each(card_info['color'], function(useless_key, color){
+				eachoa(card_info['color'], function(useless_key, color){
 					if(color != color_restriction && second_color_restriction != false && color != second_color_restriction)
 					{
 						can_pick = false;
@@ -986,7 +990,7 @@ function get_random_card_based_on_time(type, max_time, color_restriction, second
 		}
 	});
 	var picked_card_number = (Math.random() * total_card_count);
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['pick_chance'] > 0 && card_info['type'] != undefined && (not_subtypes == undefined || match_array_values(card_info['subtypes'], not_subtypes) == false || not_subtypes == 'any') && (card_info['type'] == type || type == 'any' || type == undefined) && (max_time == undefined || max_time >= card_info['time']) && (min_time == undefined || min_time <= card_info['time']) && (card_subtype == undefined || match_array_values(card_subtype,card_info['subtypes']) == true) && (card_info['months_available'] == undefined || match_array_values([month],card_info['months_available']) == true))
 		{
 			var can_pick = true;
@@ -997,7 +1001,7 @@ function get_random_card_based_on_time(type, max_time, color_restriction, second
 					can_pick = false;
 				}
 			
-				$.each(card_info['color'], function(useless_key, color){
+				eachoa(card_info['color'], function(useless_key, color){
 					if(color != color_restriction && second_color_restriction != false && color != second_color_restriction)
 					{
 						can_pick = false;
@@ -1058,7 +1062,7 @@ function get_random_card_based_on_value(min_value, color, type, all_pick_chance,
 	}*/
 	//for(i=1;i<min_value;i++){pure_card_chance=pure_card_chance/(1+pure_card_chance );}
 	var month = new Date().getMonth() + 1;
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 
 		if((not_these == undefined || match_array_values(not_these, card_id) == false) && (card_info['recipe'] != undefined || type == 'fragment' || true) && (card_info['pick_chance'] > 0 || card_info['basic_reward'] != undefined || all_pick_chance != undefined) && ((type == undefined && card_info['type'] != 'cardback' && card_info['type'] != 'consumable' && card_info['type'] != 'currency' && card_info['type'] != 'item' && card_info['type'] != 'treasure') || match_array_values(card_info['type'], type) == true ) && card_info['value'] != undefined && card_info['value'] >= min_value && (max_value == undefined || card_info['value'] <= max_value) && (color == undefined || card_info['color'][0] == color) && (card_info['months_available'] == undefined || match_array_values([month],card_info['months_available']) == true))
 		{
@@ -1071,7 +1075,7 @@ function get_random_card_based_on_value(min_value, color, type, all_pick_chance,
 		
 	});
 	var picked_card_number = (Math.random() * total_card_count);
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 
 		if((not_these == undefined || match_array_values(not_these, card_id) == false) && (card_info['recipe'] != undefined || type == 'fragment' || true) && (card_info['pick_chance'] > 0 || card_info['basic_reward'] != undefined || all_pick_chance != undefined) && ((type == undefined && card_info['type'] != 'cardback' && card_info['type'] != 'consumable' && card_info['type'] != 'currency' && card_info['type'] != 'item' && card_info['type'] != 'treasure') || match_array_values(card_info['type'], type) == true ) && card_info['value'] != undefined && card_info['value'] >= min_value && (max_value == undefined || card_info['value'] <= max_value) && (color == undefined || card_info['color'][0] == color) && (card_info['months_available'] == undefined || match_array_values([month],card_info['months_available']) == true))
 		{
@@ -1112,11 +1116,11 @@ function get_basic_reward_card(not_these){
 	var month = new Date().getMonth() + 1;
 	var found_card = 'peasant';
 	var possible_cards = {};
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if((card_info['basic_reward'] != undefined && card_info['basic_reward'] == true) || (card_info['value'] == 1 && match_array_values([month],card_info['months_available']) == true))
 		{
 		    var can_be_picked = true;
-		    $.each(not_these, function(useless_key, not_this){
+		    eachoa(not_these, function(useless_key, not_this){
 		        if(not_this['card_id'] == card_id)
 		        {
 		            can_be_picked = false;
@@ -1141,7 +1145,7 @@ function get_fragment_card(){
 	var month = new Date().getMonth() + 1;
 	var found_card = '';
 	var possible_cards = {};
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['type'] == 'fragment' && (card_info['months_available'] == undefined || match_array_values([month],card_info['months_available']) == true))
 		{
 
@@ -1161,7 +1165,7 @@ function get_back_card_card(){
 	var month = new Date().getMonth() + 1;
 	var found_card = '';
 	var possible_cards = {};
-	$.each(all_available_cards, function(card_id, card_info){
+	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['non_tradable'] == undefined && card_info['type'] == 'cardback' && card_info['reward'] != undefined && card_info['reward']['type'] != undefined && card_info['reward']['type'] == 'card_back' && (card_info['months_available'] == undefined || match_array_values([month],card_info['months_available']) == true))
 		{
 
@@ -1229,7 +1233,7 @@ function parse_combat_unit(unit, added_classes, no_slot_class, hero){
 	}
 	if(count_object(current_card['color']) > 1)
 	{
-		$.each(current_card['color'], function(useless_key, color){
+		eachoa(current_card['color'], function(useless_key, color){
 			parsed_card += 	'<div class="card_color color_' + color + ' color_number_' + useless_key + '"></div>';
 		});
 	}
@@ -1266,7 +1270,7 @@ function parse_combat_unit(unit, added_classes, no_slot_class, hero){
 	}
 	parsed_card += 		'<div class="card_armor" style="opacity:' + show_armor + '">' + current_card['armor'] + '</div>';
 	parsed_card += 	'<div class="unit_effects">';
-	$.each(current_card['effects'], function(effect_key, amount){
+	eachoa(current_card['effects'], function(effect_key, amount){
 		parsed_card += 	'<div class="effect_' + effect_key + '">' + amount + '</div>';
 	});
 	parsed_card += 	'</div>';
@@ -1278,7 +1282,7 @@ function parse_combat_unit(unit, added_classes, no_slot_class, hero){
 function parse_abilities(unit_id){
 	var current_unit = battle_info['combat_units'][unit_id];
 	var all_parsed_abilities = '';
-	$.each(current_unit['abilities'], function(ability_key, amount){
+	eachoa(current_unit['abilities'], function(ability_key, amount){
 		if((ability_key != 'strike' && ability_key != 'strike_unit') || amount != 1)
 		{
 			
@@ -1364,7 +1368,7 @@ function create_hero(card_id, side){
 			current_hero['health'] = Math.ceil(current_hero['health'] * effective_power_factor);
 		}
 		//current_hero['health'] = Math.ceil(current_hero['health'] * effective_power_factor);
-		$.each(current_hero['abilities'], function(ability_id, ability_level){
+		eachoa(current_hero['abilities'], function(ability_id, ability_level){
 			if(all_abilities[ability_id] != undefined && all_abilities[ability_id]['scales'] != undefined && all_abilities[ability_id]['scales'] == true)
 			{
 				if((ability_level * effective_power_factor) > 1)
@@ -1412,7 +1416,7 @@ function apply_power_factor(unit, side){
 		{
 			unit['armor'] = Math.ceil(unit['armor'] * effective_power_factor);
 		}
-		$.each(unit['abilities'], function(ability_id, ability_level){
+		eachoa(unit['abilities'], function(ability_id, ability_level){
 			if(all_abilities[ability_id] != undefined && all_abilities[ability_id]['scales'] != undefined && all_abilities[ability_id]['scales'] == true)
 			{
 				if((ability_level * effective_power_factor) > 1)
@@ -1450,13 +1454,13 @@ function create_combat_unit(unit, side){
 	combat_unit['effects'] = true_copyobject(unit['effects']);
 	if(combat_unit['effects'] == undefined){combat_unit['effects'] = {};}
 	var temp_abilities = {};
-	$.each(combat_unit['abilities'], function(ability_key, ability_level){
+	eachoa(combat_unit['abilities'], function(ability_key, ability_level){
 		temp_abilities[ability_key] = ability_level;
 	});
 	combat_unit['abilities'] = temp_abilities;
 	combat_unit = apply_power_factor(combat_unit, side);
    	combat_unit['ability_delays'] = {};
-   	$.each(combat_unit['abilities'], function(ability_key, ability_level){
+   	eachoa(combat_unit['abilities'], function(ability_key, ability_level){
    		if(all_abilities[ability_key]['starting_delay'] != undefined)
    		{
    			combat_unit['ability_delays'][ability_key] = all_abilities[ability_key]['starting_delay'];
@@ -1495,14 +1499,14 @@ function find_new_ability(not_these, unit){
 	var possible_abilities_count = 0;
 	var not_these_array = [];
 	var temp_key = 0;
-	$.each(not_these, function(key, data){
+	eachoa(not_these, function(key, data){
 		if((all_abilities[key]['show_amount'] != undefined && all_abilities[key]['show_amount'] == false) || true)
 		{
 			not_these_array[temp_key] = key;
 			temp_key++;
 		}
 	});
-	$.each(all_abilities, function(ability_id, ability){
+	eachoa(all_abilities, function(ability_id, ability){
 		if(match_array_values(not_these_array, [ability_id]) == false)
 		{
 			if(check_if_ability_can_be_added(ability_id, unit))
@@ -1512,7 +1516,7 @@ function find_new_ability(not_these, unit){
 		}
 	});
 	var chosen_ability_number = Math.floor(Math.random() * possible_abilities_count) + 1;
-	$.each(all_abilities, function(ability_id, ability){
+	eachoa(all_abilities, function(ability_id, ability){
 		if(match_array_values(not_these_array, [ability_id]) == false)
 		{
 			if(check_if_ability_can_be_added(ability_id, unit))

@@ -765,10 +765,6 @@ var all_older_available_cards = {
 			health: 			40,
 			abilities: 			{shoot_unit: 1},
 		},
-		recipe:{
-			elf_scout: 			1,
-			thorned_tree: 		1
-		}
 	},
 	elf_scout:{
 		name: 				'elf scout',
@@ -779,15 +775,13 @@ var all_older_available_cards = {
 		theme: 				['protection','evasion','elves'],
 		pick_chance: 		0.7,
 		time: 				1,
-		image: 				'cards/forest-2636034_1280.jpg',
+		image: 				'cards/elf_scout.jpg',
+		image_position: 	'top',
 		power: 				1,
 		armor: 				0,
 		health: 			2,
 		abilities: 			{strike: 1, evade: 1, stealth: 1},
 		hero_version: 			{
-			name: 				'elf scout',
-			type: 				'creature',
-			image: 				'cards/forest-2636034_1280.jpg',
 			power: 				2,
 			armor: 				0,
 			health: 			30,

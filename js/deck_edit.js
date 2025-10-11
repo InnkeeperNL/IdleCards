@@ -73,7 +73,7 @@ function show_available_cards(heroes_only){
 	if(gamedata['decks'][gamedata['current_deck']] == undefined){gamedata['current_deck'] = 0;}
 	var current_deck = gamedata['decks'][gamedata['current_deck']];
 
-	$.each(current_deck, function(card_id, card_count){
+	eachoa(current_deck, function(card_id, card_count){
 		if(card_count < 1)
 		{
 			delete current_deck[card_id];
@@ -109,7 +109,7 @@ function show_available_cards(heroes_only){
 	}
 	
 
-	$.each(gamedata['owned_cards'], function(card_id, owned_amount){
+	eachoa(gamedata['owned_cards'], function(card_id, owned_amount){
 		var effective_owned_amount = owned_amount + 0;
 		if(current_deck[card_id] != undefined){effective_owned_amount -= current_deck[card_id];}
 		if(current_deck['hero'] != undefined && current_deck['hero'] == card_id){effective_owned_amount -= 1;}
@@ -143,7 +143,7 @@ function show_available_cards(heroes_only){
 				wrong_color = true;
 			}
 		
-			$.each(all_available_cards[card_id]['color'], function(useless_key, color){
+			eachoa(all_available_cards[card_id]['color'], function(useless_key, color){
 				if(color != deck_color && second_deck_color != false && color != second_deck_color && color != 'colorless')
 				{
 					wrong_color = true;
@@ -218,10 +218,10 @@ function get_second_deck_color(deck_color){
 	else
 	{
 		var current_deck = gamedata['decks'][gamedata['current_deck']];
-		$.each(current_deck, function(card_id, amount){
+		eachoa(current_deck, function(card_id, amount){
 			if(all_available_cards[card_id] != undefined)
 			{
-				$.each(all_available_cards[card_id]['color'], function(useless_key, color){
+				eachoa(all_available_cards[card_id]['color'], function(useless_key, color){
 					if(second_deck_color == false && color != 'colorless' && color != deck_color)
 					{
 						second_deck_color = color;
@@ -288,7 +288,7 @@ function show_current_deck(){
 		var second_deck_color = get_second_deck_color(deck_color);
 	}
 
-	$.each(current_deck, function(card_id, amount){
+	eachoa(current_deck, function(card_id, amount){
 		if(card_id == 'hero')
 		{
 			var parsed_card = parse_card(amount, undefined, true);
@@ -335,7 +335,7 @@ function parse_card(card_id, show_owned, hero_version, alt_name){
 		parsed_card += 	'<div class="card card_type_' + current_card['type'] + '">';
 		if(count_object(current_card['color']) > 1)
 		{
-			$.each(current_card['color'], function(useless_key, color){
+			eachoa(current_card['color'], function(useless_key, color){
 				parsed_card += 	'<div class="card_color color_' + color + ' color_number_' + useless_key + '"></div>';
 			});
 		}
@@ -347,7 +347,7 @@ function parse_card(card_id, show_owned, hero_version, alt_name){
 		if(current_card['image_position'] != undefined){image_position = ';background-position:' + current_card['image_position'];}
 		parsed_card += 		'<div class="card_image" style="background-image:url(images/' + current_card['image'] + ')' + image_position + '"></div>';
 		var all_parsed_abilities = '';
-		$.each(current_card['abilities'], function(ability_key, amount){
+		eachoa(current_card['abilities'], function(ability_key, amount){
 			if(((ability_key != 'strike' || hero_version == true) && (ability_key != 'strike_unit' || hero_version != true)) || amount != 1)
 			{
 				if(all_parsed_abilities != ''){all_parsed_abilities += ',&nbsp;</span>';}
@@ -473,7 +473,7 @@ function parse_card(card_id, show_owned, hero_version, alt_name){
 			parsed_card += 		'<div class="card_armor">' + current_card['armor'] + '</div>';
 		}
 		parsed_card += 	'<div class="unit_effects">';
-		$.each(current_card['effects'], function(effect_key, amount){
+		eachoa(current_card['effects'], function(effect_key, amount){
 			parsed_card += 	'<div class="effect_' + effect_key + '">' + amount + '</div>';
 		});
 		parsed_card += 	'</div>';
@@ -530,7 +530,7 @@ function add_card_to_deck(card_id, forced){
 
 function count_current_deck_cards(deck){
 	var card_count = 0;
-	$.each(deck, function(card_id, card_amount){
+	eachoa(deck, function(card_id, card_amount){
 		if(card_id != 'hero')
 		{
 			card_count += card_amount;
@@ -610,7 +610,7 @@ function check_hero_color(){
 	var current_deck = gamedata['decks'][gamedata['current_deck']];
 	var current_color = all_available_cards[current_deck['hero']]['color'][0];
 	var second_deck_color = get_second_deck_color();
-	$.each(current_deck, function(card_id, amount){
+	eachoa(current_deck, function(card_id, amount){
 		if(card_id != 'hero' && all_available_cards[card_id]['color'][0] != 'colorless' && all_available_cards[card_id]['color'][0] != current_color && all_available_cards[card_id]['color'][0] != second_deck_color)
 		{
 			delete current_deck[card_id];
@@ -639,7 +639,7 @@ function gain_random_card(){
 
 function gain_all_cards(amount){
 	if(amount == undefined){amount = 1;}
-	$.each(all_available_cards, function(card_id, card){
+	eachoa(all_available_cards, function(card_id, card){
 		if(namechanges[card_id] == undefined)
 		{
 			if(gamedata['owned_cards'][card_id] == undefined)
@@ -691,10 +691,10 @@ function count_card_colors(min_pick_chance){
 	var counted_colors = {};
 	var counted_color_times = {};
 	var average_color_times = {};
-	$.each(all_available_cards, function(card_id, card){
+	eachoa(all_available_cards, function(card_id, card){
 		if(card['pick_chance'] != undefined && card['pick_chance'] >= min_pick_chance && (card['type'] == 'creature' || card['type'] == 'structure' || card['type'] == 'object' || card['type'] == 'spell' || card['type'] == 'artifact'))
 		{
-			$.each(card['color'], function(useless_key, card_color){
+			eachoa(card['color'], function(useless_key, card_color){
 				if(counted_colors[card_color] == undefined)
 				{
 					counted_colors[card_color] = 1;
@@ -736,11 +736,11 @@ function count_card_colors(min_pick_chance){
 		}
 	});
 	counted_colors = sortObj(counted_colors, 'value');
-	$.each(counted_colors, function(color, count){
+	eachoa(counted_colors, function(color, count){
 		console.log(color + ': ' + count);
 	});
 	console.log(counted_color_times);
-	$.each(average_color_times, function(color,total_time){
+	eachoa(average_color_times, function(color,total_time){
 		//average_color_times[color] = total_time / counted_colors[color];
 		console.log(color + ' a.t.: ' + (Math.floor((total_time / counted_colors[color]) * 10)) / 10);
 	});
@@ -750,10 +750,10 @@ function count_card_colors(min_pick_chance){
 
 function check_card_recipes(ingredients){
 	var recipes = {};
-	$.each(ingredients, function(ingredient_id, ingredient){
+	eachoa(ingredients, function(ingredient_id, ingredient){
 		if(count_object(recipes) == 0)
 		{
-			$.each(all_available_cards, function(card_id, card){
+			eachoa(all_available_cards, function(card_id, card){
 				if(card['recipe'] != undefined && card['recipe'][ingredient] != undefined)
 				{
 					recipes[card_id] = card['recipe'];
@@ -762,7 +762,7 @@ function check_card_recipes(ingredients){
 		}
 		else
 		{
-			$.each(recipes, function(recipe_id, recipe){
+			eachoa(recipes, function(recipe_id, recipe){
 				if(all_available_cards[recipe_id]['recipe'] != undefined && all_available_cards[recipe_id]['recipe'][ingredient] == undefined)
 				{
 					delete recipes[recipe_id];
@@ -921,7 +921,7 @@ function show_card_details(card_id, hero_version, amount, added_button, combat_v
 		parsed_card_details += 			'<div class="single_ability">';
 		parsed_card_details += 				'<span class="single_ability_name">' + capitalizeFirstLetter(current_card['name']) + '</span>';
 		parsed_card_details += 				'<span class="single_ability_description">';
-		$.each(current_card['subtypes'], function(subtype_key, subtype){
+		eachoa(current_card['subtypes'], function(subtype_key, subtype){
 			if(subtype_key > 0){parsed_card_details += ', ';}
 			parsed_card_details += 				subtype.replace('_',' ');
 		});
@@ -942,7 +942,7 @@ function show_card_details(card_id, hero_version, amount, added_button, combat_v
 		if(current_card['type'] == 'currency'){parsed_card_details += 'Not used in battles.';}
 		if(current_card['type'] == 'fragment'){parsed_card_details += 'Not used in battles. Can be used to construct buildings in your town.<br/><br/>';
 			var frag_description = '';
-			$.each(all_buildings, function(building_id, building_info){
+			eachoa(all_buildings, function(building_id, building_info){
 				if(building_info['fragment_id'] == card_id)
 				{
 					frag_description = building_info['description'];
@@ -982,7 +982,7 @@ function show_card_details(card_id, hero_version, amount, added_button, combat_v
 			abilities_to_check = battle_info['combat_units'][combat_version]['abilities'];
 		}
 
-		$.each(abilities_to_check, function(ability_key, ability_level){
+		eachoa(abilities_to_check, function(ability_key, ability_level){
 			var current_ability = all_abilities[ability_key];
 			var temp_amount = ability_level;
 			var starting_delay = 0;

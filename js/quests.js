@@ -10,7 +10,7 @@ var logged_achieve = 0;
 function toggle_shown_achievements(){
 	var next_toggle = '';
 	var current_toggle_found = false;
-	$.each(shown_achievement_options, function(option_id, option_value){
+	eachoa(shown_achievement_options, function(option_id, option_value){
 		if(next_toggle == ''){next_toggle = option_id + '';}
 		if(current_toggle_found == true)
 		{
@@ -29,7 +29,7 @@ function show_quests(){
 	var quests_shown = 0;
 
 	$('.current_quest_container').html('');
-	$.each(gamedata['quests'], function(current_quest_id, current_quest_info){
+	eachoa(gamedata['quests'], function(current_quest_id, current_quest_info){
 		if(all_quests[current_quest_info['quest_id']] == undefined)
 		{
 			//delete gamedata['quests'][current_quest_id];
@@ -76,7 +76,7 @@ function show_quests(){
 
 				parsed_quest += '<div class="single_quest_reward_title">Reward:</div>';
 				parsed_quest += 	'<div class="single_quest_reward_container">';
-				$.each(current_quest_info['rewards'], function(reward_type, reward_info){
+				eachoa(current_quest_info['rewards'], function(reward_type, reward_info){
 					//reward_info = (reward_info * get_upgrade_factor('summon_reward', 'any', true));
 					var scrap_amount = reward_info;
 					if(reward_type == 'scraps')
@@ -134,7 +134,7 @@ function show_daily_quests(){
 	next_midnight.setHours(24,0,0,0);
 
 	$('.current_daily_quest_container').html('');
-	$.each(gamedata['daily_quests'], function(current_quest_id, current_quest_info){
+	eachoa(gamedata['daily_quests'], function(current_quest_id, current_quest_info){
 		if(all_quests[current_quest_info['quest_id']] == undefined)
 		{
 			//delete gamedata['daily_quests'][current_quest_id];
@@ -201,7 +201,7 @@ function show_daily_quests(){
 
 		parsed_quest += '<div class="single_quest_reward_title">Reward:</div>';
 		parsed_quest += 	'<div class="single_quest_reward_container">';
-		$.each(quest_info['rewards'], function(reward_type, reward_info){
+		eachoa(quest_info['rewards'], function(reward_type, reward_info){
 			reward_info = (reward_info * get_upgrade_factor('summon_reward', 'any', true));
 			if(reward_type == 'scraps')
 			{
@@ -230,7 +230,7 @@ function show_daily_quests(){
 							
 			}
 		});
-		/*$.each(quest_info['reward_per_amount'], function(reward_type, reward_info){	
+		/*eachoa(quest_info['reward_per_amount'], function(reward_type, reward_info){	
 			if(reward_type == 'scraps')
 			{
 				var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
@@ -297,9 +297,9 @@ function check_new_quests(show_new_message){
 		if(gamedata['quests'][i] == undefined)
 		{
 			var possible_quests = {};
-			$.each(all_quests, function(quest_id, quest_info){
+			eachoa(all_quests, function(quest_id, quest_info){
 				var can_choose = true;
-				$.each(gamedata['quests'], function(current_quest_id, current_quest_info){
+				eachoa(gamedata['quests'], function(current_quest_id, current_quest_info){
 					if(quest_id == current_quest_info['quest_id'])
 					{
 						can_choose = false;
@@ -354,9 +354,9 @@ function check_new_quests(show_new_message){
 		if(gamedata['daily_quests'][i] == undefined || (gamedata['daily_quests'][i]['completed'] != false && new Date(gamedata['daily_quests'][i]['completed']) < last_midnight))
 		{
 			var possible_quests = {};
-			$.each(all_quests, function(quest_id, quest_info){
+			eachoa(all_quests, function(quest_id, quest_info){
 				var can_choose = true;
-				$.each(gamedata['daily_quests'], function(current_quest_id, current_quest_info){
+				eachoa(gamedata['daily_quests'], function(current_quest_id, current_quest_info){
 					if(quest_id == current_quest_info['quest_id'])
 					{
 						can_choose = false;
@@ -393,7 +393,7 @@ var all_achievement_goals = {};
 function check_achievement_goals(){
 	if(count_object(all_achievement_goals) == 0)
 	{
-		$.each(all_achievements, function(achievement_id, achievement_info){
+		eachoa(all_achievements, function(achievement_id, achievement_info){
 			if(achievement_info['objective'] != undefined)
 			{
 				if(typeof(achievement_info['objective']) == 'string')
@@ -410,7 +410,7 @@ function check_achievement_goals(){
 				}
 				else
 				{
-					$.each(achievement_info['objective'], function(objective_id, objective){
+					eachoa(achievement_info['objective'], function(objective_id, objective){
 						if(all_achievement_goals[objective] == undefined)
 						{
 							all_achievement_goals[objective] = {};
@@ -424,7 +424,7 @@ function check_achievement_goals(){
 				}
 			}
 		});
-		$.each(all_quests, function(achievement_id, achievement_info){
+		eachoa(all_quests, function(achievement_id, achievement_info){
 			if(achievement_info['objective'] != undefined)
 			{
 				if(typeof(achievement_info['objective']) == 'string')
@@ -441,7 +441,7 @@ function check_achievement_goals(){
 				}
 				else
 				{
-					$.each(achievement_info['objective'], function(objective_id, objective){
+					eachoa(achievement_info['objective'], function(objective_id, objective){
 						if(all_achievement_goals[objective] == undefined)
 						{
 							all_achievement_goals[objective] = {};
@@ -475,9 +475,9 @@ function check_quests(string, achieved_amount, achieved_times){
 			console.log(possible_strings);
 			logged_achieve++;
 		}*/
-		$.each(possible_strings, function(useless_key, current_string){
+		eachoa(possible_strings, function(useless_key, current_string){
 			if(all_achievement_goals[current_string] != undefined){
-				$.each(gamedata['quests'], function(current_quest_id, current_quest_info){
+				eachoa(gamedata['quests'], function(current_quest_id, current_quest_info){
 					if(all_achievement_goals[current_string]['quests'] != undefined && all_achievement_goals[current_string]['quests'][current_quest_info['quest_id']] != undefined){
 						if(current_quest_info['progress'] < current_quest_info['amount'] && (current_quest_info['completed'] == undefined || current_quest_info['completed'] == false))
 						{
@@ -493,7 +493,7 @@ function check_quests(string, achieved_amount, achieved_times){
 						}
 					}
 				});
-				$.each(gamedata['daily_quests'], function(current_quest_id, current_quest_info){
+				eachoa(gamedata['daily_quests'], function(current_quest_id, current_quest_info){
 					if(all_achievement_goals[current_string]['quests'] != undefined && all_achievement_goals[current_string]['quests'][current_quest_info['quest_id']] != undefined){
 						if(current_quest_info['progress'] < current_quest_info['amount'] && (current_quest_info['completed'] == undefined || current_quest_info['completed'] == false))
 						{
@@ -509,7 +509,7 @@ function check_quests(string, achieved_amount, achieved_times){
 						}
 					}
 				});
-				$.each(all_achievements, function(achievement_id, achievement_info){
+				eachoa(all_achievements, function(achievement_id, achievement_info){
 					var achievement_matched = false;
 					if(match_array_values(achievement_info['objective'], current_string)){achievement_matched = true;}
 					if(match_array_values(achievement_info['objectives'], current_string)){achievement_matched = true;}
@@ -539,7 +539,7 @@ function check_quests(string, achieved_amount, achieved_times){
 							if(achievement_info['objectives'] != undefined)
 							{
 								gamedata['achievements'][achievement_id]['amount'] = {};
-								$.each(achievement_info['objectives'], function(objective_key, objective_id){
+								eachoa(achievement_info['objectives'], function(objective_key, objective_id){
 									gamedata['achievements'][achievement_id]['amount'][objective_id] = 0;
 								});
 							}
@@ -551,7 +551,7 @@ function check_quests(string, achieved_amount, achieved_times){
 							if(achievement_info['objectives'] != undefined)
 							{
 								gamedata['achievements'][achievement_id]['amount'][current_string] += achieved_times;
-								$.each(achievement_info['objectives'], function(objective_key, objective_id){
+								eachoa(achievement_info['objectives'], function(objective_key, objective_id){
 									if(gamedata['achievements'][achievement_id]['amount'][objective_id] < achievement_info['amount'])
 									{
 										all_objectives_complete = false;
@@ -592,7 +592,7 @@ function claim_quest(current_quest_id){
 		all_current_rewards = {};
 		current_reward_origin 	= 'quests';
 		current_reward_text 	= 'For completing the quest <b>"' + capitalizeFirstLetter(all_quests[current_quest_info['quest_id']]['name']) + '"</b><br/>You have been rewarded with:<br/>';
-		$.each(current_quest_info['rewards'], function(reward_type, reward_info){
+		eachoa(current_quest_info['rewards'], function(reward_type, reward_info){
 			//reward_info = (reward_info * get_upgrade_factor('summon_reward', 'any', true));
 			//var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
 			//gain_scraps(scrap_amount);
@@ -601,13 +601,13 @@ function claim_quest(current_quest_id){
 				reward_amount: 	reward_info,
 			}
 		});
-		/*$.each(all_quests[current_quest_info['quest_id']]['rewards'], function(reward_type, reward_info){
+		/*eachoa(all_quests[current_quest_info['quest_id']]['rewards'], function(reward_type, reward_info){
 			all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
 				reward_id: 		reward_type,
 				reward_amount: 	reward_info,
 			}
 		});*/
-		/*$.each(all_quests[current_quest_info['quest_id']]['reward_per_amount'], function(reward_type, reward_info){
+		/*eachoa(all_quests[current_quest_info['quest_id']]['reward_per_amount'], function(reward_type, reward_info){
 			if(reward_type == 'scraps')
 			{
 				var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
@@ -630,7 +630,7 @@ function claim_daily_quest(current_quest_id){
 		current_reward_origin 	= 'daily_quests';
 		current_reward_text 	= 'For completing the daily quest <b>"' + capitalizeFirstLetter(all_quests[current_quest_info['quest_id']]['name']) + '"</b><br/>You have been rewarded with:<br/>';
 		
-		/*$.each(all_quests[current_quest_info['quest_id']]['reward_per_amount'], function(reward_type, reward_info){
+		/*eachoa(all_quests[current_quest_info['quest_id']]['reward_per_amount'], function(reward_type, reward_info){
 			var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
 			//gain_scraps(scrap_amount);
 			all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
@@ -638,7 +638,7 @@ function claim_daily_quest(current_quest_id){
 				reward_amount: 	scrap_amount,
 			}
 		});*/
-		$.each(all_quests[current_quest_info['quest_id']]['rewards'], function(reward_type, reward_info){
+		eachoa(all_quests[current_quest_info['quest_id']]['rewards'], function(reward_type, reward_info){
 			reward_info = Math.floor(reward_info * get_upgrade_factor('summon_reward', 'any', true));
 			all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
 				reward_id: 		reward_type,
@@ -668,27 +668,27 @@ function check_quest_complete_count(){
     var quest_complete_count = 0;
     var daily_quest_complete_count = 0;
     var stories_complete_count = 0;
-    $.each(gamedata['quests'], function(current_quest_id, current_quest_info){
+    eachoa(gamedata['quests'], function(current_quest_id, current_quest_info){
         if(current_quest_info['progress'] >= current_quest_info['amount'])
 		{
 			quest_complete_count ++;
 		}
     });
-    $.each(gamedata['daily_quests'], function(current_quest_id, current_quest_info){
+    eachoa(gamedata['daily_quests'], function(current_quest_id, current_quest_info){
         if(current_quest_info['progress'] >= current_quest_info['amount'] && current_quest_info['completed'] == false)
 		{
 			//quest_complete_count ++;
 			daily_quest_complete_count ++;
 		}
     });
-    $.each(gamedata['stories'], function(current_quest_id, current_quest_info){
+    eachoa(gamedata['stories'], function(current_quest_id, current_quest_info){
         if(current_quest_info['completed'] == true && current_quest_info['claimed'] == false)
 		{
 			stories_complete_count ++;
 		}
     });
     var achievements_complete = 0;
-    $.each(gamedata['achievements'], function(achievement_id, achievement_status){
+    eachoa(gamedata['achievements'], function(achievement_id, achievement_status){
     	if(all_achievements[achievement_id] == undefined)
     	{
     		console.log('unknown achievement: ' + achievement_id);
@@ -778,7 +778,7 @@ function show_achievements(){
 	var all_incomplete = '';
 	var all_complete = '';
 	var all_claimed = '';
-	$.each(all_achievements, function(achievement_id, achievement_info){
+	eachoa(all_achievements, function(achievement_id, achievement_info){
 		var completed = '';
 		if(gamedata['achievements'][achievement_id] != undefined && gamedata['achievements'][achievement_id]['completed'] == true)
 		{
@@ -790,7 +790,7 @@ function show_achievements(){
 			claimed = ' claimed';
 		}
 		var required_completed = true;
-		$.each(achievement_info['needs_completed'], function(needed_achievement_id, useless_info){
+		eachoa(achievement_info['needs_completed'], function(needed_achievement_id, useless_info){
 			if(gamedata['achievements'][needed_achievement_id] == undefined || gamedata['achievements'][needed_achievement_id]['completed'] == false)
 			{
 				required_completed = false;
@@ -823,7 +823,7 @@ function show_achievements(){
 					{
 						var temp_achieved_amount = 0;
 						var objective_count = 0;
-						$.each(gamedata['achievements'][achievement_id]['amount'], function(amount_key, amount_amount){
+						eachoa(gamedata['achievements'][achievement_id]['amount'], function(amount_key, amount_amount){
 							if(amount_amount > achievement_info['amount']){amount_amount = achievement_info['amount'];}
 							temp_achieved_amount += amount_amount;
 							objective_count++;
@@ -981,13 +981,13 @@ function open_achievement(achievement_id){
 function claim_all_achievements(){
 	all_current_rewards = {};
 	var claimed_amount = 0;
-	$.each(gamedata['achievements'], function(achievement_id, progress){
+	eachoa(gamedata['achievements'], function(achievement_id, progress){
 		var current_achievement = all_achievements[achievement_id];
 		if(progress['completed'] == true && progress['claimed'] == false)
 		{
 			claimed_amount++;
 			progress['claimed'] = true;
-			$.each(current_achievement['rewards'], function(reward_id, reward_info){
+			eachoa(current_achievement['rewards'], function(reward_id, reward_info){
 				all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {reward_id:reward_info['reward_id'],reward_amount:reward_info['reward_amount']};
 			});
 		}
@@ -1018,7 +1018,7 @@ function claim_achievement(achievement_id){
 
 function get_completed_achievement_count(){
 	var completed_achievement_count = 0;
-	$.each(gamedata['achievements'], function(achievement_id, progress){
+	eachoa(gamedata['achievements'], function(achievement_id, progress){
 		if(progress['completed'] == true)
 		{
 			completed_achievement_count++;
@@ -1029,7 +1029,7 @@ function get_completed_achievement_count(){
 
 function complete_random_daily(){
 	var temp_daily_quests = {};
-	$.each(gamedata['daily_quests'], function(quest_id, quest_info){
+	eachoa(gamedata['daily_quests'], function(quest_id, quest_info){
 		if(quest_info['completed'] == false && quest_info['progress'] < quest_info['amount'])
 		{
 			temp_daily_quests[quest_id] = true;
@@ -1059,7 +1059,7 @@ function reset_daily_quests(){
 
 function reset_radnom_daily_quest(){
 	var temp_daily_quests = {};
-	$.each(gamedata['daily_quests'], function(quest_id, quest_info){
+	eachoa(gamedata['daily_quests'], function(quest_id, quest_info){
 		if(quest_info['completed'] != false)
 		{
 			temp_daily_quests[quest_id] = true;
@@ -1081,7 +1081,7 @@ function reset_radnom_daily_quest(){
 function reset_achievements(){
 	if(gamedata['achievements'] != undefined)
 	{
-		$.each(all_achievements, function(achievement_id, achievement_info){
+		eachoa(all_achievements, function(achievement_id, achievement_info){
 			if(gamedata['achievements'][achievement_id] != undefined && gamedata['achievements'][achievement_id]['completed'] == true)
 			{
 			}
@@ -1093,7 +1093,7 @@ function reset_achievements(){
 					if(achievement_info['objectives'] != undefined)
 					{
 						gamedata['achievements'][achievement_id]['amount'] = {};
-						$.each(achievement_info['objectives'], function(objective_key, objective_id){
+						eachoa(achievement_info['objectives'], function(objective_key, objective_id){
 							gamedata['achievements'][achievement_id]['amount'][objective_id] = 0;
 						});
 					}
