@@ -1069,26 +1069,19 @@ var all_older_available_cards = {
 		theme: 				['protection','evasion','on_play'],
 		pick_chance: 		1,
 		time: 				6,
-		image: 				'cards/angel-2046708_1280.jpg',
+		image: 				'cards/guiding_angel.jpg',
+		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, protect_arrivals: 1, flying: 1},
+		abilities: 			{strike: 1, fortify_arrivals: 1, flying: 1},
 		hero_version: 			{
-			name: 				'guiding angel',
-			type: 				'creature',
-			theme: 				['on_play','deck_control','muscle','protection'],
-			image: 				'cards/angel-2046708_1280.jpg',
-			image_position: 		'center',
 			power: 				2,
 			armor: 				0,
 			health: 			25,
-			abilities: 			{strike_unit: 1, protect_arrivals: 1, flying: 1},
+			abilities: 			{strike_unit: 1, fortify_arrivals: 1, flying: 1},
 		},
-		recipe:{
-			armor: 				1,
-			young_angel: 		1,
-		}
+		quote: '\"Come, you will be safe.\"',
 	},
 	haunting_spirit:{
 		name: 				'haunting spirit',
@@ -2386,36 +2379,6 @@ var all_older_available_cards = {
 		recipe:{
 			crystal_keeper: 		1,
 			arcane_missiles: 		1,
-		}
-	},
-	young_angel:{
-		name: 				'young angel',
-		version: 			2,
-		type: 				'creature',
-		subtypes: 			['angel'],
-		color: 				['yellow'],
-		theme: 				['protection','evasion','damage_reduction'],
-		pick_chance: 		1,
-		time: 				4,
-		image: 				'cards/angel-3464524_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, fortify: 1, flying: 1},
-		hero_version: 			{
-			name: 				'young angel',
-			type: 				'creature',
-			theme: 				['protection'],
-			image: 				'cards/angel-3464524_640.jpg',
-			image_position: 		'top',
-			power: 				2,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_unit: 1, protect: 1, flying: 1},
-		},
-		recipe:{
-			champion: 			1,
-			masked_lady: 		1
 		}
 	},
 	zombie_mage:{

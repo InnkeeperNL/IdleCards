@@ -25,24 +25,17 @@ var all_oldest_available_cards = {
 		subtypes: 			['angel'],
 		color: 				['yellow'],
 		time: 				13,
-		image: 				'cards/fantasy-3361394_1280.jpg',
+		image: 				'cards/angel_of_light.jpg',
+		image_position: 	'top',
 		power: 				3,
 		armor: 				0,
 		health: 			6,
 		abilities: 			{strike: 1, restore_hero: 1, flying: 1},
 		hero_version: 			{
-			name: 				'angel of light',
-			type: 				'creature',
-			image: 				'cards/fantasy-3361394_1280.jpg',
 			power: 				1,
 			armor: 				0,
 			health: 			30,
 			abilities: 			{strike_unit: 1, restore: 1, flying: 1},
-		},
-		recipe:{
-			young_angel: 		1,
-			angelic_blessing: 	1,
-			citrine: 			1
 		},
 		quote: '\"She comes down from the heavens to shine her light\"'
 	},
@@ -187,24 +180,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['human','archer'],
 		color: 				['orange'],
 		time: 				6,
-		image: 				'cards/warrior-5207128_640.jpg',
+		image: 				'cards/barbarian_archer.jpg',
+		image_position: 	'top left',
 		power: 				1,
 		armor: 				0,
 		health: 			5,
 		abilities: 			{shoot: 1, enrage: 1},
 		hero_version: 			{
-			name: 				'barbarian archer',
-			type: 				'creature',
-			image: 				'cards/warrior-5207128_640.jpg',
 			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{shoot_unit: 1, enrage: 1},
 		},
-		recipe:{
-			barbarian_axeman: 	1,
-			quiver: 			1
-		}
+		quote: '\"She fuels her arrows with rage.\"',
 	},
 	barbarian_axeman:{
 		name: 				'barbarian axeman',
@@ -212,82 +200,39 @@ var all_oldest_available_cards = {
 		subtypes: 			['human','warrior'],
 		color: 				['orange'],
 		time: 				5,
-		image: 				'cards/barbarian-4616094_640.jpg',
-		image_position: 		'top',
+		image: 				'cards/barbarian_axeman.jpg',
+		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
 		health: 			5,
 		abilities: 			{strike: 2, enrage: 1},
 		hero_version: 			{
-			name: 				'barbarian axeman',
-			type: 				'creature',
-			image: 				'cards/barbarian-4616094_640.jpg',
-			image_position: 		'top',
 			power: 				1,
 			armor: 				0,
 			health: 			60,
 			abilities: 			{strike_unit: 2, enrage: 1},
 		},
-		recipe:{
-			lumberjacks_axe: 	1,
-			raging_barbarian: 	1
-		}
+		quote: '\"Angy chopping noises...\"',
 	},
-	
 	barbarian_elite:{
 		name: 				'barbarian elite',
 		type: 				'creature',
 		subtypes: 			['human','warrior'],
 		color: 				['orange'],
 		time: 				11,
-		image: 				'cards/amazone-5178696_640.jpg',
-		image_position: 		'top',
+		image: 				'cards/barbarian_elite.jpg',
+		image_position: 	'top',
 		power: 				3,
 		armor: 				0,
 		health: 			8,
 		abilities: 			{seek_enemy: 1, strike: 1, enrage:1},
 		hero_version: 			{
-			name: 				'barbarian elite',
-			type: 				'creature',
-			image: 				'cards/amazone-5178696_640.jpg',
-			image_position: 		'top',
 			power: 				2,
 			armor: 				0,
 			health: 			55,
 			abilities: 			{strike_unit: 1, enrage: 1},
 		},
-		recipe:{
-			barbarian_axeman: 	1,
-			plate_armor: 		1,
-			amber: 				1
-		}
-	},
-	barbarian_shieldman:{
-		name: 				'barbarian shieldman',
-		type: 				'creature',
-		subtypes: 			['human','warrior'],
-		color: 				['orange'],
-		time: 				11,
-		image: 				'cards/barbarian-2159912_640.jpg',
-		image_position: 		'top',
-		power: 				3,
-		armor: 				0,
-		health: 			6,
-		abilities: 			{strike: 1, fortify_self: 1, enrage: 1},
-		hero_version: 			{
-			name: 				'barbarian shieldman',
-			type: 				'creature',
-			image: 				'cards/barbarian-2159912_640.jpg',
-			image_position: 		'top',
-			power: 				2,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_unit: 1, fortify_self: 1, enrage: 1},
-		},
-		recipe:{
-			barbarian_axeman: 	1,
-			plate_armor: 		1,
-		}
+		quote: '\"She survived many battles to become what she is today.\"'
 	},
 	bard:{
 		name: 				'bard',
@@ -375,25 +320,18 @@ var all_oldest_available_cards = {
 		subtypes: 			['angel'],
 		color: 				['yellow'],
 		time: 				9,
-		image: 				'cards/angel-749625_640.jpg',
+		image: 				'cards/blessed_angel.jpg',
 		power: 				2,
 		armor: 				0,
 		health: 			6,
 		abilities: 			{strike: 1, bless: 1, heal: 1, flying: 1},
 		hero_version: 			{
-			name: 				'blessed angel',
-			type: 				'creature',
-			image: 				'cards/angel-749625_640.jpg',
-			image_position: 		'top',
 			power: 				false,
 			armor: 				0,
 			health: 			30,
 			abilities: 			{heal: 1, bless: 3, flying: 1},
 		},
-		recipe:{
-			angel_of_light: 	1,
-			angelic_blessing: 	1,
-		}
+		quote: '\"The heavens are on her side.\"',
 	},
 	blue_butterflies:{
 		name: 				'blue butterflies',
@@ -463,25 +401,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['angel'],
 		color: 				['red'],
 		time: 				9,
-		image: 				'cards/angel-1284369_640.jpg',
+		image: 				'cards/burning_angel.jpg',
+		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, fire_blast: 1, flying: 1},
+		abilities: 			{strike: 1, burn_all: 1, flying: 1},
 		hero_version: 			{
-			name: 				'burning angel',
-			type: 				'creature',
-			image: 				'cards/angel-1284369_640.jpg',
-			image_position: 		'top',
 			power: 				1,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_unit: 1, fire_bolt_hv: 1, flying: 1},
+			abilities: 			{strike_unit: 1, burn_all: 1, flying: 1},
 		},
-		recipe:{
-			angel_of_light: 	1,
-			burning_ring: 		1,
-		}
+		quote: '\"She brings heavenly fire.\"',
 	},
 	burning_rage:{
 		name: 				'burning rage',
@@ -3100,26 +3032,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['human','warrior'],
 		color: 				['orange'],
 		time: 				4,
-		image: 				'cards/fantasy-3366526_640.jpg',
-		image_position: 		'top',
+		image: 				'cards/raging_barbarian.jpg',
+		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
 		health: 			5,
 		abilities: 			{strike: 1, enrage: 2},
 		hero_version: 			{
-			name: 				'raging barbarian',
-			type: 				'creature',
-			image: 				'cards/fantasy-3366526_640.jpg',
-			image_position: 		'top',
 			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, enrage: 1},
 		},
-		recipe:{
-			gladiator: 			1,
-			amber: 				1
-		}
+		quote: '\"Her temper is unmatched.\"'
 	},
 	
 	rattlesnake:{
@@ -3153,25 +3078,18 @@ var all_oldest_available_cards = {
 		subtypes: 			['angel'],
 		color: 				['purple'],
 		time: 				2,
-		image: 				'cards/fairy-3778264_640.jpg',
+		image: 				'cards/reaper_angel.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			5,
 		abilities: 			{strike: 1, reap: 1, flying: 1},
 		hero_version: 			{
-			name: 				'reaper angel',
-			type: 				'creature',
-			image: 				'cards/fairy-3778264_640.jpg',
-			image_position: 	'top',
 			power: 				1,
 			armor: 				0,
 			health: 			45,
 			abilities: 			{strike_unit: 1, reap: 1, flying: 1},
 		},
-		recipe:{
-			dark_angel: 		1,
-			mausoleum: 			1
-		}
+		quote: '\"Time to join the angels, my friend.\"',
 	},
 	red_dragon:{
 		name: 				'red dragon',
@@ -4285,26 +4203,18 @@ var all_oldest_available_cards = {
 		subtypes: 			['angel'],
 		color: 				['yellow'],
 		time: 				1,
-		image: 				'cards/angel-3464524_640.jpg',
+		image: 				'cards/young_angel.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			3,
 		abilities: 			{strike: 1, final_restore: 2, flying: 1},
 		hero_version: 			{
-			name: 				'young angel',
-			type: 				'creature',
-			image: 				'cards/angel-3464524_640.jpg',
-			image_position: 		'top',
 			power: 				1,
 			armor: 				0,
 			health: 			35,
 			abilities: 			{strike_unit: 1, restore: 1, flying: 1},
 		},
-		recipe:{
-			peasant: 			1,
-			levitate: 			1,
-			angelic_blessing: 	1
-		}
+		quote: '\"She only joined the heavens recently.\"',
 	},
 	
 	unexpected_arrivals:{
