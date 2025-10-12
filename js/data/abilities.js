@@ -5262,7 +5262,36 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		1,
 	},
-	grant_vampirism:		{
+	grant_plated:{
+		name: 			'grant: plated',
+		ability_subtypes: ['plated','physical'],
+		description: 	'When played, grants the plated ability to {LEVEL} random ally unit(s). Cannot target heroes.',
+		cannot_proc_while_stunned: true,
+		do_not_pause_between: 	true,
+		hero_tactics: 	['subtype_warrior'],
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	'ability_level',
+				position: 		'random',
+				max_abilities: 	{plated: 0},
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'shield',
+				type: 			'grant_skill',
+				subtypes: 		['physical'],
+				skill_id: 		'plated',
+				amount: 		1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		4,
+	},
+	grant_vampirism:{
 		description: 	'Grants the vampiric ability to a random ally creature that does not have it and has at least 1 power. Cannot target your hero.<br/><i>Vampiric: When this deals physical damage to a non-undead creature, it heals itself by the amount of damage done, up to {LEVEL}.</i>',
 		cannot_proc_while_stunned: true,
 		targets:	{
@@ -7004,6 +7033,10 @@ var all_abilities = {
 		cost_factor: 	'power',
 		average_hits: 	'ability_level',
 		additional_levels_cost: 1,
+	},
+	precision:{
+		description: 	'This ignores evade and stealth.',
+		level_cost: 	2,
 	},
 	purify:{
 		description: 	'Removes all negative effects from {LEVEL} random ally unit(s) or your hero.',

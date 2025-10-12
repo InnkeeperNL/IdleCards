@@ -5263,7 +5263,36 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		1,
 	},
-	grant_vampirism:		{
+	grant_plated:{
+		name: 			'grant: plated',
+		ability_subtypes: ['plated','physical'],
+		description: 	'When played, grants the plated ability to {LEVEL} random ally unit(s). Cannot target heroes.',
+		cannot_proc_while_stunned: true,
+		do_not_pause_between: 	true,
+		hero_tactics: 	['subtype_warrior'],
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	'ability_level',
+				position: 		'random',
+				max_abilities: 	{plated: 0},
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'shield',
+				type: 			'grant_skill',
+				subtypes: 		['physical'],
+				skill_id: 		'plated',
+				amount: 		1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		4,
+	},
+	grant_vampirism:{
 		description: 	'Grants the vampiric ability to a random ally creature that does not have it and has at least 1 power. Cannot target your hero.<br/><i>Vampiric: When this deals physical damage to a non-undead creature, it heals itself by the amount of damage done, up to {LEVEL}.</i>',
 		cannot_proc_while_stunned: true,
 		targets:	{
@@ -7005,6 +7034,10 @@ var all_abilities = {
 		cost_factor: 	'power',
 		average_hits: 	'ability_level',
 		additional_levels_cost: 1,
+	},
+	precision:{
+		description: 	'This ignores evade and stealth.',
+		level_cost: 	2,
 	},
 	purify:{
 		description: 	'Removes all negative effects from {LEVEL} random ally unit(s) or your hero.',
@@ -13754,6 +13787,7 @@ var all_available_cards = {
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard-2025-01-26T074031.014.jpg',
+		image_position: 	'right',
 		power: 				2,
 		armor: 				0,
 		health: 			5,
@@ -14884,6 +14918,7 @@ var all_available_cards = {
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard-2025-02-17T060454.083.jpg',
+		image_position: 	'left',
 		power: 				false,
 		armor: 				0,
 		health: 			6,
@@ -15001,6 +15036,7 @@ var all_available_cards = {
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard-2025-01-26T075044.260.jpg',
+		image_position: 	'left',
 		power: 				2,
 		armor: 				0,
 		health: 			5,
@@ -15461,7 +15497,7 @@ var all_available_cards = {
 		},
 		quote: '\"Did I come to the right place?\"',
 	},
-	elvish_archer:{
+	/*elvish_archer:{
 		name: 				'elvish archer',
 		type: 				'creature',
 		subtypes: 			['elf','archer'],
@@ -15483,7 +15519,7 @@ var all_available_cards = {
 			abilities: 			{shoot_unit: 1, resist_magic: 1},
 		},
 		quote: '\"Stay in the forest.\"',
-	},
+	},*/
 	elvish_charm:{
 		name: 				'elvish charm',
 		type: 				'artifact',
@@ -16562,6 +16598,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{hide_ally: 5, minimum_allies: 3},
 		quote: '\"We can\'t find them, sir.\"',
+		max_in_deck: 1,
 	},
 	fort:{
 		name: 				'fort',
@@ -19690,6 +19727,7 @@ var all_available_cards = {
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard-2025-01-26T074743.128.jpg',
+		image_position: 	'left',
 		power: 				2,
 		armor: 				0,
 		health: 			8,
@@ -24496,6 +24534,51 @@ var all_available_cards = {
 		},
 		quote: '\"Do not run after her.\"',
 	},
+	tribal_adept:{
+		name: 				'tribal adept',
+		type: 				'creature',
+		subtypes: 			['human','mage'],
+		color: 				['colorless'],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/tribal_adept.jpg',
+		image_position: 	'top right',
+		power: 				false,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{elemental_bolt: 1, hide_on_kill: 1},
+		hero_version: 		{
+			theme: 				['subtype_mage','on_kill_proc_ability','evade_ability'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{elemental_bolt_hv: 2, hide_on_kill: 1},
+		},
+		quote: '\"Respected among their people.\"',
+	},
+	tribal_archer:{
+		name: 				'tribal archer',
+		type: 				'creature',
+		subtypes: 			['human','archer'],
+		color: 				['colorless'],
+		theme: 				['muscle'],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/tribal_archer.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{shoot: 1, hide_on_kill: 1},
+		hero_version: 			{
+			theme: 				['subtype_tribal','evade_ability','earth'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{shoot_unit: 1, hide_on_kill: 1},
+		},
+		quote: '\"Shoot from the shadows.\"',
+	},
 	troll_warrior:{
 		name: 				'troll warrior',
 		type: 				'creature',
@@ -26201,6 +26284,11 @@ unavailable_abilities = sortObj(unavailable_abilities);
 eachoa(all_available_cards, function(card_id, card_info){
 	if(card_info['color'] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
 	if(card_info['color'][0] != undefined && card_info['color'][0] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
+	if(card_info['unique'] != undefined && card_info['unique'] == true)
+	{
+		all_available_cards[card_id]['color'] = ['purple'];
+		all_available_cards[card_id]['max_in_deck'] = 1;
+	}
 });
 
 function calculate_card_value(card_id, show_calc){

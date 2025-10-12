@@ -584,6 +584,12 @@
 	opacity: 0.8;
 }
 
+.card_image.zoomed_card_image
+{
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
 @keyframes new_passive {
     0%   {
     	opacity: 	0;
@@ -1535,6 +1541,8 @@
 	right:0px;
 	bottom:0px;
 	overflow: visible;
+	width: 150px;
+	height: 200px;
 }
 
 .card_detail .available_cards .card

@@ -1,25 +1,5 @@
 var all_older_available_cards = {
 
-	
-	ambush:{
-		name: 				'ambush',
-		version: 			2,
-		type: 				'spell',
-		subtypes: 			['tactic'],
-		color: 				['orange'],
-		theme: 				['protection','spells','evasion'],
-		pick_chance: 		1,
-		time: 				6,
-		image: 				'cards/woman-1283234_640.jpg',
-		power: 				false,
-		armor: 				false,
-		health: 			false,
-		abilities: 			{minimum_allies: 3, obscure: 6, righthand: 1},
-		recipe:{
-			ravine: 			1,
-			dark_warrior: 		1
-		},
-	},
 	amethyst:{
 		name: 				'amethyst',
 		version:            2,
@@ -442,25 +422,18 @@ var all_older_available_cards = {
 		theme: 				['swarm','burn'],
 		pick_chance: 		1,
 		time: 				1,
-		image: 				'cards/devil-1674605_640.jpg',
+		image: 				'cards/burning_imp.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, burning_entry: 3},
+		abilities: 			{flame_strike: 1, burning_aura: 3},
 		hero_version: 			{
-			name: 				'burning imp',
-			type: 				'creature',
-			image: 				'cards/devil-1674605_640.jpg',
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, burn_hv: 1},
+			abilities: 			{flame_strike_hv: 1, burning_aura: 2},
 		},
-		recipe:{
-			fire_imp: 		1,
-			arson: 			1
-		},
-		quote: '\"Teehee!\"'
+		quote: '\"Me on fire!\"'
 	},
 	carrier_pigeon:{
 		name: 				'carrier pigeon',
@@ -597,10 +570,6 @@ var all_older_available_cards = {
 		armor: 				0,
 		health: 			false,
 		abilities: 			{curse_all: 4, maximum_allies: 0},
-		recipe:{
-			ambush: 			1,
-			ravine: 			1,
-		},
 	},
 	daemon:{
 		name: 				'daemon',
@@ -625,10 +594,6 @@ var all_older_available_cards = {
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit:1},
-		},
-		recipe:{
-			fire_imp: 		1,
-			incineration: 	1
 		},
 		quote: '\"It will take you to hell\"'
 	},
@@ -835,10 +800,6 @@ var all_older_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, burn_hero: 1},
 		},
-		recipe:{
-			fire_imp: 		1,
-			flame_lover: 	1
-		}
 	},
 	flame_dancer:{
 		name: 				'flame dancer',
@@ -2178,25 +2139,20 @@ var all_older_available_cards = {
 		theme: 				['burn','evasion'],
 		pick_chance: 		1,
 		time: 				3,
-		image: 				'cards/daemon-3051805_640.jpg',
+		image: 				'cards/trickster_imp.jpg',
+		image_position: 	'top',
 		power: 				false,
 		armor: 				0,
 		health: 			3,
 		abilities: 			{burn: 1, run_away: 1, homebound: 1},
 		hero_version: 			{
-			name: 				'trickster imp',
-			type: 				'creature',
 			theme: 				['burn','evasion'],
-			image: 				'cards/daemon-3051805_640.jpg',
 			power: 				false,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{burn_hero: 2, evade: 1},
 		},
-		recipe:{
-			burning_imp: 		1,
-			fire_imp: 			1,
-		}
+		quote: '\"Come and catch me!\"',
 	},
 	/*twine:{
 		name: 				'twine',

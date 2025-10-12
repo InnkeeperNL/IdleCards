@@ -853,7 +853,7 @@ function show_card_details(card_id, hero_version, amount, added_button, combat_v
 		{
 			parsed_card = '<div class="unit">' + $('.unit_id_' + combat_version).html() + '</div>';
 		}
-		parsed_card_details += 		'<div class="available_cards">';
+		parsed_card_details += 		'<div class="available_cards" onclick="show_zoomed_card_image(\'' + card_id + '\')">';
 		parsed_card_details += 			parsed_card;
 		parsed_card_details += 		'</div>';
 		if(current_card['quote'] != undefined)
@@ -1117,6 +1117,21 @@ function show_card_details(card_id, hero_version, amount, added_button, combat_v
 		},10);*/
 	}
 
+}
+
+function show_zoomed_card_image(card_id){
+	if(all_available_cards[card_id] != undefined)
+	{
+		var current_card = all_available_cards[card_id];
+		var parsed_card_image = '';
+		var image_position = '';
+		parsed_card_image += 		'<div class="card_image zoomed_card_image" style="background-image:url(images/' + current_card['image'] + ')"></div>';
+		$('.detail_overlay .card_detail').html('');
+		setTimeout(function(){
+			$('.detail_overlay').removeClass('hidden');
+			$('.detail_overlay .card_detail').html(parsed_card_image);
+		},10);
+	}
 }
 
 function reset_filters(){
