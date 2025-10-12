@@ -4432,6 +4432,33 @@ var all_abilities = {
 		},
 		level_cost: 		-3,
 	},
+	final_slow:{
+		description: 	'When destroyed, increases the time left of the enemy card with the lowest time by {LEVEL}.',
+		proc: 			'own_death',
+		proc_while_dead: true,
+		targets:	{
+			0:{
+				target: 			'card',
+				target_amount: 		1,
+				status: 			'hand',
+				can_target_zero: 	true,
+				lowest_time_left: 	true,
+				side: 				'enemy',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'slow',
+				projectile_target: 	'deck',
+				type: 				'increase_ready_time',
+				subtypes: 			['slow','slow_enemy','deck_control'],
+				amount: 			'ability_level',
+				side: 				'enemy',
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
+	},
 	fire_aura:{
 		description: 	'Deals {LEVEL} magical fire damage to any enemy unit or hero that deals melee damage to it.',
 		proc: 			'receive_damage',

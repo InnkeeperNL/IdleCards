@@ -1869,10 +1869,6 @@ var all_older_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, conflagrate: 1},
 		},
-		recipe:{
-			fire_devil: 		1,
-			incineration: 		1,
-		}
 	},
 	shaman:{
 		name: 				'shaman',
@@ -2390,25 +2386,18 @@ var all_older_available_cards = {
 		theme: 				['deaths','muscle','ranged'],
 		pick_chance: 		1,
 		time: 				2,
-		image: 				'cards/halloween-1486593_640.jpg',
+		image: 				'cards/zombie_mage.jpg',
 		power: 				false,
 		armor: 				0,
 		health: 			5,
 		abilities: 			{arcane_bolt: 1, feast: 3, undead: 1},
 		hero_version: 			{
-			name: 				'zombie mage',
-			type: 				'creature',
 			theme: 				['deaths','muscle','ranged','curse'],
-			image: 				'cards/halloween-1486593_640.jpg',
 			power: 				false,
 			armor: 				0,
 			health: 			25,
 			abilities: 			{arcane_bolt_hv: 2, feast: 1, undead: 1},
 		},
-		recipe:{
-			amethyst: 			1,
-			zombie: 			1,
-		},
-		quote: '\"The arcane restless dead\"'
+		quote: '\"The arcane restless dead.\"'
 	},
 }

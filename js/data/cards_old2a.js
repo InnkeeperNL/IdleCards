@@ -572,25 +572,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['human','cleric'],
 		color: 				['green'],
 		time: 				6,
-		image: 				'cards/druid-3442618_1280.jpg',
+		image: 				'cards/caretaking_druid.jpg',
+		image_position: 	'top',
 		power: 				1,
 		armor: 				0,
 		health: 			6,
 		abilities: 			{strike: 1, heal: 1, repair: 1},
 		hero_version: 			{
-			name: 				'caretaking druid',
-			type: 				'creature',
-			image: 				'cards/druid-3442618_1280.jpg',
 			power: 				1,
 			armor: 				0,
 			health: 			45,
 			abilities: 			{strike_unit: 1, heal: 1, repair: 1},
 		},
-		recipe:{
-			calm_druid: 		1,
-			lumber: 			1,
-			book_of_nature: 	1
-		}
+		quote: '\"She takes care of the land as well as the creatures.\"',
 	},
 	chain_lightning:{
 		name: 				'chain lightning',
@@ -1872,26 +1866,18 @@ var all_oldest_available_cards = {
 		subtypes: 			['undead','spirit','mage'],
 		color: 				['purple','red'],
 		time: 				9,
-		image: 				'cards/fantasy-4055030_640.jpg',
+		image: 				'cards/ghost_mage.jpg',
 		power: 				false,
 		armor: 				0,
-		health: 			6,
-		abilities: 			{fire_bolt: 2, undead: 1, resurrect: 1},
+		health: 			1,
+		abilities: 			{arcane_bolt: 2, withering_touch: 1, undead: 1, resurrect: 1},
 		hero_version: 			{
-			name: 				'ghost mage',
-			type: 				'creature',
-			image: 				'cards/fantasy-4055030_640.jpg',
-			image_position: 	'top',
 			power: 				false,
 			armor: 				0,
 			health: 			20,
-			abilities: 			{fire_bolt: 2, undead: 1, resurrect: 1},
+			abilities: 			{arcane_bolt_hv: 2, withering_touch: 1, undead: 1, resurrect: 1},
 		},
-		recipe:{
-			fire_ball: 			1,
-			arcane_missiles: 	1,
-			ghost_bride: 		1,
-		}
+		quote: '\"The strikes the enemy with spiritual energy.\"',
 	},
 	ghost_mistress:{
 		name: 				'ghost mistress',
@@ -3811,13 +3797,15 @@ var all_oldest_available_cards = {
 		type: 				'spell',
 		subtypes: 			['tactic'],
 		color: 				['red'],
-		pick_chance: 		0.2,
+		pick_chance: 		1,
 		time: 				1,
-		image: 				'cards/fantasy-3182112_640.jpg',
+		image: 				'cards/temper.jpg',
+		image_position: 	'top',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
 		abilities: 			{backlash: 5, ignites: 2},
+		quote: '\"Forged in fire.\"'
 	},
 	
 	toadman:{
