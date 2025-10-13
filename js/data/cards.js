@@ -12786,7 +12786,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{counter_spell: 2},
+		abilities: 			{counter_spell: 1},
 		quote: '\"A usefull charm.\"',
 	},
 	spellblade:{
