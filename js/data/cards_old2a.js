@@ -815,6 +815,7 @@ var all_oldest_available_cards = {
 		type: 				'structure',
 		subtypes: 			['wall', 'undead'],
 		color: 				['purple'],
+		not_theme: 			['type_structure','subtype_wall'],
 		pick_chance: 		0.5,
 		time: 				2,
 		image: 				'cards/crypt-229934_640.jpg',
@@ -822,7 +823,6 @@ var all_oldest_available_cards = {
 		armor: 				0,
 		health: 			6,
 		abilities: 			{vengeance: 1, cursed_aura: 1},
-    	placement: 			'right',
 		hero_version: 			{
 			name: 				'cursed crypt',
 			type: 				'structure',
@@ -832,11 +832,6 @@ var all_oldest_available_cards = {
 			health: 			80,
 			abilities: 			{vengeance: 2, cursed_aura: 1},
 		},
-		recipe:{
-			curse_of_the_leech: 1,
-			mausoleum: 			1,
-			bones: 				1
-		}
 	},
 	dancing_devil:{
 		name: 				'dancing devil',
@@ -2012,8 +2007,9 @@ var all_oldest_available_cards = {
 	golden_keeper:{
 		name: 				'golden keeper',
 		type: 				'structure',
-		subtypes: 			['wall'],
+		subtypes: 			['wall','golem'],
 		color: 				['yellow'],
+		not_theme: 			['type_structure','subtype_wall'],
 		time: 				8,
 		image: 				'cards/fantasy-3000308_1280.jpg',
 		power: 				3,
@@ -2030,10 +2026,6 @@ var all_oldest_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, bolster_creature: 2},
 		},
-		recipe:{
-			stone: 				3,
-			angelic_blessing: 	1
-		}
 	},
 	golden_spirit:{
 		name: 				'golden spirit',
@@ -2066,6 +2058,7 @@ var all_oldest_available_cards = {
 		type: 				'structure',
 		subtypes: 			['wall'],
 		color: 				['orange'],
+		not_theme: 			['type_structure','subtype_wall'],
 		pick_chance: 		0.5,
 		time: 				14,
 		image: 				'cards/fantasy-2464889_1280.jpg',
@@ -2361,7 +2354,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{slow: 2, resist_fire: 1},
+		abilities: 			{hide: 1, slow: 2, resist_fire: 1},
 		hero_version: 			{
 			name: 				'hidden swamp',
 			type: 				'structure',
@@ -2369,12 +2362,8 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{slow: 2, resist_fire: 1},
+			abilities: 			{hide: 1, slow: 1, resist_fire: 1},
 		},
-		recipe:{
-			cleansing_water: 	1,
-			herbs: 				1,
-		}
 	},
 	
 	highwayman:{
@@ -3473,20 +3462,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['human','warrior'],
 		color: 				['orange'],
 		time: 				12,
-		image: 				'cards/celtic-woman-1880944_640.jpg',
+		image: 				'cards/sonja.jpg',
 		power: 				3,
-		armor: 				4,
-		health: 			6,
-		abilities: 			{strike: 1, counter: 1},
+		armor: 				0,
+		health: 			14,
+		abilities: 			{seek_enemy: 1, strike: 1, counter: 1, victory_rush: 1},
 		hero_version: 			{
-			name: 				'sonja',
-			type: 				'creature',
-			image: 				'cards/celtic-woman-1880944_640.jpg',
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, counter: 1},
+			abilities: 			{strike_unit: 1, counter: 1, victory_rush: 1},
 		},
+		quote: '\"The strongest warrior, so legend says.\"',
+		unique: 			true,
 	},
 	spiked_horror:{
 		name: 				'spiked horror',
@@ -3915,21 +3903,19 @@ var all_oldest_available_cards = {
 		type: 				'structure',
 		subtypes: 			['wall','plant'],
 		color: 				['green'],
+		not_theme: 			['type_structure','subtype_wall'],
 		time: 				3,
 		image: 				'cards/fantasy-2750995_1280.jpg',
+		image_position: 	'bottom',
 		power: 				false,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{cover: 2, healing_aura: 1},
+		abilities: 			{hide: 1, heal: 1},
 		hero_version: 			{
-			name: 				'underground forest',
-			type: 				'structure',
-			image: 				'cards/fantasy-2750995_1280.jpg',
-			image_position: 		'bottom',
 			power: 				false,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{cover: 2, heal: 1},
+			abilities: 			{hide: 1, heal: 1},
 		},
 		recipe:{
 			firtile_dirt: 		1,

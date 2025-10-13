@@ -1371,6 +1371,7 @@ var all_older_available_cards = {
 		subtypes: 			['wall'],
 		color: 				['purple'],
 		theme: 				['deaths'],
+		not_theme: 			['type_structure','subtype_wall'],
 		pick_chance: 		0.5,
 		time: 				4,
 		image: 				'cards/dexter-mausoleum-1005284_1280.jpg',
@@ -1531,7 +1532,7 @@ var all_older_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			8,
-		abilities: 			{poison_cloud: 1, regenerate: 1},
+		abilities: 			{poison_aura: 1, regenerate: 1},
 		hero_version: 			{
 			name: 				'overgrown ruin',
 			type: 				'structure',
@@ -1541,7 +1542,7 @@ var all_older_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{poison_cloud: 1, regenerate: 2},
+			abilities: 			{poison_aura: 1, regenerate: 2},
 		},
 		recipe:{
 			elven_tavern: 		1,
@@ -1809,10 +1810,6 @@ var all_older_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, hasten: 1, submerged: 1},
 		},
-		recipe:{
-			mermaid: 		1,
-			wall_of_kelp: 	1
-		}
 	},
 	seductive_dutches:{
 		name: 				'seductive dutches',
