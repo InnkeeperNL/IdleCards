@@ -31,7 +31,7 @@ var all_old_available_cards = {
 		theme: 				[],
 		pick_chance: 		1,
 		time: 				1,
-		image: 				'cards/fantasy-5103702_640.jpg',
+		image: 				'cards/air_bolt.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
@@ -3873,6 +3873,7 @@ var all_old_available_cards = {
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard-2023-07-12T134704.jpg',
+		image_position: 	'right',
 		power: 				2,
 		armor: 				0,
 		health: 			5,
@@ -5552,6 +5553,7 @@ var all_old_available_cards = {
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard-2023-07-12T134933.jpg',
+		image_position: 	'right',
 		power: 				2,
 		armor: 				0,
 		health: 			5,
@@ -6990,7 +6992,7 @@ var all_old_available_cards = {
 		quote: '\"Lost souls are placed to rest here.\"',
 		use_old: true,
 	},
-	mermaid:{
+	/*mermaid:{
 		name: 				'mermaid',
 		type: 				'creature',
 		subtypes: 			['mermaid'],
@@ -7002,7 +7004,7 @@ var all_old_available_cards = {
 		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
-		health: 			5,
+		health: 			4,
 		abilities: 			{strike: 1},
 		hero_version: 			{
 			theme: 				['subtype_mermaid','resist_fire_ability','water'],
@@ -7012,7 +7014,7 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1},
 		},
 		quote: '\"Pretty, aren\'t they?\"',
-	},
+	},*/
 	mermaid_cleric:{
 		name: 				'mermaid cleric',
 		type: 				'creature',
@@ -7024,7 +7026,7 @@ var all_old_available_cards = {
 		image: 				'cards/dream_TradingCard-2023-03-15T153707.jpg',
 		power: 				2,
 		armor: 				0,
-		health: 			5,
+		health: 			4,
 		abilities: 			{strike: 1, purify: 1, submerged: 1},
 		hero_version: 			{
 			theme: 				['subtype_mermaid'],
@@ -7048,7 +7050,7 @@ var all_old_available_cards = {
 		image_position: 	'center',
 		power: 				2,
 		armor: 				0,
-		health: 			6,
+		health: 			4,
 		abilities: 			{strike: 1, doom: 1, submerged: 1},
 		hero_version: 			{
 			theme: 				['subtype_mermaid','doom_ability'],
@@ -7071,7 +7073,7 @@ var all_old_available_cards = {
 		image: 				'cards/dream_TradingCard-2023-03-15T154010.jpg',
 		power: 				2,
 		armor: 				0,
-		health: 			6,
+		health: 			4,
 		abilities: 			{strike: 1, water_bolt: 1, submerged: 1},
 		hero_version: 			{
 			theme: 				['subtype_mermaid'],
@@ -7083,7 +7085,7 @@ var all_old_available_cards = {
 		quote: '\"She can control the waves.\"',
 		use_old: true,
 	},
-	mermaid_witch:{
+	/*mermaid_witch:{
 		name: 				'mermaid witch',
 		type: 				'creature',
 		subtypes: 			['mermaid','aquatic','witch'],
@@ -7094,7 +7096,7 @@ var all_old_available_cards = {
 		image: 				'cards/dream_TradingCard-2023-03-30T061521.jpg',
 		power: 				2,
 		armor: 				0,
-		health: 			6,
+		health: 			4,
 		abilities: 			{strike: 1, curse: 2, submerged: 1},
 		hero_version: 			{
 			theme: 				['subtype_mermaid','resist_fire_ability','water','curse_ability'],
@@ -7105,7 +7107,7 @@ var all_old_available_cards = {
 		},
 		quote: '\"The deep waits for you.\"',
 		use_old: true,
-	},
+	},*/
 	
 	messenger:{
 		name: 				'messenger',
@@ -8013,10 +8015,10 @@ var all_old_available_cards = {
 		theme: 				[],
 		pick_chance: 		1,
 		time: 				5,
-		image: 				'cards/dream_TradingCard-2023-03-30T061440.jpg',
-		power: 				2,
+		image: 				'cards/raging_mermaid.jpg',
+		power: 				1,
 		armor: 				0,
-		health: 			5,
+		health: 			4,
 		abilities: 			{strike: 1, enrage: 1, submerged: 1},
 		hero_version: 			{
 			theme: 				['empower_ability','subtype_mermaid'],
@@ -8972,11 +8974,11 @@ var all_old_available_cards = {
 		theme: 				[],
 		pick_chance: 		1,
 		time: 				5,
-		image: 				'cards/ai-generated-7813783_640.jpg',
+		image: 				'cards/siren.jpg',
 		image_position: 	'top',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
-		health: 			5,
+		health: 			4,
 		abilities: 			{strike: 1, charm: 1, submerged: 1},
 		hero_version: 			{
 			theme: 				['subtype_mermaid'],
@@ -8986,7 +8988,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, charming_touch: 1, submerged: 1},
 		},
 		quote: '\"Do not listen to them!\"',
-		use_old: true,
 	},
 	skeletal_archer:{
 		name: 				'skeletal archer',
@@ -11790,10 +11791,11 @@ var all_old_available_cards = {
 		theme: 				['water'],
 		pick_chance: 		1,
 		time: 				5,
-		image: 				'cards/ai-generated-7679964_640.jpg',
+		image: 				'cards/young_mermaid.jpg',
+		image_position: 	'top',
 		power: 				1,
 		armor: 				0,
-		health: 			5,
+		health: 			4,
 		abilities: 			{strike: 1},
 		hero_version: 			{
 			theme: 				['subtype_mermaid','resist_fire_ability','water'],
@@ -11921,11 +11923,12 @@ var all_old_available_cards = {
 		theme: 				['muscle'],
 		pick_chance: 		1,
 		time: 				1,
-		image: 				'cards/dream_TradingCard-2023-03-16T135926.jpg',
+		image: 				'cards/zombie_mermaid.jpg',
+		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
-		health: 			6,
-		abilities: 			{strike: 1, undead: 1, feast: 4},
+		health: 			4,
+		abilities: 			{strike: 1, undead: 1, feast: 3},
 		hero_version: 			{
 			theme: 				['feast_ability','subtype_zombie','subtype_mermaid','subtype_undead'],
 			power: 				2,
@@ -11933,7 +11936,7 @@ var all_old_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, undead: 1, feast: 1},
 		},
-		quote: '\"It\'s beaty has faded and a hunger has grown.\"',
+		quote: '\"It\'s beauty has faded and a hunger has grown.\"',
 	},
 	zombie_warrior:{
 		name: 				'zombie warrior',

@@ -1270,7 +1270,7 @@ var all_chained_achievements = {
 	sacrifice:{
 		name: 			'sacrifice',
 		description: 	'Have allies sacrifice or consume an ally {AMOUNT} time(s).',
-		objective: 		'ally_performed_sacrifice',
+		objective: 		'ally_performed_sacrifice_ally',
 		amount: 		0.2,
 		rewards:{
 			0:{

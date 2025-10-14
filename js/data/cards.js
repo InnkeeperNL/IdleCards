@@ -5321,7 +5321,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{fire_bolt: 5},
+		abilities: 			{fire_bolt: 1, echo: 1},
 		quote: '\"When you need somethng done...\"',
 	},
 	fire_imp:{
@@ -9128,7 +9128,7 @@ var all_available_cards = {
 		image: 				'cards/dream_TradingCard-2025-02-08T055033.660.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			4,
+		health: 			3,
 		abilities: 			{strike: 1, submerged: 1},
 		hero_version: 			{
 			theme: 				['subtype_aquatic','subtype_mermaid','submerge_ability','evade_ability'],
@@ -9151,7 +9151,7 @@ var all_available_cards = {
 		image: 				'cards/dream_TradingCard-2025-02-08T054544.172.jpg',
 		power: 				2,
 		armor: 				0,
-		health: 			5,
+		health: 			4,
 		abilities: 			{strike: 1, submerged: 1},
 		hero_version: 			{
 			theme: 				['subtype_aquatic','subtype_mermaid','submerge_ability','evade_ability'],
@@ -9174,7 +9174,7 @@ var all_available_cards = {
 		image: 				'cards/dream_TradingCard-2025-02-08T062338.390.jpg',
 		power: 				2,
 		armor: 				0,
-		health: 			5,
+		health: 			4,
 		abilities: 			{shoot: 1, submerged: 1},
 		hero_version: 			{
 			theme: 				['subtype_aquatic','subtype_mermaid','submerge_ability','evade_ability','projectile_ability'],
@@ -9197,7 +9197,7 @@ var all_available_cards = {
 		image: 				'cards/dream_TradingCard-2025-02-08T060459.909.jpg',
 		power: 				2,
 		armor: 				0,
-		health: 			5,
+		health: 			4,
 		abilities: 			{curse: 1, strike: 1, submerged: 1},
 		hero_version: 			{
 			theme: 				['subtype_aquatic','subtype_mermaid','submerge_ability','evade_ability','curse_ability'],
@@ -14981,6 +14981,28 @@ var all_available_cards = {
 		},
 		quote: '\"Glorious brains...\"',
 	},
+	zombie_merchild:{
+		name: 				'zombie merchild',
+		type: 				'creature',
+		subtypes: 			['undead','zombie','mermaid'],
+		color: 				['colorless'],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/zombie_merchild.jpg',
+		image_position: 	'top right',
+		power: 				1,
+		armor: 				0,
+		health: 			3,
+		abilities: 			{strike: 1, undead: 1, feast: 2, submerged: 1},
+		hero_version: 			{
+			theme: 				['feast_ability','subtype_zombie','subtype_mermaid','subtype_undead'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, undead: 1, feast: 1, submerged: 1},
+		},
+		quote: '\"She used to play in the waves...\"',
+	},
 	zombie_warrior:{
 		name: 				'zombie warrior',
 		type: 				'creature',
@@ -15494,6 +15516,14 @@ eachoa(all_available_cards, function(card_id, card_info){
 	{
 		all_available_cards[card_id]['color'] = ['purple'];
 		all_available_cards[card_id]['max_in_deck'] = 1;
+	}
+	if(card_info['abilities'] != undefined && card_info['abilities']['minimum_allies'] != undefined && card_info['abilities']['minimum_allies'] > 2 && card_info['max_in_deck'] != undefined)
+	{
+		card_info['max_in_deck'] = 1;
+	}
+	if(card_info['abilities'] != undefined && card_info['abilities']['minimum_enemies'] != undefined && card_info['abilities']['minimum_enemies'] > 2 && card_info['max_in_deck'] != undefined)
+	{
+		card_info['max_in_deck'] = 2;
 	}
 });
 

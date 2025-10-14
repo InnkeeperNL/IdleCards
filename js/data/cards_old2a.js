@@ -2087,6 +2087,7 @@ var all_oldest_available_cards = {
 		type: 				'creature',
 		subtypes: 			['undead','spirit'],
 		color: 				['green'],
+		not_theme: 			['subtype_undead','type_structure'],
 		time: 				1,
 		image: 				'cards/fantasy-2824500_1920.jpg',
 		power: 				false,

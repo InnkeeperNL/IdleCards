@@ -1630,7 +1630,7 @@ var all_abilities = {
 		max_ally_units: 4,
 		proc_amount: 	1,
 		reduce_skill_after_use:'charm',
-		hero_tactics: 	['sacrifice_ability'],
+		hero_tactics: 	['sacrifice_ally_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -1695,7 +1695,7 @@ var all_abilities = {
 		proc: 			'dealt_damage',
 		max_ally_units: 4,
 		proc_chance: 	50,
-		hero_tactics: 	['sacrifice_ability'],
+		hero_tactics: 	['sacrifice_ally_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2089,7 +2089,7 @@ var all_abilities = {
 			0:{
 				projectile: 'drain',
 				type: 		'destroy',
-				subtypes: 	['sacrifice','consume'],
+				subtypes: 	['sacrifice_ally','consume'],
 				amount: 	1,
 			},
 		},
@@ -2143,7 +2143,7 @@ var all_abilities = {
 					0:{
 						projectile: 	'drain',
 						type: 			'destroy',
-						subtypes: 		['sacrifice'],
+						subtypes: 		['sacrifice_ally'],
 						on_success:{
 							targets:{
 								0:{
@@ -2857,7 +2857,7 @@ var all_abilities = {
 			0:{
 				projectile: 'death',
 				type: 		'destroy',
-				subtypes: 	['sacrifice'],
+				subtypes: 	['sacrifice_ally'],
 				amount: 	1,
 			},
 		},
@@ -3000,7 +3000,7 @@ var all_abilities = {
 		description: 	'Destroy up to {LEVEL} random ally unit(s) without the flying ability.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
-		remove_skill_after_use: 'sacrifice_unit',
+		remove_skill_after_use: 'destroy_non_flying_ally',
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -3015,7 +3015,7 @@ var all_abilities = {
 			0:{
 				projectile: 'death',
 				type: 		'destroy',
-				subtypes: 	['sacrifice'],
+				subtypes: 	['sacrifice_ally'],
 				amount: 	1,
 			},
 		},
@@ -4420,7 +4420,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'death',
 				type: 			'destroy',
-				subtypes: 		[],
+				subtypes: 		['sacrifice_ally'],
 				amount: 		1,
 			},
 			
@@ -8196,7 +8196,7 @@ var all_abilities = {
 			0:{
 				projectile: 'death',
 				type: 		'destroy',
-				subtypes: 	['sacrifice'],
+				subtypes: 	['sacrifice_ally'],
 				amount: 	1,
 			},
 		},
@@ -8223,7 +8223,7 @@ var all_abilities = {
 			0:{
 				projectile: 'death',
 				type: 		'destroy',
-				subtypes: 	['sacrifice'],
+				subtypes: 	['sacrifice_ally'],
 				amount: 	1,
 			},
 		},
@@ -8251,7 +8251,7 @@ var all_abilities = {
 			0:{
 				projectile: 'death',
 				type: 		'destroy',
-				subtypes: 	['sacrifice'],
+				subtypes: 	['sacrifice_ally'],
 				amount: 	1,
 			},
 		},
@@ -8278,7 +8278,7 @@ var all_abilities = {
 			0:{
 				projectile: 'death',
 				type: 		'destroy',
-				subtypes: 	['sacrifice'],
+				subtypes: 	['sacrifice_ally'],
 				amount: 	1,
 			},
 		},
@@ -10229,7 +10229,7 @@ var all_abilities = {
 			0:{
 				projectile: 'death',
 				type: 		'destroy',
-				subtypes: 	['sacrifice'],
+				subtypes: 	['sacrifice_ally'],
 				amount: 	1,
 			},
 		},
