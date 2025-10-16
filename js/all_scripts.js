@@ -14499,7 +14499,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 	    	}
 	    }
 
-    	if(calculated_amount > 0)
+    	/*if(calculated_amount > 0)
     	{
 			if(target_unit['effects'] != undefined && target_unit['effects']['blessed'] != undefined && target_unit['effects']['blessed'] > 0 && (origin_unit == undefined || origin_unit['abilities']['hexed'] == undefined))
 	    	{
@@ -14509,7 +14509,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 	    	    if(target_unit['effects']['blessed'] < 0){target_unit['effects']['blessed'] = 0;}
 	    	    update_passive_effects(target_id);
 	    	}
-	    }
+	    }*/
     
     	eachoa(target_unit['abilities'], function(ability_id, ability_level){
     		if(match_array_values(all_abilities[ability_id]['proc'], 'reduce_incoming_damage') == true && (match_array_values(subtypes,all_abilities[ability_id]['subtypes']) == true || all_abilities[ability_id]['subtypes'] == undefined) && match_array_values(subtypes,all_abilities[ability_id]['negated_by']) == false && (all_abilities[ability_id]['origin_not_self'] == undefined || target_id != origin_id) && (all_abilities[ability_id]['has_origin_unit'] == undefined || (origin_unit != undefined && origin_unit['current_health'] > 0)) && (all_abilities[ability_id]['cannot_proc_while_stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == 0))
@@ -14693,6 +14693,10 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
     		if(target_id == 1 || target_id == 2)
     		{
     			check_ability_procs(temp_target_side, 'hero_damaged', origin_id, subtypes);
+    		}
+    		if(origin_id == 1 || origin_id == 2)
+    		{
+    			check_ability_procs(temp_target_side, 'damaged_by_hero', target_id, subtypes, undefined, false);
     		}
 
     		check_ability_procs(temp_target_side, 'takes_damage', target_id, subtypes);
@@ -15680,20 +15684,20 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 	}
 }
 
-function check_ability_procs(side, string, origin_id, subtypes, slot_id){
+function check_ability_procs(side, string, origin_id, subtypes, slot_id, check_death){
 	if(all_ability_procs[string] != undefined || all_ability_procs['ally_' + string] != undefined || all_ability_procs['enemy_' + string] != undefined || all_ability_procs['any_' + string] != undefined)
 	{
 		if(slot_id == undefined){slot_id = -10;}
 		/*for(temp_i = -10;temp_i<=5;temp_i++){*/
 			eachoa(battle_info.combat_units, function(unit_id, unit){
 				if(unit['slot'] == slot_id){
-					check_single_unit_proc(unit_id, side, string, origin_id, subtypes);
+					check_single_unit_proc(unit_id, side, string, origin_id, subtypes, check_death);
 				}
 			});
 		/*}*/
 		if(slot_id < 5)
 		{
-			check_ability_procs(side, string, origin_id, subtypes, slot_id + 1);
+			check_ability_procs(side, string, origin_id, subtypes, slot_id + 1, check_death);
 		}
 	}
 	/*else
@@ -15702,7 +15706,7 @@ function check_ability_procs(side, string, origin_id, subtypes, slot_id){
 	}*/
 }
 
-function check_single_unit_proc(unit_id, side, string, origin_id, subtypes){
+function check_single_unit_proc(unit_id, side, string, origin_id, subtypes, check_death){
 	if(battle_info.combat_units[unit_id] != undefined)
 	{
 		var unit = battle_info.combat_units[unit_id];
@@ -15718,19 +15722,19 @@ function check_single_unit_proc(unit_id, side, string, origin_id, subtypes){
 							var temp_any_effect_fired = false;
 							if(unit['side'] == side && match_array_values(all_abilities[ability_key]['proc'], 'ally_' + string) == true)
 							{
-								temp_any_effect_fired = process_ability(unit_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'ally_' + string);							
+								temp_any_effect_fired = process_ability(unit_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'ally_' + string, check_death);							
 							}
 							if(unit['side'] != side && match_array_values(all_abilities[ability_key]['proc'], 'enemy_' + string) == true)
 							{
-								temp_any_effect_fired = process_ability(unit_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'enemy_' + string);
+								temp_any_effect_fired = process_ability(unit_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'enemy_' + string, check_death);
 							}
 							if(match_array_values(all_abilities[ability_key]['proc'], 'any_' + string) == true)
 							{
-								temp_any_effect_fired = process_ability(unit_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'any_' + string);
+								temp_any_effect_fired = process_ability(unit_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'any_' + string, check_death);
 							}
 							if(match_array_values(all_abilities[ability_key]['proc'], string) == true)
 							{
-								temp_any_effect_fired = process_ability(unit_id, all_abilities[ability_key], ability_level, origin_id, undefined, string);
+								temp_any_effect_fired = process_ability(unit_id, all_abilities[ability_key], ability_level, origin_id, undefined, string, check_death);
 							}
 							if(temp_any_effect_fired == true && battle_info.combat_units[unit_id] != undefined)
 							{

@@ -1017,23 +1017,6 @@ var all_old_available_cards = {
 		quote: '\"Cute and skittish.\"',
 		use_old: true,
 	},
-	burning_rune:{
-		name: 				'burning rune',
-		type: 				'artifact',
-		subtypes: 			['trinket'],
-		subtype_craft_factor: 3,
-		color: 				['colorless'],
-		theme: 				['burn_ability'],
-		pick_chance: 		1,
-		time: 				1,
-		image: 				'cards/dream_TradingCard-2023-04-30T074639.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			false,
-		abilities: 			{burn_arrivals: 1},
-		quote: '\"Welcome to hell!\"',
-		use_old: true,
-	},
 	burning_skeleton:{
 		name: 				'burning skeleton',
 		type: 				'creature',
@@ -1338,7 +1321,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{restore: 1},
+		abilities: 			{restore: 1, purify: 1},
 		quote: '\"Beloved by many queens.\"',
 	},
 	cleansing_water:{
@@ -1583,7 +1566,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{curse_hv: 1},
+		abilities: 			{cursing_hero: 1},
 		quote: '\"Don\'t drink that!\"',
 	},
 	cursed_skeleton:{
@@ -5480,9 +5463,8 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{heal: 1},
+		abilities: 			{restore: 1},
 		quote: '\"The potion everyone needs.\"',
-		use_old: true,
 	},
 	hex:{
 		name: 				'hex',
@@ -6885,9 +6867,8 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{hasten: 1},
+		abilities: 			{desperate_haste: 1},
 		quote: '\"Some mages get really thirsty.\"',
-		use_old: true,
 	},
 	
 	mana_shield:{

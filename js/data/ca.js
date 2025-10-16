@@ -2651,6 +2651,35 @@ var all_abilities = {
 		level_cost: 		0,
 		average_hit_cost: 	0.75,
 	},
+	cursing_hero:{
+		description: 	'When your hero deals damage to an enemy, this will apply {LEVEL} curse to it.',
+		proc: 			'enemy_damaged_by_hero',
+		ability_subtypes: ['dealt_damage_proc'],
+		scales: 		true,
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		0,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				//self_projectile: 	'curse',
+				//target_projectile: 	'curse',
+				type: 			'apply_curse',
+				subtypes: 		['magical','curse','buff_hero'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
+		level_cost_artifact: 2,
+	},
 	damage_hero:{
 		description: 	'Deals {LEVEL} damage to the enemy hero.',
 		cannot_proc_while_stunned: true,
@@ -2791,16 +2820,16 @@ var all_abilities = {
 		average_hit_cost: 	1,
 	},
 	desperate_haste:{
-		description: 	'When your hero receives damage, this reduces the time left of the card with the highest time left by {LEVEL}. Can be used once.',
+		description: 	'When your hero receives damage, this reduces the time left of the card with the lowest time left by {LEVEL}.',
 		proc: 			'ally_hero_damaged',
-		remove_skill: 	'desperate_haste',
+		//remove_skill: 	'desperate_haste',
 		targets:	{
 			0:{
 				target: 		'card',
 				target_amount: 	1,
 				status: 		'hand',
 				side: 			'ally',
-				highest_time_left: true,
+				lowest_time_left: true,
 			},
 		},
 		effects:{
@@ -2814,8 +2843,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1,
-		level_cost_artifact: 0.5,
+		level_cost: 		4,
 	},
 	destroy:{
 		description: 	'Destroys {LEVEL} random enemy unit(s).',
@@ -5074,6 +5102,29 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 	},
+	fragile:{
+		description: 	'When your hero receives damage, this is destroyed.',
+		proc: 'ally_hero_damaged',
+		targets:	{
+			0:{
+				target: 	'any',
+				target_amount: 1,
+				position: 	'self',
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['destroy'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	-4,
+		cost_factor: 	'full',
+	},
 	frost_bolt:{
 		description: 	'Deals {LEVEL} physical cold projectile damage to a random enemy unit. Has a 25% chance to stun any unit or hero it deals damage to. Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
@@ -5231,6 +5282,33 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		1,
 		level_cost_spell: 	0.25,
+	},
+	grant_one_turn_cursed_touch:{
+		name: 			'grant one round: cursed touch',
+		ability_subtypes: ['curse'],
+		description: 	'Grants the cursed touch ability to a random ally unit or hero until the start of next round.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'curse',
+				type: 			'grant_temp_skill',
+				subtypes: 		[],
+				skill_id: 		'cursed_touch',
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1.125,
+		level_cost_spell: 	0.375,
 	},
 	grant_one_turn_flying:{
 		name: 			'grant one round: flying',
@@ -19540,7 +19618,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{desperate_haste: 5},
+		abilities: 			{desperate_haste: 5, fragile: 1},
 		quote: '\"Break in case of need.\"',
 		selfdestructs: true,
 	},
@@ -19580,7 +19658,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{draw: 1, desperate_haste: 2},
+		abilities: 			{final_draw: 1, desperate_haste: 2, fragile: 1},
 		quote: '\"Small, but handy in an emergency.\"',
 		selfdestructs: true,
 	},
@@ -20558,7 +20636,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{restore: 1},
+		abilities: 			{heal: 1},
 		quote: '\"Some live hundreds of years holding that.\"',
 	},
 	orb_of_power:{
