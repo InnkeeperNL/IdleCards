@@ -836,7 +836,7 @@ var all_oldest_available_cards = {
 	dancing_devil:{
 		name: 				'dancing devil',
 		type: 				'creature',
-		subtypes: 			['daemon', 'imp'],
+		subtypes: 			['daemon','imp'],
 		color: 				['red'],
 		time: 				5,
 		image: 				'cards/dancing_devil.jpg',
@@ -844,17 +844,14 @@ var all_oldest_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, move: 1, resist_fire: 1},
+		abilities: 			{flame_strike: 1, move: 1, resist_fire: 1},
 		hero_version: 			{
 			power: 				3,
 			armor: 				0,
 			health: 			55,
-			abilities: 			{strike_unit: 1, resist_fire: 1},
+			abilities: 			{flame_strike_hv: 1, resist_fire: 1},
 		},
-		recipe:{
-			fire_imp: 			1,
-			force_pull: 		1,
-		}
+		quote: '\"She dances in the fire without getting hurt!\"',
 	},
 	dark_shaman:{
 		name: 				'dark shaman',
@@ -2475,11 +2472,6 @@ var all_oldest_available_cards = {
 			health: 			50,
 			abilities: 			{strike_unit: 1, stunning_touch: 1},
 		},
-		recipe:{
-			dancing_devil: 		1,
-			giants_foot: 		1,
-			amber: 				1
-		}
 	},
 	hungering_ghost:{
 		name: 				'hungering ghost',

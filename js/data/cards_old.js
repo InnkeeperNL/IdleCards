@@ -7960,7 +7960,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{empower_ally: 1},
+		abilities: 			{raging_hero: 1},
 		quote: '\"The label reads: \'Use with care\'.\"',
 	},
 	
@@ -9616,7 +9616,6 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{restoring_spells: 1},
 		quote: '\"The restoring power of magic energy.\"',
-		use_old: true,
 	},
 	spell_staff:{
 		name: 				'spell staff',
@@ -10744,7 +10743,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{poison_hv: 1},
+		abilities: 			{venomous_hero: 1},
 		quote: '\"A potant weapon, if used well.\"',
 	},
 	viking:{

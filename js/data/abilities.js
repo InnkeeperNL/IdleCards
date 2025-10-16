@@ -7310,6 +7310,33 @@ var all_abilities = {
 		},
 		level_cost_structure: 1.5,
 	},
+	raging_hero:{
+		description: 	'When your hero receives damage, it gains {LEVEL} temporary power.',
+		proc: 			'ally_hero_damaged',
+		ability_subtypes: ['receive_damage_proc'],
+		scales: 		true,
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				target_projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','buff_hero','empower_hero'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+	},
 	raise_skeleton:{
 		ability_subtypes: ['summon_ally','summon_creature'],
 		description: 	'Up to {LEVEL} time(s), removes a creature card from your grave from the game and summons a basic skeleton.',
@@ -7981,6 +8008,35 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
+		level_cost: 		3,
+		level_cost_artifact: 6,
+		level_cost_spell: 	1.5,
+	},
+	restoring_spells:{
+		description: 	'When any ally spell is cast, this heals your hero by {LEVEL}.',
+		proc: 			'ally_spell_card_played',
+		cannot_proc_while_stunned: true,
+		origin_not_self: 	true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally',
+				damaged: 		true,
+			},
+		},
+		effects:{
+			0:{
+				projectile:		'healing',
+				type: 			'healing',
+				subtypes: 		['healing','active_healing','heal_hero','buff_hero'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
 		level_cost: 		3,
 		level_cost_artifact: 6,
 		level_cost_spell: 	1.5,
@@ -10425,7 +10481,7 @@ var all_abilities = {
 		average_hits: 	1,
 	},
 	venom:{
-		description: 	'Applies {LEVEL} poison to any creature it damages.{POISON}',
+		description: 	'Applies {LEVEL} poison to any non-undead creature it damages.{POISON}',
 		proc: 			'dealt_damage',
 		ability_subtypes: 	['dealt_damage_proc'],
 		proc_while_dead: true,
@@ -10450,6 +10506,32 @@ var all_abilities = {
 		},
 		level_cost: 		0,
 		average_hit_cost: 	0.75,
+	},
+	venomous_hero:{
+		description: 	'When your hero deals damage to a non-undead enemy creature, this will apply {LEVEL} poison to it.',
+		proc: 			'enemy_damaged_by_hero',
+		ability_subtypes: ['dealt_damage_proc'],
+		scales: 		true,
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'apply_poison',
+				subtypes: 		['poison'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 		1,
 	},
 	victory_rush:{
 		description: 	'Gains {LEVEL} additional turn(s) when it destroys an enemy.',
