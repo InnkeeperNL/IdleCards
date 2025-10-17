@@ -5396,7 +5396,7 @@ var all_abilities = {
 	grant_plated:{
 		name: 			'grant: plated',
 		ability_subtypes: ['plated','physical'],
-		description: 	'When played, grants the plated ability to {LEVEL} random ally unit(s). Cannot target heroes.',
+		description: 	'When played, grants the plated ability to {LEVEL} random ally unit(s) with 2 or more health. Cannot target heroes.',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
 		hero_tactics: 	['subtype_warrior'],
@@ -5406,7 +5406,7 @@ var all_abilities = {
 				target_amount: 	'ability_level',
 				position: 		'random',
 				max_abilities: 	{plated: 0},
-				min_hp: 		1,
+				min_hp: 		2,
 				side: 			'ally'
 			},
 		},
@@ -5423,16 +5423,16 @@ var all_abilities = {
 		level_cost: 		4,
 	},
 	grant_vampirism:{
-		description: 	'Grants the vampiric ability to a random ally creature that does not have it and has at least 1 power. Cannot target your hero.<br/><i>Vampiric: When this deals physical damage to a non-undead creature, it heals itself by the amount of damage done, up to {LEVEL}.</i>',
+		description: 	'Grants the vampiric ability to a random ally creature that has at least 1 power, or increases it\'s level by {LEVEL}. Cannot target your hero.<br/><i>Vampiric: When this deals physical damage to a non-undead creature, it heals itself by the amount of damage done, up to {LEVEL}.</i>',
 		cannot_proc_while_stunned: true,
+		ability_subtypes: ['active_healing','melee_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
 				target_amount: 1,
 				position: 	'random',
 				not_types: 	['object','structure'],
-				max_abilities: {vampiric: 0},
-				min_hp: 	1,
+				min_total_hp: 	2,
 				min_power: 	1,
 				side: 		'ally'
 			},
@@ -10221,7 +10221,7 @@ var all_abilities = {
 		level_cost_hero: 	2,
 	},
 	turncoat:{
-		description: 	'If there are no more then 4 enemy units, this unit changes sides. This effect will trigger up to {LEVEL} times.',
+		description: 	'If there are no more then 4 enemy units, this unit changes sides. This effect will trigger up to {LEVEL} time(s).',
 		proc: 		'basic',
 		proc_amount: 	1,
 		max_enemy_units: 4,

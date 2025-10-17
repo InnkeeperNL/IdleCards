@@ -873,10 +873,6 @@ var all_oldest_available_cards = {
 			health: 			50,
 			abilities: 			{wither_hv: 1, strike_unit: 1, counter_spells: 3},
 		},
-		recipe:{
-			shaman: 			1,
-			embrace_pain: 		1,
-		}
 	},
 	darkling:{
 		name: 				'darkling',
@@ -898,10 +894,6 @@ var all_oldest_available_cards = {
 			health: 			60,
 			abilities: 			{strike_unit: 1, discard: 1, discard_enemy: 1},
 		},
-		recipe:{
-			dark_warrior: 			1,
-			embrace_pain: 			1,
-		}
 	},
 	daughter_of_light:{
 		name: 				'daughter of light',
@@ -2803,10 +2795,6 @@ var all_oldest_available_cards = {
 		armor: 				false,
 		health: 			false,
 		abilities: 			{discard_enemy: 2},
-		recipe:{
-			deaths_call: 		1,
-			embrace_pain: 		1
-		}
 	},
 	ninja:{
 		name: 				'ninja',
