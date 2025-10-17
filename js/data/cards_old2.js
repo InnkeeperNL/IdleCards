@@ -1563,7 +1563,7 @@ var all_older_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{sacrifice: 1, damage_hero: 5, minimum_allies: 1},
+		abilities: 			{sacrifice: 1, damage_hero_on_act: 5},
 		recipe:{
 			black_dragon: 	1,
 			execution: 		1

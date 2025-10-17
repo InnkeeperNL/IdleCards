@@ -2704,6 +2704,32 @@ var all_abilities = {
 		level_cost_spell: 	2,
 		average_hits: 		1,
 	},
+	damage_hero_on_act:{
+		name: 			'damage hero',
+		description: 	'Deals {LEVEL} damage to the enemy hero if this used another ability.',
+		cannot_proc_while_stunned: true,
+		has_used_ability: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				min_hp: 		1,
+				side: 			'enemy'
+			}
+		},
+		effects:{
+			0:{
+				projectile: 	'wound',
+				type: 			'damage',
+				subtypes: 		['direct_damage'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'attack',
+		level_cost: 		8,
+		level_cost_spell: 	2,
+		average_hits: 		1,
+	},
 	debilitate:{
 		description: 	'A random enemy creature looses {LEVEL} power and health permanently.',
 		cannot_proc_while_stunned: true,
@@ -3744,7 +3770,7 @@ var all_abilities = {
 			}
 		},
 		level_cost: 		2,
-		level_cost_spell: 	0.5,
+		level_cost_spell: 	0.75,
 	},
 	experiment_hv:{
 		name: 			'experiment',
@@ -3769,7 +3795,7 @@ var all_abilities = {
 			}
 		},
 		level_cost: 		2,
-		level_cost_spell: 	0.5,
+		level_cost_spell: 	1,
 	},
 	explode:{
 		description: 	'When this unit is destroyed, it deals {LEVEL} physical damage to all nearby units.',
@@ -5536,6 +5562,7 @@ var all_abilities = {
 		level_cost_spell: 	5,
 	},
 	hasten_on_act:{
+		name: 			'hasten',
 		description: 	'If this used another ability, this reduces the time left of a card in your hand by {LEVEL}.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
@@ -6407,7 +6434,7 @@ var all_abilities = {
 				pause_before: 	2000,
 			}
 		},
-		level_cost: 	0.25,
+		level_cost: 	1,
 		cost_factor: 	'full',
 	},
 	marred_vines:{
@@ -24493,6 +24520,23 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{unsummon_ally: 1, echo: 1},
 		quote: '\"I\'m not running away! It\'s called a tactical retreat!\"',
+	},
+	taxes:{
+		name: 				'taxes',
+		type: 				'spell',
+		subtypes: 			['ritual'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/taxes.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{destroy_artifact: 1, long_echo: 1},
+		quote: '\"Not many things are certain in life...\"',
 	},
 	temple:{
 		name: 				'temple',
