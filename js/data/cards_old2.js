@@ -302,10 +302,6 @@ var all_older_available_cards = {
 		health: 			false,
 		abilities: 			{restore: 2, draw_on_act: 1},
 		quote: '',
-		recipe:{
-			carrier_pigeon: 		1,
-			monk: 					1
-		}
 	},
 	blood_horror:{
 		name: 				'blood horror',
@@ -362,24 +358,17 @@ var all_older_available_cards = {
 		theme: 				['muscle','empower','evasion'],
 		pick_chance: 		1,
 		time: 				5,
-		image: 				'cards/medieval-5463404_640.jpg',
-		power: 				4,
+		image: 				'cards/brigands.jpg',
+		image_position: 	'top',
+		power: 				2,
 		armor: 				0,
 		health: 			2,
-		abilities: 			{strike: 1, hide_on_kill: 1},
+		abilities: 			{striking_entry: 2, strike: 1, hide_on_kill: 1},
 		hero_version: 			{
-			name: 				'brigands',
-			type: 				'creature',
-			theme: 				['muscle','empower','evasion'],
-			image: 				'cards/medieval-5463404_640.jpg',
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			35,
-			abilities: 			{strike_unit: 1, hide_on_kill: 1},
-		},
-		recipe:{
-			dark_warrior: 		1,
-			clear_crystal: 		1,
+			abilities: 			{strike_unit: 2, hide_on_kill: 1},
 		},
 		quote: '\"Where did they go?!\"'
 	},
@@ -1055,10 +1044,6 @@ var all_older_available_cards = {
 			health: 			30,
 			abilities: 			{strike_unit: 1, restore_hero: 1, flying: 1},
 		},
-		recipe:{
-			monk: 				1,
-			angelic_blessing: 	1,
-		}
 	},
 	guiding_angel:{
 		name: 				'guiding angel',
@@ -1397,32 +1382,24 @@ var all_older_available_cards = {
 	},
 	monk:{
 		name: 				'monk',
-		version: 			2,
 		type: 				'creature',
 		subtypes: 			['human','cleric'],
 		color: 				['yellow'],
-		theme: 				['protection','muscle','cleansing'],
 		pick_chance: 		1,
 		time: 				7,
-		image: 				'cards/namaste-1935938_640.jpg',
+		image: 				'cards/monk.jpg',
+		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
-		health: 			8,
-		abilities: 			{strike: 1, cleanse: 1},
+		health: 			6,
+		abilities: 			{strike: 1, purify_self: 1},
 		hero_version: 			{
-			name: 				'monk',
-			type: 				'creature',
-			theme: 				['protection','muscle','cleansing'],
-			image: 				'cards/namaste-1935938_640.jpg',
-			power: 				2,
+			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, cleanse: 1},
+			abilities: 			{strike_unit: 1, purify_self: 1},
 		},
-		recipe:{
-			holy_relic: 		1,
-			masked_lady: 		1,
-		}
+		quote: '\"She cannot be corrupted.\"',
 	},
 	
 	monsoon:{
@@ -1482,7 +1459,7 @@ var all_older_available_cards = {
 		armor: 				false,
 		health: 			false,
 		abilities: 			{bolster: 5, righthand: 1},
-		quote: 'It can be a powerfull touch',
+		quote: 'It can be a powerful touch',
 		recipe:{
 			herbs: 						2,
 			//cleansing_water: 			1
@@ -1836,10 +1813,6 @@ var all_older_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, charming_touch: 1},
 		},
-		recipe:{
-			blessed_wine: 		1,
-			monk: 				1,
-		}
 	},
 	servant_of_fire:{
 		name: 				'servant of fire',

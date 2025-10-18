@@ -832,6 +832,20 @@ var all_chained_achievements = {
 		step_effect: 	'min_amount',
 		no_quest: 		true,
 	},
+	guard:{
+		name: 			'guard',
+		description: 	'Have allies guard {AMOUNT} time(s).',
+		objective: 		'ally_performed_guard',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'cadet',
+		steps: 			6,
+	},
 	hasten:{
 		name: 			'hasten',
 		description: 	'Have allies hasten a card {AMOUNT} time(s).',

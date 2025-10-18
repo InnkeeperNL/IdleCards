@@ -287,11 +287,6 @@ var all_oldest_available_cards = {
 			health: 			60,
 			abilities: 			{release_bee: 1},
 		},
-		recipe:{
-			lumber: 			1,
-			natures_touch: 		1,
-			firtile_dirt: 		1
-		}
 	},
 	black_striker:{
 		name: 				'black striker',
@@ -299,20 +294,21 @@ var all_oldest_available_cards = {
 		subtypes: 			['human','rogue'],
 		color: 				['purple'],
 		time: 				3,
-		image: 				'cards/assassin-2182084_640.jpg',
-		power: 				2,
+		image: 				'cards/black_striker.jpg',
+		power: 				1,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, run_away: 1, evade: 1},
+		abilities: 			{run_away: 1, strike: 2, evade: 1},
 		hero_version: 			{
 			name: 				'black striker',
 			type: 				'creature',
-			image: 				'cards/assassin-2182084_640.jpg',
-			power: 				2,
+			image: 				'cards/black_striker.jpg',
+			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, evade: 1},
+			abilities: 			{strike_unit: 2, evade: 1},
 		},
+		quote: '\"Trained to strike at the heart of the enemy.\"',
 	},
 	blessed_angel:{
 		name: 				'blessed angel',
@@ -366,16 +362,13 @@ var all_oldest_available_cards = {
 		color: 				['red'],
 		pick_chance: 		0.5,
 		time: 				6,
-		image: 				'cards/books-4733993_640.jpg',
+		image: 				'cards/book_of_fire.jpg',
+		image_position: 	'bottom',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{fire_bolt_hv: 1, burn_hv: 1, delay: 4},
-		recipe:{
-			burning_ring: 		1,
-			candle: 			1,
-			paper: 				1
-		}
+		abilities: 			{fire_bolt_hv: 1, burn_hv: 1},
+		quote: '\"Contains the knowledge of fire.\"',
 	},
 	book_of_nature:{
 		name: 				'book of nature',
@@ -384,16 +377,12 @@ var all_oldest_available_cards = {
 		color: 				['green'],
 		pick_chance: 		0.5,
 		time: 				3,
-		image: 				'cards/dreams-2904682_640.jpg',
+		image: 				'cards/book_of_nature.jpg',
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{heal: 1, bolster: 1, delay: 4},
-		recipe:{
-			healing_oil: 		1,
-			wood_trinket: 		1,
-			paper: 				1
-		}
+		abilities: 			{heal: 1, bolster: 1},
+		quote: '\"Contains the knowledge of nature.\"',
 	},
 	burning_angel:{
 		name: 				'burning angel',
@@ -548,7 +537,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{turncoat: 1, slow_own: 1},
+		abilities: 			{turncoat: 1, hasten: 2},
 		hero_version: 			{
 			name: 				'caravan',
 			type: 				'creature',
@@ -557,7 +546,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{hasten: 1, slow: 1},
+			abilities: 			{hasten: 2},
 		},
 		recipe:{
 			poverty: 			1,
@@ -2128,25 +2117,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['human','warrior'],
 		color: 				['yellow'],
 		time: 				8,
-		image: 				'cards/persons-4853861_640.jpg',
+		image: 				'cards/guards.jpg',
+		image_position: 	'top',
 		power: 				1,
-		armor: 				3,
+		armor: 				0,
 		health: 			4,
 		abilities: 			{guard: 1, bring_clone: 1, strike: 1},
 		hero_version: 			{
-			name: 				'guards',
-			type: 				'creature',
-			image: 				'cards/persons-4853861_640.jpg',
-			image_position: 	'top',
-			power: 				3,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1},
+			abilities: 			{strike_unit: 2, ally_guards: 2},
 		},
-		recipe:{
-			peasant: 			2,
-			plate_armor: 		1,
-		}
+		quote: '\"They will hold the line.\"'
 	},	
 	half_daemon:{
 		name: 				'half daemon',
@@ -2807,7 +2790,7 @@ var all_oldest_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			2,
-		abilities: 			{strike_unit: 1, run_away: 1, hide: 1},
+		abilities: 			{run_away: 1, strike: 1, hide: 1},
 		hero_version: 			{
 			name: 				'ninja',
 			type: 				'creature',
@@ -3013,7 +2996,7 @@ var all_oldest_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike_unit: 1, counter: 1, venom: 4},
+		abilities: 			{strike: 1, counter: 1, venom: 4},
 		hero_version: 			{
 			name: 				'rattlesnake',
 			type: 				'creature',
@@ -3718,15 +3701,15 @@ var all_oldest_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike_unit: 1, regenerate: 1},
+		abilities: 			{strike: 2, regenerate: 1},
 		hero_version: 			{
 			name: 				'tiger huntress',
 			type: 				'creature',
 			image: 				'cards/woman-5375804_640.jpg',
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, regenerate: 1},
+			abilities: 			{strike_unit: 2, regenerate: 1},
 		},
 		recipe:{
 			gladiator: 			1,

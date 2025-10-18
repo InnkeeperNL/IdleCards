@@ -157,6 +157,31 @@ var all_abilities = {
 		level_cost: 		3,
 		level_cost_spell: 	1,
 	},
+	ally_guards:{
+		description: 	'Moves {LEVEL} ally creature unit(s) without an opposing unit to a free slot with an opposing unit.',
+		cannot_proc_while_stunned: true,
+		min_unopposed_enemy_units: 1,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'self',
+				has_opposing: 	false,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			1:{
+				type: 			'move',
+				safe_slot: 		false,
+				placement: 		'random',
+				subtypes: 		['movement','guard'],
+				amount: 		1,
+			}
+		},
+	},
 	ally_runs_away:{
 		description: 	'{LEVEL} Ally creature unit(s) facing an enemy unit will move to a slot with no opposing unit.',
 		proc: 			'basic',
@@ -978,6 +1003,34 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 		6,
 	},
+	bring_artifact:{
+		description: 	'Summons up to a total of {LEVEL} artifact(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_artifacts: 4,
+		reduce_skill_after_use:'bring_artifact',
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_artifact'],
+				card_id: 	'random',
+				card_type: 	'artifact',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		6,
+		level_cost_hero: 	2,
+		level_cost_spell: 	3
+	},
 	bring_cat:{
 		description: 	'Summons a cat unit. Can be used {LEVEL} time(s).',
 		proc: 			'basic',
@@ -1548,7 +1601,7 @@ var all_abilities = {
 		level_cost_hero: 	2,
 	},
 	chaos_touch:{
-		description: 	'When this deals damage to the enemy hero, discard a cards from the enemy\'s hand to the grave. Can be used {LEVEL} time(s).',
+		description: 	'When this deals damage to the enemy hero, discard a card from the enemy\'s hand to the grave. Can be used {LEVEL} time(s).',
 		proc: 			'dealt_damage_to_hero',
 		reduce_skill_after_use: 'chaos_touch',
 		proc_amount: 	1,
@@ -3479,6 +3532,65 @@ var all_abilities = {
 		level_cost: 		12,
 		level_cost_spell: 	3,
 		average_hits: 		3,
+	},
+	earth_bolt:{
+		description: 	'Deals {LEVEL} physical earth projectile damage to a random enemy unit. Will target the enemy hero if there are no enemy units.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'stone',
+				type: 			'damage',
+				subtypes: 		['physical','earth','projectile','elemental'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		4,
+		level_cost_spell: 	1,
+		average_hits: 		1,
+	},
+	earth_bolt_hv:		{
+		name: 			'earth bolt',
+		description: 	'Deals {LEVEL} physical earth projectile damage to a random enemy unit.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'stone',
+				type: 			'damage',
+				subtypes: 		['physical','earth','projectile','elemental'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	3,
+		average_hits: 	1,
 	},
 	echo:{
 		description: 	'Has a 75% chance to return to its owner\'s hand if this used an ability.',
@@ -6653,6 +6765,35 @@ var all_abilities = {
 			}
 		},
 	},
+	move_ally:{
+		description: 	'Moves {LEVEL} ally creature unit(s) to a random free slot.',
+		proc: 			'basic',
+		max_ally_units: 4,
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		hero_tactics: 	['charge_ability','projectile_ability','dealt_damage_to_hero_proc_ability'],
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure'],
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			1:{
+				projectile: 	'dodge',
+				type: 			'move',
+				placement: 		'random',
+				subtypes: 		['movement','run_away','move_ally'],
+				amount: 		1,
+			}
+		},
+		level_cost: 	1,
+		level_cost_spell: 0.5,
+	},
 	nurture:{
 		description: 	'A random non-undead ally creature with 1 health gains {LEVEL} health permanently.',
 		cannot_proc_while_stunned: true,
@@ -7176,6 +7317,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		hero_tactics: 	['cleanse_ally_ability'],
+		do_not_pause_between: true,
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -7208,6 +7350,7 @@ var all_abilities = {
 	purify_all:{
 		description: 	'Removes all negative effects from all ally units and your hero.',
 		cannot_proc_while_stunned: true,
+		do_not_pause_between: true,
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -7237,15 +7380,46 @@ var all_abilities = {
 		level_cost: 		6,
 		level_cost_spell: 	1.5,
 	},
+	purify_self:{
+		description: 	'Removes all negative effects from itself.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				has_negative_effect: true,
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				//projectile: 'cleanse',
+				target_projectile: 'cleanse',
+				type: 		'set_effect_amount',
+				effect_names:{
+					burning: 	0,
+					cursed: 	0,
+					doom: 		0,
+					poisoned: 	0,
+				},
+				subtypes: 	['cleanse_ally'],
+				amount: 	1,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	purifying_entry:{
-		description: 	'When played, removes all negative effects from {LEVEL} random ally unit(s) or your hero.',
+		description: 	'When played, removes all negative effects from all ally units and your hero.',
 		cannot_proc_while_stunned: true,
 		proc: 			'on_play',
-		proc_amount: 	'ability_level',
+		do_not_pause_between: true,
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
-				target_amount: 	1,
+				target_amount: 	6,
 				position: 		'random',
 				has_negative_effect: true,
 				min_hp: 		1,
@@ -7268,12 +7442,13 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		0.5,
+		level_cost: 		2,
 	},
 	purifying_deaths:{
 		description: 	'Removes all negative effects from {LEVEL} random ally unit(s) or your hero when any ally creature is destroyed.',
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
+		do_not_pause_between: true,
 		scales: 		true,
 		hero_tactics: 	['ally_creature_death_proc_ability','type_creature'],
 		targets:	{
@@ -7473,6 +7648,34 @@ var all_abilities = {
 		level_cost: 		8,
 		level_cost_hero: 	8,
 		level_cost_spell: 	2,
+	},
+	reaping_touch:{
+		description: 	'After this deals damage to an enemy creature unit, destroys it if it has {LEVEL} or less health.',
+		proc: 			'dealt_damage',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				max_hp: 		'ability_level',
+				not_self: 		true,
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'set_max_hp',
+				subtypes: 	['reap'],
+				amount: 	0,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_hero: 	2,
 	},
 	reclaim:{
 		description: 	'Returns {LEVEL} card(s) in your grave to your deck.',
@@ -9567,11 +9770,10 @@ var all_abilities = {
 		cost_factor: 		'health',
 	},
 	summon_artifact:{
-		description: 	'Summons up to {LEVEL} artifact(s).',
+		description: 	'Summons {LEVEL} artifact(s).',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		max_ally_artifacts: 4,
-		reduce_skill_after_use:'summon_artifact',
 		proc_amount: 'ability_level',
 		targets:	{
 			0:{
@@ -9590,9 +9792,9 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		12,
-		level_cost_hero: 	4,
-		level_cost_spell: 	3
+		level_cost: 		24,
+		level_cost_hero: 	6,
+		level_cost_spell: 	6
 	},
 	summon_conscript:{
 		description: 	'Summons {LEVEL} conscript(s).',
@@ -10222,12 +10424,11 @@ var all_abilities = {
 		level_cost_hero: 	2,
 	},
 	turncoat:{
-		description: 	'If there are no more then 4 enemy units, this unit changes sides. This effect will trigger up to {LEVEL} time(s).',
+		description: 	'If there are no more then 4 enemy units, this unit changes sides.',
 		proc: 		'basic',
 		proc_amount: 	1,
 		max_enemy_units: 4,
 		cannot_proc_while_stunned: true,
-		reduce_skill_after_use:'turncoat',
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -10244,10 +10445,8 @@ var all_abilities = {
 				amount: 	1,
 			},
 		},
-		level_cost: 	1,
-		ability_level_cost_factors:{
-			slow_own: 		2,
-		},
+		level_cost: 	-1,
+		cost_factor: 	'full',
 	},
 	turn_enemy:{
 		description: 	'Turns a random enemy non-undead creature into an ally.',
@@ -10282,10 +10481,14 @@ var all_abilities = {
 		level_cost_hero: 	4,
 	},
 	undead:{
-		name_color: 		'rgba(255,255,255,0.9)',
 		description: 		'This unit is immune to poison and all mental effects.',
 		grants_immunities: 	['poison','mental'],
 		ability_subtypes: 	['undead'],
+	},
+	unshakable:{
+		description: 		'This unit is immune to stuns and weakness.',
+		grants_immunities: 	['stun','weaken'],
+		ability_subtypes: 	['unshakable'],
 	},
 	unsummon_ally:{
 		description: 	'Returns a damaged ally creature unit to your hand. Will not unsummon summoned units.',
@@ -11502,7 +11705,8 @@ var all_available_cards = {
 		craft_theme: 		['arcane_bolts'],
 		pick_chance: 		1,
 		time: 				1,
-		image: 				'cards/dream_TradingCard85.jpg',
+		image: 				'cards/arcane_mage.jpg',
+		image_position: 	'top',
 		power: 				false,
 		armor: 				0,
 		health: 			6,
@@ -11889,6 +12093,7 @@ var all_available_cards = {
 			abilities: 			{empower_ally: 2},
 		},
 		quote: '\"Ready to hand out arms.\"',
+		max_in_deck: 		1,
 	},
 	arrow_dancer:{
 		name: 				'arrow dancer',
@@ -12058,6 +12263,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{backlash: 3, echo: 1},
 		quote: '\"Now get going!\"',
+		max_in_deck: 		1,
 	},
 	backstabber:{
 		name: 				'backstabber',
@@ -12450,6 +12656,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{empower_ally: 3, draw_on_act: 1},
 		quote: '\"Here\'s the plan.\"',
+		max_in_deck: 		1,
 	},
 	battle_shout:{
 		name: 				'battle shout',
@@ -12467,6 +12674,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{empower_all: 3, minimum_ally_creatures: 3},
 		quote: '\"Attack!\"',
+		max_in_deck: 		1,
 	},
 	bear:{
 		name: 				'bear',
@@ -13819,6 +14027,29 @@ var all_available_cards = {
 		abilities: 			{burning_deaths_hv: 1},
 		quote: '\"Holds burning spirits.\"',
 	},
+	cadet:{
+		name: 				'cadet',
+		type: 				'creature',
+		subtypes: 			['human','warrior'],
+		color: 				['colorless'],
+		theme: 				[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/cadet.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{strike: 1, guard: 1},
+		hero_version: 			{
+			theme: 				['guard_ability','subtype_warrior','active_healing_ability'],
+			power: 				3,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, ally_guards: 1},
+		},
+		quote: '\"Just stand in front of the enemy.\"',
+	},
 	cannibal:{
 		name: 				'cannibal',
 		type: 				'creature',
@@ -15077,6 +15308,29 @@ var all_available_cards = {
 		},
 		quote: '\"Just you and me!\"',
 	},
+	dwarf_pyro:{
+		name: 				'dwarf pyro',
+		type: 				'creature',
+		subtypes: 			['dwarf','rogue'],
+		color: 				['colorless'],
+		theme: 				['muscle'],
+		pick_chance: 		1,
+		time: 				5,
+		image: 				'cards/dwarf_pyro.jpg',
+		image_position: 	'top',
+		power: 				false,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{burn: 1, unshakable: 1},
+		hero_version: 			{
+			theme: 				['subtype_dwarf'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{burn_hv: 3, unshakable: 1},
+		},
+		quote: '\"Someone has the heat the hearth.\"',
+	},
 	echo_mage:{
 		name: 				'echo mage',
 		type: 				'creature',
@@ -15395,7 +15649,7 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, purifying_entry: 3, resist_magic: 1, blessed: 5},
+		abilities: 			{strike: 1, purifying_entry: 1, resist_magic: 1, blessed: 5},
 		hero_version: 			{
 			theme: 				['subtype_elf','bless_ability','draw_cards_ability'],
 			power: 				2,
@@ -15776,6 +16030,29 @@ var all_available_cards = {
 		abilities: 			{hero_resists_magic: 1},
 		quote: '\"Crafted by the finest elvish jewelers.\"',
 		max_in_deck: 		1,
+	},
+	enchantress:{
+		name: 				'enchantress',
+		type: 				'creature',
+		subtypes: 			['human','mage'],
+		color: 				['colorless'],
+		theme: 				['type_artifact'],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/enchantress.jpg',
+		image_position: 	'top',
+		power: 				false,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{arcane_bolt: 1, bring_artifact: 1},
+		hero_version: 			{
+			theme: 				['subtype_elf','type_artifact'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{arcane_bolt_hv: 1, bring_artifact: 2},
+		},
+		quote: '\"She can turn that magic into solid form.\"',
 	},
 	enforcer_golem:{
 		name: 				'enforcer golem',
@@ -17593,16 +17870,16 @@ var all_available_cards = {
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard-2024-11-29T063445.187.jpg',
-		power: 				2,
+		power: 				false,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{shoot: 1},
+		abilities: 			{earth_bolt: 2},
 		hero_version: 			{
 			theme: 				['subtype_golem','projectile_ability','type_structure'],
-			power: 				3,
+			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{shoot_unit: 1},
+			abilities: 			{earth_bolt_hv: 3},
 		},
 		quote: '\"Look out for that boulder!\"',
 	},
@@ -18208,6 +18485,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{empower_hero: 1},
 		quote: '\"A weapon fit for a hero!\"',
+		max_in_deck: 		1,
 	},
 	hex:{
 		name: 				'hex',
@@ -20501,7 +20779,7 @@ var all_available_cards = {
 		theme: 				[],
 		pick_chance: 		1,
 		time: 				1,
-		image: 				'cards/dream_TradingCard-2024-11-30T210418.370.jpg',
+		image: 				'cards/nightly_harvest.jpg',
 		power: 				false,
 		armor: 				0,
 		health: 			false,
@@ -20577,6 +20855,27 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, venom: 1, poison_aura: 1, evade: 1},
 		},
 		quote: '\"Come closer!\"',
+	},
+	novice_monk:{
+		name: 				'novice monk',
+		type: 				'creature',
+		subtypes: 			['human','cleric'],
+		color: 				['colorless'],
+		pick_chance: 		1,
+		time: 				7,
+		image: 				'cards/novice_monk.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{strike: 1, purify_self: 1},
+		hero_version: 			{
+			power: 				3,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, purify_self: 1},
+		},
+		quote: '\"Even though she is young, she cannot be corrupted.\"',
 	},
 	nun:{
 		name: 				'nun',
@@ -23528,6 +23827,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{backlash: 2},
 		quote: '\"Let\'s put those minions to work!\"',
+		max_in_deck: 		1,
 	},
 	sleeping_dog:{
 		name: 				'sleeping dog',
@@ -24378,6 +24678,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{empower_hero: 2, echo: 1},
 		quote: '\"Get me another one!\"',
+		max_in_deck: 		1,
 	},
 	strongshot:{
 		name: 				'strongshot',
@@ -24918,6 +25219,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{empower_ally: 4, empower_hero: 4, minimum_ally_creatures: 1},
 		quote: '\"We will end you!\"',
+		max_in_deck: 		1,
 	},
 	unholy_night:{
 		name: 				'unholy night',
@@ -29325,6 +29627,20 @@ var all_chained_achievements = {
 		steps: 			5,
 		step_effect: 	'min_amount',
 		no_quest: 		true,
+	},
+	guard:{
+		name: 			'guard',
+		description: 	'Have allies guard {AMOUNT} time(s).',
+		objective: 		'ally_performed_guard',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'cadet',
+		steps: 			6,
 	},
 	hasten:{
 		name: 			'hasten',
