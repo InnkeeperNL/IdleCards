@@ -8959,7 +8959,7 @@ var all_abilities = {
 		description: 	'Increases the time left of the enemy card with the lowest time left {LEVEL} time(s).',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
-		hero_tactics: 	['discard_enemy_ability','draw_cards_ability','move_ally_to_deck_ability','hasten_ability'],
+		hero_tactics: 	['discard_enemy_ability','slow_enemy_ability'],
 		targets:	{
 			0:{
 				target: 			'card',
@@ -8988,7 +8988,7 @@ var all_abilities = {
 		description: 	'Increases the time left of all enemy cards by {LEVEL}.',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
-		hero_tactics: 	['discard_enemy_ability','draw_cards_ability'],
+		hero_tactics: 	['discard_enemy_ability','slow_enemy_ability'],
 		targets:	{
 			0:{
 				target: 			'card',
@@ -9016,7 +9016,7 @@ var all_abilities = {
 		description: 	'When the enemy draws a card, this increases the time left of that card by {LEVEL}.',
 		proc: 			'enemy_card_drawn',
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['discard_enemy_ability','draw_cards_ability','move_ally_to_deck_ability','hasten_ability'],
+		hero_tactics: 	['discard_enemy_ability','slow_enemy_ability'],
 		targets:	{
 			0:{
 				target: 			'card',

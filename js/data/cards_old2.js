@@ -374,33 +374,23 @@ var all_older_available_cards = {
 	},
 	brown_bear:{
 		name: 				'brown bear',
-		version: 			2,
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','bear'],
 		color: 				['green'],
-		theme: 				['muscle','growth'],
 		pick_chance: 		1,
 		time: 				12,
-		image: 				'cards/bear-422682_640.jpg',
+		image: 				'cards/brown_bear.jpg',
 		power: 				4,
 		armor: 				0,
 		health: 			10,
 		abilities: 			{strike: 1, enrage: 1},
 		hero_version: 			{
-			name: 				'brown bear',
-			type: 				'creature',
-			theme: 				['muscle'],
-			image: 				'cards/bear-422682_640.jpg',
 			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, enrage: 1},
 		},
-		recipe:{
-			boar: 				1,
-			natures_touch: 		1,
-		},
-		quote: ''
+		quote: '\"You can run, if you like.\"',
 	},
 	burning_imp:{
 		name: 				'burning imp',
@@ -433,25 +423,18 @@ var all_older_available_cards = {
 		theme: 				['deck_control','evasion'],
 		pick_chance: 		1,
 		time: 				4,
-		image: 				'cards/feral-pigeon-6466396_640.jpg',
+		image: 				'cards/carrier_pigeon.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			1,
 		abilities: 			{strike: 1, flying: 1, draw_once: 1},
 		hero_version: 			{
-			name: 				'carrier pigeon',
-			type: 				'creature',
-			theme: 				['restoration','deck_control'],
-			image: 				'cards/feral-pigeon-6466396_640.jpg',
 			power: 				1,
 			armor: 				0,
 			health: 			20,
 			abilities: 			{strike_unit: 1, flying: 1, draw_once: 1},
 		},
-		recipe:{
-			archer: 			1,
-			young_angel: 		1
-		}
+		quote: '\"A message for you, sir.\"'
 	},
 	cockroach:{
 		name: 				'cockroach',
@@ -1611,29 +1594,20 @@ var all_older_available_cards = {
 		type: 				'creature',
 		subtypes: 			['animal','bear'],
 		color: 				['blue'],
-		theme: 				['muscle','frost','damage_reduction'],
 		pick_chance: 		1,
 		time: 				11,
-		image: 				'cards/manipulation-4718960_640.jpg',
+		image: 				'cards/polar_bear.jpg',
 		power: 				4,
 		armor: 				0,
 		health: 			10,
 		abilities: 			{strike: 1, resist_cold: 1},
 		hero_version: 			{
-			name: 				'polar bear',
-			type: 				'creature',
-			theme: 				['muscle','frost'],
-			image: 				'cards/manipulation-4718960_640.jpg',
-			image_position: 	'bottom', 
 			power: 				3,
 			armor: 				0,
 			health: 			35,
 			abilities: 			{strike_unit: 1, resist_cold: 1},
 		},
-		recipe:{
-			frozen_claw: 		1,
-			yeti: 				1,
-		}
+		quote: '\"Cold and hungry.\"',
 	},
 	raging_zombie:{
 		name: 				'raging zombie',
@@ -2279,12 +2253,7 @@ var all_older_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, venom: 3, submerged: 1},
 		},
-		recipe:{
-			brown_bear: 			1,
-			thorned_tree: 			1
-		}
 	},
-	
 	yellow_ara:{
 		name: 				'yellow ara',
 		version: 			2,

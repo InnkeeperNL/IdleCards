@@ -548,11 +548,7 @@ var all_oldest_available_cards = {
 			health: 			60,
 			abilities: 			{hasten: 2},
 		},
-		recipe:{
-			poverty: 			1,
-			camel: 				1,
-			peasant: 			1
-		}
+		quote: '\"We do not pick a side to trade with.\"'
 	},
 	
 	caretaking_druid:{
@@ -651,25 +647,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['human','warrior'],
 		color: 				['orange','yellow'],
 		time: 				4,
-		image: 				'cards/amazone-2148911_640.jpg',
+		image: 				'cards/combat_medic.jpg',
+		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, heal: 1},
+		abilities: 			{strike: 1, first_aid: 1},
 		hero_version: 			{
-			name: 				'combat medic',
-			type: 				'creature',
-			image: 				'cards/amazone-2148911_640.jpg',
-			image_position: 		'top',
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, heal: 1},
+			abilities: 			{strike_unit: 1, first_aid: 1},
 		},
-		recipe:{
-			gladiator: 			1,
-			angelic_blessing: 	1
-		}
+		quote: '\"Keeps your army alive.\"',
 	},
 	corrupt_merchant:{
 		name: 				'corrupt merchant',
@@ -677,25 +667,18 @@ var all_oldest_available_cards = {
 		subtypes: 			['human','rogue'],
 		color: 				['purple','yellow'],
 		time: 				3,
-		image: 				'cards/mystical-5398548_640.jpg',
+		image: 				'cards/corrupt_merchant.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			3,
+		health: 			1,
 		abilities: 			{strike: 1, pilfer: 1},
 		hero_version: 			{
-			name: 				'corrupt merchant',
-			type: 				'creature',
-			image: 				'cards/mystical-5398548_640.jpg',
 			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, pilfer: 1},
 		},
-		recipe:{
-			peasant: 			1,
-			poverty: 			1,
-			diamond: 			1
-		}
+		quote: '\"That\'s a bad deal...\"',
 	},
 	court_lady:{
 		name: 				'court lady',
