@@ -526,7 +526,6 @@ var all_abilities = {
 		description: 	'Any ally unit that enters the game gains {LEVEL} blessing(s). Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
-		scales: 		true,
 		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
@@ -585,7 +584,6 @@ var all_abilities = {
 		description: 	'A random ally unit gains {LEVEL} blessing(s) when any ally creature is destroyed. Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
-		scales: 		true,
 		hero_tactics: 	['own_death_proc_ability'],
 		targets:	{
 			0:{
@@ -1944,7 +1942,7 @@ var all_abilities = {
 		cost_adjustment: 	1,
 	},
 	cold_strike:{
-		description: 	'Deals physical cold melee damage equal to its power to the opposing unit. Has a 25% chance to stun any unit or hero it deals damage to. Will target the enemy hero if there is no opposing unit.',
+		description: 	'Deals physical cold melee damage equal to its power to the opposing unit {LEVEL} time(s). Has a 25% chance to stun any unit or hero it deals damage to. Will target the enemy hero if there is no opposing unit.',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
 		proc_amount: 	'ability_level',
@@ -2002,7 +2000,7 @@ var all_abilities = {
 	},
 	cold_strike_hv:{
 		name: 			'cold strike',
-		description: 	'Deals physical cold melee damage equal to its power to the nearest enemy unit. Has a 25% chance to stun any unit it deals damage to. Will not target the enemy hero.',
+		description: 	'Deals physical cold melee damage equal to its power to the nearest enemy unit {LEVEL} time(s). Has a 25% chance to stun any unit it deals damage to. Will not target the enemy hero.',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
 		proc_amount: 	'ability_level',
@@ -4986,7 +4984,7 @@ var all_abilities = {
 		level_cost_structure: 2.25,
 	},
 	flame_strike:{
-		description: 	'Deals melee magical fire damage equal to its power to the opposing unit. Will target the enemy hero if there is no opposing unit.',
+		description: 	'Deals melee magical fire damage equal to its power to the opposing unit {LEVEL} time(s). Will target the enemy hero if there is no opposing unit.',
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
@@ -5021,7 +5019,7 @@ var all_abilities = {
 	},
 	flame_strike_hv:{
 		name: 			'flame strike',
-		description: 	'Deals melee magical fire damage equal to its power to the nearest unit. Will not target the enemy hero.',
+		description: 	'Deals melee magical fire damage equal to its power to the nearest unit {LEVEL} time(s). Will not target the enemy hero.',
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
@@ -9332,7 +9330,7 @@ var all_abilities = {
 		average_hits: 		1,
 	},
 	static_strike:{
-		description: 	'Deals melee magical air damage equal to its power to the opposing unit. Will target the enemy hero if there is no opposing unit.',
+		description: 	'Deals melee magical air damage equal to its power to the opposing unit {LEVEL} time(s). Will target the enemy hero if there is no opposing unit.',
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
@@ -9368,7 +9366,7 @@ var all_abilities = {
 	},
 	static_strike_hv:{
 		name: 			'static strike',
-		description: 	'Deals melee magical air damage equal to its power to the nearest enemy unit.',
+		description: 	'Deals melee magical air damage equal to its power to the nearest enemy unit {LEVEL} time(s).',
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
@@ -22603,6 +22601,29 @@ var all_available_cards = {
 		},
 		quote: '\"She\'s not in the army anymore.\"',
 	},
+	royal_soldier:{
+		name: 				'royal soldier',
+		type: 				'creature',
+		subtypes: 			['human','warrior','royal'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/royal_soldier.jpg',
+		power: 				2,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, restore: 1, plated: 1},
+		hero_version: 			{
+			theme: 				['plated_ability','subtype_warrior'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, restore: 1, plated: 1},
+		},
+		quote: '\"They serve the queen.\"',
+	},
 	ruffian:{
 		name: 				'ruffian',
 		type: 				'creature',
@@ -23173,7 +23194,7 @@ var all_available_cards = {
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard-2024-12-14T063923.429.jpg',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
 		health: 			5,
 		abilities: 			{strike: 1, fortify_self: 2},
@@ -23198,7 +23219,7 @@ var all_available_cards = {
 		image: 				'cards/dream_TradingCard-2024-12-14T063242.994.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			4,
+		health: 			3,
 		abilities: 			{strike: 1, fortify_self: 1},
 		hero_version: 			{
 			theme: 				['fortify_ability','subtype_human','subtype_warrior'],

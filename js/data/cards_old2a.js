@@ -493,25 +493,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['animal'],
 		color: 				['orange'],
 		time: 				3,
-		image: 				'cards/camel-3314724_1280.jpg',
+		image: 				'cards/camel.jpg',
+		image_position: 	'top',
 		power: 				1,
 		armor: 				0,
 		health: 			6,
 		abilities: 			{run_away: 1, strike: 1},
 		hero_version: 			{
-			name: 				'camel',
-			type: 				'creature',
-			image: 				'cards/camel-3314724_1280.jpg',
-			image_position: 		'top',
 			power: 				3,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1},
 		},
-		recipe:{
-			natures_touch: 		1,
-			sandstorm: 			2,
-		}
+		quote: '\"They have traveled the desert.\"'
 	},
 	/*candle:{
 		name: 				'candle',
@@ -532,12 +526,13 @@ var all_oldest_available_cards = {
 		type: 				'creature',
 		subtypes: 			['human','animal'],
 		color: 				['orange'],
+		not_theme: 			['subtype_animal'],
 		time: 				1,
 		image: 				'cards/beach-5437910_640.png',
 		power: 				false,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{turncoat: 1, hasten: 2},
+		abilities: 			{hasten: 2, turncoat: 1},
 		hero_version: 			{
 			name: 				'caravan',
 			type: 				'creature',
@@ -683,28 +678,22 @@ var all_oldest_available_cards = {
 	court_lady:{
 		name: 				'court lady',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','royal'],
 		color: 				['yellow'],
 		time: 				4,
-		image: 				'cards/fantasy-2899611_640.jpg',
+		image: 				'cards/court_lady.jpg',
+		image_position: 	'top',
 		power: 				1,
 		armor: 				0,
 		health: 			3,
-		abilities: 			{strike: 1, restore_hero: 1, draw_once: 1},
+		abilities: 			{strike: 1, restore: 1, draw: 1},
 		hero_version: 			{
-			name: 				'court lady',
-			type: 				'creature',
-			image: 				'cards/fantasy-2899611_640.jpg',
-			image_position: 		'top',
 			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, restore_hero: 1, draw_once: 1},
+			abilities: 			{strike_unit: 1, restore: 1, draw: 1},
 		},
-		recipe:{
-			royal_servant: 		1,
-			paper: 				1
-		}
+		quote: '\"It seems like all they do is talk.\"',
 	},
 	/*crumble:{
 		name: 				'crumble',
@@ -1682,10 +1671,6 @@ var all_oldest_available_cards = {
 			health: 			50,
 			abilities: 			{strike_unit: 1, regenerate: 1},
 		},
-		recipe:{
-			court_lady: 		1,
-			wood_trinket: 		1,
-		}
 	},
 	forest_saint:{
 		name: 				'forest saint',
@@ -1760,9 +1745,9 @@ var all_oldest_available_cards = {
 		color: 				['blue'],
 		time: 				20,
 		image: 				'cards/fantasy-2925250_640.jpg',
-		power: 				4,
+		power: 				5,
 		armor: 				0,
-		health: 			7,
+		health: 			12,
 		abilities: 			{cold_strike: 1, resist_cold: 1},
 		hero_version: 			{
 			name: 				'frost giant',
