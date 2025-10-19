@@ -1484,7 +1484,7 @@ function add_battle_stats(stat, amount, max){
 	battle_stats[stat + '_times'] += 1;
 	if(amount > battle_stats[stat + '_max']){battle_stats[stat + '_max'] = amount;}
 
-	if(all_achievement_goals[stat] != undefined){				check_quests(stat);}
+	//if(all_achievement_goals[stat] != undefined){				check_quests(stat);}
 	if(all_achievement_goals[stat + '_total'] != undefined){	check_quests(stat + '_total',battle_stats[stat + '_total']);}
 	if(all_achievement_goals[stat + '_times'] != undefined){	check_quests(stat + '_times',battle_stats[stat + '_times']);}
 	if(all_achievement_goals[stat + '_max'] != undefined){		check_quests(stat + '_max',battle_stats[stat + '_max']);}

@@ -166,7 +166,7 @@ var all_abilities = {
 			0:{
 				target: 		'unit',
 				target_amount: 	1,
-				position: 		'self',
+				position: 		'random',
 				has_opposing: 	false,
 				min_hp: 		1,
 				side: 			'ally'
@@ -174,6 +174,7 @@ var all_abilities = {
 		},
 		effects:{
 			1:{
+				projectile: 	'dodge',
 				type: 			'move',
 				safe_slot: 		false,
 				placement: 		'random',

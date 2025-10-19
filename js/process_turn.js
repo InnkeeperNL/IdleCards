@@ -1188,10 +1188,6 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 		{
 			ability_can_fire = false;
 		}
-		if(current_ability['min_unopposed_enemy_units'] != undefined && count_unopposed_enemy_units(battle_info['combat_units'][unit_id]['side']) < current_ability['min_unopposed_enemy_units'])
-		{
-			ability_can_fire = false;
-		}
 		if(current_ability['min_double_free_slots'] != undefined && count_double_free_slots() < current_ability['min_double_free_slots'])
 		{
 			ability_can_fire = false;
@@ -1595,6 +1591,10 @@ function check_ability_can_fire(unit_id, current_ability, level, origin_id){
 			ability_can_fire = false;
 		}
 		if(current_ability['max_hand_cards'] != undefined && count_hand_cards(battle_info['deck_' + battle_info['combat_units'][unit_id]['side']]) > current_ability['max_hand_cards'])
+		{
+			ability_can_fire = false;
+		}
+		if(current_ability['min_unopposed_enemy_units'] != undefined && count_unopposed_enemy_units(battle_info['combat_units'][unit_id]['side']) < current_ability['min_unopposed_enemy_units'])
 		{
 			ability_can_fire = false;
 		}

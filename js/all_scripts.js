@@ -12245,10 +12245,6 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 		{
 			ability_can_fire = false;
 		}
-		if(current_ability['min_unopposed_enemy_units'] != undefined && count_unopposed_enemy_units(battle_info['combat_units'][unit_id]['side']) < current_ability['min_unopposed_enemy_units'])
-		{
-			ability_can_fire = false;
-		}
 		if(current_ability['min_double_free_slots'] != undefined && count_double_free_slots() < current_ability['min_double_free_slots'])
 		{
 			ability_can_fire = false;
@@ -12652,6 +12648,10 @@ function check_ability_can_fire(unit_id, current_ability, level, origin_id){
 			ability_can_fire = false;
 		}
 		if(current_ability['max_hand_cards'] != undefined && count_hand_cards(battle_info['deck_' + battle_info['combat_units'][unit_id]['side']]) > current_ability['max_hand_cards'])
+		{
+			ability_can_fire = false;
+		}
+		if(current_ability['min_unopposed_enemy_units'] != undefined && count_unopposed_enemy_units(battle_info['combat_units'][unit_id]['side']) < current_ability['min_unopposed_enemy_units'])
 		{
 			ability_can_fire = false;
 		}
@@ -20825,7 +20825,7 @@ function add_battle_stats(stat, amount, max){
 	battle_stats[stat + '_times'] += 1;
 	if(amount > battle_stats[stat + '_max']){battle_stats[stat + '_max'] = amount;}
 
-	if(all_achievement_goals[stat] != undefined){				check_quests(stat);}
+	//if(all_achievement_goals[stat] != undefined){				check_quests(stat);}
 	if(all_achievement_goals[stat + '_total'] != undefined){	check_quests(stat + '_total',battle_stats[stat + '_total']);}
 	if(all_achievement_goals[stat + '_times'] != undefined){	check_quests(stat + '_times',battle_stats[stat + '_times']);}
 	if(all_achievement_goals[stat + '_max'] != undefined){		check_quests(stat + '_max',battle_stats[stat + '_max']);}
