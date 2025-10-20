@@ -1193,7 +1193,7 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		3,
+		level_cost: 		2,
 	},
 	burn:{
 		description: 	'Applies {LEVEL} burn to a random enemy unit. Will target the enemy hero if there are no enemy units.{BURN}',
@@ -2898,7 +2898,7 @@ var all_abilities = {
 		average_hit_cost: 	1,
 	},
 	desperate_haste:{
-		description: 	'When your hero receives damage, this reduces the time left of the card with the lowest time left by {LEVEL}.',
+		description: 	'When your hero receives damage, this reduces the time left of the card in your hand, with the lowest time left, by {LEVEL}.',
 		proc: 			'ally_hero_damaged',
 		//remove_skill: 	'desperate_haste',
 		targets:	{
@@ -2921,7 +2921,9 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
+		level_cost: 		2,
+		level_cost_hero: 	4,
+		level_cost_artifact: 4,
 	},
 	destroy:{
 		description: 	'Destroys {LEVEL} random enemy unit(s).',
@@ -3335,7 +3337,7 @@ var all_abilities = {
 		level_cost_spell: -0.75,
 	},
 	doom_arrivals:{
-		description: 	'Applies {LEVEL} doom to any enemy unit that enters the game.',
+		description: 	'Applies {LEVEL} doom to any enemy unit that enters the game. {DOOM}',
 		proc: 			'enemy_unit_card_played',
 		cannot_proc_while_stunned: true,
 		hero_tactics: 	['doom_ability','subtype_wall','heal_hero_ability'],
@@ -3387,8 +3389,39 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 	-1,
 	},
+	dooming_aura:{
+		description: 	'When this receives melee damage from an enemy unit, this applies {LEVEL} doom to it. {DOOM}.',
+		proc: 			'receive_damage',
+		subtypes: 		['melee'],
+		ability_subtypes: ['receive_damage_proc'],
+		proc_amount: 	1,
+		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability','doom_ability'],
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				not_types: 		['structure','object'],
+				not_subtypes: 	['horror'],
+				max_abilities: 	{undead: 0},
+				side: 			'enemy',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'doom',
+				type: 			'apply_doom',
+				subtypes: 		['magical','doom'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		level_cost: 		0.5,
+		level_cost_hero: 	1,
+	},
 	dooming_deaths:{
-		description: 	'Applies {LEVEL} doom to a random enemy unit when any ally creature is destroyed.',
+		description: 	'Applies {LEVEL} doom to a random enemy unit when any ally creature is destroyed. {DOOM}',
 		proc: 			'ally_creature_death',
 		ability_subtypes:['on_death_proc'],
 		cannot_proc_while_stunned: true,
@@ -3416,6 +3449,28 @@ var all_abilities = {
 		level_cost: 	1.5,
 		level_cost_artifact: 3,
 		level_cost_structure: 1,
+	},
+	dooming_entry:{
+		description: 	'When played, applies {LEVEL} doom to all nearby enemy units.{DOOM}',
+		proc: 			'on_play',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	3,
+				position: 		'opposing_wide',
+				has_effect: 	{effect_name: 'doom', amount: 9, limit: 'max'},
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'apply_doom',
+				subtypes: 		['magical','doom'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		level_cost: 		1,
 	},
 	dooming_touch:{
 		description: 	'Applies {LEVEL} doom to any unit it deals damage to.{DOOM}',
@@ -6637,7 +6692,6 @@ var all_abilities = {
 		name: 			'enemies:',
 		post_name: 		'+',
 		ability_subtypes: 		['min_enemies'],
-		name_color: 	'rgba(255,255,255,0.9)',
 		description: 	'This card will not be played if there\'s less than {LEVEL} enemy unit(s) in play.',
 		proc: 			'on_play',
 		remove_skill: 	'minimum_enemies',
@@ -7701,7 +7755,6 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		4,
-		level_cost_spell: 	1,
 		ability_level_cost_factors:{
 			echo: 		2,
 		},
@@ -7849,6 +7902,9 @@ var all_abilities = {
 		level_cost: 		2,
 		level_cost_spell: 	0.5,
 		level_cost_artifact: 1,
+		ability_level_cost_factors:{
+			echo: 		2,
+		},
 	},
 	reclaim_spells:{
 		description: 	'Has a 25% chance to return {LEVEL} spell card(s) in your grave to your deck.',
@@ -10448,9 +10504,9 @@ var all_abilities = {
 		cost_factor: 	'full',
 	},
 	turn_enemy:{
-		description: 	'Turns a random enemy non-undead creature into an ally.',
+		description: 	'Turns {LEVEL} random enemy non-undead creature unit(s) into an ally.',
 		max_ally_units: 4,
-		proc_amount: 	1,
+		proc_amount: 	'ability_level',
 		reduce_skill_after_use:'turn_enemy',
 		targets:	{
 			0:{
@@ -14944,6 +15000,29 @@ var all_available_cards = {
 		abilities: 			{sacrifice: 1, discard_enemy_on_act: 2},
 		quote: '\"They will feel our pain.\"',
 	},
+	dark_soldier:{
+		name: 				'dark soldier',
+		type: 				'creature',
+		subtypes: 			['human','warrior'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dark_soldier.jpg',
+		power: 				2,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, dooming_aura: 2, plated: 1, guard: 1},
+		hero_version: 			{
+			theme: 				['plated_ability','subtype_warrior'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, dooming_aura: 1, plated: 1},
+		},
+		quote: '\"Face your doom.\"',
+	},
 	dawn_cleric:{
 		name: 				'dawn cleric',
 		type: 				'creature',
@@ -15138,16 +15217,16 @@ var all_available_cards = {
 		pick_chance: 		1,
 		time: 				5,
 		image: 				'cards/dream_TradingCard-2025-02-19T073209.178.jpg',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, dooming_touch: 1},
+		abilities: 			{strike: 1, dooming_aura: 1},
 		hero_version: 			{
 			theme: 				['doom_ability','melee_ability','subtype_witch'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, dooming_touch: 3},
+			abilities: 			{strike_unit: 1, dooming_aura: 3},
 		},
 		quote: '\"Join me in the darkness.\"',
 	},
@@ -21314,7 +21393,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['tactic'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['subtype_rogue'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -26924,7 +27003,7 @@ add_old_cards(all_older_available_cards, 'cards_old2/');
 add_old_cards(all_oldest_available_cards, 'cards_old2a/');
 unavailable_abilities = sortObj(unavailable_abilities);
 
-eachoa(all_available_cards, function(card_id, card_info){
+/*eachoa(all_available_cards, function(card_id, card_info){
 	if(card_info['color'] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
 	if(card_info['color'][0] != undefined && card_info['color'][0] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
 	if(card_info['unique'] != undefined && card_info['unique'] == true)
@@ -26932,15 +27011,16 @@ eachoa(all_available_cards, function(card_id, card_info){
 		all_available_cards[card_id]['color'] = ['purple'];
 		all_available_cards[card_id]['max_in_deck'] = 1;
 	}
-	if(card_info['abilities'] != undefined && card_info['abilities']['minimum_allies'] != undefined && card_info['abilities']['minimum_allies'] > 2 && card_info['max_in_deck'] != undefined)
+	if(card_info['abilities'] != undefined && card_info['abilities']['minimum_allies'] != undefined && card_info['abilities']['minimum_allies'] < 5 && card_info['max_in_deck'] != undefined)
+	{
+		card_info['max_in_deck'] = 1;
+		console.log(card_id);
+	}
+	if(card_info['abilities'] != undefined && card_info['abilities']['minimum_enemies'] != undefined && card_info['abilities']['minimum_enemies'] < 5 && card_info['max_in_deck'] != undefined)
 	{
 		card_info['max_in_deck'] = 1;
 	}
-	if(card_info['abilities'] != undefined && card_info['abilities']['minimum_enemies'] != undefined && card_info['abilities']['minimum_enemies'] > 2 && card_info['max_in_deck'] != undefined)
-	{
-		card_info['max_in_deck'] = 2;
-	}
-});
+});*/
 
 function calculate_card_value(card_id, show_calc){
 	//console.log('calculating ' + card_id);
@@ -27621,14 +27701,29 @@ function check_card(card_id){
 	if(all_available_cards[card_id] != undefined)
 	{
 		var card_info = all_available_cards[card_id];
+		if(card_info['color'] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
+		if(card_info['color'][0] != undefined && card_info['color'][0] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
+		if(card_info['unique'] != undefined && card_info['unique'] == true)
+		{
+			all_available_cards[card_id]['color'] = ['purple'];
+			all_available_cards[card_id]['max_in_deck'] = 1;
+		}
+		if(card_info['abilities'] != undefined && card_info['abilities']['minimum_allies'] != undefined && card_info['abilities']['minimum_allies'] < 5 && card_info['max_in_deck'] == undefined)
+		{
+			all_available_cards[card_id]['max_in_deck'] = 1;
+		}
+		if(card_info['abilities'] != undefined && card_info['abilities']['minimum_enemies'] != undefined && card_info['abilities']['minimum_enemies'] < 5 && card_info['max_in_deck'] == undefined)
+		{
+			all_available_cards[card_id]['max_in_deck'] = 1;
+		}
 		if(card_info['time'] != undefined && card_info['time'] > 0)
 		{
-			card_info['raw_time'] = calculate_card_time(card_id);
-			card_info['time'] = card_info['raw_time'];
+			all_available_cards[card_id]['raw_time'] = calculate_card_time(card_id);
+			all_available_cards[card_id]['time'] = all_available_cards[card_id]['raw_time'];
 		}
 		if(card_info['effects'] == undefined)
 		{
-			card_info['effects'] = {};
+			all_available_cards[card_id]['effects'] = {};
 		}
 		if(card_info['hero_version'] != undefined)
 		{

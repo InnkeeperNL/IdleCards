@@ -824,7 +824,7 @@ var all_oldest_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{wither: 1, strike: 1, counter_spell: 1},
+		abilities: 			{strike: 1, dooming_touch: 2, counter_spell: 1},
 		hero_version: 			{
 			name: 				'dark shaman',
 			type: 				'creature',
@@ -832,7 +832,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{wither_hv: 1, strike_unit: 1, counter_spells: 3},
+			abilities: 			{strike_unit: 1, dooming_touch: 2, counter_spells: 3},
 		},
 	},
 	darkling:{
@@ -915,31 +915,24 @@ var all_oldest_available_cards = {
 			bones: 				1
 		}
 	},
-	
 	demolitionist:{
 		name: 				'demolitionist',
 		type: 				'creature',
 		subtypes: 			['human','laborer'],
 		color: 				['red'],
 		time: 				3,
-		image: 				'cards/man-405478_640.jpg',
+		image: 				'cards/demolitionist.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			5,
 		abilities: 			{strike: 1, demolish: 1, grant_explode: 1},
 		hero_version: 			{
-			name: 				'demolitionist',
-			type: 				'creature',
-			image: 				'cards/man-405478_640.jpg',
 			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, demolish: 1, grant_explode: 1},
 		},
-		recipe:{
-			peasant: 			1,
-			explosive_barrel: 	1,
-		}
+		quote: '\"She loves things to go boom.\"',
 	},
 	desert_fox:{
 		name: 				'desert fox',

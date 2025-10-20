@@ -1192,7 +1192,7 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		3,
+		level_cost: 		2,
 	},
 	burn:{
 		description: 	'Applies {LEVEL} burn to a random enemy unit. Will target the enemy hero if there are no enemy units.{BURN}',
@@ -2897,7 +2897,7 @@ var all_abilities = {
 		average_hit_cost: 	1,
 	},
 	desperate_haste:{
-		description: 	'When your hero receives damage, this reduces the time left of the card with the lowest time left by {LEVEL}.',
+		description: 	'When your hero receives damage, this reduces the time left of the card in your hand, with the lowest time left, by {LEVEL}.',
 		proc: 			'ally_hero_damaged',
 		//remove_skill: 	'desperate_haste',
 		targets:	{
@@ -2920,7 +2920,9 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
+		level_cost: 		2,
+		level_cost_hero: 	4,
+		level_cost_artifact: 4,
 	},
 	destroy:{
 		description: 	'Destroys {LEVEL} random enemy unit(s).',
@@ -3334,7 +3336,7 @@ var all_abilities = {
 		level_cost_spell: -0.75,
 	},
 	doom_arrivals:{
-		description: 	'Applies {LEVEL} doom to any enemy unit that enters the game.',
+		description: 	'Applies {LEVEL} doom to any enemy unit that enters the game. {DOOM}',
 		proc: 			'enemy_unit_card_played',
 		cannot_proc_while_stunned: true,
 		hero_tactics: 	['doom_ability','subtype_wall','heal_hero_ability'],
@@ -3386,8 +3388,39 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 	-1,
 	},
+	dooming_aura:{
+		description: 	'When this receives melee damage from an enemy unit, this applies {LEVEL} doom to it. {DOOM}.',
+		proc: 			'receive_damage',
+		subtypes: 		['melee'],
+		ability_subtypes: ['receive_damage_proc'],
+		proc_amount: 	1,
+		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability','doom_ability'],
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				not_types: 		['structure','object'],
+				not_subtypes: 	['horror'],
+				max_abilities: 	{undead: 0},
+				side: 			'enemy',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'doom',
+				type: 			'apply_doom',
+				subtypes: 		['magical','doom'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		level_cost: 		0.5,
+		level_cost_hero: 	1,
+	},
 	dooming_deaths:{
-		description: 	'Applies {LEVEL} doom to a random enemy unit when any ally creature is destroyed.',
+		description: 	'Applies {LEVEL} doom to a random enemy unit when any ally creature is destroyed. {DOOM}',
 		proc: 			'ally_creature_death',
 		ability_subtypes:['on_death_proc'],
 		cannot_proc_while_stunned: true,
@@ -3415,6 +3448,28 @@ var all_abilities = {
 		level_cost: 	1.5,
 		level_cost_artifact: 3,
 		level_cost_structure: 1,
+	},
+	dooming_entry:{
+		description: 	'When played, applies {LEVEL} doom to all nearby enemy units.{DOOM}',
+		proc: 			'on_play',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	3,
+				position: 		'opposing_wide',
+				has_effect: 	{effect_name: 'doom', amount: 9, limit: 'max'},
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'apply_doom',
+				subtypes: 		['magical','doom'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		level_cost: 		1,
 	},
 	dooming_touch:{
 		description: 	'Applies {LEVEL} doom to any unit it deals damage to.{DOOM}',
@@ -6636,7 +6691,6 @@ var all_abilities = {
 		name: 			'enemies:',
 		post_name: 		'+',
 		ability_subtypes: 		['min_enemies'],
-		name_color: 	'rgba(255,255,255,0.9)',
 		description: 	'This card will not be played if there\'s less than {LEVEL} enemy unit(s) in play.',
 		proc: 			'on_play',
 		remove_skill: 	'minimum_enemies',
@@ -7700,7 +7754,6 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		4,
-		level_cost_spell: 	1,
 		ability_level_cost_factors:{
 			echo: 		2,
 		},
@@ -7848,6 +7901,9 @@ var all_abilities = {
 		level_cost: 		2,
 		level_cost_spell: 	0.5,
 		level_cost_artifact: 1,
+		ability_level_cost_factors:{
+			echo: 		2,
+		},
 	},
 	reclaim_spells:{
 		description: 	'Has a 25% chance to return {LEVEL} spell card(s) in your grave to your deck.',
@@ -10447,9 +10503,9 @@ var all_abilities = {
 		cost_factor: 	'full',
 	},
 	turn_enemy:{
-		description: 	'Turns a random enemy non-undead creature into an ally.',
+		description: 	'Turns {LEVEL} random enemy non-undead creature unit(s) into an ally.',
 		max_ally_units: 4,
-		proc_amount: 	1,
+		proc_amount: 	'ability_level',
 		reduce_skill_after_use:'turn_enemy',
 		targets:	{
 			0:{

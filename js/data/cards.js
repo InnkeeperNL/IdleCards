@@ -3710,6 +3710,29 @@ var all_available_cards = {
 		abilities: 			{sacrifice: 1, discard_enemy_on_act: 2},
 		quote: '\"They will feel our pain.\"',
 	},
+	dark_soldier:{
+		name: 				'dark soldier',
+		type: 				'creature',
+		subtypes: 			['human','warrior'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dark_soldier.jpg',
+		power: 				2,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, dooming_aura: 2, plated: 1, guard: 1},
+		hero_version: 			{
+			theme: 				['plated_ability','subtype_warrior'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, dooming_aura: 1, plated: 1},
+		},
+		quote: '\"Face your doom.\"',
+	},
 	dawn_cleric:{
 		name: 				'dawn cleric',
 		type: 				'creature',
@@ -3904,16 +3927,16 @@ var all_available_cards = {
 		pick_chance: 		1,
 		time: 				5,
 		image: 				'cards/dream_TradingCard-2025-02-19T073209.178.jpg',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, dooming_touch: 1},
+		abilities: 			{strike: 1, dooming_aura: 1},
 		hero_version: 			{
 			theme: 				['doom_ability','melee_ability','subtype_witch'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, dooming_touch: 3},
+			abilities: 			{strike_unit: 1, dooming_aura: 3},
 		},
 		quote: '\"Join me in the darkness.\"',
 	},
@@ -10080,7 +10103,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['tactic'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['subtype_rogue'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -15690,7 +15713,7 @@ add_old_cards(all_older_available_cards, 'cards_old2/');
 add_old_cards(all_oldest_available_cards, 'cards_old2a/');
 unavailable_abilities = sortObj(unavailable_abilities);
 
-eachoa(all_available_cards, function(card_id, card_info){
+/*eachoa(all_available_cards, function(card_id, card_info){
 	if(card_info['color'] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
 	if(card_info['color'][0] != undefined && card_info['color'][0] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
 	if(card_info['unique'] != undefined && card_info['unique'] == true)
@@ -15698,15 +15721,16 @@ eachoa(all_available_cards, function(card_id, card_info){
 		all_available_cards[card_id]['color'] = ['purple'];
 		all_available_cards[card_id]['max_in_deck'] = 1;
 	}
-	if(card_info['abilities'] != undefined && card_info['abilities']['minimum_allies'] != undefined && card_info['abilities']['minimum_allies'] > 2 && card_info['max_in_deck'] != undefined)
+	if(card_info['abilities'] != undefined && card_info['abilities']['minimum_allies'] != undefined && card_info['abilities']['minimum_allies'] < 5 && card_info['max_in_deck'] != undefined)
+	{
+		card_info['max_in_deck'] = 1;
+		console.log(card_id);
+	}
+	if(card_info['abilities'] != undefined && card_info['abilities']['minimum_enemies'] != undefined && card_info['abilities']['minimum_enemies'] < 5 && card_info['max_in_deck'] != undefined)
 	{
 		card_info['max_in_deck'] = 1;
 	}
-	if(card_info['abilities'] != undefined && card_info['abilities']['minimum_enemies'] != undefined && card_info['abilities']['minimum_enemies'] > 2 && card_info['max_in_deck'] != undefined)
-	{
-		card_info['max_in_deck'] = 2;
-	}
-});
+});*/
 
 function calculate_card_value(card_id, show_calc){
 	//console.log('calculating ' + card_id);
@@ -16387,14 +16411,29 @@ function check_card(card_id){
 	if(all_available_cards[card_id] != undefined)
 	{
 		var card_info = all_available_cards[card_id];
+		if(card_info['color'] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
+		if(card_info['color'][0] != undefined && card_info['color'][0] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}
+		if(card_info['unique'] != undefined && card_info['unique'] == true)
+		{
+			all_available_cards[card_id]['color'] = ['purple'];
+			all_available_cards[card_id]['max_in_deck'] = 1;
+		}
+		if(card_info['abilities'] != undefined && card_info['abilities']['minimum_allies'] != undefined && card_info['abilities']['minimum_allies'] < 5 && card_info['max_in_deck'] == undefined)
+		{
+			all_available_cards[card_id]['max_in_deck'] = 1;
+		}
+		if(card_info['abilities'] != undefined && card_info['abilities']['minimum_enemies'] != undefined && card_info['abilities']['minimum_enemies'] < 5 && card_info['max_in_deck'] == undefined)
+		{
+			all_available_cards[card_id]['max_in_deck'] = 1;
+		}
 		if(card_info['time'] != undefined && card_info['time'] > 0)
 		{
-			card_info['raw_time'] = calculate_card_time(card_id);
-			card_info['time'] = card_info['raw_time'];
+			all_available_cards[card_id]['raw_time'] = calculate_card_time(card_id);
+			all_available_cards[card_id]['time'] = all_available_cards[card_id]['raw_time'];
 		}
 		if(card_info['effects'] == undefined)
 		{
-			card_info['effects'] = {};
+			all_available_cards[card_id]['effects'] = {};
 		}
 		if(card_info['hero_version'] != undefined)
 		{

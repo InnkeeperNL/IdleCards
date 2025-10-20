@@ -460,11 +460,7 @@ var all_older_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1},
 		},
-		recipe:{
-			ghoul: 					1,
-			painful_sacrifice: 		1
-		},
-		quote: '\"They just keep coming back\"'
+		quote: '\"They just keep coming back.\"'
 	},
 	crusader:{
 		name: 				'crusader',
@@ -472,60 +468,43 @@ var all_older_available_cards = {
 		type: 				'creature',
 		subtypes: 			['human','warrior'],
 		color: 				['yellow'],
-		theme: 				['protection','damage_reduction','movement','muscle'],
 		pick_chance: 		0.8,
 		time: 				11,
-		image: 				'cards/crusader-5339187_640.jpg',
+		image: 				'cards/crusader.jpg',
+		image_position: 	'top',
 		power: 				3,
 		armor: 				0,
 		health: 			10,
-		abilities: 			{strike: 1, armored: 1, guard: 1},
+		abilities: 			{guard: 1, strike: 1, plated: 1, trophy_kill: 1},
 		hero_version: 			{
-			name: 				'crusader',
-			type: 				'creature',
-			theme: 				['protection','damage_reduction','movement'],
-			image: 				'cards/crusader-5339187_640.jpg',
-			image_position: 	'center',
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, armored: 1},
+			abilities: 			{strike_unit: 1, plated: 1, trophy_kill: 1},
 		},
-		recipe:{
-			soldier_of_faith: 	1,
-			young_angel: 		1,
-		},
+		quote: '\"She fights for glory.\"'
 	},
 	crystal_keeper:{
 		name: 				'crystal keeper',
-		version: 			2,
 		type: 				'creature',
 		subtypes: 			['human','clerk'],
 		color: 				['blue'],
 		theme: 				['deck_control'],
 		pick_chance: 		1,
 		time: 				4,
-		image: 				'cards/woman-5515335_640.jpg',
+		image: 				'cards/crystal_keeper.jpg',
+		image_position: 	'top',
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, draw_once: 1},
+		abilities: 			{strike: 1, desperate_haste: 1, run_away: 1},
 		hero_version: 			{
-			name: 				'crystal keeper',
-			type: 				'creature',
-			theme: 				['deck_control'],
-			image: 				'cards/woman-5515335_640.jpg',
-			image_position: 	'center 20%',
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, draw_once: 1},
+			abilities: 			{strike_unit: 1, desperate_haste: 1},
 		},
-		recipe:{
-			mana_crystal: 		1,
-			arcane_missiles:	1,
-			//twine: 				1,
-		}
+		quote: '\"The crystals are kept ready, just in case.\"'
 	},
 	
 	cursed_lands:{
@@ -582,7 +561,7 @@ var all_older_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			7,
-		abilities: 			{strike: 1, cursed_deaths: 1},
+		abilities: 			{strike: 1, dooming_deaths: 1},
 		hero_version: 			{
 			name: 				'dark seer',
 			type: 				'creature',
@@ -591,13 +570,9 @@ var all_older_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, cursed_deaths_hv: 1},
+			abilities: 			{strike_unit: 1, dooming_deaths: 2},
 		},
-		recipe:{
-			blood_horror: 		1,
-			zombie_mage: 		1
-		},
-		quote: '\"She has visions of past dead\"'
+		quote: '\"She has visions of death to come.\"'
 	},
 	dark_warrior:{
 		name: 				'dark warrior',
@@ -612,7 +587,7 @@ var all_older_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, cursed_touch: 1},
+		abilities: 			{strike: 1, dooming_touch: 1},
 		hero_version: 			{
 			name: 				'dark warrior',
 			type: 				'creature',
@@ -621,12 +596,9 @@ var all_older_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, cursed_touch: 1},
+			abilities: 			{strike_unit: 1, dooming_touch: 1},
 		},
-		recipe:{
-			dagger: 		2,
-		},
-		quote: '\"She fights for a dark cause\"'
+		quote: '\"She fights for a dark cause.\"'
 	},
 	dryad:{
 		name: 				'dryad',
