@@ -791,7 +791,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			80,
-			abilities: 			{vengeance: 2, cursed_aura: 1},
+			abilities: 			{vengeance_hv: 2, cursed_aura: 1},
 		},
 	},
 	dancing_devil:{
@@ -3750,7 +3750,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			25,
-			abilities: 			{fire_bolt: 1, vengeance: 1, hide_on_kill: 1},
+			abilities: 			{fire_bolt: 1, vengeance_hv: 1, hide_on_kill: 1},
 		},
 		quote: '\"Do not hurt their people.\"',
 	},
