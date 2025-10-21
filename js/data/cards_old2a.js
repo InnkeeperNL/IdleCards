@@ -1328,33 +1328,25 @@ var all_oldest_available_cards = {
 			bomb: 				1
 		}
 	},
-	
 	fairy_mystic:{
 		name: 				'fairy mystic',
 		type: 				'creature',
 		subtypes: 			['fairy','cleric'],
 		color: 				['green'],
 		time: 				3,
-		image: 				'cards/fantasy-5410138_640.jpg',
+		image: 				'cards/fairy_mystic.jpg',
+		image_position: 	'top',
 		power: 				1,
 		armor: 				0,
 		health: 			3,
 		abilities: 			{strike: 1, flying: 1, resurrect_ally: 2},
 		hero_version: 			{
-			name: 				'fairy mystic',
-			type: 				'creature',
-			image: 				'cards/fantasy-5410138_640.jpg',
-			image_position: 	'top',
 			power: 				1,
 			armor: 				0,
 			health: 			30,
 			abilities: 			{strike_unit: 1, flying: 1, resurrect_ally: 1},
 		},
-		recipe:{
-			innocent_fairy: 	1,
-			bones: 				1,
-			herbs: 				1
-		}
+		quote: '\"Stay with us a little longer.\"',
 	},
 	fairy_spirit:{
 		name: 				'fairy spirit',
@@ -1362,24 +1354,18 @@ var all_oldest_available_cards = {
 		subtypes: 			['fairy','undead'],
 		color: 				['purple'],
 		time: 				2,
-		image: 				'cards/fairy-2688853_640.jpg',
+		image: 				'cards/fairy_spirit.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			1,
 		abilities: 			{strike: 1, flying: 1, resurrect: 1, undead: 1},
 		hero_version: 			{
-			name: 				'fairy spirit',
-			type: 				'creature',
-			image: 				'cards/fairy-2688853_640.jpg',
 			power: 				2,
 			armor: 				0,
 			health: 			30,
 			abilities: 			{strike_unit: 1, flying: 1, resurrect: 1, undead: 1},
 		},
-		recipe:{
-			fairy_mystic: 		1,
-			mausoleum: 			1
-		}
+		quote: '\"She used to be so full of life.\"',
 	},
 	fallen_elf:{
 		name: 				'fallen elf',
@@ -2463,26 +2449,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['fairy'],
 		color: 				['green'],
 		time: 				1,
-		image: 				'cards/fee-5276183_640.jpg',
+		image: 				'cards/innocent_fairy.jpg',
+		image_position: 	'top',
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{move: 1, strike: 1, flying: 1},
+		abilities: 			{run_away: 1, strike: 1, flying: 1},
 		hero_version: 			{
-			name: 				'inncocent fairy',
-			type: 				'creature',
-			image: 				'cards/fee-5276183_640.jpg',
-			image_position:     'top',
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, flying: 1},
+			abilities: 			{strike_unit: 1, flying: 1, ally_runs_away: 1},
 		},
-		recipe:{
-			natures_touch: 		1,
-			herbs: 				1,
-			levitate: 			1
-		}
+		quote: '\"She does not want to fight.\"',
 	},
 	jousting_knight:{
 		name: 				'jousting knight',
@@ -2665,27 +2644,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['fairy','mage'],
 		color: 				['blue','green'],
 		time: 				3,
-		image: 				'cards/dreamland-1060880_640.jpg',
+		image: 				'cards/mana_fairy.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			3,
-		abilities: 			{strike: 1, flying: 1, hasten: 1},
+		abilities: 			{strike: 1, flying: 1, final_hasten: 4},
 		hero_version: 			{
-			name: 				'mana fairy',
-			type: 				'creature',
-			image: 				'cards/dreamland-1060880_640.jpg',
 			power: 				1,
 			armor: 				0,
 			health: 			30,
 			abilities: 			{strike_unit: 1, flying: 1, hasten: 1},
 		},
-		recipe:{
-			innocent_fairy: 	1,
-			mana_orb: 			1
-		}
+		quote: '\"She will release her energy.\"',
 	},
-	
-	
 	marsh_crocodile:{
 		name: 				'marsh crocodile',
 		type: 				'creature',

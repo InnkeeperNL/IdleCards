@@ -6849,7 +6849,6 @@ var all_abilities = {
 	nurture:{
 		description: 	'A random non-undead ally creature with 1 health gains {LEVEL} health permanently.',
 		cannot_proc_while_stunned: true,
-		proc_amount: 	1,
 		scales: 		true,
 		hero_tactics: 	['active_healing_ability','plated_ability','resist_magic_ability'],
 		targets:	{
@@ -6977,6 +6976,7 @@ var all_abilities = {
 		level_cost_spell: -1,
 	},
 	pay_life_on_act:{
+		name: 			'pay life',
 		description: 	'If this used another ability, it reduces the health of your hero by {LEVEL}.',
 		proc_while_dead: true,
 		scales: 		true,
@@ -7021,7 +7021,7 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	7,
+		level_cost: 	10,
 		level_cost_hero: 3,
 	},
 	plated:{
@@ -7668,9 +7668,9 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		4,
-		level_cost_hero: 	4,
-		level_cost_spell: 	1,
+		level_cost: 		3,
+		level_cost_hero: 	3,
+		level_cost_spell: 	2,
 	},
 	reap_all:{
 		description: 	'Destroys all enemy creatures with {LEVEL} or less health.',
@@ -8386,9 +8386,10 @@ var all_abilities = {
 		level_cost_structure: 1.5,
 	},
 	resurrect_hero:{
-		description: 	'When your hero\'s health reaches 0, this will bring it back to life with {LEVEL} health. Can be used once.',
+		description: 	'When your hero\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 1 health.',
 		proc: 			'ally_death',
-		remove_skill_after_use: 'resurrect_hero',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
@@ -8406,11 +8407,11 @@ var all_abilities = {
 				projectile: 	'resurrect',
 				type: 			'healing',
 				subtypes: 		['resurrect'],
-				amount: 		'ability_level',
+				amount: 		1,
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1,
+		level_cost: 		2,
 	},
 	retreat:{
 		description: 	'When this survives damage, it return to its owner\'s hand. If this was summoned, it disappears.',
@@ -11020,8 +11021,8 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_spell: 	0.5,
+		level_cost: 		3,
+		level_cost_spell: 	0.75,
 	},
 	wither_arrivals:{
 		description: 	'Reduces the maximum health of any enemy unit that enters the game by {LEVEL}.',
@@ -11047,8 +11048,8 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	5,
-		level_cost_artifact: 10,
+		level_cost: 	6,
+		level_cost_artifact: 12,
 	},
 	wither_hv:{
 		name: 			'wither',
@@ -11073,8 +11074,8 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_spell: 	0.5,
+		level_cost: 		3,
+		level_cost_spell: 	0.75,
 	},
 	wither_hero:{
 		description: 	'When played, reduces the health of the enemy hero by {LEVEL}.',
@@ -11096,6 +11097,34 @@ var all_abilities = {
 			},
 		},
 		level_cost: 	4,
+	},
+	withering_aura:{
+		description: 	'When an enemy unit or hero deals melee damage to this, it reduces the maximum health of that enemy by {LEVEL}.',
+		proc: 			'receive_damage',
+		subtypes: 		['melee'],
+		ability_subtypes: ['receive_damage_proc'],
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'wither',
+				type: 		'reduce_max_health',
+				subtypes: 	['wither'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		3,
+		level_cost_hero: 	4,
 	},
 	withering_deaths:{
 		description: 	'Reduces the maximum health of a random enemy unit by {LEVEL} when any ally creature is destroyed.',
@@ -11121,15 +11150,14 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	3,
-		level_cost_artifact: 6,
+		level_cost: 	6,
+		level_cost_artifact: 8,
 	},
 	withering_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, this reduces the maximum health of that enemy by {LEVEL}.',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
-		proc_chance: 	50,
 		scales: 		true,
 		cannot_proc_while_stunned: true,
 		targets:	{
@@ -11139,7 +11167,7 @@ var all_abilities = {
 				position: 		'random',
 				origin_unit: 	true,
 				min_hp: 		1,
-				side: 			'any'
+				side: 			'enemy'
 			},
 		},
 		effects:{
@@ -11151,7 +11179,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
+		level_cost: 		3,
 		level_cost_artifact: 6,
 		level_cost_hero: 	4,
 	},
