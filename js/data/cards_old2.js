@@ -1735,16 +1735,12 @@ var all_older_available_cards = {
 		health: 			8,
 		abilities: 			{strike: 1, charm: 1},
 		hero_version: 			{
-			name: 				'seductive dutches',
-			type: 				'creature',
-			theme: 				['damage_reduction','muscle'],
-			image: 				'cards/beautiful-3089385_640.jpg',
-			image_position: 	'center',
 			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, charming_touch: 1},
 		},
+		quote: '\"In the grand game of courtly power, seduction is no less potent than a blade or bribe.\"',
 	},
 	servant_of_fire:{
 		name: 				'servant of fire',

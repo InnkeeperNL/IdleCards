@@ -434,6 +434,43 @@ var all_abilities = {
 		level_cost_spell: 	1,
 		cost_adjustment: 	-2,
 	},
+	backlash_all:{
+		description: 	'Deals 1 physical damage all ally creature units that have power. Those units then gains {LEVEL} temporary power. Will only target units that have at least 2 health.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		hero_tactics: 	['melee_ability','active_healing_ability'],
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	5,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				not_self: 		true,
+				min_hp: 		2,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'wound',
+				type: 			'damage',
+				subtypes: 		['physical'],
+				amount: 		1,
+			},
+			1:{
+				target_projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally','backlash'],
+				amount: 		'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		4,
+		level_cost_structure: 3.5,
+		level_cost_spell: 	2,
+		cost_adjustment: 	-4,
+	},
 	backstab:{
 		description: 	'When this deals melee damage to the enemy hero, it deals {LEVEL} physical melee damage to the nearest enemy unit. This damage can not be avoided by evade or stealth.',
 		proc: 			'dealt_damage_to_hero',

@@ -834,6 +834,7 @@ var all_oldest_available_cards = {
 			health: 			50,
 			abilities: 			{strike_unit: 1, dooming_touch: 2, counter_spells: 3},
 		},
+		quote: '\"Fate withers and spells unravel as the tormented spirits of the Great War howl within her soul.\"',
 	},
 	darkling:{
 		name: 				'darkling',
