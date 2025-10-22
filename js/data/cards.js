@@ -5298,6 +5298,23 @@ var all_available_cards = {
 		},
 		quote: '\"Very nice on a hot day.\"',
 	},
+	farm_scythe:{
+		name: 				'farm scythe',
+		type: 				'artifact',
+		subtypes: 			['weapon'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dream_TradingCard-2024-12-23T120102.476.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{reap: 1},
+		quote: '\"They took my father for the Great War and left nothing but this old scythe. It\'s all I have to remember him by.\"<br/><br/>Credit: Pyrothecat',
+		max_in_deck: 1,
+	},
 	farmer:{
 		name: 				'farmer',
 		type: 				'creature',
@@ -11822,6 +11839,22 @@ var all_available_cards = {
 		abilities: 			{strike_arrivals: 1},
 		quote: '\"An ancient weapon inscribed with runes.\"',
 	},
+	rusty_shield:{
+		name: 				'rusty shield',
+		type: 				'artifact',
+		subtypes: 			['gear'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/rusty_shield.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{fortify_hero: 4, fragile: 1},
+		quote: '\"My brother gave his life in the Great War. This shield is all I have left - but when I hold it, it\'s like he\'s still protecting me.\"<br/><br/>Credit: Pyrothecat',
+	},
 	saboteur:{
 		name: 				'saboteur',
 		type: 				'creature',
@@ -13536,6 +13569,23 @@ var all_available_cards = {
 		abilities: 			{purify: 1},
 		quote: '\"Be cleansed.\"',
 	},
+	stale_rations:{
+		name: 				'stale rations',
+		type: 				'spell',
+		subtypes: 			['food'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			['type_structure','subtype_undead'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/stale_rations.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{heal: 1, echo: 1},
+		quote: '\"Choke it down, you dainty wallflowers! Your brothers and fathers marched on half this slop in the Great War - and died with honor!\" - Lena, crual taskmaster<br/><br/>Credit: Pyrothecat',
+	},
 	stalker:{
 		name: 				'stalker',
 		type: 				'creature',
@@ -14961,6 +15011,29 @@ var all_available_cards = {
 		},
 		quote: '\"And that is just a whelp?\"',
 	},
+	widow_golemancer:{
+		name: 				'widow golemancer',
+		type: 				'creature',
+		subtypes: 			['human','mage'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/widow_golemancer.jpg',
+		image_position: 	'top',
+		power: 				false,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{arcane_bolt: 1, bring_companion_golem: 1},
+		hero_version: 			{
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{arcane_bolt_hv: 1, repair: 1},
+		},
+		quote: '\"Since the Great War took him, she\'s carved his face into wood a hundred times. Each golem she breathes life into wears his smile - yet none ever truly smile back.\"<br/><br/>Credit: Pyrothecat',
+	},
 	wild_jinn:{
 		name: 				'wild jinn',
 		type: 				'creature',
@@ -15943,7 +16016,7 @@ function calculate_card_value(card_id, show_calc){
 	//console.log('calculating ' + card_id);
 	var current_card_value = 0;
 	if(all_available_cards[card_id] == undefined){console.log(card_id)};
-	if(all_available_cards[card_id]['recipe'] == undefined || show_calc != undefined)
+	if(all_available_cards[card_id]['recipe'] == undefined || show_calc != undefined || true)
 	{
 		if(all_available_cards[card_id]['value'] == undefined)
 		{
@@ -17689,6 +17762,7 @@ function generate_recipe(card_id, cost_left, current_recipe, subtypes_left){
 			if(/*cost_id != 'peasant' && */(cost_info['value'] < cost_left || (cost_info['value'] <= cost_left && recipe_size > 0)) /*&& (recipe_size > 0 || cost_info['value'] > all_available_cards[card_id]['value'] * 0.4 || all_available_cards[card_id]['value'] < 10)*/ && (recipe_size > 0 || cost_info['value'] <= all_available_cards[card_id]['value'] * 0.9 || all_available_cards[card_id]['value'] < 10) && cost_info['pick_chance'] > 0 && current_recipe[cost_id] == undefined)
 			{
 				var matched_amount = (match_array_values(current_card['craft_theme'], cost_info['craft_theme'], true));
+				matched_amount *= matched_amount;
 				//matched_amount = Math.sqrt(matched_amount);
 				//matched_amount = matched_amount * 1 + (matched_amount / 4);
 				//if(recipe_size == 0){matched_amount *= 2;}
@@ -17723,7 +17797,7 @@ function generate_recipe(card_id, cost_left, current_recipe, subtypes_left){
 				matched_amount *= value_percent;
 				if(matched_amount > 0 && cost_info['used_in_recipes'] != undefined && cost_info['used_in_recipes'] > 0)
 				{
-					matched_amount /= sqr(sqr(sqr(1 + (cost_info['used_in_recipes'] * recipe_size))));
+					matched_amount /= sqr(sqr(sqr(5 + (cost_info['used_in_recipes'] /** recipe_size*/))));
 				}
 				if(matched_amount > 0 && (cost_info['used_in_recipes'] == undefined || cost_info['used_in_recipes'] == 0))
 				{

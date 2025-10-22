@@ -490,6 +490,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	0.75,
+		min_cost: 		1,
 		level_cost_spell: 0.175,
 		level_cost_artifact: 1.5
 	},
@@ -1087,6 +1088,31 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	0.75,
 		cost_factor: 	'full',
+	},
+	bring_companion_golem:{
+		description: 	'When played, summons {LEVEL} companion golem(s).',
+		proc: 			'on_play',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		reduce_skill_after_use:'bring_companion_golem',
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_structure'],
+				card_id: 	'companion_golem',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		5,
 	},
 	bring_conscript:{
 		description: 	'When played, summons {LEVEL} conscript(s).',
