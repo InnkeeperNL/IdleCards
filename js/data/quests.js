@@ -16,6 +16,42 @@ var all_quests = {
 };
 
 var all_achievements = {
+	arcane_trickster:{
+		name: 			'arcane trickster',
+		description: 	'Kill the enemy hero with an arcane bolt.',
+		card_image: 	'arcane_trickster',
+		objective: 		'enemy_hero_killed_by_arcane_bolts',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_arcane_trickster',
+				reward_amount: 1,
+			},
+		},
+	},
+	arcane_storm:{
+		name: 			'arcane storm',
+		description: 	'Kill an enemy elf with an arcane bolt.',
+		card_image: 	'arcane_storm',
+		objective: 		'enemy_elf_killed_by_arcane_bolts',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_arcane_storm',
+				reward_amount: 1,
+			},
+		},
+	},
 	broken:{
 		name: 			'broken',
 		description: 	'Break a breaker.',
@@ -70,6 +106,24 @@ var all_achievements = {
 			},
 		},
 	},
+	fiery_frenzy:{
+		name: 			'fiery frenzy',
+		description: 	'Kill the enemy hero with a fire ability.',
+		card_image: 	'fire_bolt',
+		objective: 		'enemy_hero_killed_by_fire',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_fire_bolt',
+				reward_amount: 1,
+			},
+		},
+	},
 	fixed_election:{
 		name: 			'fixed election',
 		description: 	'Bless a politician.',
@@ -88,6 +142,24 @@ var all_achievements = {
 			},
 		},
 	},
+	flooded:{
+		name: 			'flooded',
+		description: 	'Kill 1000 enemy creatures with a water ability.',
+		card_image: 	'flood',
+		objective: 		'enemy_creature_killed_by_water',
+		amount: 		1000,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_flood',
+				reward_amount: 1,
+			},
+		},
+	},
 	forced_labor:{
 		name: 			'forced labor',
 		description: 	'Backlash a conscript.',
@@ -102,6 +174,60 @@ var all_achievements = {
 			},
 			1:{
 				reward_id: 'card_back_backlash',
+				reward_amount: 1,
+			},
+		},
+	},
+	frog_legs:{
+		name: 			'frog legs',
+		description: 	'Consume or feast on a frog.',
+		card_image: 	'frog',
+		objective: 		'frog_affected_by_feast',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_frog',
+				reward_amount: 1,
+			},
+		},
+	},
+	glacial_glory:{
+		name: 			'glacial glory',
+		description: 	'Kill the enemy hero with a cold ability.',
+		card_image: 	'frozen_claw',
+		objective: 		'enemy_hero_killed_by_cold',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_frozen_claw',
+				reward_amount: 1,
+			},
+		},
+	},
+	incineration:{
+		name: 			'incineration',
+		description: 	'Kill the enemy hero with conflagrate.',
+		card_image: 	'incineration',
+		objective: 		'enemy_hero_killed_by_conflagrate',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_incineration',
 				reward_amount: 1,
 			},
 		},
@@ -196,6 +322,60 @@ var all_achievements = {
 			},
 		},
 	},
+	thunderous_victory:{
+		name: 			'thunderous victory',
+		description: 	'Kill the enemy hero with a lightning ability.',
+		card_image: 	'thunderstorm',
+		objective: 		'enemy_hero_killed_by_lightning',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_thunderstorm',
+				reward_amount: 1,
+			},
+		},
+	},
+	watery_win:{
+		name: 			'watery win',
+		description: 	'Kill the enemy hero with an water ability.',
+		card_image: 	'water_mage',
+		objective: 		'enemy_hero_killed_by_water',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_water_mage',
+				reward_amount: 1,
+			},
+		},
+	},
+	windy_win:{
+		name: 			'windy win',
+		description: 	'Kill the enemy hero with an air ability.',
+		card_image: 	'air_bolt',
+		objective: 		'enemy_hero_killed_by_air',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_air_bolt',
+				reward_amount: 1,
+			},
+		},
+	},
 	when_pigs_fly:{
 		name: 			'when pigs fly',
 		description: 	'Make a boar fly.',
@@ -275,6 +455,25 @@ var all_chained_achievements = {
 		card_back: 		'peasant',
 		steps: 			6,
 	},
+	arson:{
+		name: 			'arson',
+		description: 	'Have allies apply {MIN_AMOUNT} burn in a single battle.',
+		objective: 		'ally_performed_burn_total',
+		min_amount: 	30,
+		amount: 		1,
+		hide_amount: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'arson',
+		steps: 			5,
+		step_effect: 	'min_amount',
+		step_amount: 	30,
+		no_quest: 		true,
+	},
 	attunement:{
 		name: 			'attunement',
 		description: 	'Have allies perform a magical ability {AMOUNT} time(s).',
@@ -314,7 +513,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'divine_blessing',
+		card_back: 		'rune_of_blessings',
 		steps: 			6,
 	},
 	bolster:{
@@ -375,7 +574,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'arson',
+		card_back: 		'ignite',
 		steps: 			6,
 	},
 	buy:{
@@ -513,6 +712,25 @@ var all_chained_achievements = {
 		card_back: 		'blade_dancer',
 		steps: 			6,
 	},
+	dark_fate:{
+		name: 			'dark fate',
+		description: 	'Have allies apply {MIN_AMOUNT} doom in a single battle.',
+		objective: 		'ally_performed_doom_total',
+		min_amount: 	30,
+		amount: 		1,
+		hide_amount: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'dark_fate',
+		steps: 			5,
+		step_effect: 	'min_amount',
+		step_amount: 	30,
+		no_quest: 		true,
+	},
 	demolisher:{
 		name: 			'demolisher',
 		description: 	'Destroy {AMOUNT} enemy structure(s).',
@@ -540,6 +758,25 @@ var all_chained_achievements = {
 		},
 		card_back: 		'mind_leak',
 		steps: 			6,
+	},
+	divine_blessing:{
+		name: 			'divine blessing',
+		description: 	'Have allies apply {MIN_AMOUNT} blessing(s) in a single battle.',
+		objective: 		'ally_performed_grant_bless_total',
+		min_amount: 	30,
+		amount: 		1,
+		hide_amount: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'divine_blessing',
+		steps: 			5,
+		step_effect: 	'min_amount',
+		step_amount: 	30,
+		no_quest: 		true,
 	},
 	doom:{
 		name: 			'doom',
@@ -835,7 +1072,7 @@ var all_chained_achievements = {
 	guard:{
 		name: 			'guard',
 		description: 	'Have allies guard {AMOUNT} time(s).',
-		objective: 		'ally_performed_guard',
+		objective: 		'ally_performed_guard_now',
 		amount: 		0.5,
 		rewards:{
 			0:{

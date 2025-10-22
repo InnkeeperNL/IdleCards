@@ -11215,7 +11215,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{bring_conscript: 1, strike: 1, flying: 1},
 		hero_version: 			{
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, hasten: 1, flying: 1},

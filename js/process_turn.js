@@ -4470,6 +4470,39 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 					{
 						check_quests('enemy_' + unit['type'] + '_killed_by_hero');
 					}
+					var possible_quest_string = 'enemy_' + unit['card_type'] + '_killed';
+					if(all_achievement_goals[possible_quest_string] != undefined){
+						check_quests(possible_quest_string);
+					};
+					eachoa(subtypes, function(subtype_key2, killed_by_subtype){
+						var possible_quest_string = 'enemy_' + unit['card_type'] + '_killed_by_' + killed_by_subtype;
+						if(all_achievement_goals[possible_quest_string] != undefined){
+							check_quests(possible_quest_string);
+						};
+						if(unit_id == 1)
+						{
+							check_quests('enemy_hero_killed_by_' + killed_by_subtype);
+						}
+						else
+						{
+							var possible_quest_string = 'enemy_' + unit['type'] + '_killed_by_' + killed_by_subtype;
+							if(all_achievement_goals[possible_quest_string] != undefined){
+								check_quests(possible_quest_string);
+							};
+						}
+					});
+					eachoa(unit['subtypes'], function(subtype_key, quest_subtype){
+						eachoa(subtypes, function(subtype_key2, killed_by_subtype){
+							var possible_quest_string = 'enemy_' + quest_subtype + '_killed_by_' + killed_by_subtype;
+							if(all_achievement_goals[possible_quest_string] != undefined){
+								check_quests(possible_quest_string);
+							};
+						});
+						var possible_quest_string = 'enemy_' + quest_subtype + '_killed';
+						if(all_achievement_goals[possible_quest_string] != undefined){
+							check_quests(possible_quest_string);
+						};
+					});
 				}
 			}
 			if(unit['side'] == 2)
@@ -4481,6 +4514,28 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 					{
 						check_quests('ally_' + unit['type'] + '_killed_by_hero');
 					}
+					var possible_quest_string = 'ally_' + unit['card_type'] + '_killed';
+					if(all_achievement_goals[possible_quest_string] != undefined){
+						check_quests(possible_quest_string);
+					};
+					eachoa(subtypes, function(subtype_key2, killed_by_subtype){
+						var possible_quest_string = 'ally_' + unit['card_type'] + '_killed_by_' + killed_by_subtype;
+						if(all_achievement_goals[possible_quest_string] != undefined){
+							check_quests(possible_quest_string);
+						};
+					});
+					eachoa(unit['subtypes'], function(subtype_key, quest_subtype){
+						eachoa(subtypes, function(subtype_key2, killed_by_subtype){
+							var possible_quest_string = 'ally_' + quest_subtype + '_killed_by_' + killed_by_subtype;
+							if(all_achievement_goals[possible_quest_string] != undefined){
+								check_quests(possible_quest_string);
+							};
+						});
+						var possible_quest_string = 'ally_' + quest_subtype + '_killed';
+						if(all_achievement_goals[possible_quest_string] != undefined){
+							check_quests(possible_quest_string);
+						};
+					});
 				}
 			}
 			

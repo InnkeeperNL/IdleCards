@@ -10061,7 +10061,6 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{lightning: 6},
 		quote: '\"Don\'t hide behind a tree.\"',
-		use_old: true,
 	},
 	tidal_mage:{
 		name: 				'tidal mage',
@@ -11353,7 +11352,7 @@ var all_old_available_cards = {
 		},
 		quote: '\"For those who wish to live in the wild.\"',
 	},
-	wind_mage:{
+	/*wind_mage:{
 		name: 				'wind mage',
 		type: 				'creature',
 		subtypes: 			['human','mage'],
@@ -11374,7 +11373,7 @@ var all_old_available_cards = {
 			abilities: 			{air_blast: 1, delay: 1},
 		},
 		quote: '\"Take a deep breath.\"',
-	},
+	},*/
 	wind_tower:{
 		name: 				'wind tower',
 		type: 				'structure',
