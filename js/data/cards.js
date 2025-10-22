@@ -2744,7 +2744,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, run_away: 1, steal: 1},
+		abilities: 			{run_away: 1, strike: 1, steal: 1},
 		hero_version: 			{
 			theme: 				['evade_ability','subtype_rogue','steal_ability'],
 			power: 				2,
@@ -3327,6 +3327,28 @@ var all_available_cards = {
 		},
 		quote: '\"She demands respect.\"',
 	},
+	companion_golem:{
+		name: 				'companion golem',
+		type: 				'structure',
+		subtypes: 			['golem'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/companion_golem.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{strike: 1, guard: 1},
+		hero_version: 			{
+			power: 				3,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, ally_guards: 1},
+		},
+		quote: '\"The loss of most men during the Great War necessitated the building of those golems.\"<br/><br/>Credit: Pyrothecat',
+	},
 	condor:{
 		name: 				'condor',
 		type: 				'creature',
@@ -3390,6 +3412,28 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{summon_conscript: 5, maximum_allies: 0},
 		quote: '\"Send in the reserves!\"',
+	},
+	corpse_beach:{
+		name: 				'corpse beach',
+		type: 				'structure',
+		subtypes: 			['wall','aquatic'],
+		color: 				['colorless'],
+		theme: 				[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/corpse_beach.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			6,
+		abilities: 			{summon_mud_crab: 1},
+		hero_version: 			{
+			theme: 				['subtype_crustacean'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{summon_mud_crab: 2},
+		},
+		quote: '\"The ocean delivers fresh dead from the Great War to its banks, and the mud crabs crawl from the mire to feast on what remains.\"<br/><br/>Credit: Pyrothecat',
 	},
 	cow:{
 		name: 				'cow',
@@ -3979,6 +4023,30 @@ var all_available_cards = {
 		},
 		quote: '\"You cannot stay there.\"',
 	},
+	dorrick:{
+		name: 				'dorrick',
+		type: 				'creature',
+		subtypes: 			['human','rogue'],
+		color: 				['colorless'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dorrick.jpg',
+		image_position: 	'top',
+		power: 				2,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{run_away: 1, hide: 1, strike: 1, steal: 1, retreat: 1},
+		hero_version: 			{
+			theme: 				['subtype_rogue'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, pilfer: 1, hide: 1},
+		},
+		quote: '\"Unlike Horrick, Dorrick survived the great war.\"',
+		unique: true,
+	},
 	drain_blood:{
 		name: 				'drain blood',
 		type: 				'spell',
@@ -4132,7 +4200,7 @@ var all_available_cards = {
 		image_position: 	'top',
 		power: 				false,
 		armor: 				0,
-		health: 			4,
+		health: 			5,
 		abilities: 			{burn: 1, unshakable: 1},
 		hero_version: 			{
 			theme: 				['subtype_dwarf'],
@@ -8983,6 +9051,29 @@ var all_available_cards = {
 		},
 		quote: '\"She remains calm, until a spell is cast.\"',
 	},
+	mandrake_witch:{
+		name: 				'mandrake witch',
+		type: 				'creature',
+		subtypes: 			['human','witch','plant'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/mandrake_witch.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{strike: 1, nurture: 1},
+		hero_version: 			{
+			theme: 				['curse_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, nurture: 2},
+		},
+		quote: '\"The goddesses bled our sons and lovers for their Great War, and when there was nothing left, they looked to us.\"<br/><br/>Credit: Pyrothecat',
+	},
 	marten:{
 		name: 				'marten',
 		type: 				'creature',
@@ -9647,6 +9738,21 @@ var all_available_cards = {
 		abilities: 			{nurture: 3, echo: 1},
 		quote: '\"She will love you. Always.\"',
 		max_in_deck: 		1,
+	},
+	mud_crab:{
+		name: 				'mud crab',
+		type: 				'creature',
+		subtypes: 			['animal'],
+		color: 				['colorless','crustacean'],
+		theme: 				[],
+		pick_chance: 		0,
+		time: 				1,
+		image: 				'cards/mud_crab.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			1,
+		abilities: 			{guard: 1, strike: 1},
+		quote: '\"The crabs grew fat on the carrion of the Great War. Now, they scuttle forth, hungry for the spoils of a second.\"<br/><br/>Credit: Pyrothecat',
 	},
 	nightly_harvest:{
 		name: 				'nightly harvest',
@@ -11093,6 +11199,28 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, hasten: 1},
 		},
 		quote: '\"Come join us. It\'ll be fine.\"',
+	},
+	recruitment_angel:{
+		name: 				'recruitment angel',
+		type: 				'creature',
+		subtypes: 			['angel'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/recruitment_angel.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{bring_conscript: 1, strike: 1, flying: 1},
+		hero_version: 			{
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, hasten: 1, flying: 1},
+		},
+		quote: '\"Rejoice, mortal. Your sons have served the Great War in death. Now, your daughters shall do the same.\"<br/><br/>Credit: Pyrothecat',
 	},
 	red_dragon:{
 		name: 				'red dragon',
@@ -12550,7 +12678,7 @@ var all_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, undead: 1, resurrect: 1},
 		},
-		quote: '\"Didn\'t that used to be Hank?\"',
+		quote: '\"Didn\'t that used to be Horrick?\"',
 	},
 	skeletal_warrior:{
 		name: 				'skeletal warrior',
@@ -13943,6 +14071,21 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{poisonous_deaths_hv: 1},
 		quote: '\"Holds toxic spirits.\"',
+	},
+	toy_dragon:{
+		name: 				'toy dragon',
+		type: 				'artifact',
+		subtypes: 			['trinket'],
+		color: 				['colorless'],
+		theme: 				[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/toy_dragon.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{restore: 1, fragile: 1},
+		quote: '\"The toy brings joy, but the child still dreams of the father who made it, and wishes he had returned home alive.\"<br/><br/>Credit: Pyrothecat',
 	},
 	tracker:{
 		name: 				'tracker',
@@ -16490,6 +16633,25 @@ function check_card(card_id){
 		{
 			all_available_cards[card_id]['max_in_deck'] = 1;
 		}
+		/*if(old_cards[card_id] != undefined)
+		{*/
+			eachoa(racial_abilities, function(race, racial_ability){
+				if(match_array_values(all_available_cards[card_id]['subtypes'], race))
+				{
+					if(all_available_cards[card_id]['abilities'][racial_ability] == undefined)
+					{
+						all_available_cards[card_id]['abilities'][racial_ability] = 1;
+					}
+					if(all_available_cards[card_id]['hero_version'] != undefined)
+					{
+						if(all_available_cards[card_id]['hero_version']['abilities'][racial_ability] == undefined)
+						{
+							all_available_cards[card_id]['hero_version']['abilities'][racial_ability] = 1;
+						}
+					}
+				};
+			});
+		/*}*/
 		if(card_info['time'] != undefined && card_info['time'] > 0)
 		{
 			all_available_cards[card_id]['raw_time'] = calculate_card_time(card_id);

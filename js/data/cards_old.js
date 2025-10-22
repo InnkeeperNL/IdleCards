@@ -2149,7 +2149,7 @@ var all_old_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, bolster_structure: 1, unshakable: 1},
+			abilities: 			{strike_unit: 1, bolster_structure: 2, unshakable: 1},
 		},
 		quote: '\"There are not many that can screw up your plans like that...\"',
 	},
@@ -2566,7 +2566,7 @@ var all_old_available_cards = {
 		image: 				'cards/elf_burglar.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			4,
+		health: 			1,
 		abilities: 			{run_away: 1, strike: 1, steal: 1},
 		hero_version: 			{
 			theme: 				['subtype_elf','subtype_rogue','sneaky_strike_ability'],
@@ -2682,14 +2682,14 @@ var all_old_available_cards = {
 		image_position: 	'top',
 		power: 				1,
 		armor: 				0,
-		health: 			4,
-		abilities: 			{strike: 1, steal: 1},
+		health: 			1,
+		abilities: 			{strike: 1, hide: 1, steal: 1},
 		hero_version: 			{
 			theme: 				['subtype_elf','subtype_rogue'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1},
+			abilities: 			{strike_unit: 1, hide: 1},
 		},
 		quote: '\"Oh, so sorry for bumping into you!\"',
 	},
@@ -2738,7 +2738,7 @@ var all_old_available_cards = {
 		},
 		quote: '\"They protect the forest from invaders.\"',
 	},
-	elf_rogue:{
+	/*elf_rogue:{
 		name: 				'elf rogue',
 		type: 				'creature',
 		subtypes: 			['elf','rogue'],
@@ -2746,7 +2746,7 @@ var all_old_available_cards = {
 		theme: 				['muscle'],
 		pick_chance: 		1,
 		time: 				1,
-		image: 				'cards/dream_TradingCard-2023-04-05T130124.jpg',
+		image: 				'cards/elf_rogue.jpg',
 		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
@@ -2760,7 +2760,7 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, evade: 1},
 		},
 		quote: '\"Not all elves are honest.\"',
-	},
+	},*/
 	elf_shifter:{
 		name: 				'elf shifter',
 		type: 				'creature',
@@ -3180,18 +3180,18 @@ var all_old_available_cards = {
 		theme: 				[],
 		pick_chance: 		1,
 		time: 				1,
-		image: 				'cards/dream_TradingCard-2023-04-22T071050.jpg',
+		image: 				'cards/fairy_pickpocket.jpg',
 		image_position: 	'top',
 		power: 				1,
 		armor: 				0,
-		health: 			3,
-		abilities: 			{strike: 1, steal: 1, flying: 1},
+		health: 			1,
+		abilities: 			{strike: 1, steal: 1, hide: 1, flying: 1},
 		hero_version: 			{
 			theme: 				['subtype_fairy','flying_ability','subtype_rogue'],
-			power: 				3,
+			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, flying: 1},
+			abilities: 			{strike_unit: 1, hide: 1, flying: 1},
 		},
 		quote: '\"Mine now!\"',
 	},
@@ -3627,7 +3627,7 @@ var all_old_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, fire_bolt_hv: 2, flying: 1},
+			abilities: 			{strike_unit: 1, fire_bolt_hv: 1, flying: 1},
 		},
 		quote: '\"Death from above.\"',
 	},
@@ -6036,7 +6036,6 @@ var all_old_available_cards = {
 			abilities: 			{strike_unit: 1, enrage: 1, plated: 1},
 		},
 		quote: '\"It\'s just a statue!\"<br/>- Horrick, late thief -',
-		use_old: true,
 	},
 	iron_golem:{
 		name: 				'iron golem',
@@ -7595,29 +7594,6 @@ var all_old_available_cards = {
 		},
 		quote: '\"You can hear the holy chimes when they enter the battlefield.\"',
 	},
-	pickpocket:{
-		name: 				'pickpocket',
-		type: 				'creature',
-		subtypes: 			['human','rogue'],
-		color: 				['colorless'],
-		theme: 				[],
-		pick_chance: 		1,
-		time: 				1,
-		image: 				'cards/dream_TradingCard-2023-03-11T073145.jpg',
-		image_position: 	'top',
-		power: 				1,
-		armor: 				0,
-		health: 			1,
-		abilities: 			{strike: 1, steal: 1, evade: 1},
-		hero_version: 			{
-			theme: 				['subtype_human','subtype_rogue'],
-			power: 				2,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_unit: 1, evade: 1},
-		},
-		quote: '\"My, what a big purse you have!\"',
-	},
 	piranha_attack:{
 		name: 				'piranha attack',
 		type: 				'spell',
@@ -8632,7 +8608,7 @@ var all_old_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, flying: 1, draw: 1},
+			abilities: 			{strike_unit: 1, flying: 1, hasten: 1},
 		},
 		quote: '\"She sees the divine.\"',
 	},
@@ -8671,7 +8647,7 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, nurture: 1},
+		abilities: 			{strike: 1, nurture: 2},
 		hero_version: 			{
 			theme: 				['subtype_human','bolster_ability'],
 			power: 				2,
@@ -12624,6 +12600,8 @@ var ignored_abilities = {
 var racial_abilities = {
 	elf: 				'resist_magic',
 	mermaid: 			'submerged',
+	angel: 				'uncursable',
+	dragon: 			'doomward',
 }
 
 function add_old_cards(old_cards, image_folder){
@@ -12683,25 +12661,7 @@ function add_old_cards(old_cards, image_folder){
 				if(count_object(old_cards[card_id]['hero_version']['abilities']) == 0){delete old_cards[card_id];}
 			}
 		}
-		if(old_cards[card_id] != undefined)
-		{
-			eachoa(racial_abilities, function(race, racial_ability){
-				if(match_array_values(old_cards[card_id]['subtypes'], race))
-				{
-					if(old_cards[card_id]['abilities'][racial_ability] == undefined)
-					{
-						old_cards[card_id]['abilities'][racial_ability] = 1;
-					}
-					if(old_cards[card_id]['hero_version'] != undefined)
-					{
-						if(old_cards[card_id]['hero_version']['abilities'][racial_ability] == undefined)
-						{
-							old_cards[card_id]['hero_version']['abilities'][racial_ability] = 1;
-						}
-					}
-				};
-			});
-		}
+		
 	});
 	eachoa(old_cards, function(card_id, card_info){
 		if(all_available_cards[card_id] == undefined/* && card_info['use_old'] != undefined && card_info['use_old'] == true*/)

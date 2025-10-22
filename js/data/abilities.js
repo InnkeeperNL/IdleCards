@@ -1088,6 +1088,31 @@ var all_abilities = {
 		level_cost: 	0.75,
 		cost_factor: 	'full',
 	},
+	bring_conscript:{
+		description: 	'When played, summons {LEVEL} conscript(s).',
+		proc: 			'on_play',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		proc_amount: 'ability_level',
+		hero_tactics: 	['ally_creature_card_played_proc_ability'],
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'conscript',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		3,
+	},
 	bring_golem:{
 		description: 	'Summons a golem structure unit. Can be used {LEVEL} time(s).',
 		proc: 			'basic',
@@ -1573,7 +1598,7 @@ var all_abilities = {
 		proc: 			'enemy_hero_damaged',
 		reduce_skill_after_use: 'chaos_strikes',
 		proc_amount: 	1,
-		hero_tactics: 	['discard_enemy_ability','draw_cards_ability','direct_damage_ability','movement_ability'],
+		hero_tactics: 	['discard_enemy_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -3496,6 +3521,12 @@ var all_abilities = {
 		},
 		level_cost: 		0,
 		average_hit_cost: 	0.75,
+	},
+	doomward:{
+		description: 		'This is immune to doom.',
+		grants_immunities: 	['doom'],
+		ability_subtypes: 	['doomward'],
+		level_cost: 		0.5,
 	},
 	draw:{
 		description: 	'Draws up to a total of {LEVEL} card(s).',
@@ -8509,11 +8540,12 @@ var all_abilities = {
 		level_cost: 	0,
 	},
 	reveal:{
-		description: 	'Removes stealth from {LEVEL} enemy unit(s) or hero. If this targets a unit with the hide ability, it looses that ability. Will target the nearest unit or hero with stealth.',
+		description: 	'Removes stealth from {LEVEL} enemy unit(s). If this targets a unit with the hide ability, it looses that ability. Will target the nearest unit with stealth.',
 		cannot_proc_while_stunned: true,
+		do_not_pause_between: true,
 		targets:	{
 			0:{
-				target: 		'unit_or_hero',
+				target: 		'unit',
 				target_amount: 	1,
 				position: 		'nearest',
 				has_ability: 	'stealth',
@@ -8540,13 +8572,13 @@ var all_abilities = {
 		level_cost_spell: 	0.25,
 	},
 	reveal_all:{
-		description: 	'Removes stealth from all enemies and removes the hide ability from all enemy units.',
+		description: 	'Removes stealth from all enemy units. Also removes the hide ability from all those.',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: true,
 		targets:	{
 			0:{
-				target: 		'unit_or_hero',
-				target_amount: 	6,
+				target: 		'unit',
+				target_amount: 	5,
 				position: 		'random',
 				has_ability: 	'stealth',
 				min_hp: 		1,
@@ -10063,6 +10095,34 @@ var all_abilities = {
 		//level_cost_spell: 	8,
 		average_hit_cost: 	4,
 	},
+	summon_mud_crab:{
+		description: 	'While there is an unopposed enemy unit, this summons {LEVEL} mud crab(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		min_unopposed_enemy_units: 1,
+		proc_amount: 'ability_level',
+		hero_tactics: 	['ally_creature_card_played_proc_ability','movement_ability','ally_creature_death_proc_ability'],
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'mud_crab',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		8,
+		level_cost_spell: 	1,
+		level_cost_hero: 	3,
+	},
 	summon_peasant:{
 		description: 	'Summons {LEVEL} peasant(s).',
 		proc: 			'basic',
@@ -10535,15 +10595,22 @@ var all_abilities = {
 		level_cost: 		15,
 		level_cost_hero: 	4,
 	},
+	uncursable:{
+		description: 		'This is immune to curse effects.',
+		grants_immunities: 	['curse'],
+		ability_subtypes: 	['uncursable'],
+		level_cost: 		0.5,
+	},
 	undead:{
-		description: 		'This unit is immune to poison and all mental effects.',
+		description: 		'This is immune to poison and all mental effects.',
 		grants_immunities: 	['poison','mental'],
 		ability_subtypes: 	['undead'],
 	},
 	unshakable:{
-		description: 		'This unit is immune to stuns and weakness.',
+		description: 		'This is immune to stuns and weakness.',
 		grants_immunities: 	['stun','weaken'],
 		ability_subtypes: 	['unshakable'],
+		level_cost: 		0.5,
 	},
 	unsummon_ally:{
 		description: 	'Returns a damaged ally creature unit to your hand. Will not unsummon summoned units.',

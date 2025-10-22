@@ -75,7 +75,7 @@ var all_oldest_available_cards = {
 			health: 			40,
 			abilities: 			{shoot_unit: 2},
 		},
-		quote: '\"When there are many enemies, shoot many arrows\" - Torra, master at arms',
+		quote: '\"When there are many enemies, shoot many arrows.\" - Torra, master at arms',
 	},
 	arjuna:{
 		name: 				'arjuna',
@@ -397,10 +397,10 @@ var all_oldest_available_cards = {
 		health: 			6,
 		abilities: 			{strike: 1, burn_all: 1, flying: 1},
 		hero_version: 			{
-			power: 				1,
+			power: 				false,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{strike_unit: 1, burn_all: 1, flying: 1},
+			abilities: 			{burn_all: 1, flying: 1},
 		},
 		quote: '\"She brings heavenly fire.\"',
 	},
@@ -751,7 +751,7 @@ var all_oldest_available_cards = {
 			name: 				'crystal dragon',
 			type: 				'creature',
 			image: 				'cards/isolated-4788969_640.jpg',
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			20,
 			abilities: 			{strike_unit: 1, flying: 1, hasten: 1},
@@ -2628,7 +2628,7 @@ var all_oldest_available_cards = {
 			name: 				'mana dragon',
 			type: 				'creature',
 			image: 				'cards/fantasy-2747066_640.jpg',
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			25,
 			abilities: 			{strike_unit: 1, flying: 1, hasten: 1},
@@ -3202,30 +3202,6 @@ var all_oldest_available_cards = {
 		recipe:{
 			gladiator: 			1,
 			sandstorm: 			1
-		}
-	},
-	sea_dragon:{
-		name: 				'sea dragon',
-		type: 				'creature',
-		subtypes:  			['reptile','dragon'],
-		color: 				['blue'],
-		time: 				15,
-		image: 				'cards/fantasy-5269106_640.jpg',
-		power: 				4,
-		armor: 				0,
-		health: 			10,
-		abilities: 			{strike: 1, submerged: 1, fireproof: 1},
-		hero_version: 			{
-			name: 				'sea dragon',
-			type: 				'creature',
-			image: 				'cards/fantasy-5269106_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{strike_unit: 1, submerged: 1, fireproof: 1},
-		},
-		recipe:{
-			cleansing_water: 	10
 		}
 	},
 	sea_spirit:{
