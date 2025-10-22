@@ -5307,7 +5307,7 @@ var all_available_cards = {
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
-		image: 				'cards/dream_TradingCard-2024-12-23T120102.476.jpg',
+		image: 				'cards/farm_scythe.jpg',
 		power: 				false,
 		armor: 				0,
 		health: 			false,
