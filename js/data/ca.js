@@ -178,7 +178,7 @@ var all_abilities = {
 				type: 			'move',
 				safe_slot: 		false,
 				placement: 		'random',
-				subtypes: 		['movement','guard'],
+				subtypes: 		['movement','guard','guard_now'],
 				amount: 		1,
 			}
 		},
@@ -5759,7 +5759,7 @@ var all_abilities = {
 				type: 			'move',
 				safe_slot: 		false,
 				placement: 		'random',
-				subtypes: 		['movement','guard'],
+				subtypes: 		['movement','guard','guard_now'],
 				amount: 		1,
 			}
 		},
@@ -23335,6 +23335,22 @@ var all_available_cards = {
 		abilities: 			{strike_arrivals: 1},
 		quote: '\"An ancient weapon inscribed with runes.\"',
 	},
+	rusty_blade:{
+		name: 				'rusty blade',
+		type: 				'artifact',
+		subtypes: 			['weapon'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/rusty_blade.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{empower_hero: 1, venomous_hero: 1, fragile: 1},
+		quote: '\"Many weapons were left on the battlefield after the Great War. Some can still be wielded, even more deadly now they are covered in grime.\"',
+	},
 	rusty_shield:{
 		name: 				'rusty shield',
 		type: 				'artifact',
@@ -29500,6 +29516,24 @@ var all_quests = {
 };
 
 var all_achievements = {
+	arcane_elf:{
+		name: 			'arcane elf',
+		description: 	'Kill an enemy elf hero with an arcane bolt.',
+		card_image: 	'arcane_elf_mage',
+		objective: 		'enemy_elf_hero_killed_by_arcane_bolts',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_arcane_elf_mage',
+				reward_amount: 1,
+			},
+		},
+	},
 	arcane_trickster:{
 		name: 			'arcane trickster',
 		description: 	'Kill the enemy hero with an arcane bolt.',
@@ -29514,24 +29548,6 @@ var all_achievements = {
 			},
 			1:{
 				reward_id: 'card_back_arcane_trickster',
-				reward_amount: 1,
-			},
-		},
-	},
-	arcane_storm:{
-		name: 			'arcane storm',
-		description: 	'Kill an enemy elf with an arcane bolt.',
-		card_image: 	'arcane_storm',
-		objective: 		'enemy_elf_killed_by_arcane_bolts',
-		amount: 		1,
-		hide_details: 	true,
-		rewards:{
-			0:{
-				reward_id: 'chest',
-				reward_amount: 1,
-			},
-			1:{
-				reward_id: 'card_back_arcane_storm',
 				reward_amount: 1,
 			},
 		},
@@ -29924,6 +29940,25 @@ var all_chained_achievements = {
 		},
 		card_back: 		'arcane_missiles',
 		steps: 			6,
+	},
+	arcane_storm:{
+		name: 			'arcane storm',
+		description: 	'Have allies fire {MIN_AMOUNT} arcane bolt(s) in a single battle.',
+		objective: 		'ally_performed_arcane_bolts_total',
+		min_amount: 	30,
+		amount: 		1,
+		hide_amount: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'arcane_storm',
+		steps: 			5,
+		step_effect: 	'min_amount',
+		step_amount: 	30,
+		no_quest: 		true,
 	},
 	army:{
 		name: 			'army',

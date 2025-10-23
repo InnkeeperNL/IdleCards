@@ -890,14 +890,12 @@ var all_oldest_available_cards = {
 		health: 			8,
 		abilities: 			{strike: 1, fireproof: 1, burn_all: 1},
 		hero_version: 			{
-			name: 				'daemon lord',
-			type: 				'creature',
-			image: 				'cards/fantasy-5521222_640.jpg',
 			power: 				1,
 			armor: 				0,
 			health: 			30,
 			abilities: 			{strike_unit: 1, fireproof: 1, burn_all: 1},
 		},
+		quote: '\"The scent of another Great War taints the aether once more, and the Daemon Lords grin in the shadows = eager to bathe again in blood and chaos.\"',
 	},
 	
 	deaths_call:{
@@ -1545,18 +1543,12 @@ var all_oldest_available_cards = {
 		health: 			3,
 		abilities: 			{strike: 1, burn_arrivals: 1},
 		hero_version: 			{
-			name: 				'flame greeter',
-			type: 				'creature',
-			image: 				'cards/woman-3461565_640.jpg',
 			power: 				2,
 			armor: 				0,
 			health: 			60,
 			abilities: 			{strike_unit: 1, burn_arrivals: 1},
 		},
-		recipe:{
-			fire_mage: 			1,
-			candle: 			1
-		}
+		quote: '\"Let\'s give them a \'warm\' welcome!\"',
 	},
 	flame_horn:{
 		name: 				'flame horn',
@@ -2759,25 +2751,18 @@ var all_oldest_available_cards = {
 		pick_chance: 		1,
 		time: 				5,
 		image: 				'cards/fantasy-4122305_640.jpg',
+		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
 		health: 			6,
 		abilities: 			{strike: 1, convert_pain: 1},
 		hero_version: 			{
-			name: 				'pain catcher',
-			type: 				'creature',
-			image: 				'cards/fantasy-4122305_640.jpg',
-			image_position: 	'top',
 			power: 				2,
 			armor: 				0,
 			health: 			60,
 			abilities: 			{strike_unit: 1, convert_pain: 1},
 		},
-		recipe:{
-			peasant: 			1,
-			mausoleum: 			1,
-			ghost_bride: 		1
-		}
+		quote: '\"From her wounds springs forth the wrath of the dead.\"',
 	},
 	paper:{
 		name: 				'paper',
@@ -3062,25 +3047,18 @@ var all_oldest_available_cards = {
 		color: 				['orange'],
 		time: 				2,
 		image: 				'cards/fantasy-3363955_1280.jpg',
+		image_position: 	'top',
 		power: 				1,
 		armor: 				0,
 		health: 			3,
 		abilities: 			{strike: 1, final_draw: 1},
 		hero_version: 			{
-			name: 				'rock seer',
-			type: 				'creature',
-			image: 				'cards/fantasy-3363955_1280.jpg',
-			image_position: 	'top',
 			power: 				2,
 			armor: 				0,
 			health: 			60,
 			abilities: 			{strike_unit: 1, draw: 1},
 		},
-		recipe:{
-			peasant: 			1,
-			mana_crystal: 		1,
-			sandstorm: 			1
-		}
+		quote: '\"Wars were halted. Disasters diverted. All because the stones spoke - and someone listened.\"',
 	},
 	rock_wurm:{
 		name: 				'rock wurm',

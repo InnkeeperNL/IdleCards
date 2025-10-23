@@ -15554,6 +15554,13 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 							if(all_achievement_goals[possible_quest_string] != undefined){
 								check_quests(possible_quest_string);
 							};
+							if(unit_id == 1)
+							{
+								var possible_quest_string = 'enemy_' + quest_subtype + '_hero_killed_by_' + killed_by_subtype;
+								if(all_achievement_goals[possible_quest_string] != undefined){
+									check_quests(possible_quest_string);
+								};
+							}
 						});
 						var possible_quest_string = 'enemy_' + quest_subtype + '_killed';
 						if(all_achievement_goals[possible_quest_string] != undefined){

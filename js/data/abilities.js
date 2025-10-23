@@ -177,7 +177,7 @@ var all_abilities = {
 				type: 			'move',
 				safe_slot: 		false,
 				placement: 		'random',
-				subtypes: 		['movement','guard'],
+				subtypes: 		['movement','guard','guard_now'],
 				amount: 		1,
 			}
 		},
@@ -5758,7 +5758,7 @@ var all_abilities = {
 				type: 			'move',
 				safe_slot: 		false,
 				placement: 		'random',
-				subtypes: 		['movement','guard'],
+				subtypes: 		['movement','guard','guard_now'],
 				amount: 		1,
 			}
 		},
