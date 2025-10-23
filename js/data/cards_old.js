@@ -6108,7 +6108,7 @@ var all_old_available_cards = {
 	jotnar_druid:{
 		name: 				'jotnar druid',
 		type: 				'creature',
-		subtypes: 			['jotnar','druid'],
+		subtypes: 			['human','jotnar','druid'],
 		color: 				['colorless'],
 		theme: 				[],
 		pick_chance: 		1,
@@ -6131,7 +6131,7 @@ var all_old_available_cards = {
 	jotnar_hunter:{
 		name: 				'jotnar hunter',
 		type: 				'creature',
-		subtypes: 			['jotnar','hunter'],
+		subtypes: 			['human','jotnar','hunter'],
 		color: 				['colorless'],
 		theme: 				[],
 		pick_chance: 		1,
@@ -6154,7 +6154,7 @@ var all_old_available_cards = {
 	jotnar_ice_master:{
 		name: 				'jotnar ice master',
 		type: 				'creature',
-		subtypes: 			['jotnar', 'warrior','mage'],
+		subtypes: 			['human','jotnar', 'warrior','mage'],
 		color: 				['colorless'],
 		theme: 				['muscle'],
 		pick_chance: 		1,
@@ -6176,7 +6176,7 @@ var all_old_available_cards = {
 	jotnar_knight:{
 		name: 				'jotnar knight',
 		type: 				'creature',
-		subtypes: 			['jotnar', 'warrior'],
+		subtypes: 			['human','jotnar', 'warrior'],
 		color: 				['colorless'],
 		theme: 				['muscle'],
 		pick_chance: 		1,
@@ -6199,7 +6199,7 @@ var all_old_available_cards = {
 	jotnar_lookout:{
 		name: 				'jotnar lookout',
 		type: 				'creature',
-		subtypes: 			['jotnar','scout'],
+		subtypes: 			['human','jotnar','scout'],
 		color: 				['colorless'],
 		theme: 				[],
 		pick_chance: 		1,
@@ -6240,7 +6240,7 @@ var all_old_available_cards = {
 	jotnar_princess:{
 		name: 				'jotnar princess',
 		type: 				'creature',
-		subtypes: 			['jotnar','royal'],
+		subtypes: 			['human','jotnar','royal'],
 		color: 				['colorless'],
 		theme: 				[],
 		pick_chance: 		1,
@@ -6263,7 +6263,7 @@ var all_old_available_cards = {
 	jotnar_scout:{
 		name: 				'jotnar scout',
 		type: 				'creature',
-		subtypes: 			['jotnar','scout'],
+		subtypes: 			['human','jotnar','scout'],
 		color: 				['colorless'],
 		theme: 				[],
 		pick_chance: 		1,
@@ -6286,7 +6286,7 @@ var all_old_available_cards = {
 	jotnar_shield_maiden:{
 		name: 				'jotnar shield maiden',
 		type: 				'creature',
-		subtypes: 			['jotnar','warrior'],
+		subtypes: 			['human','jotnar','warrior'],
 		color: 				['colorless'],
 		theme: 				['muscle'],
 		pick_chance: 		1,
@@ -6309,7 +6309,7 @@ var all_old_available_cards = {
 	jotnar_snowcaster:{
 		name: 				'jotnar snowcaster',
 		type: 				'creature',
-		subtypes: 			['jotnar','mage'],
+		subtypes: 			['human','jotnar','mage'],
 		color: 				['colorless'],
 		theme: 				['muscle'],
 		pick_chance: 		1,
@@ -6332,7 +6332,7 @@ var all_old_available_cards = {
 	jotnar_spirit:{
 		name: 				'jotnar spirit',
 		type: 				'spell',
-		subtypes: 			['jotnar'],
+		subtypes: 			['spirit','jotnar'],
 		color: 				['colorless'],
 		theme: 				['defense'],
 		pick_chance: 		1,
@@ -6347,7 +6347,7 @@ var all_old_available_cards = {
 	jotnar_striker:{
 		name: 				'jotnar striker',
 		type: 				'creature',
-		subtypes: 			['jotnar','warrior'],
+		subtypes: 			['human','jotnar','warrior'],
 		color: 				['colorless'],
 		theme: 				['muscle'],
 		pick_chance: 		1,
@@ -6370,7 +6370,7 @@ var all_old_available_cards = {
 	jotnar_thief:{
 		name: 				'jotnar thief',
 		type: 				'creature',
-		subtypes: 			['jotnar','rogue'],
+		subtypes: 			['human','jotnar','rogue'],
 		color: 				['colorless'],
 		theme: 				[],
 		pick_chance: 		1,
@@ -6393,7 +6393,7 @@ var all_old_available_cards = {
 	jotnar_villager:{
 		name: 				'jotnar villager',
 		type: 				'creature',
-		subtypes: 			['jotnar'],
+		subtypes: 			['human','jotnar'],
 		color: 				['colorless'],
 		theme: 				['muscle'],
 		craft_theme: 		['villager'],
@@ -6417,7 +6417,7 @@ var all_old_available_cards = {
 	jotnar_witch:{
 		name: 				'jotnar witch',
 		type: 				'creature',
-		subtypes: 			['jotnar','witch'],
+		subtypes: 			['human','jotnar','witch'],
 		color: 				['colorless'],
 		theme: 				['muscle'],
 		pick_chance: 		1,
@@ -6455,7 +6455,7 @@ var all_old_available_cards = {
 	junior_jotnar:{
 		name: 				'junior jotnar',
 		type: 				'creature',
-		subtypes: 			['jotnar'],
+		subtypes: 			['human','jotnar'],
 		color: 				['colorless'],
 		theme: 				['muscle'],
 		craft_theme: 		['villager'],
@@ -9066,16 +9066,15 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, doom: 1, resurrect: 1, undead: 1},
+		abilities: 			{strike: 1, dooming_deaths: 1, resurrect: 1, undead: 1},
 		hero_version: 			{
 			theme: 				['subtype_skeleton','resurrect_ability','hasten_ability','move_ally_to_deck_from_grave_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, doom: 1, resurrect: 1, undead: 1},
+			abilities: 			{strike_unit: 1, dooming_deaths: 1, resurrect: 1, undead: 1},
 		},
 		quote: '\"Bones... just bones. Bones that can see the future.\"',
-		use_old: true,
 	},
 	skeletal_sniper:{
 		name: 				'skeletal sniper',
