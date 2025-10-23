@@ -532,7 +532,7 @@ var all_older_available_cards = {
 		power: 				4,
 		armor: 				0,
 		health: 			11,
-		abilities: 			{strike: 1},
+		abilities: 			{flame_strike: 1},
 		hero_version: 			{
 			name: 				'daemon',
 			type: 				'creature',
@@ -541,9 +541,9 @@ var all_older_available_cards = {
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit:1},
+			abilities: 			{flame_strike_hv:1},
 		},
-		quote: '\"It will take you to hell\"'
+		quote: '\"It will take you to hell.\"'
 	},
 	dark_seer:{
 		name: 				'dark seer',
@@ -1100,37 +1100,6 @@ var all_older_available_cards = {
 			hexing_spirit: 		1
 		}
 	},
-	
-	
-	/*highwayman:{
-		name: 				'highwayman',
-		version: 			2,
-		type: 				'creature',
-		color: 				['orange'],
-		theme: 				['muscle','evasion'],
-		pick_chance: 		1,
-		time: 				3,
-		image: 				'cards/fighter-5369481_640.jpg',
-		image_position: 	'top',
-		power: 				3,
-		armor: 				0,
-		health: 			3,
-		abilities: 			{strike: 1, stealth: 1},
-		hero_version: 			{
-			name: 				'highwayman',
-			type: 				'creature',
-			theme: 				['evasion'],
-			image: 				'cards/fighter-5369481_640.jpg',
-			image_position: 	'top',
-			power: 				3,
-			armor: 				0,
-			health: 			38,
-			abilities: 			{strike_unit: 1, stealth: 1},
-		},
-		recipe:{
-			dagger: 		2,
-		}
-	},*/
 	honorbound_warrior:{
 		name: 				'honorbound warrior',
 		version: 			2,
@@ -1584,10 +1553,6 @@ var all_older_available_cards = {
 			health: 			25,
 			abilities: 			{strike_unit: 1, raging_deaths: 1, feast: 1, undead: 1},
 		},
-		recipe:{
-			ghost_skull: 		1,
-			swamp_knight: 		1,
-		},
 		quote: '\"The angry restless dead\"'
 	},
 	ravine:{
@@ -1880,10 +1845,6 @@ var all_older_available_cards = {
 			health: 			35,
 			abilities: 			{strike_unit: 1, withering_touch: 1},
 		},
-		recipe:{
-			blood_horror: 		1,
-			zombie: 			1,
-		}
 	},
 	thorned_tree:{
 		name: 				'thorned tree',

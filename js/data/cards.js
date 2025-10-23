@@ -9349,7 +9349,7 @@ var all_available_cards = {
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard44.jpg',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
 		health: 			5,
 		abilities: 			{strike: 1, first_aid: 1},

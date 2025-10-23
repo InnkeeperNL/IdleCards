@@ -1530,6 +1530,7 @@ var all_oldest_available_cards = {
 			health: 			20,
 			abilities: 			{strike_unit: 1, flying: 1, resurrect: 1},
 		},
+		quote: '\"Hell has spat it out and will not take it back.\"'
 	},
 	flame_greeter:{
 		name: 				'flame greeter',
@@ -1537,7 +1538,8 @@ var all_oldest_available_cards = {
 		subtypes: 			['human','mage'],
 		color: 				['red'],
 		time: 				2,
-		image: 				'cards/woman-3461565_640.jpg',
+		image: 				'cards/flame_greeter.jpg',
+		image_position: 	'top',
 		power: 				1,
 		armor: 				0,
 		health: 			3,
@@ -2077,24 +2079,18 @@ var all_oldest_available_cards = {
 		subtypes: 			['human','daemon'],
 		color: 				['red'],
 		time: 				4,
-		image: 				'cards/daemon-2980812_640.jpg',
+		image: 				'cards/half_daemon.jpg',
 		power: 				4,
 		armor: 				0,
 		health: 			2,
-		abilities: 			{seek_enemy: 1, strike: 1},
+		abilities: 			{seek_enemy: 1, flame_strike: 1},
 		hero_version: 			{
-			name: 				'half daemon',
-			type: 				'creature',
-			image: 				'cards/daemon-2980812_640.jpg',
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1},
+			abilities: 			{flame_strike_hv: 1},
 		},
-		recipe:{
-			fire_imp: 			1,
-			hellfire:			1,
-		}
+		quote: '\"He was on his way to hell, but not quite there yet, as he was recalled to serve.\"'
 	},
 	
 	haunted_forest:{
@@ -2285,21 +2281,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['human','rogue'],
 		color: 				['yellow'],
 		time: 				4,
-		image: 				'cards/fighter-5369481_640.jpg',
+		image: 				'cards/highwayman.jpg',
+		image_position: 	'top',
 		power: 				3,
 		armor: 				0,
 		health: 			6,
 		abilities: 			{strike: 1, striking_entry: 3, defect: 1},
 		hero_version: 			{
-			name: 				'highwayman',
-			type: 				'creature',
-			image: 				'cards/fighter-5369481_640.jpg',
-			image_position: 	'top',
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 2},
+			abilities: 			{strike_unit: 2, ally_runs_away: 1},
 		},
+		quote: '\"They will fight for who pays them, until they get hurt.\"',
 	},
 	holy_sacrifice:{
 		name: 				'holy sacrifice',
@@ -2394,25 +2388,19 @@ var all_oldest_available_cards = {
 		subtypes: 			['undead','spirit'],
 		color: 				['purple'],
 		time: 				2,
-		image: 				'cards/eye-4528085_640.jpg',
+		image: 				'cards/hungering_ghost.jpg',
+		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
-		health: 			4,
-		abilities: 			{seek_creature: 1, strike: 1, feast: 3, undead: 1, resurrect: 1},
+		health: 			1,
+		abilities: 			{strike: 1, leech_hero: 1, undead: 1, resurrect: 1},
 		hero_version: 			{
-			name: 				'hungering ghost',
-			type: 				'creature',
-			image: 				'cards/eye-4528085_640.jpg',
 			power: 				3,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, feast: 1, undead: 1, resurrect: 1},
 		},
-		recipe:{
-			ghost_bride: 		1,
-			poverty: 			1,
-			bones: 				1
-		}
+		quote: '\"The Great War has left the dead wanting for more.\"',
 	},
 	illusionist:{
 		name: 				'illusionist',
@@ -2462,7 +2450,8 @@ var all_oldest_available_cards = {
 		subtypes: 			['human','warrior'],
 		color: 				['yellow'],
 		time: 				11,
-		image: 				'cards/knight-4593849_640.jpg',
+		image: 				'cards/jousting_knight.jpg',
+		image_position: 	'top',
 		power: 				2,
 		armor: 				2,
 		health: 			5,
@@ -2477,10 +2466,7 @@ var all_oldest_available_cards = {
 			health: 			30,
 			abilities: 			{strike_unit: 1, block: 1, plated: 1},
 		},
-		recipe:{
-			shield_maiden: 		1,
-			force_pull: 		1
-		}
+		quote: '\"During the Great War, all she was allowed to do was joust. Now that she has to fight herself, it is a useful skill to have.\"',
 	},
 	
 	
@@ -2655,6 +2641,7 @@ var all_oldest_available_cards = {
 		type: 				'creature',
 		subtypes: 			['animal','reptile'],
 		color: 				['purple'],
+		not_theme: 			['on_play_proc_ability'],
 		time: 				1,
 		image: 				'cards/crocodile-630231_1280.jpg',
 		power: 				3,
@@ -2670,11 +2657,7 @@ var all_oldest_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, submerged: 1},
 		},
-		recipe:{
-			fire_salamander: 	1,
-			hidden_swamp: 		1,
-			amethyst: 			1
-		}
+		quote: '\"The stench is unbearable, but it is a strong beast.\"',
 	},
 	mind_control:{
 		name: 				'mind control',
@@ -3474,31 +3457,6 @@ var all_oldest_available_cards = {
 		armor: 				0,
 		health: 			false,
 		abilities: 			{strike_hero: 2},
-	},
-	swamp_knight:{
-		name: 				'swamp knight',
-		type: 				'creature',
-		subtypes: 			['human','warrior'],
-		color: 				['purple'],
-		time: 				7,
-		image: 				'cards/fantasy-3097517_640.jpg',
-		power: 				2,
-		armor: 				0,
-		health: 			6,
-		abilities: 			{strike: 1, withering_touch: 1},
-		hero_version: 			{
-			name: 				'swamp knight',
-			type: 				'creature',
-			image: 				'cards/fantasy-3097517_640.jpg',
-			power: 				2,
-			armor: 				0,
-			health: 			30,
-			abilities: 			{strike_unit: 1, withering_touch: 1},
-		},
-		recipe:{
-			hidden_swamp: 		1,
-			shield_maiden: 		1
-		}
 	},
 	swan_lady:{
 		name: 				'swan lady',

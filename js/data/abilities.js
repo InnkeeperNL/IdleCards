@@ -4685,7 +4685,7 @@ var all_abilities = {
 				amount: 		'ability_level',
 			},
 		},
-		level_cost: 	-1,
+		level_cost: 	-2,
 		ability_level_cost_factors:{
 			resurrect: 		2,
 		},
@@ -5407,7 +5407,8 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	-4,
+		level_cost: 	-0.5,
+		level_cost_artifact: 	-4,
 		cost_factor: 	'full',
 	},
 	frost_bolt:{
@@ -7047,7 +7048,8 @@ var all_abilities = {
 		average_hits: 		1,
 	},
 	pay_life:{
-		description: 	'Reduces the health of your hero by {LEVEL}.',
+		description: 	'When played, reduces the health of your hero by {LEVEL}.',
+		proc: 			'on_play',
 		proc_while_dead: true,
 		scales: 		true,
 		targets: 	{
@@ -7067,13 +7069,14 @@ var all_abilities = {
 			},
 		},
 		level_cost: 	-2,
-		level_cost_spell: -1,
 	},
 	pay_life_on_act:{
 		name: 			'pay life',
 		description: 	'If this used another ability, it reduces the health of your hero by {LEVEL}.',
+		proc: 			'on_play',
 		proc_while_dead: true,
 		scales: 		true,
+		has_used_ability: true,
 		targets: 	{
 			0:{
 				target: 		'hero',
@@ -7091,7 +7094,6 @@ var all_abilities = {
 			},
 		},
 		level_cost: 	-2,
-		level_cost_spell: -1,
 	},
 	pilfer:{
 		description: 	'Gain control over an enemy artifact. Can only be used up to {LEVEL} time(s) and only if you have less than 5 artifacts in play.',
