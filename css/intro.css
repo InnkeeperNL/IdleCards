@@ -28,7 +28,7 @@
 
 .intro_step
 {
-	font-size: 5vw;
+	font-size: 36px;
 	position: absolute;
 	background-position: center center;
 	background-size: cover;
@@ -54,3 +54,17 @@
 {
 	opacity:0.8;
 }
+
+/*@media screen and (max-width: 800px) {
+  .intro_step.intro_text
+  {
+     font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .intro_step.intro_text
+  {
+     font-size: 36px;
+  }
+}*/
