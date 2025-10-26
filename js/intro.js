@@ -251,7 +251,7 @@ var intro_steps = {
 		},
 	},
 	21:{
-		time_on_screen: 	3000,
+		time_on_screen: 	2000,
 		text: 				'',
 	},
 }
