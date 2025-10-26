@@ -11,14 +11,15 @@
 	<script src="js/data/config.js?v=12345"></script>
 	<!-- <script src="js/data/ability_parts.js?v=12345"></script>
 	<script src="js/data/abilities_old.js?v=12345"></script> -->
-	<!-- <script src="js/data/abilities.js?v=12345"></script> -->
+	<script src="js/data/abilities.js?v=12345"></script>
 	<script src="js/data/cards_old2a.js?v=12345"></script>
 	<script src="js/data/cards_old2.js?v=12345"></script>
 	<script src="js/data/cards_old.js?v=12345"></script>
-	<!-- <script src="js/data/cards.js?v=12345"></script> -->
+	<script src="js/data/cards.js?v=12345"></script>
 	
-	<script src="js/data/ca.js?v=12345"></script>
-	<!-- <script src="js/data/quests.js?v=12345"></script> -->
+	<!-- <script src="js/data/ca.js?v=12345"></script> -->
+	<script src="js/data/quests.js?v=12345"></script>
+	
 	<script src="js/data/campaigns.js?v=12345"></script>
 	<script src="js/data/buildings.js?v=12345"></script>
 	<script src="js/data/offers.js?v=12345"></script>
@@ -31,7 +32,7 @@
 	<link rel="stylesheet" type="text/css" href="css/reset.css?v=12345">
 	<link rel="stylesheet" type="text/css" href="css/main.css?v=12345">
 
-	<!-- <script src="js/deck_edit.js?v=12345"></script>
+	<script src="js/deck_edit.js?v=12345"></script>
 	
 
 	<script src="js/campaign.js?v=123452"></script>
@@ -56,8 +57,8 @@
 	<script src="js/floating_text.js?v=12345"></script>
 
 	<script src="js/process_turn.js?v=12345"></script>
-	<script src="js/battle.js?v=12345"></script> -->
-	<script src="js/all_scripts.js?v=12345"></script>
+	<script src="js/battle.js?v=12345"></script>
+	<!-- <script src="js/all_scripts.js?v=12345"></script> -->
 	<link rel="stylesheet" type="text/css" href="css/deck_edit.css?v=12345">
 	<link rel="stylesheet" type="text/css" href="css/intro.css?v=12345">
 	<link rel="stylesheet" type="text/css" href="css/merchant.css?v=12345">
@@ -1261,19 +1262,35 @@
 
 	function show_stats(){
 		var parsed_stats = '';
-		parsed_stats += '<div class="stats_title">Combat</div>';
+		parsed_stats += '<div class="stats_title">Summoning</div>';
 		if(gamedata['battles_won'] != undefined){parsed_stats += '<div class="left_stats">Battles won:</div><div class="right_stats">' + nFormatter(gamedata['battles_won'],3) + '</div>';}
 		if(gamedata['battles_lost'] != undefined){parsed_stats += '<div class="left_stats">Battles lost:</div><div class="right_stats">' + nFormatter(gamedata['battles_lost'],3) + '</div>';}
 		if(gamedata['highest_summon_won'] != undefined && gamedata['highest_summon_won'] > 0){parsed_stats += '<div class="left_stats">Highest summon:</div><div class="right_stats">' + nFormatter(gamedata['highest_summon_won'] * 100,1) + '%</div>';}
+		if(gamedata['upgrades'] != undefined && gamedata['upgrades']['summon_altar'] != undefined){
+			parsed_stats += '<div class="left_stats">Max altar rarity:</div><div class="right_stats">' + (Math.floor(get_upgrade_factor('altar_rarity', 'any', true) * get_upgrade_factor('summon_max_rarity', 'any', true))) + '</div>';
+		}
+		if(gamedata['highest_wave_ever'] != undefined && gamedata['highest_wave_ever'] > 1){parsed_stats += '<div class="stats_title">Waves</div>';}
 		if(gamedata['highest_wave_ever'] != undefined && gamedata['highest_wave_ever'] > 1){parsed_stats += '<div class="left_stats">Highest wave:</div><div class="right_stats">' + nFormatter(gamedata['highest_wave_ever'],3) + '</div>';}
 		parsed_stats += '<div class="stats_title">Cards</div>';
 		if(gamedata['owned_cards'] != undefined){parsed_stats += '<div class="left_stats">Cards owned:</div><div class="right_stats">' + nFormatter(count_owned_cards(),3) + '</div>';}
 		if(gamedata['decks'] != undefined){parsed_stats += '<div class="left_stats">Decks owned:</div><div class="right_stats">' + nFormatter(count_object(gamedata['decks']),3) + '</div>';}
 		if(gamedata['known_recipes'] != undefined){parsed_stats += '<div class="left_stats">Recipes known:</div><div class="right_stats">' + nFormatter(count_object(gamedata['known_recipes']),3) + '</div>';}
 		if(gamedata['known_recipes'] != undefined){parsed_stats += '<div class="left_stats">Card backs:</div><div class="right_stats">' + nFormatter(count_object(gamedata['owned_card_backs']),3) + '</div>';}
-		parsed_stats += '<div class="stats_title">Upgrades</div>';
-		if(gamedata['upgrades'] != undefined){parsed_stats += '<div class="left_stats">Upgrades bought:</div><div class="right_stats">' + nFormatter(count_upgrades_bought(),3) + '</div>';}
-
+		
+		if(gamedata['upgrades'] != undefined){
+			parsed_stats += '<div class="stats_title">Upgrades</div>';
+			parsed_stats += '<div class="left_stats">Upgrades bought:</div><div class="right_stats">' + nFormatter(count_upgrades_bought(),3) + '</div>';
+			var floating_scraps_gained = get_upgrade_factor('floating_scraps', 'any', true) * get_upgrade_factor('loot', 'scraps', true);
+			parsed_stats += '<div class="left_stats">Floating scraps:</div><div class="right_stats">' + (Math.floor(floating_scraps_gained * 10) / 10) + '</div>';
+			parsed_stats += '<div class="left_stats">Peasant factor:</div><div class="right_stats">' + (Math.floor(get_upgrade_factor('loot', 'peasant', true) * 100) / 100) + '</div>';
+			parsed_stats += '<div class="left_stats">Shard factor:</div><div class="right_stats">' + (Math.floor(get_upgrade_factor('loot', 'shard', true) * 100) / 100) + '</div>';
+		}
+		if(gamedata['town'] != undefined && count_object(gamedata['town']) > 0)
+		{
+			parsed_stats += '<div class="stats_title">Merchants</div>';
+			parsed_stats += '<div class="left_stats">Max scraps offered:</div><div class="right_stats">' + (Math.floor(get_upgrade_factor('merchant_buy', 'any', true) * 100)) + '%</div>';
+			parsed_stats += '<div class="left_stats">Max scraps demanded:</div><div class="right_stats">' + (Math.floor((1 + (5 / get_upgrade_factor('merchant_sell', 'any', true))) * 100)) + '%</div>';
+		}
 
 		$('.stats_container').html(parsed_stats);
 	}
