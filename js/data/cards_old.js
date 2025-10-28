@@ -6491,7 +6491,7 @@ var all_old_available_cards = {
 			health: 			30,
 			abilities: 			{strike_unit: 1, command_ally: 1},
 		},
-		quote: '\"He rules with an iron fist.\"',
+		quote: '\"He hid during the war, making his people fight, now he has found new warriors to die for him.\"',
 	},
 	knife_thrower:{
 		name: 				'knife thrower',

@@ -166,6 +166,7 @@ var all_abilities = {
 				target: 		'unit',
 				target_amount: 	1,
 				position: 		'random',
+				not_types: 		['structure','object'],
 				has_opposing: 	false,
 				min_hp: 		1,
 				side: 			'ally'
@@ -3141,7 +3142,7 @@ var all_abilities = {
 		level_cost_artifact: 2.5,
 	},
 	destroy_structure:{
-		description: 	'Destroys {LEVEL} random enemy creature structure(s).',
+		description: 	'Destroys {LEVEL} random enemy structure unit(s).',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use: 'destroy_structure',

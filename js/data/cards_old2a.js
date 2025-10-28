@@ -3853,10 +3853,6 @@ var all_oldest_available_cards = {
 			health: 			45,
 			abilities: 			{strike_unit: 1, victory_rush: 1, reclaim_creatures: 1},
 		},
-		recipe:{
-			viking: 			1,
-			wood_trinket: 		1
-		}
 	},
 	wild_warrior:{
 		name: 				'wild warrior',
