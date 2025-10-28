@@ -18300,7 +18300,7 @@ var all_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, experiment_hv: 1, resist_magic: 1},
 		},
-		quote: '\"Stand back! I’m about to invent defense!\"',
+		quote: '\"Stand back! I’m about to invent defense!<br/><br/>Credit: Pyrothecat\"',
 	},
 	golem_lobber:{
 		name: 				'golem lobber',
