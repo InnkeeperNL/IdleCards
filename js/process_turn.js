@@ -573,8 +573,13 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 			{
 				if(drop_card_info['recipe'] != undefined && (gamedata['known_recipes'] == undefined || gamedata['known_recipes'][drop_card_id] == undefined))
 				{
-					possible_extra_drops['recipe_' + drop_card_id] = 1;
-					possible_extra_drops[drop_card_id] = 1;
+					var current_card_drop_chance = 1;
+					if(gamedata['decks'][gamedata['current_deck']][drop_card_id] != undefined)
+					{
+						current_card_drop_chance = 1 + (gamedata['decks'][gamedata['current_deck']][drop_card_id] * get_upgrade_factor('used_non_unit_drop_chance', undefined, true));
+					}
+					possible_extra_drops['recipe_' + drop_card_id] = current_card_drop_chance;
+					possible_extra_drops[drop_card_id] = current_card_drop_chance;
 				}
 				/*else
 				{*/
