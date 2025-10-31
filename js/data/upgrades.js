@@ -74,14 +74,14 @@ var all_upgrades = {
 	},
 	aad_used_non_unit_drop_chance:{
 		name: 			'Aimed drops',
-		description: 	'Increases the chance a used spell or artifact will drop by 5% per level.',
+		description: 	'Increases the chance a used spell or artifact will drop by 10% per level.',
 		needed_upgrades:{
 			aac_summon_drop_chance: 	10,
 		},
 		card_image: 	'kleptomaniac',
 		type: 			'used_non_unit_drop_chance',
 		subtypes:  		['any'],
-		amount: 		0.05,
+		amount: 		0.1,
 		level_cost_scale: 	1.05,
 		cost: 			{scraps:25,},
 	},

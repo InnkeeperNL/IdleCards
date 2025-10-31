@@ -748,14 +748,12 @@ var all_oldest_available_cards = {
 		health: 			8,
 		abilities: 			{strike: 1, flying: 1, hasten: 1},
 		hero_version: 			{
-			name: 				'crystal dragon',
-			type: 				'creature',
-			image: 				'cards/isolated-4788969_640.jpg',
 			power: 				1,
 			armor: 				0,
 			health: 			20,
 			abilities: 			{strike_unit: 1, flying: 1, hasten: 1},
 		},
+		quote: '\"Unlike its chromatic kin, the Crystal Dragon’s hues shift with the dawn. Only the azure brood dares match its speed across the skies.\"',
 	},
 	
 	curse_of_the_leech:{
@@ -2246,11 +2244,6 @@ var all_oldest_available_cards = {
 			health: 			50,
 			abilities: 			{strike_unit: 1, venom: 1, hide: 1},
 		},
-		recipe:{
-			sandstorm: 			1,
-			amethyst: 			1,
-			stone: 				1
-		}
 	},
 	hidden_swamp:{
 		name: 				'hidden swamp',
@@ -2265,16 +2258,13 @@ var all_oldest_available_cards = {
 		health: 			6,
 		abilities: 			{hide: 1, slow: 2, resist_fire: 1},
 		hero_version: 			{
-			name: 				'hidden swamp',
-			type: 				'structure',
-			image: 				'cards/bayou-912244_1280.jpg',
 			power: 				false,
 			armor: 				0,
 			health: 			60,
 			abilities: 			{hide: 1, slow: 1, resist_fire: 1},
 		},
+		quote: '\"The toadmen tried their best to avoid the stirrings of the new Great War to no avail. War comes even to the most hidden of marshes and swamps.\"',
 	},
-	
 	highwayman:{
 		name: 				'highwayman',
 		type: 				'creature',
