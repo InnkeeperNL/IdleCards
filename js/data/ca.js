@@ -5686,18 +5686,21 @@ var all_abilities = {
 		level_cost: 		4,
 	},
 	grant_vampirism:{
-		description: 	'Grants the vampiric ability to a random ally creature that has at least 1 power, or increases it\'s level by {LEVEL}. Cannot target your hero.<br/><i>Vampiric: When this deals physical damage to a non-undead creature, it heals itself by the amount of damage done, up to {LEVEL}.</i>',
+		description: 	'Grants the vampiric ability to {LEVEL} random ally creature(s) with at least 1 power. Cannot target your hero.<br/><i>Vampiric: When this deals physical damage to a non-undead creature, it heals itself by the amount of damage done.</i>',
 		cannot_proc_while_stunned: true,
+		do_not_pause_between: 	true,
 		ability_subtypes: ['active_healing','melee_ability'],
 		targets:	{
 			0:{
-				target: 	'unit',
-				target_amount: 1,
-				position: 	'random',
-				not_types: 	['object','structure'],
+				target: 		'unit',
+				target_amount: 	'ability_level',
+				position: 		'random',
+				not_types: 		['object','structure'],
+				max_abilities: 	{vampiric: 0},
+				not_self: 		true,
 				min_total_hp: 	2,
-				min_power: 	1,
-				side: 		'ally'
+				min_power: 		1,
+				side: 			'ally'
 			},
 		},
 		effects:{
@@ -5705,11 +5708,11 @@ var all_abilities = {
 				projectile: 'drain',
 				type: 		'grant_skill',
 				skill_id: 	'vampiric',
-				amount: 	'ability_level'
+				amount: 	1
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	3,
+		level_cost: 	4,
 	},
 	grow:{
 		description: 	'This gains {LEVEL} power and health permanently.',
@@ -8141,6 +8144,33 @@ var all_abilities = {
 		level_cost: 	6,
 		level_cost_artifact: 2.1,
 		cost_on_top: 	true,
+	},
+	release_echo:{
+		description: 	'When destroyed, this has a 75% chance to summon a copy of this card.',
+		proc: 			'own_death',
+		proc_chance: 	75,
+		proc_while_dead: true,
+		max_ally_units: 4,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'origin_card',
+				amount: 	1,
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	3,
+		cost_factor: 	'full',
 	},
 	repair:{
 		description: 	'Repairs a random non-plant damaged ally structure by {LEVEL}. Cannot affect heroes.',
@@ -10809,7 +10839,7 @@ var all_abilities = {
 		level_cost: 	-6,
 	},
 	vampiric:{
-		description: 	'When this deals physical damage to a non-undead creature, it heals itself by the amount of damage done, up to {LEVEL}.',
+		description: 	'When this deals physical damage to a non-undead creature, it heals itself by the amount of damage done.',
 		proc: 			'dealt_damage',
 		subtypes: 		['physical'],
 		origin_type:    'creature',
@@ -10831,10 +10861,11 @@ var all_abilities = {
 				type: 			'healing',
 				subtypes: 		['vampiric','drain'],
 				amount: 		'latest_result',
-				max_amount: 	'ability_level',
+				//max_amount: 	'ability_level',
 			}
 		},
-		level_cost: 		2,
+		level_cost: 		0,
+		average_hit_cost: 	3,
 	},
 	vengeance:{
 		description: 	'When any ally creature is destroyed, deals {LEVEL} physical melee damage to the nearest enemy unit. Will target the enemy hero if there are no enemy units.',
@@ -15675,7 +15706,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, clone_self: 1, homebound: 1},
+		abilities: 			{strike: 1, release_echo: 1},
 		hero_version: 			{
 			theme: 				['summon_creature_ability','move_ally_to_hand_ability'],
 			power: 				1,
@@ -15683,7 +15714,7 @@ var all_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 3},
 		},
-		quote: '\"Which is the real one?!\"',
+		quote: '\"She goes on forever.\"',
 	},
 	elder_druid:{
 		name: 				'elder druid',

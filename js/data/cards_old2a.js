@@ -2510,10 +2510,6 @@ var all_oldest_available_cards = {
 		armor: 				false,
 		health: 			false,
 		abilities: 			{draw: 1, hasten_all: 1},
-		recipe:{
-			mana_crystal: 	1,
-			cleansing_water: 1
-		}
 	},
 	mesmer:{
 		name: 				'mesmer',
@@ -2989,29 +2985,22 @@ var all_oldest_available_cards = {
 	rock_ogre:{
 		name: 				'rock ogre',
 		type: 				'creature',
-		subtypes: 			['ogre'],
+		subtypes: 			['goblin'],
 		color: 				['orange'],
 		time: 				6,
 		image: 				'cards/fantasy-3469541_1280.jpg',
+		image_position: 	'top',
 		power: 				6,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, stunning_touch: 1, plated: 1},
+		abilities: 			{strike: 1, stunning_touch: 1, plated: 1, resist_magic: 1},
 		hero_version: 			{
-			name: 				'rock ogre',
-			type: 				'creature',
-			image: 				'cards/fantasy-3469541_1280.jpg',
-			image_position: 	'top',
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, stunning_touch: 1, plated: 1},
+			abilities: 			{strike_unit: 1, stunning_touch: 1, plated: 1, resist_magic: 1},
 		},
-		recipe:{
-			gladiator: 			1,
-			stone: 				1,
-			giants_foot: 		1
-		}
+		quote: '\"Some goblins were touched by the spirit of stone, forever changing them.\"',
 	},
 	rock_seer:{
 		name: 				'rock seer',
@@ -3725,10 +3714,11 @@ var all_oldest_available_cards = {
 	vampire_duelist:{
 		name: 				'vampire duelist',
 		type: 				'creature',
-		subtypes: 			['undead','vampire','warrior'],
+		subtypes: 			['vampire','warrior'],
 		color: 				['purple'],
 		time: 				8,
-		image: 				'cards/dark-2869918_640.jpg',
+		image: 				'cards/vampire_duelist.jpg',
+		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
 		health: 			5,
@@ -3744,7 +3734,25 @@ var all_oldest_available_cards = {
 			abilities: 			{strike_unit: 1, counter: 1, vampiric: 1},
 		},
 	},
-	
+	vampire_sisters:{
+		name: 				'vampire sisters',
+		type: 				'creature',
+		subtypes: 			['vampire'],
+		color: 				['purple'],
+		time: 				6,
+		image: 				'cards/vampire_sisters.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{bring_clone: 1, strike: 1, vampiric: 1},
+		hero_version: 			{
+			power: 				1,
+			armor: 				0,
+			health: 			20,
+			abilities: 			{strike_unit: 2, vampiric: 1},
+		},
+	},
 	vampires_embrace:{
 		name: 				'vampire\'s embrace',
 		type: 				'spell',
@@ -3756,27 +3764,6 @@ var all_oldest_available_cards = {
 		armor: 				false,
 		health: 			false,
 		abilities: 			{grant_vampirism: 1, echo: 1},
-	},
-	vampire_sisters:{
-		name: 				'vampire sisters',
-		type: 				'creature',
-		subtypes: 			['undead','vampire'],
-		color: 				['purple'],
-		time: 				6,
-		image: 				'cards/mirror-4528092_640.jpg',
-		power: 				1,
-		armor: 				0,
-		health: 			5,
-		abilities: 			{bring_clone: 1, strike: 1, vampiric: 1},
-		hero_version: 			{
-			name: 				'vampire sisters',
-			type: 				'creature',
-			image: 				'cards/mirror-4528092_640.jpg',
-			power: 				1,
-			armor: 				0,
-			health: 			20,
-			abilities: 			{bring_clone: 1, strike_unit: 1, vampiric: 1},
-		},
 	},
 	veteran_seer:{
 		name: 				'veteran seer',

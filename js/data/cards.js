@@ -4224,7 +4224,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, clone_self: 1, homebound: 1},
+		abilities: 			{strike: 1, release_echo: 1},
 		hero_version: 			{
 			theme: 				['summon_creature_ability','move_ally_to_hand_ability'],
 			power: 				1,
@@ -4232,7 +4232,7 @@ var all_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 3},
 		},
-		quote: '\"Which is the real one?!\"',
+		quote: '\"She goes on forever.\"',
 	},
 	elder_druid:{
 		name: 				'elder druid',
