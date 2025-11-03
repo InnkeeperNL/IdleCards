@@ -1052,15 +1052,15 @@ var all_oldest_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			2,
-		abilities: 			{strike: 1, striking_entry: 2, flying: 1},
+		abilities: 			{strike: 1, striking_entry: 1, flying: 1},
 		hero_version: 			{
 			name: 				'eagle',
 			type: 				'creature',
 			image: 				'cards/eagle-2044134_640.jpg',
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			20,
-			abilities: 			{strike_unit: 1, flying: 1},
+			abilities: 			{strike_unit: 1, strike_arrivals: 1, flying: 1},
 		},
 	},
 	elf_amazone:{
@@ -2276,7 +2276,7 @@ var all_oldest_available_cards = {
 		power: 				3,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, striking_entry: 3, defect: 1},
+		abilities: 			{strike: 1, striking_entry: 1, defect: 1},
 		hero_version: 			{
 			power: 				1,
 			armor: 				0,

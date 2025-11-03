@@ -363,12 +363,12 @@ var all_older_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			2,
-		abilities: 			{striking_entry: 2, strike: 1, hide_on_kill: 1},
+		abilities: 			{striking_entry: 1, strike: 1, hide_on_kill: 1},
 		hero_version: 			{
 			power: 				2,
 			armor: 				0,
 			health: 			35,
-			abilities: 			{strike_unit: 2, hide_on_kill: 1},
+			abilities: 			{strike_unit: 1, strike_arrivals: 1, hide_on_kill: 1},
 		},
 		quote: '\"Where did they go?!\"'
 	},
@@ -1206,10 +1206,6 @@ var all_older_available_cards = {
 			health: 			35,
 			abilities: 			{strike_unit: 1, trample: 1, ignites: 1},
 		},
-		recipe:{
-			flare: 					1,
-			plasma_strike: 			1
-		}
 	},
 	mana_elf:{
 		name: 				'mana elf',

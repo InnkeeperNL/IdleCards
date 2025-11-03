@@ -9776,11 +9776,12 @@ var all_abilities = {
 		additional_levels_cost: 1,
 	},
 	striking_entry:{
-		description: 	'When played, deals {LEVEL} physical melee damage to the nearest enemy unit. Will target the enemy hero if there are no enemy units.',
+		description: 	'When played, deals physical melee damage equal to its power to the nearest enemy unit {LEVEL} time(s). Will target the enemy hero if there are no enemy units.',
 		proc: 			'on_play',
+		proc_amount: 	'ability_level',
 		ability_subtypes: 		['on_play_proc'],
 		cannot_proc_while_stunned: true,
-		scales: 		true,
+		need_power: 	true,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -9802,12 +9803,14 @@ var all_abilities = {
 				projectile: 	'strike',
 				type: 			'damage',
 				subtypes: 		['physical','melee'],
-				amount: 		'ability_level'
+				amount: 		'origin_power'
 			}
 		},
 		animation: 		'attack',
-		level_cost: 	0.5,
+		level_cost: 	1,
+		cost_factor: 	'power',
 		average_hits: 	0.25,
+		additional_levels_cost: 0.5,
 	},
 	stun:{
 		description: 	'Stuns a random enemy unit for {LEVEL} turn(s).',
@@ -10511,6 +10514,7 @@ var all_abilities = {
 			}
 		},
 		level_cost: 	1,
+		level_cost_hero: 2,
 	},
 	trampling_might:{
 		description: 	'A random ally unit that uses power and has the strike ability and an opposing unit, but does not have the trample ability, gains {LEVEL} permanent power and the trample ability.<br/><i>Trample: When this kills a unit with melee damage, the excess damage is dealt to the enemy hero.</i>',
