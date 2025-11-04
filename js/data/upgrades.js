@@ -135,7 +135,7 @@ var all_upgrades = {
 	},
 	summon_common_reduction:{
 		name: 			'Common reduction',
-		description: 	'Reduces the chance of summoning a known enemy by 5%.',
+		description: 	'Reduces the chance of summoning known heroes by 5%.',
 		needed_upgrades:{
 			summon_tries: 	4,
 		},
