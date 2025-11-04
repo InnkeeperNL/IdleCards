@@ -10484,7 +10484,7 @@ function get_summon_stats(){
 	var summon_stats = {
 		min_rarity: 		get_upgrade_factor('summon_min_rarity', 'any', true),
 		max_rarity: 		max_rarity,
-		common_reduction: 	max_rarity,
+		common_reduction: 	max_rarity * get_upgrade_factor('common_reduction', 'any', true),
 		min_level: 			min_level,
 		max_level: 			max_level,
 		max_tries: 			get_upgrade_factor('summon_tries', 'any', true),

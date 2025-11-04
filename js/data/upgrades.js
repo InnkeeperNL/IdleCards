@@ -1,44 +1,6 @@
 var current_upgrade = false;
 
 var all_upgrades = {
-	/*burn:{
-		name: 			'Burn',
-		description: 	'burn level',
-		card_image: 	'burning_rune',
-		type: 			'ability_level',
-		subtypes:  		['burn'],
-	},*/
-	/*rarity_boost:{
-		name: 			'Rarity boost',
-		description: 	'Reduces the chance of summoning low rarity enemies.',
-		card_image: 	'peasant',
-		type: 			'reduce_common_rarity',
-		subtypes:  		['any'],
-		level_cost_scale: 	10,
-		amount: 		1,
-		amount_fixed: 	true,
-		cost: 			{scraps:10,},
-	},*/
-	/*summon_level:{
-		name: 			'Summon level',
-		description: 	'Increases the maximum level of summoned enemies.',
-		card_image: 	'fire_dragon',
-		type: 			'summon_max_level',
-		subtypes:  		['any'],
-		level_cost_scale: 	10,
-		amount: 		1,
-		amount_fixed: 	true,
-		cost: 			{scraps:20,},
-	},*/
-	/*summon_drop_chance:{
-		name: 			'Drop chance',
-		description: 	'Increases the drop chance by 5% per level.',
-		card_image: 	'map',
-		type: 			'summon_loot_rarity',
-		subtypes:  		['any'],
-		level_cost_scale: 	5,
-		cost: 			{scraps:10,},
-	},*/
 	aaa_rewards:{
 		name: 			'Rewards',
 		description: 	'Increases the rewards of newly summoned enemies, waves and completing quests by 5% each level.',
@@ -160,7 +122,7 @@ var all_upgrades = {
 		name: 			'Summon buffs',
 		description: 	'Increases the number of buffs you can use when summoning an enemy.',
 		needed_upgrades:{
-			summon_tries: 	1,
+			summon_tries: 	9,
 		},
 		card_image: 	'treasure_map',
 		type: 			'summon_max_pre_buffs',
@@ -168,8 +130,21 @@ var all_upgrades = {
 		amount: 		1,
 		amount_fixed: 	true,
 		level_cost_scale: 	1.1,
-		cost: 			{treasure_map:2,},
+		cost: 			{spyglass:25,},
 		max_level: 		4,
+	},
+	summon_common_reduction:{
+		name: 			'Common reduction',
+		description: 	'Reduces the chance of summoning a known enemy by 5%.',
+		needed_upgrades:{
+			summon_tries: 	4,
+		},
+		card_image: 	'mana_bulb',
+		type: 			'common_reduction',
+		subtypes:  		['any'],
+		level_cost_scale: 	1.5,
+		amount: 		0.05,
+		cost: 			{scraps:25,},
 	},
 	summon_tries:{
 		name: 			'Summon tries',
@@ -182,7 +157,8 @@ var all_upgrades = {
 		subtypes:  		['any'],
 		amount: 		1,
 		amount_fixed: 	true,
-		level_cost_type: 'next_level',
+		level_cost_scale: 	0.9,
+		//level_cost_type: 'next_level',
 		cost: 			{shard:5,},
 		max_level: 		9,
 	},
@@ -402,6 +378,20 @@ var all_upgrades = {
 
 	// ************************************************* POTIONS ************************************************
 	
+	zz_common_potion:{
+		name: 			'Common potion',
+		description: 	'2% reduced chance of summoning known heroes.',
+		card_image: 	'mana_bulb',
+		upgrade_type: 	'potion',
+		type: 			'common_reduction',
+		subtypes:  		['any'],
+		amount:  		0.02,
+		level_cost_scale: 	20,
+		cost:{
+			flask: 		1,
+			//scraps:  	100,
+		}
+	},
 	zz_burglar_potion:{
 		name: 			'Burglar potion',
 		description: 	'2% bonus chance battles reward cards and items in stead of scraps.',

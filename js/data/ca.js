@@ -9777,11 +9777,12 @@ var all_abilities = {
 		additional_levels_cost: 1,
 	},
 	striking_entry:{
-		description: 	'When played, deals {LEVEL} physical melee damage to the nearest enemy unit. Will target the enemy hero if there are no enemy units.',
+		description: 	'When played, deals physical melee damage equal to its power to the nearest enemy unit {LEVEL} time(s). Will target the enemy hero if there are no enemy units.',
 		proc: 			'on_play',
+		proc_amount: 	'ability_level',
 		ability_subtypes: 		['on_play_proc'],
 		cannot_proc_while_stunned: true,
-		scales: 		true,
+		need_power: 	true,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -9803,12 +9804,14 @@ var all_abilities = {
 				projectile: 	'strike',
 				type: 			'damage',
 				subtypes: 		['physical','melee'],
-				amount: 		'ability_level'
+				amount: 		'origin_power'
 			}
 		},
 		animation: 		'attack',
-		level_cost: 	0.5,
+		level_cost: 	1,
+		cost_factor: 	'power',
 		average_hits: 	0.25,
+		additional_levels_cost: 0.5,
 	},
 	stun:{
 		description: 	'Stuns a random enemy unit for {LEVEL} turn(s).',
@@ -10512,6 +10515,7 @@ var all_abilities = {
 			}
 		},
 		level_cost: 	1,
+		level_cost_hero: 2,
 	},
 	trampling_might:{
 		description: 	'A random ally unit that uses power and has the strike ability and an opposing unit, but does not have the trample ability, gains {LEVEL} permanent power and the trample ability.<br/><i>Trample: When this kills a unit with melee damage, the excess damage is dealt to the enemy hero.</i>',
@@ -21161,7 +21165,7 @@ var all_available_cards = {
 		power: 				4,
 		armor: 				0,
 		health: 			8,
-		abilities: 			{strike: 1, striking_entry: 4},
+		abilities: 			{strike: 1, striking_entry: 1},
 		hero_version: 			{
 			theme: 				['empower_any_ability','subtype_warrior'],
 			power: 				2,
@@ -22277,13 +22281,13 @@ var all_available_cards = {
 		power: 				3,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, striking_entry: 3},
+		abilities: 			{strike: 1, striking_entry: 1},
 		hero_version: 			{
 			theme: 				['subtype_animal'],
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1},
+			abilities: 			{strike_unit: 1, strike_arrivals: 1},
 		},
 		quote: '\"Look out for the kitty!\"',
 	},
@@ -25312,9 +25316,9 @@ var all_available_cards = {
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/dream_TradingCard26.jpg',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
-		health: 			5,
+		health: 			4,
 		abilities: 			{strike: 1, striking_entry: 2},
 		hero_version: 			{
 			theme: 				['subtype_warrior','on_play_proc_ability','dealt_damage_proc_ability'],
@@ -26954,7 +26958,7 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, striking_entry: 2},
+		abilities: 			{strike: 1, striking_entry: 1},
 		hero_version: 			{
 			theme: 				['empower_any_ability','subtype_warrior'],
 			power: 				2,
@@ -26977,7 +26981,7 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, evade: 1, striking_entry: 2},
+		abilities: 			{strike: 1, evade: 1, striking_entry: 1},
 		hero_version: 			{
 			theme: 				['evade_ability','subtype_rogue'],
 			power: 				1,
@@ -27000,7 +27004,7 @@ var all_available_cards = {
 		power: 				3,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1, striking_entry: 3},
+		abilities: 			{strike: 1, striking_entry: 1},
 		hero_version: 			{
 			theme: 				['empower_any_ability','subtype_warrior','plated_ability'],
 			power: 				2,
