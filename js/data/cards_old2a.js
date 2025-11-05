@@ -3419,10 +3419,6 @@ var all_oldest_available_cards = {
 			health: 			50,
 			abilities: 			{cleanse: 1, submerged: 1, fireproof: 1},
 		},
-		recipe:{
-			cleansing_water: 	1,
-			fort: 				1
-		}
 	},
 	surprise_attack:{
 		name: 				'surprise attack',
@@ -3435,7 +3431,8 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{strike_hero: 2},
+		abilities: 			{damage_hero: 1, long_echo: 1},
+		quote: '\"They will never see this coming!\"'
 	},
 	swan_lady:{
 		name: 				'swan lady',
@@ -3457,11 +3454,6 @@ var all_oldest_available_cards = {
 			health: 			50,
 			abilities: 			{curse_hv: 1, strike_unit: 1, resist_fire: 1, fearful_aura: 1},
 		},
-		recipe:{
-			peasant: 			1,
-			cleansing_water: 	1,
-			agate: 				1
-		}
 	},
 	temple_oracle:{
 		name: 				'temple oracle',
@@ -3483,10 +3475,6 @@ var all_oldest_available_cards = {
 			health: 			40,
 			abilities: 			{hide_ally: 1, reveal: 1, strike_unit: 1},
 		},
-		recipe:{
-			peasant: 			1,
-			sandstorm: 			1
-		}
 	},
 	
 	thaculla:{
@@ -3510,10 +3498,6 @@ var all_oldest_available_cards = {
 			health: 			60,
 			abilities: 			{strike_unit: 1, go_again: 1},
 		},
-		recipe:{
-			amethyst: 			1,
-			deaths_call: 		1
-		}
 	},
 	tiger_huntress:{
 		name: 				'tiger huntress',
@@ -3535,11 +3519,6 @@ var all_oldest_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 2, regenerate: 1},
 		},
-		recipe:{
-			gladiator: 			1,
-			wood_trinket: 		1,
-			surprise_attack: 	1
-		}
 	},
 	
 	time_thief:{
@@ -3562,11 +3541,6 @@ var all_oldest_available_cards = {
 			health: 			50,
 			abilities: 			{slow: 1, hasten: 1, evade: 1},
 		},
-		recipe:{
-			pure_mage: 			1,
-			unsummon: 			1,
-			mana_crystal: 	 	1
-		}
 	},
 	temper:{
 		name: 				'temper',
