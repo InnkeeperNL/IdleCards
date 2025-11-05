@@ -6886,7 +6886,7 @@ var all_old_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			35,
-			abilities: 			{strike_unit: 1, hasten: 1},
+			abilities: 			{strike_unit: 1, desperate_haste: 1},
 		},
 		quote: '\"Most usefull when stepped on.\"',
 	},
