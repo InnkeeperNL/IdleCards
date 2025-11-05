@@ -4397,7 +4397,7 @@ function check_quest_complete_count(){
     	if(all_achievements[achievement_id] == undefined)
     	{
     		console.log('unknown achievement: ' + achievement_id);
-    		//delete gamedata['achievements'][achievement_id];
+    		delete gamedata['achievements'][achievement_id];
     	}
     	else
     	{

@@ -16,7 +16,7 @@ var all_buildings = {
 
 		productions:{
 			peasant:{
-				base_time: 		2 * 24 * 3600,
+				base_time: 		4 * 24 * 3600,
 				base_storage: 	2 * 10,
 				upgrade_cost_speed:{
 					scraps: 		100,
@@ -26,7 +26,7 @@ var all_buildings = {
 				},
 				defeated_heroes_speed_bonusses:{
 				},
-				production_achievement_bonus: 0.2,
+				production_achievement_bonus: 0.1,
 			},
 		},
 
@@ -45,7 +45,7 @@ var all_buildings = {
 			},
 		},*/
 
-		shop_type: 		['creature','spell'],
+		shop_type: 		['creature'],
 		
 		/*recipe_shop:{
 			natures_touch:{
@@ -99,7 +99,7 @@ var all_buildings = {
 				},
 				defeated_heroes_speed_bonusses:{
 				},
-				production_achievement_bonus: 0.1,
+				production_achievement_bonus: 0.05,
 			},
 		},
 		/*recipes:{
@@ -109,7 +109,7 @@ var all_buildings = {
 				}
 			},
 		},*/
-		shop_type: 		['structure','artifact'],
+		shop_type: 		['structure'],
 	},
 	a2_alchemist:{
 		name: 			'alchemist lab',
@@ -123,7 +123,7 @@ var all_buildings = {
 		},
 		new_mission_title: 'BREW',
 		expeditions: 	['research_new_potion'],
-		recipes:{
+		/*recipes:{
 			clover:{
 				costs:{
 					horseshoe: 	4,
@@ -134,13 +134,13 @@ var all_buildings = {
 					clover: 	4,
 				}
 			},
-			/*flask:{
+			flask:{
 				costs:{
 					clover: 		1,
 					jar_of_luck: 	2,
 				}
-			},*/
-		},
+			},
+		},*/
 		show_potions: true,
 		productions:{
 			flask:{
@@ -154,9 +154,10 @@ var all_buildings = {
 				},
 				defeated_heroes_speed_bonusses:{
 				},
-				production_achievement_bonus: 0.1,
+				production_achievement_bonus: 0.05,
 			},
-		}
+		},
+		shop_type: 		['spell'],
 	},
 	
 	a4_treasury:{
@@ -171,7 +172,7 @@ var all_buildings = {
 		},
 		productions:{
 			trove:{
-				base_time: 		4 * 10 * 24 * 3600,
+				base_time: 		8 * 10 * 24 * 3600,
 				base_storage: 	1 * 1,
 				upgrade_cost_speed:{
 					scraps: 		100,
@@ -181,7 +182,7 @@ var all_buildings = {
 				},
 				defeated_heroes_speed_bonusses:{
 				},
-				production_achievement_bonus: 0.1,
+				production_achievement_bonus: 0.05,
 			},
 		},
 		recipes:{

@@ -135,7 +135,7 @@ var all_upgrades = {
 	},
 	summon_common_reduction:{
 		name: 			'Common reduction',
-		description: 	'Reduces the chance of summoning known heroes by 5%.',
+		description: 	'Reduces the chance of summoning known heroes by 1%.',
 		needed_upgrades:{
 			summon_tries: 	4,
 		},
@@ -143,8 +143,9 @@ var all_upgrades = {
 		type: 			'common_reduction',
 		subtypes:  		['any'],
 		level_cost_scale: 	1.5,
-		amount: 		0.05,
+		amount: 		0.01,
 		cost: 			{scraps:25,},
+		max_level: 		10,
 	},
 	summon_tries:{
 		name: 			'Summon tries',
@@ -380,12 +381,12 @@ var all_upgrades = {
 	
 	zz_common_potion:{
 		name: 			'Common potion',
-		description: 	'2% reduced chance of summoning known heroes.',
+		description: 	'1% reduced chance of summoning known heroes.',
 		card_image: 	'mana_bulb',
 		upgrade_type: 	'potion',
 		type: 			'common_reduction',
 		subtypes:  		['any'],
-		amount:  		0.02,
+		amount:  		0.01,
 		level_cost_scale: 	20,
 		cost:{
 			flask: 		1,
@@ -737,6 +738,14 @@ $.each(all_upgrades, function(upgrade_id, upgrade_info){
 	if(upgrade_info['upgrade_type'] == 'main' && upgrade_info['cost'] == undefined)
 	{
 		upgrade_info['cost'] = {shard: 1};
+	}
+	if(upgrade_info['level_cost_scale'] != undefined)
+	{
+		if(upgrade_info['upgrade_type'] == 'potion')
+		{
+			upgrade_info['level_cost_scale'] /= 5;
+		}
+		upgrade_info['level_cost_scale'] /= 2;
 	}
 });
 
