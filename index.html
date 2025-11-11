@@ -1215,6 +1215,7 @@
 	};
 
 	function show_deck_edit_options(){
+		show_current_deck();
 		$('.deck_button').removeClass('active');
 		
 		var owned_decks_count = count_object(gamedata['decks']);

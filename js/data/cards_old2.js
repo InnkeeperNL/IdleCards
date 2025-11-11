@@ -712,10 +712,6 @@ var all_older_available_cards = {
 		armor: 				false,
 		health: 			false,
 		abilities: 			{minimum_enemies: 5, fire_ball: 8},
-		recipe:{
-			heart_of_fire: 	1,
-			plasma_strike: 	1
-		}
 	},
 	fire_devil:{
 		name: 				'fire devil',
@@ -1045,12 +1041,7 @@ var all_older_available_cards = {
 			health: 			30,
 			abilities: 			{strike_unit: 1, stunning_touch: 1, undead: 1, resurrect: 1},
 		},
-		recipe:{
-			execution: 			1,
-			ghoul: 				1,
-		}
 	},
-	
 	heart_of_fire:{
 		name: 				'heart of fire',
 		version: 			2,
@@ -1064,11 +1055,7 @@ var all_older_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{grant_explode: 5, minimum_enemies: 3},
-		recipe:{
-			fire_mage: 			1,
-			servant_of_fire: 	1
-		}
+		abilities: 			{grant_explode: 3, echo: 1},
 	},
 	hexing_witch:{
 		name: 				'hexing witch',
@@ -1394,10 +1381,6 @@ var all_older_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, fire_ritual_hero: 2},
 		},
-		recipe:{
-			flare: 				1,
-			heart_of_fire: 		1,
-		}
 	},
 	overgrown_ruin:{
 		name: 				'overgrown ruin',

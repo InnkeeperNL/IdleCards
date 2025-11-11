@@ -1302,28 +1302,15 @@ var all_oldest_available_cards = {
 	},
 	explosive_barrel:{
 		name: 				'explosive barrel',
-		type: 				'structure',
-		subtypes: 			['trap'],
+		type: 				'artifact',
+		subtypes: 			['trinket'],
 		color: 				['red'],
 		time: 				1,
-		image: 				'cards/wooden-258622_640.jpg',
+		image: 				'cards/explosive_barrel.jpg',
 		power: 				false,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{explode: 6},
-		hero_version: 			{
-			name: 				'explosive barrel',
-			type: 				'structure',
-			image: 				'cards/wooden-258622_640.jpg',
-			power: 				false,
-			armor: 				0,
-			health: 			60,
-			abilities: 			{fire_shield: 2},
-		},
-		recipe:{
-			lumber: 			1,
-			bomb: 				1
-		}
+		abilities: 			{grant_explode: 1},
 	},
 	fairy_mystic:{
 		name: 				'fairy mystic',
