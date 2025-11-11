@@ -1309,7 +1309,7 @@ var all_oldest_available_cards = {
 		image: 				'cards/explosive_barrel.jpg',
 		power: 				false,
 		armor: 				0,
-		health: 			1,
+		health: 			false,
 		abilities: 			{grant_explode: 1},
 	},
 	fairy_mystic:{
