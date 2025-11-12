@@ -3484,6 +3484,7 @@ var all_abilities = {
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
 		proc_amount: 	1,
+		proc_while_dead: true,
 		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability','doom_ability'],
 		targets:	{
 			0:{
@@ -3491,9 +3492,6 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				origin_unit: 	true,
-				not_types: 		['structure','object'],
-				not_subtypes: 	['horror'],
-				max_abilities: 	{undead: 0},
 				side: 			'enemy',
 			},
 		},
@@ -4307,6 +4305,7 @@ var all_abilities = {
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
 		proc_amount: 	1,
+		proc_while_dead: true,
 		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability'],
 		targets:	{
 			0:{
@@ -5544,7 +5543,7 @@ var all_abilities = {
 	grant_explode:{
 		name: 			'grant: explode',
 		ability_subtypes: ['explode','own_death_proc'],
-		description: 	'Grants the explode {LEVEL} ability to a random unit, or increases the level of that ability by {LEVEL}. Cannot target heroes.',
+		description: 	'Grants the explode {LEVEL} ability to a random unit, or increases the level of that ability by {LEVEL}. Cannot target heroes.<br/><i>Explode: When this unit is destroyed, it deals {LEVEL} physical damage to all nearby units.</i>',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
@@ -11271,6 +11270,7 @@ var all_abilities = {
 		description: 	'When an enemy unit or hero deals melee damage to this, it reduces the maximum health of that enemy by {LEVEL}.',
 		proc: 			'receive_damage',
 		subtypes: 		['melee'],
+		proc_while_dead: true,
 		ability_subtypes: ['receive_damage_proc'],
 		scales: 		true,
 		targets:	{
