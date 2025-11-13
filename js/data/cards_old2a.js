@@ -2822,7 +2822,6 @@ var all_oldest_available_cards = {
 			ore: 				1
 		}
 	},
-	
 	rage_moon:{
 		name: 				'rage moon',
 		type: 				'spell',
@@ -2833,12 +2832,9 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{empower_all: 2},
-		recipe:{
-			amber: 			2,
-		}
+		abilities: 			{empower_ally: 2, long_echo: 1},
+		quote: '\"Some warriors have enormous power once every moon.\"',
 	},
-	
 	raging_barbarian:{
 		name: 				'raging barbarian',
 		type: 				'creature',

@@ -13,13 +13,13 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, slow_enemy_draws: 1},
+		abilities: 			{strike: 1, slow_enemy_draws: 2},
 		hero_version: 			{
 			theme: 				['slow_ability','hasten_ability','draw_cards_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			35,
-			abilities: 			{strike_unit: 1, slow_enemy_draws: 1},
+			abilities: 			{strike_unit: 1, slow_enemy_draws: 2},
 		},
 		quote: '\"Have you filled out the right paperwork?\"',
 	},
@@ -5734,7 +5734,7 @@ var all_old_available_cards = {
 		},
 		quote: '\"Game is scarce after the Great War. When a hunt is successful, the bounty is brought to the mistress.\"',
 	},
-	hurried_defenses:{
+	/*hurried_defenses:{
 		name: 				'hurried defenses',
 		type: 				'spell',
 		subtypes: 			['tactic'],
@@ -5750,7 +5750,7 @@ var all_old_available_cards = {
 		abilities: 			{build_palisade: 5, no_allies: 1},
 		quote: '\"It should keep them out for a little while.\"',
 		max_in_deck: 		1,
-	},
+	},*/
 	icatu:{
 		name: 				'icatu',
 		type: 				'creature',
@@ -6186,7 +6186,7 @@ var all_old_available_cards = {
 		abilities: 			{cold_strike: 1, slow_enemy_draws: 1, resist_cold: 1},
 		hero_version: 			{
 			theme: 				['subtype_jotnar','subtype_human'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			30,
 			abilities: 			{cold_strike_hv: 1, slow_enemy_draws: 1, resist_cold: 1},
@@ -9008,7 +9008,7 @@ var all_old_available_cards = {
 		},
 		quote: '\"Bones... just bones. And magic.\"',
 	},
-	skeletal_march:{
+	/*skeletal_march:{
 		name: 				'skeletal march',
 		type: 				'spell',
 		subtypes: 			['command'],
@@ -9023,7 +9023,7 @@ var all_old_available_cards = {
 		abilities: 			{raise_skeleton: 5, no_allies: 1, minimum_dead_ally_creatures: 5},
 		quote: '\"Bones... bones everywhere.\"',
 		max_in_deck: 		1,
-	},
+	},*/
 	skeletal_seer:{
 		name: 				'skeletal seer',
 		type: 				'creature',
@@ -11624,7 +11624,7 @@ var all_old_available_cards = {
 	word_of_warding:{
 		name: 				'word of warding',
 		type: 				'spell',
-		subtypes: 			['command'],
+		subtypes: 			['tactic'],
 		color: 				['colorless'],
 		theme: 				['defense'],
 		craft_theme: 		[],
@@ -11634,7 +11634,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{fortify_hero: 2, echo: 1},
+		abilities: 			{grant_counter_spell: 1},
 		quote: '\"A simple protection spell.\"',
 	},
 	workshop:{
@@ -12584,6 +12584,11 @@ function add_old_cards(old_cards, image_folder){
 				if(replacement_abilities[ability_id] != undefined)
 				{
 					old_cards[card_id]['abilities'][replacement_abilities[ability_id]] = ability_level;
+				}
+				else
+				{
+					if(unavailable_abilities[ability_id] == undefined){unavailable_abilities[ability_id] = 0;}
+					unavailable_abilities[ability_id] += 1;
 				}
 				if(count_object(new_card['abilities']) == 1)
 				{

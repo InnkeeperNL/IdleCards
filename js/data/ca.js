@@ -2403,7 +2403,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		3,
 		level_cost_hero: 	2,
-		level_cost_artifact: 2,
+		level_cost_artifact: 1,
 	},
 	counter_spells:{
 		description: 	'Has a {LEVEL}0% chance to destroy any enemy spell as that spell is played.',
@@ -5540,6 +5540,31 @@ var all_abilities = {
 		level_cost: 	0.5,
 		cost_factor: 	'full',
 	},
+	grant_counter_spell:{
+		name: 			'counter next spell',
+		description: 	'Your hero destroys the next {LEVEL} enemy spell card(s) played.',
+		cannot_proc_while_stunned: true,
+		hero_tactics: 	['type_spell'],
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'magic_shield',
+				type: 			'grant_skill',
+				subtypes: 		[],
+				skill_id: 		'counter_spell',
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		4,
+	},
 	grant_explode:{
 		name: 			'grant: explode',
 		ability_subtypes: ['explode','own_death_proc'],
@@ -7739,9 +7764,9 @@ var all_abilities = {
 		},
 		
 		animation: 	'combat_zoom',
-		level_cost: 		5,
-		level_cost_spell: 	1.25,
-		level_cost_hero: 	2,
+		level_cost: 		3.5,
+		//level_cost_spell: 	2.5,
+		level_cost_hero: 	3.5,
 	},
 	reap:{
 		description: 	'Destroys an enemy creature with {LEVEL} or less health.',
@@ -9222,7 +9247,7 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	4,
+		level_cost: 	2,
 	},
 	slow_own:{
 		description: 	'Increases the ready time of a random ally card by {LEVEL}.',
@@ -14207,7 +14232,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, slow_enemy_draws: 1},
+		abilities: 			{strike: 1, slow_enemy_draws: 2},
 		hero_version: 			{
 			theme: 				['hasten_ability','draw_cards_ability'],
 			power: 				2,
@@ -24768,7 +24793,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{counter_spell: 1},
+		abilities: 			{counter_spells: 2},
 		quote: '\"A usefull charm.\"',
 	},
 	spellblade:{

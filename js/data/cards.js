@@ -2721,7 +2721,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, slow_enemy_draws: 1},
+		abilities: 			{strike: 1, slow_enemy_draws: 2},
 		hero_version: 			{
 			theme: 				['hasten_ability','draw_cards_ability'],
 			power: 				2,
@@ -13282,7 +13282,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{counter_spell: 1},
+		abilities: 			{counter_spells: 2},
 		quote: '\"A usefull charm.\"',
 	},
 	spellblade:{

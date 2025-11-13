@@ -2402,7 +2402,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		3,
 		level_cost_hero: 	2,
-		level_cost_artifact: 2,
+		level_cost_artifact: 1,
 	},
 	counter_spells:{
 		description: 	'Has a {LEVEL}0% chance to destroy any enemy spell as that spell is played.',
@@ -3483,6 +3483,7 @@ var all_abilities = {
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
 		proc_amount: 	1,
+		proc_while_dead: true,
 		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability','doom_ability'],
 		targets:	{
 			0:{
@@ -3490,9 +3491,6 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				origin_unit: 	true,
-				not_types: 		['structure','object'],
-				not_subtypes: 	['horror'],
-				max_abilities: 	{undead: 0},
 				side: 			'enemy',
 			},
 		},
@@ -4306,6 +4304,7 @@ var all_abilities = {
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
 		proc_amount: 	1,
+		proc_while_dead: true,
 		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability'],
 		targets:	{
 			0:{
@@ -5540,10 +5539,35 @@ var all_abilities = {
 		level_cost: 	0.5,
 		cost_factor: 	'full',
 	},
+	grant_counter_spell:{
+		name: 			'counter next spell',
+		description: 	'Your hero destroys the next {LEVEL} enemy spell card(s) played.',
+		cannot_proc_while_stunned: true,
+		hero_tactics: 	['type_spell'],
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'magic_shield',
+				type: 			'grant_skill',
+				subtypes: 		[],
+				skill_id: 		'counter_spell',
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		4,
+	},
 	grant_explode:{
 		name: 			'grant: explode',
 		ability_subtypes: ['explode','own_death_proc'],
-		description: 	'Grants the explode {LEVEL} ability to a random unit, or increases the level of that ability by {LEVEL}. Cannot target heroes.',
+		description: 	'Grants the explode {LEVEL} ability to a random unit, or increases the level of that ability by {LEVEL}. Cannot target heroes.<br/><i>Explode: When this unit is destroyed, it deals {LEVEL} physical damage to all nearby units.</i>',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
@@ -7739,9 +7763,9 @@ var all_abilities = {
 		},
 		
 		animation: 	'combat_zoom',
-		level_cost: 		5,
-		level_cost_spell: 	1.25,
-		level_cost_hero: 	2,
+		level_cost: 		3.5,
+		//level_cost_spell: 	2.5,
+		level_cost_hero: 	3.5,
 	},
 	reap:{
 		description: 	'Destroys an enemy creature with {LEVEL} or less health.',
@@ -9222,7 +9246,7 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	4,
+		level_cost: 	2,
 	},
 	slow_own:{
 		description: 	'Increases the ready time of a random ally card by {LEVEL}.',
@@ -11270,6 +11294,7 @@ var all_abilities = {
 		description: 	'When an enemy unit or hero deals melee damage to this, it reduces the maximum health of that enemy by {LEVEL}.',
 		proc: 			'receive_damage',
 		subtypes: 		['melee'],
+		proc_while_dead: true,
 		ability_subtypes: ['receive_damage_proc'],
 		scales: 		true,
 		targets:	{
