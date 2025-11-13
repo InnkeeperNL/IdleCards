@@ -538,7 +538,7 @@
 	background-image: url(../images/scythe.svg);
 }
 
-.battle_container .projectile.projectile_magic_shield,
+.battle_container .projectile_magic_shield,
 .icon.icon_magic_shield
 {
 	background-image: url(../images/vibrating-shield.svg);
