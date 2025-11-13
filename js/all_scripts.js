@@ -11908,6 +11908,7 @@ var skills_to_show_icon = {
 	explode: 	'bomb',
 	wounded: 	'wound',
 	blessed: 	'bless',
+	counter_spell: 'magic_shield',
 }
 
 function update_passive_effects(unit_id){
