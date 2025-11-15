@@ -107,6 +107,12 @@ function show_summon(just_summoned){
 			if(recipe_drop_chance > max_recipe_drop_chance){recipe_drop_chance = max_recipe_drop_chance;}
 			shown_recipe_drop_chance = ' <span class="shown_recipe_drop_chance"> (' + recipe_drop_chance + '%)</span>';
 		}
+		if(gamedata['known_recipes'][gamedata['current_summon']['hero']] != undefined && achievement_card_backs['card_back_' + gamedata['current_summon']['hero']] == undefined)
+		{
+			var recipe_drop_chance = Math.floor(drop_chance / recipe_drop_chance_reduction / 25);
+			if(recipe_drop_chance < 1){recipe_drop_chance = '<1';}
+			shown_recipe_drop_chance = ' <span class="shown_card_back_drop_chance"> (' + recipe_drop_chance + '%)</span>';
+		}
 		if(drop_chance > 100){drop_chance = 100;}
 		parsed_summon += '<div class="summon_hero_container ' + just_summoned_class + '">';
 			var new_card = '';

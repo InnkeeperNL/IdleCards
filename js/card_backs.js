@@ -82,9 +82,11 @@ function show_card_backs(){
 	}
 	else
 	{
+		var percent_collected = 0;
+		if(cards_displayed > 0){percent_collected = Math.floor((cards_displayed / count_object(all_card_backs)) * 100);}
 		if(tinkering_list != '')
 		{
-			$('.tinkering_container').html('<div class="tinkering_list">' + tinkering_list + '</div>');
+			$('.tinkering_container').html('<div class="tinkering_list">' + tinkering_list + '</div><div class="collection_recipe_count">Collected: ' + percent_collected + '%</div>');
 		}
 	}
 

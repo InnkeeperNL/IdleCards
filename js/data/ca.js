@@ -11727,7 +11727,7 @@ var all_available_cards = {
 	angel_statue:{
 		name: 				'angel statue',
 		type: 				'structure',
-		subtypes: 			['wall'],
+		subtypes: 			['angel','wall'],
 		color: 				['colorless'],
 		theme: 				[],
 		not_theme: 			['type_structure','subtype_wall'],
@@ -11796,7 +11796,7 @@ var all_available_cards = {
 	angry_mob:{
 		name: 				'angry mob',
 		type: 				'spell',
-		subtypes: 			['summon'],
+		subtypes: 			['tactic'],
 		color: 				['colorless'],
 		theme: 				['aoe'],
 		pick_chance: 		1,
@@ -14938,7 +14938,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{summon_mud_crab: 1},
 		hero_version: 			{
-			theme: 				['subtype_crustacean'],
+			theme: 				['subtype_aquatic'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -14972,7 +14972,7 @@ var all_available_cards = {
 	crab:{
 		name: 				'crab',
 		type: 				'creature',
-		subtypes: 			['animal','crustacean'],
+		subtypes: 			['animal','aquatic'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -14984,7 +14984,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, plated: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','plated_ability','subtype_crustacean'],
+			theme: 				['subtype_animal','plated_ability','subtype_aquatic'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -19203,7 +19203,7 @@ var all_available_cards = {
 	huge_crab:{
 		name: 				'huge crab',
 		type: 				'creature',
-		subtypes: 			['animal','crustacean'],
+		subtypes: 			['animal','aquatic'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -19215,7 +19215,7 @@ var all_available_cards = {
 		health: 			10,
 		abilities: 			{strike: 1, plated: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','plated_ability','subtype_crustacean'],
+			theme: 				['subtype_animal','plated_ability','subtype_aquatic'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -20350,7 +20350,7 @@ var all_available_cards = {
 	lobster:{
 		name: 				'lobster',
 		type: 				'creature',
-		subtypes: 			['animal','crustacean'],
+		subtypes: 			['animal','aquatic'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -20363,7 +20363,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{strike: 1, plated: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','plated_ability','subtype_crustacean'],
+			theme: 				['subtype_animal','plated_ability','subtype_aquatic'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -21301,7 +21301,7 @@ var all_available_cards = {
 	monstrous_crab:{
 		name: 				'monstrous crab',
 		type: 				'creature',
-		subtypes: 			['animal','crustacean'],
+		subtypes: 			['animal','aquatic'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -21313,7 +21313,7 @@ var all_available_cards = {
 		health: 			14,
 		abilities: 			{strike: 1, plated: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','plated_ability','subtype_crustacean'],
+			theme: 				['subtype_animal','plated_ability','subtype_aquatic'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -21341,7 +21341,7 @@ var all_available_cards = {
 		name: 				'mud crab',
 		type: 				'creature',
 		subtypes: 			['animal'],
-		color: 				['colorless','crustacean'],
+		color: 				['colorless','aquatic'],
 		theme: 				[],
 		pick_chance: 		0,
 		time: 				1,
@@ -28461,6 +28461,10 @@ function check_card(card_id){
 	    	//console.log(card_info['name']);
 	    	card_info['value'] = calculate_card_value(card_id);
 	    }
+	    if(all_available_cards['card_back_' + card_id] != undefined)
+		{
+			all_available_cards['card_back_' + card_id]['value'] = card_info['value'] * 25;
+		}
 	    /*var used_in_recipes = 0;
 	    eachoa(all_available_cards, function(other_card_id, other_card_info){
 	    	if(other_card_info['recipe'] != undefined && other_card_info['recipe'][card_id] != undefined)
@@ -28545,7 +28549,7 @@ eachoa(all_available_cards, function(card_id, card_info){
 			non_tradable: 		card_info['non_tradable'],
 			value: 				card_info['value'] * 25,
 			type: 				'cardback',
-			color: 				card_info['color'],
+			color: 				['green'],
 			pick_chance: 		0,
 			months_available: 	card_info['months_available'],
 			time: 				0,
@@ -31554,7 +31558,9 @@ var all_chained_achievements = {
 	},
 }
 
-$.each(all_achievements, function(achievement_id, achievement_info){
+var achievement_card_backs = {};
+
+eachoa(all_achievements, function(achievement_id, achievement_info){
 	if(achievement_info['image'] == undefined && achievement_info['card_image'] != undefined && all_available_cards[achievement_info['card_image']] != undefined)
 	{
 		achievement_info['image'] = all_available_cards[achievement_info['card_image']]['image'];
@@ -31562,7 +31568,7 @@ $.each(all_achievements, function(achievement_id, achievement_info){
 });
 
 
-$.each(all_chained_achievements, function(achievement_id, achievement_info){
+eachoa(all_chained_achievements, function(achievement_id, achievement_info){
 	if(achievement_info['min_amount'] == undefined && achievement_info['max_amount'] == undefined){all_chained_achievements[achievement_id]['amount'] *= 10;achievement_info['amount'] = all_chained_achievements[achievement_id]['amount'];}
 	var steps = 5;
 	if(achievement_info['steps'] != undefined){steps = achievement_info['steps'];}
@@ -31611,7 +31617,7 @@ $.each(all_chained_achievements, function(achievement_id, achievement_info){
 			amount *= 10;
 		}
 		
-		$.each(all_achievements[achievement_id + '_' + i]['rewards'], function(reward_id, reward_info){
+		eachoa(all_achievements[achievement_id + '_' + i]['rewards'], function(reward_id, reward_info){
 			all_achievements[achievement_id + '_' + i]['rewards'][reward_id]['reward_amount'] = reward_amount;
 		});
 		/*if(i == 1){all_achievements[achievement_id + '_' + i]['rewards'][0]['reward_amount'] = 10;}
@@ -31630,7 +31636,7 @@ $.each(all_chained_achievements, function(achievement_id, achievement_info){
 				}
 				else
 				{
-					$.each(achievement_info['card_back'], function(useless_id, card_back_id){
+					eachoa(achievement_info['card_back'], function(useless_id, card_back_id){
 						all_achievements[achievement_id + '_' + i]['rewards'][get_highest_key_in_object(all_achievements[achievement_id + '_' + i]['rewards']) + 1] = {reward_id: 			'card_back_' + card_back_id,reward_amount:1};
 					});
 				}
@@ -31669,3 +31675,13 @@ $.each(all_chained_achievements, function(achievement_id, achievement_info){
 });
 
 all_achievements = sortObj(all_achievements);
+
+
+eachoa(all_achievements, function(achievement_id, achievement_info){
+	eachoa(achievement_info['rewards'], function(achievement_reward_id, reward_info){
+		if(reward_info['reward_id'] != undefined && all_available_cards[reward_info['reward_id']] != undefined && all_available_cards[reward_info['reward_id']]['type'] == 'cardback')
+		{
+			achievement_card_backs[reward_info['reward_id']] = true;
+		}
+	});
+});

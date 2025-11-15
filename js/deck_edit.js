@@ -80,9 +80,19 @@ function show_available_cards(heroes_only){
 		}
 	});
 
-	if(gamedata['owned_cards'][gamedata['decks'][gamedata['current_deck']]['hero']] < 1)
+	if(gamedata['decks'][gamedata['current_deck']]['hero'] != undefined)
 	{
-		delete gamedata['decks'][gamedata['current_deck']]['hero'];
+		if(all_available_cards[gamedata['decks'][gamedata['current_deck']]['hero']] == undefined || all_available_cards[gamedata['decks'][gamedata['current_deck']]['hero']]['hero_version'] == undefined)
+		{
+			delete gamedata['decks'][gamedata['current_deck']]['hero'];
+		}
+		else
+		{
+			if(gamedata['owned_cards'][gamedata['decks'][gamedata['current_deck']]['hero']] < 1)
+			{
+				delete gamedata['decks'][gamedata['current_deck']]['hero'];
+			}
+		}
 	}
 
 	gamedata['decks'][gamedata['current_deck']] = sortObj(gamedata['decks'][gamedata['current_deck']]);
@@ -266,6 +276,21 @@ function show_current_deck(){
 
 	$('#content_deck_edit .current_deck').html('');
 	$('#content_deck_edit .current_hero').html('');
+
+	if(gamedata['decks'][gamedata['current_deck']]['hero'] != undefined)
+	{
+		if(all_available_cards[gamedata['decks'][gamedata['current_deck']]['hero']] == undefined || all_available_cards[gamedata['decks'][gamedata['current_deck']]['hero']]['hero_version'] == undefined)
+		{
+			delete gamedata['decks'][gamedata['current_deck']]['hero'];
+		}
+		else
+		{
+			if(gamedata['owned_cards'][gamedata['decks'][gamedata['current_deck']]['hero']] < 1)
+			{
+				delete gamedata['decks'][gamedata['current_deck']]['hero'];
+			}
+		}
+	}
 
 	if(all_available_cards[gamedata['decks'][gamedata['current_deck']]['hero']] != undefined)
 	{
@@ -640,7 +665,7 @@ function gain_random_card(){
 function gain_all_cards(amount){
 	if(amount == undefined){amount = 1;}
 	eachoa(all_available_cards, function(card_id, card){
-		if(namechanges[card_id] == undefined)
+		if(namechanges[card_id] == undefined && card['type'] != 'cardback')
 		{
 			if(gamedata['owned_cards'][card_id] == undefined)
 			{

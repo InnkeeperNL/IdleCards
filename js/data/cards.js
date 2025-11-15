@@ -216,7 +216,7 @@ var all_available_cards = {
 	angel_statue:{
 		name: 				'angel statue',
 		type: 				'structure',
-		subtypes: 			['wall'],
+		subtypes: 			['angel','wall'],
 		color: 				['colorless'],
 		theme: 				[],
 		not_theme: 			['type_structure','subtype_wall'],
@@ -285,7 +285,7 @@ var all_available_cards = {
 	angry_mob:{
 		name: 				'angry mob',
 		type: 				'spell',
-		subtypes: 			['summon'],
+		subtypes: 			['tactic'],
 		color: 				['colorless'],
 		theme: 				['aoe'],
 		pick_chance: 		1,
@@ -3427,7 +3427,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{summon_mud_crab: 1},
 		hero_version: 			{
-			theme: 				['subtype_crustacean'],
+			theme: 				['subtype_aquatic'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -3461,7 +3461,7 @@ var all_available_cards = {
 	crab:{
 		name: 				'crab',
 		type: 				'creature',
-		subtypes: 			['animal','crustacean'],
+		subtypes: 			['animal','aquatic'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -3473,7 +3473,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, plated: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','plated_ability','subtype_crustacean'],
+			theme: 				['subtype_animal','plated_ability','subtype_aquatic'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -7692,7 +7692,7 @@ var all_available_cards = {
 	huge_crab:{
 		name: 				'huge crab',
 		type: 				'creature',
-		subtypes: 			['animal','crustacean'],
+		subtypes: 			['animal','aquatic'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -7704,7 +7704,7 @@ var all_available_cards = {
 		health: 			10,
 		abilities: 			{strike: 1, plated: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','plated_ability','subtype_crustacean'],
+			theme: 				['subtype_animal','plated_ability','subtype_aquatic'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -8839,7 +8839,7 @@ var all_available_cards = {
 	lobster:{
 		name: 				'lobster',
 		type: 				'creature',
-		subtypes: 			['animal','crustacean'],
+		subtypes: 			['animal','aquatic'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -8852,7 +8852,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{strike: 1, plated: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','plated_ability','subtype_crustacean'],
+			theme: 				['subtype_animal','plated_ability','subtype_aquatic'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -9790,7 +9790,7 @@ var all_available_cards = {
 	monstrous_crab:{
 		name: 				'monstrous crab',
 		type: 				'creature',
-		subtypes: 			['animal','crustacean'],
+		subtypes: 			['animal','aquatic'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -9802,7 +9802,7 @@ var all_available_cards = {
 		health: 			14,
 		abilities: 			{strike: 1, plated: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','plated_ability','subtype_crustacean'],
+			theme: 				['subtype_animal','plated_ability','subtype_aquatic'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -9830,7 +9830,7 @@ var all_available_cards = {
 		name: 				'mud crab',
 		type: 				'creature',
 		subtypes: 			['animal'],
-		color: 				['colorless','crustacean'],
+		color: 				['colorless','aquatic'],
 		theme: 				[],
 		pick_chance: 		0,
 		time: 				1,
@@ -16950,6 +16950,10 @@ function check_card(card_id){
 	    	//console.log(card_info['name']);
 	    	card_info['value'] = calculate_card_value(card_id);
 	    }
+	    if(all_available_cards['card_back_' + card_id] != undefined)
+		{
+			all_available_cards['card_back_' + card_id]['value'] = card_info['value'] * 25;
+		}
 	    /*var used_in_recipes = 0;
 	    eachoa(all_available_cards, function(other_card_id, other_card_info){
 	    	if(other_card_info['recipe'] != undefined && other_card_info['recipe'][card_id] != undefined)
@@ -17034,7 +17038,7 @@ eachoa(all_available_cards, function(card_id, card_info){
 			non_tradable: 		card_info['non_tradable'],
 			value: 				card_info['value'] * 25,
 			type: 				'cardback',
-			color: 				card_info['color'],
+			color: 				['green'],
 			pick_chance: 		0,
 			months_available: 	card_info['months_available'],
 			time: 				0,

@@ -534,6 +534,23 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 			}
 		}
 	}
+	else
+	{
+		if(achievement_card_backs['card_back_' + chance_card_id] == undefined && gamedata['owned_card_backs']['card_back_' + chance_card_id] == undefined)
+		{
+			var recipe_drop_chance = (((effective_rarity * basic_to_pick) / card_drop_chance_reduction / recipe_drop_chance_reduction) / all_available_cards['card_back_' + chance_card_id]['value']);
+			//console.log('card_back_' + chance_card_id + ' drop chance: ' + recipe_drop_chance);
+			if(Math.random() < recipe_drop_chance)
+			{
+				all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
+					reward_id: 			'card_back_' + chance_card_id,
+					reward_amount: 		1,
+				};
+				basic_to_pick -= Math.ceil(all_available_cards['card_back_' + chance_card_id]['value'] / 2);
+				if(show_drops != undefined && show_drops == true){show_drop('card_back_' + chance_card_id, 1);}
+			}
+		}
+	}
 
 	if(chance_card_id != undefined)
 	{
@@ -581,17 +598,25 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 					possible_extra_drops['recipe_' + drop_card_id] = current_card_drop_chance;
 					possible_extra_drops[drop_card_id] = current_card_drop_chance;
 				}
-				/*else
-				{*/
-					
-				/*}*/
+				else
+				{
+					if(drop_card_info['recipe'] != undefined && achievement_card_backs['card_back_' + drop_card_id] == undefined && gamedata['owned_card_backs']['card_back_' + drop_card_id] == undefined)
+					{
+						var current_card_drop_chance = 1;
+						if(gamedata['decks'][gamedata['current_deck']][drop_card_id] != undefined)
+						{
+							current_card_drop_chance = 1 + (gamedata['decks'][gamedata['current_deck']][drop_card_id] * get_upgrade_factor('used_non_unit_drop_chance', undefined, true));
+						}
+						possible_extra_drops['card_back_' + drop_card_id] = current_card_drop_chance;
+					}
+				}
 			}
 		});
 		if(count_object(possible_extra_drops) > 0)
 		{
 			var chosen_extra_drop = get_random_key_from_object_based_on_num_value(possible_extra_drops);
 			var current_drop_chance = (((effective_rarity * basic_to_pick) / card_drop_chance_reduction) / all_available_cards[chosen_extra_drop]['value']);
-			if(all_available_cards[chosen_extra_drop]['type'] == 'recipe')
+			if(all_available_cards[chosen_extra_drop]['type'] == 'recipe' || all_available_cards[chosen_extra_drop]['type'] == 'cardback')
 			{
 				current_drop_chance /= recipe_drop_chance_reduction;
 			}
@@ -1064,6 +1089,7 @@ var skills_to_show_icon = {
 	explode: 	'bomb',
 	wounded: 	'wound',
 	blessed: 	'bless',
+	counter_spell: 'magic_shield',
 }
 
 function update_passive_effects(unit_id){

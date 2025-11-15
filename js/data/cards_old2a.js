@@ -1029,7 +1029,7 @@ var all_oldest_available_cards = {
 	drown:{
 		name: 				'drown',
 		type: 				'spell',
-		subtypes: 			['tactic'],
+		subtypes: 			['aquatic'],
 		color: 				['blue'],
 		time: 				4,
 		image: 				'cards/fantasy-4138401_640.jpg',
@@ -1037,9 +1037,7 @@ var all_oldest_available_cards = {
 		armor: 				false,
 		health: 			false,
 		abilities: 			{destroy_non_flying: 1},
-		recipe:{
-			cleansing_water: 	2,
-		}
+		quote: '\"As the waters retreated, there was nothing but a calm shore.\"',
 	},
 	
 	eagle:{
@@ -2445,12 +2443,10 @@ var all_oldest_available_cards = {
 		},
 		quote: '\"During the Great War, all she was allowed to do was joust. Now that she has to fight herself, it is a useful skill to have.\"',
 	},
-	
-	
 	lava_crab:{
 		name: 				'lava crab',
 		type: 				'creature',
-		subtypes: 			['animal','crustacean'],
+		subtypes: 			['animal','aquatic'],
 		color: 				['red'],
 		time: 				5,
 		image: 				'cards/crab-63084_1280.jpg',
@@ -2459,18 +2455,13 @@ var all_oldest_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, plated: 1, fire_shield: 1},
 		hero_version: 			{
-			name: 				'lava crab',
-			type: 				'creature',
-			image: 				'cards/crab-63084_1280.jpg',
+			theme: 				['subtype_animal','plated_ability','subtype_aquatic','fire_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, plated: 1, fire_shield: 1},
 		},
-		recipe:{
-			fire_salamander: 	1,
-			plate_armor: 		1,
-		}
+		quote: '\"Near the volcano, on the beach, these creatures look for food.\"',
 	},
 	lightning_bolt:{
 		name: 				'lightning bolt',

@@ -1969,7 +1969,9 @@ var all_chained_achievements = {
 	},
 }
 
-$.each(all_achievements, function(achievement_id, achievement_info){
+var achievement_card_backs = {};
+
+eachoa(all_achievements, function(achievement_id, achievement_info){
 	if(achievement_info['image'] == undefined && achievement_info['card_image'] != undefined && all_available_cards[achievement_info['card_image']] != undefined)
 	{
 		achievement_info['image'] = all_available_cards[achievement_info['card_image']]['image'];
@@ -1977,7 +1979,7 @@ $.each(all_achievements, function(achievement_id, achievement_info){
 });
 
 
-$.each(all_chained_achievements, function(achievement_id, achievement_info){
+eachoa(all_chained_achievements, function(achievement_id, achievement_info){
 	if(achievement_info['min_amount'] == undefined && achievement_info['max_amount'] == undefined){all_chained_achievements[achievement_id]['amount'] *= 10;achievement_info['amount'] = all_chained_achievements[achievement_id]['amount'];}
 	var steps = 5;
 	if(achievement_info['steps'] != undefined){steps = achievement_info['steps'];}
@@ -2026,7 +2028,7 @@ $.each(all_chained_achievements, function(achievement_id, achievement_info){
 			amount *= 10;
 		}
 		
-		$.each(all_achievements[achievement_id + '_' + i]['rewards'], function(reward_id, reward_info){
+		eachoa(all_achievements[achievement_id + '_' + i]['rewards'], function(reward_id, reward_info){
 			all_achievements[achievement_id + '_' + i]['rewards'][reward_id]['reward_amount'] = reward_amount;
 		});
 		/*if(i == 1){all_achievements[achievement_id + '_' + i]['rewards'][0]['reward_amount'] = 10;}
@@ -2045,7 +2047,7 @@ $.each(all_chained_achievements, function(achievement_id, achievement_info){
 				}
 				else
 				{
-					$.each(achievement_info['card_back'], function(useless_id, card_back_id){
+					eachoa(achievement_info['card_back'], function(useless_id, card_back_id){
 						all_achievements[achievement_id + '_' + i]['rewards'][get_highest_key_in_object(all_achievements[achievement_id + '_' + i]['rewards']) + 1] = {reward_id: 			'card_back_' + card_back_id,reward_amount:1};
 					});
 				}
@@ -2084,3 +2086,13 @@ $.each(all_chained_achievements, function(achievement_id, achievement_info){
 });
 
 all_achievements = sortObj(all_achievements);
+
+
+eachoa(all_achievements, function(achievement_id, achievement_info){
+	eachoa(achievement_info['rewards'], function(achievement_reward_id, reward_info){
+		if(reward_info['reward_id'] != undefined && all_available_cards[reward_info['reward_id']] != undefined && all_available_cards[reward_info['reward_id']]['type'] == 'cardback')
+		{
+			achievement_card_backs[reward_info['reward_id']] = true;
+		}
+	});
+});

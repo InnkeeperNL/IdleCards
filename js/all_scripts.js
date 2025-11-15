@@ -666,7 +666,7 @@ function gain_random_card(){
 function gain_all_cards(amount){
 	if(amount == undefined){amount = 1;}
 	eachoa(all_available_cards, function(card_id, card){
-		if(namechanges[card_id] == undefined)
+		if(namechanges[card_id] == undefined && card['type'] != 'cardback')
 		{
 			if(gamedata['owned_cards'][card_id] == undefined)
 			{
@@ -9796,9 +9796,11 @@ function show_card_backs(){
 	}
 	else
 	{
+		var percent_collected = 0;
+		if(cards_displayed > 0){percent_collected = Math.floor((cards_displayed / count_object(all_card_backs)) * 100);}
 		if(tinkering_list != '')
 		{
-			$('.tinkering_container').html('<div class="tinkering_list">' + tinkering_list + '</div>');
+			$('.tinkering_container').html('<div class="tinkering_list">' + tinkering_list + '</div><div class="collection_recipe_count">Collected: ' + percent_collected + '%</div>');
 		}
 	}
 
@@ -10403,6 +10405,12 @@ function show_summon(just_summoned){
 			var recipe_drop_chance = Math.floor(drop_chance / recipe_drop_chance_reduction);
 			if(recipe_drop_chance > max_recipe_drop_chance){recipe_drop_chance = max_recipe_drop_chance;}
 			shown_recipe_drop_chance = ' <span class="shown_recipe_drop_chance"> (' + recipe_drop_chance + '%)</span>';
+		}
+		if(gamedata['known_recipes'][gamedata['current_summon']['hero']] != undefined && achievement_card_backs['card_back_' + gamedata['current_summon']['hero']] == undefined)
+		{
+			var recipe_drop_chance = Math.floor(drop_chance / recipe_drop_chance_reduction / 25);
+			if(recipe_drop_chance < 1){recipe_drop_chance = '<1';}
+			shown_recipe_drop_chance = ' <span class="shown_card_back_drop_chance"> (' + recipe_drop_chance + '%)</span>';
 		}
 		if(drop_chance > 100){drop_chance = 100;}
 		parsed_summon += '<div class="summon_hero_container ' + just_summoned_class + '">';
@@ -11378,6 +11386,23 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 			}
 		}
 	}
+	else
+	{
+		if(achievement_card_backs['card_back_' + chance_card_id] == undefined && gamedata['owned_card_backs']['card_back_' + chance_card_id] == undefined)
+		{
+			var recipe_drop_chance = (((effective_rarity * basic_to_pick) / card_drop_chance_reduction / recipe_drop_chance_reduction) / all_available_cards['card_back_' + chance_card_id]['value']);
+			//console.log('card_back_' + chance_card_id + ' drop chance: ' + recipe_drop_chance);
+			if(Math.random() < recipe_drop_chance)
+			{
+				all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
+					reward_id: 			'card_back_' + chance_card_id,
+					reward_amount: 		1,
+				};
+				basic_to_pick -= Math.ceil(all_available_cards['card_back_' + chance_card_id]['value'] / 2);
+				if(show_drops != undefined && show_drops == true){show_drop('card_back_' + chance_card_id, 1);}
+			}
+		}
+	}
 
 	if(chance_card_id != undefined)
 	{
@@ -11425,17 +11450,25 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 					possible_extra_drops['recipe_' + drop_card_id] = current_card_drop_chance;
 					possible_extra_drops[drop_card_id] = current_card_drop_chance;
 				}
-				/*else
-				{*/
-					
-				/*}*/
+				else
+				{
+					if(drop_card_info['recipe'] != undefined && achievement_card_backs['card_back_' + drop_card_id] == undefined && gamedata['owned_card_backs']['card_back_' + drop_card_id] == undefined)
+					{
+						var current_card_drop_chance = 1;
+						if(gamedata['decks'][gamedata['current_deck']][drop_card_id] != undefined)
+						{
+							current_card_drop_chance = 1 + (gamedata['decks'][gamedata['current_deck']][drop_card_id] * get_upgrade_factor('used_non_unit_drop_chance', undefined, true));
+						}
+						possible_extra_drops['card_back_' + drop_card_id] = current_card_drop_chance;
+					}
+				}
 			}
 		});
 		if(count_object(possible_extra_drops) > 0)
 		{
 			var chosen_extra_drop = get_random_key_from_object_based_on_num_value(possible_extra_drops);
 			var current_drop_chance = (((effective_rarity * basic_to_pick) / card_drop_chance_reduction) / all_available_cards[chosen_extra_drop]['value']);
-			if(all_available_cards[chosen_extra_drop]['type'] == 'recipe')
+			if(all_available_cards[chosen_extra_drop]['type'] == 'recipe' || all_available_cards[chosen_extra_drop]['type'] == 'cardback')
 			{
 				current_drop_chance /= recipe_drop_chance_reduction;
 			}

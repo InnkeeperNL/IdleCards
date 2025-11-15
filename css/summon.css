@@ -166,6 +166,12 @@
 	color:rgba(255,255,0,0.9);
 }
 
+.shown_card_back_drop_chance
+{
+	font-size: 18px;
+	color:rgba(24, 158, 6, 0.9);
+}
+
 @keyframes goes_up {
     0%   {
     	margin-top: 0px;
