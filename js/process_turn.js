@@ -536,7 +536,7 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 	}
 	else
 	{
-		if(achievement_card_backs['card_back_' + chance_card_id] == undefined && gamedata['owned_card_backs']['card_back_' + chance_card_id] == undefined)
+		if(chance_card_id != undefined && achievement_card_backs['card_back_' + chance_card_id] == undefined && gamedata['owned_card_backs']['card_back_' + chance_card_id] == undefined)
 		{
 			var recipe_drop_chance = (((effective_rarity * basic_to_pick) / card_drop_chance_reduction / recipe_drop_chance_reduction) / all_available_cards['card_back_' + chance_card_id]['value']);
 			//console.log('card_back_' + chance_card_id + ' drop chance: ' + recipe_drop_chance);
