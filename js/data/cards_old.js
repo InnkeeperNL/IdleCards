@@ -1328,7 +1328,7 @@ var all_old_available_cards = {
 	cleansing_water:{
 		name: 				'cleansing water',
 		type: 				'spell',
-		subtypes: 			['ritual'],
+		subtypes: 			['ritual','aquatic'],
 		color: 				['colorless'],
 		theme: 				[],
 		pick_chance: 		1,
@@ -10011,7 +10011,7 @@ var all_old_available_cards = {
 	tidal_mage:{
 		name: 				'tidal mage',
 		type: 				'creature',
-		subtypes: 			['human','mage'],
+		subtypes: 			['human','mage','aquatic'],
 		color: 				['colorless'],
 		theme: 				['muscle'],
 		craft_theme: 		['water','water','water'],
@@ -10346,7 +10346,7 @@ var all_old_available_cards = {
 	tsunami:{
 		name: 				'tsunami',
 		type: 				'spell',
-		subtypes: 			['water'],
+		subtypes: 			['water','aquatic'],
 		color: 				['colorless'],
 		theme: 				['projectile_ability','aoe','control','water'],
 		pick_chance: 		1,
@@ -11131,7 +11131,7 @@ var all_old_available_cards = {
 	water_bolt:{
 		name: 				'water bolt',
 		type: 				'spell',
-		subtypes: 			['attack','water'],
+		subtypes: 			['water','aquatic'],
 		color: 				['colorless'],
 		theme: 				[],
 		pick_chance: 		1,
@@ -11147,7 +11147,7 @@ var all_old_available_cards = {
 	water_mage:{
 		name: 				'water mage',
 		type: 				'creature',
-		subtypes: 			['human','mage'],
+		subtypes: 			['human','mage','aquatic'],
 		color: 				['colorless'],
 		theme: 				['defense','ranged','cleansing'],
 		pick_chance: 		1,
@@ -11688,7 +11688,7 @@ var all_old_available_cards = {
 	young_mermaid:{
 		name: 				'young mermaid',
 		type: 				'creature',
-		subtypes: 			['mermaid'],
+		subtypes: 			['mermaid','aquatic'],
 		color: 				['colorless'],
 		theme: 				['water'],
 		pick_chance: 		1,

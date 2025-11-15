@@ -1351,10 +1351,6 @@ var all_older_available_cards = {
 		health: 			false,
 		abilities: 			{bolster: 5, righthand: 1},
 		quote: 'It can be a powerful touch',
-		recipe:{
-			herbs: 						2,
-			//cleansing_water: 			1
-		}
 	},
 	orc_apprentice:{
 		name: 				'orc apprentice',
@@ -1946,10 +1942,6 @@ var all_older_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, poisonous: 2},
 		},
-		recipe:{
-			grove_mystic: 	1,
-			water_snake: 	1,
-		}
 	},
 	trickster_imp:{
 		name: 				'trickster imp',

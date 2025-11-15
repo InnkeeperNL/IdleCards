@@ -17474,7 +17474,7 @@ var all_available_cards = {
 	flood:{
 		name: 				'flood',
 		type: 				'spell',
-		subtypes: 			['weather','tactic'],
+		subtypes: 			['weather','tactic','aquatic'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		['water','water','water','water','water'],
@@ -17637,7 +17637,7 @@ var all_available_cards = {
 	frog_pond:{
 		name: 				'frog pond',
 		type: 				'structure',
-		subtypes: 			['water'],
+		subtypes: 			['wall','aquatic'],
 		color: 				['colorless'],
 		theme: 				['sacrifice_ability','subtype_animal'],
 		craft_theme: 		['sacrifice_ability'],
@@ -26471,7 +26471,7 @@ var all_available_cards = {
 	wave_caller:{
 		name: 				'wave caller',
 		type: 				'creature',
-		subtypes: 			['human','mage'],
+		subtypes: 			['human','mage','aquatic'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		['water','water','water','water','water','water'],

@@ -12,11 +12,6 @@ var all_oldest_available_cards = {
 		armor: 				false,
 		health: 			false,
 		abilities: 			{weakness: 1, delay: 3},
-		recipe:{
-			mana_crystal: 		1,
-			stone: 				1,
-			cleansing_water: 	1
-		},
 		quote: '\"It has a mesmerizing effect\"'
 	},
 	angel_of_light:{
@@ -1824,12 +1819,6 @@ var all_oldest_available_cards = {
 			health: 			20,
 			abilities: 			{strike_unit: 1, flying: 1, feast: 2},
 		},
-		recipe:{
-			natures_touch: 		1,
-			cleansing_water: 	1,
-			levitate: 			1,
-			giants_foot: 		1
-		}
 	},
 	giant_spider:{
 		name: 				'giant spider',
@@ -3122,7 +3111,7 @@ var all_oldest_available_cards = {
 	sea_spirit:{
 		name: 				'sea spirit',
 		type: 				'creature',
-		subtypes: 			['undead','spirit'],
+		subtypes: 			['undead','spirit','aquatic'],
 		color: 				['blue'],
 		time: 				6,
 		image: 				'cards/woman-5352898_640.jpg',
@@ -3139,11 +3128,6 @@ var all_oldest_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, undead: 1, resurrect: 1, submerged: 1},
 		},
-		recipe:{
-			cleansing_water: 	1,
-			ghost_bride: 		1,
-			herbs: 				1
-		}
 	},
 	shatter:{
 		name: 				'shatter',
