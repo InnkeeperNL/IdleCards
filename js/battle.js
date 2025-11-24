@@ -411,6 +411,7 @@ function construct_random_deck(size, hero, randomized){
 	var second_color = false;
 	var not_these = [];
 	var not_types = ['cardback'];
+	var not_theme = all_available_cards[hero]['not_theme'];
 	if(all_available_cards[hero]['color'][1] != undefined)
 	{
 		second_color = all_available_cards[hero]['color'][1];
@@ -562,10 +563,10 @@ function construct_random_deck(size, hero, randomized){
 		}
 		if(this_card_counter > 4 || (randomized != undefined && randomized == true))
 		{
-			card_id = get_random_card('any', max_time, deck_color, second_color, min_time, deck_theme, not_these, not_types);
+			card_id = get_random_card('any', max_time, deck_color, second_color, min_time, deck_theme, not_these, not_types, not_theme);
 			if(all_available_cards[card_id] != undefined && ((all_available_cards[card_id]['type'] == 'artifact' && artifact_count > 4 && (all_available_cards[card_id]['selfdestructs'] == undefined || all_available_cards[card_id]['selfdestructs'] == false)) || (all_available_cards[card_id]['type'] == 'spell' && spell_count > 10)))
 			{
-				card_id = get_random_card('any', max_time, deck_color, second_color, min_time, deck_theme, not_these, not_types);
+				card_id = get_random_card('any', max_time, deck_color, second_color, min_time, deck_theme, not_these, not_types, not_theme);
 			}
 			if(all_available_cards[card_id] != undefined && all_available_cards[card_id]['type'] == 'artifact' && (all_available_cards[card_id]['selfdestructs'] == undefined || all_available_cards[card_id]['selfdestructs'] == false))
 			{
@@ -620,7 +621,7 @@ function construct_random_deck(size, hero, randomized){
 	}*/
 	if(artifact_count == 0)
 	{
-		var chosen_artifact = get_random_card('artifact', undefined, undefined, undefined, undefined, deck_theme);
+		var chosen_artifact = get_random_card('artifact', undefined, undefined, undefined, undefined, deck_theme, undefined, undefined, not_theme);
 		if(all_available_cards[chosen_artifact] != undefined)
 		{
 			random_deck[0] = {
@@ -841,7 +842,7 @@ function get_random_hero(on_value, min_rarity, max_rarity, common_reduction){
 	return picked_hero;
 }
 
-function get_random_card(type, max_time, color_restriction, second_color_restriction, min_time, theme, not_these, not_types){
+function get_random_card(type, max_time, color_restriction, second_color_restriction, min_time, theme, not_these, not_types, not_theme){
 	var total_card_count = 0;
 	var picked_card = false;
 	var month = new Date().getMonth() + 1;
@@ -872,6 +873,10 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 				can_pick = false;
 			}
 			if(card_info['not_theme'] != undefined && match_array_values(card_info['not_theme'], theme) > 0)
+			{
+				can_pick = false;
+			}
+			if(card_info['theme'] != undefined && match_array_values(card_info['theme'], not_theme) > 0)
 			{
 				can_pick = false;
 			}

@@ -2812,7 +2812,7 @@ var all_abilities = {
 				//self_projectile: 	'curse',
 				//target_projectile: 	'curse',
 				type: 			'apply_curse',
-				subtypes: 		['magical','curse','buff_hero'],
+				subtypes: 		['magical','curse','buff_hero','ally_hero_deals_damage'],
 				amount: 		'ability_level',
 			}
 		},
@@ -11004,7 +11004,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				type: 			'apply_poison',
-				subtypes: 		['poison'],
+				subtypes: 		['poison','ally_hero_deals_damage'],
 				amount: 		'ability_level'
 			}
 		},

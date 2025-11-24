@@ -74,6 +74,7 @@ var all_available_cards = {
 		abilities: 			{air_bolt: 2, evade: 1},
 		hero_version: 			{
 			theme: 				['air_ability','projectile_ability','evade_ability','flying_ability'],
+			not_theme: 			['empower_hero'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -120,6 +121,7 @@ var all_available_cards = {
 		abilities: 			{poison: 3, experiment: 1},
 		hero_version: 			{
 			theme: 				['poison_ability','subtype_warrior'],
+			not_theme: 			['empower_hero_ability','ally_hero_deals_damage_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -229,6 +231,7 @@ var all_available_cards = {
 		abilities: 			{purify: 1, heal: 1},
 		hero_version: 			{
 			theme: 				['subtype_angel','subtype_cleric'],
+			not_theme: 			['empower_hero_ability','ally_hero_deals_damage_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -353,6 +356,7 @@ var all_available_cards = {
 		verified: 			true,
 		hero_version: 			{
 			theme: 				['arcane_bolts_ability','çurse_ability'],
+			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -409,6 +413,7 @@ var all_available_cards = {
 		abilities: 			{arcane_bolt: 3, resist_magic: 1},
 		hero_version: 			{
 			theme: 				['subtype_elf','arcane_bolts_ability','çurse_ability'],
+			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -431,6 +436,7 @@ var all_available_cards = {
 		abilities: 			{arcane_bolt: 2, plated: 1, flying: 1},
 		hero_version: 			{
 			theme: 				['arcane_bolts_ability','plated_ability','subtype_mage'],
+			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			30,
@@ -454,6 +460,7 @@ var all_available_cards = {
 		abilities: 			{arcane_bolt: 1},
 		hero_version: 			{
 			theme: 				['subtype_golem','arcane_bolts_ability','curse_ability'],
+			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -479,6 +486,7 @@ var all_available_cards = {
 		verified: 			true,
 		hero_version: 			{
 			theme: 				['arcane_bolts_ability','çurse_ability'],
+			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -518,6 +526,7 @@ var all_available_cards = {
 		abilities: 			{arcane_bolt: 1, flying: 1},
 		hero_version: 			{
 			theme: 				['flying_ability','subtype_animal','arcane_bolts_ability','curse_ability'],
+			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -541,6 +550,7 @@ var all_available_cards = {
 		abilities: 			{arcane_bolt: 1, break: 1},
 		hero_version: 			{
 			theme: 				['arcane_bolts_ability','curse_ability','break_ability'],
+			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			30,
@@ -596,6 +606,7 @@ var all_available_cards = {
 		abilities: 			{arcane_bolt: 1, run_away: 1},
 		hero_version: 			{
 			theme: 				['arcane_bolts_ability','curse_ability','movement_ability','evade_ability'],
+			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			30,
@@ -4923,7 +4934,7 @@ var all_available_cards = {
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
 		theme: 				['plated_ability'],
-		not_theme: 			['resist_magic_ability'],
+		not_theme: 			['resist_magic_ability','subtype_elf','subtype_goblin'],
 		craft_theme: 		['subtype_elf'],
 		pick_chance: 		1,
 		time: 				1,
@@ -6791,8 +6802,7 @@ var all_available_cards = {
 		theme: 				[],
 		pick_chance: 		1,
 		time: 				5,
-		image: 				'cards/young_gnome.jpg',
-		image_position: 	'top',
+		image: 				'cards/gnomeling.jpg',
 		power: 				1,
 		armor: 				0,
 		health: 			1,
@@ -10090,6 +10100,7 @@ var all_available_cards = {
 		subtypes: 			['orb','weather'],
 		color: 				['colorless'],
 		theme: 				[],
+		not_theme: 			['subtype_gnome'],
 		craft_theme: 		['evade_ability','stealth_ability','healing_ability'],
 		pick_chance: 		1,
 		time: 				1,
@@ -13701,6 +13712,7 @@ var all_available_cards = {
 		subtypes: 			['gear'],
 		color: 				['colorless'],
 		theme: 				['subtype_rogue'],
+		not_theme: 			['subtype_gnome'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -16905,6 +16917,10 @@ function check_card(card_id){
 				}
 			});
 			if(count_object(card_info['hero_version']['theme']) == 0){console.log(card_id + ' has no hero theme');}
+			if(card_info['hero_version']['not_theme'] == undefined && card_info['hero_version']['power'] === false)
+			{
+				card_info['hero_version']['not_theme'] = ['empower_hero_ability'];
+			}
 			/*}*/
 		}
 
