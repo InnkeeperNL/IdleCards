@@ -10886,7 +10886,7 @@ var all_abilities = {
 			0:{
 				projectile:		'drain',
 				type: 			'healing',
-				subtypes: 		['vampiric','drain'],
+				subtypes: 		['vampiric','leech','healing'],
 				amount: 		'latest_result',
 				//max_amount: 	'ability_level',
 			}
