@@ -38,7 +38,15 @@
 .single_building_content
 {
     padding-bottom: 0px;
-    position: relative;
+    position: fixed;
+    top:80px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width:auto;
+    margin: 0px;
 }
 
 .building_recipes_content
@@ -360,6 +368,10 @@ span.done_expeditions
     .construction_button
     {
         width: 80%;
+    }
+    #content_single_building h2
+    {
+        display: none;
     }
 }
 
