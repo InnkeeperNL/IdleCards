@@ -960,6 +960,8 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 	return picked_card;
 }
 
+var highest_card_cost = 0;
+
 function get_random_card_based_on_time(type, max_time, color_restriction, second_color_restriction, card_subtype, min_time, not_these, not_subtypes){
 	var total_card_count = 0;
 	var picked_card = false;
@@ -1029,8 +1031,26 @@ function get_random_card_based_on_time(type, max_time, color_restriction, second
 			}
 		}
 	});
-	if(picked_card == false){picked_card = get_random_card_based_on_time(type, max_time + 1);}
+	if(highest_card_cost == 0){highest_card_cost = get_highest_cost();}
+	if(max_time < highest_card_cost && picked_card == false){picked_card = get_random_card_based_on_time(type, max_time + 1);}
 	return picked_card;
+}
+
+function get_highest_cost(){
+	var highest_cost = 0;
+	var highest_cost_count = 0;
+	eachoa(all_available_cards, function(card_id, card_info){
+		if(card_info['time'] != undefined && card_info['time'] > highest_cost)
+		{
+			highest_cost = card_info['time'];
+			highest_cost_count = 0;
+		}
+		if(card_info['time'] != undefined && card_info['time'] == highest_cost)
+		{
+			highest_cost_count++;
+		}
+	});
+	return highest_cost;
 }
 
 function test_based_on_time(amount, type, max_time, color_restriction, second_color_restriction, card_subtype, min_time, not_these, not_subtypes){
