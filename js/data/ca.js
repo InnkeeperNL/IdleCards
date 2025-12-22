@@ -4666,7 +4666,7 @@ var all_abilities = {
 		level_cost: 		1,
 	},
 	final_pay_life:{
-		description: 	'When destroyed, reduces the health of your hero by {LEVEL}.',
+		description: 	'When destroyed, reduces the current health of your hero by {LEVEL}.',
 		proc: 			'own_death',
 		proc_while_dead: true,
 		scales: 		true,
@@ -4682,11 +4682,11 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'wither',
-				type: 			'reduce_health',
+				type: 			'reduce_current_health',
 				amount: 		'ability_level',
 			},
 		},
-		level_cost: 	-2,
+		level_cost: 	-1,
 		ability_level_cost_factors:{
 			resurrect: 		2,
 		},
@@ -5880,6 +5880,35 @@ var all_abilities = {
 		level_cost: 		4,
 		level_cost_spell: 	1,
 	},
+	hasten_slowest:{
+		description: 	'Reduces the time left of the card in your hand with the highest time left by {LEVEL}.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	1,
+		hero_tactics: 	['draw_cards_ability','move_ally_to_deck_ability'],
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	1,
+				status: 		'hand',
+				side: 			'ally',
+				highest_time_left: true,
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'hasten',
+				projectile_target: 'deck',
+				type: 			'reduce_ready_time',
+				subtypes: 		['hasten','deck_control'],
+				amount: 		'ability_level',
+				side: 			'ally',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		4,
+		level_cost_spell: 	2,
+	},
 	hatch_chicken:{
 		description: 	'Has a 50% chance to turn into a chicken when destroyed by damage.',
 		proc: 			'own_death',
@@ -6750,6 +6779,17 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	6,
 	},
+	min_enemy_hand_cards:{
+		name: 		'enemy hand cards:',
+		post_name: 	'+',
+		description: 	'This card will not be played if there\'s less then {LEVEL} cards in the enemy\'s hand.',
+		proc: 			'on_play',
+		remove_skill: 	'min_enemy_hand_cards',
+		show_amount_adjustment: 0,
+		level_cost: 	-0.05,
+		cost_factor: 	'full',
+		level_cost_cum: true,
+	},
 	max_hand_cards:{
 		name: 		'hand cards:',
 		post_name: 	'-',
@@ -6999,6 +7039,33 @@ var all_abilities = {
 		level_cost: 		1,
 		level_cost_spell: 	0.25,
 	},
+	painful_discards:{
+		description: 	'When the enemy discards a card, this deals {LEVEL} damage to the enemy hero.',
+		proc: 			'enemy_discarded',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'voodoo',
+				type: 		'damage',
+				subtypes: 	['direct_damage'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_spell: 	1,
+		average_hits: 		1,
+	},
 	painful_hand:{
 		description: 	'Deals {LEVEL} damage to the enemy hero for every card in its hand.',
 		cannot_proc_while_stunned: true,
@@ -7077,7 +7144,7 @@ var all_abilities = {
 		average_hits: 		1,
 	},
 	pay_life:{
-		description: 	'When played, reduces the health of your hero by {LEVEL}.',
+		description: 	'When played, reduces the current health of your hero by {LEVEL}.',
 		proc: 			'on_play',
 		proc_while_dead: true,
 		scales: 		true,
@@ -7093,15 +7160,16 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'wither',
-				type: 			'reduce_health',
+				type: 			'reduce_current_health',
 				amount: 		'ability_level',
 			},
 		},
-		level_cost: 	-2,
+		level_cost: 	-1,
+		level_cost_spell: 	-2,
 	},
 	pay_life_on_act:{
 		name: 			'pay life',
-		description: 	'If this used another ability, it reduces the health of your hero by {LEVEL}.',
+		description: 	'If this used another ability, it reduces the current health of your hero by {LEVEL}.',
 		proc: 			'on_play',
 		proc_while_dead: true,
 		scales: 		true,
@@ -7118,11 +7186,12 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'wither',
-				type: 			'reduce_health',
+				type: 			'reduce_current_health',
 				amount: 		'ability_level',
 			},
 		},
-		level_cost: 	-2,
+		level_cost: 	-1,
+		level_cost_spell: 	-2,
 	},
 	pilfer:{
 		description: 	'Gain control over an enemy artifact. Can only be used up to {LEVEL} time(s) and only if you have less than 5 artifacts in play.',
@@ -14555,7 +14624,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{pay_life: 1, hasten_all: 1},
+		abilities: 			{hasten_slowest: 10, pay_life_on_act: 5},
 		quote: '\"It will cost you!\"',
 	},
 	channeler:{

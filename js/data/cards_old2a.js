@@ -1222,7 +1222,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{discard_enemy: 2, pay_life_on_act: 2},
+		abilities: 			{discard_enemy: 2, pay_life_on_act: 5},
 		recipe:{
 			bones: 				1,
 			deaths_call: 		1,

@@ -3044,7 +3044,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{pay_life: 1, hasten_all: 1},
+		abilities: 			{hasten_slowest: 10, pay_life_on_act: 5},
 		quote: '\"It will cost you!\"',
 	},
 	channeler:{
