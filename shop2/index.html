@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width">
+	<script src="js/lib/jquery.js"></script>
+	<script src="js/lib/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="js/functions/general.js?v=1.000000"></script>
+	<script src="js/functions/animations.js?v=1.000000"></script>
+	<script src="js/data/config.js?v=1.000000"></script>
+	<script src="js/data/available_locations.js?v=1.000000"></script>
+	<script src="js/data/available_actions.js?v=1.000000"></script>
+	<script src="js/data/available_items.js?v=1.000001"></script>
+	<script src="js/data/available_units.js?v=1.000000"></script>
+	<script src="js/data/available_monsters.js?v=1.000000"></script>
+	<script src="js/data/available_achievements.js?v=1.000000"></script>
+
+	<script src="js/localstorage.js?v=1.000000"></script>
+	<script src="js/shop.js?v=1.000000"></script>
+	<script src="js/skills.js?v=1.000000"></script>
+	<script src="js/locations.js?v=1.000000"></script>
+	<script src="js/actions.js?v=1.000001"></script>
+	<script src="js/items.js?v=1.000000"></script>
+	<script src="js/monsters.js?v=1.000000"></script>
+	<script src="js/floating_text.js?v=1.000000"></script>
+	<script src="js/achievements.js?v=1.000000"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/main.css?v=1.000000">
+	<link rel="stylesheet" type="text/css" href="css/shop.css?v=1.000000">
+	<link rel="stylesheet" type="text/css" href="css/locations.css?v=1.000000">
+	<link rel="stylesheet" type="text/css" href="css/actions.css?v=1.000000">
+	<link rel="stylesheet" type="text/css" href="css/floating_text.css?v=1.000000">
+	<link rel="stylesheet" type="text/css" href="css/achievements.css?v=1.000000">
+	<link rel="stylesheet" href="js/lib/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+</head>
+<body>
+	<div class="main_window">
+		<div class="paper_bg"></div>
+		<div id="content_loading" class="page_container active">
+			
+			<div class="page_section">
+				Loading...
+			</div>	
+			<div class="page_section">
+				<span class="processing_amount"></span>
+			</div>
+			
+		</div>
+		<div id="content_home" class="page_container">
+			<div class="shop_bg"></div>
+			<div class="page_section">
+				<button class="menu_button slim" data-target-content="locations">Locations</button>
+				<button class="menu_button slim" data-target-content="options">Options</button>
+			</div>
+			<div class="counters_container">
+				<table class="counters_container_t">
+					<tr>
+						<td class="all_counters clear_me">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Trade speed: <span class="trade_speed_level"></span><br/>
+							Upgrade cost: <span class="trade_speed_cost"></span><br/>
+							<button class="slim trade_speed_upgrade_button" onclick="upgrade_trade_speed()">Upgrade</button>
+						</td>
+					</tr>
+				</table>
+				<!-- <span class="counters_title">Sales</span><br/> -->
+				
+				
+			</div>	
+			
+			<div class="new_counters clear_me">
+			</div>	
+			<div class="shop_coins">Coins: <span class="item_coins"></span></div>
+			<div class="shop_value">Shop value: <span class="coins_gained"></span></div>	
+			
+		</div>
+		<div id="content_set_counter" class="page_container">
+			<div class="shop_bg"></div>
+			<div class="page_section">
+				<button class="menu_button slim home_button" data-target-content="home">Shop</button>
+				<!-- <button class="menu_button slim toggle_show_consumables_button" data-target-content="set_counter" onclick="toggle_show_consumables();">All</button> -->
+			</div>
+			<div class="item_list clear_me"></div>
+			<div class="achievement_page_container"><span class="page_back" onclick="adjust_inventory_page(-1)"><</span> <span class="page_number"></span><span class="page_further" onclick="adjust_inventory_page(1)">></span></div>
+		</div>
+		<div id="content_assign_units" class="page_container">
+			<div class="page_section">
+				<button class="menu_button slim" data-target-content="current_action">Back</button>
+			</div>
+			<div class="item_list clear_me"></div>
+		</div>
+		
+		<div id="content_achievements" class="page_container">
+			<div class="page_section">
+				<button class="menu_button slim home_button" data-target-content="home">Shop</button>
+				<button class="menu_button slim" data-target-content="spend_ap">Spend AP</button>
+			</div>
+			<div class="ap_amount_container"></div>
+			<div class="achievement_list clear_me"></div>
+			<div class="achievement_page_container"><span class="page_back" onclick="adjust_achievement_page(-1)"><</span> <span class="page_number"></span><span class="page_further" onclick="adjust_achievement_page(1)">></span></div>
+		</div>
+		<div id="content_single_achievement" class="page_container">
+			<div class="page_section">
+				<button class="menu_button slim" data-target-content="achievements">Achievements</button>
+			</div>
+			<div class="achievement_details clear_me"></div>
+		</div>
+		<div id="content_spend_ap" class="page_container">
+			<div class="page_section">
+				<button class="menu_button slim" data-target-content="achievements">Achievements</button>
+			</div>
+			<div class="ap_amount_container"></div>
+			<div class="spend_ap_list clear_me"></div>
+		</div>
+		<div id="content_single_ap_bonus" class="page_container">
+			<div class="page_section">
+				<button class="menu_button slim" data-target-content="spend_ap">Back</button>
+			</div>
+			<div class="ap_amount_container"></div>
+			<div class="single_ap_bonus_container clear_me"></div>
+		</div>
+		
+		<div id="content_set_counter_item" class="page_container">
+			<div class="shop_bg"></div>
+			<div class="page_section">
+				<!-- <button class="menu_button slim" data-target-content="home">Shop</button> -->
+				<button class="menu_button slim" data-target-content="back">Back</button>
+			</div>
+			<div class="page_section">
+				<div class="selected_item clear_me"></div>
+				<div class="amount_select_section">
+					<div class="amount_select select_less" onclick="adjust_sell_amount(-1)">-</div>
+					<div class="favourite_button" onclick="toggle_favourite()">&nbsp;</div>
+					<div class="amount_select select_more" onclick="adjust_sell_amount(1)">+</div>
+					
+				</div>
+				
+			</div>
+			<div class="set_counter_summary selling_summary">
+					<div class="summary_title">Summary</div>
+					Item: <span class="item_sold"></span><br/>
+					Amount: <span class="amount_sold"></span><br/>
+					Time: <span class="time_sold"></span><br/>
+					Coins: <span class="coins_sold"></span><br/>
+			</div>
+			<div class="set_counter_summary using_summary">
+					<div class="summary_title">Summary</div>
+					Item: <span class="item_sold"></span><br/>
+					Amount: <span class="amount_sold"></span><br/>
+					Time: <span class="time_sold"></span><br/>
+					Effect: <span class="item_effect"></span><br/>
+					Time left: <span class="item_time_left"></span>
+			</div>
+			<div class="total_sold">Sold: <span class="item_sold_amount"></span></div>
+			<!-- <button class="toggle_sell_use cool" onclick="toggle_sell_use()"></button> -->
+			<button class="start_selling_button disabled" onclick="start_selling()">Sell 1 stack</button>
+			<button class="start_selling_button start_selling_all_button disabled" onclick="start_selling_all()">Sell max</button>
+			<button class="start_using_button" onclick="start_using()">Use now</button>
+		</div>
+		<div id="content_item_details_page" class="page_container">
+			<div class="shop_bg"></div>
+			<div class="page_section">
+				<!-- <button class="menu_button slim" data-target-content="home">Shop</button> -->
+				<button class="menu_button slim" data-target-content="back">Back</button>
+			</div>
+			<div class="page_section">
+				<div class="selected_item clear_me"></div>
+			</div>
+			<div class="set_counter_summary">
+					<div class="summary_title">Summary</div>
+					Item: <span class="item_sold"></span><br/>
+					Time: <span class="time_sold"></span><br/>
+					Coins: <span class="coins_sold"></span><br/>
+				</div>
+		</div>
+		<div id="content_assign_single_unit" class="page_container">
+			<div class="page_section">
+				<!-- <button class="menu_button slim" data-target-content="home">Shop</button> -->
+				<button class="menu_button slim" data-target-content="current_action">Fight</button>
+				<button class="menu_button slim" data-target-content="assign_units">Back</button>
+			</div>
+			<div class="assign_unit_container">
+				<div class="page_section">
+					<div class="selected_item"></div><br/>
+				</div>
+				<div class="set_counter_summary">
+					<div class="summary_title">Stats</div>
+					<div class="item_stats"></div>
+					<button class="start_selling_button_2 disabled" onclick="assign_this_unit()">Assign 1</button>
+					<button class="start_selling_button_2 disabled" onclick="assign_this_unit(true)">Assign all</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="content_options" class="page_container">
+			<div class="page_section">
+				<button class="menu_button slim home_button" data-target-content="home">Shop</button>
+			</div>
+			<div class="options_container">
+				<div class="home_devider">Prestige</div>
+
+				<div class="page_section">
+					Current prestige bonus: <span class="current_prestige_bonus"></span><br/>
+					After presige: <span class="next_prestige_bonus"></span></br><br/>
+					Prestige level is based on the highest amount of locations ever owned.<br/>
+					Each prestige level doubles your sell speed.<br/>
+					When you prestige every part of the game is reset except achievements.<br/><br/>
+					You get 1 AP for every achievement completed this prestige.<br/>
+					<!-- You also get 1 AP for every location unlocked after the first.<br/> -->
+					Current achievement points: <span class="current_achievement_points"></span><br/>
+					AP after presige: <span class="next_achievement_points"></span><br/><br/>
+					<button class="danger" onclick="prestige_now();">PRESTIGE</button><br/><br/>
+				</div>
+				<div class="home_devider">Optional</div>
+				<div class="page_section">
+					Downgrade mode will give the option to downgrade actions. Use this to balance productions.<br/>There is no refund when downgrading.<br/>
+				</div>
+				<div class="page_section options_buttons clear_me">
+					
+				</div>
+				<div class="page_section">
+					Set the speed at which the game calculates.<br/>
+				</div>
+				<div class="page_section">
+					<button class="menu_button slim game_speed_100 game_speed_button" onclick="set_game_speed(100)" data-target-content="options">0.1s</button>
+					<button class="menu_button slim game_speed_250 game_speed_button" onclick="set_game_speed(250)" data-target-content="options">0.25s</button>
+					<button class="menu_button slim game_speed_500 game_speed_button" onclick="set_game_speed(500)" data-target-content="options">0.5s</button>
+					<button class="menu_button slim game_speed_1000 game_speed_button" onclick="set_game_speed(1000)" data-target-content="options">1s</button>
+				</div>
+				
+				<div class="home_devider"><br/>Reset game (there will be no confirmation)</div>
+				<div class="page_section">
+					This will completely reset your game.<br/>
+					<button class="danger" onclick="clearLocalStorage();location.reload();">RESET</button><br/><br/>
+				</div>
+			</div>
+		</div>
+		<div id="content_unlock_location" class="page_container">
+			<div class="page_section">
+				<button class="menu_button slim danger" data-target-content="locations">Cancel</button>
+			</div>
+			<div class="unlockable_list clear_me"></div>
+		</div>
+		<div id="content_locations" class="page_container">
+			<div class="page_section">
+				<button class="menu_button slim home_button" data-target-content="home">Shop</button>
+			</div>
+			
+			<div class="explore_section">
+				Locations<br/>
+				<!-- <div class="exploration_level">
+					Exploration skill: <span class="skill_level_exploration"></span><br/>
+					Passive exploration: <span class="passive_exploration"></span><br/>
+					Upgrade cost: <span class="item_coins"></span> / <span class="passive_upgrade_cost"></span>
+					<button class="slim gold upgrade_passive_exploration_button" onclick="upgrade_passive_exploration()">Upgrade</button>
+				</div>
+				<div class="explore_bar">
+					<div class="explore_progress_bar">
+						<div class="explore_progress_bar_end">
+						</div>
+					</div>
+					<div class="explore_progress_text">
+					</div>
+				</div>
+				<button class="explore_button menu_button" data-target-content="unlock_location">Explore</button> -->
+			</div>
+		
+			<div class="known_locations">
+				<div class="known_locations_list clear_me">
+				</div>
+			</div>
+			<div class="location_buttons"></div>
+			
+		</div>
+		<div id="content_current_location" class="page_container">
+			<div class="current_location_bg"></div>
+			<div class="page_section">
+				<button class="menu_button slim home_button" data-target-content="home">Shop</button>
+				<button class="menu_button slim locations_button" data-target-content="locations">Locations</button>
+			</div>
+			<div class="page_section">
+				<span class="current_location_title clear_me"></span>
+			</div>
+			
+			<div class="current_location_actions">
+				<span class="current_location_parsed_actions clear_me"></span>
+			</div>
+			<div class="unlock_more_actions_button_container"><button class="menu_button slim" data-target-content="unlock_more_actions">More actions</button></div>
+			<div class="toggle_collapse_all_button" onclick="collapse_toggle_all()">-</div>
+		</div>
+		<div id="content_unlock_more_actions" class="page_container">
+			<div class="current_location_bg"></div>
+			<div class="page_section">
+				<button class="menu_button slim home_button" data-target-content="home">Shop</button>
+				<button class="menu_button slim" data-target-content="current_location">Back</button>
+			</div>
+			<div class="page_section">
+				<span class="current_location_title"></span>
+			</div>
+			
+			<div class="current_location_actions">
+				<span class="current_location_parsed_actions clear_me"></span>
+			</div>
+			<div class="toggle_collapse_all_button" onclick="collapse_toggle_all()">-</div>
+		</div>
+		<div id="content_current_action" class="page_container">
+			<div class="current_location_bg"></div>
+			<div class="page_section">
+				<button class="menu_button slim home_button" data-target-content="home">Shop</button>
+				<button class="menu_button slim" data-target-content="current_location">Back</button>
+			</div>
+			<div class="current_action clear_me"></div>
+		</div>
+		<div class="detail_overlay">
+			<div class="card_detail"></div>
+		</div>
+	</div>
+</body>
+<script>
+
+	
+	/*window.onerror = function(msg, url, linenumber) {
+	    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+	    return true;
+	}*/
+	
+
+	function prestige_now(){
+		if(gamedata['prestige'] == undefined){gamedata['prestige'] = 0;}
+		var new_prestige_bonus = count_object(gamedata['known_locations']) -1;
+		if(gamedata['bonus_achievement_points'] == undefined)
+		{
+			gamedata['bonus_achievement_points'] = 0;
+		}
+		var new_ap_bonus = get_new_ap_bonus();
+		gamedata['bonus_achievement_points'] += new_ap_bonus;
+		gamedata['achievement_points'] = get_achievement_points();
+		if(gamedata['prestige'] > new_prestige_bonus){new_prestige_bonus = gamedata['prestige'] + 0;}
+		console.log(new_prestige_bonus);
+		//clearLocalStorage();
+		//loadLocalStorage();
+		delete gamedata['inventory'];
+		delete gamedata['favourites'];
+		gamedata['ap_bonusses'] = {};
+		gamedata['known_locations'] = {};
+		gamedata['gained_items'] = {};
+		delete gamedata['counters'];
+		gamedata['coins'] = 0;
+		gamedata['coins_gained'] = 0;
+		gamedata['prestige'] = new_prestige_bonus;
+		gamedata['trade_speed'] = 1;
+		saveToLocalStorage();
+		show_content('home');
+	};
+
+	function show_options(){
+
+		if(gamedata['downgrade_mode'] == undefined)
+		{
+			gamedata['downgrade_mode'] = false;
+		}
+		if(gamedata['show_gained_items'] == undefined)
+		{
+			gamedata['show_gained_items'] = true;
+		}
+		$('.options_buttons').html('');
+		if(gamedata['show_gained_items'] == true)
+		{
+			$('.options_buttons').append('<button class="menu_button" onclick="gamedata[\'show_gained_items\']=false" data-target-content="options">Gains shown ON</button>');
+		}
+		else
+		{
+			$('.options_buttons').append('<button class="menu_button danger"  onclick="gamedata[\'show_gained_items\']=true" data-target-content="options">Gains shown OFF</button>');
+		}
+		if(gamedata['downgrade_mode'] == true)
+		{
+			$('.options_buttons').append('<button class="menu_button" onclick="gamedata[\'downgrade_mode\']=false" data-target-content="options">Downgrade ON</button>');
+		}
+		else
+		{
+			$('.options_buttons').append('<button class="menu_button danger"  onclick="gamedata[\'downgrade_mode\']=true" data-target-content="options">Downgrade OFF</button>');
+		}
+		
+
+		if(gamedata['prestige'] == undefined){gamedata['prestige'] = 0;}
+		$('.current_prestige_bonus').html(gamedata['prestige']);
+		var new_prestige_bonus = count_object(gamedata['known_locations']) -1;
+		if(gamedata['prestige'] > new_prestige_bonus){new_prestige_bonus = gamedata['prestige'] + 0;}
+		$('.next_prestige_bonus').html(new_prestige_bonus);
+		var new_achievement_points = get_achievement_points();
+		$('.current_achievement_points').html(gamedata['achievement_points']);
+		var new_ap_bonus = get_new_ap_bonus();
+		$('.next_achievement_points').html(new_achievement_points + new_ap_bonus);
+
+		$('.game_speed_button').addClass('danger');
+		$('.game_speed_' + tick_time).removeClass('danger');
+		
+	}
+
+	function get_new_ap_bonus(){
+		var new_ap_bonus = 0;
+		/*for (var i = count_object(gamedata['known_locations']) -1; i > 0; i--) {
+			new_ap_bonus += i * 1;
+		};*/
+		return new_ap_bonus;
+	}
+
+	$(document).ready(function() {
+		$('body').on('click', '.menu_button', function() {
+		    $('.menu_button.active').removeClass('active');
+			$(this).addClass('active');
+			show_content($(this).attr('data-target-content'));
+		});
+	});
+
+	var last_content = 'home';
+	var current_content = 'home';
+
+	function show_last_content(){
+		show_content(last_content);
+	}
+
+	function update_last_content(new_content){
+		last_content = current_content;
+		current_content = new_content;
+	}
+
+	function clear_old_content(){
+		//$('.clear_me').html('');
+		var elements = document.querySelectorAll('.clear_me');
+		elements.forEach(element => {
+		  element.innerHTML = '';
+		});
+	}
+
+	function show_content(content_id){
+		if(content_id == 'back'){content_id = last_content;}
+		if(content_id == 'current'){content_id = current_content;}
+		update_last_content(content_id);
+		clear_old_content();
+		clear_floating_timeouts();
+		reset_global_timer();
+		//console.log(content_id);
+		if(content_id == undefined){content_id = 'home';}
+		$('.page_container.active').removeClass('active');
+		$('#content_' + content_id).addClass('active');
+
+		var possible_extra_function = window['show_' + content_id]; 
+		if (typeof possible_extra_function === "function") possible_extra_function();
+		saveToLS();
+
+	};
+
+	$('.detail_overlay').click(function(){
+		$('.detail_overlay').html('');
+		$('.detail_overlay').fadeOut();
+	});
+
+	
+	var global_timer;
+	var last_global_tick = new Date();
+
+	var tick_time = 100;
+	$(document).ready(function(){
+		gamedata = loadLocalStorage();
+		if(gamedata['tick_time'] != undefined)
+		{
+			tick_time = gamedata['tick_time'];
+		}
+		show_content('loading');
+		get_effective_trade_speed();
+		//check_global_timer();
+
+	});
+
+	
+	function set_game_speed(new_game_speed){
+		gamedata['tick_time'] = new_game_speed;
+		saveToLocalStorage();
+		tick_time = new_game_speed;
+	}
+	
+	function check_global_timer(){
+
+		var time_passed = new Date() - last_global_tick;
+		last_global_tick = new Date();
+		update_counter_timers();
+		check_ticks(time_passed);
+		//check_bonus_time_left();
+		var calculation_time = new Date() - last_global_tick;
+		var visual_time_passed = '';
+		/*for (var i = time_passed - tick_time; i > 0; i-=2) {
+			visual_time_passed+='-';
+		}
+		for (var i = calculation_time; i > 0; i-=2) {
+			visual_time_passed+='*';
+		}*/
+		//console.log(Math.floor((tick_time / time_passed) * 100) + '%');
+		
+		var next_tick_delay = tick_time;
+		/*if(time_passed < tick_time)
+		{
+			next_tick_delay = tick_time;
+		}
+		if(time_passed > (tick_time * 1.1))
+		{
+			next_tick_delay = tick_time + ((time_passed - tick_time) / 2);
+		}
+		if(next_tick_delay > 1000)
+		{
+			next_tick_delay = 1000;
+		}
+		next_tick_delay = tick_time + calculation_time;*/
+		reset_global_timer(next_tick_delay);
+	}
+
+	function reset_global_timer(delay){
+		if(delay == undefined){delay = tick_time;}
+		clearTimeout(global_timer);
+		global_timer = setTimeout(function(){
+			check_global_timer();
+		},delay);
+	}
+
+</script>
+</html>
+
