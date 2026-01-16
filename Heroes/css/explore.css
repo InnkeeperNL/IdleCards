@@ -1,0 +1,1509 @@
+.explore_result
+{
+	display:none;
+}
+
+.combat_container
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	background-color:#ccc;
+	display:none;
+	overflow:hidden;
+	z-index:20;
+	border-radius:2px;
+}
+
+.combat_container .combat_container_bg
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	opacity:0.5;
+}
+
+@keyframes combat_message {
+    0%   {
+    	left:-100%;
+    	opacity: 0;
+    }
+    25%   {
+    	left:0%;
+    	opacity: 1;
+    }
+    50%   {
+    	left:0%;
+    	opacity: 1;
+    }
+    100%   {
+    	left:100%;
+    	opacity: 0;
+    }
+}
+
+.combat_message
+{
+	position:absolute;
+	top:150px;
+	left:0px;
+	width:100%;
+	font-family: 'Caveat Brush', cursive;
+	font-size: 100px;
+	color:#fff;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	animation-name: combat_message;
+    animation-duration: 2s;
+    -ms-transform-origin: center center; /* IE 9 */
+    -webkit-transform-origin: center center; /* Chrome, Safari, Opera */
+    transform-origin: center center;
+    opacity:0;
+    z-index:10000;
+    text-align:center;
+}
+
+.combat_message.message_victory
+{
+	color:#0f0;
+}
+
+.combat_message.message_defeat
+{
+	color:#f00;
+}
+
+.combat_message.message_unlock
+{
+	color:#8f8;
+	font-size:75px;
+	z-index:2000;
+}
+
+.combat_container .allies
+{
+	position:absolute;
+	left:10px;
+	height:130px;
+	bottom:85px;
+	right:10px;
+	border:2px solid #755;
+}
+
+.combat_container .enemies
+{
+	position:absolute;
+	right:10px;
+	top:10px;
+	bottom:225px;
+	left:10px;
+	border:2px solid #755;
+	overflow:hidden;
+}
+
+.combat_container .spells
+{
+	position:absolute;
+	right:10px;
+	height:65px;
+	bottom:10px;
+	left:10px;
+	border:2px solid #755;
+	overflow:hidden;
+}
+
+.combat_container .spells .mana_bar_container
+{
+	position:absolute;
+	height:10px;
+	left:0px;
+	bottom:0px;
+	width:100%;
+	border-radius:0px;
+	border:0px solid #00f;
+	background-color:#99f;
+	overflow:hidden;
+}
+
+.combat_container .spells .mana_bar_container .mana_bar
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	bottom:0px;
+	width:50%;
+	border-radius:1px;
+	border:0px solid #33d;
+	background-color:#55f;
+	box-shadow:inset 0px 5px 0px rgba(255,255,255,0.1),inset 0px -10px 10px rgba(0,0,0,0.5);
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+
+.combat_container .spells .hp_bar_container
+{
+	position:absolute;
+	height:10px;
+	left:0px;
+	bottom:10px;
+	width:100%;
+	border-radius:0px;
+	border:0px solid #363;
+	background-color:#855;
+	overflow:hidden;
+}
+
+.combat_container .spells .hp_bar_container .hp_bar
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	bottom:0px;
+	width:50%;
+	border-radius:2px;
+	border:0px solid #363;
+	background-color:#585;
+	box-shadow:inset -2px -2px 5px rgba(0,0,0,0.4),inset 0px 5px 0px rgba(255,255,255,0.2);
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.combat_container .spells .hp_bar_container .hp_amount,
+.combat_container .spells .mana_bar_container .mana_amount
+{
+	position:absolute;
+	top:-1px;
+	left:5px;
+	font-family: 'Caveat Brush', cursive;
+	font-size: 9px;
+	color:#fff;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+}
+
+.combat_container .spells .current_spells
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	left:185px;
+	bottom:5px;
+	overflow:hidden;
+}
+
+.combat_container .spells .current_spells .spell
+{
+	float:left;
+	margin-top:5px;
+	cursor: pointer;
+	position:relative;
+}
+
+.combat_container .spells .current_spells .spell.empty
+{
+	opacity:0.5;
+}
+
+.combat_container .spells .current_spells .spell .spell_slot_number
+{
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	font-size:12px;
+	position:absolute;
+	top:0px;
+	left:5px;
+}
+
+.combat_container .spells .current_spells .spell .spell_mana_cost
+{
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	font-size:16px;
+	position:absolute;
+	bottom:0px;
+	right:5px;
+}
+
+
+.combat_container .unit
+{
+	position:absolute;
+	width:134px;
+	height:110px;
+	margin-left:-67px;
+	border:2px solid #555;
+	border-radius:5px;
+	opacity:0;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color:#ccc;
+	box-shadow: inset 5px 5px 20px rgba(0,0,0,0.2);
+	cursor:crosshair;
+}
+
+.combat_container .unit.player
+{
+	position:absolute;
+	top:5px;
+	left:5px;
+	width:170px;
+	height:50px;
+	border:2px solid #555;
+	margin:0px;
+	border-radius:5px;
+	opacity:0;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color:#ccc;
+	box-shadow: inset 5px 5px 20px rgba(0,0,0,0.2);
+	cursor:crosshair;
+}
+
+.combat_container .unit.aggro
+{
+	box-shadow: 0px 0px 20px 0px rgba(255,0,0,1);
+	border-color:#855;
+}
+
+.combat_container .unit.active
+{
+	opacity:1;
+}
+
+.combat_container .unit.active.dead
+{
+	opacity:0.5;
+}
+
+.frozen
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	left:0px;
+	background-image:url(../images/abilities/ice-2567399_640.jpg);
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: 180%;
+	-moz-background-size: 180%;
+	-o-background-size: 180%;
+	background-size: 180%;
+	opacity:0;
+}
+
+.frozen.active
+{
+	-webkit-background-size: 200%;
+	-moz-background-size: 200%;
+	-o-background-size: 200%;
+	background-size: 200%;
+	opacity:0.5;
+}
+
+.petrified
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	left:0px;
+	background-image:url(../images/abilities/boy-366311_640.jpg);
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: 180%;
+	-moz-background-size: 180%;
+	-o-background-size: 180%;
+	background-size: 180%;
+	opacity:0;
+}
+
+.petrified.active
+{
+	-webkit-background-size: 200%;
+	-moz-background-size: 200%;
+	-o-background-size: 200%;
+	background-size: 200%;
+	opacity:0.8;
+}
+
+.combat_container .unit.active .death
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	left:0px;
+	background-image:url(../images/celtic-cross-2541564_640.jpg);
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	opacity:0;
+}
+
+.combat_container .unit.selected
+{
+	border-color:#f00;
+}
+
+.combat_container .unit.active.dead .death
+{
+	opacity:1;
+}
+
+.combat_container .unit.active.dead .buffs
+{
+	display:none;
+}
+
+
+.combat_container .unit.ally_1
+{
+	left:10%;
+	top:10px;
+}
+
+.combat_container .unit.ally_2
+{
+	left:30%;
+	top:10px;
+}
+
+.combat_container .unit.ally_3
+{
+	left:50%;
+	top:10px;
+}
+
+.combat_container .unit.ally_4
+{
+	left:70%;
+	top:10px;
+}
+
+.combat_container .unit.ally_5
+{
+	left:90%;
+	top:10px;
+}
+
+/*.combat_container .unit.ally_6
+{
+	left:10px;
+	top:269px;
+}*/
+
+.combat_container .unit.enemy_1
+{
+	left:10%;
+	bottom:10px;
+}
+
+.combat_container .unit.enemy_2
+{
+	left:30%;
+	bottom:10px;
+}
+
+.combat_container .unit.enemy_3
+{
+	left:50%;
+	bottom:10px;
+}
+
+.combat_container .unit.enemy_4
+{
+	left:70%;
+	bottom:10px;
+}
+
+.combat_container .unit.enemy_5
+{
+	left:90%;
+	bottom:10px;
+}
+
+.combat_container .unit.enemy_6
+{
+	left:10%;
+	top:10px;
+}
+
+.combat_container .unit.enemy_7
+{
+	left:30%;
+	top:10px;
+}
+
+.combat_container .unit.enemy_8
+{
+	left:50%;
+	top:10px;
+}
+
+.combat_container .unit.enemy_9
+{
+	left:70%;
+	top:10px;
+}
+
+.combat_container .unit.enemy_10
+{
+	left:90%;
+	top:10px;
+}
+
+.combat_container .unit .unit_name
+{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	text-align:center;
+	color:#fff;
+	font-family: 'Caveat Brush', cursive;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+}
+
+.unit .hp_bar_container
+{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	height:20px;
+	border-radius:2px;
+	border-top-right-radius:0px;
+	border-top-left-radius:0px;
+	background-color:#855;
+	box-shadow:inset 2px 2px 10px rgba(0,0,0,0.4);
+	overflow:hidden;
+}
+
+.unit .xp_bar_container
+{
+	position:absolute;
+	top:20px;
+	bottom:20px;
+	right:0px;
+	width:3px;
+	border-radius:2px;
+	background-color:#336;
+	box-shadow:inset 1px 1px 1px rgba(0,0,0,0.4);
+	/*display:none;*/
+}
+
+.combat_container .unit.dead .unit_level,
+.combat_container .unit.dead .unit_name,
+.unit.dead .hp_bar_container,
+.unit.dead .xp_bar_container
+{
+	opacity:0;
+}
+
+.unit .hp_bar
+{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	width:100%;
+	height:20px;
+	border-radius:0px;
+	background-color:#585;
+	box-shadow:inset -2px -2px 10px rgba(0,0,0,0.4),inset 0px 10px 0px rgba(255,255,255,0.2);
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.unit .xp_bar
+{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	height:0%;
+	width:3px;
+	border-radius:0px;
+	background-color:#48f;
+	box-shadow:inset 1px -1px 1px rgba(0,0,0,0.5),inset 0px 10px 5px -10px rgba(255,255,255,1),inset 0px 13px 3px -10px rgba(255,255,255,0.5);
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.unit .shield
+{
+	padding-top:1px;
+	height:20px;
+	width:20px;
+	position:absolute;
+	right:5px;
+	bottom:15px;
+	background-color:#ccc;
+	border:2px solid #333;
+	border-radius:15px;
+	font-size:14px;
+	font-family: 'Caveat Brush', cursive;
+	text-align: center;
+	color:#333;
+	box-shadow:inset -2px -2px 10px rgba(0,0,0,0.4),inset 0px 10px 0px rgba(255,255,255,0.2);
+	opacity:0;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	z-index:2;
+}
+
+.unit .shield.active
+{
+	opacity:1;
+}
+
+.unit .buffs
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+.unit .buffs .buff
+{
+	float:left;
+	width:20px;
+	height:25px;
+	font-family: 'Caveat Brush', cursive;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	color:#fff;
+	text-align:center;
+	opacity:1;
+	position:relative;
+	opacity:0;
+}
+
+.unit .buffs .buff .buff_amount
+{
+	position:absolute;
+	bottom:0px;
+	right:0px;
+	font-family: 'Caveat Brush', cursive;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	color:#fff;
+	font-size: 12px;
+}
+
+.unit .buff_image
+{
+	float:left;
+	width:18px;
+	height:15px;
+	margin-top:5px;
+	margin-left:3px;
+	padding-top:3px;
+	font-family: 'Caveat Brush', cursive;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	color:#fff;
+	text-align:right;
+	opacity:0.8;
+	position:relative;
+	border-radius:3px;
+	border:2px solid #fff;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	box-shadow: 2px 2px 5px rgba(0,0,0,1);
+}
+
+.unit.player .buff_image
+{
+	margin-top:3px;
+}
+
+.unit .buff_image.buff
+{
+	border-color:#080;
+}
+
+.unit .buff_image.debuff
+{
+	border-color:#800;
+}
+
+.select_sell_amount,
+.quest_types,
+.owned_locations,
+.active_spells,
+.fusing_units,
+.active_units,
+.available_recipes
+{
+	position:absolute;
+	left:10px;
+	top:40px;
+	width:252px;
+	height:222px;
+	overflow:hidden;
+	border:2px solid #555;
+	border-radius:5px;
+	padding-top:5px;
+	padding-left:5px;
+	box-shadow: inset 5px 5px 20px rgba(0,0,0,0.2);
+}
+
+.available_recipes
+{
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+
+.select_sell_amount .item,
+.quest_types .item,
+.owned_locations .item,
+.active_gear .item,
+.active_spells .item,
+.fusing_units .item,
+.active_units .item,
+.available_recipes .item
+{
+	padding-top:41px;
+	margin-bottom: 5px;
+}
+
+.fusing_units .fusing_unit_details
+{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	padding-bottom: 10px;
+	text-align:center;
+	font-family: arial;
+	font-size:18px;
+	font-weight:bold;
+}
+
+.owned_locations
+{
+	overflow-y:auto;
+}
+
+.vendor_list,
+.owned_spells,
+.recipes,
+.fusable_units,
+.owned_units
+{
+	position:absolute;
+	right:10px;
+	top:40px;
+	bottom:10px;
+	width:480px;
+	overflow-x:hidden;
+	overflow-y:auto;
+	border:2px solid #555;
+	border-radius:5px;
+	padding-top:5px;
+	padding-left:5px;
+	box-shadow: inset 5px 5px 20px rgba(0,0,0,0.2);
+}
+
+.trade_costs
+{
+	width:300px;
+	float:left;
+}
+
+.active_spells
+{
+	height:252px;
+}
+
+.active_spells .item
+{
+	height:115px;
+	padding-top:0px;
+}
+
+.details,
+.gear_details,
+.spell_details,
+.unit_details
+{
+	position:absolute;
+	left:10px;
+	bottom:10px;
+	width:252px;
+	height:182px;
+	overflow-x:hidden;
+	overflow-y:auto;
+	border:2px solid #555;
+	border-radius:5px;
+	padding-top:5px;
+	padding-left:5px;
+	box-shadow: inset 5px 5px 20px rgba(0,0,0,0.2);
+	font-family:arial;
+	font-size:12px;
+	line-height:1.5;
+}
+
+.spell_details
+{
+	height:150px;
+}
+
+.details .left,
+.details .right
+{
+	width:120px;
+	display:inline-block;
+}
+
+.details .left
+{
+	margin-right:12px;
+}
+
+.stat_block
+{
+	display:block;
+	float:left;
+	/*width:118px;*/
+	/*margin-right:15px;*/
+	padding-top:5px;
+	font-size:10px;
+	line-height: 1.6;
+}
+
+.stat_block:nth-child(even)
+{
+	margin-right:0px;
+}
+
+.stat_details
+{
+	float:right;
+	margin-right:5px;
+	margin-left:10px;
+	display:block;
+	text-align:right;
+}
+
+.quest_list .unit,
+.owned_gear .unit,
+.active_gear .unit,
+.fusable_units .unit,
+.fusing_units .unit,
+.active_units .unit,
+.owned_units .unit
+{
+	position:relative;
+	float:left;
+	margin-right:5px;
+	margin-bottom:5px;
+	width:73px;
+	height:73px;
+	border:3px solid #555;
+	border-radius:5px;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color:#000;
+	box-shadow: inset 0px 35px 0px rgba(255,255,255,0.1), 2px 2px 10px rgba(0,0,0,0.8),inset 0px 0px 10px rgba(0,0,0,0.9);
+	cursor:pointer;
+}
+
+.owned_gear .unit,
+.owned_spells .item,
+.fusable_units .item,
+.owned_units .unit,
+.owned_spells .item
+{
+	width:65px;
+	height:22px;
+	padding-top:43px;
+}
+
+.vendor_list .item,
+.quest_list .item
+{
+	width:87px;
+	height:27px;
+	padding-top:60px;
+}
+
+.vendor_list .item
+{
+	margin:5px
+}
+
+.active_gear .unit
+{
+	height:63px;
+}
+
+.gear_slot
+{
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-family: 'Caveat Brush', cursive;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	color:#fff;
+	text-align:center;
+}
+
+.fusing_units .unit
+{
+	transform:scale(1.8,1.8);
+	margin-left:80px;
+	margin-top:40px;
+}
+
+.owned_gear .unit:hover,
+.active_gear .unit:hover,
+.fusable_units .unit:hover,
+.fusing_units .unit:hover,
+.active_units .unit:hover,
+.owned_units .unit:hover
+{
+	opacity:0.8;
+}
+
+.fusable_units .unit.in_team,
+.fusing_units .unit.in_team,
+.active_units .unit.in_team,
+.owned_units .unit.in_team
+{
+	box-shadow: inset 5px 5px 20px rgba(0,0,0,0.2), 0px 0px 10px rgba(0,255,0,1);
+}
+
+.unit_level
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	border:2px solid #555;
+	border-top:0px;
+	border-right:0px;
+	border-radius:0px;
+	border-top-right-radius:3px;
+	border-bottom-left-radius:20px;
+	width:20px;
+	height:20px;
+	font-size:14px;
+	font-family: 'Caveat Brush', cursive;
+	text-align: center;
+	background-color:#ccc;
+	color:#333;
+	/*display:none;*/
+}
+
+.unit .unit_abilities
+{
+	position:absolute;
+	bottom:20px;
+	left:0px;
+	right:0px;
+	opacity:0;
+}
+
+.unit .unit_abilities.active
+{
+	opacity:1;
+}
+
+.unit .ability_bar_container
+{
+	width:100%;
+	margin-bottom:0px;
+}
+
+.unit .ability_bar
+{
+	width:0%;
+	height:2px;
+	background-color: #fff;
+	border-top:1px solid #000;
+}
+
+@keyframes fct_animation {
+    0%   {
+    	-ms-transform: scale(2, 3); /* IE 9 */
+    	-webkit-transform: scale(2, 3); /* Safari */
+    	transform: scale(2, 3);
+    	opacity: 0;
+    }
+    15%   {
+    	-ms-transform: scale(1, 1); /* IE 9 */
+    	-webkit-transform: scale(1, 1); /* Safari */
+    	transform: scale(1, 1);
+    	opacity: 1;
+    }
+    25%   {
+    	-ms-transform: scale(1, 1); /* IE 9 */
+    	-webkit-transform: scale(1, 1); /* Safari */
+    	transform: scale(1, 1);
+    	opacity: 1;
+    }
+    100%   {
+    	margin-top:-25px;
+    	-ms-transform: scale(0, 0); /* IE 9 */
+    	-webkit-transform: scale(0, 0); /* Safari */
+    	transform: scale(0, 0);
+    	opacity: 0;
+    }
+}
+
+.fct
+{
+	position:absolute;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	color:#fff;
+	font-size:24px;
+	min-width:100px;
+	text-align:center;
+	font-family: 'Caveat Brush', cursive;
+	animation-name: fct_animation;
+    animation-duration: 3s;
+    -ms-transform-origin: center center; /* IE 9 */
+    -webkit-transform-origin: center center; /* Chrome, Safari, Opera */
+    transform-origin: center center;
+    opacity:0;
+}
+
+@keyframes smash_fct_animation {
+    0%   {
+
+    	-ms-transform: scale(4, 2); /* IE 9 */
+    	-webkit-transform: scale(4, 2); /* Safari */
+    	transform: scale(4, 2);
+    	opacity: 0;
+    }
+    15%   {
+    	bottom:30px;
+    	-ms-transform: scale(1, 1); /* IE 9 */
+    	-webkit-transform: scale(1, 1); /* Safari */
+    	transform: scale(1, 1);
+    	opacity: 0.8;
+    }
+    35%   {
+    	opacity: 0.8;
+    	-ms-transform: rotate(15deg); /* IE 9 */
+    	-webkit-transform: rotate(15deg); /* Safari */
+    	transform: rotate(15deg);
+    }
+    50%   {
+    	opacity: 0.4;
+    }
+    100%   {
+    	opacity: 0;
+    	bottom:90%;
+    	font-size:0px;
+    	-ms-transform: rotate(-15deg); /* IE 9 */
+    	-webkit-transform: rotate(-15deg); /* Safari */
+    	transform: rotate(-15deg);
+    }
+}
+
+.smash_fct
+{
+	position:absolute;
+	left:0;
+	text-align: center;
+	bottom:30px;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	color:#fff;
+	font-size:24px;
+	font-family: 'Caveat Brush', cursive;
+	animation-name: smash_fct_animation;
+    animation-duration: 3s;
+    -ms-transform-origin: center center; /* IE 9 */
+    -webkit-transform-origin: center center; /* Chrome, Safari, Opera */
+    transform-origin: center center;
+    opacity:0;
+    line-height: 0.5;
+}
+
+@keyframes loot_animation {
+    0%   {
+    	-ms-transform: scale(1, 1); /* IE 9 */
+    	-webkit-transform: scale(1, 1); /* Safari */
+    	transform: scale(1, 1);
+    	opacity: 0;
+    	top:10px;
+    	right:10px;
+    }
+    15%   {
+    	-ms-transform: scale(1, 1); /* IE 9 */
+    	-webkit-transform: scale(1, 1); /* Safari */
+    	transform: scale(1, 1);
+    	opacity: 1;
+    	top:30px;
+    	right:30px;
+    }
+    50%   {
+    	-ms-transform: scale(1, 1); /* IE 9 */
+    	-webkit-transform: scale(1, 1); /* Safari */
+    	transform: scale(1, 1);
+    	opacity: 1;
+    	top:30px;
+    	right:30px;
+    }
+    100%   {
+    	-ms-transform: scale(0, 0); /* IE 9 */
+    	-webkit-transform: scale(0, 0); /* Safari */
+    	transform: scale(0, 0);
+    	opacity: 0;
+    	top:10px;
+    	right:10px;
+    }
+}
+
+
+.loot
+{
+	opacity:0;
+	position:absolute;
+	top:20px;
+	right:20px;
+	z-index:1000;
+	width:75px;
+	height:30px;
+	border:2px solid #555;
+	border-radius:5px;
+	animation-name: loot_animation;
+    animation-duration: 3s;
+    -ms-transform-origin: bottom left; /* IE 9 */
+    -webkit-transform-origin: bottom left; /* Chrome, Safari, Opera */
+    transform-origin: bottom left;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color:#000;
+	box-shadow:inset 0px 35px 0px rgba(255,255,255,0.2), inset 5px 5px 20px rgba(0,0,0,0.2);
+	text-shadow: 1px 1px 2px #000;
+	color:#fff;
+	font-size:24px;
+	font-family: 'Caveat Brush', cursive;
+	text-align:center;
+	padding-top:45px;
+}
+
+@keyframes dropped_loot_animation {
+    0%   {
+    	-ms-transform: scale(0); /* IE 9 */
+    	-webkit-transform: scale(0); /* Safari */
+		transform:scale(0);
+    	opacity: 0;
+    }
+    15%   {
+    	-ms-transform: scale(0.7); /* IE 9 */
+    	-webkit-transform: scale(0.7); /* Safari */
+		transform:scale(0.7);
+    	opacity: 1;
+    }
+    50%   {
+    	-ms-transform: scale(0.7); /* IE 9 */
+    	-webkit-transform: scale(0.7); /* Safari */
+		transform:scale(0.7);
+    	opacity: 1;
+    }
+    100%   {
+    	-ms-transform: scale(0, 0); /* IE 9 */
+    	-webkit-transform: scale(0, 0); /* Safari */
+    	transform: scale(0, 0);
+    	opacity: 0;
+    }
+}
+
+.dropped_loot
+{
+	-ms-transform: scale(0); /* IE 9 */
+    -webkit-transform: scale(0); /* Safari */
+	transform:scale(0);
+	opacity:0;
+	position:absolute;
+	margin-left:-40px;
+	margin-top:-40px;
+	z-index:1000;
+	width:75px;
+	height:30px;
+	border:2px solid #555;
+	border-radius:5px;
+    -ms-transform-origin: center; /* IE 9 */
+    -webkit-transform-origin: center; /* Chrome, Safari, Opera */
+    transform-origin: center;
+	background-repeat:no-repeat;
+	background-position: center;
+	animation-name: dropped_loot_animation;
+    animation-duration: 3s;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color:#000;
+	box-shadow:inset 0px 35px 0px rgba(255,255,255,0.2), inset 5px 5px 20px rgba(0,0,0,0.2);
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	color:#fff;
+	font-size:24px;
+	font-family: 'Caveat Brush', cursive;
+	text-align:center;
+	padding-top:45px;
+}
+
+.loot.token
+{
+	margin-top:3px;
+	margin-left:3px;
+	border-radius:100%;
+	width:70px;
+	height:30px;
+	padding-top:40px;
+	border:3px solid #333;
+	box-shadow:inset 3px 3px 6px rgba(255,255,255,0.7), inset -3px -3px 6px rgba(0,0,0,0.7),5px 5px 10px rgba(0,0,0,0.3);
+}
+
+.dropped_loot.token
+{
+	border-radius:100%;
+	width:70px;
+	height:30px;
+	padding-top:40px;
+	border:3px solid #333;
+	box-shadow:inset 3px 3px 6px rgba(255,255,255,0.7), inset -3px -3px 6px rgba(0,0,0,0.7),5px 5px 10px rgba(0,0,0,0.3);
+}
+
+.quest_container,
+.trade_container,
+.treasure_container
+{
+	position:absolute;
+	top:10px;
+	left:10px;
+	right:10px;
+	bottom:10px;
+	background-color:#cdc;
+	display:none;
+	overflow:hidden;
+	z-index:20;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding:20px;
+}
+
+.quest_image,
+.trade_image,
+.treasure_image
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	overflow:hidden;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	opacity:0.2;
+	z-index:-1;
+}
+
+.quest_container .quest_title,
+.treasure_container .treasure_title
+{
+	font-size: 64px;
+}
+
+.quest_container .quest_description,
+.treasure_container .treasure_description
+{
+	font-size: 24px;
+    font-weight: bold;
+    max-width: 500px;
+    font-family: arial;
+}
+
+.quest_details
+{
+	font-size: 12px;
+    font-weight: bold;
+    font-family: arial;
+    line-height:1.5;
+}
+
+.quest_details .quest_description
+{
+    max-width: 400px;
+}
+
+.quest_loot,
+.trade_cost,
+.trade_loot,
+.treasure_loot
+{
+	width:100%;
+}
+
+@keyframes quest_message_animation {
+    0%   {
+    	left:-190px;
+    }
+    15%   {
+    	left:-5px;
+    }
+    85%   {
+    	left:-5px;
+    }
+    100%   {
+    	left:-190px;
+    }
+}
+
+.quest_message
+{
+	animation-name: quest_message_animation;
+    animation-duration: 3s;
+	position:absolute;
+	z-index:1000;
+	top:30px;
+	left:-190px;
+	width:150px;
+	border-radius:5px;
+	border:2px solid #333;
+	background-color:#ccc;
+	text-align:right;
+	padding:5px;
+	padding-left:30px;
+}
+
+.quest_message.quest_complete
+{
+	transform:scale(1.2,1.2);
+}
+
+.quest_list .quest_title,
+.available_recipe
+{
+	font-size:14px;
+	font-weight:bold;
+	font-family:arial;
+	line-height: 1.5;
+	color:#333;
+	/*border-radius:4px;*/
+	padding:1px;
+	padding-left:5px;
+	padding-right:5px;
+	width:177px;
+	cursor:pointer;
+}
+
+.cannot_craft
+{
+	color:#a00;
+}
+
+.quest_list .quest_title:hover,
+.available_recipe:hover
+{
+	background-color:rgba(0,0,0,0.2);
+}
+
+.available_recipe .recipe_type
+{
+	display:inline-block;
+	font-family: arial;
+	border-radius:4px;
+	font-size:10px;
+	padding-top:0px;
+	color:#fff;
+	background-color:#555;
+	width:14px;
+	height:14px;
+	text-align: center;
+}
+
+.recipe h3,
+.quest_details h3
+{
+	font-weight:normal;
+	font-size:24px;
+	color:#fff;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	margin-bottom:10px;
+	margin-top:10px;
+}
+
+.quest_title .new_quest,
+.recipe h3.new_quest
+{
+	color:#ff0;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+}
+
+.quest_title .repeatable,
+.recipe h3.repeatable
+{
+	color:#05f;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+}
+.quest_list .quest_title
+{
+	font-size: 12px;
+}
+
+.recipe_amount_section
+{
+	/*display:none !important;*/
+}
+
+.craft_amount
+{
+	position: absolute;
+	right:40px;
+	top:20px;
+	width:60px;
+	height:40px;
+	text-align:center;
+	font-family: 'Caveat Brush', cursive;
+	font-size: 24px;
+}
+
+.quest_progress_bar_container
+{
+	float:left;
+	margin-top:10px;
+	margin-bottom:10px;
+	width:400px;
+	padding-left:5px;
+	height:20px;
+	font-size:16px;
+	border:2px solid #333;
+	border-radius:4px;
+	position:relative;
+	font-family: 'Caveat Brush', cursive;
+}
+
+.quest_progress_bar
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	height:20px;
+	background-color:#0b0;
+	z-index:-1;
+	opacity:0.5;
+}
+
+.start_quest_button,
+.complete_quest_button,
+.abandon_quest_button
+{
+	clear:both;
+	float:left;
+	margin-top:10px;
+	width:215px;
+	height:20px;
+	font-size:16px;
+	border:2px solid #333;
+	border-radius:4px;
+	position:relative;
+	font-family: 'Caveat Brush', cursive;margin-left:10px;
+	background-color:#0b0;
+	cursor:pointer;
+	text-align:center;
+	color:#fff;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	box-shadow:inset 3px 3px 6px rgba(255,255,255,0.2), inset -3px -3px 6px rgba(0,0,0,0.2),5px 5px 10px rgba(0,0,0,0.3);
+}
+
+.start_quest_button
+{
+	background-color: #080;
+}
+
+.abandon_quest_button
+{
+	background-color: #800;
+}
+
+.start_quest_button:hover,
+.complete_quest_button:hover
+{
+	box-shadow:inset 3px 3px 6px rgba(0,0,0,0.2);
+}
+
+.complete_quest_button.inactive
+{
+	box-shadow:inset 3px 3px 6px rgba(0,0,0,0.2);
+	background-color:#333;
+}
+
+.item.small
+{
+	
+}

@@ -1,0 +1,36 @@
+.projectile
+{
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	transition: all 0.5s ease-in-out;
+	transform-origin: center;
+	transform: scale(0.5);
+	z-index: 2;
+}
+
+.projectile.done
+{
+	opacity: 0;
+}
+
+
+.projectile_arrow		{	background-image:url(../images/projectiles/arrowhead.svg);}
+.projectile_sword		{	background-image:url(../images/projectiles/broadsword.svg);}
+.projectile_axe			{	background-image:url(../images/projectiles/wood-axe.svg);}
+.projectile_bite		{	background-image:url(../images/projectiles/fangs.svg);}
+.projectile_claw		{	background-image:url(../images/projectiles/claw-slashes.svg);}
+.projectile_healing		{	background-image:url(../images/projectiles/healing.svg);}
+.projectile_pebble		{	background-image:url(../images/projectiles/silex.svg);}
+.projectile_hoof		{	background-image:url(../images/projectiles/hoof.svg);}
+.projectile_poison		{	background-image:url(../images/projectiles/poison-gas.svg);}
+.projectile_scream		{	background-image:url(../images/projectiles/screaming.svg);}
+.projectile_voodoo		{	background-image:url(../images/projectiles/voodoo-doll.svg);}
+.projectile_curse		{	background-image:url(../images/projectiles/piece-skull.svg);}
+.projectile_apothecary	{	background-image:url(../images/projectiles/apothecary.svg);}
+.projectile_sparkles	{	background-image:url(../images/projectiles/sparkles.svg);}
+.projectile_dodge		{	background-image:url(../images/projectiles/dodging.svg);}
+.projectile_shield		{	background-image:url(../images/projectiles/shield.svg);}
+.projectile_sick		{	background-image:url(../images/projectiles/vomiting.svg);}
+
+

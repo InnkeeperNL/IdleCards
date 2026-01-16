@@ -1,0 +1,1137 @@
+.shop_container,
+.inventory_container,
+.claim_action_container,
+.workers_container,
+.options_container,
+.train_worker_container,
+.worker_training_container,
+.customer_details_container
+{
+	position: absolute;
+	top:115px;
+	left:70px;
+	right:70px;
+	bottom:75px;
+	text-align: center;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding:10px;
+}
+
+.inventory_container,
+.workers_container 
+{
+	bottom:125px;
+}
+
+.bottom_text,
+.top_text
+{
+	position: absolute;
+	top:85px;
+	left:0px;
+	right:0px;
+	text-align: center;
+	font-size: 20px;
+	font-family: 'Caveat Brush', cursive;
+	color:rgba(200,200,200,1);
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.bottom_text
+{
+	top:auto;
+	bottom:20px;
+}
+
+.bottom_text span
+{
+	position: relative;
+	z-index: 1;
+}
+
+.coins_text,
+.coins_container
+{
+	color:rgba(250,250,200,1) !important;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1) !important;
+}
+
+.favor_counter
+{
+	color:#fff;
+	position: relative;
+	display: inline-block;
+	height:50px;
+	min-width:50px;
+	padding-top:10px;
+}
+
+.options_container
+{
+	text-align: left;
+	font-size: 20px;
+	color:rgba(0,0,0,0.5);
+	font-family: 'Caveat Brush', cursive;
+}
+
+.inventory_page_container
+{
+	position: absolute;
+	height:50px;
+	left:70px;
+	right:70px;
+	bottom:0px;
+	text-align: center;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding:10px;
+	font-size: 20px;
+	color:rgba(0,0,0,0.5);
+	font-family: 'Caveat Brush', cursive;
+}
+
+.inventory_filters_container
+{
+	position: absolute;
+	height:50px;
+	left:0px;
+	right:0px;
+	bottom:70px;
+	text-align: center;
+	padding:10px;
+}
+
+.inventory_filters_container .square_button
+{
+	margin-left:5px;
+	margin-right:5px;
+	line-height:0px;
+}
+
+.page_back,
+.page_further
+{
+	display: inline-block;
+	text-align: center;
+	width: 50px;
+}
+
+.menu_container
+{
+	position: absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	text-align: center;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	z-index: 2;
+	min-height: 75px;
+}
+
+@media only screen and (max-width:800px) {
+	.train_worker_container,
+	.shop_container,
+	.inventory_container,
+	.claim_action_container,
+	.workers_container,
+	.options_container,
+	.worker_training_container,
+	.customer_details_container
+	{
+		left:20px;
+		right:20px;
+	}
+}
+
+.no_workers_text
+{
+	font-size: 24px;
+	color:rgba(0,0,0,0.5);
+	display: inline-block;
+	padding:20px;
+	font-family: 'Caveat Brush', cursive;
+}
+
+.new_worker_button
+{
+	clear:both;
+	float:none;
+	width:auto;
+	height:auto;
+	padding:10px;
+	display: inline-block;
+	margin-top:20px;
+	border:none;
+	border-radius: 0px;
+	box-shadow:5px 5px 1px rgba(0,0,0,0.3);
+	width:250px;
+}
+
+.new_worker_cost
+{
+	display: block;
+}
+
+.worker_bar
+{
+	width:100%;
+	height:100px;
+	border:0px solid rgba(0,0,0,0.5);
+	border-radius: 0px;
+	margin-bottom:15px;
+	overflow: visible;
+	position: relative;
+	background-color:rgba(255,255,255,0.3);
+	box-shadow:5px 5px 1px rgba(0,0,0,0.3);
+}
+
+.customer .worker_bar
+{
+	width:100px;
+	display:inline-block;
+}
+
+.customer_slot
+{
+	height:140px;
+	width:140px;
+	display:inline-block;
+	background-color: rgba(0,0,0,0.2);
+    border-radius: 45%;
+    margin: 2px;
+    position: relative;
+}
+
+.worker_bar_image
+{
+	background-position: center center;
+	background-size: auto 114px;
+	position:absolute;
+	width:110px;
+	height:110px;
+	position: absolute;
+	left:-7px;
+	top:-7px;
+	border:2px solid rgba(255,255,255,0.5);
+	border-radius: 5px;
+	box-shadow:5px 5px 1px rgba(0,0,0,0.3);
+}
+
+.customer_sell .worker_bar_image
+{
+	/*box-shadow:5px 5px 1px rgba(0,0,0,0.3), inset 0px 0px 30px rgba(150,150,100,1);*/
+	border:4px solid rgba(250,250,200,0.8);
+}
+
+.worker_level_string
+{
+	position: absolute;
+	bottom:0px;
+	left:0px;
+	font-family: 'Caveat Brush', cursive;
+	color:rgba(255,255,255,0.8);
+	font-size: 20px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	padding-top:2px;
+	width:28px;
+	height:28px;
+	background-color:rgba(0,0,0,0.5);
+	border-bottom-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+.worker_bar_name
+{
+	position: absolute;
+	top:3px;
+	left:115px;
+	font-family: 'Caveat Brush', cursive;
+	color:rgba(0,0,0,0.8);
+	font-size: 30px;
+}
+
+.shop_container .worker_bar_name
+{
+	font-size: 20px;
+}
+
+.worker_bar_action
+{
+	position: absolute;
+	bottom:3px;
+	left:115px;
+	font-family: 'Caveat Brush', cursive;
+	color:rgba(0,0,0,0.8);
+	font-size: 20px;
+	text-align:left;
+}
+
+@media only screen and (max-width:800px) {
+	.content_worker_details .worker_bar_action
+	{
+		padding-right:85px;
+	}
+}
+
+.worker_bar_timer,
+.worker_bar_complete_button,
+.worker_bar_details_button
+{
+	float:none;
+	padding:10px;
+	display: block;
+	border:none;
+	border-radius: 0px;
+	box-shadow:5px 5px 1px rgba(0,0,0,0.3);
+	position: absolute;
+	top:10px;
+	right:5px;
+}
+
+.worker_bar_timer
+{
+	width:auto;
+	height:auto;
+}
+
+.customer_buttons_container
+{
+	float:none;
+	width:auto;
+	height:auto;
+	display: block;
+	border:none;
+	position: absolute;
+	bottom:10px;
+	right:10px;
+}
+
+.customer_button
+{
+	position: relative;
+	float:none;
+	border-radius: 0px;
+	box-shadow:5px 5px 1px rgba(0,0,0,0.3);
+	max-width: none;
+	height: 55px;
+	width:110px;
+	margin-right:5px;
+	margin-left:10px;
+	display: block;
+	margin-top:10px;
+}
+
+.remove_customer_button 
+{
+	float:none;
+	position: absolute;
+	bottom:10px;
+	left:10px;
+	width:60px;
+}
+
+.customer_button.danger
+{
+	font-size:0px;
+	margin-left: 0px;
+	background-image: url(../images/icons/trash-can.svg);
+	background-size: 40px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.customer_button.disabled
+{
+	background-color:rgba(200,200,200,0.8);
+	cursor: default;
+}
+
+.favor_cost
+{
+	position: absolute;
+	right:-8px;
+	top:-8px;
+	font-size:20px;
+	padding:2px;
+}
+
+.favor_cost span
+{
+	position: relative;
+	z-index: 1;
+}
+
+.favor_bg
+{
+	opacity: 0.7;
+	background-image: url(../images/icons/hearts.svg);
+	z-index: 0;
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+}
+
+@media only screen and (max-width:800px) {
+	.customer_buttons_container
+	{
+		/*width:50px;*/
+	}
+	.customer_button
+	{
+		/*margin-bottom:10px;*/
+	    /*height: 36px;
+		margin-bottom: 8px;
+		width: 60px;
+		font-size: 27px;*/
+	}
+	.customer_button.danger
+	{
+		font-size:0px;
+		/*background-size: 25px;*/
+	}
+}
+
+.shop_container .slide_in
+{
+	/*display: inline-block;*/
+}
+
+.shop_container .worker_bar .worker_bar_name,
+.shop_container .worker_bar .customer_button,
+.shop_container .worker_bar.customer_buy .worker_action_image:not(.cost_image),
+.shop_container .worker_bar.customer_sell .worker_action_image.cost_image
+{
+	display: none;
+}
+
+.shop_container .worker_bar
+{
+	position: absolute;
+	top:0px;
+	left:0px;
+	width:120px;
+	height:120px;
+	border:0px solid rgba(0,0,0,0.5);
+	border-radius: 0px;
+	margin-bottom:15px;
+	overflow: visible;
+	background-color:rgba(255,255,255,0.3);
+	box-shadow:5px 5px 1px rgba(0,0,0,0.3);
+	/*display: inline-block;*/
+	margin:10px;
+	border-radius: 50px;
+}
+
+.shop_container .worker_bar_image
+{
+	width:90px;
+	height:90px;
+	background-size: auto 94px;
+}
+
+.shop_container .worker_bar_action
+{
+	left:auto;
+	right:-4px;
+	bottom:-10px;
+	z-index: 1;
+}
+
+.workers_container 
+{
+	text-align: center;
+}
+
+/*.workers_container .worker_level_string,*/
+.workers_container .worker_bar .worker_bar_name,
+.workers_container .worker_bar .customer_button,
+.workers_container .worker_bar.customer_buy .worker_action_image:not(.cost_image),
+.workers_container .worker_bar.customer_sell .worker_action_image.cost_image
+{
+	display: none;
+}
+
+.workers_container .worker_bar
+{
+	width:120px;
+	height:120px;
+	border:0px solid rgba(0,0,0,0.5);
+	border-radius: 0px;
+	margin-bottom:15px;
+	overflow: visible;
+	position: relative;
+	background-color:rgba(255,255,255,0.3);
+	box-shadow:5px 5px 1px rgba(0,0,0,0.3);
+	display: inline-block;
+	margin:10px;
+	border-radius: 0px;
+}
+
+.workers_container .worker_bar_image
+{
+	width:90px;
+	height:90px;
+	background-size: auto 94px;
+	z-index: 1;
+}
+
+.workers_container .worker_action_image
+{
+	position: absolute;
+	left:auto;
+	right:-5px;
+	bottom:-5px;
+	z-index: 1;
+	width:55px;
+	height:55px;
+	background-color:rgba(0,0,0,0.5);
+	padding-top:10px;
+	font-family: 'Caveat Brush', cursive;
+	color:rgba(255,255,255,1);
+	font-size: 24px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.worker_bar_complete_button, .worker_bar_details_button
+{
+	top:auto;
+	right:-4px;
+	bottom:-4px;
+	margin:0px;
+	z-index: 2;
+	background-color:rgba(100,150,100,0.8);
+	max-width: none;
+	max-height: none;
+	border-radius:4px;
+	background-size: 47px;
+	box-shadow: none;
+}
+
+.worker_bar_complete_button
+{
+	background-color: rgba(0,0,0,0.5);
+	opacity: 0.8;
+}
+
+.worker_progress_bar_action_container
+{
+	position: absolute;
+	bottom:0px;
+	left:0px;
+	width:69px;
+	height:45px;
+}
+
+.worker_progress_bar_action
+{
+	position: absolute;
+	bottom:0px;
+	left:0px;
+	width:0%;
+	height:100%;
+	background-color:rgba(255,255,255,0.5);
+	-webkit-transition: all 0s linear;
+	-moz-transition: all 0s linear;
+	-o-transition: all 0s linear;
+	transition: all 0s linear;
+}
+
+.worker_bar_timer
+{
+	top:auto;
+	right:auto;
+	left:-0px;
+	bottom:6px;
+	margin:0px;
+	text-align:center;
+	width:68px;
+	height:24px;
+	overflow: hidden;
+	padding:0px;
+	box-shadow: none;
+	background-color: transparent !important;
+}
+
+.workers_container .worker_bar_action
+{
+	display: none;
+}
+
+.worker_bar_timer
+{
+	background-color: rgba(255,255,255,0.5);
+	font-family: 'Caveat Brush', cursive;
+	color:rgba(0,0,0,0.8);
+	font-size: 19px;
+}
+
+.customer_details_container .worker_bar
+{
+	height:500px;
+}
+
+.customer_details_container .worker_bar_action
+{
+	position: absolute;
+	top:150px;
+	left:20px;
+	right:20px;
+	bottom:auto;
+	text-align: center;
+	padding:0px;
+}
+
+.customer_details_container .worker_bar_action .worker_action_image
+{
+	display: inline-block;
+	width:100px;
+	height:100px;
+	background-size: auto 104px;
+	font-size:24px;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+.customer_button.hidden,
+.worker_bar_timer.hidden,
+.worker_bar_complete_button.hidden,
+.worker_bar_details_button.hidden,
+.worker_action_image.hidden
+{
+	display:none;
+}
+
+.idle_text
+{
+	color: rgba(150,100,100,0.9);
+}
+
+/*########################################################### worker details #############################################################*/
+
+.action_details_container,
+.worker_details_container
+{
+	position: absolute;
+	top:115px;
+	left:70px;
+	right:70px;
+	bottom:65px;
+	text-align: left;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding:10px;
+	vertical-align: middle;
+}
+
+@media only screen and (max-width:800px) {
+	.action_details_container,
+	.worker_details_container
+	{
+		left:20px;
+		right:20px;
+	}
+}
+
+.worker_details_container .edit_button
+{
+	font-size: 50px;
+}
+
+.single_worker_upgrade_cost,
+.single_worker_upgrade_name,
+.worker_details_name_edit,
+.worker_details_name
+{
+	font-family: 'Caveat Brush', cursive;
+	color:rgba(0,0,0,0.8);
+	font-size: 50px;
+	margin-left:10px;
+}
+
+.worker_details_name_edit
+{
+	display: inline-block;
+	background-color: rgba(255,255,255,0.1);
+	border:none;
+	width:250px;
+	padding:0px;
+}
+
+.worker_details_name_container,
+.worker_upgrades
+{
+	display:block;
+	float: left;
+	clear:both;
+	text-align: left;
+	margin-bottom:20px;
+}
+
+.worker_details_actions_container
+{
+	float: right;
+	width:50%;
+	height:500px;
+	background-color: rgba(255,255,255,0.5);
+	box-shadow:5px 5px 1px rgba(0,0,0,0.3);
+	overflow-x: hidden;
+	overflow-y: auto; 
+}
+
+@media only screen and (max-width:800px) {
+	.worker_details_actions_container
+	{
+		width:100%;
+		height:auto;
+		overflow: auto;
+		margin-top:0px;
+	}
+}
+
+.worker_details_actions_tab,
+.worker_details_training_tab
+{
+	width:50%;
+	float:left;
+	text-align: center;
+	font-family: 'Caveat Brush', cursive;
+	color:rgba(0,0,0,0.8);
+	font-size: 20px;
+	padding:5px;
+	cursor:pointer;
+	background-color:rgba(0,0,0,0);
+}
+
+.worker_details_actions_tab.active_false,
+.worker_details_training_tab.active_true
+{
+	background-color:rgba(0,0,0,0.3);
+}
+
+.worker_subtypes_container
+{
+	position: relative;
+	float:left;
+	width:100%;
+	text-align: center;
+	font-family: 'Caveat Brush', cursive;
+	color:rgba(0,0,0,0.8);
+	font-size: 30px;
+	padding-top:10px;
+	height:60px;
+	line-height:50px;
+}
+
+.worker_subtypes_container .next_button,
+.worker_subtypes_container .back_button
+{
+	position: absolute;
+	top:5px;
+	left:10px;
+	margin:0px;
+}
+
+.worker_subtypes_container .next_button
+{
+	left:auto;
+	right:10px;
+}
+
+.worker_details_actions
+{
+	clear:both;
+	padding-top:10px;
+	padding-bottom:10px;
+	text-align: center;
+}
+
+
+.single_worker_upgrade_info
+{
+	display: inline-block;
+	vertical-align: middle;
+	
+}
+
+.single_worker_upgrade_name
+{
+	font-size: 30px;
+}
+
+.single_worker_upgrade_cost
+{
+	font-size: 16px;
+}
+
+.worker_action_bar
+{
+	margin-bottom:-5px;
+	padding-left:15px;
+	font-family: 'Caveat Brush', cursive;
+	color:rgba(0,0,0,0.8);
+	font-size: 30px;
+	position: relative;
+	min-height:80px;
+	text-align: left;
+	padding-right:70px;
+	padding-top:5px;
+}
+
+.recipe_bar
+{
+	border-top: 2px solid rgba(0,0,0,0.3);
+}
+
+.worker_action_image
+{
+	cursor: pointer;
+	position: relative;
+	margin:5px;
+	display: inline-block;
+	background-position: center center;
+	background-size: auto 104px;
+	width:100px;
+	height:100px;
+	border:2px solid rgba(255,255,255,0.5);
+	border-radius: 5px;
+	box-shadow:5px 5px 1px rgba(0,0,0,0.3);
+	font-size:24px;
+	background-color:rgba(0,0,0,0.5);
+}
+
+.worker_action_image_small,
+.worker_action_bar .worker_action_image
+{
+	cursor: auto;
+	background-size: auto 60px;
+	width:60px;
+	height:60px;
+	font-size:16px;
+	margin:1px;
+	border:2px solid rgba(255,255,255,0.7);
+}
+
+.worker_action_image.action_type_combat
+{
+	font-size:20px;
+	padding-top:27px;
+}
+
+.worker_action_bar .worker_action_image.cost_image
+{
+	opacity: 0.6;
+}
+
+.worker_action_image_small.have_enough_false,
+.worker_action_bar .worker_action_image.cost_image.have_enough_false
+{
+	border:2px solid rgba(250,150,150,0.7);
+}
+
+.unknown_item_text,
+.action_item_earned,
+.action_item_owned
+{
+	position: absolute;
+	top:3px;
+	left:0px;
+	right:0px;
+	color:#fff;
+	font-family: 'Caveat Brush', cursive;
+	text-align: center;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.unknown_item_text
+{
+	font-size:30px;
+	top:10px;
+}
+
+.action_item_earned
+{
+	top:auto;
+	bottom:3px;
+	color:#ccc;
+}
+
+.have_enough_false .action_item_earned
+{
+	color:rgba(250,100,100,1);
+}
+
+.worker_action_name
+{
+	font-size: 30px;
+	padding-left:0px;
+	text-align: left;
+}
+
+.no_actions_text
+{
+	padding:5px;
+	padding-left:50px;
+	padding-right:50px;
+	padding-bottom:25px;
+	color:rgba(0,0,0,0.5);
+	font-family: 'Caveat Brush', cursive;
+	text-align: center;
+}
+
+.worker_action_description
+{
+	font-size: 20px;
+	display: none;
+}
+
+.view_action_button
+{
+	position: absolute;
+	bottom:20px;
+	right: 0px;
+}
+
+/*########################################################### action details #############################################################*/
+
+.back_to_worker_button
+{
+	position: absolute;
+	top:0px;
+	left:0px;
+}
+
+.action_details_name
+{
+	font-family: 'Caveat Brush', cursive;
+	color:rgba(0,0,0,0.8);
+	font-size: 30px;
+	text-align: left;
+	width:100%;
+}
+
+.action_details_description
+{
+	position: relative;
+	padding:10px;
+	padding-left:115px;
+	font-family: 'times';
+	font-size: 18px;
+	background-color:rgba(255,255,255,0.3);
+	box-shadow:5px 5px 1px rgba(0,0,0,0.3);
+	min-height:96px;
+}
+
+.action_details_description_image
+{
+	background-position: center center;
+	background-size: auto 114px;
+	position:absolute;
+	width:110px;
+	height:110px;
+	position: absolute;
+	left:-7px;
+	top:-7px;
+	border:2px solid rgba(255,255,255,0.5);
+	border-radius: 5px;
+	box-shadow:5px 5px 1px rgba(0,0,0,0.3);
+}
+
+.time_selection_container
+{
+	width:100%;
+	text-align: center;
+	margin-top:25px;
+
+}
+
+.actual_time
+{
+	display: inline-block;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:5px;
+	font-family: 'Caveat Brush', cursive;
+	color:rgba(0,0,0,0.8);
+	font-size:45px;
+	min-width:200px;
+}
+
+@media only screen and (max-width:800px) {
+	.actual_time
+	{
+		width:100%;
+	}
+}
+
+.start_action_button
+{
+	width:220px;
+	float:none;
+	display: block;
+	margin:auto;
+	margin-top:40px;
+}
+
+.claim_action_container .start_action_button
+{
+	display: inline-block;
+	margin-top:0px;
+}
+
+/*########################################################### claim actions #############################################################*/
+
+.action_loot
+{
+	width:100%;
+	text-align: center;
+	margin-bottom:50px;
+}
+
+@keyframes hide_for_a_while {
+    0%   {
+    	display: none;
+        opacity:0;
+    }
+    100%   {
+    	display: none;
+        opacity:0;
+    }
+}
+
+.claim_action_container button
+{
+	animation-name: hide_for_a_while;
+    animation-duration: 1s;
+}
+
+/*########################################################### training #############################################################*/
+
+.worker_training_details_container
+{
+	margin:auto;
+	width:50%;
+	height:500px;
+	background-color: rgba(255,255,255,0.5);
+	box-shadow:5px 5px 1px rgba(0,0,0,0.3);
+	overflow-x: hidden;
+	overflow-y: auto; 
+	font-family: 'Caveat Brush', cursive;
+	color:rgba(0,0,0,0.8);
+	font-size:24px;
+	padding:20px;
+	padding-bottom:30px;
+	text-align:left;
+}
+
+.training_name
+{
+	width:100%;
+	font-size:42px;
+}
+
+.training_description
+{
+	width:100%;
+	padding-bottom:20px;
+}
+
+
+
+@media only screen and (max-width:800px) {
+	.worker_training_details_container
+	{
+		width:100%;
+		height:auto;
+		overflow: auto;
+		margin-top:25px;
+	}
+}
+
+.unit
+{
+	font-family: 'Caveat Brush', cursive;
+	margin:2px;
+	width:150px;
+	height:150px;
+	border-radius:5px;
+	text-align:center;
+	padding:10px;
+	position:relative;
+	overflow:hidden;
+	border:3px solid rgba(255,255,255,0.5);
+	display:inline-block;
+	box-shadow:inset 0px -10px 15px -10px rgba(0,0,0,0.2), inset 0px 0px 1px 2px rgba(0,0,0,0.3), 0px 0px 2px 1px rgba(0,0,0,0.3);
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	line-height: 1;
+	color:#fff;
+	background-size: auto 156px;
+	background-position:center;
+	opacity:0.9;
+	background-color:rgba(0,0,0,0.5);
+	transform-origin:center;
+}
+
+.unit_name
+{
+	position: absolute;
+	display:block;
+	bottom:9px;
+	left:5px;
+	right:5px;
+	text-align: center;
+	z-index:2;
+	font-size:20px;
+	line-height:0.8;
+	color:#fff;
+}
+
+.health_container
+{
+	position: absolute;
+	bottom:0px;
+	right:0px;
+	left:0px;
+	height:10px;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.health_bar
+{
+	position: absolute;
+	bottom:0px;
+	left:0px;
+	height:10px;
+	width:100%;
+	background-color: rgba(255,0,0,0.5);
+}
+
+
+{
+
+}
+
+@keyframes death {
+    0%   {
+    	transform:rotate(0deg) scale(1,1);
+		opacity:1;
+    }
+
+    100%   {
+		transform:rotate(500deg) scale(0,0);
+		opacity:0;
+    }
+}
+
+.unit.dead
+{
+	/*-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;*/
+	animation-name: death;
+    animation-duration: 1s;
+	transform-origin:center center;
+	transform:rotate(500deg) scale(0,0);
+	opacity:0;
+}

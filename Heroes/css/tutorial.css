@@ -1,0 +1,50 @@
+.tutorial_screen
+{
+	position:absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	bottom:0px;
+	background-color:rgba(0,0,0,0.9);
+	opacity:0;
+	display: none;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	z-index:10000;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	font-family: 'Caveat Brush', cursive;
+	color:#fff;
+	font-size:36px;
+	padding:20px;
+}
+
+.tutorial_screen.active
+{
+	display:block;
+	opacity:1;
+}
+
+.close_tutorial
+{
+	position:absolute;
+	bottom:20px;
+	right:20px;
+	width:240px;
+	height:40px;
+	text-align: center;
+	padding-top:14px;
+	font-size: 24px;
+	margin-bottom:3px;
+	margin-right: 3px;
+	background-color:rgba(255,255,255,0.3);
+	border-radius:5px;
+	cursor:pointer;
+	font-family: 'Caveat Brush', cursive;
+}
+
+.close_tutorial:hover
+{
+	background-color:rgba(255,255,255,0.8);
+}

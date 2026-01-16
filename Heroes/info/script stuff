@@ -1,0 +1,18 @@
+
+
+########################### LOCAL storage
+
+if (typeof(Storage) !== "undefined") {
+    console.log('Web Storage supported!');
+} else {
+    console.log('Sorry! No Web Storage support..');
+}
+
+
+document.getElementById("result").innerHTML = localStorage.heroesincremental;
+	localStorage.removeItem("heroesincremental");
+
+################################## ARRAYS
+
+gamedata['b'] = {};
+gamedata['b']['t'] = 100;

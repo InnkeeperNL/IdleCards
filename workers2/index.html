@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width">
+	<script src="js/lib/jquery.js"></script>
+	<script src="js/lib/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="js/functions/general.js?v=1.000000"></script>
+	<script src="js/functions/animations.js?v=1.000000"></script>	
+	<script src="js/data/config.js?v=1.000000"></script>
+	<script src="js/data/locations.js?v=1.000000"></script>
+	<script src="js/data/workers.js?v=1.000000"></script>
+	<script src="js/data/items.js?v=1.000000"></script>
+	<script src="js/data/actions.js?v=1.000000"></script>
+	<script src="js/data/customers.js?v=1.000000"></script>
+	<script src="js/data/sounds.js?v=1.000000"></script>
+	<script src="js/data/abilities.js?v=1.000000"></script>
+	
+	<script src="js/floating_text.js?v=1.000000"></script>
+	<script src="js/localstorage.js?v=1.000000"></script>
+	<script src="js/workers.js?v=1.000000"></script>
+	<script src="js/items.js?v=1.000000"></script>
+	<script src="js/inventory.js?v=1.000000"></script>
+	<script src="js/shop.js?v=1.000000"></script>
+	<script src="js/locations.js?v=1.000000"></script>
+	<script src="js/sounds.js?v=1.000000"></script>
+	<script src="js/settings.js?v=1.000000"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/main.css?v=1.000000">
+	<link rel="stylesheet" type="text/css" href="css/floating_text.css?v=1.000000">
+	<link rel="stylesheet" type="text/css" href="css/shop.css?v=1.000000">
+	<link rel="stylesheet" type="text/css" href="css/workers.css?v=1.000000">
+	<link rel="stylesheet" type="text/css" href="css/locations.css?v=1.000000">
+	<link rel="stylesheet" href="js/lib/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+</head>
+<body>
+	<div class="main_window">
+		<div class="bg paper_bg"></div>
+		<div id="content_home" class="page_container">
+			<div class="bg shop_bg"></div>
+			<div class="top_text coins_container"></div>
+			<div class="shop_container clear_me">
+			</div>
+			<div class="bottom_text customer_counter_container"></div>
+		</div>
+		<div id="content_customer" class="page_container">
+			<div class="bg shop_bg"></div>
+			<div class="top_text coins_container"></div>
+			<div class="customer_details_container clear_me">
+			</div>
+			<div class="bottom_text customer_counter_container"></div>
+		</div>
+		
+		<div id="content_workers" class="page_container">
+			<div class="top_text coins_container"></div>
+			<div class="workers_container clear_me">
+			</div>
+			<div class="bottom_text new_worker_button_container"></div>
+		</div>
+		<div id="content_inventory" class="page_container">
+			<div class="bg"></div>
+			<div class="top_text locks_container"></div>
+			<div class="inventory_container clear_me">
+			</div>
+			<div class="inventory_filters_container">
+				
+				<button class="square_button sellable_button money_button" onclick="toggle_filter('sellable')">&nbsp;</button>
+				<button class="square_button producable_button craft_button" onclick="toggle_filter('producable')">&nbsp;</button>
+				<button class="square_button locked_button lock_button" onclick="toggle_filter('locked')">&nbsp;</button>
+				<button class="square_button have_0_button empty_button" onclick="toggle_filter('have_0')">0</button>
+			</div>
+			<div class="inventory_page_container"><span class="page_back" onclick="adjust_inventory_page(-1)"><</span> <span class="page_number"></span><span class="page_further" onclick="adjust_inventory_page(1)">></span></div>
+		</div>
+		<div id="content_worker_training" class="page_container">
+			<div class="bg worker_details_bg"></div>
+			<div class="top_text coins_container"></div>
+			<div class="worker_training_container clear_me">
+			</div>
+		</div>
+		<div id="content_worker_details" class="page_container">
+			<div class="bg worker_details_bg"></div>
+			<div class="top_text coins_container"></div>
+			<div class="worker_details_container clear_me">
+			</div>
+		</div>
+		<div id="content_train_worker" class="page_container">
+			<div class="bg worker_details_bg"></div>
+			<div class="top_text coins_container"></div>
+			<div class="train_worker_container clear_me">
+			</div>
+		</div>
+		<div id="content_action_details" class="page_container">
+			<div class="bg worker_details_bg"></div>
+			<div class="top_text coins_container"></div>
+			<div class="action_details_container clear_me">
+			</div>
+		</div>
+		<div id="content_claim_action" class="page_container">
+			<div class="bg worker_details_bg"></div>
+			<div class="claim_action_container clear_me">
+			</div>
+		</div>
+		
+		<div id="content_locations" class="page_container">
+			<div class="locations_container clear_me">
+			</div>
+			<div class="inventory_page_container"><span class="page_back" onclick="adjust_locations_page(-1)"><</span> <span class="page_number"></span><span class="page_further" onclick="adjust_locations_page(1)">></span></div>
+		</div>
+		<div id="content_location_details" class="page_container">
+			<div class="location_details_container clear_me">
+			</div>
+		</div>
+		<div id="content_settings" class="page_container">
+			<div class="options_container">
+				<button class="sound_button square_button" onclick="toggle_sound();show_settings();">&nbsp;</button> Sound<br/><br/>
+				<button class="menu_button slim delete_button danger" onclick="delete_account()" data-target-content="home">&nbsp;</button> Reset account<br/>
+			</div>
+		</div>
+		<div class="menu_container">
+			<div class="page_section">
+				<button class="menu_button slim menu_button_home" data-target-content="home">&nbsp;</button>
+				<button class="menu_button slim menu_button_workers" data-target-content="workers">&nbsp;</button>
+				<button class="menu_button slim menu_button_locations" data-target-content="locations">&nbsp;</button>
+				<button class="menu_button slim inventory_button" data-target-content="inventory">&nbsp;</button>
+				<button class="menu_button slim menu_button_settings" data-target-content="settings">&nbsp;</button>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+
+	
+	window.onerror = function(msg, url, linenumber) {
+		if(test_mode == false)
+		{
+		    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+		    return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	$(document).ready(function() {
+		
+		$('body').on('click', '.menu_button', function() {
+		    $('.menu_button.active').removeClass('active');
+			$(this).addClass('active');
+			play_sound_group('click');
+			show_content($(this).attr('data-target-content'));
+		});
+	});
+
+	var last_content = 'home';
+	var current_content = 'home';
+
+	function show_last_content(){
+		show_content(last_content);
+	}
+
+	function update_last_content(new_content){
+		last_content = current_content;
+		current_content = new_content;
+	}
+
+	function clear_old_content(){
+		$('.clear_me').html('');
+	}
+
+	function show_content(content_id){
+		if(content_id == 'back'){content_id = last_content;}
+		if(content_id == 'current'){content_id = current_content;}
+		update_last_content(content_id);
+		clear_old_content();
+		//console.log(content_id);
+		if(content_id == undefined){content_id = 'home';}
+		$('.page_container.active').removeClass('active');
+		$('.menu_button_' + content_id).addClass('active');
+		$('#content_' + content_id).addClass('active');
+
+		var possible_extra_function = window['show_' + content_id]; 
+		if (typeof possible_extra_function === "function") possible_extra_function();
+	};
+	
+	var global_timer;
+	var last_global_tick = new Date();
+
+	$(document).ready(function(){
+		gamedata = loadLocalStorage();
+		show_content();
+		check_global_timer();
+	});
+
+	var tick_time = 250;
+	function check_global_timer(){
+
+		var time_passed = new Date() - last_global_tick;
+		last_global_tick = new Date();
+		//check_ticks(time_passed);
+		check_action_timers();
+		check_new_customers();
+		
+		var next_tick_delay = tick_time;
+		/*if(time_passed < tick_time)
+		{
+			next_tick_delay = tick_time;
+		}*/
+		if(time_passed > (tick_time * 1.1))
+		{
+			next_tick_delay = tick_time + ((time_passed - tick_time) / 2);
+		}
+		if(next_tick_delay > 1000)
+		{
+			next_tick_delay = 1000;
+		}
+
+		global_timer = setTimeout(function(){
+			check_global_timer();
+		},next_tick_delay);
+	}
+
+</script>
+</html>
+

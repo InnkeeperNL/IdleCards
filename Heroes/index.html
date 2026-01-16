@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<script src="js/lib/jquery.js"></script>
+	<script src="js/data/config.js"></script>
+	<script src="js/localstorage.js"></script>
+	<script src="js/functions/general.js"></script>
+	<script src="js/functions/find_target.js"></script>
+	<script src="js/data/units.js"></script>
+	<script src="js/data/locations.js"></script>
+	<script src="js/data/location_2.js"></script>
+	<script src="js/data/abilities.js"></script>
+	<script src="js/data/items.js"></script>
+	<script src="js/data/recipes.js"></script>
+	<script src="js/data/treasure.js"></script>
+	<script src="js/data/trade.js"></script>
+	<script src="js/data/quests.js"></script>
+	<script src="js/data/quests_2.js"></script>
+	<script src="js/data/available_gear.js"></script>
+	<script src="js/data/gear_types.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/explore.css">
+	<link rel="stylesheet" type="text/css" href="css/tutorial.css">
+	<link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet">
+</head>
+<body>
+	<div class="clock_speed" style="display:none"><div class="clock_speed_bar"></div></div>
+	<div class="main_window">
+		<div class="crosshair"></div>
+		<div class="menu_container">
+			<button data-target-content="home">HOME</button>
+			<button class="active" data-target-content="explore" onclick="show_possible_locations()">TRAVEL</button>
+
+			<button data-target-content="inventory" onclick="show_inventory()">INVENTORY</button>
+			<button data-target-content="crafting" onclick="show_crafting()">TRADE</button>
+			<button data-target-content="units" onclick="show_units()">UNITS</button>
+			<button data-target-content="quests" onclick="show_quests()">QUESTS <span class="quest_complete_count"></span></button>
+			<button data-target-content="spells" onclick="show_all_spells()">SPELLS</button>
+			<button data-target-content="gear" onclick="show_gear()">GEAR</button>
+			<button data-target-content="vendor" onclick="show_vendor()">VENDOR</button>
+			<button onclick="clearLocalStorage()">CLEAR DATA</button>
+		</div>
+		<div class="content_container">
+			<div class="tutorial_screen"></div>
+			<div id="content_home" class="page_container">
+				<h2>Home</h2>
+				<br/>
+				<button class="explore_button">Explore!</button><br class="breaker"/>
+				<br/>
+				Click the explore button to look for treasure, people to trade with and enemies to fight.
+			</div>
+			<div id="content_explore" class="page_container active">
+				<div class="explore_button_container">
+					<div class="chapter no_chapters">
+						<div class="location_bg"></div>
+						<h3 class="chapter_name"></h3>
+						<span class="chapter_description"></span>
+						<div class="specific_fights_container"></div>
+						<button class="explore_button" onclick='specific_explore_chain=0;explore();'>Explore!</button>
+						<div class="menu">
+							<button class="crafting_button main_button blue hidden" onclick="current_crafting_type=undefined,show_content('old_crafting'),show_crafting(),clear_crafting()">Trade</button>
+							<button class="quest_button main_button blue" onclick="show_content('quests'),show_quests()">Quests<span class="quest_complete_count"></span></button>
+							<br style="clear:both;"/>
+							<br/>
+							<button class="vendor_button main_button hidden" onclick="show_content('vendor'),show_vendor()">Inventory</button>
+							<button class="crafting_button green main_button hidden" onclick="show_content('crafting_skills'),show_crafting_skills()">Craft</button>
+							<button class="unit_button main_button hidden" onclick="show_content('units'),show_units()">Units</button>
+							<button class="fusing_button main_button hidden" onclick="show_content('fusing'),show_fusing()">Fusing</button>
+							<button class="gear_button main_button hidden" onclick="show_content('gear'),show_gear()">Hero</button>
+							<button class="spells_button main_button hidden" onclick="show_content('spells'),show_all_spells()">Spells</button>
+						</div>
+						<div class="chapter_list"></div>
+					</div>
+					<div class="areas_button active" onclick="show_possible_chapters()">Locations</div>
+					<div class="locations_button passive" onclick="show_possible_locations()">Areas</div>
+					<div class="regions_button passive" onclick="show_possible_regions()">Regions</div>
+					<div class="possible_locations">
+					</div>
+					<button class="close_button main_button" onclick="clearLocalStorage()">CLEAR DATA</button>
+				</div>
+				
+			</div>
+			
+			<div id="content_inventory" class="page_container">
+				<h2>Inventory</h2>
+				<button class="close_button main_button" data-target-content="explore" onclick="show_content('explore'),show_possible_chapters()">X</button>
+				<div class="current_inventory">
+				</div>
+			</div>
+			<div id="content_old_crafting" class="page_container">
+				<h2>Trade</h2>
+				<div class="show_craftable"><input id="show_craftable" type="checkbox" onclick="show_crafting()"/>Show available</div>
+				<button class="close_button main_button" data-target-content="explore" onclick="show_content('explore'),show_possible_chapters()">X</button>
+				<div class="available_recipes"></div>
+				<div class="recipes">
+					<div class="recipe_detail"></div>
+					
+				</div>
+				<div class="details"></div>
+			</div>
+			<div id="content_crafting_skills" class="page_container">
+				<div class="crafting_bg"></div>
+				<h2>Crafting</h2>
+				<button class="close_button main_button" data-target-content="explore" onclick="show_content('explore'),show_possible_chapters()">X</button>
+				<div class="available_skills"></div>
+			</div>
+			<div id="content_crafting" class="page_container">
+				<div class="crafting_bg"></div>
+				<h2 onclick="show_content('crafting_skills');show_crafting_skills()"></h2>
+				<div class="skill_level_bar_container"><div class="skill_level_bar"></div></div>
+				<button class="close_button main_button" data-target-content="explore" onclick="show_content('explore'),show_possible_chapters()">X</button>
+				<div class="available_skill_recipes"></div>
+				<div class="recipe_detail"></div>
+				<div class="recipe_amount_section hidden">
+					<input class="craft_amount" type="number" onkeyup="show_single_recipe()" onchange="show_single_recipe()" onclick="show_single_recipe()" value="1">
+				</div>
+			</div>
+			<div id="content_units" class="page_container">
+				<button class="close_button main_button" data-target-content="explore" onclick="show_content('explore'),show_possible_chapters()">X</button>
+				<h2>Units</h2>
+				<div class="active_units"></div>
+				<div class="owned_units"></div>
+				<div class="details"></div>
+			</div>
+			<div id="content_spells" class="page_container">
+				<button class="close_button main_button" data-target-content="explore" onclick="show_content('explore'),show_possible_chapters()">X</button>
+				<h2>Spells</h2>
+				<div class="active_spells"></div>
+				<div class="owned_spells"></div>
+				<div class="spell_details"></div>
+			</div>
+			<div id="content_gear" class="page_container">
+				<div class="gear_bg"></div>
+				<button class="close_button main_button" data-target-content="explore" onclick="show_content('explore'),show_possible_chapters()">X</button>
+				<h2>Your hero</h2>
+				<div class="active_gear"></div>
+				<div class="owned_gear"></div>
+				<!-- <div class="details"></div> -->
+			</div>
+			<div id="content_fusing" class="page_container">
+				<button class="close_button main_button" data-target-content="explore" onclick="show_content('explore'),show_possible_chapters()">X</button>
+				<h2>Fusing</h2>
+				<div class="fusing_units"></div>
+				<div class="fusable_units"></div>
+				<div class="details"></div>
+			</div>
+			<div id="content_quests" class="page_container">
+				<div class="paper_bg"></div>
+				<h2>Quests</h2>
+				<button class="close_button main_button" data-target-content="explore" onclick="show_content('explore'),show_possible_chapters()">X</button>
+				<!-- <div class="owned_locations"></div> -->
+				<div class="quest_list">
+					<div class="complete_quests"></div>
+					<div class="new_quests"></div>
+					<div class="busy_quests"></div>
+				</div>
+				<div class="quest_details"></div>
+				<!-- <div class="details"></div> -->
+			</div>
+			<div id="content_vendor" class="page_container">
+				<button class="close_button main_button" data-target-content="explore" onclick="show_content('explore'),show_possible_chapters()">X</button>
+				<h2>Inventory</h2>
+				<div class="select_sell_amount">
+					Current coins: <span class="owned_coin"></span><br/>
+					<!-- Sell amount: <button class="vendor_amount"></button><br/>
+					<button class="sell_trash">Sell all trash</button> -->
+				</div>
+				<div class="vendor_list"></div>
+				<div class="details"></div>
+			</div>
+		</div>
+		<div class="treasure_container">
+			<div class="treasure_image"></div>
+			<h2 class="treasure_title"></h2>
+			<p class="treasure_description"></p>
+			<div class="treasure_loot"></div>
+			<div class="breaker"></div>
+			<div class="bottom_button_container">
+				<button class="claim_treasure_button">Claim and continue</button>
+				<button class="claim_treasure_button home_button">Claim and go home</button>
+			</div>
+		</div>
+		<div class="trade_container">
+			<div class="trade_image"></div>
+			<div class="recipe_detail"></div>
+			<div class="breaker"></div>
+			<div class="bottom_button_container">
+				<button class="claim_trade_button explore_button">Trade and continue</button>
+				<button class="claim_trade_button home_button">Trade and go home</button>
+				<button class="explore_button" onclick='explore();'>Continue</button>
+				<button class="home_button">Go home</button>
+			</div>
+		</div>
+		<div class="quest_container">
+			<div class="quest_image"></div>
+			<h2 class="quest_title"></h2>
+			<p class="quest_description"></p>
+			<div class="quest_loot"></div>
+			<div class="breaker"></div>
+			<div class="bottom_button_container">
+				<button class="explore_button" onclick='explore();'>Accept quest and continue</button>
+				<button class="home_button">Go home</button>
+			</div>
+		</div>
+		<div class="combat_container">
+			<div class="combat_container_bg"></div>
+			<div class="allies">
+				<div class="unit ally_1" onclick="set_player_target('ally', 1)">
+					<div class="death"></div>
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="buffs">
+						<div class="buff buff_strength">S<div class="buff_amount">0</div></div><div class="buff buff_intellect">I<div class="buff_amount">0</div></div><div class="buff buff_speed">A<div class="buff_amount">0</div></div><div class="buff buff_defense">D<div class="buff_amount">0</div></div><div class="buff buff_resistance">R<div class="buff_amount">0</div></div>
+					</div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+					</div>
+					<div class="xp_bar_container">
+						<div class="xp_bar"></div>
+					</div>
+					<div class="unit_name"></div>
+					<div class="shield"></div>
+					<div class="unit_level"></div>
+				</div>
+				<div class="unit ally_2" onclick="set_player_target('ally', 2)">
+					<div class="death"></div>
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="buffs">
+						<div class="buff buff_strength">S<div class="buff_amount">0</div></div><div class="buff buff_intellect">I<div class="buff_amount">0</div></div><div class="buff buff_speed">A<div class="buff_amount">0</div></div><div class="buff buff_defense">D<div class="buff_amount">0</div></div><div class="buff buff_resistance">R<div class="buff_amount">0</div></div>
+					</div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+					</div>
+					<div class="xp_bar_container">
+						<div class="xp_bar"></div>
+					</div>
+					<div class="unit_name"></div>
+					<div class="shield"></div>
+					<div class="unit_level"></div>
+				</div>
+				<div class="unit ally_3" onclick="set_player_target('ally', 3)">
+					<div class="death"></div>
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="buffs">
+						<div class="buff buff_strength">S<div class="buff_amount">0</div></div><div class="buff buff_intellect">I<div class="buff_amount">0</div></div><div class="buff buff_speed">A<div class="buff_amount">0</div></div><div class="buff buff_defense">D<div class="buff_amount">0</div></div><div class="buff buff_resistance">R<div class="buff_amount">0</div></div>
+					</div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+					</div>
+					<div class="xp_bar_container">
+						<div class="xp_bar"></div>
+					</div>
+					<div class="unit_name"></div>
+					<div class="shield"></div>
+					<div class="unit_level"></div>
+				</div>
+				<div class="unit ally_4"  onclick="set_player_target('ally', 4)">
+					<div class="death"></div>
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="buffs">
+						<div class="buff buff_strength">S<div class="buff_amount">0</div></div><div class="buff buff_intellect">I<div class="buff_amount">0</div></div><div class="buff buff_speed">A<div class="buff_amount">0</div></div><div class="buff buff_defense">D<div class="buff_amount">0</div></div><div class="buff buff_resistance">R<div class="buff_amount">0</div></div>
+					</div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+					</div>
+					<div class="xp_bar_container">
+						<div class="xp_bar"></div>
+					</div>
+					<div class="unit_name"></div>
+					<div class="shield"></div>
+					<div class="unit_level"></div>
+				</div>
+				<div class="unit ally_5" onclick="set_player_target('ally', 5)">
+					<div class="death"></div>
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="buffs">
+						<div class="buff buff_strength">S<div class="buff_amount">0</div></div><div class="buff buff_intellect">I<div class="buff_amount">0</div></div><div class="buff buff_speed">A<div class="buff_amount">0</div></div><div class="buff buff_defense">D<div class="buff_amount">0</div></div><div class="buff buff_resistance">R<div class="buff_amount">0</div></div>
+					</div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+					</div>
+					<div class="xp_bar_container">
+						<div class="xp_bar"></div>
+					</div>
+					<div class="unit_name"></div>
+					<div class="shield"></div>
+					<div class="unit_level"></div>
+				</div>
+			</div>
+			<div class="enemies">
+				<div class="unit enemy_1" onclick="set_player_target('enemy', 1)">
+					<div class="death"></div>
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="buffs">
+						<div class="buff buff_strength">S<div class="buff_amount">0</div></div><div class="buff buff_intellect">I<div class="buff_amount">0</div></div><div class="buff buff_speed">A<div class="buff_amount">0</div></div><div class="buff buff_defense">D<div class="buff_amount">0</div></div><div class="buff buff_resistance">R<div class="buff_amount">0</div></div>
+					</div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+					</div>
+					<div class="unit_name"></div>
+					<div class="shield"></div>
+					<div class="unit_level"></div>
+				</div>
+				<div class="unit enemy_2" onclick="set_player_target('enemy', 2)">
+					<div class="death"></div>
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="buffs">
+						<div class="buff buff_strength">S<div class="buff_amount">0</div></div><div class="buff buff_intellect">I<div class="buff_amount">0</div></div><div class="buff buff_speed">A<div class="buff_amount">0</div></div><div class="buff buff_defense">D<div class="buff_amount">0</div></div><div class="buff buff_resistance">R<div class="buff_amount">0</div></div>
+					</div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+					</div>
+					<div class="unit_name"></div>
+					<div class="shield"></div>
+					<div class="unit_level"></div>
+				</div>
+				<div class="unit enemy_3" onclick="set_player_target('enemy', 3)">
+					<div class="death"></div>
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="buffs">
+						<div class="buff buff_strength">S<div class="buff_amount">0</div></div><div class="buff buff_intellect">I<div class="buff_amount">0</div></div><div class="buff buff_speed">A<div class="buff_amount">0</div></div><div class="buff buff_defense">D<div class="buff_amount">0</div></div><div class="buff buff_resistance">R<div class="buff_amount">0</div></div>
+					</div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+					</div>
+					<div class="unit_name"></div>
+					<div class="shield"></div>
+					<div class="unit_level"></div>
+				</div>
+				<div class="unit enemy_4" onclick="set_player_target('enemy', 4)">
+					<div class="death"></div>
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="buffs">
+						<div class="buff buff_strength">S<div class="buff_amount">0</div></div><div class="buff buff_intellect">I<div class="buff_amount">0</div></div><div class="buff buff_speed">A<div class="buff_amount">0</div></div><div class="buff buff_defense">D<div class="buff_amount">0</div></div><div class="buff buff_resistance">R<div class="buff_amount">0</div></div>
+					</div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+					</div>
+					<div class="unit_name"></div>
+					<div class="shield"></div>
+					<div class="unit_level"></div>
+				</div>
+				<div class="unit enemy_5" onclick="set_player_target('enemy', 5)">
+					<div class="death"></div>
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="buffs">
+						<div class="buff buff_strength">S<div class="buff_amount">0</div></div><div class="buff buff_intellect">I<div class="buff_amount">0</div></div><div class="buff buff_speed">A<div class="buff_amount">0</div></div><div class="buff buff_defense">D<div class="buff_amount">0</div></div><div class="buff buff_resistance">R<div class="buff_amount">0</div></div>
+					</div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+					</div>
+					<div class="unit_name"></div>
+					<div class="shield"></div>
+					<div class="unit_level"></div>
+				</div>
+				<div class="unit enemy_6" onclick="set_player_target('enemy', 6)">
+					<div class="death"></div>
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="buffs">
+						<div class="buff buff_strength">S<div class="buff_amount">0</div></div><div class="buff buff_intellect">I<div class="buff_amount">0</div></div><div class="buff buff_speed">A<div class="buff_amount">0</div></div><div class="buff buff_defense">D<div class="buff_amount">0</div></div><div class="buff buff_resistance">R<div class="buff_amount">0</div></div>
+					</div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+					</div>
+					<div class="unit_name"></div>
+					<div class="shield"></div>
+					<div class="unit_level"></div>
+				</div>
+				<div class="unit enemy_7" onclick="set_player_target('enemy', 7)">
+					<div class="death"></div>
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="buffs">
+						<div class="buff buff_strength">S<div class="buff_amount">0</div></div><div class="buff buff_intellect">I<div class="buff_amount">0</div></div><div class="buff buff_speed">A<div class="buff_amount">0</div></div><div class="buff buff_defense">D<div class="buff_amount">0</div></div><div class="buff buff_resistance">R<div class="buff_amount">0</div></div>
+					</div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+					</div>
+					<div class="unit_name"></div>
+					<div class="shield"></div>
+					<div class="unit_level"></div>
+				</div>
+				<div class="unit enemy_8" onclick="set_player_target('enemy', 8)">
+					<div class="death"></div>
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="buffs">
+						<div class="buff buff_strength">S<div class="buff_amount">0</div></div><div class="buff buff_intellect">I<div class="buff_amount">0</div></div><div class="buff buff_speed">A<div class="buff_amount">0</div></div><div class="buff buff_defense">D<div class="buff_amount">0</div></div><div class="buff buff_resistance">R<div class="buff_amount">0</div></div>
+					</div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+					</div>
+					<div class="unit_name"></div>
+					<div class="shield"></div>
+					<div class="unit_level"></div>
+				</div>
+				<div class="unit enemy_9" onclick="set_player_target('enemy', 9)">
+					<div class="death"></div>
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="buffs">
+						<div class="buff buff_strength">S<div class="buff_amount">0</div></div><div class="buff buff_intellect">I<div class="buff_amount">0</div></div><div class="buff buff_speed">A<div class="buff_amount">0</div></div><div class="buff buff_defense">D<div class="buff_amount">0</div></div><div class="buff buff_resistance">R<div class="buff_amount">0</div></div>
+					</div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+					</div>
+					<div class="unit_name"></div>
+					<div class="shield"></div>
+					<div class="unit_level"></div>
+				</div>
+				<div class="unit enemy_10" onclick="set_player_target('enemy', 10)">
+					<div class="death"></div>
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="buffs">
+						<div class="buff buff_strength">S<div class="buff_amount">0</div></div><div class="buff buff_intellect">I<div class="buff_amount">0</div></div><div class="buff buff_speed">A<div class="buff_amount">0</div></div><div class="buff buff_defense">D<div class="buff_amount">0</div></div><div class="buff buff_resistance">R<div class="buff_amount">0</div></div>
+					</div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+					</div>
+					<div class="unit_name"></div>
+					<div class="shield"></div>
+					<div class="unit_level"></div>
+				</div>
+			</div>
+			<div class="spells">
+				<button class="home_button">Go home</button>
+				<div class="unit ally ally_7 player" onclick="set_player_target('ally', 7)">
+					<div class="petrified"></div><div class="frozen"></div>
+					<div class="hp_bar_container">
+						<div class="hp_bar"></div>
+						<div class="hp_amount"></div>
+					</div>
+					<div class="shield"></div>
+					<div class="mana_bar_container">
+						<div class="mana_bar"></div>
+						<div class="mana_amount"></div>
+					</div>
+				</div>
+				<div class="current_spells"></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/spells.js"></script>
+<script src="js/gear.js"></script>
+<script src="js/combat.js"></script>
+<script src="js/explore.js"></script>
+<script src="js/achievements.js"></script>
+<script src="js/vendor.js"></script>
+<script src="js/crafting.js"></script>
+<script src="js/tutorial.js"></script>
+<script>
+
+	var gamedata = loadLocalStorage();
+	var current_crafting_type;
+
+	
+	check_completed_quests();
+	
+
+	//console.log(gamedata);
+
+	
+	$('.menu_container button').click(function(){
+		$('.menu_container button.active').removeClass('active');
+		$(this).addClass('active');
+		show_content($(this).attr('data-target-content'));
+	});
+
+	$('.location_choice').click(function(){
+		$('.location_choice').removeClass('active');
+		$(this).addClass('active');
+	});
+
+	function show_content(content_id){
+		$('.page_container.active').removeClass('active');
+		$('#content_' + content_id).addClass('active');
+	};
+	
+	var global_timer_active = false;
+	var last_time = new Date().getTime();
+	var worst_speed = 100;
+	var global_timer_timeout;
+	function set_global_timer(){
+		var new_time = new Date().getTime();
+		var time_elapsed = new_time - last_time;
+		if(time_elapsed > time_tick)
+		{
+			time_elapsed = time_tick;
+		}
+		/*$('.clock_speed_bar').css('width',Math.floor(time_tick / (new_time - last_time) * 100) + '%');
+		if(Math.floor(time_tick / (new_time - last_time) * 100) < worst_speed)
+		{
+			worst_speed = Math.floor(time_tick / (new_time - last_time) * 100);
+			$('.clock_speed_bar').html(worst_speed);
+		}*/
+		time_tick_reduction = time_elapsed / 5000;
+		player_time_tick_reduction = time_elapsed / 1000;
+		last_time = new_time;
+		if(global_timer_active == false){
+			if(combat_active == true)
+			{
+				resolve_combat();
+				gamedata['mana'] += get_attribute(7, 'allies','regeneration') * (player_time_tick_reduction) * mana_regen_factor;
+			}
+			else
+			{
+				gamedata['mana'] += get_player_attribute('regeneration') * (player_time_tick_reduction) * mana_regen_factor;
+			}
+			
+			gamedata['max_mana'] = get_player_attribute('max_mana');
+			$.each(gamedata['spells'], function(key, spell){
+				if(combat_active == true)
+				{
+					if(get_attribute(7, 'allies', 'attack_speed') > 0)
+					{
+						spell['cooldown'] -= player_time_tick_reduction * get_attribute(7, 'allies', 'attack_speed');
+					}
+
+					if(typeof(unit_abilities[key]['spell_cooldown']) != 'undefined')
+					{
+						var bar_height = ((spell['cooldown'] / unit_abilities[key]['spell_cooldown']) * 100);
+					}
+					else
+					{
+						var bar_height = ((spell['cooldown'] / unit_abilities[key]['cooldown']) * 100);
+					}
+
+					if(spell['active'] !== 0)
+					{
+						var can_cast = true;
+
+						if(player_target['side'] == 'ally')
+						{
+							var target_side = current_allies;
+						}
+						else
+						{
+							var target_side = current_enemies;
+						}
+						
+						if(bar_height > 100)
+						{
+							bar_height = 100;
+						}
+						if(bar_height > 0 || unit_abilities[spell['id']]['proc'] != 'basic' || (combat_active == true && (get_attribute(7, 'allies', 'speed') <= 0 || get_attribute(7, 'allies', 'frozen') !== 0 || get_attribute(7, 'allies', 'petrified') !== 0 )))
+						{
+							$('.spell_' + key).addClass('cooling_down');
+							can_cast = false;
+						}
+						else
+						{
+							$('.spell_' + key).removeClass('cooling_down');	
+						}
+						$('.spell_' + key + ' .spell_cooldown').css('height', bar_height + '%');
+
+						if(unit_abilities[spell['id']]['spell_target'] !== undefined && unit_abilities[spell['id']]['spell_target'] !== 'any' && unit_abilities[spell['id']]['spell_target'] !== player_target['side'])
+						{
+							can_cast = false;
+						}
+					
+						if(!$('.' + player_target['side'] + '_' + player_target['id']).hasClass('active') && (unit_abilities[spell['id']]['random_target'] == undefined || unit_abilities[spell['id']]['random_target'] == false))
+						{
+							can_cast = false;
+						}
+
+						if((unit_abilities[spell['id']]['can_target_dead'] == undefined || unit_abilities[spell['id']]['can_target_dead'] == false) && target_side[player_target['id']] !== undefined && target_side[player_target['id']]['current_hp'] <= 0 && (unit_abilities[spell['id']]['random_target'] == undefined || unit_abilities[spell['id']]['random_target'] == false))
+						{
+							can_cast = false;
+						}
+
+						var mana_cost = spell['cooldown'] * 10;
+						if(typeof(unit_abilities[spell['id']]['mana_cost']) != 'undefined')
+						{
+							mana_cost = unit_abilities[spell['id']]['mana_cost'];
+						}
+
+						if(mana_cost > gamedata['mana'])
+						{
+							can_cast = false;
+						}
+
+						if(current_allies[7]['current_hp'] <= 0)
+						{
+							can_cast = false;
+						}
+
+						if(can_cast == true)
+						{
+							$('.spell_' + key).css('opacity','1');
+						}
+						else
+						{
+							$('.spell_' + key).css('opacity','0.5');
+						}
+					}
+				}
+				else
+				{
+					spell['cooldown'] -= player_time_tick_reduction * (get_player_attribute('speed') / 10);
+				}
+				
+				
+				
+
+
+
+			});
+			if(gamedata['mana'] > gamedata['max_mana'])
+			{
+				gamedata['mana'] = gamedata['max_mana'];
+			}
+			$('.mana_bar').css('width',((gamedata['mana'] / gamedata['max_mana']) * 100) + '%');
+			$('.mana_amount').html(Math.floor(gamedata['mana']));
+
+			/*if(combat_active == true)
+			{
+				$('.current_spells .spell').each(function(){
+					var can_cast = true;
+					
+					if($('.' + player_target['side'] + '_' + player_target['id']).hasClass('dead') && $(this).attr('data-can-target-dead') == 'false')
+					{
+						can_cast = false;
+					}
+					if($(this).attr('data-random-target') == 'true')
+					{
+						can_cast = true;
+					}
+					if($(this).attr('data-mana-required') > gamedata['mana'] || combat_active == false)
+					{
+						can_cast = false;
+					}
+					if($(this).hasClass('empty'))
+					{
+						can_cast = false;
+					}
+					if(can_cast == true){
+						$(this).css('opacity','1');
+					}
+					else
+					{
+						$(this).css('opacity','0.5');
+					}
+				});
+			}*/
+			clearTimeout(global_timer_timeout);
+			global_timer_timeout = setTimeout(function(){
+				set_global_timer();
+			},time_tick);
+		}
+	}
+
+	function show_inventory(){
+		$('.current_inventory').html('');
+		$.each(gamedata['inventory'], function(key, amount) {
+			if(amount > 0){
+				$('.current_inventory').append('<div class="item ' + available_items[key]['subtype'] + ' quality_' + available_items[key]['quality'] + '" style="background-image:url(images/items/' + available_items[key]['image'] + ')">' + amount + '</div>');
+			}
+		});
+	}
+
+	function show_location_list(){
+		$('.owned_locations').html('');
+		$.each(gamedata['unlocked_locations'], function(location_id, level) {
+			$('.owned_locations').append('<div class="location_choice location_' + location_id + '" style="background-image:url(images/bg/' + locations[location_id]['image'] + ')" onclick="set_current_location(' + location_id + '),show_crafting()">' + locations[location_id]['name'] + '<span class="local_quest_complete_count">' + check_quests_complete_count(location_id, gamedata['explore_level']) + '</span></div>');
+		});
+		$('.location_' + gamedata['current_location']).addClass('active');
+	}
+
+	function clear_crafting(){
+		$('.recipes .recipe_detail').html('');
+		$('.recipe_amount_section').hide();
+	}
+
+	function count_units_owned(unit_id, equipped, level, specific_level){
+		var owned_amount = 0;
+		$.each(gamedata['units'], function(unit_key, unit){
+			if(unit['unit_id'] == unit_id && (equipped == true || (equipped == false && unit['slot'] == 0)) && (level == undefined || (level <= unit['level'] && specific_level == undefined ) || (level == unit['level'] && specific_level == true)))
+			{
+				owned_amount++;
+			}
+		});
+		return owned_amount;
+	}
+
+	function count_gear_owned(gear_id, equipped, level, specific_level){
+		var owned_amount = 0;
+		$.each(gamedata['gear'], function(gear_key, gear){
+			if(gear['gear_id'] == gear_id && (equipped == true || equipped == gear['active']) && (level == undefined || (level <= gear['level'] && specific_level == undefined ) || (level == gear['level'] && specific_level == true)))
+			{
+				owned_amount++;
+			}
+		});
+		return owned_amount;
+	}
+
+	var current_recipe_key = '';
+
+	
+
+	function craft_recipe(recipe_id){
+		var craft_xp = 0;
+		var recipe = recipes[recipe_id];
+		var cost_multiplier = $('.craft_amount').val();
+		var gear_level = $('.craft_amount').val();
+		if(recipe['reward_type'] == 'gear' || recipe['reward_type'] == 'unit')
+		{
+			var cost_multiplier = $('.craft_amount').val() * $('.craft_amount').val();
+		}
+
+		/*if(recipe['reward_type'] == 'unit')
+		{
+			cost_multiplier = 1;
+		}*/
+		
+		var can_craft = true;
+		$.each(recipe['cost'], function(item_id, amount){
+			if(typeof(gamedata['inventory'][item_id]) == 'undefined' || gamedata['inventory'][item_id] < Math.round(amount * cost_multiplier))
+			{
+				can_craft = false;
+			}
+		});
+		$.each(recipe['unit_cost'], function(item_id, amount){
+			amount *= gear_level;
+			var units_owned = count_units_owned(item_id, false, amount, true);
+
+			if(units_owned == 0)
+			{
+				can_craft = false;
+			}
+		});
+
+		$.each(recipe['gear_cost'], function(item_id, amount){
+			amount *= gear_level;
+			var gear_owned = count_gear_owned(item_id, true, amount, true);
+
+			if(gear_owned == 0)
+			{
+				can_craft = false;
+			}
+		});
+		$.each(recipe['required_gear'], function(item_id, amount){
+			amount *= gear_level;
+			var gear_owned = count_gear_owned(item_id, true, amount, undefined);
+
+			if(gear_owned == 0)
+			{
+				can_craft = false;
+			}
+		});
+		$.each(recipe['required_units'], function(item_id, amount){
+			amount *= gear_level;
+			var units_owned = count_units_owned(item_id, true, amount, undefined);
+
+			if(units_owned == 0)
+			{
+				can_craft = false;
+			}
+		});
+		if(can_craft == true)
+		{
+			$.each(recipe['unit_cost'], function(item_id, amount){
+				amount *= gear_level;
+				/*for (var i = amount - 1; i >= 0; i--) {*/
+					delete_unit_of_type(item_id, amount);
+				/*};*/	
+			});
+			$.each(recipe['gear_cost'], function(item_id, amount){
+				amount *= gear_level;
+				/*for (var i = amount - 1; i >= 0; i--) {*/
+					delete_gear_of_type(item_id, amount);
+				/*};*/
+			});
+			$.each(recipe['cost'], function(item_id, amount){
+				gamedata['inventory'][item_id] -= Math.round(amount * cost_multiplier);
+			});
+
+
+			////////////////////////// REWARDS
+			if(recipe['rewards'] == undefined)
+			{
+				apply_recipe_rewards(recipe, cost_multiplier, recipe['skill'], gear_level)
+			}
+			else
+			{
+				$.each(recipe['rewards'], function(reward_id, reward_details){
+					apply_recipe_rewards(reward_details, cost_multiplier, recipe['skill'], gear_level);
+				});
+			}
+
+			saveToLocalStorage();
+		}
+
+		if(recipe_id != 'sell_random_unequipped_gear')
+		{
+			show_single_recipe();
+		}
+	};
+
+	function apply_recipe_rewards(recipe, cost_multiplier, skill, gear_level){
+
+		var craft_xp = 0;
+		if(recipe['reward_type'] == 'unit')
+		{
+			if(available_units[recipe['reward_id']]['value'] != undefined){craft_xp += (available_units[recipe['reward_id']]['value'] / 10);}
+			addunit(recipe['reward_id'], (recipe['reward_amount'] * cost_multiplier), 0);
+		}
+		if(recipe['reward_type'] == 'item')
+		{
+			if(available_items[recipe['reward_id']]['value'] != undefined){craft_xp += (available_items[recipe['reward_id']]['value'] / 10 * recipe['reward_amount'] * cost_multiplier);}
+			gain_item(recipe['reward_id'], (recipe['reward_amount'] * cost_multiplier));
+		}
+		if(recipe['reward_type'] == 'spell')
+		{
+			
+			gain_spell(recipe['reward_id'], recipe['reward_amount']);
+			
+		}
+		if(recipe['reward_type'] == 'gear')
+		{
+			if(available_gear[recipe['reward_id']]['value'] != undefined){craft_xp += (available_gear[recipe['reward_id']]['value'] / 10 * gear_level);}
+			gain_gear(recipe['reward_id'], gear_level, recipe['gear_types']);
+		}
+		if(recipe['reward_type'] == 'location')
+		{
+			if(typeof(gamedata['unlocked_locations'][recipe['reward_id']]) == 'undefined')
+			{
+				gamedata['unlocked_locations'][recipe['reward_id']] = 1;
+			}
+			else
+			{
+				gamedata['unlocked_locations'][recipe['reward_id']] += 1;
+			}
+			
+		}
+		if(recipe['reward_type'] == 'recipe')
+		{
+			learn_recipe(recipe['reward_id']);
+		}
+
+		if(craft_xp > 0 && gamedata['skills'][skill] != undefined)
+		{
+			craft_xp *= 4;
+			gamedata['skills'][skill]['xp'] += craft_xp;
+
+			if(level_from_xp(gamedata['skills'][skill]['xp']) > gamedata['skills'][skill]['level'])
+			{
+				gamedata['skills'][skill]['level'] = level_from_xp(gamedata['skills'][skill]['xp']);
+			}
+		}
+
+	}
+
+	function craft_recipe_all(recipe_id){
+		var recipe = recipes[recipe_id];
+		var cost_multiplier = $('.craft_amount').val();
+		if(recipe['reward_type'] == 'gear')
+		{
+			var cost_multiplier = $('.craft_amount').val() * $('.craft_amount').val();
+		}
+		var can_craft = 1000000;
+		$.each(recipe['cost'], function(item_id, amount){
+			var can_craft_this = 0;
+			if(typeof(gamedata['inventory'][item_id]) == 'undefined' || gamedata['inventory'][item_id] < (amount * cost_multiplier))
+			{
+				can_craft = 0;
+			}
+			else
+			{
+				can_craft_this = Math.floor(gamedata['inventory'][item_id] / (amount * cost_multiplier));
+			}
+			if(can_craft_this < can_craft)
+			{
+				can_craft = can_craft_this;
+			}
+		});
+		if(can_craft > 0)
+		{
+			$.each(recipe['cost'], function(item_id, amount){
+				gamedata['inventory'][item_id] -= amount * can_craft * cost_multiplier;
+			});
+			if(recipe['reward_type'] == 'unit')
+			{
+				for(item_count = 0;item_count < (recipe['reward_amount'] * can_craft);item_count++)
+				{
+					addunit(recipe['reward_id'], 1, 0);
+				}
+			}
+			if(recipe['reward_type'] == 'item')
+			{
+				
+				gain_item(recipe['reward_id'], recipe['reward_amount'] * can_craft * cost_multiplier);
+				
+			}
+			if(recipe['reward_type'] == 'spell')
+			{
+				for(item_count = 0;item_count < (recipe['reward_amount'] * can_craft);item_count++)
+				{
+					gain_spell(recipe['reward_id']);
+				}
+			}
+			if(recipe['reward_type'] == 'gear')
+			{
+				for(item_count = 0;item_count < can_craft;item_count++)
+				{
+					gain_gear(recipe['reward_id'], $('.craft_amount').val());
+				}
+			}
+			saveToLocalStorage();
+		}
+		show_single_recipe();
+	};
+
+	function show_units(){
+		$('.active_units').html('');
+		$('.owned_units').html('');
+		for(slot_number = 1;slot_number < 6;slot_number++)
+		{
+			var unit_content = '';
+			$.each(gamedata['units'], function(key, unit) {
+				
+				if(unit['slot'] == slot_number)
+				{
+					unit_content += '<div class="unit" onclick="deactivate_unit(\'' + key + '\')" onmouseover="show_details(\'' + key + '\')" style="background-image:url(images/units/' + available_units[unit['unit_id']]['image'] + ')"><div class="unit_level">' + unit['level'] + '</div></div>';
+					$('.active_units').append(unit_content);
+				}
+			});
+			if(unit_content == '')
+			{
+				unit_content += '<div class="unit"></div>';
+				$('.active_units').append(unit_content);
+			}
+		}
+		$.each(gamedata['units'], function(key, unit) {
+			var unit_content = '';
+			if(unit['slot'] == 0)
+			{
+				unit_content += '<div class="unit" onclick="activate_unit(\'' + key + '\')" onmouseover="show_details(\'' + key + '\')" style="background-image:url(images/units/' + available_units[unit['unit_id']]['image'] + ')"><div class="unit_level">' + unit['level'] + '</div></div>';
+				$('.owned_units').append(unit_content);
+			}
+			else
+			{
+				unit_content += '<div class="unit" onclick="deactivate_unit(\'' + key + '\')" onmouseover="show_details(\'' + key + '\')" style="background-image:url(images/units/' + available_units[unit['unit_id']]['image'] + ');opacity:0.3"><div class="unit_level">' + unit['level'] + '</div></div>';
+				$('.owned_units').append(unit_content);
+			}
+			//console.log(unit);
+		});
+	}
+
+	
+
+	function show_fusing(){
+		$('.fusing_units').html('');
+		$('.fusable_units').html('<div class="breaker"></div>');
+
+		
+		$.each(gamedata['units'], function(key, unit) {
+			var unit_content = '';
+			if(unit['slot'] > 0)
+			{
+				unit_content += '<div class="unit in_team" onclick="select_fuse_unit(' + key + ')" onmouseover="show_details(\'' + key + '\')" style="background-image:url(images/units/' + available_units[unit['unit_id']]['image'] + ')"><div class="unit_level">' + unit['level'] + '</div></div>';
+				$('.fusable_units').prepend(unit_content);
+				
+			}
+			else
+			{
+				if(unit['slot'] == 0)
+				{
+					unit_content += '<div class="unit" onclick="select_fuse_unit(' + key + ')" onmouseover="show_details(\'' + key + '\')" style="background-image:url(images/units/' + available_units[unit['unit_id']]['image'] + ')"><div class="unit_level">' + unit['level'] + '</div></div>';
+					$('.fusable_units').append(unit_content);
+				}
+			}
+			
+
+		});
+	}
+
+	function select_fuse_unit(unit_id){
+		var chosen_unit = gamedata['units'][unit_id];
+		$('.fusing_units').html('');
+		$('.fusable_units').html('');
+
+		$('.fusing_units').html('<div class="unit" onclick="show_fusing()" onmouseover="show_details_plus_level(\'' + unit_id + '\',0)" style="background-image:url(images/units/' + available_units[chosen_unit['unit_id']]['image'] + ')"><div class="unit_level">' + chosen_unit['level'] + '</div></div><div class="fusing_unit_details">Level ' + chosen_unit['level'] + '<br/>XP: ' + get_unit_xp_this_level(unit_id) + '</div>');
+
+		$('.fusable_units').append('<h3>Select a unit to fuse</h3><button onclick="fuse_all(' + unit_id + ')">FUSE ALL</button><button onclick="show_fusing()">BACK</button><br/><br/>');
+
+		$.each(gamedata['units'], function(key, unit) {
+			var unit_content = '';
+			//if(unit['slot'] == 0 && unit['unit_id'] == chosen_unit['unit_id'] && key != unit_id)
+			if(unit['slot'] == 0 && key != unit_id)
+			{
+				unit_content += '<div class="unit" onclick="fuse_unit(' + unit_id + ',' + key + ')" onmouseover="show_details_plus_xp(\'' + unit_id + '\',' + Math.floor(available_units[unit['unit_id']]['value'] * unit['level'] / 10) + ')" style="background-image:url(images/units/' + available_units[unit['unit_id']]['image'] + ')"><div class="unit_level">' + unit['level'] + '</div></div>';
+				$('.fusable_units').append(unit_content);
+			}
+		});
+	}
+
+	function fuse_unit(unit_id_1, unit_id_2){
+		//if(gamedata['units'][unit_id_1]['unit_id'] == gamedata['units'][unit_id_2]['unit_id'] && available_units[gamedata['units'][unit_id_1]['unit_id']]['value'] != undefined)
+		if(available_units[gamedata['units'][unit_id_2]['unit_id']]['value'] != undefined)
+		{
+			gamedata['units'][unit_id_1]['xp'] += Math.floor(available_units[gamedata['units'][unit_id_2]['unit_id']]['value'] * gamedata['units'][unit_id_2]['level'] / 10);
+			delete gamedata['units'][unit_id_2];
+			check_unit_level(unit_id_1);
+		}
+		saveToLocalStorage();
+		//show_fusing();
+		select_fuse_unit(unit_id_1);
+	}
+
+	function fuse_all(unit_id){
+
+		var fuse_id = gamedata['units'][unit_id]['unit_id'];
+		$.each(gamedata['units'], function(key, unit) {
+			//if(fuse_id == gamedata['units'][key]['unit_id'] && key != unit_id && unit['slot'] == 0 && available_units[gamedata['units'][unit_id]['unit_id']]['value'] != undefined)
+			if(key != unit_id && unit['slot'] == 0 && available_units[unit['unit_id']]['value'] != undefined)
+			{
+				gamedata['units'][unit_id]['xp'] += Math.floor(available_units[unit['unit_id']]['value'] * unit['level'] / 10);
+				//gamedata['units'][unit_id]['level'] += gamedata['units'][key]['level'];
+				delete gamedata['units'][key];
+			}
+		});
+		check_unit_level(unit_id);
+		saveToLocalStorage();
+		//show_fusing();
+		select_fuse_unit(unit_id);
+	}
+
+	function show_details(unit_id){
+		//var level_factor = Math.sqrt(1 + ((gamedata['units'][unit_id]['level'] -1) / 10));
+		var level_factor = get_level_factor(gamedata['units'][unit_id]['level']);
+		var current_unit = available_units[gamedata['units'][unit_id]['unit_id']];
+		$('.details').html('');
+		var detail_content = '';
+		detail_content += '<b>' + capitalizeFirstLetter(current_unit['name']) + '</b><br/>';
+		detail_content += '<div class="left">';
+			detail_content += 'Level: <span class="stat_details">' + gamedata['units'][unit_id]['level'] + '</span><br/>';
+			detail_content += 'Strength: <span class="stat_details">' + Math.floor(current_unit['strength'] * level_factor) + '</span><br/>';
+			detail_content += 'Intellect: <span class="stat_details">' + Math.floor(current_unit['intellect'] * level_factor) + '</span><br/>';
+			detail_content += 'Speed: <span class="stat_details">' + Math.floor(current_unit['speed'] * level_factor) + '</span><br/>';
+		detail_content += '</div><div class="right">';
+		detail_content += 'Defense: <span class="stat_details">' + Math.floor(current_unit['defense'] * level_factor) + '</span><br/>';
+		detail_content += 'Resistance: <span class="stat_details">' + Math.floor(current_unit['resistance'] * level_factor) + '</span><br/>';
+		if(current_unit['shield'] > 0){
+			detail_content += 'Shield: <span class="stat_details">' + Math.floor(current_unit['shield'] * level_factor) + '</span><br/>';
+		}
+		detail_content += 'Hitpoints: <span class="stat_details">' + Math.floor(current_unit['max_hp'] * level_factor * level_factor) + '</span><br/>';
+		detail_content += '</div>';
+		detail_content += '<br/>';
+		detail_content += '<div class="breaker"></div>';
+		detail_content += '<b>XP</b>: <span class="stat_details">' + get_unit_xp_this_level(unit_id) + '</span><br/>';
+		detail_content += '<b>Abilities</b>';
+		var all_abilities = '';
+		$.each(current_unit['abilities'], function(key, ability) {
+			all_abilities += unit_abilities[ability]['name'] + '<br/>';
+		});
+		//detail_content += '<span class="stat_details">' + all_abilities.substring(0, all_abilities.length - 2) + '</span>';
+		detail_content += '<span class="stat_details">' + all_abilities.substring(0, all_abilities.length) + '</span>';
+		$('.details').append(detail_content);
+	};
+
+	function show_general_details(unit_id, level){
+		if(typeof(level) == 'undefined')
+		{
+			level = 1;
+		}
+		var level_factor = get_level_factor(level);
+		var current_unit = available_units[unit_id];
+		$('.details').html('');
+		$('.details').append('<b>' + capitalizeFirstLetter(current_unit['name']) + '</b><br/>');
+		$('.details').append('Strength: <span class="stat_details">' + Math.floor(current_unit['strength'] * level_factor) + '</span><br/>');
+		$('.details').append('Intellect: <span class="stat_details">' + Math.floor(current_unit['intellect'] * level_factor) + '</span><br/>');
+		$('.details').append('Speed: <span class="stat_details">' + Math.floor(current_unit['speed'] * level_factor) + '</span><br/>');
+		$('.details').append('Defense: <span class="stat_details">' + Math.floor(current_unit['defense'] * level_factor) + '</span><br/>');
+		$('.details').append('Resistance: <span class="stat_details">' + Math.floor(current_unit['resistance'] * level_factor) + '</span><br/>');
+		if(current_unit['shield'] > 0){
+			$('.details').append('Shield: <span class="stat_details">' + Math.floor(current_unit['shield'] * level_factor) + '</span><br/>');
+		}
+		$('.details').append('Hitpoints: <span class="stat_details">' + Math.floor(current_unit['max_hp'] * level_factor * level_factor) + '</span><br/>');
+		$('.details').append('<b>Abilities:</b>');
+		var all_abilities = '';
+		$.each(current_unit['abilities'], function(key, ability) {
+			all_abilities += unit_abilities[ability]['name'] + ', ';
+		});
+		$('.details').append('<span class="stat_details">' + all_abilities.substring(0, all_abilities.length - 2) + '</span>');
+		$('.details').append();
+	};
+
+	function parse_unit_stats(unit_id, level){
+		var parsed_stats = '';
+		if(typeof(level) == 'undefined')
+		{
+			level = 1;
+		}
+		var level_factor = get_level_factor(level);
+		var current_unit = available_units[unit_id];
+		parsed_stats += ('Strength: <span class="stat_details">' + Math.floor(current_unit['strength'] * level_factor) + '</span><br/>');
+		parsed_stats += ('Intellect: <span class="stat_details">' + Math.floor(current_unit['intellect'] * level_factor) + '</span><br/>');
+		parsed_stats += ('Agility: <span class="stat_details">' + Math.floor(current_unit['speed'] * level_factor) + '</span><br/>');
+		parsed_stats += ('Defense: <span class="stat_details">' + Math.floor(current_unit['defense'] * level_factor) + '</span><br/>');
+		parsed_stats += ('Resistance: <span class="stat_details">' + Math.floor(current_unit['resistance'] * level_factor) + '</span><br/>');
+		if(current_unit['shield'] > 0){
+			parsed_stats += ('Shield: <span class="stat_details">' + Math.floor(current_unit['shield'] * level_factor) + '</span><br/>');
+		}
+		parsed_stats += ('Hitpoints: <span class="stat_details">' + Math.floor(current_unit['max_hp'] * level_factor * level_factor) + '</span><br/>');
+		parsed_stats += ('Abilities:');
+		var all_abilities = '';
+		$.each(current_unit['abilities'], function(key, ability) {
+			all_abilities += unit_abilities[ability]['name'] + ', ';
+		});
+		parsed_stats += ('<span class="stat_details">' + all_abilities.substring(0, all_abilities.length - 2) + '</span>');
+		
+		return parsed_stats;
+	}
+
+	function show_details_plus_level(unit_id, level_bonus, xp_gained){
+		//var level_factor = Math.sqrt(1 + ((gamedata['units'][unit_id]['level'] -1) / 10));
+		var level_factor = get_level_factor(gamedata['units'][unit_id]['level']);
+		//var new_level_factor = Math.sqrt(1 + ((gamedata['units'][unit_id]['level'] -1 +level_bonus) / 10));
+		var new_level_factor = get_level_factor(gamedata['units'][unit_id]['level'] + level_bonus);
+		var current_unit = available_units[gamedata['units'][unit_id]['unit_id']];
+		$('.details').html('');
+		$('.details').append('<b>' + capitalizeFirstLetter(current_unit['name']) + '</b><br/>');
+		if(xp_gained != undefined)
+		{
+			$('.details').append('<b>Xp gained: <span class="stat_details">' + xp_gained + '</span></b><br/>');
+		}
+		$('.details').append('<b>XP</b>: <span class="stat_details">' + get_unit_xp_this_level(unit_id) + '</span><br/>');
+		$('.details').append('Level: <span class="stat_details">(' + (gamedata['units'][unit_id]['level'] + level_bonus) + ') ' + gamedata['units'][unit_id]['level'] + '</span><br/>');
+
+		var next_append = parse_details_plus_level_line('strength', 'Strength', current_unit, level_factor, new_level_factor);
+		$('.details').append(next_append);
+		var next_append = parse_details_plus_level_line('intellect', 'Intellect', current_unit, level_factor, new_level_factor);
+		$('.details').append(next_append);
+		var next_append = parse_details_plus_level_line('speed', 'Speed', current_unit, level_factor, new_level_factor);
+		$('.details').append(next_append);
+		var next_append = parse_details_plus_level_line('defense', 'Defense', current_unit, level_factor, new_level_factor);
+		$('.details').append(next_append);
+		var next_append = parse_details_plus_level_line('resistance', 'Resistance', current_unit, level_factor, new_level_factor);
+		$('.details').append(next_append);
+		if(current_unit['shield'] > 0){
+			var next_append = parse_details_plus_level_line('shield', 'Shield', current_unit, level_factor, new_level_factor);
+			$('.details').append(next_append);
+		}
+		var next_append = parse_details_plus_level_line('max_hp', 'Hitpoints', current_unit, (level_factor * level_factor), (new_level_factor * new_level_factor));
+		$('.details').append(next_append);
+
+		
+
+		$('.details').append('Abilities:');
+		$.each(current_unit['abilities'], function(key, ability) {
+			$('.details').append('<span class="stat_details">' + unit_abilities[ability]['name'] + '</span><br/>');
+		});
+		$('.details').append();
+	};
+
+	function show_details_plus_xp(unit_id, xp){
+		var level_difference = (level_from_xp(gamedata['units'][unit_id]['xp'] + xp) - level_from_xp(gamedata['units'][unit_id]['xp']));
+		show_details_plus_level(unit_id, level_difference, xp);
+	}
+
+	function parse_details_plus_level_line(attribute, title, current_unit, level_factor, new_level_factor){
+		var next_append = title +': <span class="stat_details">';
+		if(Math.floor(current_unit[attribute] * new_level_factor) > Math.floor(current_unit[attribute] * level_factor))
+		{
+			next_append += '<b>(+' + ((Math.floor(current_unit[attribute] * new_level_factor)) - Math.floor(current_unit[attribute] * level_factor)) + ')</b> ';
+		}
+		next_append += Math.floor(current_unit[attribute] * level_factor) + '</span><br/>';
+		return next_append;
+	}
+
+	function show_item_details(item_id){
+		var current_item = available_items[item_id];
+		$('.details').html('');
+		$('.details').append('<b>' + capitalizeFirstLetter(current_item['name']) + '</b><br/>');
+		$('.details').append('Value: <span class="stat_details">' + current_item['value'] + '</span><br/>');
+
+	};
+
+	function deactivate_unit(id){
+		gamedata['units'][id]['slot'] = 0;
+		saveToLocalStorage();
+		show_units();
+	}
+
+	function activate_unit(id){
+		var free_slot = 0;
+		for(possible_free = 1;possible_free < 6;possible_free++)
+		{
+			var can_use = true;
+			$.each(gamedata['units'], function(key, unit) {
+				if(unit['slot'] == possible_free)
+				{
+					can_use = false;
+				}
+			});
+			if(can_use == true && free_slot == 0)
+			{
+				free_slot = possible_free;
+			}
+
+		}
+		gamedata['units'][id]['slot'] = free_slot;
+		saveToLocalStorage();
+		show_units();
+	}
+
+	function show_possible_locations(){
+		$('.areas_button').removeClass('active');
+		$('.locations_button').addClass('active');
+		$('.regions_button').removeClass('active');
+		$('.possible_locations').html('');
+		var current_chapter = locations[gamedata['current_location']]['chapters'][gamedata['explore_level']];
+		$('.location_bg').css('background-image','url(images/bg/' + locations[gamedata['current_location']]['chapters'][gamedata['explore_level']]['image'] + ')');
+		$('.chapter_name').html(current_chapter['name']);
+		$('.chapter_description').html(current_chapter['description']);
+		$('.explore_button').html(current_chapter['explore_button']);
+		$.each(gamedata['unlocked_locations'], function(key, level){
+			var unlockable_count = count_unlockable_locations(key);
+			var unlock_string = '';
+			if(unlockable_count > 0)
+			{
+				unlock_string = unlockable_count + ' location to unlock';
+			}
+			$('.possible_locations').append('<button class="location_choice location_' + key + '" onclick="set_current_location(' + key + ')" style="background-image:url(images/bg/' + locations[key]['image'] + ')"><div class="location_level">level ' + level + '</div><div class="unlockable_location_count">' + unlock_string + '</div>' + locations[key]['name'] + '</button>')
+		});
+		$('.location_' + gamedata['current_location']).addClass('active');
+		show_quests();
+		//set_current_location(gamedata['current_location']);
+	}
+
+	function show_possible_chapters(){
+		$('.combat_container_bg').css('background-image','url(images/bg/' + locations[gamedata['current_location']]['image'] + ')');
+		$('.areas_button').addClass('active');
+		$('.locations_button').removeClass('active');
+		$('.regions_button').removeClass('active');
+		/*if(count_object(gamedata['quest_progress']) > 0)
+		{
+			$('.explore_button').show();
+		}
+		else
+		{
+			$('.explore_button').hide();
+		}*/
+		if(count_object(gamedata['unlocked_locations']) > 1)
+		{
+			$('.locations_button').removeClass('passive');
+		}
+		if(count_object(gamedata['unlocked_regions']) > 1)
+		{
+			$('.regions_button').removeClass('passive');
+		}
+		if(count_inventory() > 0)
+		{
+			$('.vendor_button').removeClass('hidden');
+		}
+		if(count_object(gamedata['known_recipes']) > 0)
+		{
+			$('.crafting_button.green').removeClass('hidden');
+		}
+		if(count_object(gamedata['gear']) > 0)
+		{
+			$('.gear_button').removeClass('hidden');
+		}
+		if(count_object(gamedata['units']) > 1)
+		{
+			$('.unit_button').removeClass('hidden');
+			$('.fusing_button').removeClass('hidden');
+		}
+		if(count_object(gamedata['spells']) > 1)
+		{
+			$('.spells_button').removeClass('hidden');
+		}
+		var current_chapter = locations[gamedata['current_location']]['chapters'][gamedata['explore_level']];
+		if(count_object(current_chapter['recipes']) > 0 && count_object(gamedata['inventory']) > 0)
+		{
+			$('.crafting_button.blue').removeClass('hidden');
+		}
+		else
+		{
+			$('.crafting_button.blue').addClass('hidden');
+		}
+		$('.possible_locations').html('');
+		if(locations[gamedata['current_location']]['start_level'] + gamedata['unlocked_locations'][gamedata['current_location']] > 1 || count_object(gamedata['unlocked_locations']) > 1){
+			$('.chapter').removeClass('no_chapters');
+			for(chapter = 1; chapter <= locations[gamedata['current_location']]['start_level'] + gamedata['unlocked_locations'][gamedata['current_location']]; chapter++)
+			{
+				var quest_markers = check_quests_complete_count(gamedata['current_location'], chapter);
+				$('.possible_locations').append('<button class="chapter_choice main_button chapter_' + chapter + '" onclick="set_explore_level(' + chapter + ')" style="background-image:url(images/bg/' + locations[gamedata['current_location']]['chapters'][chapter]['image'] + '">' + quest_markers + '</button>');
+			}
+			$('.chapter_' + gamedata['explore_level']).addClass('active');
+		}
+		
+		$('.location_bg').css('background-image','url(images/bg/' + locations[gamedata['current_location']]['chapters'][gamedata['explore_level']]['image'] + ')');
+		$('.chapter_name').html(current_chapter['name']);
+		$('.chapter_description').html(current_chapter['description']);
+
+		var specific_fight_buttons = '';
+
+		$.each(gamedata['specific_fights'], function(fight_id, fight_info){
+			if(fight_info['location_id'] == gamedata['current_location'] && fight_info['area_id'] == gamedata['explore_level'])
+			{
+				specific_fight_buttons += '<div class="specific_fight_button" style="background-image:url(\'images/' + fight_info['button_image'] + '\')" onclick="explore_specific(' + fight_info['specific_wave'] + ')">' + '</div>';
+			}
+		});
+
+		$('.specific_fights_container').html(specific_fight_buttons);
+		// HIER
+
+		$('.explore_button').html(current_chapter['explore_button']);
+		show_quests();
+		//set_current_location(gamedata['current_location']);
+
+		if(gamedata['tutorial'][0] == undefined)
+		{
+			show_tutorial(0);
+		}
+	}
+
+	function count_inventory(){
+		var total_inventory = 0;
+
+		$.each(gamedata['inventory'], function(item_id, amount){
+			total_inventory += amount;
+		});
+
+		return total_inventory;
+	}
+
+	function set_explore_level(level){
+		if(level >= 1 && level <= locations[gamedata['current_location']]['start_level'] + gamedata['unlocked_locations'][gamedata['current_location']])
+		{
+			gamedata['explore_level'] = level;
+			saveToLocalStorage();
+			show_possible_chapters();
+		}
+	}
+
+	function lower_explore_level(){
+		if(gamedata['explore_level'] > 1)
+		{
+			gamedata['explore_level'] -= 1;
+			saveToLocalStorage();
+			show_possible_locations();
+		}
+	}
+
+	function higher_explore_level(){
+		if(gamedata['explore_level'] < locations[gamedata['current_location']]['start_level'] + gamedata['unlocked_locations'][gamedata['current_location']])
+		{
+			gamedata['explore_level'] += 1;
+			saveToLocalStorage();
+			show_possible_locations();
+		}
+	}
+
+	function show_possible_regions(){
+		$('.locations_button').removeClass('active');
+		$('.regions_button').addClass('active');
+		$('.possible_locations').html('');
+	}
+
+	function count_unlockable_locations(location_id){
+		var unlockable_count = 0;
+		$.each(locations, function(key, location){
+			if(location['unlock_location'] == location_id && typeof(gamedata['unlocked_locations'][key]) == 'undefined')
+			{
+				unlockable_count++;
+			}
+		});
+		return unlockable_count;
+	}
+
+	set_global_timer();
+	$('.explore_level').html(gamedata['explore_level']);
+
+	$('.claim_treasure_button').click(function(){
+		if(typeof(current_treasure_event['name']) != 'undefined')
+		{
+			var explore_level_factor = get_level_factor(gamedata['explore_level']);
+			$.each(current_treasure_event['loot'], function(key, item) {
+				if(item['amount'] > 0){
+					var max_amount = Math.floor((Math.random() * item['amount'] * explore_level_factor) + 1);
+					gain_item(item['item'], max_amount);
+				}
+			});
+		}
+		saveToLocalStorage();
+		current_treasure_event = {};
+		$('.treasure_container button').hide();
+		if($(this).hasClass('home_button'))
+		{
+			setTimeout(function(){
+				reset_explore();
+			},1000);
+		}
+		else
+		{
+			setTimeout(function(){
+				find_next_event('treasure');
+			},1000);
+		}
+		
+	});
+
+	$('.claim_trade_button').click(function(){
+		if(typeof(current_trade_event['name']) != 'undefined')
+		{
+			/*var can_trade = true;
+			var explore_level_factor = 1;
+			if(gamedata['explore_level'] > 1)
+			{
+				explore_level_factor = Math.sqrt(1 + ((gamedata['explore_level'] -1) / 10));
+			}
+
+			$.each(current_trade_event['cost'], function(key, item) {
+				if(item['amount'] > 0){
+					if(typeof(gamedata['inventory'][item['item']]) == 'undefined')
+					{
+						gamedata['inventory'][item['item']] = 0;
+					}
+					if(gamedata['inventory'][item['item']] < (item['amount'] * current_trade_event['current_factor']))
+					{
+						can_trade = false;
+					}
+					
+				}
+			});
+
+			if(can_trade == true)
+			{
+				$.each(current_trade_event['cost'], function(key, item) {
+					if(item['amount'] > 0){
+						gamedata['inventory'][item['item']] -= (item['amount'] * current_trade_event['current_factor']);
+					}
+				});
+
+				$.each(current_trade_event['loot'], function(key, item) {
+					if(item['amount'] > 0){
+						gain_item(item['item'], Math.floor(item['amount'] * current_trade_event['current_factor'] * explore_level_factor));
+					}
+				});
+			}*/
+			
+			craft_recipe(current_trade_event['id']);
+
+			
+		}
+		saveToLocalStorage();
+		current_trade_event = {};
+		$('.trade_container button').hide();
+		//console.log(this);
+		if($(this).hasClass('home_button'))
+		{
+
+		}
+		else
+		{
+			setTimeout(function(){
+				explore();
+			},1000);
+		}
+		
+	});
+
+	$('.home_button').click(function(){
+		clearTimeout(next_event);
+		reset_explore();
+	});
+
+	function reset_explore(){
+		end_combat();
+		$('.combat_container').fadeOut();
+		$('.treasure_container').fadeOut();
+		$('.trade_container').fadeOut();
+		$('.quest_container').fadeOut();
+		$('.combat_message').remove();
+		//gamedata['explore_level'] = locations[gamedata['current_location']]['start_level'] + gamedata['unlocked_locations'][gamedata['current_location']];
+		show_possible_chapters();
+		show_quests();
+	}
+
+	var current_scale = 1;
+	function set_player_target(side, id){
+		var pos = $('.' + side + '_' + id).offset();
+		var main_pos = $('.main_window').offset();
+		$('.crosshair').css('left', (pos.left - main_pos.left) + ($('.' + side + '_' + id).width() / 2));
+		$('.crosshair').css('top', (pos.top - main_pos.top) + ($('.' + side + '_' + id).height() / 2));
+		player_target = {
+			side: 	side,
+			id: 	id
+		}
+	};
+
+
+	show_possible_chapters();
+	show_quests();
+
+
+</script>
+</html>
+

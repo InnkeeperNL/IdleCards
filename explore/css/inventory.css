@@ -1,0 +1,177 @@
+.inventory_button
+{
+	background-image: url('../images/icons/wooden-crate.svg');
+	float: right;
+}
+
+.inventory_icon
+{
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background-size: 40px 40px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('../images/icons/knapsack.svg');
+	vertical-align: middle;
+	float: right;
+	cursor: pointer;
+}
+
+.inventory_counter
+{
+	margin-right: 0px;
+	margin-top: 15px;
+	display: inline-block;
+	font-size: 23px;
+	font-weight: bold;
+	color: #fff;
+	vertical-align: middle;
+	float: right;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	cursor: pointer;
+}
+
+.inventory_counter.full
+{
+	color: #f00;
+}
+
+.page_numbers
+{
+	height: 20px;
+	width: 100%;
+}
+
+.page_numbers span
+{
+	display: inline-block;
+	min-width: 20px;
+}
+
+.adjust_page_number
+{
+	cursor: pointer;
+}
+
+
+.storage_bottom_bar
+{
+	font-weight: bold;
+	text-align: center;
+	color: #fff;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.item,
+.cost_item,
+.result_item
+{
+	display: inline-block;
+	width: 90px;
+	height: 100px;
+	border:  4px solid rgba(200,200,200,0.9);
+	background-size: cover;
+	background-position: center;
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+	margin: 2px;
+	position: relative;
+}
+
+.storage_container .item
+{
+	/*max-width: 23%;
+	min-width: 60px;*/
+}
+
+.item_name
+{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 5px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.amount_gained,
+.owned_amount,
+.item_amount
+{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	bottom: 5px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.amount_gained
+{
+	bottom: 30px;
+}
+
+.owned_amount.max_owned,
+.not_enough
+{
+	color: #f55;
+}
+
+.inventory_line
+{
+	margin-top: 10px;
+	border-top: 1px solid #747474;
+	padding-top: 10px;
+	width: 100%;
+	text-align: left;
+	vertical-align: middle;
+	clear: both;
+}
+
+.consume_item_icon,
+.deposit_item_icon,
+.trash_item_icon
+{
+	display: inline-block;
+	width: 55px;
+	height: 100px;
+	background-size: 50px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-image: url('../images/icons/trash-can.svg');
+	cursor: pointer;
+	vertical-align: middle;
+	float: right;
+}
+
+.deposit_item_icon
+{
+	background-image: url('../images/icons/wooden-crate-grey.svg');
+}
+
+.deposit_item_icon.storage_full
+{
+	background-image: url('../images/icons/wooden-crate-red.svg');
+	cursor: default;
+}
+
+.consume_item_icon
+{
+	background-image: url('../images/icons/shiny-apple.svg');
+	font-size: 20px;
+	color: #48BAFF;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	padding-top: 45px;
+	text-align: center;
+}
+
+.show_food_storage_toggle_button
+{
+	background-image: url('../images/icons/shiny-apple-white.svg');
+}

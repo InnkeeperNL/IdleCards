@@ -1,0 +1,1170 @@
+*{
+    -webkit-tap-highlight-color: transparent;
+	/*box-sizing:border-box;*/
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+*:focus
+{
+	outline: none;
+}
+
+body
+{
+	background-color:#ccc;
+    overflow:hidden;
+    -webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+
+	/* Rules below not implemented in browsers yet */
+	-o-user-select: none;
+	user-select: none;
+	touch-action: manipulation;
+	min-width:1200px;
+}
+
+.clock_speed
+{
+	position:fixed;
+	left:5px;
+	top:5px;
+	width:200px;
+	height:20px;
+	border:1px solid #000;
+}
+
+.clock_speed_bar
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	height:18px;
+	background-color:#fff;
+	border:1px solid #555;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+h2,h3
+{
+	margin: 0px;
+	font-family: 'Caveat Brush', cursive;
+	clear:both;
+}
+
+button:focus
+{
+	outline: none;
+}
+
+.main_window
+{
+	margin:auto;
+	width:800px;
+	height:500px;
+	border:2px solid #555;
+	border-radius:5px;
+	box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
+	background-color:#888;
+	position:relative;
+	left:0px;
+	overflow:hidden;
+	-ms-transform-origin: top center; /* IE 9 */
+    -webkit-transform-origin: top center; /* Chrome, Safari, Opera */
+    transform-origin: top center;
+}
+
+.main_window.too_small
+{
+	position:absolute;
+	left:0px;
+	-ms-transform-origin: top left; /* IE 9 */
+    -webkit-transform-origin: top left; /* Chrome, Safari, Opera */
+    transform-origin: top left;
+}
+
+.menu_container
+{
+	position:absolute;
+	top:10px;
+	left:10px;
+	right:10px;
+	height: 40px;
+	padding:4px;
+	border:1px solid #153;
+	border-radius:3px;
+	background-color:#586;
+	box-shadow:inset 5px 5px 40px rgba(0,0,0,0.2);
+}
+
+.menu_container button
+{
+	display:block;
+	float:left;
+	height:20px;
+	font-size:14px;
+	width:154px;
+	border-radius:3px;
+	font-weight:normal;
+	color:#fff;
+	border:1px solid #153;
+	background-color:#586;
+	box-shadow:inset -2px -2px 10px rgba(0,0,0,0.4),inset 0px 10px 0px rgba(255,255,255,0.2);
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	cursor:pointer;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	outline: none;
+	font-family: 'Caveat Brush', cursive;
+}
+
+.menu_container button:hover
+{
+	background-color:#475;
+	box-shadow:inset 2px 2px 10px rgba(0,0,0,0.8);
+}
+
+.menu_container button.active
+{
+	background-color:#475;
+	box-shadow:inset 2px 2px 10px rgba(0,0,0,0.8);
+	border-color:#697;
+}
+
+.quest_complete_count
+{
+	color:#ff0;
+}
+
+.local_quest_complete_count
+{
+	color:#ff0;
+	float:right;
+	margin-right:5px;
+}
+
+span.repeatable
+{
+	color:#05f;
+}
+
+span.float_right
+{
+	float:right;
+	margin-right:5px;
+}
+
+.content_container
+{
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	right:10px;
+	top: 10px;
+	padding:5px;
+	border-radius:3px;
+	background-color:#ccc;
+	box-shadow:inset 5px 5px 40px rgba(0,0,0,0.1);
+	overflow:hidden;
+	border:1px solid #555;
+}
+
+.content_container .page_container
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	padding:5px;
+	opacity:0;
+	z-index:1;
+	background-color:#ccc;
+	border-radius:2px;
+	overflow:hidden;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	overflow-x:hidden;
+	overflow-y:hidden;
+}
+
+.content_container .page_container.active
+{
+	opacity:1;
+	z-index:10;
+}
+
+.current_items
+{
+	width:100%;
+	height:400px;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+
+.item
+{
+	float:left;
+	margin-right:5px;
+	margin-bottom:5px;
+	width:73px;
+	height:25px;
+	border:3px solid #555;
+	border-radius:5px;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color:#000;
+	box-shadow:inset 0px 35px 0px rgba(255,255,255,0.2), inset 5px 5px 20px rgba(0,0,0,0.2), 2px 2px 10px rgba(0,0,0,0.8),inset 0px 0px 10px rgba(0,0,0,0.9);
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	color:#fff;
+	font-size:18px;
+	font-family: 'Caveat Brush', cursive;
+	text-align:center;
+	padding-top:50px;
+}
+
+.item.quality_recipe
+{
+	box-shadow:inset 0px 35px 0px rgba(255,255,255,0.2), inset 5px 5px 20px rgba(0,0,0,0.2), 2px 2px 10px rgba(0,0,0,0.8),inset 0px 0px 10px rgba(0,0,0,0.9),inset 0px 0px 40px #c49a6b;
+}
+
+.item.token
+{
+	margin-top:3px;
+	margin-left:3px;
+	border-radius:100%;
+	width:70px;
+	height:30px;
+	padding-top:40px;
+	border:3px solid #333;
+	box-shadow:inset 3px 3px 6px rgba(255,255,255,0.7), inset -3px -3px 6px rgba(0,0,0,0.7), 2px 2px 10px rgba(0,0,0,0.8),inset 0px 0px 10px rgba(0,0,0,0.9);
+}
+
+.item.quest
+{
+	border-color:#44f;
+}
+
+.item.small
+{
+	float:left;
+	margin-right:5px;
+	margin-bottom:5px;
+	margin-top:2px;
+	width:40px;
+	height:25px;
+	border:3px solid #555;
+	border-radius:5px;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color:#ccc;
+	box-shadow:inset 0px 20px 0px rgba(255,255,255,0.2), inset 5px 5px 20px rgba(0,0,0,0.2), 2px 2px 10px rgba(0,0,0,0.8),inset 0px 0px 10px rgba(0,0,0,0.9);
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	color:#fff;
+	font-size:18px;
+	font-family: 'Caveat Brush', cursive;
+	text-align:center;
+	padding-top:15px;
+}
+
+.item.small.token
+{
+	border-radius:100%;
+	width:40px;
+	height:30px;
+	padding-top:10px;
+	border:3px solid #333;
+	box-shadow:inset 3px 3px 6px rgba(255,255,255,0.7), inset -3px -3px 6px rgba(0,0,0,0.7), 2px 2px 10px rgba(0,0,0,0.8),inset 0px 0px 10px rgba(0,0,0,0.9);
+	transform:rotate(-3deg);
+}
+
+.item.cannot_craft
+{
+	color:#f00;
+}
+
+.spell
+{
+	float:left;
+	margin-right:3px;
+	margin-bottom:5px;
+	width:85px;
+	height:55px;
+	border:2px solid #555;
+	border-radius:5px;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color:#ccc;
+	box-shadow:inset 0px 25px 0px rgba(255,255,255,0.2), inset -5px -5px 10px rgba(0,0,0,0.2), 2px 2px 10px rgba(0,0,0,0.8),inset 0px 0px 10px rgba(0,0,0,0.9);
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	color:#fff;
+	font-size:24px;
+	font-family: 'Caveat Brush', cursive;
+	text-align:center;
+	padding-top:0px;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	position:relative;
+}
+
+.spell:hover
+{
+	box-shadow:inset 0px 25px 0px rgba(255,255,255,0), inset 5px 5px 10px rgba(0,0,0,0.2), 2px 2px 10px rgba(0,0,0,0.8),inset 0px 0px 10px rgba(0,0,0,0.9);
+}
+
+.spell .spell_cooldown
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	height:0%;
+	background-color:#000;
+	opacity:0.5;
+	border-radius:3px;
+}
+
+.spell.cooling_down
+{
+	border-color:#833;
+}
+
+.spell.cooling_down .spell_cooldown
+{
+	height:100%;
+}
+
+.recipes
+{
+	/*position:absolute;
+	top:40px;
+	left:10px;
+	right:10px;
+	bottom:10px;
+*/	overflow-x:hidden;
+	overflow-y:auto;
+}
+
+.recipe
+{
+	position:absolute;
+	left:15px;
+	right:15px;
+	top:5px;
+	bottom:5px;
+	/*border-bottom:1px solid #333;
+	padding-bottom:10px;
+	margin-bottom:10px;*/
+}
+
+/*.quest_list .recipe
+{
+	position:relative;
+	top:auto;
+	bottom:auto;
+	right:auto;
+	width:200px;
+	border-bottom:1px solid #333;
+	padding-bottom:10px;
+	margin-bottom:10px;
+}*/
+
+.recipe .recipe_buttons
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	left:0px;
+}
+
+.show_craftable
+{
+	position:absolute;
+	top:15px;
+	right:40px;
+}
+
+.bottom_button_container
+{
+	position:absolute;
+	bottom:20px;
+	right:20px;
+}
+
+.recipe button,
+.explore_button,
+.home_button,
+.trade_button,
+.claim_treasure_button
+{
+	border:2px solid #333;
+	background-color:#55c;
+	width:150px;
+	height:70px;
+	margin:3px;
+	display: block;
+	float:right;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	color:#fff;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-size:20px;
+	font-family: 'Caveat Brush', cursive;
+	cursor:pointer;
+	border-radius:3px;
+	position:relative;
+	opacity:1;
+	box-shadow:inset 5px 5px 20px rgba(255,255,255,0.3),5px 5px 10px rgba(0,0,0,0.2);
+}
+
+.trade_button,
+.claim_treasure_button
+{
+	background-color:#ca5;
+}
+.home_button
+{
+	background-color:#5c5;
+}
+.explore_button
+{
+	background-color:#c55;
+}
+.claim_treasure_button.home_button,
+.trade_button.home_button
+{
+	background-color:#9f4;
+}
+
+.explore_button:hover,
+.home_button:hover,
+.trade_button:hover,
+.claim_treasure_button:hover
+{
+	box-shadow:inset 5px 5px 20px rgba(0,0,0,0.3);
+}
+
+.spells .home_button
+{
+	position:absolute;
+	width:50px;
+	left:auto;
+	right:0px;
+	top:0px;
+	height:20px;
+	font-size:10px;
+	margin:5px;
+	z-index:10000;
+	display:none;
+}
+
+.breaker
+{
+	clear:both;
+}
+
+.crosshair
+{
+	position:absolute;
+	left: -70px;
+    top: -70px;
+	width:70px;
+	height:70px;
+	margin-left:-35px;
+	margin-top:-35px;
+	background-image:url(../images/image0016.png);
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	opacity:0;
+	z-index:10000;
+}
+
+.owned_coin
+{
+	font-weight:bold;
+}
+
+.selling_item
+{
+	/*cursor: pointer;*/
+}
+
+.quality_1
+{
+	border-color:#555 !important;
+}
+
+.quality_2
+{
+	border-color:#aaa !important;
+}
+
+.quality_3
+{
+	border-color:#2d2 !important;
+}
+
+.quality_4
+{
+	border-color:#23d !important;
+}
+
+.quality_5
+{
+	border-color:#92d !important;
+}
+
+.quality_6
+{
+	border-color:#d82 !important;
+}
+
+.quality_recipe
+{
+	border-color:#c49a6b !important;
+
+}
+
+.chapter
+{
+	padding:20px;
+	padding-bottom:60px;
+	color:#000;
+	position: absolute;
+	top:0px;
+	right:0px;
+	left:0px;
+	height:278px;
+}
+
+.chapter_name
+{
+	font-size:36px;
+	color:#fff;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+
+}
+
+.chapter_description
+{
+	font-size:24px;
+	color:#ccc;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+
+}
+
+.chapter.no_chapters
+{
+	padding:20px;
+	padding-bottom:60px;
+	color:#000;
+	position: absolute;
+	top:0px;
+	right:0px;
+	left:0px;
+	height:420px;
+	z-index:1;
+	background-color:#ccc;
+}
+
+.chapter_description
+{
+	display:block;
+	font-family: 'Caveat Brush', cursive;
+	width:300px;
+}
+
+.location_bg
+{
+	position: absolute;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	left:0px;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	opacity:0.7;
+	z-index:-1;
+}
+
+.chapter .explore_button
+{
+	position:absolute;
+	bottom:40px;
+	left:20px;
+}
+
+.chapter .menu
+{
+	position:absolute;
+	right:20px;
+	bottom:40px;
+}
+
+.chapter .chapter_list
+{
+	position:absolute;
+	right:20px;
+	bottom:80px;
+}
+
+.areas_button
+{
+	position:absolute;
+	bottom:120px;
+	left:-1px;
+	right:66%;
+	padding-top:5px;
+	height:20px;
+	background-color:#aaa;
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	text-align:center;
+	cursor:pointer;
+	border:1px solid #888;
+	box-shadow:inset 0px -10px 20px -10px rgba(0,0,0,0.5);
+}
+
+.areas_button.active
+{
+	height:25px;
+	border-bottom:0px;
+	cursor:default;
+	box-shadow:none;
+	background-color:#ccc;
+}
+
+.locations_button
+{
+	position:absolute;
+	bottom:120px;
+	left:34%;
+	right:34%;
+	padding-top:5px;
+	height:20px;
+	background-color:#aaa;
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	text-align:center;
+	cursor:pointer;
+	border:1px solid #888;
+	box-shadow:inset 0px -10px 20px -10px rgba(0,0,0,0.5);
+}
+
+.locations_button.active
+{
+	height:25px;
+	border-bottom:0px;
+	cursor:default;
+	box-shadow:none;
+	background-color:#ccc;
+}
+
+.regions_button
+{
+	position:absolute;
+	bottom:120px;
+	right:-1px;
+	left:66%;
+	padding-top:5px;
+	height:20px;
+	background-color:#aaa;
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	text-align:center;
+	cursor:pointer;
+	border:1px solid #888;
+	box-shadow:inset 0px -10px 20px -10px rgba(0,0,0,0.5);
+}
+
+.regions_button.active
+{
+	height:25px;
+	border-bottom:0px;
+	cursor:default;
+	box-shadow:none;
+	background-color:#ccc;
+}
+
+.regions_button.passive,
+.locations_button.passive
+{
+	font-size: 0px;
+	height:0px;
+	border-radius: 0px;
+	border:none;
+	border-bottom:1px solid #888;
+	padding:0px;
+	box-shadow: none;
+	cursor: default;
+}
+
+.possible_locations
+{
+	background-color:#ccc;
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	padding:10px;
+	height:100px;
+	overflow-x:scroll;
+	overflow-y:hidden;
+}
+
+.location_choice
+{
+	border:2px solid #ccc;
+	width:80px;
+	height:80px;
+	float:left;
+	margin:3px;
+	display:block;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	color:#fff;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-size:0px;
+	font-family: 'Caveat Brush', cursive;
+	cursor:pointer;
+	border-radius:16px;
+	position:relative;
+	opacity:0.6;
+}
+
+.location_choice:hover
+{
+	box-shadow:inset 5px 5px 20px rgba(0,0,0,0.3);
+	opacity:1;
+}
+
+.location_choice.active
+{
+	border:2px solid #555;
+	box-shadow:inset 5px 5px 20px rgba(255,255,255,0.3),5px 5px 10px rgba(0,0,0,0.2);
+	opacity:1;
+}
+
+.location_choice .location_level
+{
+	position:absolute;
+	left:5px;
+	top:5px;
+	font-size:12px;
+	display:none;
+}
+
+.location_choice .unlockable_location_count
+{
+	position:absolute;
+	right:5px;
+	bottom:5px;
+	font-size:16px;
+	display:none;
+}
+
+.owned_locations .location_choice
+{
+	width:220px;
+	padding-left:5px;
+	height:20px;
+	font-size:18px;
+}
+
+.specific_fights_container
+{
+	position:absolute;
+	right:20px;
+	bottom:130px;
+}
+
+.specific_fights_container .specific_fight_button
+{
+	float:right;
+	width:70px;
+	height:70px;
+	border:2px solid #333;
+	margin-left:5px;
+	border-radius:5px;
+	cursor:pointer;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	box-shadow: inset 5px 5px 20px rgba(255,255,255,0.3), 5px 5px 10px rgba(0,0,0,0.2);
+}
+
+.specific_fights_container .specific_fight_button:hover
+{
+	box-shadow:inset 5px 5px 20px rgba(0,0,0,0.3);
+}
+
+.main_button
+{
+	border:2px solid #333;
+	display: block;
+	float:right;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	color:#fff;
+	font-size:16px;
+	font-family: 'Caveat Brush', cursive;
+	cursor:pointer;
+	border-radius:3px;
+	box-shadow:inset 5px 5px 20px rgba(255,255,255,0.3),5px 5px 10px rgba(0,0,0,0.2);
+}
+
+.main_button:hover
+{
+	box-shadow:inset 5px 5px 20px rgba(0,0,0,0.3);
+}
+
+.close_button
+{
+	position:absolute;
+	top:10px;
+	right:10px;
+	background-color:#f00;
+	width:25px;
+	height:25px;
+	z-index:1000;
+}
+
+.chapter .lower_location,
+.chapter .higher_location,
+.unit_button,
+.vendor_button,
+.units_button,
+.spells_button,
+.gear_button,
+.inventory_button,
+.quest_button,
+.crafting_button,
+.fusing_button
+{
+	background-color:#3e3;
+	margin-left:5px;
+	min-width:75px;
+}
+
+.quest_button,
+.crafting_button.blue
+{
+	background-color:#65e;
+}
+
+.quest_button
+{
+	min-width:75px;
+}
+
+.chapter_choice
+{
+	border:2px solid #ccc;
+	width:80px;
+	height:80px;
+	float:left;
+	margin:3px;
+	display:block;
+	text-shadow: 1px 1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000, -1px -1px 0px #000;
+	color:#ff0;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-size:40px;
+	font-family: 'Caveat Brush', cursive;
+	cursor:pointer;
+	border-radius:3px;
+	position:relative;
+	opacity:0.6;
+	line-height: 25px;
+}
+
+.chapter_choice:hover
+{
+	box-shadow:inset 5px 5px 20px rgba(0,0,0,0.3);
+	opacity:1;
+}
+
+.chapter_choice.active
+{
+	border:2px solid #555;
+	box-shadow:inset 5px 5px 20px rgba(255,255,255,0.3),5px 5px 10px rgba(0,0,0,0.2);
+	opacity:1;
+}
+
+.higher_attr
+{
+	font-weight: bold;
+	color: #080;
+	font-size:12px;
+}
+
+.lower_attr
+{
+	font-weight: bold;
+	color:#800;
+	font-size:12px;
+}
+
+.hidden
+{
+	display:none;
+}
+
+#content_gear .gear_bg,
+#content_crafting_skills .crafting_bg,
+#content_crafting .crafting_bg,
+.paper_bg
+{
+	position: absolute;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	left:0px;
+	background-repeat:no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	opacity:0.6;
+	z-index:-1;
+	background-image:url('../images/vintage-1659117_640.jpg');
+}
+
+#content_gear h2,
+#content_crafting_skills h2,
+#content_crafting h2,
+#content_quests h2
+{
+	position:absolute;
+	top:20px;
+	left:20px;
+	font-size:40px;
+}
+
+#content_crafting h2
+{
+	cursor: pointer;
+}
+
+#content_crafting_skills .available_skills
+{
+	position:absolute;
+	top:100px;
+	left:20px;
+	right:20px;
+	bottom:20px;
+}
+
+.owned_gear .button,
+#content_crafting_skills .available_skills .skill_button
+{
+	float:left;
+	width:240px;
+	height:40px;
+	text-align: center;
+	padding-top:14px;
+	font-size: 24px;
+	margin-bottom:3px;
+	margin-right: 3px;
+	background-color:rgba(255,255,255,0.3);
+	border-radius:5px;
+	cursor:pointer;
+}
+
+.owned_gear .button
+{
+	clear:both;
+	position:absolute;
+	top:0px;
+	right:10px;
+	width:100px;
+}
+
+#content_crafting_skills .available_skills .skill_button:hover
+{
+	background-color:rgba(255,255,255,0.8);
+}
+
+.quest_list,
+.active_gear,
+.available_skill_recipes
+{
+	position:absolute;
+	left:20px;
+	top:85px;
+	bottom:20px;
+	width:200px;
+	background-color:rgba(0,0,0,0.2);
+	overflow-x:hidden;
+	overflow-y:scroll;
+}
+
+.active_gear
+{
+	overflow:hidden;
+	background-color:transparent;
+}
+
+.trade_container .recipe_detail
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	bottom:100px;
+	overflow-x:hidden;
+	overflow-y:scroll;
+	left:10px;
+}
+
+.quest_details,
+.owned_gear,
+#content_crafting .recipe_detail
+{
+	position:absolute;
+	top:85px;
+	right:20px;
+	bottom:20px;
+	overflow-x:hidden;
+	overflow-y:scroll;
+	left:240px;
+}
+
+.trade_container .recipe_detail h3
+{
+	font-size:36px;
+}
+
+.recipe_detail p
+{
+	font-family: arial;
+	font-weight: bold;
+}
+
+#content_crafting .skill_level_bar_container
+{
+	position:absolute;
+	top:70px;
+	right:20px;
+	height:10px;
+	overflow:hidden;
+	left:20px;
+	background-color:rgba(0,0,0,0.2);
+}
+
+#content_crafting .skill_level_bar
+{
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	position:absolute;
+	top:1px;
+	width:20%;
+	height:8px;
+	overflow:hidden;
+	left:0px;
+	background-color:rgba(0,0,0,0.8);
+}
+
+.recipe_line_container
+{
+	clear:both;
+	min-width:450px;
+}
+
+.recipe_line_container b
+{
+	font-size:14px;
+}
+
+.quest_details .recipe_text,
+.recipe_line_container .recipe_text
+{
+	font-family: arial;
+	font-size:12px;
+	float:left;
+	margin:2px;
+	width:300px;
+}
+
+.recipe_line_container .recipe_text .stat_block
+{
+	clear:both;
+}
+
+.owned_gear
+{
+	font-size:24px;
+	font-weight: bold;
+	font-family: 'Caveat Brush', cursive;
+}
+
+.owned_gear .player_stat
+{
+	display:inline-block;
+	width:150px;
+}
+
+.owned_gear .recipe_text
+{
+	padding-bottom:10px;
+	margin-bottom:10px;
+	border-bottom:1px dotted #000;
+	width:300px;
+}
+
+.owned_gear .recipe_line_container .recipe_text .stat_block
+{
+	margin-left: 86px;
+}

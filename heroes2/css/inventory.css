@@ -1,0 +1,79 @@
+.inventory_filters_container,
+.crafting_container,
+.pick_worker_container,
+.inventory_container
+{
+	position: absolute;
+	top:10px;
+	bottom:70px;
+	left:10%;
+	right:10%;
+	text-align:center;
+}
+
+.inventory_container .item
+{
+	display: inline-block;
+}
+
+.inventory_container
+{
+	overflow: hidden;
+	bottom:115px;
+}
+
+.inventory_filters_container
+{
+	top:auto;
+	bottom:45px;
+	padding-bottom:5px;
+}
+
+.inventory_page_container
+{
+	position: absolute;
+	height:50px;
+	left:70px;
+	right:70px;
+	bottom:0px;
+	text-align: center;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding:10px;
+	font-size: 20px;
+	color:rgba(0,0,0,0.5);
+	font-family: 'Caveat Brush', cursive;
+}
+
+.no_inventory_text
+{
+	padding:10px;
+	font-size: 30px;
+	color:rgba(0,0,0,0.5);
+	font-family: 'Caveat Brush', cursive;
+}
+
+.page_back,
+.page_further
+{
+	display: inline-block;
+	text-align: center;
+	width: 50px;
+}
+
+@media only screen and (max-width:1024px) {
+
+	.inventory_filters_container,
+	.pick_worker_container,
+	.crafting_container,
+	.inventory_container
+	{
+		left:2%;
+		right:2%;
+	}
+
+	.inventory_container
+	{
+		bottom:175px;
+	}
+}

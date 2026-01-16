@@ -1,0 +1,45 @@
+.game_messages
+{
+  position: fixed;
+  z-index:100;
+  top:10%;
+  left:10%;
+  right:10%;
+}
+
+.game_message
+{
+	width: 100%;
+	font-size: 40px;
+    font-family: 'Caveat Brush', cursive;
+    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+    color:#fff;
+    text-align:center;
+    transition: none;
+    animation: 1s ease-out 0s 1 game_message;
+    line-height: 0.8;
+    padding: 5px;
+}
+
+.game_message.fade_out
+{
+	opacity: 0;
+}
+
+@keyframes game_message {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.game_message .small
+{
+  margin-top:-15px;
+	font-size: 20px;
+	line-height:1;
+}

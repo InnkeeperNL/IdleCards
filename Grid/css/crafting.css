@@ -1,0 +1,112 @@
+.owned_recipes_list,
+.owned_cards_list
+{
+	position:absolute;
+	left:10px;
+	top:80px;
+	bottom:20px;
+	width:180px;
+	background-color:rgba(0,0,0,0.2);
+	overflow-x:hidden;
+	overflow-y:auto;
+	font-family: 'Caveat Brush', cursive;
+	font-size:16px;
+	text-align:center;
+	color:#fff;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	line-height:4;
+}
+
+.crafting_card,
+.tinkering_card
+{
+	width:185px;
+	height:260px;
+	position: absolute;
+	background-color:rgba(0,0,0,0.2);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.crafting_card_1,
+.tinkering_card_1
+{
+	left:300px;
+	top:100px;
+}
+
+.crafting_card_2,
+.tinkering_card_2
+{
+	right:100px;
+	top:100px;
+}
+
+.craft_recipe_button,
+.craft_tinkering_button
+{
+	position:absolute;
+	bottom:20px;
+	right:200px;
+	margin:10px;
+	width:180px;
+	height:55px;
+	cursor:pointer;
+	border-radius:5px;
+	font-family: 'Caveat Brush', cursive;
+	font-size:24px;
+	border:none;
+	background-image: url('../images/old-953394_640.jpg');
+	background-position: center center;
+	background-size: cover;
+	background-color:#ccc;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	font-size:30px;
+	color:#ccc;
+	box-shadow:1px 1px 10px rgba(0,0,0,0.2);
+}
+
+.craft_recipe_button:hover,
+.craft_tinkering_button:hover
+{
+	box-shadow:2px 2px 10px 2px rgba(0,0,0,0.5);
+}
+
+.crafting_card.disabled,
+.craft_recipe_button.disabled,
+.craft_tinkering_button.disabled
+{
+	color:#555;
+	box-shadow:inset 2px 2px 15px 5px rgba(0,0,0,0.5);
+	opacity:0.5;
+}
+
+.single_recipe,
+.single_owned_card
+{
+	padding:3px;
+	border-radius:5px;
+	font-family: 'Caveat Brush', cursive;
+	font-size:16px;
+	margin:2px;
+	width:150px;
+	border-radius:3px;
+	text-align:left;
+	text-shadow:none;
+	color:#111;
+	line-height:1.2;
+}
+
+.single_recipe:hover,
+.single_owned_card:hover
+{
+	background-color:rgba(255,255,255,0.2);
+	color:#000;
+}
+
+.single_recipe span,
+.single_owned_card span
+{
+	float:right;
+	text-align:right;
+}

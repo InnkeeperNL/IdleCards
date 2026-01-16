@@ -1,0 +1,373 @@
+.action_details_activity_header,
+.action_bar
+{
+	width:100%;
+	min-height:70px;
+	background-color:rgba(100,100,100,0.5);
+	position: relative;
+	margin-bottom:10px;
+}
+
+.action_bar_trade,
+.pick_craft_recipe_container .action_bar
+{
+	margin: auto;
+	margin-bottom: 10px;
+	max-width: 600px;
+	padding: 7px;
+	text-align: left;
+}
+
+.action_bar_trade
+{
+	text-align: center;
+}
+
+.recipe_rewards,
+.recipe_costs
+{
+	display: inline-block;
+	min-width: 50%;
+}
+
+.recipe_rewards
+{
+	float: right;
+}
+
+.recipe_rewards
+{
+	text-align: right;
+}
+
+@media only screen and (max-width:1024px) {
+
+	.recipe_rewards,
+	.recipe_costs
+	{
+		min-width: 0%;
+	}
+}
+
+.recipe_summary
+{
+	clear: both;
+	display: block;
+	width: 100%;
+	text-align: right;
+}
+
+.action_bar_trade
+{
+	background-color: transparent;
+}
+
+.action_bar.back_button_true
+{
+	background-color: transparent;
+	cursor: pointer;
+	min-height: 0px;
+}
+
+.action_details_activity_header
+{
+	border-radius: 5px;
+	box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,0.7),5px 5px 1px rgba(0,0,0,0.3);
+	font-family: 'Caveat Brush', cursive;
+	font-size:40px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color: rgba(255,255,255,1);
+}
+
+.action_bar_image
+{
+	position: absolute;
+	left:-0px;
+	top:-3px;
+	bottom:-3px;
+	width:73px;
+	background-size: cover;
+	background-position: center;
+	border-radius:5px;
+	box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,0.7),5px 5px 1px rgba(0,0,0,0.3);
+	font-family: 'Caveat Brush', cursive;
+	font-size:40px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color: rgba(255,255,0,1);
+	padding-top:10px;
+	text-align: center;
+}
+
+.action_bar_image .incompelte
+{
+	color:  #ccc;
+}
+
+.back_button_true .action_bar_image
+{
+	left: auto;
+	top: auto;
+	bottom: auto;
+	width: 10%;
+	height: 70px;
+}
+
+.portrait .back_button_true .action_bar_image
+{
+	width: 20%;
+}
+
+.action_bar_name
+{
+	position: relative;
+	padding-left:83px;
+	padding-right:75px;
+	padding-top:5px;
+	font-family: 'Caveat Brush', cursive;
+	font-size:30px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+}
+
+.back_button_true .action_bar_name
+{
+	display: none;
+}
+
+.action_details_activity_name
+{
+	position: absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	padding-top:10px;
+}
+
+.activity_amount
+{
+	width:100%;
+	text-align: center;
+	padding-top:5px;
+	padding-bottom: 5px;
+	font-family: 'Caveat Brush', cursive;
+	font-size:20px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+}
+
+.action_bar_button
+{
+	position: absolute;
+	right:10px;
+	top:5px;
+	margin:0px;
+	text-align: center;
+	padding-top:5px;
+	font-size:40px;
+}
+
+.action_bar_button.quest_button.yellow
+{
+	color: rgba(255,255,0,1);
+}
+
+.activity_details_container,
+.action_details_container
+{
+	position: absolute;
+	top:10px;
+	bottom:10px;
+	left:10%;
+	right:10%;
+	text-align:center;
+}
+
+@media only screen and (max-width:1024px) {
+
+	.activity_details_container,
+	.action_details_container
+	{
+		left:2%;
+		right:2%;
+	}
+}
+
+.action_details_text
+{
+	margin: auto;
+	padding:10px;
+	width:50%;
+	line-height:1.5;
+	background-color: rgba(255,255,255,0.5);
+	font-family: times;
+}
+
+@media only screen and (max-width:1024px) {
+
+	.action_details_text
+	{
+		width: 100%;
+	}
+}
+
+.action_details_name
+{
+	font-family: 'Caveat Brush', cursive;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	text-shadow: none;
+	color:#000;
+	font-size:30px;
+	font-weight: bold;
+}
+
+.action_details_description
+{
+	/*font-family: arial;*/
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	text-shadow: none;
+	color:#000;
+	font-size:20px;
+	font-weight: bold;
+}
+
+.action_details_description i
+{
+	display: inline-block;
+	font-size: 20px;
+	color:rgba(0,0,0,0.6);
+	/*font-family: times;*/
+	font-style: normal;
+}
+
+.action_progress_bar_container
+{
+	margin-top:10px;
+	width:100%;
+	height:40px;
+	border-radius:5px;
+	background-color:rgba(0,0,0,0.2);
+	position: relative;
+	overflow: hidden;
+}
+
+.action_progress_bar
+{
+	position: absolute;
+	left:0px;
+	top:0px;
+	bottom:0px;
+	width:0%;
+	background-color:rgba(100,200,100,0.5);
+	border-radius:3px;
+}
+
+.action_progress_name,
+.action_progress_amount
+{
+	position: absolute;
+	right:10px;
+	top:5px;
+	font-family: arial;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	font-weight: bold;
+	font-size:20px;
+}
+
+.action_progress_name
+{
+	left:10px;
+	right:auto;
+}
+
+.action_buttons_container
+{
+	padding-top:20px;
+	width:100%;
+	line-height:1.5;
+	text-align: center;
+}
+
+.action_buttons_container button
+{
+	display: inline-block;
+	float: none;
+	margin-bottom:10px;
+}
+
+.catch_bg
+{
+	position: absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:50px;
+	background-size: cover;
+	background-position: center;
+	box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,0.7),5px 5px 1px rgba(0,0,0,0.3);
+	border-radius:10px;
+	overflow: hidden;
+	text-align:left;
+}
+
+.catchable
+{
+	position: absolute;
+	overflow:hidden;
+	border-radius:100%;
+	transform: scale(1);
+	transition: all 0.25s ease-in-out;
+    animation: 1s ease-out 0s 1 catchable;
+}
+
+.catchable.disappearing
+{
+	opacity: 0;
+}
+
+
+.catchable.caught
+{
+	transform: scale(2);
+	opacity: 0;
+}
+
+.catchable_image
+{
+	position: absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	background-size: 100% auto;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.catch_bg .loot
+{
+	position: absolute;
+	top:5px;
+	left:5px;
+	display: block;
+}
+
+.catch_bg .loot .item
+{
+	transition: all 0.5s ease-in-out;
+	display: block;
+	margin:0px;
+	animation: 1s ease-out 0s 1 loot_drop;
+	transform: scale(1);
+    opacity: 1;
+    top:50%;
+}
+
+@keyframes catchable {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

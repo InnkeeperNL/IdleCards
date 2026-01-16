@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="js/functions/general.js"></script>
+	<script src="js/data/config.js?v=1.11111"></script>
+
+	<script src="js/energy.js?v=1.11111"></script>
+	
+	<script src="js/data/items.js?v=1.11111"></script>
+	<script src="js/data/recipes.js?v=1.11111"></script>
+	<script src="js/data/local_actions.js?v=1.11111"></script>
+	<script src="js/data/locations.js?v=1.11111"></script>
+	<script src="js/data/buildings.js?v=1.11111"></script>
+	
+	
+	
+	<script src="js/town.js?v=1.11111"></script>
+	<script src="js/locations.js?v=1.11111"></script>
+	<script src="js/current_location.js?v=1.11111"></script>
+	<script src="js/buildings.js?v=1.11111"></script>
+	<script src="js/inventory.js?v=1.11111"></script>
+	<script src="js/localstorage.js?v=1.11111"></script>
+	<link rel="stylesheet" type="text/css" href="css/main.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/energy.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/town.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/locations.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/current_location.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/actions.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/inventory.css?v=1.11111">
+</head>
+<body>
+	<div class="main_window">
+		<div class="bg paper_bg"></div>
+		<div id="content_loading" class="page_container active">
+			<div class="page_section">
+				Loading...
+			</div>	
+			<div class="page_section">
+				<span class="processing_amount"></span>
+			</div>
+			
+		</div>
+		<div id="content_town" class="page_container">
+			<div class="bg town_bg"></div>
+			<div class="top_bar">
+				<button class="menu_button locations_button slim" data-target-content="locations">Locations</button>
+				<button class="menu_button inventory_button slim good" data-target-content="storage">Storage</button>
+			</div>
+			<div id="town_container" class="town_container content_container clear_me"></div>
+			<!-- <div class="bottom_bar">
+				<div class="expeditions_container">
+					<div class="expeditions_bar_container">
+						<div class="expeditions_bar"></div>
+					</div>
+					<div class="expeditions_icon"></div>
+					<div class="expeditions_amount">
+						<span class="current_expeditions"></span> / <span class="max_expeditions"></span>
+					</div>
+				</div>
+				<div class="bottom_bar_right clear_me"></div>
+			</div> -->
+		</div>
+		<div id="content_building" class="page_container">
+			<div class="bg building_bg"></div>
+			<div class="top_bar">
+				<button class="menu_button town_button slim" data-target-content="town">Town</button>
+			</div>
+			<div id="building_container" class="building_container content_container clear_me"></div>
+		</div>
+		<div id="content_locations" class="page_container">
+			<div class="bg locations_bg"></div>
+			<div class="top_bar">
+				<button class="menu_button town_button slim" data-target-content="town">Town</button>
+				<!-- <button class="menu_button inventory_button slim good" data-target-content="inventory">Inventory</button> -->
+			</div>
+			<div id="locations_container" class="locations_container content_container clear_me"></div>
+			<!-- <div class="bottom_bar">
+				<div class="expeditions_container">
+					<div class="expeditions_bar_container">
+						<div class="expeditions_bar"></div>
+					</div>
+					<div class="expeditions_icon"></div>
+					<div class="expeditions_amount">
+						<span class="current_expeditions"></span> / <span class="max_expeditions"></span>
+					</div>
+				</div>
+				<div class="bottom_bar_right clear_me"></div>
+			</div> -->
+		</div>
+		<div id="content_current_location" class="page_container">
+			<div class="bg current_location_bg"></div>
+			<div class="top_bar">
+				<button class="menu_button town_button slim" onclick="deposit_inventory()" data-target-content="town">Town</button>
+				<button class="menu_button current_location_button slim" onclick="reset_location(true)" data-target-content="current_location">Revisit</button>
+				<div class="inventory_icon" onclick="show_inventory()"></div><div class="inventory_counter" onclick="show_inventory()"></div>
+				<!-- <button class="menu_button inventory_button slim good" data-target-content="inventory">Inventory</button> -->
+			</div>
+			<div id="current_location_container" class="current_location_container content_container clear_me"></div>
+		</div>
+		<div id="content_storage" class="page_container">
+			<div class="bg storage_bg"></div>
+			<div class="top_bar">
+				<button class="menu_button town_button slim" data-target-content="town">Town</button>
+				<button class="menu_button show_food_storage_toggle_button slim" data-target-content="storage" onclick="toggle_show_food_storage()">Toggle food storage</button>
+				<div class="inventory_icon" onclick="show_deposit_inventory()"></div><div class="inventory_counter" onclick="show_deposit_inventory()"></div>
+			</div>
+			<div id="storage_container" class="storage_container content_container clear_me"></div>
+		</div>
+		<div id="content_options" class="page_container">
+			<div class="bg options_bg"></div>
+			<div class="top_bar">
+				<button class="menu_button town_button slim" data-target-content="town">Town</button>
+			</div>
+			<div id="options_container" class="options_container content_container">
+				<button class="menu_button reset_button slim danger" onclick="delete_account()" data-target-content="town"></button> Reset account
+
+			</div>
+		</div>
+		<div class="bottom_bar">
+			<div class="energy_container">
+				<div class="energy_bar_container">
+					<div class="energy_bar"></div>
+				</div>
+				<div class="energy_icon"></div>
+				<div class="energy_amount">
+					<span class="current_energy"></span> / <span class="max_energy"></span>
+				</div>
+			</div>
+			<div class="bottom_bar_right clear_me"></div>
+		</div>
+		<div class="dark_overlay"></div>
+		<div class="white_screen">
+			<div class="white_screen_title"></div>
+			<div class="close_white_screen_button" onclick="close_white_screen()"></div>
+			<div class="white_screen_content"></div>
+		</div>
+	</div>
+</body>
+<script>
+
+	var gamedata = loadLocalStorage();
+
+		window.onerror = function(msg, url, linenumber) {
+		if(test_mode == false)
+		{
+	    	alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+	    	return true;
+	    }
+	}
+	
+
+	var last_content = homepage;
+	var current_content = homepage;
+
+	function show_last_content(){
+		show_content(last_content);
+	}
+
+	function update_last_content(new_content){
+		last_content = current_content;
+		current_content = new_content;
+	}
+
+	function clear_old_content(){
+		var elements = document.querySelectorAll('.clear_me');
+		elements.forEach(element => {
+		  element.innerHTML = '';
+		});
+	}
+
+	function show_content(content_id){
+		if(content_id == 'back'){content_id = last_content;}
+		if(content_id == 'current'){content_id = current_content;}
+		update_last_content(content_id);
+		clear_old_content();
+		//reset_global_timer();
+		if(content_id == undefined){content_id = homepage;}
+		/*var elements = document.querySelectorAll('.menu_button');
+		elements.forEach(element => {
+			removeClass(element, 'good');
+		});
+		var elements = document.querySelectorAll('.' + content_id + '_button');
+		elements.forEach(element => {
+			addClass(element, 'good');
+		});*/
+		var elements = document.querySelectorAll('.page_container','.active');
+		elements.forEach(element => {
+			removeClass(element, 'active');
+		});
+		addClass(document.getElementById('content_' + content_id),'active');
+		var possible_extra_function = window['show_' + content_id]; 
+		if (typeof possible_extra_function === "function") possible_extra_function();
+		if(count_object(gamedata) > 0)
+		{
+			update_energy();
+			update_expeditions();
+		}
+	};
+
+	window.onclick = function(event){
+		if(event.target.className.includes('menu_button'))
+		{
+			var content_id = event.target.getAttribute('data-target-content');
+			if(content_id != undefined)
+			{
+				show_content(content_id);
+			}
+		}	
+	}
+	
+	var global_timer;
+	var last_global_tick = new Date();
+
+	var tick_time = 1000;
+	document.addEventListener("DOMContentLoaded", function() {
+		gamedata = loadLocalStorage();
+		if(gamedata['tick_time'] != undefined)
+		{
+			tick_time = gamedata['tick_time'];
+		}
+		check_global_timer();
+		show_content();
+	});
+	
+	function check_global_timer(){
+		var time_passed = new Date() - last_global_tick;
+		last_global_tick = new Date();
+		// perform timer stuff here
+		check_energy_gain();
+		//check_expeditions_gain();
+		reset_global_timer();
+	}
+
+	function reset_global_timer(delay){
+		if(delay == undefined){delay = tick_time;}
+		clearTimeout(global_timer);
+		global_timer = setTimeout(function(){
+			check_global_timer();
+		},delay);
+	}
+
+</script>
+</html>
+

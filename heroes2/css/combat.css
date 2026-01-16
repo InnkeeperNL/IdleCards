@@ -1,0 +1,369 @@
+#content_combat
+{
+	position: absolute;
+	left:0px;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	overflow: hidden;
+}
+
+.portrait .cell
+{
+	position: absolute;
+	width:30%;
+	height:15%;
+}
+
+.portrait .big_unit
+{
+	height:31%;
+}
+
+.landscape .cell
+{
+	position: absolute;
+	width:16%;
+	height:29%;
+}
+
+.landscape .big_unit
+{
+	width:33%;
+}
+
+.small_unit
+{
+	/*transform: scale(0.8);*/
+}
+
+.portrait .ability_button
+{
+	position: absolute;
+	width:30%;
+	height:11%;
+	top:81%;
+}
+
+.landscape .ability_button
+{
+	position: absolute;
+	width:13%;
+	height:29%;
+	left:86%;
+}
+
+.portrait .cell.col_1, .portrait .ability_button.col_1{	left:3%;}
+.portrait .cell.col_2, .portrait .ability_button.col_2{	left:35%;}
+.portrait .cell.col_3, .portrait .ability_button.col_3{	left:67%;}
+
+.portrait .cell.row_1{	top:1%;}
+.portrait .cell.row_2{	top:17%;}
+.portrait .cell.row_3{	top:33%;}
+.portrait .cell.row_4{	top:49%;}
+.portrait .cell.row_5{	top:65%;}
+
+.landscape .cell.col_1, .landscape .ability_button.col_1{	top:3%;}
+.landscape .cell.col_2, .landscape .ability_button.col_2{	top:33%;}
+.landscape .cell.col_3, .landscape .ability_button.col_3{	top:63%;}
+
+.landscape .cell.row_1{	left:1%;}
+.landscape .cell.row_2{	left:18%;}
+.landscape .cell.row_3{	left:35%;}
+.landscape .cell.row_4{	left:52%;}
+.landscape .cell.row_5{	left:69%;}
+
+.cell.treasure_container
+{
+	text-align: center;
+	padding-top:50px;
+	transition: all 0.5s ease-in-out;
+}
+
+.cell.treasure_container .action_details_description
+{
+	margin-bottom:10px;
+}
+
+.portrait .cell.treasure_container
+{
+	width:94%;
+	height:47%;
+	padding-top: 25%;
+}
+
+.landscape .cell.treasure_container
+{
+	width:50%;
+	height:89%;
+}
+
+.player_target
+{
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	transition: all 0.25s ease-in-out;
+	/*transform-origin: center;
+	transform: scale(0.5);*/
+	z-index: 20;
+	opacity: 0.5;
+	background-image: url(../images/icons/crosshair.svg);
+}
+
+.ability_button,
+.cell_bg
+{
+	border-radius: 5px;
+	background-color:rgba(0,0,0,0.1);
+}
+
+.ability_button.passive_true
+{
+	opacity: 0.8;
+}
+
+.cell_area
+{
+	z-index:10000;
+}
+
+.end_combat_button
+{
+	position: absolute;
+	bottom:1%;
+	height:5%;
+	left:1%;
+	right:1%;
+	padding:0px;
+	text-align: center;
+	font-family: 'Caveat Brush', cursive;
+	font-size:30px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	cursor:pointer;
+	border-radius: 5px;
+	background-color:rgba(100,0,0,0.3);
+}
+
+.portrait .end_combat_button
+{
+	left:3%;
+	right:3%;
+}
+
+.unit
+{
+	border-radius: 5px;
+	overflow: hidden;
+	box-shadow:5px 5px 5px rgba(0,0,0,0.3);
+	transition: all 0.5s ease-in-out;
+}
+
+.unit.small_unit.dead,
+.unit.dead
+{
+	transition: all 0.5s ease-in-out;
+	transform-origin: center;
+	transform:rotate(-360deg) scale(0,0);
+}
+
+.unit_bg
+{
+	opacity: 1;
+	box-shadow:inset 0px 0px 0px 3px rgba(255,255,255,0.7);
+	bottom:7%;
+	font-size:10px;
+	padding:10px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+}
+
+.side_2 .unit_bg
+{
+	box-shadow:inset 0px 0px 0px 3px rgba(255,0,0,0.5);
+}
+
+.unit_level
+{
+	opacity: 0.9;
+	font-size:20px;
+	position: absolute;
+	right: 10px;
+	bottom: 9%;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	z-index: 1;
+	font-family: 'Caveat Brush', cursive;
+}
+
+.unit_hp_container
+{
+	position: absolute;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	height:7%;
+	background-color:rgba(0,0,0,0.8);
+}
+
+.unit_hp_percent
+{
+	position: absolute;
+	bottom:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	background-color:rgba(200,0,0,0.8);
+}
+
+.unit_xp_container
+{
+	position: absolute;
+	bottom:3px;
+	left:3px;
+	top:3px;
+	width:5px;
+	background-color:rgba(0,0,0,0.8);
+}
+
+.unit_xp_percent
+{
+	position: absolute;
+	bottom:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	background-color:rgba(100,100,250,0.8);
+}
+
+.portrait .cell.side_2
+{
+	animation: 1s ease-out 0s 1 enemy_slide_in_v;
+}
+
+@keyframes enemy_slide_in_v {
+  0% {
+    margin-top:-100%;
+  }
+  100% {
+    margin-top:0%;
+  }
+}
+
+.landscape .cell.side_2
+{
+	animation: 1s ease-out 0s 1 enemy_slide_in_h;
+}
+
+@keyframes enemy_slide_in_h {
+  0% {
+    margin-left:-100%;
+  }
+  100% {
+    margin-left:0%;
+  }
+}
+
+.cell.treasure_container
+{
+	animation: 1s ease-out treasure_fade_in;
+}
+
+.cell.treasure_container.fade_out
+{
+	opacity: 0;
+}
+
+@keyframes treasure_fade_in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.ability_button.euipped_item
+{
+}
+
+.ability_button .bg
+{
+	opacity: 1;
+	border-radius:5px;
+	box-shadow:inset 0px -10px 15px -10px rgba(0,0,0,0.2), inset 0px 0px 3px 5px rgba(0,0,0,0.0), inset 0px 0px 0px 3px rgba(255,255,255,0.8), 0px 0px 1px 1px rgba(0,0,0,0.9),5px 5px 1px rgba(0,0,0,0.3);
+}
+
+.ability_button.no_cooldown .bg
+{
+	opacity: 1;
+}
+
+.ability_button .consumables_amount
+{
+	position: absolute;
+	bottom:5px;
+	left:0px;
+	right:0px;
+	text-align:center;
+	font-family: 'Caveat Brush', cursive;
+	font-size:20px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+}
+
+.ability_button .consumables_cooldown
+{
+	position: absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	height:100%;
+	background-color:rgba(0,0,0,0.5);
+	transition: all 0.5s ease-in-out;
+	text-align: center;
+	font-family: 'Caveat Brush', cursive;
+	font-size:40px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	transition: all 0.1s linear;
+	overflow: hidden;
+}
+
+.current_cooldown
+{
+	width: 100%;
+	padding-top: 10px;
+}
+
+.ability_button.no_cooldown .consumables_cooldown
+{
+	opacity: 0;
+	transition: all 0s linear;
+}
+
+.ability_button.no_cooldown.passive_true .consumables_cooldown
+{
+	opacity: 1;
+}
+
+.buff
+{
+	position: relative;
+	display: inline-block;
+	padding-top:4px;
+	width:25px;
+	height:25px;
+	margin:2px;
+	border-radius: 3px;
+	text-align:right;
+	background-color:rgba(255,255,255,0.0);
+	font-family: 'Caveat Brush', cursive;
+	font-size:20px;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	color:#fff;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}

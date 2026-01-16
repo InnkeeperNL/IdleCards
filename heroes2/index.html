@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width"> 
+	<script src="js/lib/jquery.js"></script>
+	<script src="js/lib/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="js/functions/general.js"></script>
+
+	<script src="js/data/config.js?v=1.11111"></script>
+	<script src="js/data/sounds.js?v=1.11111"></script>
+	<script src="js/data/all_items.js?v=1.11111"></script>
+		<script src="js/data/items/gear.js?v=1.11111"></script>
+		<script src="js/data/items/consumables.js?v=1.11111"></script>
+		<script src="js/data/items/quest_items.js?v=1.11111"></script>
+
+	<script src="js/data/all_locations.js?v=1.11111"></script>
+	<script src="js/data/all_activities.js?v=1.11111"></script>
+	<script src="js/data/all_actions.js?v=1.11111"></script>
+		<script src="js/data/locations/map/map.js?v=1.11111"></script>
+			<script src="js/data/locations/maywell/actions.js?v=1.11111"></script>
+			<script src="js/data/locations/maywell/clara_baeumont.js?v=1.11111"></script>
+				<script src="js/data/locations/maywell/maywell_keep/actions.js?v=1.11111"></script>
+				<script src="js/data/locations/maywell/maywell_keep/garry_the_guard.js?v=1.11111"></script>
+				<script src="js/data/locations/maywell/slums/actions.js?v=1.11111"></script>
+				<script src="js/data/locations/maywell/slums/fights.js?v=1.11111"></script>
+				<script src="js/data/locations/maywell/slums/little_johnny.js?v=1.11111"></script>
+				<script src="js/data/locations/maywell/herb_garden/actions.js?v=1.11111"></script>
+				<script src="js/data/locations/maywell/potion_shop/potion_shop.js?v=1.11111"></script>
+				<script src="js/data/locations/maywell/tailor_shop/tailor_shop.js?v=1.11111"></script>
+				<script src="js/data/locations/maywell/farm/farm.js?v=1.11111"></script>
+				<script src="js/data/locations/maywell/graveyard/graveyard.js?v=1.11111"></script>
+			<script src="js/data/locations/forest/forest.js?v=1.11111"></script>
+				<script src="js/data/locations/forest/lumberyard/lumberyard.js?v=1.11111"></script>
+			<script src="js/data/locations/river/river.js?v=1.11111"></script>
+			<script src="js/data/locations/canyon/canyon.js?v=1.11111"></script>
+			<script src="js/data/locations/mountain/mountain.js?v=1.11111"></script>
+
+	<script src="js/data/all_abilities.js?v=1.11111"></script>
+	<script src="js/data/all_units.js?v=1.11111"></script>
+	<script src="js/data/quest_units/quest_units.js?v=1.11111"></script>
+	<script src="js/data/all_recipes.js?v=1.11111"></script>
+
+	<script src="js/data/all_corrections.js?v=1.11111"></script>
+
+	<script src="js/localstorage.js?v=1.11111"></script>
+	<script src="js/settings.js"></script>
+	<script src="js/floating_text.js"></script>
+	<script src="js/game_messages.js"></script>
+	<script src="js/sounds.js"></script>
+	<script src="js/items.js"></script>
+	<script src="js/locations.js"></script>
+	<script src="js/actions.js"></script>
+	<script src="js/combat.js"></script>
+	<script src="js/inventory.js"></script>
+	<script src="js/crafting.js"></script>
+
+	<link rel="stylesheet" href="js/lib/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/floating_text.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/game_messages.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/items.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/buttons.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/projectiles.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/locations.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/actions.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/combat.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/inventory.css?v=1.11111">
+	
+	<link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+</head>
+<body>
+	<div class="main_window">
+		<div class="paper_bg"></div>
+		<div class="location_bg bg"></div>
+		<div id="content_home" class="page_container active clear_me">
+		</div>
+		<div id="content_current_location" class="page_container clear_me">
+		</div>
+		<div id="content_settings" class="page_container">
+			<div class="home_section">
+				<button class="sound_button square_button" onclick="toggle_sound();show_content('settings');">&nbsp;</button> Sound<br/><br/>
+				<button class="menu_button square_button delete_button danger" onclick="clearLocalStorage();location.reload();">&nbsp;</button> Reset Account<br/><br/>
+				<button class="menu_button square_button avatar_button" data-target-content="select_avatar">&nbsp;</button> Change Avatar
+			</div>
+		</div>
+		<div id="content_combat" class="page_container">
+		</div>
+		<div id="content_select_avatar" class="page_container">
+			<div class="select_avatar_container clear_me">
+			</div>
+		</div>
+		<div id="content_action_details" class="page_container">
+			<div class="action_details_container clear_me">
+			</div>
+		</div>
+		<div id="content_pick_worker" class="page_container">
+			<div class="pick_worker_container clear_me">
+			</div>
+			<div class="inventory_page_container"><span class="page_back" onclick="adjust_pick_worker_page(-1)"><</span> <span class="page_number"></span><span class="page_further" onclick="adjust_pick_worker_page(1)">></span></div>
+		</div>
+		<div id="content_pick_craft_recipe" class="page_container">
+			<div class="pick_craft_recipe_container clear_me">
+			</div>
+		</div>
+		
+		<div id="content_set_up_sale" class="page_container">
+			<div class="set_up_sale_container clear_me">
+			</div>
+		</div>
+		
+		<div id="content_crafting" class="page_container">
+			<div class="crafting_container clear_me">
+			</div>
+			<div class="inventory_page_container"><span class="page_back" onclick="adjust_crafting_page(-1)"><</span> <span class="page_number"></span><span class="page_further" onclick="adjust_crafting_page(1)">></span></div>
+		</div>
+		<div id="content_recipe_details" class="page_container">
+			<div class="recipe_details_container clear_me">
+			</div>
+		</div>
+		<div id="content_inventory" class="page_container">
+			<div class="inventory_container clear_me">
+			</div>
+			<div class="inventory_filters_container"></div>
+			<div class="inventory_page_container"><span class="page_back" onclick="adjust_inventory_page(-1)"><</span> <span class="page_number"></span><span class="page_further" onclick="adjust_inventory_page(1)">></span></div>
+		</div>
+		<div id="content_item_details" class="page_container">
+			<div class="item_details_container clear_me">
+			</div>
+		</div>
+		<div class="menu_container hidden">
+			<button class="menu_button square_button menu_button_current_location house_button" data-target-content="current_location">&nbsp;</button>
+			<!-- <button class="menu_button square_button menu_button_home travel_button" data-target-content="home">&nbsp;</button> -->
+			<button class="menu_button square_button menu_button_crafting craft_button" data-target-content="crafting">&nbsp;</button>
+			<button class="menu_button square_button menu_button_inventory wooden_crate_button" data-target-content="inventory">&nbsp;</button>
+			<button class="menu_button square_button menu_button_settings settings_button" data-target-content="settings">&nbsp;</button>
+		</div>
+		<div class="detail_overlay">
+		</div>
+		<div class="game_messages">
+		</div>
+	</div>
+</body>
+<!-- <script src="js/functions/load_data.js?v=1.11111"></script> -->
+
+
+<script>
+
+	window.onerror = function(msg, url, linenumber) {
+		if(test_mode == false)
+		{
+		    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+		    return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	$(document).ready(function() {
+		
+		$('body').on('click', '.menu_button', function() {
+		    $('.menu_button.active').removeClass('active');
+			$(this).addClass('active');
+			play_sound_group('click');
+			show_content($(this).attr('data-target-content'));
+		});
+	});
+
+	var last_content = 'home';
+	var current_content = 'home';
+
+	function show_last_content(){
+		show_content(last_content);
+	}
+
+	function update_last_content(new_content){
+		last_content = current_content;
+		current_content = new_content;
+	}
+
+	function clear_old_content(){
+		$('.clear_me').html('');
+	}
+
+	function show_content(content_id){
+		if(content_id == 'back'){content_id = last_content;}
+		if(content_id == 'current'){content_id = current_content;}
+		catchable_id = '';
+		update_last_content(content_id);
+		clear_old_content();
+		check_menu_bar();
+		//console.log(content_id);
+		if(content_id == undefined){content_id = 'current_location';}
+		$('.page_container.active').removeClass('active');
+		$('.menu_button_' + content_id).addClass('active');
+		$('#content_' + content_id).addClass('active');
+
+		var possible_extra_function = window['show_' + content_id]; 
+		if (typeof possible_extra_function === "function") possible_extra_function();
+	};
+
+	function check_menu_bar(){
+		if(count_object(gamedata['inventory']) < 2)
+		{
+			$('.menu_container .menu_button_inventory').addClass('hidden');
+		}
+		else
+		{
+			$('.menu_container .menu_button_inventory').removeClass('hidden');
+		}
+		if(count_object(gamedata['known_recipes']) < 1)
+		{
+			$('.menu_container .menu_button_crafting').addClass('hidden');
+		}
+		else
+		{
+			$('.menu_container .menu_button_crafting').removeClass('hidden');
+		}
+		if(count_available_locations() < 2)
+		{
+			$('.menu_container .menu_button_home').addClass('hidden');
+		}
+		else
+		{
+			$('.menu_container .menu_button_home').removeClass('hidden');
+		}
+		
+	}
+
+	$('.detail_overlay').click(function(){
+		$('.detail_overlay').html('');
+		$('.detail_overlay').fadeOut();
+	});
+
+	function show_home(){
+		$('.location_bg').css('background-image','none');
+		show_all_locations();
+	};
+
+	$(document).ready(function(){
+		start_game();
+	});
+
+	function start_game(){
+		/*if(data_unloaded == 0)
+		{*/
+			console.log('All data ready!');
+			check_window_orientation();
+			gamedata = loadLocalStorage();
+			if(gamedata['current_location'] == undefined)
+			{
+				show_content();
+			}
+			else
+			{
+				show_content('current_location');
+			}
+			$('.menu_container').removeClass('hidden');
+			check_global_timer();
+		/*}
+		else
+		{
+			console.log('Not all data is ready. Hold on...');
+			setTimeout(function(){
+				start_game();
+			},500);
+		}*/
+	}
+
+	var global_timer;
+	var last_global_tick = new Date();
+	var tick_time = 100;
+	function check_global_timer(){
+
+		resolve_combat();
+		check_sale_timers();
+		check_catchables();
+		check_local_spawns();
+
+		var time_passed = new Date() - last_global_tick;
+		last_global_tick = new Date();
+		
+		var next_tick_delay = tick_time;
+		/*if(time_passed < tick_time)
+		{
+			next_tick_delay = tick_time;
+		}*/
+		if(time_passed > (tick_time * 1.1))
+		{
+			next_tick_delay = tick_time + ((time_passed - tick_time) / 2);
+		}
+		if(next_tick_delay > 1000)
+		{
+			next_tick_delay = 1000;
+		}
+
+		global_timer = setTimeout(function(){
+			check_global_timer();
+		},next_tick_delay);
+	}
+
+</script>
+</html>
+

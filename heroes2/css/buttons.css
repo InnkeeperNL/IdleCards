@@ -1,0 +1,104 @@
+.activity_button
+{
+	background-image: url(../images/icons/gears.svg);
+}
+
+.filter_button_consumable,
+.apple_button
+{
+	background-image: url(../images/icons/shiny-apple.svg);
+}
+
+.arrow_left_button
+{
+	background-image: url(../images/icons/plain-arrow-back.svg);
+}
+
+.arrow_left_max_button
+{
+	background-image: url(../images/icons/save-arrow.svg);
+}
+
+.catch_button,
+.arrow_right_button
+{
+	background-image: url(../images/icons/plain-arrow.svg);
+}
+
+.arrow_right_max_button
+{
+	background-image: url(../images/icons/save-arrow-right.svg);
+}
+
+.coins_button
+{
+	background-image: url(../images/icons/coins.svg);
+}
+
+.filter_button_is_ability,
+.combat_button
+{
+	background-image: url(../images/icons/crossed-swords.svg);
+}
+
+.filter_button_recipe,
+.craft_button
+{
+	background-image: url(../images/icons/hammer-nails.svg);
+}
+
+.delete_button
+{
+	background-image: url(../images/icons/trash-can.svg);
+}
+
+.explore_button
+{
+	background-image: url(../images/icons/eye-target.svg);
+}
+
+.house_button
+{
+	background-image: url(../images/icons/house.svg);
+}
+
+.filter_button_unit,
+.person_button
+{
+	background-image: url(../images/icons/person.svg);
+}
+
+.settings_button
+{
+	background-image: url(../images/icons/settings-knobs.svg);
+}
+
+.sound_button
+{
+	background-image: url(../images/icons/speaker.svg);
+}
+
+.filter_button_gear,
+.spartan_button
+{
+	background-image: url(../images/icons/spartan.svg);
+}
+
+.trade_button
+{
+	background-image: url(../images/icons/coins.svg);
+}
+
+.travel_button
+{
+	background-image: url(../images/icons/walking-boot.svg);
+}
+
+.filter_button_regular,
+.wooden_crate_button
+{
+	background-image: url(../images/icons/wooden-crate.svg);
+}
+
+
+

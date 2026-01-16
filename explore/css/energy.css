@@ -1,0 +1,182 @@
+.expeditions_container,
+.energy_container
+{
+	width: 150px;
+	height: 30px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #48BAFF;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	vertical-align: middle;
+	position: relative;
+	overflow: visible;
+	z-index: 101;
+}
+
+.expeditions_container
+{
+	color: #F5A623;
+}
+
+.expeditions_icon,
+.energy_icon
+{
+	position: absolute;
+	left: 0px;
+    top: -5px;
+    width: 24px;
+    height: 37px;
+	display: inline-block;
+	background-size: auto 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-image: url('../images/icons/battery-100.svg');
+	vertical-align: middle;
+}
+
+.expeditions_icon
+{
+	left: -5px;
+    top: -5px;
+    width: 40px;
+    height: 40px;
+	background-image: url('../images/icons/walking-boot.svg');
+}
+
+.expeditions_amount,
+.energy_amount
+{
+	position: absolute;
+	bottom: 5px;
+	right: 8px;
+}
+
+.current_expeditions,
+.max_expeditions,
+.expeditions_amount,
+.current_energy,
+.max_energy,
+.energy_amount
+{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.expeditions_bar_container,
+.energy_bar_container
+{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	z-index: 0;
+	border: 2px solid rgba(255,255,255,0.3);
+	border-radius: 5px;
+}
+
+.expeditions_bar,
+.energy_bar
+{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	z-index: 0;
+	border: 2px solid rgba(0,0,0,0.3);
+	border-radius: 3px;
+	background-color: rgba(255,255,255,0.3);
+}
+
+.building_expeditions_button,
+.building_energy_button
+{
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	border:  4px solid rgba(72,186,255,0.9);
+	background-size: 80%;
+	background-position: center;
+	background-repeat: no-repeat;
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+	margin: 2px;
+	position: relative;
+	border-radius: 5px;
+	background-image: url('../images/icons/battery-100.svg');
+	cursor: pointer;
+}
+
+.building_expeditions_button
+{
+	background-image: url('../images/icons/walking-boot.svg');
+}
+
+.expeditions_cost,
+.actions_energy_cost
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	color: #4A4A4A;
+	font-size: 16px;
+	font-weight: bold;
+	background-color: rgba(255,255,255,0.7);
+	border-bottom-right-radius: 5px;
+}
+
+.consume_energy_amount_icon,
+.expeditions_cost_icon,
+.action_cost_icon,
+.max_storage_icon,
+.max_inventory_icon
+{
+	display: inline-block;
+	width: 12px;
+	height: 16px;
+	background-size: 16px;
+	background-position: center;
+	background-repeat: no-repeat;
+	position: relative;
+	background-image: url('../images/icons/electric-grey.svg');
+}
+
+.consume_energy_amount_icon
+{
+	width: 16px;
+	margin-right: 4px;
+	background-image: url('../images/icons/shiny-apple.svg');
+}
+
+.expeditions_cost_icon
+{
+	width: 16px;
+	background-image: url('../images/icons/walking-boot-grey.svg');
+}
+
+.max_storage_icon
+{
+	width: 16px;
+	margin-right: 4px;
+	background-image: url('../images/icons/wooden-crate-grey.svg');
+}
+
+.max_inventory_icon
+{
+	width: 16px;
+	margin-right: 2px;
+	background-image: url('../images/icons/knapsack-grey.svg');
+}
+
+.expeditions_cost_text,
+.action_energy_cost_text
+{
+	display: inline-block;
+	padding: 2px;
+	margin-left: -4px;
+    padding-right: 3px;
+}
+
+.expeditions_cost_text
+{
+	margin-left: 0px;
+}

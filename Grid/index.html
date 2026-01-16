@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<script src="js/lib/jquery.js"></script>
+	<script src="js/lib/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="js/functions/general.js"></script>
+	<script src="js/data/config.js?v=1.11112"></script>
+	
+	<script src="js/data/cards/blue.js?v=1.11112"></script>
+	<script src="js/data/cards/colorless.js?v=1.11112"></script>
+	<script src="js/data/cards/green.js?v=1.11112"></script>
+	<script src="js/data/cards/multicolor.js?v=1.11112"></script>
+	<script src="js/data/cards/orange.js?v=1.11112"></script>
+	<script src="js/data/cards/purple.js?v=1.11112"></script>
+	<script src="js/data/cards/red.js?v=1.11112"></script>
+	<script src="js/data/cards/yellow.js?v=1.11112"></script>
+	<script src="js/data/cards.js?v=1.11112"></script>
+	
+	<script src="js/data/deck_themes.js?v=1.11112"></script>
+	<script src="js/data/deck_types.js?v=1.11112"></script>
+	<script src="js/data/locations.js?v=1.11112"></script>
+	<script src="js/data/available_quests.js?v=1.11111"></script>
+	<script src="js/data/crafting.js?v=1.11111"></script>
+	<script src="js/localstorage.js?v=1.11111"></script>
+	<script src="js/combat.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/main.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/cards.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/combat.css?v=1.11111">
+	<link rel="stylesheet" type="text/css" href="css/crafting.css?v=1.11111">
+	<link rel="stylesheet" href="js/lib/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+</head>
+<body>
+	<div class="main_window">
+		<div class="paper_bg"></div>
+		<div id="content_home" class="page_container active">
+			<div class="home_devider">NEWS: All cards are now craftable!<div class="owned_coins"></div></div>
+			<div class="home_devider" onclick="$('.how_to_play').slideToggle()">How to play (click me)</div>
+			<div class="how_to_play" style="padding:10px;display:none;">You have up to 3 actions each turn. You can choose to do one of the following each action:<br/>
+				- play a card: click on a card and (if you have the right mana) click on the play card button. You may have to choose where to play the card.<br/>
+				- discard a card: click on the card and click on the discard card button.<br/>
+				- gain a mana one of you gems can produce: click on your current mana.<br/>
+				- reclaim all cards from your grave: click on your hitpoints (lower left) to return all used cards to your hand. Your hero hp will be reduced by 25%.<br/>
+				Be aware that every time a card enters the grave it's cost increases.</div>
+
+			<!-- <div class="home_devider">PVE</div> -->
+			<!-- <button class="menu_button" data-target-content="themed_fight">Themed Fight</button> -->
+			<button class="menu_button" data-target-content="locations">Locations</button>
+			<button class="menu_button" data-target-content="random_fight">Random Enemy</button>
+			<button class="menu_button" data-target-content="random_vs_random">Random vs Random<br/><span>2 extra coins on win!</span></button>
+			<button class="menu_button" data-target-content="custom_fight">Custom Fight</button>
+
+			<!-- <div class="home_devider"></div> -->
+			
+			<button class="menu_button gold" data-target-content="quests">Quests</button>
+			<button class="menu_button gold" data-target-content="crafting">Crafting</button>
+			<button class="menu_button gold" data-target-content="tinkering">Tinkering</button>
+
+			<div class="home_devider">Decks</div>
+			<div class="all_decks"></div>
+			
+			<div class="home_devider">Cards</div>
+			<button class="menu_button gold" data-target-content="card_viewer">Buy single card</button>
+			<button class="menu_button gold" data-target-content="shop">Card packs</button>
+
+			<div class="home_devider">Options</div>
+			<button class="menu_button" data-target-content="game_speed">Game speed</button>
+			<button class="menu_button start_stunned_button" data-target-content="home" onclick="toggleStartStunned();">Start stunned<span>ON</span></button>
+			<button class="menu_button limited_actions_button" data-target-content="home" onclick="toggleLimitedActions();">Limited Actions<span>ON</span></button>
+
+			<div class="home_devider">Reset game (there will be no confirmation)</div>
+			<button class="menu_button danger" onclick="clearLocalStorage();location.reload();">RESET</button>
+		</div>
+		<div id="content_locations" class="page_container">
+			<button class="menu_button slim">Main menu</button>
+			<div class="breaker"></div>
+			<div class="location_buttons_container"></div>
+		</div>
+		<div id="content_quests" class="page_container">
+			<button class="menu_button slim">Main menu</button>
+			<button class="menu_button danger slim" onclick="gamedata['current_quests'] = {};" data-target-content="quests" style="float:right;">Reset quests</button>
+			<div class="breaker"></div>
+			<div class="quest_list"></div>
+		</div>
+		<div id="content_crafting" class="page_container">
+			<button class="menu_button slim">Main menu</button>
+			<div class="breaker"></div>
+			<div class="owned_recipes_list"></div>
+			<div class="crafting_card crafting_card_1"></div>
+			<div class="crafting_card crafting_card_2"></div>
+			<button class="craft_recipe_button disabled" onclick="craft_current_recipe()">Craft</button>
+		</div>
+		<div id="content_tinkering" class="page_container">
+			<button class="menu_button slim">Main menu</button>
+			<div class="breaker"></div>
+			<div class="owned_cards_list"></div>
+			<div class="tinkering_card tinkering_card_1" onclick="current_tinkering_card_1='';show_active_tinkering_cards()"></div>
+			<div class="tinkering_card tinkering_card_2" onclick="current_tinkering_card_2='';show_active_tinkering_cards()"></div>
+			<button class="craft_tinkering_button disabled" onclick="tinker_current()">Tinker</button>
+		</div>
+		<div id="content_game_speed" class="page_container">
+			<button class="menu_button slim">Main menu</button>
+			<div class="breaker"></div>
+			<button class="menu_button game_speed speed_500" onclick="set_game_speed(500)">slow</button>
+			<button class="menu_button game_speed speed_350" onclick="set_game_speed(350)">medium</button>
+			<button class="menu_button game_speed speed_200" onclick="set_game_speed(200)">fast</button>
+			<button class="menu_button game_speed speed_100" onclick="set_game_speed(100)">turbo</button>
+		</div>
+		<div id="content_deck" class="page_container">
+			<button class="menu_button slim">Main menu</button>
+			<div class="breaker"></div>
+			<div class="current_gems"></div>
+			<div class="current_deck"></div>
+			<div class="available_cards"></div>
+			<div class="card_filters">
+				<button class="card_filter filter_gem selected" onclick="toggle_filter('type','gem')">gems</button>
+				<button class="card_filter filter_creature selected" onclick="toggle_filter('type','creature')">creatures</button>
+				<button class="card_filter filter_structure selected" onclick="toggle_filter('type','structure')">structures</button>
+				<button class="card_filter filter_spell selected" onclick="toggle_filter('type','spell')">spells</button>
+				<div class="breaker"></div>
+				<button class="card_filter filter_green selected" onclick="toggle_filter('color','green')">green</button>
+				<button class="card_filter filter_blue selected" onclick="toggle_filter('color','blue')">blue</button>
+				<button class="card_filter filter_purple selected" onclick="toggle_filter('color','purple')">purple</button>
+				<button class="card_filter filter_red selected" onclick="toggle_filter('color','red')">red</button>
+				<button class="card_filter filter_orange selected" onclick="toggle_filter('color','orange')">orange</button>
+				<button class="card_filter filter_yellow selected" onclick="toggle_filter('color','yellow')">yellow</button>
+				<button class="card_filter filter_colorless selected" onclick="toggle_filter('color','colorless')">colorless</button>
+				<button class="card_filter clear_deck" onclick="clear_deck()">Clear deck</button>
+			</div>
+
+		</div>
+		<div id="content_card_viewer" class="page_container">
+			<button class="menu_button slim">Main menu</button>
+			<div class="card_filters">
+				<button class="card_filter available_card_filter" onclick="show_all_available_cards('color','green')">green</button>
+				<button class="card_filter available_card_filter" onclick="show_all_available_cards('color','blue')">blue</button>
+				<button class="card_filter available_card_filter" onclick="show_all_available_cards('color','purple')">purple</button>
+				<button class="card_filter available_card_filter" onclick="show_all_available_cards('color','red')">red</button>
+				<button class="card_filter available_card_filter" onclick="show_all_available_cards('color','orange')">orange</button>
+				<button class="card_filter available_card_filter" onclick="show_all_available_cards('color','yellow')">yellow</button>
+				<button class="card_filter available_card_filter" onclick="show_all_available_cards('color','colorless')">colorless</button>
+			</div>
+			<div class="card_viewer_window"><span class='standard_text'>Select a color to view the cards</span></div>
+		</div>
+		<div id="content_custom_fight" class="page_container">
+			<button class="menu_button slim">Back</button>
+			<div class="choose_custom_fight_container">
+				<h2>Custom fight</h2>
+				Choose the colors of the opponent's deck<br/>
+				<select id="custom_fight_color_1">
+					<option value="emerald">Green</option>
+					<option value="agate">Blue</option>
+					<option value="amethist">Purple</option>
+					<option value="ruby">Red</option>
+					<option value="amber">Orange</option>
+					<option value="citrine">Yellow</option>
+				</select>
+				<select id="custom_fight_color_2">
+					<option value="emerald">Green</option>
+					<option value="agate">Blue</option>
+					<option value="amethist">Purple</option>
+					<option value="ruby">Red</option>
+					<option value="amber">Orange</option>
+					<option value="citrine">Yellow</option>
+				</select>
+				<button class="menu_button custom_fight_start" data-target-content="custom_fight_start">Fight</button>
+			</div>
+			
+		</div>
+		<div id="content_pick_starting_deck" class="page_container">
+			<div class="choose_custom_fight_container">
+				<h2>Starting deck</h2>
+				Choose the colors of your starting deck<br/>
+				<select id="starting_deck_color_1" onchange="show_color_description($(this).val(), 1)">
+					<option value="emerald">Green</option>
+					<option value="agate">Blue</option>
+					<option value="amethist">Purple</option>
+					<option value="ruby">Red</option>
+					<option value="amber">Orange</option>
+					<option value="citrine">Yellow</option>
+				</select><br/>
+				<select id="starting_deck_color_2" onchange="show_color_description($(this).val(), 2)">
+					<option value="emerald">Green</option>
+					<option value="agate">Blue</option>
+					<option value="amethist">Purple</option>
+					<option value="ruby">Red</option>
+					<option value="amber">Orange</option>
+					<option value="citrine">Yellow</option>
+				</select><br/>
+				<button class="menu_button confirm_deck_pick" data-target-content="home" onclick="confirm_starting_deck()">Pick this deck</button>
+				<div class="color_description color_description_1"></div>
+				<div class="color_description color_description_2"></div>
+			</div>
+			
+		</div>
+		<div id="content_random_fight" class="page_container">
+			<div class="battle_bg"></div>
+			<button class="surrender_button" onclick='resign_combat();'>Surrender</button>
+			<div class="enemy_card_log"></div>
+			<div class="phase_progression"><div class="phase_progression_bar_container"><div class="phase_progression_bar"></div></div></div>
+			<div class="phase_counter phase_1">1</div>
+			<div class="phase_counter phase_2">2</div>
+			<div class="phase_counter phase_3">3</div>
+			
+			<button class="end_turn_button"></button>
+			<div class="breaker"></div>
+			<div class="combat_grid">
+				<div class="card_slot row_1 col_1" data-row="1" data-col="1"></div>
+				<div class="card_slot row_1 col_2" data-row="1" data-col="2"></div>
+				<div class="card_slot row_1 col_3" data-row="1" data-col="3"></div>
+				<div class="card_slot row_1 col_4" data-row="1" data-col="4"></div>
+				<div class="card_slot row_1 col_5" data-row="1" data-col="5"></div>
+
+				<div class="card_slot row_2 col_1" data-row="2" data-col="1"></div>
+				<div class="card_slot row_2 col_2" data-row="2" data-col="2"></div>
+				<div class="card_slot row_2 col_3" data-row="2" data-col="3"></div>
+				<div class="card_slot row_2 col_4" data-row="2" data-col="4"></div>
+				<div class="card_slot row_2 col_5" data-row="2" data-col="5"></div>
+
+				<div class="card_slot row_3 col_1" data-row="3" data-col="1"></div>
+				<div class="card_slot row_3 col_2" data-row="3" data-col="2"></div>
+				<div class="card_slot row_3 col_3" data-row="3" data-col="3"></div>
+				<div class="card_slot row_3 col_4" data-row="3" data-col="4"></div>
+				<div class="card_slot row_3 col_5" data-row="3" data-col="5"></div>
+			</div>
+			<div class="player_hp"></div>
+			<div class="enemy_hp"></div>
+			<div class="player_deck"></div>
+			<div class="enemy_deck"></div>
+			<div class="player_grave"></div>
+			<div class="enemy_grave"></div>
+			<div class="player_mana">
+				<div class="gem_1"></div>
+				<div class="gem_2"></div>
+				<div class="mana_bar green green_mana_bg"></div>
+				<div class="mana_bar blue blue_mana_bg"></div>
+				<div class="mana_bar purple purple_mana_bg"></div>
+				<div class="mana_bar red red_mana_bg"></div>
+				<div class="mana_bar orange orange_mana_bg"></div>
+				<div class="mana_bar yellow yellow_mana_bg"></div>
+				<div class="click_to_get_mana"></div>
+			</div>
+			<div class="enemy_mana">
+				<div class="gem_1"></div>
+				<div class="gem_2"></div>
+				<div class="mana_bar green green_mana_bg"></div>
+				<div class="mana_bar blue blue_mana_bg"></div>
+				<div class="mana_bar purple purple_mana_bg"></div>
+				<div class="mana_bar red red_mana_bg"></div>
+				<div class="mana_bar orange orange_mana_bg"></div>
+				<div class="mana_bar yellow yellow_mana_bg"></div>
+			</div>
+			<div class="player_cards"></div>
+			<div class="card_blocker"></div>
+			<div class="enemy_image"></div>
+		</div>
+		<div id="content_shop" class="page_container">
+			<button class="menu_button slim">Back</button>
+			<div class="owned_coins"></div>
+			<br class="breaker"/>
+			<button class="shop_buy_button green_mana" onclick="buy_pack('green')">Green Pack</button>
+			<button class="shop_buy_button blue_mana" onclick="buy_pack('blue')">Blue Pack</button>
+			<button class="shop_buy_button purple_mana" onclick="buy_pack('purple')">Purple Pack</button>
+			<button class="shop_buy_button red_mana" onclick="buy_pack('red')">Red Pack</button>
+			<button class="shop_buy_button orange_mana" onclick="buy_pack('orange')">Orange Pack</button>
+			<button class="shop_buy_button yellow_mana" onclick="buy_pack('yellow')">Yellow Pack</button>
+			<button class="shop_buy_button" onclick="buy_pack('gem')">Gem Pack</button>
+			<button class="shop_buy_button" onclick="buy_pack('all')">Random Pack<br/><span>2 extra cards!</span></button>
+			<br class="breaker"/>
+			<button class="slim width1-6 pack_rarity_0 rarity_button" onclick="pack_rarity=0;show_shop();">Basic</button>
+			<button class="slim width1-6 pack_rarity_1 rarity_button" onclick="pack_rarity=1;show_shop();">1 star</button>
+			<button class="slim width1-6 pack_rarity_2 rarity_button" onclick="pack_rarity=2;show_shop();">2 Star</button>
+			<button class="slim width1-6 pack_rarity_3 rarity_button" onclick="pack_rarity=3;show_shop();">3 Star</button>
+			<button class="slim width1-6 pack_rarity_4 rarity_button" onclick="pack_rarity=4;show_shop();">4 Star</button>
+			<button class="slim width1-6 pack_rarity_5 rarity_button" onclick="pack_rarity=5;show_shop();">5 Star</button>
+			
+			<div class="shop_details_text"></div>
+			
+		</div>
+		<div id="content_bought_pack" class="page_container">
+			<button class="menu_button slim" data-target-content="shop">Back</button>
+			<button class="menu_button slim" data-target-content="bought_pack" onclick="buy_again();">Buy again</button><br class="breaker"/>
+			<div class="bought_cards">
+			</div>
+		</div>
+		<div class="detail_overlay">
+			<div class="card_detail"></div>
+		</div>
+		<div class="victory">VICTORY</div>
+		<div class="loss">LOSS</div>
+	</div>
+</body>
+<script>
+
+	var gamedata = loadLocalStorage();
+
+	
+	function confirm_starting_deck(){
+		gain_card($('#starting_deck_color_1').val(),1);
+		gain_card($('#starting_deck_color_2').val(),1);
+		player_gems[1] = $('#starting_deck_color_1').val();
+		player_gems[2] = $('#starting_deck_color_2').val();
+		deck_cards = construct_random_deck(player_gems, 0);
+		$.each(deck_cards, function(deck_card_id, deck_card){
+			gain_card(deck_card['card_id'],1);
+		});
+
+		for (var i = 5; i >= 0; i--) {
+			var card_to_gain = pick_random_non_gem_card_based_on_one_mana(available_cards[$('#starting_deck_color_1').val()]['abilities'][0]['mana_chances']);
+			gain_card(card_to_gain,0);
+		};
+		for (var i = 5; i >= 0; i--) {
+			var card_to_gain = pick_random_non_gem_card_based_on_one_mana(available_cards[$('#starting_deck_color_2').val()]['abilities'][0]['mana_chances']);
+			gain_card(card_to_gain,0);
+		};
+
+		gamedata['deck_card_filters'] = {
+			type:{
+				gem: 		false,
+				creature: 	true,
+				structure: 	true,
+				spell: 		true,
+			},
+			color: {
+				blue: 	false,
+				red: 	false,
+				green: 	false,
+				purple: false,
+				orange: false,
+				yellow: false
+			}
+			
+		}
+
+		$.each(available_cards[$('#starting_deck_color_1').val()]['abilities'][0]['mana_chances'], function(color, amount){
+			if(amount > 0)
+			{
+				gamedata['deck_card_filters']['color'][color] = true;
+			}
+		});
+		$.each(available_cards[$('#starting_deck_color_2').val()]['abilities'][0]['mana_chances'], function(color, amount){
+			if(amount > 0)
+			{
+				gamedata['deck_card_filters']['color'][color] = true;
+			}
+		});
+		saveToLocalStorage();
+		get_owned_cards();
+		show_owned_cards();
+	}
+
+	function show_color_description(gem, number){
+		var color_description = '';
+		if(gem == "emerald"){
+			color_description = '<h3>Green</h3>The color of life, healing and increasing health of your units.';
+		}
+		if(gem == "agate"){
+			color_description = '<h3>Blue</h3>The color of water, weakening, deck-control and random mana.';
+		}
+		if(gem == "amethist"){
+			color_description = '<h3>Purple</h3>The color of death, undead and reducing your opponent hero\'s health.';
+		}
+		if(gem == "ruby"){
+			color_description = '<h3>Red</h3>The color of fire, destruction of structures and dealing damage to the enemy\'s units.';
+		}
+		if(gem == "amber"){
+			color_description = '<h3>Orange</h3>The color of the desert, strong creatures and increasing strength.';
+		}
+		if(gem == "citrine"){
+			color_description = '<h3>Yellow</h3>The color of the nobles, healing and increasing your hero\'s health.';
+		}
+		$('.color_description_' + number).html(color_description);
+	};
+
+	//console.log(gamedata);
+
+	
+	/*$('.menu_button').click(function(){
+		$('.menu_button.active').removeClass('active');
+		$(this).addClass('active');
+		show_content($(this).attr('data-target-content'));
+	});*/
+
+
+	$(document).ready(function() {
+		$('body').on('click', '.menu_button', function() {
+		    $('.menu_button.active').removeClass('active');
+			$(this).addClass('active');
+			show_content($(this).attr('data-target-content'));
+		});
+	});
+	function show_content(content_id){
+		//console.log(content_id);
+		if(content_id == undefined){content_id = 'home';}
+		$('.page_container.active').removeClass('active');
+		$('#content_' + content_id).addClass('active');
+
+		var possible_extra_function = window['show_' + content_id]; 
+		if (typeof possible_extra_function === "function") possible_extra_function();
+	};
+
+	function show_all_cards(){
+		$('.available_cards').html(parse_all_cards());
+	}
+
+	function show_game_speed(){
+		set_game_speed(gamedata['game_speed']);
+	}
+
+	function show_deck(){
+		//var parsed_available_cards = parse_available_cards();
+		//$('.available_cards').html(parsed_available_cards);
+		//show_owned_cards();
+		var parsed_deck_cards = parse_deck_cards();
+		$('.current_deck').html(parsed_deck_cards);
+		var parsed_deck_gems = parse_deck_gems();
+		$('.current_gems').html(parsed_deck_gems);
+
+		$.each(gamedata['deck_card_filters']['color'], function(color, setting){
+			if(setting == false)
+			{
+				$('.card_filter.filter_' + color).removeClass('selected');	
+			}
+			else
+			{
+				$('.card_filter.filter_' + color).addClass('selected');
+			}
+		});
+		$.each(gamedata['deck_card_filters']['type'], function(type, setting){
+			if(setting == false)
+			{
+				$('.card_filter.filter_' + type).removeClass('selected');	
+			}
+			else
+			{
+				$('.card_filter.filter_' + type).addClass('selected');
+			}
+		});
+		show_owned_cards();
+	}
+
+	
+
+	$(document).ready(function() {
+
+		
+
+		$('body').on('click', '.available_cards .card', function() {
+			/*var can_add_to_deck = true;
+			//console.log($(this).attr('data-card-id'));
+			var current_card_id = $(this).attr('data-general-card-id');
+			if(available_cards[current_card_id]['type'] == 'gem')
+			{
+				if(count_gem_cards_in_deck(gamedata['current_deck']) > 1)
+				{
+					can_add_to_deck = false;
+				}
+			}
+			if(available_cards[current_card_id]['type'] != 'gem')
+			{
+				if(count_non_gem_cards_in_deck(gamedata['current_deck']) > (max_deck_size - 1))
+				{
+					can_add_to_deck = false;
+				}
+			}
+			if(can_add_to_deck == true)
+			{
+				var added_to_deck = false;
+				$.each(gamedata['owned_cards'], function(card_id, card){
+					if(added_to_deck == false && card['card_id'] == current_card_id && card['deck_id'] == 0)
+					{
+						gamedata['owned_cards'][card_id]['deck_id'] = gamedata['current_deck'];
+						added_to_deck = true;
+						update_owned_amount(card['card_id']);
+					}
+				});
+				//gamedata['owned_cards'][current_card_id]['deck_id'] = 1;
+				saveToLocalStorage();
+				show_deck();
+			}*/
+			var card_id = $(this).attr('data-general-card-id');
+			var can_add_to_deck = true;
+			//console.log($(this).attr('data-card-id'));
+			if(available_cards[card_id]['type'] == 'gem')
+			{
+				if(count_gem_cards_in_deck(gamedata['current_deck']) > 1)
+				{
+					can_add_to_deck = false;
+				}
+			}
+			if(available_cards[card_id]['type'] != 'gem')
+			{
+				if(count_non_gem_cards_in_deck(gamedata['current_deck']) > (max_deck_size - 1))
+				{
+					can_add_to_deck = false;
+				}
+			}
+			$('.detail_overlay').fadeIn();
+			var parsed_card = parse_card(card_id, 'full', undefined);
+
+			var buy_card_button = '';
+
+			if(can_add_to_deck == true)
+			{
+				buy_card_button = '<button class="add_to_deck_button" onclick="add_card_to_deck(\'' + card_id + '\')">Add to deck</button>';
+			}
+			
+
+			$('.detail_overlay').html('<div class="overlay_card_container">' + parsed_card + buy_card_button + ' </div>');
+		});
+
+		$('body').on('click', '.current_deck .card', function() {
+			//console.log($(this).attr('data-card-id'));
+			/*var current_card_id = $(this).attr('data-general-card-id');
+			var removed_from_deck = false;
+			$.each(gamedata['owned_cards'], function(card_id, card){
+				if(removed_from_deck == false && card['card_id'] == current_card_id && card['deck_id'] == gamedata['current_deck'])
+				{
+					gamedata['owned_cards'][card_id]['deck_id'] = 0;
+					removed_from_deck = true;
+					update_owned_amount(card['card_id']);
+				}
+			});
+			saveToLocalStorage();
+			show_deck();*/
+			var card_id = $(this).attr('data-general-card-id');
+
+			$('.detail_overlay').fadeIn();
+			var parsed_card = parse_card(card_id, 'full', undefined);
+
+			var buy_card_button = '';
+
+			buy_card_button = '<button class="remove_from_deck_button" onclick="remove_card_from_deck(\'' + card_id + '\')">Remove from deck</button>';
+			
+
+			$('.detail_overlay').html('<div class="overlay_card_container">' + parsed_card + buy_card_button + ' </div>');
+		});
+
+		$('body').on('click', '.current_gems .card', function() {
+			//console.log($(this).attr('data-general-card-id'));
+			/*var current_card_id = $(this).attr('data-general-card-id');
+			var removed_from_deck = false;
+			$.each(gamedata['owned_cards'], function(card_id, card){
+				if(removed_from_deck == false && card['card_id'] == current_card_id && card['deck_id'] == gamedata['current_deck'])
+				{
+					gamedata['owned_cards'][card_id]['deck_id'] = 0;
+					removed_from_deck = true;
+					update_owned_amount(card['card_id']);
+				}
+			});
+			//gamedata['owned_cards'][current_card_id]['deck_id'] = 0;
+			saveToLocalStorage();
+			show_deck();*/
+			var card_id = $(this).attr('data-general-card-id');
+			$('.detail_overlay').fadeIn();
+			var parsed_card = parse_card(card_id, 'full', undefined);
+
+			var buy_card_button = '';
+
+			buy_card_button = '<button class="remove_from_deck_button" onclick="remove_card_from_deck(\'' + card_id + '\')">Remove from deck</button>';
+			
+
+			$('.detail_overlay').html('<div class="overlay_card_container">' + parsed_card + buy_card_button + ' </div>');
+		});
+	});
+
+	function add_card_to_deck(current_card_id){
+		var can_add_to_deck = true;
+		//console.log($(this).attr('data-card-id'));
+		if(available_cards[current_card_id]['type'] == 'gem')
+		{
+			if(count_gem_cards_in_deck(gamedata['current_deck']) > 1)
+			{
+				can_add_to_deck = false;
+			}
+		}
+		if(available_cards[current_card_id]['type'] != 'gem')
+		{
+			if(count_non_gem_cards_in_deck(gamedata['current_deck']) > (max_deck_size - 1))
+			{
+				can_add_to_deck = false;
+			}
+		}
+		if(can_add_to_deck == true)
+		{
+			var added_to_deck = false;
+			$.each(gamedata['owned_cards'], function(card_id, card){
+				if(added_to_deck == false && card['card_id'] == current_card_id && card['deck_id'] == 0)
+				{
+					gamedata['owned_cards'][card_id]['deck_id'] = gamedata['current_deck'];
+					added_to_deck = true;
+					get_owned_cards();
+					update_owned_amount(card['card_id']);
+				}
+			});
+			//gamedata['owned_cards'][current_card_id]['deck_id'] = 1;
+			saveToLocalStorage();
+			//show_owned_cards();
+			show_deck();
+		}
+	}
+
+	function remove_card_from_deck(current_card_id){
+		//var current_card_id = $(this).attr('data-general-card-id');
+		var removed_from_deck = false;
+		$.each(gamedata['owned_cards'], function(card_id, card){
+			if(removed_from_deck == false && card['card_id'] == current_card_id && card['deck_id'] == gamedata['current_deck'])
+			{
+				gamedata['owned_cards'][card_id]['deck_id'] = 0;
+				removed_from_deck = true;
+				get_owned_cards();
+				update_owned_amount(card['card_id']);
+			}
+		});
+		//gamedata['owned_cards'][current_card_id]['deck_id'] = 0;
+		saveToLocalStorage();
+		show_deck();
+	};
+
+	function show_home(){
+		$('.owned_coins').html('coins: ' + gamedata['coins']);
+		$('.all_decks').html('');
+		for (var i = 1; i <= gamedata['max_decks']; i++) {
+			if(i == gamedata['current_deck'])
+			{
+				$('.all_decks').append('<button class="menu_button cool" onclick="gamedata[\'current_deck\'] = ' + i + ';" data-target-content="deck">Deck ' + i + '<span>Active</span></button>');
+			}
+			else
+			{
+				$('.all_decks').append('<button class="menu_button cool" onclick="gamedata[\'current_deck\'] = ' + i + ';" data-target-content="deck">Deck ' + i + '</button>');
+			}
+			
+		};
+		var buy_new_slot_color = 'gold';
+		if(gamedata['coins'] < gamedata['max_decks'] * 20)
+		{
+			buy_new_slot_color = 'danger';
+		}
+		$('.all_decks').append('<button class="menu_button ' + buy_new_slot_color + '" data-target-content="buy_deck_slot">Buy extra slot<span>' + (gamedata['max_decks'] * 20) + ' coins</span></button>')
+	
+		if(gamedata['start_stunned'] == true)
+		{
+			$('.start_stunned_button span').html('ON');
+			$('.start_stunned_button').removeClass('danger');
+		}
+		else
+		{
+			$('.start_stunned_button span').html('OFF');
+			$('.start_stunned_button').addClass('danger');
+		}
+		if(gamedata['limited_actions'] == true)
+		{
+			$('.limited_actions_button span').html('ON');
+			$('.limited_actions_button').removeClass('danger');
+		}
+		else
+		{
+			$('.limited_actions_button span').html('OFF');
+			$('.limited_actions_button').addClass('danger');
+		}
+	}
+
+	function show_random_fight(){
+		set_up_combat('random');
+	}
+
+	function show_custom_fight_start(){
+		$('.page_container.active').removeClass('active');
+		$('#content_random_fight').addClass('active');
+		set_up_combat('custom');
+	}
+
+	function show_themed_fight(){
+		$('.page_container.active').removeClass('active');
+		$('#content_random_fight').addClass('active');
+		set_up_combat('themed');
+	}
+
+	function show_random_vs_random(){
+		$('.page_container.active').removeClass('active');
+		$('#content_random_fight').addClass('active');
+		set_up_combat('random_vs_random');
+	}
+
+	function show_location_fight(){
+		$('.page_container.active').removeClass('active');
+		$('#content_random_fight').addClass('active');
+	}
+
+	$('.detail_overlay').click(function(){
+		$('.detail_overlay').html('');
+		$('.detail_overlay').fadeOut();
+	});
+
+	function show_shop(){
+		$('.rarity_button').removeClass('active');
+		$('.pack_rarity_' + pack_rarity).addClass('active');
+		
+		$('.owned_coins').html('coins: ' + gamedata['coins']);
+		if(pack_rarity > 0)
+		{
+			$('.shop_details_text').html('All cards are at least ' + pack_rarity + '-star.<br/>Each pack costs ' + Math.floor(Math.sqrt(pack_price / get_rarity_factor(pack_rarity))) + ' coins and contains ' + pack_cards_count + ' cards.');
+		}
+		else
+		{
+			$('.shop_details_text').html('Each pack costs ' + Math.floor(Math.sqrt(pack_price / get_rarity_factor(pack_rarity))) + ' coins and contains ' + pack_cards_count + ' cards.<br/>');
+		}
+	}
+
+	function show_locations(){
+		var location_button = ''
+
+		$.each(all_locations, function(location_id, location_info){
+			location_button += '<button class="menu_button" style="background-image:url(images/' + location_info['bg_image'] + ')" data-target-content="location_fight" onclick="set_up_combat(\'location\',\'' + location_id + '\');">' + location_info['name'] + '</button>';
+		});
+		$('.location_buttons_container').html(location_button);
+	}
+
+	
+
+	function show_buy_deck_slot(){
+		if(gamedata['coins'] >= gamedata['max_decks'] * 20)
+		{
+			gamedata['coins'] -= gamedata['max_decks'] * 20;
+			gamedata['max_decks']++;
+			saveToLocalStorage();
+		}
+		show_content();
+	}
+
+	if(test_mode == false)
+	{
+		window.onerror = function(msg, url, linenumber) {
+		    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+		    return true;
+		}
+	}
+
+	
+
+	function toggleLimitedActions(){
+		if(gamedata['limited_actions'] == true)
+		{
+			gamedata['limited_actions'] = false;
+		}
+		else
+		{
+			gamedata['limited_actions'] = true;
+		}
+		saveToLocalStorage();
+	}
+
+	function toggleStartStunned(){
+		if(gamedata['start_stunned'] == true)
+		{
+			gamedata['start_stunned'] = false;
+		}
+		else
+		{
+			gamedata['start_stunned'] = true;
+		}
+		saveToLocalStorage();
+	}
+
+	show_home();
+
+</script>
+</html>
+
