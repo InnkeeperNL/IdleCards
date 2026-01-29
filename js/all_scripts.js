@@ -14025,7 +14025,6 @@ function set_status(target_id, effect, origin_id){
 		all_timeouts[timeout_key] = setTimeout(function(){
 			$('.hand_slot_' + temp_hand_slot + '.side_' + temp_side + '.hand_slot_id_' + temp_hand_slot_id).remove();
 		},total_timeout + (500 * battle_speed));
-		check_ability_procs(target_side, 'discarded', origin_id, undefined, undefined);
 	}
 	//console.log(old_status);
 	if(old_status != 'hand')
@@ -14072,6 +14071,10 @@ function set_status(target_id, effect, origin_id){
 	}
 	total_timeout += 500 * battle_speed;
 	update_deck_counts();
+	if(old_status == 'hand' && effect['new_status'] == 'grave')
+	{
+		check_ability_procs(target_side, 'discarded', origin_id, undefined, undefined);
+	}
 	return true;
 }
 

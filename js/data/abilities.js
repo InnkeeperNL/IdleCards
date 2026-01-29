@@ -1658,15 +1658,15 @@ var all_abilities = {
 		cost_adjustment: 	-2,
 	},
 	chaos_strikes:{
-		description: 	'When the enemy hero receives damage, discard a card from the enemy\'s hand to the grave. Can be used {LEVEL} time(s).',
+		description: 	'When the enemy hero receives damage, discard {LEVEL} card(s) from the enemy\'s hand to the grave. Can be used once.',
 		proc: 			'enemy_hero_damaged',
-		reduce_skill_after_use: 'chaos_strikes',
+		remove_skill_before_use: 	'chaos_strikes',
 		proc_amount: 	1,
 		hero_tactics: 	['discard_enemy_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
-				target_amount: 	1,
+				target_amount: 	'ability_level',
 				status: 		'hand',
 				can_target_zero: true,
 				side: 			'enemy',
