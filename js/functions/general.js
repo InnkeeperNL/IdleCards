@@ -335,3 +335,50 @@ function copyToClipboard(element){
   // Alert the copied text
   //alert("Copied the text: " + copyText.value);
 }
+
+// Source - https://stackoverflow.com/a/6117889
+// Posted by RobG, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-02-01, License - CC BY-SA 4.0
+
+/* For a given date, get the ISO week number
+ *
+ * Based on information at:
+ *
+ *    THIS PAGE (DOMAIN EVEN) DOESN'T EXIST ANYMORE UNFORTUNATELY
+ *    http://www.merlyn.demon.co.uk/weekcalc.htm#WNR
+ *
+ * Algorithm is to find nearest thursday, it's year
+ * is the year of the week number. Then get weeks
+ * between that date and the first day of that year.
+ *
+ * Note that dates in one year can be weeks of previous
+ * or next year, overlap is up to 3 days.
+ *
+ * e.g. 2014/12/29 is Monday in week  1 of 2015
+ *      2012/1/1   is Sunday in week 52 of 2011
+ */
+function getWeekNumber(d) {
+    // Copy date so don't modify original
+    d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    // Set to nearest Thursday: current date + 4 - current day number
+    // Make Sunday's day number 7
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+    // Get first day of year
+    var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+    // Calculate full weeks to nearest Thursday
+    var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+    // Return array of year and week number
+    return [d.getUTCFullYear(), weekNo];
+}
+
+function getCurrentWeek()
+{
+  var weeknumber =  getWeekNumber(new Date());
+  return weeknumber[1];
+}
+
+function getCurrentYear()
+{
+  var yearnumber =  getWeekNumber(new Date());
+  return yearnumber[0];
+}

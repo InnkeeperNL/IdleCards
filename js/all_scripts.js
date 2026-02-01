@@ -8664,6 +8664,76 @@ function claim_daily_reward(){
 		show_daily_reward();
 	}
 }
+
+function redeem_code(){
+	if(gamedata['claimed_codes'] == undefined)
+	{
+		gamedata['claimed_codes'] = {};
+	}
+
+	var users_code = $('#redeem_code_input').val();
+	if(gamedata['claimed_codes'][users_code] != undefined)
+	{
+		show_message('Code claimed before');
+	}
+	else
+	{
+		var current_weekly_code = get_week_code();
+		var code_claimed = false;
+		if(users_code == current_weekly_code)
+		{
+			code_claimed = true;
+			var current_weekly_reward = get_weekly_code_reward();
+			current_reward_origin = 'redeem_code';
+			current_reward_text = 'Reward claimed!'
+			all_current_rewards = {
+				0:{
+					reward_id: current_weekly_reward['reward_id'],
+					reward_amount: current_weekly_reward['reward_amount']
+				}
+			};
+			$('#redeem_code_input').val('');
+			gamedata['claimed_codes'][users_code] = true;
+			show_content('current_rewards');
+		}
+		else
+		{
+			show_message('Invalid code');
+		}
+	}
+}
+
+function get_week_code(){
+	var current_week = getCurrentWeek();
+	var current_year = getCurrentYear();
+	var current_code = btoa(current_week + '' + current_year);
+	return current_code;
+}
+
+var weekly_code_rewards = {
+	1:{
+		reward_id: 		'jar_of_luck',
+		reward_amount: 	5,
+	},
+	2:{
+		reward_id: 		'stash',
+		reward_amount: 	20,
+	},
+	3:{
+		reward_id: 		'chest',
+		reward_amount: 	10,
+	},
+	4:{
+		reward_id: 		'trove',
+		reward_amount: 	5,
+	}
+}
+
+function get_weekly_code_reward(){
+	var current_week = getCurrentWeek();
+	var reward_id = ((current_week / 4) - Math.floor(current_week / 4)) * 4;
+	return weekly_code_rewards[reward_id];
+}
 var current_inventory_page = 1;
 var current_consumable = '';
 

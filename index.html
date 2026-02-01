@@ -503,10 +503,23 @@
 				<button class="menu_button" data-target-content="stats">STATS</button>
 				<button class="menu_button" onclick="set_game_speed()" data-target-content="options">GAME SPEED<span class="current_game_speed"></span></button>
 				<button class="menu_button" data-target-content="options" onclick="run_intro(true)">INTRO</button>
+				<button class="menu_button" data-target-content="redeem_code">REDEEM CODE</button>
 				<!-- <button class="menu_button" data-target-content="icons">ICONS</button> -->
 				<button class="menu_button" data-target-content="importexport">IMPORT<br/>EXPORT</button>
 				<button class="menu_button" data-target-content="reset_game">RESET ACCOUNT</button>
 
+			</div>
+		</div>
+		<div id="content_redeem_code" class="page_container">
+			<div class="home_section">
+				<div class="menu_button slim" data-target-content="options">BACK</div>
+				<h2>Redeem code</h2>
+			</div>
+			<div class="home_section" style="text-align:center;">
+				<br/>
+				<div class="plain_text">Type your reward code below.</div><br/><br/>
+				<input id="redeem_code_input" class="importexport_input" type="text" placeholder="code here">
+				<div class="menu_button slim" onclick="redeem_code()">REDEEM</div><br/><br/>
 			</div>
 		</div>
 		<div id="content_importexport" class="page_container">
