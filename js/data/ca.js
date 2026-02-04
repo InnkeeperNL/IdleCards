@@ -3280,8 +3280,9 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		6,
-		level_cost_hero: 	3,
+		level_cost: 		10,
+		level_cost_hero: 	7,
+		cost_adjustment: 	-4,
 	},
 	discard_enemy_on_act:{
 		name: 			'discard enemy',
@@ -3312,8 +3313,9 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		6,
-		level_cost_hero: 	3,
+		level_cost: 		10,
+		level_cost_hero: 	7,
+		cost_adjustment: 	-4,
 	},
 	discard_enemy_down:{
 		description: 	'If the enemy has {LEVEL} or more cards in its hand, this discards 1 cards from the enemy\'s hand to the grave.',
