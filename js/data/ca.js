@@ -1684,8 +1684,8 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_artifact: 2,
+		level_cost: 		6,
+		level_cost_artifact: 3,
 		level_cost_hero: 	2,
 	},
 	chaos_touch:{
@@ -1714,7 +1714,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
+		level_cost: 		6,
 	},
 	charge:{
 		ability_subtypes: ['charge','movement','charge','move_ally'],
@@ -2529,7 +2529,7 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 1.5,
+		level_cost: 1.75,
 		level_cost_spell: 0.375,
 	},
 	curse_all:{
@@ -2557,9 +2557,9 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		4.5,
+		level_cost: 		5.25,
 		level_cost_hero: 	4,
-		level_cost_spell: 	1.125,
+		level_cost_spell: 	1.25,
 	},
 	curse_arrivals:{
 		description: 	'Applies {LEVEL} curse to any enemy unit that enters the game.',
@@ -2587,8 +2587,8 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1.5,
-		level_cost_artifact: 3,
+		level_cost: 	1.75,
+		level_cost_artifact: 3.5,
 	},
 	curse_hv:{
 		name: 			'curse',
@@ -2615,7 +2615,7 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 1.5,
+		level_cost: 1.75,
 		level_cost_spell: 0.375,
 	},
 	cursed_aura:{
@@ -2643,7 +2643,7 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 	1,
+		level_cost: 	1.5,
 		level_cost_hero: 2,
 	},
 	cursed_deaths:{
@@ -2679,8 +2679,8 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1.5,
-		level_cost_structure: 1,
+		level_cost: 	1.75,
+		level_cost_structure: 1.2,
 	},
 	cursed_deaths_hv:{
 		name: 			'cursed deaths',
@@ -2735,7 +2735,7 @@ var all_abilities = {
 				amount: 		'ability_level',
 			}
 		},
-		level_cost: 	1,
+		level_cost: 	1.5,
 	},
 	cursed_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, this will apply {LEVEL} curse to it.',
@@ -2763,7 +2763,7 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1.5,
+		level_cost: 	1.75,
 		level_cost_artifact: 4,
 	},
 	cursed_touch:{
@@ -2790,7 +2790,7 @@ var all_abilities = {
 			}
 		},
 		level_cost: 		0,
-		average_hit_cost: 	0.75,
+		average_hit_cost: 	1,
 	},
 	cursing_hero:{
 		description: 	'When your hero deals damage to an enemy, this will apply {LEVEL} curse to it.',
@@ -2986,9 +2986,88 @@ var all_abilities = {
 		level_cost: 		1,
 		average_hit_cost: 	1,
 	},
+	desperate_burn:{
+		description: 	'When your hero receives damage, this applies {LEVEL} burn to a random enemy unit. {BURN}',
+		proc: 			'ally_hero_damaged',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'burn',
+				type: 		'apply_burn',
+				subtypes: 	['burn'],
+				amount: 	'ability_level',
+				increase_timeout: 500,
+				pause_before: 500,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+	},
+	desperate_curse:{
+		description: 	'When your hero receives damage, this applies {LEVEL} curse to a random enemy unit. {CURSE}',
+		proc: 			'ally_hero_damaged',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'curse',
+				type: 			'apply_curse',
+				subtypes: 		['magical','curse','buff_hero'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1.75,
+	},
+	desperate_wither:{
+		description: 	'When your hero receives damage, this reduces the maximum health of a random enemy unit by {LEVEL}.',
+		proc: 			'ally_hero_damaged',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'wither',
+				type: 			'reduce_max_health',
+				subtypes: 		['magical','wither'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		3,
+		level_cost_spell: 	0.75,
+	},
 	desperate_haste:{
 		description: 	'When your hero receives damage, this reduces the time left of the card in your hand, with the lowest time left, by {LEVEL}.',
 		proc: 			'ally_hero_damaged',
+		cannot_proc_while_stunned: true,
 		//remove_skill: 	'desperate_haste',
 		targets:	{
 			0:{
@@ -3282,7 +3361,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		10,
 		level_cost_hero: 	7,
-		cost_adjustment: 	-4,
+		cost_adjustment: 	-2,
 	},
 	discard_enemy_on_act:{
 		name: 			'discard enemy',
@@ -3315,7 +3394,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		10,
 		level_cost_hero: 	7,
-		cost_adjustment: 	-4,
+		cost_adjustment: 	-2,
 	},
 	discard_enemy_down:{
 		description: 	'If the enemy has {LEVEL} or more cards in its hand, this discards 1 cards from the enemy\'s hand to the grave.',
@@ -3585,6 +3664,9 @@ var all_abilities = {
 			}
 		},
 		level_cost: 		0,
+		ability_level_cost_factors:{
+			backlash: 		-1,
+		},
 		average_hit_cost: 	0.75,
 	},
 	doomward:{
@@ -4513,7 +4595,7 @@ var all_abilities = {
 		ability_level_cost_factors:{
 			resurrect: 		2,
 		},
-		level_cost: 0.5,
+		level_cost: 0.75,
 	},
 	final_discard:{
 		description: 	'When this is destroyed, discard up to {LEVEL} card(s) from your hand to the grave.',
@@ -4603,6 +4685,37 @@ var all_abilities = {
 			resurrect: 		2,
 		},
 	},
+	final_energised_doom:{
+		description: 	'When destroyed, applies {LEVEL} doom to all enemy units multiplied by its current energy.',
+		proc: 			'own_death',
+		proc_amount: 	'origin_energy',
+		do_not_pause_between: true,
+		proc_while_dead: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	5,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'doom',
+				type: 			'apply_doom',
+				subtypes: 		['magical','doom'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		animation: 		'combat_zoom',
+		ability_level_cost_factors:{
+			resurrect: 		2,
+			fragile: 		2,
+		},
+		level_cost: 	2,
+	},
 	final_grant_charge:{
 		name: 			'final grant: charge',
 		ability_subtypes: ['movement','charge'],
@@ -4668,7 +4781,7 @@ var all_abilities = {
 		level_cost: 		1,
 	},
 	final_pay_life:{
-		description: 	'When destroyed, reduces the current health of your hero by {LEVEL}.',
+		description: 	'When destroyed, this deals {LEVEL} to your hero.',
 		proc: 			'own_death',
 		proc_while_dead: true,
 		scales: 		true,
@@ -4683,8 +4796,8 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				projectile: 	'wither',
-				type: 			'reduce_current_health',
+				projectile: 	'voodoo',
+				type: 			'damage',
 				amount: 		'ability_level',
 			},
 		},
@@ -5414,6 +5527,81 @@ var all_abilities = {
 		level_cost_artifact: 	-4,
 		cost_factor: 	'full',
 	},
+	freeze:{
+		description: 	'Freezes {LEVEL} random enemy creature(s). Removes any burn and poison from the target.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy',
+				not_types: 		['object','structure'],
+				not_subtypes: 	['frozen'],
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'frost',
+				type: 		'turn_into',
+				subtypes: 	['freeze','cold'],
+				card_id: 	'frozen_creature',
+				amount: 	1
+			},
+			1:{
+				type: 		'set_effect_amount',
+				effect_names:{
+					burning: 	0,
+					poisoned: 	0,
+				},
+				subtypes: 	[],
+				amount: 	1
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	4,
+		level_cost_spell: 1,
+	},
+	freezing_touch:		{
+		description: 	'Freezes any enemy creature it deals damage to. Removes any burn and poison from the target. Will not freeze creatures it kills.',
+		proc: 			'dealt_damage',
+		proc_chance: 	150,
+		cannot_proc_while_stunned: true,
+		proc_amount: 	1,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'enemy',
+				not_types: 		['object','structure'],
+			},
+		},
+		effects:{
+			0:{
+				target_projectile: 'frost',
+				type: 		'turn_into',
+				subtypes: 	['freeze','cold'],
+				card_id: 	'frozen_creature',
+				amount: 	1
+			},
+			1:{
+				type: 		'set_effect_amount',
+				effect_names:{
+					burning: 	0,
+					poisoned: 	0,
+				},
+				subtypes: 	[],
+				amount: 	1
+			},
+		},
+		level_cost: 		0,
+		average_hit_cost: 	2,
+	},
 	frost_bolt:{
 		description: 	'Deals {LEVEL} physical cold projectile damage to a random enemy unit. Has a 25% chance to stun any unit or hero it deals damage to. Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
@@ -5516,6 +5704,28 @@ var all_abilities = {
 		level_cost_spell: 	0.75,
 		average_hits: 		1,
 		cost_adjustment: 	1,
+	},
+	gain_energy:{
+		description: 	'Gains {LEVEL} energy each turn.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 	'any',
+				target_amount: 1,
+				position: 	'self',
+				side: 		'any'
+			},
+		},
+		effects:{
+			0:{
+				self_projectile: 'energize',
+				type: 		'apply_energy',
+				subtypes: 	['gain_energy'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
 	},
 	go_again:{
 		description: 	'Has a 50% chance to get another turn.',
@@ -7146,9 +7356,7 @@ var all_abilities = {
 		average_hits: 		1,
 	},
 	pay_life:{
-		description: 	'When played, reduces the current health of your hero by {LEVEL}.',
-		proc: 			'on_play',
-		proc_while_dead: true,
+		description: 	'This deals {LEVEL} damage to your hero.',
 		scales: 		true,
 		targets: 	{
 			0:{
@@ -7161,19 +7369,18 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				projectile: 	'wither',
-				type: 			'reduce_current_health',
+				projectile: 	'voodoo',
+				type: 			'damage',
 				amount: 		'ability_level',
 			},
 		},
-		level_cost: 	-1,
+		level_cost: 	-4,
 		level_cost_spell: 	-2,
 	},
 	pay_life_on_act:{
 		name: 			'pay life',
-		description: 	'If this used another ability, it reduces the current health of your hero by {LEVEL}.',
+		description: 	'If this used another ability, it deals {LEVEL} damage to your hero.',
 		proc: 			'on_play',
-		proc_while_dead: true,
 		scales: 		true,
 		has_used_ability: true,
 		targets: 	{
@@ -7187,8 +7394,31 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				projectile: 	'wither',
-				type: 			'reduce_current_health',
+				projectile: 	'voodoo',
+				type: 			'damage',
+				amount: 		'ability_level',
+			},
+		},
+		level_cost: 	-1,
+		level_cost_spell: 	-2,
+	},
+	pay_life_on_play:{
+		description: 	'When played, this deals {LEVEL} damage to your hero.',
+		proc: 			'on_play',
+		scales: 		true,
+		targets: 	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'any',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'voodoo',
+				type: 			'damage',
 				amount: 		'ability_level',
 			},
 		},
@@ -8795,6 +9025,11 @@ var all_abilities = {
 		level_cost: 		3,
 		level_cost_spell: 	0.75,
 	},
+	righthand:{
+		ability_subtypes: ['righthand'],
+		description: 	'This card will be placed on the far side of your hand when drawn.',
+		cost_on_top: 	true,
+	},
 	run_away:{
 		description: 	'If there is an opposing unit, this unit will move to a slot with no opposing unit when played, any enemy unit enters the game, an enemy moved or on its turn. Can be used once each round.',
 		proc: 			['on_play','enemy_unit_card_played','enemy_moved','basic'],
@@ -8846,6 +9081,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	-4,
+		level_cost_spell: -5,
 		average_hits: 	'ability_level',
 	},
 	sacrifice_creature:{
@@ -8873,6 +9109,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	-5,
+		level_cost_spell: -6,
 		average_hits: 	'ability_level',
 	},
 	sacrifice_living_creature:{
@@ -8901,6 +9138,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	-5,
+		level_cost_spell: -6,
 		average_hits: 	'ability_level',
 	},
 	sacrifice_unit:{
@@ -8928,6 +9166,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	-4,
+		level_cost_spell: -5,
 		average_hits: 	'ability_level',
 	},
 	scavange:{
@@ -9344,6 +9583,55 @@ var all_abilities = {
 		},
 		animation: 	'combat_zoom',
 		level_cost: -1,
+	},
+	slowing_draw:{
+		description: 	'Draws up to {LEVEL} card(s). Every time it does, it increase the time left on all your cards by 1.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		reduce_skill_after_use: 'slowing_draw',
+		min_cards_in_deck: 	1,
+		max_hand_cards: 	9,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'book',
+				projectile_target: 'deck',
+				type: 			'draw_card',
+				subtypes: 		['draw_cards','deck_control'],
+				amount: 		1,
+				on_success:{
+					do_not_pause_between: true,
+					targets:	{
+						0:{
+							target: 			'card',
+							target_amount: 		10,
+							status: 			'hand',
+							can_target_zero: 	true,
+							side: 				'ally',
+						},
+					},
+					effects:{
+						0:{
+							projectile: 		'slow',
+							projectile_target: 	'deck',
+							type: 				'increase_ready_time',
+							subtypes: 			[],
+							amount: 			1,
+							side: 				'ally',
+						}
+					},
+				}
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
+		cost_on_top: 	true,
 	},
 	snipe:{
 		description: 	'Deals physical projectile damage equal to its power to the enemy unit or hero with the lowest health.',
@@ -12763,7 +13051,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			10,
-		abilities: 			{life_cost: 2, restore: 2},
+		abilities: 			{pay_life_on_play: 5, restore: 2},
 		hero_version: 			{
 			theme: 				['type_creature','subtype_human','active_healing_ability','fortify_ability','cleanse_ally_ability'],
 			power: 				false,
@@ -13656,7 +13944,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{withering_hero: 1},
+		abilities: 			{desperate_wither: 1},
 		quote: '\"They are not the same after the attack, sir.\"',
 	},
 	blood_elf:{
@@ -14059,7 +14347,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{burning_hero: 1},
+		abilities: 			{desperate_burn: 1},
 		quote: '\"Keeps you warm on a cold night.\"',
 	},
 	breaker:{
@@ -15227,7 +15515,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{cursed_hero: 1, fortify_hero: 1},
+		abilities: 			{desperate_curse: 1, fortify_hero: 1},
 		quote: '\"Let them touch you.\"',
 	},
 	cursed_skeleton:{
@@ -15266,7 +15554,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{cursed_hero: 1},
+		abilities: 			{desperate_curse: 1},
 		quote: '\"Robbed from a grave.\"',
 	},
 	cursed_spirit:{

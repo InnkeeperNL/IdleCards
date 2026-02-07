@@ -1181,7 +1181,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			10,
-		abilities: 			{life_cost: 2, restore: 2},
+		abilities: 			{pay_life_on_play: 5, restore: 2},
 		hero_version: 			{
 			theme: 				['type_creature','subtype_human','active_healing_ability','fortify_ability','cleanse_ally_ability'],
 			power: 				false,
@@ -2074,7 +2074,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{withering_hero: 1},
+		abilities: 			{desperate_wither: 1},
 		quote: '\"They are not the same after the attack, sir.\"',
 	},
 	blood_elf:{
@@ -2477,7 +2477,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{burning_hero: 1},
+		abilities: 			{desperate_burn: 1},
 		quote: '\"Keeps you warm on a cold night.\"',
 	},
 	breaker:{
@@ -3645,7 +3645,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{cursed_hero: 1, fortify_hero: 1},
+		abilities: 			{desperate_curse: 1, fortify_hero: 1},
 		quote: '\"Let them touch you.\"',
 	},
 	cursed_skeleton:{
@@ -3684,7 +3684,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{cursed_hero: 1},
+		abilities: 			{desperate_curse: 1},
 		quote: '\"Robbed from a grave.\"',
 	},
 	cursed_spirit:{

@@ -4035,8 +4035,8 @@ var all_old_available_cards = {
 		health: 			5,
 		abilities: 			{ally_seeks_enemy: 1, strike: 1},
 		hero_version: 			{
-			theme: 				['muscle'],
-			power: 				2,
+			theme: 				['run_away_ability'],
+			power: 				3,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, ally_seeks_enemy: 1},
@@ -5810,10 +5810,10 @@ var all_old_available_cards = {
 		abilities: 			{control_ice: 1, cold_strike: 1, freezing_touch: 1},
 		hero_version: 			{
 			theme: 				['freeze_ability','cold_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{control_ice: 1, cold_strike_hv: 1, freezing_touch: 1},
+			abilities: 			{cold_strike_hv: 1, freezing_touch: 1},
 		},
 		quote: '\"Mistress of the cold.\"',
 		use_old: true,
@@ -7393,7 +7393,7 @@ var all_old_available_cards = {
 		},
 		quote: '\"Look at that one!\"',
 	},
-	overdrive:{
+	/*overdrive:{
 		name: 				'overdrive',
 		type: 				'spell',
 		subtypes: 			['tactic'],
@@ -7408,8 +7408,8 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{command_golem: 1, righthand: 1, echo: 1},
 		quote: '\"Let the gears turn faster!\"',
-	},
-	overload:{
+	},*/
+	/*overload:{
 		name: 				'overload',
 		type: 				'spell',
 		subtypes: 			['energy'],
@@ -7424,7 +7424,7 @@ var all_old_available_cards = {
 		abilities: 			{overload: 1, righthand: 1, echo: 1},
 		quote: '\"Too much power!\"',
 		max_in_deck: 		1,
-	},
+	},*/
 	
 	painful_demise:{
 		name: 				'painful demise',
@@ -7556,7 +7556,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{flurry: 3, minimum_enemies: 3},
+		abilities: 			{strike_hero: 5, leech_hero: 1},
 		quote: '\"They can eat an entire cow in 5 seconds.\"',
 		max_in_deck: 		2,
 	},
@@ -9615,8 +9615,8 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{increase_ally_health: 3, increase_power_also: 3, spellbane_touch_ally: 1},
-		quote: '\"That should keep you going.\"',
+		abilities: 			{backlash: 10, dooming_touch: 5},
+		quote: '\"It doesn\'t hurt a bit, I promise.\"',
 		use_old: true,
 	},
 	
@@ -9635,7 +9635,7 @@ var all_old_available_cards = {
 		abilities: 			{restoring_deaths: 1},
 		quote: '\"Let their deaths feed you.\"',
 	},
-	spirit_of_the_cat:{
+	/*spirit_of_the_cat:{
 		name: 				'spirit of the cat',
 		type: 				'spell',
 		subtypes: 			['spirit','cat'],
@@ -9703,7 +9703,7 @@ var all_old_available_cards = {
 		abilities: 			{grant_seek_enemy: 1, righthand: 1, echo: 1},
 		quote: '\"Hunt, my child.\"',
 		max_in_deck: 		1,
-	},
+	},*/
 	spore_cloud:{
 		name: 				'spore cloud',
 		type: 				'spell',
@@ -11721,13 +11721,13 @@ var all_old_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{stun_structure_once: 1, strike: 1},
+		abilities: 			{strike: 1, demolish: 1},
 		hero_version: 			{
 			theme: 				['subtype_engineer'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{stun_structure: 1, strike_unit: 1},
+			abilities: 			{strike_unit: 1, demolish: 1},
 		},
 		quote: '\"I\'m getting the hang of this!\"',
 		max_in_deck: 1,
@@ -11767,8 +11767,8 @@ var all_old_available_cards = {
 		image_position: 	'center',
 		power: 				1,
 		armor: 				0,
-		health: 			3,
-		abilities: 			{curse: 2, strike: 1},
+		health: 			4,
+		abilities: 			{curse: 1, strike: 1},
 		hero_version: 			{
 			theme: 				['subtype_witch','curse_ability','sandstorm_ability'],
 			power: 				2,
@@ -12536,6 +12536,35 @@ var replacement_abilities = {
 	recall_soul: 		'unsummon_dead',
 	move_away: 			'run_away',
 	faithkill: 			'trophy_kill',
+	marred_burn: 		'desperate_burn',
+	marred_rush: 		'desperate_haste',
+	marred_selfdestruct: 'fragile',
+	shapeshift: 		'morph_ally',
+	shift_human: 		'morph_ally',
+	stun_flying: 		'stun',
+	stun_structure_once: 'demolish',
+	swoop: 				'charge',
+	voodoo: 			'pay_life',
+	weaken_all_living: 	'weaken_all',
+	loot: 				'triumphant_haste',
+	increase_power_also: 'empower_ally',
+	increase_ally_health: 'bolster',
+	hasten_on_kill: 	'triumphant_haste',
+	fortify_entries: 	'fortify_arrivals',
+	flying_entries: 	'flying_arrivals',
+	flurry: 			'striking_entry',
+	fire_nova: 			'flame_strike',
+	final_burn_all: 	'final_burn',
+	empowered_grave: 	'raise_skeleton',
+	consume_corpse: 	'corpse_feast',
+	burn_everyone: 		'burn_all',
+	bolster_self: 		'bolster',
+	bolster_front: 		'bolster',
+	bolster_entries: 	'bolster_arrivals',
+	arcane_bolts: 		'arcane_bolt',
+	ally_seeks_enemy: 	'ally_guards',
+	return_on_spell_cast: 'retreat_on_spell_cast',
+	restoring_entries: 'restoring_arrivals',
 }
 
 var ignored_abilities = {

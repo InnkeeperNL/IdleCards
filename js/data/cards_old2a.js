@@ -1739,6 +1739,7 @@ var all_oldest_available_cards = {
 		color: 				['blue'],
 		time: 				8,
 		image: 				'cards/blue-3481766_1280.png',
+		image_position: 	'top',
 		power: 				3,
 		armor: 				0,
 		health: 			6,
@@ -2270,7 +2271,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{bless_all: 5, sacrifice_unit: 1, restore_on_act: 5},
+		abilities: 			{bless_all: 5, sacrifice_unit: 1, restore_on_act: 10},
 		recipe:{
 			holy_relic: 		1,
 			angelic_blessing: 	1
