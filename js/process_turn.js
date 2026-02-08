@@ -3671,7 +3671,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
     		{
     			check_ability_procs(temp_target_side, 'hero_damaged', origin_id, subtypes);
     		}
-    		if((origin_id == 1 || origin_id == 2) && battle_info.combat_units[target_id]['side'] != battle_info.combat_units[origin_id]['side'])
+    		if((origin_id == 1 || origin_id == 2) && temp_target_side != battle_info.combat_units[origin_id]['side'])
     		{
     			check_ability_procs(temp_target_side, 'damaged_by_hero', target_id, subtypes, undefined, false);
     		}
