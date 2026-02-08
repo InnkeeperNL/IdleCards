@@ -241,7 +241,7 @@ function redeem_code(){
 function get_week_code(){
 	var current_week = getCurrentWeek();
 	var current_year = getCurrentYear();
-	var current_code = btoa(current_week + '' + current_year);
+	var current_code = getHash(current_week + '' + current_year);
 	return current_code;
 }
 
