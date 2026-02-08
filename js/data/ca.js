@@ -8497,6 +8497,35 @@ var all_abilities = {
 		level_cost: 	3,
 		cost_factor: 	'full',
 	},
+	release_sporeling:{
+		description: 	'Summons {LEVEL} sporeling(s) when destroyed.',
+		proc: 			'own_death',
+		proc_while_dead: true,
+		max_ally_units: 4,
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature','summon_sporeling'],
+				type: 		'summon_unit',
+				card_id: 	'sporeling',
+				amount: 	1
+			}
+		},
+		level_cost: 		2,
+		ability_level_cost_factors:{
+			resurrect: 		2,
+		},
+		level_cost_artifact: 0.75,
+		cost_on_top: 		true,
+	},
 	repair:{
 		description: 	'Repairs a random non-plant damaged ally structure by {LEVEL}. Cannot affect heroes.',
 		cannot_proc_while_stunned: true,
