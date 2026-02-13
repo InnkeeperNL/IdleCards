@@ -2386,13 +2386,13 @@ var all_old_available_cards = {
 		power: 				3,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{stone_strike: 1, resist_earth: 2},
+		abilities: 			{earth_blast: 1, strike: 1, plated: 1},
 		hero_version: 			{
 			theme: 				['subtype_elemental','earth_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{stone_strike_hv: 1, resist_earth: 1},
+			abilities: 			{strike_unit: 1, plated: 1},
 		},
 		quote: '\"A big pile of rocks... with a face.\"',
 	},
@@ -2802,7 +2802,7 @@ var all_old_available_cards = {
 		quote: '\"Let us pray for protection.\"',
 		use_old: true,
 	},
-	enchanted_egg:{
+	/*enchanted_egg:{
 		name: 				'enchanted egg',
 		type: 				'artifact',
 		subtypes: 			['trinket'],
@@ -2819,7 +2819,7 @@ var all_old_available_cards = {
 		abilities: 			{gain_energy: 1, energised_hatch: 4},
 		quote: '\"Could be anything in there.\"',
 		use_old: true,
-	},
+	},*/
 	enchanted_forest:{
 		name: 				'enchanted forest',
 		type: 				'structure',
@@ -4472,7 +4472,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{ghost_strike: 1, long_echo: 1},
+		abilities: 			{poison: 5, long_echo: 1},
 		quote: '\"The wrath of the dead.\"',
 		max_in_deck: 		1,
 	},
@@ -6184,7 +6184,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{pilgrimage: 1, echo: 1},
+		abilities: 			{frost_bolt: 5, hasten: 5},
 		quote: '\"We will see what the mountain has to say.\"',
 	},
 	
@@ -6399,7 +6399,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{discard_cheapest: 1, draw_on_act: 1},
+		abilities: 			{fear: 1, discard_enemy_on_act: 1},
 		quote: '\"Ooh! You had me there.\"',
 		use_old: true,
 	},
@@ -6484,7 +6484,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{wound_enemy: 1, echo: 1},
+		abilities: 			{wither: 1, echo: 1},
 		quote: '\"Aim for the heart.\"',
 		max_in_deck: 		1,
 	},
@@ -6619,7 +6619,7 @@ var all_old_available_cards = {
 		quote: '\"Come, my brothers!\"',
 	},
 	
-	living_armour:{
+	/*living_armour:{
 		name: 				'living armour',
 		type: 				'spell',
 		subtypes: 			['gear'],
@@ -6633,8 +6633,8 @@ var all_old_available_cards = {
 		health: 			false,
 		abilities: 			{grant_bolster_self: 3, righthand: 1},
 		quote: '\"It regrows after every battle.\"',
-	},
-	local_time_shift:{
+	},*/
+	/*local_time_shift:{
 		name: 				'local time-shift',
 		type: 				'spell',
 		subtypes: 			['magical'],
@@ -6649,7 +6649,7 @@ var all_old_available_cards = {
 		abilities: 			{grant_go_again: 1, righthand: 1},
 		quote: '\"A little time and space, just for you.\"',
 		use_old: true,
-	},
+	},*/
 	locust:{
 		name: 				'locust',
 		type: 				'creature',
@@ -6784,7 +6784,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{gain_energy: 1, energised_spellrush: 1},
+		abilities: 			{desperate_haste: 1, spellrush: 1},
 		quote: '\"It stores mana for later use.\"',
 		use_old: true,
 	},
@@ -6804,10 +6804,10 @@ var all_old_available_cards = {
 		abilities: 			{strike: 1, hasten_on_kill: 1},
 		hero_version: 			{
 			theme: 				['curse_ability','subtype_warrior'],
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			35,
-			abilities: 			{strike_unit: 1, hasten_on_kill: 1},
+			abilities: 			{strike_unit: 1, hasten_on_kill: 2},
 		},
 		quote: '\"I will drain the essence from you.\"',
 		use_old: true,
@@ -7759,7 +7759,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{empowered_grave: 1},
+		abilities: 			{empower_ally: 1, resurrect_hero: 1},
 		quote: '\"We will feed on the dead.\"',
 		max_in_deck: 		2,
 	},
@@ -8106,7 +8106,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{resurrect_ally: 1, restless: 1},
+		abilities: 			{resurrect_hero: 1, eternal: 1},
 		quote: '\"It is not ready for you yet.\"',
 	},
 	righteous_combat:{
@@ -8379,7 +8379,7 @@ var all_old_available_cards = {
 		quote: '\"Those storms can last for days.\"',
 		max_in_deck: 		2,
 	},
-	scavenger:{
+	/*scavenger:{
 		name: 				'scavenger',
 		type: 				'creature',
 		subtypes: 			['human'],
@@ -8401,7 +8401,7 @@ var all_old_available_cards = {
 		},
 		quote: '\"Lets see what we can find.\"',
 		max_in_deck: 		2,
-	},
+	},*/
 	scoundrel:{
 		name: 				'scoundrel',
 		type: 				'creature',
@@ -8604,7 +8604,7 @@ var all_old_available_cards = {
 		},
 		quote: '\"We must make it grow.\"',
 	},
-	shackles:{
+	/*shackles:{
 		name: 				'shackles',
 		type: 				'artifact',
 		subtypes: 			['trinket'],
@@ -8619,7 +8619,7 @@ var all_old_available_cards = {
 		abilities: 			{stun_creature: 1, delay: 2},
 		quote: '\"It will take time to get out of those.\"',
 		use_old: true,
-	},
+	},*/
 	shadow_archer:{
 		name: 				'shadow archer',
 		type: 				'creature',
@@ -8860,13 +8860,13 @@ var all_old_available_cards = {
 		power: 				0,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{empowered_by_adjacent: 3, strike: 1},
+		abilities: 			{enrage: 3, strike: 1},
 		hero_version: 			{
 			theme: 				['subtype_human','melee_ability','empower_ally_ability','type_creature'],
 			power: 				0,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{empowered_by_adjacent: 4, strike_unit: 1},
+			abilities: 			{enrage: 4, strike_unit: 1},
 		},
 		quote: '\"Men, get to the siege wagon!\"',
 		use_old: true,
@@ -9114,7 +9114,7 @@ var all_old_available_cards = {
 		use_old: true,
 	},
 	
-	skin_rot:{
+	/*skin_rot:{
 		name: 				'skin rot',
 		type: 				'spell',
 		subtypes: 			['curse'],
@@ -9129,7 +9129,7 @@ var all_old_available_cards = {
 		abilities: 			{skin_rot: 1, echo: 1},
 		quote: '\"A fatal disease.\"',
 		max_in_deck: 		1,
-	},
+	},*/
 	skirmisher:{
 		name: 				'skirmisher',
 		type: 				'creature',
@@ -9868,7 +9868,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{stun_flying: 1},
+		abilities: 			{air_bolt_hv: 1, fragile: 1},
 		quote: '\"It makes the air swirl.\"',
 		use_old: true,
 	},
@@ -9917,7 +9917,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{turn_enemy: 1, maximum_hero_health: 20},
+		abilities: 			{sacrifice_unit: 1, hasten_all: 5},
 		quote: '\"You cannot hear it without shedding a tear.\"',
 		max_in_deck: 		1,
 		use_old: true,
@@ -10201,7 +10201,7 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{recall_all: 1, minimum_enemies: 5},
+		abilities: 			{unsummon_ally: 1, unsummon_enemy: 1},
 		quote: '\"It is so quiet right now...\"',
 		max_in_deck: 		1,
 	},
@@ -10727,9 +10727,10 @@ var all_old_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{remove_stun: 3, echo: 1},
+		abilities: 			{empower_ally: 2, echo: 1},
 		quote: '\"Wakey, wakey.\"',
 		max_in_deck: 1,
+		verified: true,
 	},
 	wall_of_fire:{
 		name: 				'wall of fire',
@@ -12544,12 +12545,10 @@ var replacement_abilities = {
 	stun_flying: 		'stun',
 	stun_structure_once: 'demolish',
 	swoop: 				'charge',
-	voodoo: 			'pay_life',
 	weaken_all_living: 	'weaken_all',
 	loot: 				'triumphant_haste',
 	increase_power_also: 'empower_ally',
 	increase_ally_health: 'bolster',
-	hasten_on_kill: 	'triumphant_haste',
 	fortify_entries: 	'fortify_arrivals',
 	flying_entries: 	'flying_arrivals',
 	flurry: 			'striking_entry',
@@ -12565,6 +12564,11 @@ var replacement_abilities = {
 	ally_seeks_enemy: 	'ally_guards',
 	return_on_spell_cast: 'retreat_on_spell_cast',
 	restoring_entries: 'restoring_arrivals',
+	recall_damaged: 	'unsummon_ally',
+	stone_strike: 		'strike',
+	stone_strike_hv: 	'strike_unit',
+	voodoo: 			'damage_hero',
+	poison_breath: 		'poison_all',
 }
 
 var ignored_abilities = {
@@ -12581,64 +12585,75 @@ var racial_abilities = {
 
 function add_old_cards(old_cards, image_folder){
 	var added_old_cards = {};
+	var not_added_cards = {};
 
 	eachoa(old_cards, function(card_id, new_card){
-		var should_delete = false;
-		eachoa(new_card['abilities'], function(ability_id, ability_level){
-			if(all_abilities[ability_id] == undefined)
-			{
-				delete new_card['abilities'][ability_id];
-				if(replacement_abilities[ability_id] != undefined)
-				{
-					old_cards[card_id]['abilities'][replacement_abilities[ability_id]] = ability_level;
-				}
-				else
-				{
-					if(unavailable_abilities[ability_id] == undefined){unavailable_abilities[ability_id] = 0;}
-					unavailable_abilities[ability_id] += 1;
-				}
-				if(count_object(new_card['abilities']) == 1)
-				{
-					should_delete = true;
-				}
-			}
-			else
-			{
-				if(all_abilities[ability_id]['max_level'] != undefined && ability_level > all_abilities[ability_id]['max_level'])
-				{
-					old_cards[card_id]['abilities'][ability_id] = all_abilities[ability_id]['max_level'];
-				}
-			}
-		});
-		if(new_card['hero_version'] != undefined)
+		if(all_available_cards[card_id] == undefined)
 		{
-			eachoa(new_card['hero_version']['abilities'], function(ability_id, ability_level){
+			var should_delete = false;
+			eachoa(new_card['abilities'], function(ability_id, ability_level){
 				if(all_abilities[ability_id] == undefined)
 				{
-					delete old_cards[card_id]['hero_version']['abilities'][ability_id];
+					delete new_card['abilities'][ability_id];
 					if(replacement_abilities[ability_id] != undefined)
-				{
-					old_cards[card_id]['hero_version']['abilities'][replacement_abilities[ability_id]] = ability_level;
-				}
+					{
+						old_cards[card_id]['abilities'][replacement_abilities[ability_id]] = ability_level;
+					}
+					else
+					{
+						if(unavailable_abilities[ability_id] == undefined){unavailable_abilities[ability_id] = 0;}
+						unavailable_abilities[ability_id] += 1;
+					}
+					/*if(count_object(new_card['abilities']) == 1)
+					{
+						should_delete = true;
+					}*/
 				}
 				else
 				{
 					if(all_abilities[ability_id]['max_level'] != undefined && ability_level > all_abilities[ability_id]['max_level'])
 					{
-						old_cards[card_id]['hero_version']['abilities'][ability_id] = all_abilities[ability_id]['max_level'];
+						old_cards[card_id]['abilities'][ability_id] = all_abilities[ability_id]['max_level'];
 					}
 				}
 			});
-		}
-		if(count_object(old_cards[card_id]['abilities']) == 0 || should_delete == true)
-		{
-			delete old_cards[card_id];
-		}
-		else
-		{
-			if(old_cards[card_id]['hero_version'] != undefined)
+			if(new_card['hero_version'] != undefined)
 			{
-				if(count_object(old_cards[card_id]['hero_version']['abilities']) == 0){delete old_cards[card_id];}
+				eachoa(new_card['hero_version']['abilities'], function(ability_id, ability_level){
+					if(all_abilities[ability_id] == undefined)
+					{
+						delete old_cards[card_id]['hero_version']['abilities'][ability_id];
+						if(replacement_abilities[ability_id] != undefined)
+					{
+						old_cards[card_id]['hero_version']['abilities'][replacement_abilities[ability_id]] = ability_level;
+					}
+					}
+					else
+					{
+						if(all_abilities[ability_id]['max_level'] != undefined && ability_level > all_abilities[ability_id]['max_level'])
+						{
+							old_cards[card_id]['hero_version']['abilities'][ability_id] = all_abilities[ability_id]['max_level'];
+						}
+					}
+				});
+			}
+			if(count_object(old_cards[card_id]['abilities']) == 0 || should_delete == true)
+			{
+				//console.log(card_id + ' has no viable abilities');
+				not_added_cards[card_id] = true;
+				delete old_cards[card_id];
+			}
+			else
+			{
+				if(old_cards[card_id]['hero_version'] != undefined)
+				{
+					if(count_object(old_cards[card_id]['hero_version']['abilities']) == 0)
+					{
+						//console.log(card_id + ' hero has no viable abilities');
+						not_added_cards[card_id] = true;
+						delete old_cards[card_id];
+					}
+				}
 			}
 		}
 		
@@ -12753,9 +12768,9 @@ function add_old_cards(old_cards, image_folder){
 						{
 							delete new_card['hero_version']['abilities'][ability_id];
 							if(replacement_abilities[ability_id] != undefined)
-						{
-							new_card['hero_version']['abilities'][replacement_abilities[ability_id]] = ability_level;
-						}
+							{
+								new_card['hero_version']['abilities'][replacement_abilities[ability_id]] = ability_level;
+							}
 						}
 						else
 						{
@@ -12796,6 +12811,8 @@ function add_old_cards(old_cards, image_folder){
 	});
 	console.log('added ' + count_object(added_old_cards) + ' old cards');
 	console.log(added_old_cards);
+	console.log('' + count_object(not_added_cards) + ' old cards did not have viable abilities');
+	console.log(not_added_cards);
 	all_available_cards = sortObj(all_available_cards);
 }
 

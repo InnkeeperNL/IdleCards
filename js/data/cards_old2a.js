@@ -11,7 +11,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{weakness: 1, delay: 3},
+		abilities: 			{weakness: 1},
 		quote: '\"It has a mesmerizing effect\"'
 	},
 	angel_of_light:{
@@ -1240,7 +1240,7 @@ var all_oldest_available_cards = {
 		power: 				false,
 		armor: 				false,
 		health: 			false,
-		abilities: 			{heal_all: 1, delay: 4},
+		abilities: 			{heal_all: 1},
 		recipe:{
 			mana_crystal: 		1,
 			stone: 				1,

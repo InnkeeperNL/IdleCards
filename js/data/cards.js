@@ -12104,7 +12104,7 @@ var all_available_cards = {
 		quote: '\"You would not hurt me just because of a little curse, would you?\"',
 	},
 	scavanger:{
-		name: 				'scavanger',
+		name: 				'scavenger',
 		type: 				'creature',
 		subtypes: 			['human'],
 		color: 				['colorless'],
@@ -16137,6 +16137,8 @@ add_old_cards(all_old_available_cards, 'cards_old/');
 add_old_cards(all_older_available_cards, 'cards_old2/');
 add_old_cards(all_oldest_available_cards, 'cards_old2a/');
 unavailable_abilities = sortObj(unavailable_abilities);
+console.log('unavailable abilities: ' + count_object(unavailable_abilities));
+console.log(unavailable_abilities);
 
 /*eachoa(all_available_cards, function(card_id, card_info){
 	if(card_info['color'] == 'colorless'){all_available_cards[card_id]['color'] = ['white'];}

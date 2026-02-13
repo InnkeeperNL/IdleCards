@@ -2823,6 +2823,7 @@ var all_abilities = {
 	damage_hero:{
 		description: 	'Deals {LEVEL} damage to the enemy hero.',
 		cannot_proc_while_stunned: true,
+		scales: true,
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -6090,6 +6091,30 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		4,
 		level_cost_spell: 	1,
+	},
+	hasten_on_kill:{
+		description: 	'Reduces the time left of a card in your hand by {LEVEL} when it destroys a unit.',
+		proc: 			'kill',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	1,
+				status: 		'hand',
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'hasten',
+				projectile_target: 	'deck',
+				type: 				'reduce_ready_time',
+				subtypes: 			['hasten','deck_control'],
+				amount: 			'ability_level',
+				side: 				'ally',
+			}
+		},
+		animation: 		'combat_zoom',
 	},
 	hasten_slowest:{
 		description: 	'Reduces the time left of the card in your hand with the highest time left by {LEVEL}.',
@@ -10138,6 +10163,7 @@ var all_abilities = {
 	strike_hero:{
 		description: 	'Deals {LEVEL} physical melee damage to the enemy hero.',
 		cannot_proc_while_stunned: true,
+		scales: true,
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -11125,13 +11151,13 @@ var all_abilities = {
 		level_cost: 		0.5,
 	},
 	unsummon_ally:{
-		description: 	'Returns a damaged ally creature unit to your hand. Will not unsummon summoned units.',
+		description: 	'Returns {LEVEL} damaged ally creature unit(s) to your hand. Will not unsummon summoned units.',
 		cannot_proc_while_stunned: true,
 		hero_tactics: 	['ally_creature_card_played_proc_ability','hasten_ability','heal_hero_ability','on_play_proc_ability','type_creature'],
 		targets:	{
 			0:{
 				target: 		'unit',
-				target_amount: 	1,
+				target_amount: 	'ability_level',
 				position: 		'random',
 				not_types: 		['structure','object'],
 				side: 			'ally',
