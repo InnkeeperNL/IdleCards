@@ -246,6 +246,10 @@ function get_week_code(){
 }
 
 var weekly_code_rewards = {
+	0:{
+		reward_id: 		'trove',
+		reward_amount: 	5,
+	},
 	1:{
 		reward_id: 		'jar_of_luck',
 		reward_amount: 	5,
@@ -258,10 +262,6 @@ var weekly_code_rewards = {
 		reward_id: 		'chest',
 		reward_amount: 	10,
 	},
-	4:{
-		reward_id: 		'trove',
-		reward_amount: 	5,
-	}
 }
 
 function get_weekly_code_reward(){

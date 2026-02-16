@@ -15750,7 +15750,7 @@ var all_available_cards = {
 		name: 				'spyglass',
 		description: 		'Doubles the maximum rarity of the next summoned enemy.',
 		value: 				10,
-		type: 				'treasure',
+		type: 				'token',
 		basic_reward: 		true,
 		color: 				['none'],
 		pick_chance: 		0,
