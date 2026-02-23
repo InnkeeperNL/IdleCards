@@ -2889,7 +2889,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'voodoo',
 				type: 			'increase_power',
-				subtypes: 		['debilitate'],
+				subtypes: 		['debilitate','weaken'],
 				amount: 		'ability_level',
 				amount_factor: 	-1,
 			},
@@ -2921,7 +2921,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'voodoo',
 				type: 			'increase_power',
-				subtypes: 		['debilitate'],
+				subtypes: 		['debilitate','weaken'],
 				amount: 		'ability_level',
 				amount_factor: 	-1,
 			},
