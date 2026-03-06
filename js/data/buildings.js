@@ -44,6 +44,18 @@ var all_buildings = {
 				}
 			},
 		},*/
+		recipes:{
+			clover:{
+				costs:{
+					horseshoe: 	9,
+				}
+			},
+			jar_of_luck:{
+				costs:{
+					clover: 	9,
+				}
+			},
+		},
 
 		shop_type: 		['creature'],
 		
@@ -188,12 +200,12 @@ var all_buildings = {
 		recipes:{
 			compass:{
 				costs:{
-					spyglass: 	3,
+					spyglass: 	5,
 				}
 			},
 			treasure_map:{
 				costs:{
-					compass: 	4,
+					compass: 	5,
 				}
 			},
 		},

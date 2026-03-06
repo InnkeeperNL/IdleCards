@@ -15682,8 +15682,8 @@ var all_available_cards = {
 
 	clover:{
 		name: 				'clover',
-		description: 		'Can be used to boost the current enemy. Increases rewards by 50%.',
-		value: 				10,
+		description: 		'Can be used to boost the current enemy. Increases rewards by 100%.',
+		value: 				50,
 		//months_available: 	[0,1,2,3,4,5,6,7,8,9,10,11,12],
 		type: 				'token',
 		basic_reward: 		true,
@@ -15698,14 +15698,14 @@ var all_available_cards = {
 		quote: '\"Rare as they are lucky.\"',
 		summon_post_buff:{
 			buff_type: 			'reward_count',
-			buff_amount: 		50,
+			buff_amount: 		100,
 			buff_amount_type:  'percent',
 		}
 	},
 	horseshoe:{
 		name: 				'horseshoe',
 		description: 		'Can be used to boost the current enemy. Increases rewards by 10%.',
-		value: 				2,
+		value: 				5,
 		//months_available: 	[0,1,2,3,4,5,6,7,8,9,10,11,12],
 		type: 				'token',
 		basic_reward: 		true,
@@ -15726,8 +15726,8 @@ var all_available_cards = {
 	},
 	jar_of_luck:{
 		name: 				'jar of luck',
-		description: 		'Can be used to boost the current enemy. Increases rewards by 250%.',
-		value: 				50,
+		description: 		'Can be used to boost the current enemy. Increases rewards by 1000%.',
+		value: 				500,
 		//months_available: 	[0,1,2,3,4,5,6,7,8,9,10,11,12],
 		type: 				'token',
 		basic_reward: 		true,
@@ -15742,15 +15742,15 @@ var all_available_cards = {
 		quote: '\"Overflowing with the good stuff.\"',
 		summon_post_buff:{
 			buff_type: 			'reward_count',
-			buff_amount: 		250,
+			buff_amount: 		1000,
 			buff_amount_type:  'percent',
 		}
 	},
 	spyglass:{
 		name: 				'spyglass',
-		description: 		'Doubles the maximum rarity of the next summoned enemy.',
+		description: 		'Doubles the maximum rarity of the next summoned enemy and increases the rewards by 10%.',
 		value: 				10,
-		type: 				'token',
+		type: 				'treasure',
 		basic_reward: 		true,
 		color: 				['none'],
 		pick_chance: 		0,
@@ -15771,14 +15771,19 @@ var all_available_cards = {
 				buff_type: 			'common_reduction',
 				buff_amount: 		100,
 				buff_amount_type:  'percent',
+			},
+			2:{
+				buff_type: 			'reward_bonus',
+				buff_amount: 		10,
+				buff_amount_type:  'percent',
 			}
 		},
 		quote: '\"I think I see something shiny overe there!\"',
 	},
 	compass:{
 		name: 				'compass',
-		description: 		'Triples the maximum rarity of the next summoned enemy.',
-		value: 				30,
+		description: 		'Triples the maximum rarity of the next summoned enemy and increases the rewards by 20%.',
+		value: 				50,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -15799,14 +15804,19 @@ var all_available_cards = {
 				buff_type: 			'common_reduction',
 				buff_amount: 		200,
 				buff_amount_type:  'percent',
+			},
+			2:{
+				buff_type: 			'reward_bonus',
+				buff_amount: 		20,
+				buff_amount_type:  'percent',
 			}
 		},
 		quote: '\"Keep going that way.\"',
 	},
 	treasure_map:{
 		name: 				'treasure map',
-		description: 		'Quadruples the maximum rarity of the next summoned enemy.',
-		value: 				120,
+		description: 		'Quadruples the maximum rarity of the next summoned enemy and increases the rewards by 30%.',
+		value: 				250,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -15826,6 +15836,11 @@ var all_available_cards = {
 			1:{
 				buff_type: 			'common_reduction',
 				buff_amount: 		300,
+				buff_amount_type:  'percent',
+			},
+			2:{
+				buff_type: 			'reward_bonus',
+				buff_amount: 		30,
 				buff_amount_type:  'percent',
 			}
 		},
@@ -16079,7 +16094,7 @@ var all_available_cards = {
 	},
 	trove:{
 		name: 				'trove',
-		value: 				25,
+		value: 				50,
 		type: 				'consumable',
 		basic_reward: 		true,
 		color: 				['none'],

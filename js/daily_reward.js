@@ -252,7 +252,7 @@ var weekly_code_rewards = {
 	},
 	1:{
 		reward_id: 		'jar_of_luck',
-		reward_amount: 	5,
+		reward_amount: 	1,
 	},
 	2:{
 		reward_id: 		'stash',
