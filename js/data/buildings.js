@@ -200,12 +200,12 @@ var all_buildings = {
 		recipes:{
 			compass:{
 				costs:{
-					spyglass: 	5,
+					spyglass: 	10,
 				}
 			},
 			treasure_map:{
 				costs:{
-					compass: 	5,
+					compass: 	10,
 				}
 			},
 		},
