@@ -179,6 +179,7 @@ function claim_daily_reward(){
 				all_current_rewards = {};
 
 				current_reward_origin = 'daily_reward';
+				current_reward_text = 'Reward claimed!';
 				all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
 					reward_id: 		reward_info['reward'],
 					reward_amount: 	reward_info['amount'],
