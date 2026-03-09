@@ -1848,7 +1848,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{burn_hv: 3, evade: 1, ally_runs_away: 1},
+			abilities: 			{burn_hv: 2, evade: 1, ally_runs_away: 1},
 		},
 		quote: '\"I will leave them in ashes.\"',
 	},
