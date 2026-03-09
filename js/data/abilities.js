@@ -157,9 +157,11 @@ var all_abilities = {
 		level_cost_spell: 	1,
 	},
 	ally_guards:{
-		description: 	'Moves {LEVEL} ally creature unit(s) without an opposing unit to a free slot with an opposing unit.',
+		description: 	'When any unit enters the game or is destroyed, this moves {LEVEL} ally creature unit(s) without an opposing unit to a free slot with an opposing unit. Can be used once each round.',
 		cannot_proc_while_stunned: true,
 		min_unopposed_enemy_units: 1,
+		delay: 			1,
+		proc: 			['enemy_unit_card_played','post_any_death','ally_unit_card_played'],
 		proc_amount: 	'ability_level',
 		targets:	{
 			0:{
@@ -969,7 +971,6 @@ var all_abilities = {
 				amount: 	'ability_level'
 			},
 			1:{
-				projectile: 	'bolster',
 				type: 		'grant_temp_health',
 				subtypes: 		['bolster'],
 				amount: 	'ability_level',
@@ -977,6 +978,39 @@ var all_abilities = {
 		},
 		animation: 	'combat_zoom',
 		level_cost: 	3,
+	},
+	boost_creature:{
+		description: 	'Grant a random ally creature {LEVEL} temporary power and health. Cannot target your hero and will only target units that have power.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	1,
+		scales: 		true,
+		hero_tactics: 	['melee_ability','empower_ally_ability','bolster_ally_ability'],
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				not_types: 	['structure','object'],
+				min_hp: 	1,
+				min_power: 	0,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 		'grant_temp_power',
+				subtypes: 		['empower_ally'],
+				amount: 	'ability_level'
+			},
+			1:{
+				type: 		'grant_temp_health',
+				subtypes: 		['bolster'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 	4,
 	},
 	break:{
 		description: 	'Destroys up to a total of {LEVEL} enemy artifact(s) or golem(s).',
@@ -3905,6 +3939,38 @@ var all_abilities = {
 		level_cost: 		3,
 		level_cost_spell: 	0.75,
 		average_hits: 		1,
+	},
+	empower_animal:{
+		description: 	'A random ally animal creature that has power gains {LEVEL} temporary power. Cannot affect heroes or itself.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		hero_tactics: 	['subtype_animal'],
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				subtypes: 		['animal'],
+				not_self: 		true,
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1.5,
+		level_cost_structure: 1.25,
+		level_cost_spell: 	0.35,
+		level_cost_hero: 	2,
 	},
 	empower_ally:{
 		description: 	'A random ally creature that has power gains {LEVEL} temporary power. Cannot affect heroes or itself.',
@@ -9136,6 +9202,30 @@ var all_abilities = {
 		level_cost: 	-4,
 		level_cost_spell: -5,
 		average_hits: 	'ability_level',
+	},
+	sacrifice_artifact:{
+		description: 	'Destroy up to {LEVEL} random ally artifact(s). Will target artifacts with the lowest cost first.',
+		cannot_proc_while_stunned: true,
+		remove_skill_after_use: 'sacrifice_artifact',
+		targets:	{
+			0:{
+				target: 	'artifact',
+				target_amount: 'ability_level',
+				position: 	'random',
+				lowest_cost: true,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['sacrifice_ally','break'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	-4,
 	},
 	sacrifice_creature:{
 		description: 	'Destroy up to {LEVEL} random ally creature unit(s). Will target units with the lowest cost first.',

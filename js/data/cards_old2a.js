@@ -1335,7 +1335,7 @@ var all_oldest_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, flying: 1, resurrect: 1, undead: 1},
+		abilities: 			{strike: 1, run_away: 1, flying: 1, resurrect: 1, undead: 1},
 		hero_version: 			{
 			power: 				2,
 			armor: 				0,
