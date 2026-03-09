@@ -3944,6 +3944,43 @@ var all_abilities = {
 		level_cost: 	2,
 		cost_factor: 	'full',
 	},
+	echo_bolt:{
+		description: 	'Deals {LEVEL} magical projectile damage to a random enemy unit, and again for every time this specific card has been played before. Will only target the enemy hero if there are no enemy units.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'times_played',
+		proc_amount_adjustment: 1,
+		scales: 		true,
+		hero_tactics: 	['curse_ability','hex_ability','arcane_bolts_ability'],
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'magic',
+				type: 			'damage',
+				subtypes: 		['magical','projectile','arcane_bolts'],
+				amount: 		1,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		9,
+		level_cost_spell: 	2.5,
+		cost_adjustment: 	-1,
+		average_hits: 		2,
+	},
 	elemental_bolt:{
 		ability_subtypes: ['fire','cold','elemental'],
 		description: 	'Fires a fire or frost bolt at an enemy, dealing {LEVEL} magical or physical projectile damage. Will target the enemy hero if there are no enemy units.',
