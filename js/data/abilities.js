@@ -216,6 +216,33 @@ var all_abilities = {
 		level_cost: 	2,
 		level_cost_spell: 1,
 	},
+	ally_seeks_enemy:{
+		description: 	'If there is an ally creature unit whithout an opposing enemy unit, this will move that creature to a free slot with an opposing unit. If used by a creature, it cannot target itself.',
+		cannot_proc_while_stunned: true,
+		min_unopposed_enemy_units: 1,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure','object'],
+				not_self: 		true,
+				has_opposing: 	false,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			1:{
+				type: 			'move',
+				projectile: 	'teleport',
+				safe_slot: 		false,
+				placement: 		'random',
+				subtypes: 		['movement','seek'],
+				amount: 		1,
+			}
+		},
+	},
 	also_empower_all:{
 		name: 			'also: empower all',
 		description: 	'When this performs any ability, the target also grants all other ally creatures that have power {LEVEL} temporary power.',
@@ -3252,8 +3279,9 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	5,
-		level_cost_artifact: 2.5,
+		level_cost: 	6,
+		level_cost_artifact: 3.5,
+		cost_adjustment: -1,
 	},
 	destroy_structure:{
 		description: 	'Destroys {LEVEL} random enemy structure unit(s).',
@@ -3772,10 +3800,43 @@ var all_abilities = {
 		//level_cost_spell: 3.5,
 		//cost_adjustment: -3,
 	},
+	draw_on_play:{
+		description: 	'When played, draws up to a total of {LEVEL} card(s).',
+		cannot_proc_while_stunned: true,
+		proc: 			'on_play',
+		proc_amount: 	'ability_level',
+		remove_skill: 	'draw_on_play',
+		min_cards_in_deck: 	1,
+		max_hand_cards: 	9,
+		hero_tactics: 	['hasten_ability','move_ally_to_deck_ability'],
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 				'draw_card',
+				subtypes: 			['draw_cards','deck_control'],
+				amount: 			1
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	6,
+		level_cost_artifact: 3,
+		ability_level_cost_factors:{
+			homebound: 		1.5,
+		},
+	},
 	earth_blast:{
 		description: 	'Deals {LEVEL} physical earth damage to all enemy units.',
 		cannot_proc_while_stunned: true,
 		hero_tactics: 	['curse_ability'],
+		scales: true,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -4093,6 +4154,39 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 		level_cost_spell: 	0.5,
+	},
+	empower_imp:{
+		description: 	'An all imp unit that have power gain {LEVEL} temporary power. Cannot affect itself.',
+		cannot_proc_while_stunned: true,
+		do_not_pause_between: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				subtypes: 		['imp'],
+				not_types: 		['object','structure'],
+				not_self: 		true,
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				pause_before: 	500,
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1.5,
+		level_cost_structure: 1.25,
+		level_cost_spell: 	0.35,
+		level_cost_hero: 	2,
 	},
 	empower_imps:{
 		description: 	'All ally imp units that have power gain {LEVEL} temporary power. Cannot affect itself.',
@@ -4541,7 +4635,7 @@ var all_abilities = {
 					}
 				},
 			},
-			1:{
+			on_success:{
 				targets:{
 					0:{
 						target: 		'unit_or_hero',
@@ -4560,11 +4654,10 @@ var all_abilities = {
 						amount: 		'ability_level',
 					}
 				},
-			},
-			
+			},	
 		},
 		level_cost: 	0.2,
-		level_cost_hero: 2,
+		level_cost_hero: 1,
 	},
 	final_bolster_hero:{
 		description: 	'When destroyed, your hero gains {LEVEL} temporary health.',
@@ -5041,6 +5134,7 @@ var all_abilities = {
 		description: 	'Deals {LEVEL} magical fire damage to all enemy units.',
 		cannot_proc_while_stunned: true,
 		hero_tactics: 	['curse_ability'],
+		scales: true,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -6356,7 +6450,7 @@ var all_abilities = {
 		max_level: 1,
 	},
 	hex:{
-		description: 	'Turns {LEVEL} nearest non-undead enemy creature unit(s) into a frog until the end of their next turn.',
+		description: 	'Turns {LEVEL} random non-undead enemy creature unit(s) into a frog until the end of their next turn.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		hero_tactics: 	['snipe_ability','blast_ability','wither_ability','break_ability'],
@@ -6364,7 +6458,7 @@ var all_abilities = {
 			0:{
 				target: 		'unit',
 				target_amount: 	1,
-				position: 		'nearest',
+				position: 		'random',
 				not_types: 		['structure'],
 				max_abilities: 	{undead: 0},
 				not_card_ids: 	['frog'],
@@ -6538,6 +6632,31 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 	},
+	hide_on_spell_cast:{
+		description: 	'Grants itself stealth when any spell card is played.',
+		proc: 			'spell_card_played',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				max_abilities: 	{stealth: 0},
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'dodge',
+				type: 			'set_skill',
+				subtypes: 		['on_kill','grant_stealth'],
+				skill_id: 		'stealth',
+				amount: 		1
+			}
+		},
+		animation: 		'combat_zoom',
+	},
 	homebound:{
 		description: 	'Has a 50% chance to return to its owner\'s hand. If this was summoned, it disappears.',
 		cannot_proc_while_stunned: true,
@@ -6567,6 +6686,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		ability_subtypes: ['stun'],
 		hero_tactics: 	['curse_ability','hex_ability','turn_enemy_into_ability'],
+		scales: true,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -6768,6 +6888,31 @@ var all_abilities = {
 		level_cost: 		3.5,
 		level_cost_spell: 	0.875,
 	},
+	lay_egg_hv:{
+		description: 	'Has a 10% chance to summon {LEVEL} chicken egg(s).',
+		proc: 			'basic',
+		proc_chance: 	10,
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature','summon_structure'],
+				card_id: 	'chicken_egg',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		2,
+	},
 	lay_trap:{
 		description: 	'This unit will move to a random free slot. If it does, it leaves a trap behind.',
 		cannot_proc_while_stunned: true,
@@ -6810,6 +6955,7 @@ var all_abilities = {
 			},
 		},
 		level_cost: 8,
+		level_cost_spell: 2,
 	},
 	leech_hero:{
 		description: 	'When this deals damage to the enemy hero, this heals your hero by the damage dealt.',
@@ -10824,8 +10970,8 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		12,
-		level_cost_spell: 	3,
+		level_cost: 		10,
+		level_cost_spell: 	2.5,
 	},
 	summon_skeleton:{
 		description: 	'Summons {LEVEL} skeleton(s).',
@@ -11546,6 +11692,7 @@ var all_abilities = {
 		description: 	'Deals {LEVEL} physical water damage to all non-flying enemy units.',
 		cannot_proc_while_stunned: true,
 		hero_tactics: 	['curse_ability','hex_ability','air_ability'],
+		scales: true,
 		targets:	{
 			0:{
 				target: 		'unit',

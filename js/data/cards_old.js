@@ -6023,7 +6023,7 @@ var all_old_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, shoot_arrival: 4},
+		abilities: 			{strike: 1, shoot_arrival: 2},
 		hero_version: 			{
 			theme: 				['subtype_warrior','projectile_ability','melee_ability','enemy_unit_card_played_proc_ability'],
 			power: 				1,
@@ -9851,7 +9851,7 @@ var all_old_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			20,
-			abilities: 			{fortify_ally: 4, plated: 1},
+			abilities: 			{fortify_ally: 2, plated: 1},
 		},
 		quote: '\"It will take a while to take that down.\"',
 		use_old: true,
