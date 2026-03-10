@@ -2200,6 +2200,32 @@ var all_abilities = {
 		cost_adjustment: 	1,
 		additional_levels_cost: 1,
 	},
+	command_golem:{
+		description: 	'{LEVEL} Random ally golem unit(s) gains an additional turn.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	'ability_level',
+				position: 		'random',
+				subtypes: 		['golem'],
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'go_again',
+				type: 		'go_again',
+				subtypes: 	['command'],
+				amount: 	1,
+				increase_timeout: -250,
+			},
+		},
+		level_cost: 		5,
+		level_cost_spell: 	2,
+	},
 	conflagrate:{
 		description: 	'Deals {LEVEL} piercing fire damage to a random burning enemy unit or hero multiplied by the burn it suffers.',
 		cannot_proc_while_stunned: true,
@@ -4756,6 +4782,34 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		1,
 		level_cost_spell: 	0.5,
+	},
+	final_burn_all:{
+		description: 	'When destroyed, applies {LEVEL} burn to all enemy units.{BURN}',
+		proc: 			'own_death',
+		proc_while_dead: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 5,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'burn',
+				type: 		'apply_burn',
+				subtypes: 	['burn'],
+				amount: 	'ability_level',
+				increase_timeout: 500,
+				pause_before: 500,
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		3,
+		level_cost_spell: 	1.5,
 	},
 	final_curse:{
 		description: 	'When destroyed, applies {LEVEL} curse to a random enemy unit or hero.{CURSE}',

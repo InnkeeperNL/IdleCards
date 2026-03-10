@@ -12264,10 +12264,10 @@ var all_available_cards = {
 		abilities: 			{strike: 1, doom: 2},
 		hero_version: 			{
 			theme: 				['doom_ability','subtype_cleric','subtype_human'],
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, doom: 1},
+			abilities: 			{strike_unit: 1, doom: 2},
 		},
 		quote: '\"She has the sight.\"',
 	},

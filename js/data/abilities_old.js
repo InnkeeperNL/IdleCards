@@ -2049,7 +2049,6 @@ var all_old_abilities = {
 		level_cost_hero: 6,
 	},
 	command_golem:{
-		name_color: 	'rgba(247, 170, 15,0.9)',
 		description: 	'A random ally golem unit gains an additional turn.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
