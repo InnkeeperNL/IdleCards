@@ -2925,7 +2925,7 @@ var all_old_available_cards = {
 		abilities: 			{strike: 1, reaping_touch: 1},
 		hero_version: 			{
 			theme: 				['wither_ability','reap_ability'],
-			power: 				2,
+			power: 				3,
 			armor: 				0,
 			health: 			35,
 			abilities: 			{strike_unit: 1, reaping_touch: 1},

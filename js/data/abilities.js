@@ -9115,12 +9115,13 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
-		hero_tactics: 	['own_death_proc_ability','type_creature'],
+		hero_tactics: 	['own_death_proc_ability','type_creature','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
 				target_amount: 	1,
 				position: 		'random',
+				not_self: 		true,
 				origin_unit: 	true,
 				max_hp: 		0,
 				min_total_hp: 	1,
@@ -10612,7 +10613,7 @@ var all_abilities = {
 		level_cost_spell: 	0.75,
 	},
 	stunning_touch:{
-		description: 	'Has a 35% chance to apply {LEVEL} stun to any unit or hero it damages.',
+		description: 	'Has a 35% chance to apply {LEVEL} stun to any enemy unit or hero it damages.',
 		proc: 			'dealt_damage',
 		proc_chance: 	35,
 		proc_while_dead: true,
@@ -10622,7 +10623,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				origin_unit: 	true,
-				side: 			'any'
+				side: 			'enemy'
 			},
 		},
 		effects:{
@@ -11447,6 +11448,7 @@ var all_abilities = {
 			}
 		},
 		level_cost: 		4,
+		level_cost_hero: 	2,
 		level_cost_spell: 	1,
 	},
 	unsummon_dead:{

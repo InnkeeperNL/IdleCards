@@ -2732,7 +2732,7 @@ var all_oldest_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			45,
-			abilities: 			{strike_unit: 1, restore: 1},
+			abilities: 			{strike_unit: 1, restore: 1, break: 1},
 		},
 		recipe:{
 			pirate: 			1,
