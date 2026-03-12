@@ -3183,7 +3183,7 @@ var all_available_cards = {
 	},
 	chicken_egg:{
 		name: 				'chicken egg',
-		type: 				'structure',
+		type: 				'creature',
 		subtypes: 			['egg'],
 		color: 				['colorless'],
 		theme: 				[],

@@ -6970,7 +6970,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				type: 		'summon_unit',
-				subtypes: 	['summon_ally','summon_creature','summon_structure'],
+				subtypes: 	['summon_ally','summon_creature'],
 				card_id: 	'chicken_egg',
 				amount: 	1
 			}
@@ -6996,7 +6996,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				type: 		'summon_unit',
-				subtypes: 	['summon_ally','summon_creature','summon_structure'],
+				subtypes: 	['summon_ally','summon_creature'],
 				card_id: 	'chicken_egg',
 				amount: 	1
 			}
