@@ -286,6 +286,24 @@ var all_achievements = {
 			},
 		},
 	},
+	omelette:{
+		name: 			'omelette',
+		description: 	'Consume or feast on a chicken egg.',
+		card_image: 	'chicken_egg',
+		objective: 		'chicken_egg_affected_by_feast',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_chicken_egg',
+				reward_amount: 1,
+			},
+		},
+	},
 	scaredy_cat:{
 		name: 			'scaredy-cat',
 		description: 	'Use fear on a black cat.',
