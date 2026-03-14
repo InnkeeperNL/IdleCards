@@ -15862,7 +15862,7 @@ var all_available_cards = {
 	crown:{
 		name: 				'crown',
 		description: 		'Passively increases all peasants gained by 1%.',
-		value: 				125,
+		value: 				75,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -15877,7 +15877,7 @@ var all_available_cards = {
 	cup_of_blood:{
 		name: 				'cup of blood',
 		description: 		'Passively increases the maximum rarity of cards sacrificed at the altar by 1%.',
-		value: 				125,
+		value: 				75,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -15892,7 +15892,7 @@ var all_available_cards = {
 	enchanted_net:{
 		name: 				'enchanted net',
 		description: 		'Passively increases floating scraps gained by 1%.',
-		value: 				100,
+		value: 				20,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -15907,7 +15907,7 @@ var all_available_cards = {
 	endless_pouch:{
 		name: 				'endless pouch',
 		description: 		'Passively increases all scraps gained by 1%.',
-		value: 				250,
+		value: 				125,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -15922,7 +15922,7 @@ var all_available_cards = {
 	gloves_of_midas:{
 		name: 				'gloves of Midas',
 		description: 		'Passively increases troves gained by 1%.',
-		value: 				2500,
+		value: 				1000,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -15937,7 +15937,7 @@ var all_available_cards = {
 	golden_saddle:{
 		name: 				'golden saddle',
 		description: 		'Passively increases all rewards from battles and quests by 1%.',
-		value: 				1000,
+		value: 				500,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -15952,7 +15952,7 @@ var all_available_cards = {
 	loupe:{
 		name: 				'loupe',
 		description: 		'Passively increases all shards gained by 1%.',
-		value: 				500,
+		value: 				250,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -15967,7 +15967,7 @@ var all_available_cards = {
 	rope_of_binding:{
 		name: 				'rope of binding',
 		description: 		'Passively increases the chance for loot items to drop after winning a battle by 1%.',
-		value: 				250,
+		value: 				100,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -15982,7 +15982,7 @@ var all_available_cards = {
 	thieves_cloak:{
 		name: 				'thieves\' cloak',
 		description: 		'Passively increases the maximum scraps offered by merchants by 1%.',
-		value: 				250,
+		value: 				100,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -15997,7 +15997,7 @@ var all_available_cards = {
 	war_banner:{
 		name: 				'war banner',
 		description: 		'Passively increases the maximum rarity of summoned enemies by 1%.',
-		value: 				125,
+		value: 				75,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
