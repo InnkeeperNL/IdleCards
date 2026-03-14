@@ -9869,7 +9869,7 @@ var all_old_available_cards = {
 	thunderstorm:{
 		name: 				'thunderstorm',
 		type: 				'spell',
-		subtypes: 			['air'],
+		subtypes: 			['weather'],
 		color: 				['colorless'],
 		theme: 				[],
 		pick_chance: 		1,
