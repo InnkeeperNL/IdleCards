@@ -65,7 +65,7 @@ function show_quests(){
 				
 				if(quest_complete != 'complete')
 				{
-					parsed_quest += check_plural(quest_info['description'].split("{AMOUNT}").join(current_quest_info['amount']), current_quest_info['amount']) + '<br/>';
+					parsed_quest += check_plural(quest_info['description'].split("{AMOUNT}").join(numberWithCommas(current_quest_info['amount'])), numberWithCommas(current_quest_info['amount'])) + '<br/>';
 					parsed_quest += 'Progress: ' + current_quest_info['progress'];
 				}
 				else
@@ -324,7 +324,7 @@ function check_new_quests(show_new_message){
 				}
 				else
 				{
-					chosen_reward_amount = Math.floor(chosen_reward_amount / all_available_cards[chosen_reward]['value'] / 10);
+					chosen_reward_amount = Math.floor(chosen_reward_amount / all_available_cards[chosen_reward]['value'] / 1);
 					if(chosen_reward_amount < 1){chosen_reward_amount = 1;}
 				}
 				gamedata['quests'][i] = {
