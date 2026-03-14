@@ -269,7 +269,7 @@ var all_upgrades = {
 	},
 	z_a_town_access:{
 		name: 			'Town',
-		description: 	'Unlocks the town hall.',
+		description: 	'Unlocks the town hall. This produces peasants and trades creatures.',
 		needed_upgrades:{
 			aab_summon_rarity: 	10,
 		},
@@ -300,7 +300,7 @@ var all_upgrades = {
 	},*/
 	z_b_bank_access:{
 		name: 			'Banking',
-		description: 	'Unlocks the bank.',
+		description: 	'Unlocks the bank. This produces scraps and stashes. Also trades structures.',
 		needed_upgrades:{
 			z_a_town_access: 1,
 			wave_access: 1,
@@ -316,7 +316,7 @@ var all_upgrades = {
 	},
 	z_c_alchemist_access:{
 		name: 			'Alchemist',
-		description: 	'Unlocks the alchemist lab.',
+		description: 	'Unlocks the alchemist lab. This produces flasks, lets you brew potions for permanent bonusses and trades spells.',
 		needed_upgrades:{
 			z_b_bank_access: 1,
 		},
@@ -331,7 +331,7 @@ var all_upgrades = {
 	},
 	z_d_treasury_access:{
 		name: 			'Treasury',
-		description: 	'Unlocks the treasury.',
+		description: 	'Unlocks the treasury. This produces troves, lets you convert spyglasses into higher tier items and trades artifacts.',
 		needed_upgrades:{
 			z_c_alchemist_access: 1,
 		},
@@ -361,7 +361,7 @@ var all_upgrades = {
 	},
 	zz_a_quick_craft:{
 		name: 			'Quick craft',
-		description: 	'Unlocks quick crafting.',
+		description: 	'Unlocks quick crafting. This will let you craft any card only using peasants. You will not need to know previous recipes.',
 		needed_upgrades:{
 			z_a_town_access: 1,
 			wave_access: 1,
@@ -776,11 +776,16 @@ function show_upgrades(){
 	//parsed_upgrade_buttons += '<div class="upgrades_description">Upgrades are effective during endless waves battles.</div>'
 	$.each(all_upgrades, function(upgrade_id, upgrade_info){
 		var can_show = true;
+		var requirements_met = true;
 
 		$.each(upgrade_info['needed_upgrades'], function(needed_id, needed_level){
-			if(gamedata['upgrades'][needed_id] == undefined || gamedata['upgrades'][needed_id] < needed_level)
+			if(gamedata['upgrades'][needed_id] == undefined /*|| gamedata['upgrades'][needed_id] < needed_level*/)
 			{
 				can_show = false;
+			}
+			if(gamedata['upgrades'][needed_id] != undefined && gamedata['upgrades'][needed_id] < needed_level)
+			{
+				requirements_met = false;
 			}
 		});
 		if(upgrade_info['hide_if_maxed'] != undefined && upgrade_info['hide_if_maxed'] == true && gamedata['upgrades'][upgrade_id] != undefined && gamedata['upgrades'][upgrade_id] >= upgrade_info['max_level'])
@@ -811,8 +816,7 @@ function show_upgrades(){
 		if(upgrade_info['upgrade_type'] != 'main'){can_show = false;}
 		if(can_show == true)
 		{
-
-			var parsed_upgrade_button = parse_upgrade_button(upgrade_id);
+			var parsed_upgrade_button = parse_upgrade_button(upgrade_id, requirements_met);
 			parsed_upgrade_buttons += parsed_upgrade_button;
 		}
 	});
@@ -828,7 +832,7 @@ function show_upgrades(){
 	$('.upgrades_container').html(parsed_upgrade_buttons);
 }
 
-function parse_upgrade_button(upgrade_id){
+function parse_upgrade_button(upgrade_id, requirements_met){
 	var parsed_upgrade_button = '';
 	if(all_upgrades[upgrade_id] != undefined)
 	{
@@ -845,26 +849,44 @@ function parse_upgrade_button(upgrade_id){
 		{
 			upgrade_availabe = 'hero_unavailable';
 		}
-		parsed_upgrade_button += '<div class="menu_button third single_area ' + upgrade_availabe + '" onclick="current_upgrade=\'' + upgrade_id + '\';set_upgrades_back_button(\'upgrades\')" data-target-content="single_upgrade">';
-		parsed_upgrade_button += 	'<div class="bg" style="background-image:url(images/' + upgrade_info['image'] + ')"></div>';
-		parsed_upgrade_button += 	'<span>' + capitalizeFirstLetter(upgrade_info['name']) + '</span>';
-		if(upgrade_info['max_level'] == undefined || upgrade_info['max_level'] > effective_level)
+		if(requirements_met == true)
 		{
-			if(upgrade_info['max_level'] == undefined)
+			parsed_upgrade_button += '<div class="menu_button third single_area ' + upgrade_availabe + '" onclick="current_upgrade=\'' + upgrade_id + '\';set_upgrades_back_button(\'upgrades\')" data-target-content="single_upgrade">';
+			parsed_upgrade_button += 	'<div class="bg" style="background-image:url(images/' + upgrade_info['image'] + ')"></div>';
+			parsed_upgrade_button += 	'<span>' + capitalizeFirstLetter(upgrade_info['name']) + '</span>';
+			if(upgrade_info['max_level'] == undefined || upgrade_info['max_level'] > effective_level)
 			{
-				parsed_upgrade_button += '<span class="max_level">' + effective_level + '</span>';
+				if(upgrade_info['max_level'] == undefined)
+				{
+					parsed_upgrade_button += '<span class="max_level">' + effective_level + '</span>';
+				}
+				else
+				{
+					parsed_upgrade_button += '<span class="max_level">' + effective_level + '/' + upgrade_info['max_level'] + '</span>';
+				}
+				
+				parsed_upgrade_button += '<div class="upgrade_percent" style="width:' + (100 - can_upgrade) + '%"></div>';
 			}
 			else
 			{
-				parsed_upgrade_button += '<span class="max_level">' + effective_level + '/' + upgrade_info['max_level'] + '</span>';
+				parsed_upgrade_button += '<span class="max_level">MAX</span>';
+				parsed_upgrade_button += '<div class="upgrade_percent" style="width:100%"></div>';
 			}
-			
-			parsed_upgrade_button += '<div class="upgrade_percent" style="width:' + (100 - can_upgrade) + '%"></div>';
 		}
 		else
 		{
-			parsed_upgrade_button += '<span class="max_level">MAX</span>';
-			parsed_upgrade_button += '<div class="upgrade_percent" style="width:100%"></div>';
+			parsed_upgrade_button += '<div class="menu_button third single_area hero_unavailable">';
+			parsed_upgrade_button += 	'<div class="bg" style="background-image:url(images/' + upgrade_info['image'] + ')"></div>';
+			parsed_upgrade_button += 	'<span style="color:rgba(255,0,0,1)">';
+			$.each(upgrade_info['needed_upgrades'], function(needed_id, needed_level){
+				if(gamedata['upgrades'][needed_id] == undefined || gamedata['upgrades'][needed_id] < needed_level)
+				{
+					var effective_needed_level = 0;
+					if(gamedata['upgrades'][needed_id] != undefined){effective_needed_level = gamedata['upgrades'][needed_id];}
+					parsed_upgrade_button += all_upgrades[needed_id]['name'] + ': ' + effective_needed_level + ' / ' + needed_level + '<br/>';
+				}
+			});
+			parsed_upgrade_button += 	'</span>';
 		}
 		parsed_upgrade_button += '</div>';
 	}
