@@ -88,14 +88,14 @@ function show_craft(){
 						var parsed_card = parse_card(recipe_id, owned_amount);
 					/*}*/
 					
-						tinkering_list += '<span class="can_craft_' + can_craft + '" onclick="show_card_recipe(\'' + recipe_id + '\')">' + parsed_card + '</span>';
+						tinkering_list += '<span class="can_craft_' + can_craft + '" onclick="last_content=\'craft\';show_card_recipe(\'' + recipe_id + '\')">' + parsed_card + '</span>';
 					}
 					else
 					{
 						if(gamedata['owned_cards'][recipe_id] >= 25)
 						{
 							var parsed_card = parse_card('recipe_' + recipe_id, '');
-							tinkering_list += '<span class="" onclick="show_card_recipe(\'' + 'recipe_' + recipe_id + '\')">' + parsed_card + '</span>';
+							tinkering_list += '<span class="" onclick="last_content=\'craft\';show_card_recipe(\'' + 'recipe_' + recipe_id + '\')">' + parsed_card + '</span>';
 						}
 					}
 				}
