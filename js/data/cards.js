@@ -17942,39 +17942,14 @@ function generate_recipe(card_id, cost_left, current_recipe, subtypes_left){
 		});
 		
 		eachoa(all_available_cards, function(cost_id, cost_info){
-			if(/*cost_id != 'peasant' && */(cost_info['value'] < cost_left || (cost_info['value'] <= cost_left && recipe_size > 0)) /*&& (recipe_size > 0 || cost_info['value'] > all_available_cards[card_id]['value'] * 0.4 || all_available_cards[card_id]['value'] < 10)*/ && (recipe_size > 0 || cost_info['value'] <= all_available_cards[card_id]['value'] * 0.9 || all_available_cards[card_id]['value'] < 10) && cost_info['pick_chance'] > 0 && current_recipe[cost_id] == undefined)
+			if((cost_info['value'] < cost_left) && (recipe_size > 0 || cost_info['value'] <= all_available_cards[card_id]['value'] * 0.9 || all_available_cards[card_id]['value'] < 10) && cost_info['pick_chance'] > 0 && current_recipe[cost_id] == undefined)
 			{
 				var matched_amount = (match_array_values(current_card['craft_theme'], cost_info['craft_theme'], true));
 				matched_amount *= matched_amount;
-				//matched_amount = Math.sqrt(matched_amount);
-				//matched_amount = matched_amount * 1 + (matched_amount / 4);
-				//if(recipe_size == 0){matched_amount *= 2;}
-				/*if(cost_info['type'] == all_available_cards[card_id]['type']){
-					matched_amount *= 1.2;
-					if(matched_amount < 0.25)
-					{
-						matched_amount = 0.25;
-					}
-				}
-				if(cost_info['type'] != all_available_cards[card_id]['type'] && (cost_info['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'artifact'))
-				{
-					matched_amount *= 5;
-				}*/
-				//if(recipe_size > 0 && cost_info['value'] < cost_left * 0.5){matched_amount /= 2;}
-				/*var value_match = (cost_info['value'] / cost_left) + 0.2;
-				if(value_match > 1){value_match = 1;}
-				matched_amount *= value_match;*/
 				var subtype_match = match_array_values(subtypes_left, cost_info['subtypes'], true) * 1;
-				//if(match_array_values('human', cost_info['subtypes']) && match_array_values('human', subtypes_left) && count_object(cost_info['subtypes']) > 1){subtype_match -= 1.9;}
-				//if(cost_info['subtype_craft_factor'] != undefined){subtype_match *= cost_info['subtype_craft_factor'];}
-				//if(current_card['subtype_craft_factor'] != undefined){subtype_match *= current_card['subtype_craft_factor'];}
-				//subtype_match = sqr(subtype_match);
 				if(subtype_match > 0)
 				{
-					//if(matched_amount < 1){matched_amount = 1;}
-					if(recipe_size >= 0 && recipe_size < 3){subtype_match *= 2;}
 					matched_amount *= (subtype_match + 0);
-					//if(matched_amount < subtype_match){matched_amount = subtype_match;}
 				}
 				var value_percent = (cost_info['value'] / current_card['value']);
 				matched_amount *= value_percent;
@@ -17986,7 +17961,7 @@ function generate_recipe(card_id, cost_left, current_recipe, subtypes_left){
 				{
 					matched_amount *= 5;
 				}
-				if(matched_amount >= /*sqr*/(recipe_size * 0.25) || (count_object(current_recipe) < 2 && matched_amount > 0))
+				if((matched_amount > 0 && matched_amount >= /*sqr*/(recipe_size * 0.25)) || (count_object(current_recipe) < 2 && matched_amount > 0))
 				{
 					possible_costs[cost_id] = matched_amount;
 				
@@ -17998,46 +17973,26 @@ function generate_recipe(card_id, cost_left, current_recipe, subtypes_left){
 				}
 			}
 		});
-		if(best_match_id != '' /*&& best_match_id != 'peasant'*/)
+		if(count_object(possible_costs) > 0)
 		{
-			var cost_amount = Math.floor((cost_left) / all_available_cards[best_match_id]['value']);
-			if(cost_amount >= 2 && recipe_size < 2 && cost_left > 4)
-			{
-				cost_amount = Math.floor((cost_left / 2) / all_available_cards[best_match_id]['value']);
-			}
-			/*if(cost_amount > 10)
-			{
-				cost_amount = 10;
-			}*/
-			eachoa(subtypes_left, function(subtype_id, subtype_name){
-				if(match_array_values(subtype_name, all_available_cards[best_match_id]['subtypes']))
+			let sortedObject = Object.fromEntries(
+			    Object.entries(possible_costs).sort(([, a], [, b]) => b - a)
+			);
+			//console.log(sortedObject);
+			possible_costs = sortedObject;
+			eachoa(possible_costs, function(possible_cost_id, possible_cost_chance){
+				if(cost_left > 1 && all_available_cards[possible_cost_id] != undefined && all_available_cards[possible_cost_id]['value'] < (cost_left * 0.9) && count_object(current_recipe) < 4 && (count_object(current_recipe) < 2 || all_available_cards[possible_cost_id]['value'] > Math.ceil(all_available_cards[card_id]['value'] / 100)))
 				{
-					delete subtypes_left[subtype_id];
+					var cost_amount = Math.floor((cost_left * 0.9) / all_available_cards[possible_cost_id]['value']);
+					cost_left -= cost_amount * all_available_cards[possible_cost_id]['value'];
+					current_recipe[possible_cost_id] = cost_amount;
+					if(all_available_cards[possible_cost_id]['used_in_recipes'] == undefined){all_available_cards[possible_cost_id]['used_in_recipes'] = 0;}
+					all_available_cards[possible_cost_id]['used_in_recipes']++;
 				}
 			});
-			current_recipe[best_match_id] = cost_amount;
-			if(all_available_cards[best_match_id]['used_in_recipes'] == undefined){all_available_cards[best_match_id]['used_in_recipes'] = 0;}
-			all_available_cards[best_match_id]['used_in_recipes']++;
-			cost_left -= all_available_cards[best_match_id]['value'] * cost_amount;
-			if(cost_left > all_available_cards[card_id]['value'] / 10)
-			{
-				current_recipe = generate_recipe(card_id, cost_left, current_recipe, subtypes_left);
-			}
 		}
 		else
 		{
-			/*if(count_object(current_recipe) == 1)
-			{
-				eachoa(current_recipe, function(recipe_cost_id, recipe_cost_amount){
-					current_recipe[recipe_cost_id] = Math.floor(all_available_cards[card_id]['value'] / all_available_cards[recipe_cost_id]['value']);
-					var value_left = all_available_cards[card_id]['value'] - (current_recipe[recipe_cost_id] * all_available_cards[recipe_cost_id]['value']);
-					if(current_recipe[recipe_cost_id] == 1 && value_left > 1)
-					{
-						current_recipe['peasant'] = Math.ceil(value_left / 2);
-						all_available_cards['peasant']['used_in_recipes']++;
-					}
-				});
-			}*/
 			if(count_object(current_recipe) == 0 && cost_left > 0 && current_recipe['peasant'] == undefined && card_id != 'peasant' && all_available_cards[card_id]['value'] < 10)
 			{
 				current_recipe['peasant'] = Math.ceil(cost_left / 1.25);

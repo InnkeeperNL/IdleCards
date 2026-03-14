@@ -176,11 +176,11 @@ function show_card_recipe(recipe_id){
 				{
 					owned_amount = 0;
 				}
-				parsed_cost_card += '<div class="craft_not_enough"  onclick="show_card_details(\'' + card_cost_id + '\')">' + parse_card(card_cost_id, '<span style="color:rgba(255,0,0,1)">' + owned_amount + '</span>/' + cost_amount) + '</div>';
+				parsed_cost_card += '<div class="craft_not_enough"  onclick="show_card_details(\'' + card_cost_id + '\')">' + parse_card(card_cost_id, '<span style="color:rgba(255,0,0,1)">' + nFormatter(owned_amount, 0) + '</span>/' + nFormatter(cost_amount, 0)) + '</div>';
 			}
 			else
 			{
-				parsed_cost_card += '<div class=""  onclick="show_card_details(\'' + card_cost_id + '\')">' + parse_card(card_cost_id, gamedata['owned_cards'][card_cost_id] + '/' + cost_amount) + '</div>';
+				parsed_cost_card += '<div class=""  onclick="show_card_details(\'' + card_cost_id + '\')">' + parse_card(card_cost_id, nFormatter(gamedata['owned_cards'][card_cost_id], 0) + '/' + nFormatter(cost_amount, 0)) + '</div>';
 			}
 			if(gamedata['known_recipes'][card_cost_id] != undefined && all_available_cards[card_cost_id]['recipe'] != undefined)
 			{
