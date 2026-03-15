@@ -218,7 +218,7 @@ var all_upgrades = {
 		type: 			'quest_amount',
 		subtypes:  		['any'],
 		amount: 		1,
-		level_cost_scale: 	1.05,
+		level_cost_scale: 	1.5,
 		cost: 			{scraps:10,},
 		max_level: 		50,
 	},
