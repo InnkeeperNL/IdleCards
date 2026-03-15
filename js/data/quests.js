@@ -2079,7 +2079,7 @@ eachoa(all_chained_achievements, function(achievement_id, achievement_info){
 	};
 	if(all_quests[achievement_id] == undefined && achievement_info['no_quest'] == undefined)
 	{
-		var quest_amount = achievement_info['amount'] * 10;
+		var quest_amount = achievement_info['amount'] * 1;
 		/*if(quest_amount > 1)
 		{
 			quest_amount = 1 + (quest_amount / 10);

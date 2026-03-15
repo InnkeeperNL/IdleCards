@@ -114,13 +114,18 @@ var all_buildings = {
 				production_achievement_bonus: 0.05,
 			},
 		},
-		/*recipes:{
+		recipes:{
+			stash:{
+				costs:{
+					spyglass: 	2,
+				}
+			},
 			chest:{
 				costs:{
 					stash: 		5,
 				}
 			},
-		},*/
+		},
 		shop_type: 		['structure'],
 	},
 	a2_alchemist:{
@@ -135,24 +140,13 @@ var all_buildings = {
 		},
 		new_mission_title: 'BREW',
 		expeditions: 	['research_new_potion'],
-		/*recipes:{
-			clover:{
-				costs:{
-					horseshoe: 	4,
-				}
-			},
-			jar_of_luck:{
-				costs:{
-					clover: 	4,
-				}
-			},
+		recipes:{
 			flask:{
 				costs:{
-					clover: 		1,
-					jar_of_luck: 	2,
+					clover: 	1,
 				}
 			},
-		},*/
+		},
 		show_potions: true,
 		productions:{
 			flask:{
@@ -201,6 +195,11 @@ var all_buildings = {
 			compass:{
 				costs:{
 					spyglass: 	10,
+				}
+			},
+			trove:{
+				costs:{
+					compass: 	1,
 				}
 			},
 			treasure_map:{

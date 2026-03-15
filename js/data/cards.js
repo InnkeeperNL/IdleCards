@@ -13972,7 +13972,7 @@ var all_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, feast: 3},
 		},
-		quote: '\"Those fish suck!\"',
+		quote: '\"When they are around, blood is thinner than water.\"<br/><br/>Credit: Jal',
 	},
 	summon_imp:{
 		name: 				'summon imp',
