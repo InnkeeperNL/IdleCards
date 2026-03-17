@@ -760,10 +760,6 @@ var all_older_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, burning_aura: 1, evade: 1},
 		},
-		recipe:{
-			servant_of_fire: 	1,
-			tower_of_fire: 		1
-		}
 	},
 	flame_lover:{
 		name: 				'flame lover',
@@ -1696,10 +1692,10 @@ var all_older_available_cards = {
 			theme: 				['burn','structures'],
 			image: 				'cards/woman-3373171_640.jpg',
 			image_position: 		'top',
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, conflagrate: 1},
+			abilities: 			{strike_unit: 1, conflagrate: 2},
 		},
 	},
 	shaman:{

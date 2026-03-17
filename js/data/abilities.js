@@ -5815,7 +5815,7 @@ var all_abilities = {
 		level_cost: 	4,
 		level_cost_spell: 1,
 	},
-	freezing_touch:		{
+	freezing_touch:{
 		description: 	'Freezes any enemy creature it deals damage to. Removes any burn and poison from the target. Will not freeze creatures it kills.',
 		proc: 			'dealt_damage',
 		proc_chance: 	150,
@@ -6572,9 +6572,45 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		5,
-		level_cost_spell: 	1.25,
+		level_cost: 		8,
+		level_cost_spell: 	2,
 		level_cost_hero: 	4,
+	},
+	hexing_touch:{
+		description: 	'Turns any enemy non-undead creature it deals damage to into a frog. Will not hex creatures it kills.',
+		proc: 			'dealt_damage',
+		proc_chance: 	150,
+		cannot_proc_while_stunned: true,
+		proc_amount: 	1,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'enemy',
+				not_types: 		['object','structure'],
+				max_abilities: 	{undead: 0},
+				not_card_ids: 	['frog'],
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'voodoo',
+				type: 		'turn_into',
+				subtypes: 	['shift','turn_enemy_into','hex'],
+				card_id: 	'frog',
+				amount: 	1
+			},
+			1:{
+				type: 		'set_skill',
+				skill_id: 	'return_into_original',
+				amount: 	1
+			}
+		},
+		level_cost: 		0,
+		average_hit_cost: 	3,
 	},
 	hide:{
 		description: 	'Grants itself stealth every turn.',
