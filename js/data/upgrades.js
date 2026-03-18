@@ -350,7 +350,7 @@ var all_upgrades = {
 		needed_upgrades:{
 			z_d_treasury_access: 1,
 		},
-		card_image: 	'kleptomaniac',
+		card_image: 	'archaeologist',
 		type: 			'loot_drop_chance',
 		subtypes:  		['trove'],
 		amount: 		1,
