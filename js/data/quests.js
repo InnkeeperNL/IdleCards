@@ -181,7 +181,7 @@ var all_achievements = {
 	free_bird:{
 		name: 			'free bird',
 		description: 	'Sacrifice a birdcage.',
-		card_image: 	'lamb',
+		card_image: 	'birdcage',
 		objective: 		'birdcage_affected_by_sacrifice',
 		amount: 		1,
 		hide_details: 	true,
