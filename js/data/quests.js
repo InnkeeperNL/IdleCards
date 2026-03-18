@@ -178,8 +178,8 @@ var all_achievements = {
 			},
 		},
 	},
-	freebird:{
-		name: 			'freebird',
+	free_bird:{
+		name: 			'free bird',
 		description: 	'Sacrifice a birdcage.',
 		card_image: 	'lamb',
 		objective: 		'birdcage_affected_by_sacrifice',
