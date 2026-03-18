@@ -2588,7 +2588,8 @@ var all_abilities = {
 		description: 	'When any artifact is destroyed, this summons {LEVEL} lamb(s).',
 		proc: 			'artifact_death',
 		cannot_proc_while_stunned: true,
-		scales: 		true,
+		max_ally_units: 4,
+		proc_amount: 	'ability_level',
 		hero_tactics: 	['type_artifact','summon_artifact_ability', 'sacrifice_ability'],
 		targets:	{
 			0:{
