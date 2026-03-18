@@ -9909,7 +9909,7 @@ var all_available_cards = {
 			health: 			40,
 			abilities: 			{cracked_sheep: 1},
 		},
-		quote: '\"That fossil survived short of three eras embedded in stone, and almost three days under her supervision.\"',
+		quote: '\"That fossil survived short of three eras embedded in stone, and almost three days under her supervision.\"<br/><br/>Credit: Jal',
 	},
 	nightly_harvest:{
 		name: 				'nightly harvest',

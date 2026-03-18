@@ -178,6 +178,24 @@ var all_achievements = {
 			},
 		},
 	},
+	freebird:{
+		name: 			'freebird',
+		description: 	'Sacrifice a birdcage.',
+		card_image: 	'lamb',
+		objective: 		'birdcage_affected_by_sacrifice',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_birdcage',
+				reward_amount: 1,
+			},
+		},
+	},
 	frog_legs:{
 		name: 			'frog legs',
 		description: 	'Consume or feast on a frog.',
