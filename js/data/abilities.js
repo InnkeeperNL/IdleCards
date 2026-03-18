@@ -2584,6 +2584,33 @@ var all_abilities = {
 		level_cost: 	3,
 		cost_adjustment: -2,
 	},
+	cracked_sheep:{
+		description: 	'When any artifact is destroyed, this summons {LEVEL} lamb(s).',
+		proc: 			'artifact_death',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		hero_tactics: 	['type_artifact','summon_artifact_ability', 'sacrifice_ability'],
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'lamb',
+				amount: 	1
+			}
+		},
+		animation: 		'combat_zoom',
+		level_cost: 		8,
+		level_cost_artifact: 	2,
+	},
 	curse:{
 		description: 	'Applies {LEVEL} curse to a random enemy unit or hero.{CURSE}',
 		cannot_proc_while_stunned: true,
