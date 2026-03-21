@@ -6147,7 +6147,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{prime_target: 1},
+		abilities: 			{prime_target: 1, thieves_trap: 1},
 		quote: '\"Look how shiny!\"',
 		max_in_deck: 1,
 	},
