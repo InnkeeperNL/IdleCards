@@ -957,7 +957,7 @@ function show_card_details(card_id, hero_version, amount, added_button, combat_v
 			parsed_card_details += 'Unit. Stays on the board until destroyed. ';
 		}
 		if(current_card['type'] == 'creature'){parsed_card_details += 'The basic unit type.';}
-		if(current_card['type'] == 'structure'){parsed_card_details += 'Unit. Is immune to being moved or poisoned and all mental abilities.';}
+		if(current_card['type'] == 'structure'){parsed_card_details += 'Is immune to being moved or poisoned and all mental abilities.';}
 		if(current_card['type'] == 'object'){parsed_card_details += 'Cannot be healed and is immune to being moved or poisoned and all mental abilities.';}
 		if(current_card['type'] == 'artifact'){parsed_card_details += 'Attaches to your hero. There is a maximum of 5 active artifacts. Stays in game until destroyed or until it has no active abilities.';}
 		if(current_card['type'] == 'spell' || current_card['type'] == 'attack'){
