@@ -2086,7 +2086,7 @@ function process_effect(target_id, origin_id, effect, level){
 
 					if(effect['type'] == 'change_side')
 					{
-						change_side(target_id, origin_id);
+						change_side(target_id, effect, origin_id);
 					}
 
 					if(effect['type'] == 'ability')
@@ -3028,7 +3028,7 @@ function move_unit(target_id, effect, origin_id){
 	}
 }
 
-function change_side(target_id, origin_id){
+function change_side(target_id, effect, origin_id){
 	var current_unit = battle_info.combat_units[target_id];
 	var new_side = false;
 	if(current_unit['side'] == 1){new_side = 2;}
@@ -3070,6 +3070,21 @@ function change_side(target_id, origin_id){
 			total_timeout += 500 * battle_speed;
 		}
 		check_visible_skills(target_id);
+		check_ability_procs(current_unit['side'], 'changed_side', target_id, effect['subtypes']);
+		eachoa(current_unit['abilities'], function(ability_key, ability_level){			
+			if(match_array_values(all_abilities[ability_key]['proc'], 'this_changed_side') == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], subtypes) == true) && (all_abilities[ability_key]['not_subtypes'] == undefined || match_array_values(all_abilities[ability_key]['not_subtypes'], subtypes) == false))
+			{
+				if(current_unit['ability_delays'][ability_key] == undefined || current_unit['ability_delays'][ability_key] < 1)
+				{
+					timeout_key ++;
+					var temp_effect_fired = process_ability(target_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'this_changed_side');
+					if(temp_effect_fired == true)
+					{
+						check_ability_delay(target_id, ability_key);
+					}
+				}
+			}
+		});
 	}
 	
 }
@@ -5245,6 +5260,7 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 		var all_targets = {};
 	}
 	var current_unit = battle_info.combat_units[unit_id];	
+	var target_amount = calculate_effect({amount:target_peramaters['target_amount']}, undefined, unit_id, level);
 
 	if(target_peramaters['use_latest_slot'] != undefined && target_peramaters['use_latest_slot'] == true)
 	{
@@ -5532,12 +5548,21 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 			all_targets = filter_targets_by_slot_free(all_targets);
 		}
 
-		
-		
-
 		if(target_peramaters['position'] != undefined)
 		{
 			all_targets = filter_targets_by_position(all_targets, unit_id, target_peramaters['position'], current_unit['slot']);
+		}
+
+		var temp_prime_targets = true_copyobject(all_targets);
+		eachoa(temp_prime_targets, function(temp_target_id, temp_target_unit_id){
+			if(battle_info.combat_units[temp_target_unit_id]['abilities']['prime_target'] == undefined)
+			{
+				delete temp_prime_targets[temp_target_id];
+			}
+		});
+		if(count_object(temp_prime_targets) >= target_amount)
+		{
+			all_targets = true_copyobject(temp_prime_targets);
 		}
 
 		if(target_peramaters['lowest_power'] != undefined && target_peramaters['lowest_power'] == true)
@@ -5580,10 +5605,10 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 			all_targets = filter_targets_by_lowest_cost(all_targets);
 		}
 
-		if(match_array_values(current_ability['proc'], ['redirect']) == false)
+		/*if(match_array_values(current_ability['proc'], ['redirect']) == false)
 		{
 			all_targets = filter_targets_by_redirect(all_targets, current_ability, origin_id);
-		}
+		}*/
 	}
 
 	if(target_peramaters['target'] == 'card')
@@ -5642,6 +5667,11 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 			all_targets = filter_target_cards_by_max_abilities(all_targets, target_peramaters['max_abilities'], level, target_side);
 		}
 
+		if(target_peramaters['has_abilities'] != undefined)
+		{
+			all_targets = filter_targets_cards_by_has_ability(all_targets, target_peramaters['has_abilities'], target_side);
+		}
+
 		if(target_peramaters['types'] != undefined)
 		{
 			filter_targets_by_card_type(all_targets, target_peramaters['types'], target_side);
@@ -5670,8 +5700,6 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 			all_targets[get_highest_key_in_object(all_targets)+1] = added_target;
 		});
 	}
-
-	var target_amount = calculate_effect({amount:target_peramaters['target_amount']}, undefined, unit_id, level);
 
 	if(count_object(all_targets) > target_amount)
 	{
@@ -5834,6 +5862,20 @@ function filter_target_cards_by_max_abilities(all_targets, max_abilities, level,
 			var max_level = ability_level;
 			if(max_level == 'ability_level'){max_level = level - 1;}
 			if(current_card['abilities'][ability_id] != undefined && current_card['abilities'][ability_id] > max_level)
+			{
+				delete all_targets[target_id];
+			}
+		});
+	});
+
+	return all_targets;
+}
+
+function filter_targets_cards_by_has_ability(all_targets, has_ability, target_side){
+	eachoa(all_targets, function(target_id, target_card_id){
+		var current_card = all_available_cards[battle_info['deck_' + target_side][target_card_id]['card_id']];
+		eachoa(has_ability, function(ability_key, ability_id){
+			if(current_card['abilities'][ability_id] == undefined)
 			{
 				delete all_targets[target_id];
 			}

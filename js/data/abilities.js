@@ -8181,6 +8181,10 @@ var all_abilities = {
 		description: 	'This ignores evade and stealth.',
 		level_cost: 	2,
 	},
+	prime_target:{
+		description: 	'If any ability can target only prime targets, it will target only prime targets.',
+		level_cost: 	1,
+	},
 	purify:{
 		description: 	'Removes all negative effects from {LEVEL} random ally unit(s) or your hero.',
 		cannot_proc_while_stunned: true,
@@ -8805,6 +8809,65 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		2,
+	},
+	redraw_fragile_artifact:{
+		description: 	'Returns up to a total of {LEVEL} fragile artifact card(s) in your grave to your hand.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		reduce_skill_after_use: 	'redraw_fragile_artifact',
+		hero_tactics: 	['type_artifact'],
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	1,
+				status: 		'grave',
+				side: 			'ally',
+				types: 			['artifact'],
+				has_abilities: 	['fragile'],
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 				'set_status',
+				subtypes: 			['move_ally_to_hand_from_grave','move_ally_to_hand','deck_control','reclaim'],
+				new_status: 		'hand',
+				side: 				'ally',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		4,
+		level_cost_hero: 	1,
+	},
+	redraw_fragile_artifacts:{
+		description: 	'Has a 25% chance to return {LEVEL} fragile artifact card(s) in your grave to your hand.',
+		cannot_proc_while_stunned: true,
+		proc_chance: 	25,
+		proc_amount: 	'ability_level',
+		hero_tactics: 	['type_artifact'],
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	1,
+				status: 		'grave',
+				side: 			'ally',
+				types: 			['artifact'],
+				has_abilities: 	['fragile'],
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 				'set_status',
+				subtypes: 			['move_ally_to_hand_from_grave','move_ally_to_hand','deck_control','reclaim'],
+				new_status: 		'hand',
+				side: 				'ally',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		4,
 	},
 	regenerate:{
 		description: 	'Heals itself by {LEVEL} each turn.',
@@ -9481,10 +9544,11 @@ var all_abilities = {
 		description: 	'Destroy up to {LEVEL} random ally unit(s) or artifact(s). Will target units or artifacts with the lowest cost first.',
 		cannot_proc_while_stunned: true,
 		remove_skill_after_use: 'sacrifice',
+		proc_amount: 'ability_level',
 		targets:	{
 			0:{
 				target: 	'any',
-				target_amount: 'ability_level',
+				target_amount: 1,
 				position: 	'random',
 				not_types: 	['hero'],
 				not_self: 	true,
@@ -9509,10 +9573,11 @@ var all_abilities = {
 		description: 	'Destroy up to {LEVEL} random ally artifact(s). Will target artifacts with the lowest cost first.',
 		cannot_proc_while_stunned: true,
 		remove_skill_after_use: 'sacrifice_artifact',
+		proc_amount: 'ability_level',
 		targets:	{
 			0:{
 				target: 	'artifact',
-				target_amount: 'ability_level',
+				target_amount: 1,
 				position: 	'random',
 				lowest_cost: true,
 				side: 		'ally'
@@ -9533,10 +9598,11 @@ var all_abilities = {
 		description: 	'Destroy up to {LEVEL} random ally creature unit(s). Will target units with the lowest cost first.',
 		cannot_proc_while_stunned: true,
 		remove_skill_after_use: 'sacrifice_creature',
+		proc_amount: 'ability_level',
 		targets:	{
 			0:{
 				target: 	'unit',
-				target_amount: 'ability_level',
+				target_amount: 1,
 				position: 	'random',
 				not_self: 	true,
 				not_types: 	['structure'],
@@ -9561,10 +9627,11 @@ var all_abilities = {
 		description: 	'Destroy up to {LEVEL} random ally non-undead creature unit(s). Will target units with the lowest cost first.',
 		cannot_proc_while_stunned: true,
 		remove_skill_after_use: 'sacrifice_living_creature',
+		proc_amount: 'ability_level',
 		targets:	{
 			0:{
 				target: 	'unit',
-				target_amount: 'ability_level',
+				target_amount: 1,
 				position: 	'random',
 				not_self: 	true,
 				not_types: 	['structure','artifact'],
@@ -9590,10 +9657,11 @@ var all_abilities = {
 		description: 	'Destroy up to {LEVEL} random ally unit(s). Will target units with the lowest cost first.',
 		cannot_proc_while_stunned: true,
 		remove_skill_after_use: 'sacrifice_unit',
+		proc_amount: 'ability_level',
 		targets:	{
 			0:{
 				target: 	'unit',
-				target_amount: 'ability_level',
+				target_amount: 1,
 				position: 	'random',
 				not_self: 	true,
 				lowest_cost: true,
@@ -11257,6 +11325,50 @@ var all_abilities = {
 		level_cost: 		12,
 		level_cost_spell: 	3,
 	},
+	thieves_trap:{
+		name: 		'thieves\' trap',
+		proc: 		'this_changed_side',
+		description: 	'When an enemy unit or hero makes this change sides, this deals {LEVEL} damage to it. This is then destroyed.',
+		scales: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'any'
+			}
+		},
+		effects:{
+			0:{
+				projectile: 	'spikes',
+				type: 			'damage',
+				subtypes: 		['physical','thorns','buff_hero'],
+				amount: 		'ability_level',
+				on_success:{
+					targets:	{
+						0:{
+							target: 	'any',
+							target_amount: 1,
+							position: 	'self',
+							side: 		'ally'
+						},
+					},
+					effects:{
+						0:{
+							projectile: 'death',
+							type: 		'destroy',
+							subtypes: 	['destroy'],
+							amount: 	1,
+						},
+					},
+				}
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		0.1,
+	},
 	thorned_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, this will deal {LEVEL} physical damage to it.',
 		proc: 			'ally_hero_damaged',
@@ -11284,8 +11396,6 @@ var all_abilities = {
 		},
 		animation: 			'red_glow',
 		level_cost: 		2,
-		level_cost_artifact: 6,
-		level_cost_hero: 	4,
 		average_hits: 		1,
 	},
 	thorns:{
