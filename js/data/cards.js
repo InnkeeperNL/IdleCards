@@ -12393,7 +12393,7 @@ var all_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike: 1, break: 1},
+			abilities: 			{strike_unit: 1, break: 1},
 		},
 		quote: '\"So fragile.\"',
 		max_in_deck: 		2,
