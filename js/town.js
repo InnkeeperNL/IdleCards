@@ -1258,7 +1258,7 @@ function check_current_offers(){
 		{
 			current_building['current_offers'][i]['offer_expires'] = new Date().addMinutes(10);
 		}
-		if(current_building['current_offers'][i] != undefined && new Date(current_building['current_offers'][i]['offer_expires']) < new Date())
+		if(current_building['current_offers'][i] != undefined && (all_available_cards[current_building['current_offers'][i]['card_id']] == undefined || new Date(current_building['current_offers'][i]['offer_expires']) < new Date()))
 		{
 			delete current_building['current_offers'][i];
 		}

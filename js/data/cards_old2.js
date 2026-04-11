@@ -918,7 +918,7 @@ var all_older_available_cards = {
 		name: 				'golden light',
 		version: 			2,
 		type: 				'spell',
-		subtypes: 			['animal'],
+		subtypes: 			['ritual'],
 		color: 				['yellow'],
 		theme: 				['protection','spells','restoration'],
 		pick_chance: 		0.8,

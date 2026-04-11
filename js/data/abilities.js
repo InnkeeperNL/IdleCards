@@ -3232,6 +3232,29 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	6,
 	},
+	destroy_all:{
+		description: 	'Destroys all current enemy units.',
+		cannot_proc_while_stunned: true,
+		reduce_skill_after_use: 'destroy_all',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 5,
+				position: 	'random',
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['destroy'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	18,
+	},
 	destroy_ally:{
 		description: 	'Destroys {LEVEL} random ally unit(s).',
 		cannot_proc_while_stunned: true,
@@ -7044,6 +7067,7 @@ var all_abilities = {
 		level_cost_spell: 	0.875,
 	},
 	lay_egg_hv:{
+		name: 			'lay egg',
 		description: 	'Has a 10% chance to summon {LEVEL} chicken egg(s).',
 		proc: 			'basic',
 		proc_chance: 	10,
@@ -9568,6 +9592,31 @@ var all_abilities = {
 		level_cost: 	-4,
 		level_cost_spell: -5,
 		average_hits: 	'ability_level',
+	},
+	sacrifice_all_units:{
+		description: 	'Destroy all current ally units.',
+		cannot_proc_while_stunned: true,
+		remove_skill_after_use: 'sacrifice_all_units',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 5,
+				position: 	'random',
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['sacrifice_ally'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	-12,
+		level_cost_spell: -15,
+		average_hits: 	3,
 	},
 	sacrifice_artifact:{
 		description: 	'Destroy up to {LEVEL} random ally artifact(s). Will target artifacts with the lowest cost first.',

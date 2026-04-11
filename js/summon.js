@@ -34,10 +34,10 @@ function show_summon(just_summoned){
 				}
 				parsed_summon += 	'%<br/>';
 			}
-			parsed_summon += 	'Rarity: ' + (summon_stats['min_rarity']);
+			parsed_summon += 	'Rarity: ' + nFormatter(summon_stats['min_rarity'], 3);
 			if(summon_stats['min_rarity'] != summon_stats['max_rarity'])
 			{
-				parsed_summon += 	' - ' + (summon_stats['max_rarity']);
+				parsed_summon += 	' - ' + nFormatter(summon_stats['max_rarity'],3);
 			}
 			parsed_summon += 	'<br/>';
 			parsed_summon += 	'Tries: ' + (summon_stats['max_tries']) + '<br/>';
@@ -328,6 +328,7 @@ function select_summon_pre_buff(card_id){
 		selected_pre_summon_buff = '';
 	}
 	show_summon();
+	show_altar();
 }
 
 function select_summon_post_buff(card_id){
@@ -361,6 +362,7 @@ function use_summon_pre_buff(card_id){
 			gain_card(card_id, -1);
 			saveToLocalStorage();
 			show_summon();
+			show_altar();
 		}
 	}
 }
@@ -370,8 +372,21 @@ function remove_prebuff(prebuff_id){
 	{
 		gain_card(gamedata['summon_pre_buffs'][prebuff_id], 1);
 		delete gamedata['summon_pre_buffs'][prebuff_id];
+		if(current_altar != '')
+		{
+			var summon_stats = get_summon_stats();
+			$.each(gamedata['summon_pre_buffs'], function(buff_id, buff_card){
+				summon_stats = adjust_summon_stats(summon_stats, buff_card);
+			});
+			correct_summon_stats(summon_stats);
+			if(all_available_cards[current_altar] == undefined || all_available_cards[current_altar]['value'] > Math.floor(summon_stats['max_rarity'] * get_upgrade_factor('altar_rarity', 'any', true)))
+			{
+				current_altar = '';
+			}
+		}
 		saveToLocalStorage();
 		show_summon();
+		show_altar();
 	}
 }
 
@@ -434,7 +449,7 @@ function show_altar(){
 	}
 	if(current_altar == undefined || all_available_cards[current_altar] == undefined)
 	{
-		parsed_summon += 	'Max rarity: ' + Math.floor(summon_stats['max_rarity'] * get_upgrade_factor('altar_rarity', 'any', true));
+		parsed_summon += 	'Max rarity: ' + nFormatter(Math.floor(summon_stats['max_rarity'] * get_upgrade_factor('altar_rarity', 'any', true)),3);
 	}
 	else
 	{
@@ -458,6 +473,46 @@ function show_altar(){
 		parsed_summon += '<div class="menu_button slim summon button" onclick="current_altar=\'\'" data-target-content="altar">CLEAR</div><br/><br/>';
 	}
 
+	for (var i = 1; i < summon_stats['max_pre_buffs'] + 1; i++) {
+		parsed_summon += '<span class="pebuff" onclick="remove_prebuff(\'' + i + '\')">';
+		var parsed_prebuff = parse_card('empty_card_orange');
+		if(gamedata['summon_pre_buffs'][i] != undefined)
+		{
+			parsed_prebuff = parse_card(gamedata['summon_pre_buffs'][i]);
+		}
+		else
+		{
+			parsed_prebuff = parse_card('empty_card');
+		}
+		parsed_summon += parsed_prebuff;
+		parsed_summon += '</span>';
+	}
+	parsed_summon += 	'<br/><br/>';
+	if(/*count_object(gamedata['summon_pre_buffs']) < summon_stats['max_pre_buffs'] &&*/ selected_pre_summon_buff != '' && all_available_cards[selected_pre_summon_buff] != undefined)
+	{
+		parsed_summon += '<div class="selected_pre_summon_buff_container">';
+			parsed_summon += '<span class="selected_pre_summon_buff">' + parse_card(selected_pre_summon_buff) + '</span>';
+			parsed_summon += '<span class="selected_pre_summon_buff_text">' + all_available_cards[selected_pre_summon_buff]['name'] + '<br/>' + all_available_cards[selected_pre_summon_buff]['description'] + '</span>';
+			if(count_object(gamedata['summon_pre_buffs']) < summon_stats['max_pre_buffs'])
+			{
+				parsed_summon += '<div class="menu_button slim summon button use_summon_pre_buff_button" onclick="use_summon_pre_buff(\'' + selected_pre_summon_buff + '\')">USE</div>';
+			}
+			else
+			{
+				parsed_summon += '<div class="menu_button slim summon button use_summon_pre_buff_button")">FULL</div>';
+			}
+		parsed_summon += '</div><br/>';
+	}
+	if(count_object(gamedata['summon_pre_buffs']) < summon_stats['max_pre_buffs'] || true)
+	{
+		$.each(all_available_cards, function(card_id, card_info){
+			if(card_info['summon_pre_buff'] != undefined && gamedata['owned_cards'][card_id] != undefined && gamedata['owned_cards'][card_id] > 0)
+			{
+				var parsed_consumable = parse_card(card_id, gamedata['owned_cards'][card_id]);
+				parsed_summon += '<span class="summon_consumable" onclick="select_summon_pre_buff(\'' + card_id + '\')">' + parsed_consumable + '</span>';
+			}
+		});
+	}
 	parsed_summon += 	'</div>';
 
 	$('.altar_container').html(parsed_summon);
