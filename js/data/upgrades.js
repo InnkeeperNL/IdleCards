@@ -122,7 +122,7 @@ var all_upgrades = {
 		name: 			'Summon buffs',
 		description: 	'Increases the number of buffs you can use when summoning an enemy.',
 		needed_upgrades:{
-			summon_tries: 	9,
+			summon_tries: 	4,
 		},
 		card_image: 	'treasure_map',
 		type: 			'summon_max_pre_buffs',
