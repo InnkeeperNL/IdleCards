@@ -130,7 +130,7 @@ var all_upgrades = {
 		amount: 		1,
 		amount_fixed: 	true,
 		level_cost_scale: 	1.1,
-		cost: 			{spyglass:25,},
+		cost: 			{wheelbarrow:25,},
 		max_level: 		4,
 	},
 	summon_common_reduction:{
