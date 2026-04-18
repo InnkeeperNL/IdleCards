@@ -8236,7 +8236,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{strike_hero: 3, backstab: 3},
+		abilities: 			{strike_hero: 1, plunder: 1, echo: 1},
 		quote: '\"Strike from within!\"',
 	},
 	infirmary:{
