@@ -1695,7 +1695,7 @@ var all_older_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, conflagrate: 2},
+			abilities: 			{strike_unit: 1, conflagrate_hv: 2},
 		},
 	},
 	shaman:{

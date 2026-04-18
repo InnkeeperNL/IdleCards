@@ -3175,7 +3175,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			50,
-			abilities: 			{air_bolt: 1, ignites: 2},
+			abilities: 			{air_bolt_hv: 1, ignites: 2},
 		},
 		recipe:{
 			fire_mage: 			1,
