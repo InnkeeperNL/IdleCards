@@ -4459,7 +4459,7 @@ var all_abilities = {
 		level_cost_hero: 	1.5,
 	},
 	empowering_shields:{
-		description: 	'When an ally unit or hero gains armor, there is a {LEVEL}0% chance it will gain 1 temporary power.',
+		description: 	'When an ally unit or hero gains shield, there is a {LEVEL}0% chance it will gain 1 temporary power.',
 		cannot_proc_while_stunned: true,
 		proc: 			'ally_gained_armor',
 		proc_chance: 	10,
