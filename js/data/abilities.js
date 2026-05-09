@@ -1,5 +1,6 @@
 var ability_base_costs = {
 	curse: 	1,
+	empower: 2,
 }
 
 var all_abilities = {
@@ -1671,6 +1672,34 @@ var all_abilities = {
 			}
 		},
 		level_cost: 	3,
+	},
+	catch_fish:{
+		description: 	'Has a {LEVEL}0% chance to summon a random aquatic animal creature unit.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'random',
+				card_type: 	'creature',
+				card_subtype: ['aquatic','animal'],
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		1.2,
+		level_cost_hero: 	2.4,
 	},
 	channel_life:{
 		description: 	'Reduces the time left of the card in your hand with the highest time left by {LEVEL}. If it does, this deals 1 damage to itself.',
@@ -3399,6 +3428,31 @@ var all_abilities = {
 		level_cost_artifact: 3.5,
 		cost_adjustment: -1,
 	},
+	destroy_cursed:{
+		description: 	'Destroys a random enemy unit that has {LEVEL} curse or more.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	1,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				has_effect: 	{effect_name: 'cursed', amount: 'ability_level', limit: 'min'},
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['destroy'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	-1,
+		cost_adjustment: 11,
+	},
 	destroy_structure:{
 		description: 	'Destroys {LEVEL} random enemy structure unit(s).',
 		cannot_proc_while_stunned: true,
@@ -4403,6 +4457,43 @@ var all_abilities = {
 		level_cost_structure: 0.75,
 		level_cost_spell: 	0.25,
 		level_cost_hero: 	1.5,
+	},
+	empowering_shields:{
+		description: 	'A random ally unit that has power and shield gains {LEVEL} temporary power per shield it has.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		hero_tactics: 	['fortify_ability'],
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				min_hp: 		1,
+				min_power: 		0,
+				min_armor:  	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'target_armor',
+				amount_factor: 	'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+			base_cost_artifact_factor: 0.5,
+		},
+		ability_level_cost_factors:{
+			fortify: 		2,
+		},
 	},
 	experiment:{
 		description: 	'Does something random. Or not...',

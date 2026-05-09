@@ -2274,7 +2274,8 @@ function process_effect(target_id, origin_id, effect, level){
 		    					var card_color_to_summon = undefined;
 		    					if(effect['card_color'] != undefined){card_color_to_summon = calculate_effect({amount:effect['card_color']}, target_id, origin_id, level);}
 		    					var card_subtype_to_summon = undefined;
-		    					if(effect['card_subtype'] != undefined){card_subtype_to_summon = calculate_effect({amount:effect['card_subtype']}, target_id, origin_id, level);}
+		    					if(effect['card_subtype'] != undefined && typeof(effect['card_subtype']) != 'string'){card_subtype_to_summon = effect['card_subtype'];}
+		    					if(effect['card_subtype'] != undefined && typeof(effect['card_subtype']) == 'string'){card_subtype_to_summon = calculate_effect({amount:effect['card_subtype']}, target_id, origin_id, level);}
 		    					var card_to_summon = get_random_card_based_on_time(card_type_to_summon, card_time_to_summon, card_color_to_summon, card_color_to_summon, card_subtype_to_summon, card_time_min_to_summon, undefined, effect['not_subtypes']);
 
 		    					var summoned_this = play_unit_card(battle_info.combat_units[target_id]['side'], card_to_summon, undefined, forced_summon, origin_id);
@@ -5028,6 +5029,10 @@ function calculate_effect(effect, target_id, origin_id, level){
 				current_total_hp += parseInt(battle_info.combat_units[target_id]['temp_health']);
 			}
 			calculated_amount = current_total_hp;
+		}
+		if(calculated_amount == 'target_armor')
+		{
+			calculated_amount = battle_info.combat_units[target_id]['armor'];
 		}
 		if(calculated_amount == 'target_max_health')
 		{

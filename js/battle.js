@@ -963,11 +963,15 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 var highest_card_cost = 0;
 
 function get_random_card_based_on_time(type, max_time, color_restriction, second_color_restriction, card_subtype, min_time, not_these, not_subtypes){
+	if(card_subtype != undefined && typeof(card_subtype) == 'string')
+	{
+		card_subtype = [card_subtype];
+	}
 	var total_card_count = 0;
 	var picked_card = false;
 	var month = new Date().getMonth() + 1;
 	eachoa(all_available_cards, function(card_id, card_info){
-		if(card_info['pick_chance'] > 0 && card_info['type'] != undefined && (not_subtypes == undefined || match_array_values(card_info['subtypes'], not_subtypes) == false || not_subtypes == 'any') && (card_info['type'] == type || type == 'any' || type == undefined) && (max_time == undefined || max_time >= card_info['time']) && (min_time == undefined || min_time <= card_info['time']) && (card_subtype == undefined || match_array_values(card_subtype,card_info['subtypes']) == true) && (card_info['months_available'] == undefined || match_array_values([month],card_info['months_available']) == true))
+		if(card_info['pick_chance'] > 0 && card_info['type'] != undefined && (not_subtypes == undefined || match_array_values(card_info['subtypes'], not_subtypes) == false || not_subtypes == 'any') && (card_info['type'] == type || type == 'any' || type == undefined) && (max_time == undefined || max_time >= card_info['time']) && (min_time == undefined || min_time <= card_info['time']) && (card_subtype == undefined || match_array_values(card_subtype,card_info['subtypes'], true) == count_object(card_subtype)) && (card_info['months_available'] == undefined || match_array_values([month],card_info['months_available']) == true))
 		{
 			var can_pick = true;
 			if(color_restriction != undefined && second_color_restriction != undefined)
@@ -998,7 +1002,7 @@ function get_random_card_based_on_time(type, max_time, color_restriction, second
 	});
 	var picked_card_number = (Math.random() * total_card_count);
 	eachoa(all_available_cards, function(card_id, card_info){
-		if(card_info['pick_chance'] > 0 && card_info['type'] != undefined && (not_subtypes == undefined || match_array_values(card_info['subtypes'], not_subtypes) == false || not_subtypes == 'any') && (card_info['type'] == type || type == 'any' || type == undefined) && (max_time == undefined || max_time >= card_info['time']) && (min_time == undefined || min_time <= card_info['time']) && (card_subtype == undefined || match_array_values(card_subtype,card_info['subtypes']) == true) && (card_info['months_available'] == undefined || match_array_values([month],card_info['months_available']) == true))
+		if(card_info['pick_chance'] > 0 && card_info['type'] != undefined && (not_subtypes == undefined || match_array_values(card_info['subtypes'], not_subtypes) == false || not_subtypes == 'any') && (card_info['type'] == type || type == 'any' || type == undefined) && (max_time == undefined || max_time >= card_info['time']) && (min_time == undefined || min_time <= card_info['time']) && (card_subtype == undefined || match_array_values(card_subtype,card_info['subtypes'], true) == count_object(card_subtype)) && (card_info['months_available'] == undefined || match_array_values([month],card_info['months_available']) == true))
 		{
 			var can_pick = true;
 			if(color_restriction != undefined && second_color_restriction != undefined)
