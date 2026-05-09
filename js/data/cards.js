@@ -13198,7 +13198,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{empowering_shields: 5},
+		abilities: 			{empowering_shields: 2},
 		quote: '\"Time to craft some armor and weapons.\"',
 	},
 	sneak_attack:{

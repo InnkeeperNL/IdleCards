@@ -4128,7 +4128,6 @@ function increase_armor(target_id, origin_id, calculated_amount,subtypes){
 	check_unit_hp(target_id);
 	if(calculated_amount > 0)
 	{
-		console.log(target_unit['unit_id']);
 		check_ability_procs(target_unit['origin_side'], 'gained_armor', target_unit['unit_id']);
 	}
 	
@@ -4784,7 +4783,6 @@ function check_single_unit_proc(unit_id, side, string, origin_id, subtypes, chec
 							var temp_any_effect_fired = false;
 							if(unit['side'] == side && match_array_values(all_abilities[ability_key]['proc'], 'ally_' + string) == true)
 							{
-								console.log('ally_' + string);
 								temp_any_effect_fired = process_ability(unit_id, all_abilities[ability_key], ability_level, origin_id, undefined, 'ally_' + string, check_death);							
 							}
 							if(unit['side'] != side && match_array_values(all_abilities[ability_key]['proc'], 'enemy_' + string) == true)
