@@ -1,3 +1,7 @@
+var ability_base_costs = {
+	curse: 	1,
+}
+
 var all_abilities = {
 	adrenaline:{
 		description: 	'Gains {LEVEL} temporary power whenever it destroys another unit.',
@@ -2643,8 +2647,11 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 1.75,
-		level_cost_spell: 0.375,
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		}
 	},
 	curse_all:{
 		description: 	'Applies {LEVEL} curse to all enemy units.{CURSE}',
@@ -2671,9 +2678,11 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		5.25,
-		level_cost_hero: 	4,
-		level_cost_spell: 	1.25,
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 3,
+			base_cost_spell_factor: 0.75,
+		}
 	},
 	curse_arrivals:{
 		description: 	'Applies {LEVEL} curse to any enemy unit that enters the game.',
@@ -2701,8 +2710,11 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1.75,
-		level_cost_artifact: 3.5,
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 1,
+			base_cost_artifact_factor: 2,
+		}
 	},
 	curse_hv:{
 		name: 			'curse',
@@ -2729,8 +2741,11 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 1.75,
-		level_cost_spell: 0.375,
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		}
 	},
 	cursed_aura:{
 		description: 	'Applies {LEVEL} curse to any enemy unit or hero that deals melee damage to it.{CURSE}',
@@ -2757,8 +2772,11 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 	1.5,
-		level_cost_hero: 2,
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 1,
+			base_cost_hero_factor: 2,
+		}
 	},
 	cursed_deaths:{
 		description: 	'Applies {LEVEL} curse to a random enemy unit or hero when any ally creature is destroyed.',
@@ -2793,8 +2811,11 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1.75,
-		level_cost_structure: 1.2,
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 1,
+			base_cost_structure_factor: 0.5,
+		}
 	},
 	cursed_deaths_hv:{
 		name: 			'cursed deaths',
@@ -2823,8 +2844,11 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	2,
-		level_cost_artifact: 3,
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 1,
+			base_cost_artifact_factor: 2,
+		}
 	},
 	cursed_entry:{
 		description: 	'Applies {LEVEL} curse to all nearby enemy units when played. {CURSE}',
@@ -2849,7 +2873,10 @@ var all_abilities = {
 				amount: 		'ability_level',
 			}
 		},
-		level_cost: 	1.5,
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 1,
+		}
 	},
 	cursed_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, this will apply {LEVEL} curse to it.',
@@ -2877,8 +2904,11 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1.75,
-		level_cost_artifact: 4,
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 1,
+			base_cost_hero_factor: 2,
+		}
 	},
 	cursed_touch:{
 		description: 	'Applies {LEVEL} curse to any unit or hero it deals damage to.{CURSE}',
@@ -2903,8 +2933,11 @@ var all_abilities = {
 				pause_before: 	-250,
 			}
 		},
-		level_cost: 		0,
-		average_hit_cost: 	1,
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 0,
+			base_hit_cost_factor: 0.5,
+		}
 	},
 	cursing_hero:{
 		description: 	'When your hero deals damage to an enemy, this will apply {LEVEL} curse to it.',
@@ -2932,8 +2965,11 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1,
-		level_cost_artifact: 2,
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 0.5,
+			base_cost_artifact_factor: 1,
+		}
 	},
 	damage_hero:{
 		description: 	'Deals {LEVEL} damage to the enemy hero.',
@@ -3151,7 +3187,10 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1.75,
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 1,
+		}
 	},
 	desperate_wither:{
 		description: 	'When your hero receives damage, this reduces the maximum health of a random enemy unit by {LEVEL}.',
@@ -4893,10 +4932,13 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 0.5,
+		},
 		ability_level_cost_factors:{
 			resurrect: 		2,
 		},
-		level_cost: 0.75,
 	},
 	final_discard:{
 		description: 	'When this is destroyed, discard up to {LEVEL} card(s) from your hand to the grave.',
@@ -12389,6 +12431,39 @@ $.each(all_abilities, function(ability_id, ability_info){
 	
 	if(all_abilities[ability_id]['level_cost'] == undefined){all_abilities[ability_id]['level_cost'] = 1;};
 	if(all_abilities[ability_id]['cost_factor'] == undefined){all_abilities[ability_id]['cost_factor'] = 'none';};
+	if(all_abilities[ability_id]['base_cost'] != undefined)
+	{
+		if(ability_base_costs[all_abilities[ability_id]['base_cost']['base_cost_id']] != undefined)
+		{
+			var current_base_cost = ability_base_costs[all_abilities[ability_id]['base_cost']['base_cost_id']];
+			var ability_base_cost_info = all_abilities[ability_id]['base_cost'];
+			all_abilities[ability_id]['level_cost'] = current_base_cost * ability_base_cost_info['base_cost_factor'];
+			if(ability_base_cost_info['base_cost_spell_factor'] != undefined)
+			{
+				all_abilities[ability_id]['level_cost_spell'] = current_base_cost * ability_base_cost_info['base_cost_spell_factor'];
+			}
+			if(ability_base_cost_info['base_cost_artifact_factor'] != undefined)
+			{
+				all_abilities[ability_id]['level_cost_artifact'] = current_base_cost * ability_base_cost_info['base_cost_artifact_factor'];
+			}
+			if(ability_base_cost_info['base_cost_hero_factor'] != undefined)
+			{
+				all_abilities[ability_id]['level_cost_hero'] = current_base_cost * ability_base_cost_info['base_cost_hero_factor'];
+			}
+			if(ability_base_cost_info['base_cost_creature_factor'] != undefined)
+			{
+				all_abilities[ability_id]['level_cost_creature'] = current_base_cost * ability_base_cost_info['base_cost_creature_factor'];
+			}
+			if(ability_base_cost_info['base_cost_structure_factor'] != undefined)
+			{
+				all_abilities[ability_id]['level_cost_structure'] = current_base_cost * ability_base_cost_info['base_cost_structure_factor'];
+			}
+			if(ability_base_cost_info['base_hit_cost_factor'] != undefined)
+			{
+				all_abilities[ability_id]['average_hit_cost'] = current_base_cost * ability_base_cost_info['base_hit_cost_factor'];
+			}
+		}
+	};
 	if(all_abilities[ability_id]['ability_subtypes'] == undefined){all_abilities[ability_id]['ability_subtypes'] = {};};
 	if(all_abilities[ability_id]['ability_craft_subtypes'] == undefined){all_abilities[ability_id]['ability_craft_subtypes'] = {};};
 	if(count_object(all_abilities[ability_id]['ability_subtypes']) > 0 && count_object(all_abilities[ability_id]['ability_craft_subtypes']) == 0)
@@ -12441,7 +12516,8 @@ $.each(all_abilities, function(ability_id, ability_info){
 	all_abilities[ability_id]['name_color'] = 'rgba(255,255,255,0.9)';
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{BURN}").join('<br/><i>Burn: Suffers fire damage equal to half the burn it suffers at the end of each turn, rounded up. The amount of burn is halved each time it deals damage, rounded down.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{POISON}").join('<br/><i>Poison: Suffers piercing poison damage at the end of each turn equal to half the amount of poison, rounded up. The amount of poison is halved each time it deals damage, rounded down.</i>');
-	all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received. Curse is removed whenever it takes effect.</i>');
+	//all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received. Curse is removed whenever it takes effect.</i>');
+	all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received by 10%, rounded randomly.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{BLESSED}").join('<br/><i>Blessed: There is a 10% chance per blessing that this will return to your deck when destroyed.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{DOOM}").join('<br/><i>Doom: There is a 10% chance per doom that this will be destroyed at the end of its turn.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{SHIELD}").join('<br/><i>Shield: Absorbs the first incoming damage. Shield is removed at the start of each round.</i>');

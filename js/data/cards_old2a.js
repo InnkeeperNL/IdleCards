@@ -1089,7 +1089,7 @@ var all_oldest_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			45,
-			abilities: 			{strike_unit: 1, reclaim_creatures: 2, cursed_deaths_hv: 1},
+			abilities: 			{strike_unit: 1, reclaim_creatures: 3, cursed_deaths_hv: 1},
 		},
 		quote: '\"Death is not the end.\"',
 	},
@@ -2081,7 +2081,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{curse_hv: 3, fearful_aura: 1},
+			abilities: 			{curse_hv: 5, fearful_aura: 1},
 		},
 		recipe:{
 			amethyst: 			1,
@@ -2775,7 +2775,7 @@ var all_oldest_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			60,
-			abilities: 			{curse_hv: 3, resurrect: 1, undead: 1},
+			abilities: 			{curse_hv: 5, resurrect: 1, undead: 1},
 		},
 	},
 	quiver:{

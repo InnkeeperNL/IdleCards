@@ -3479,15 +3479,17 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
     	{	    
 	    	if(target_unit['effects'] != undefined && target_unit['effects']['cursed'] != undefined)
 	    	{
-	    	    calculated_amount += target_unit['effects']['cursed'];
-	    	    target_unit['effects']['cursed'] = 0;
+	    	    //calculated_amount += target_unit['effects']['cursed'];
+	    	    calculated_amount *=  1 + (target_unit['effects']['cursed'] / 10);
+	    	    calculated_amount = round_by_percent(calculated_amount);
+	    	    //target_unit['effects']['cursed'] = 0;
 	    	    //target_unit['effects']['cursed'] = Math.floor(target_unit['effects']['cursed'] / 2);
-	    	    if(target_unit['effects']['cursed'] < 1)
-	    	    {
-	    	    	delete target_unit['effects']['cursed'];
-	    	    }
+	    	    //if(target_unit['effects']['cursed'] < 1)
+	    	    //{
+	    	    //	delete target_unit['effects']['cursed'];
+	    	    //}
 	    	    //delete target_unit['effects']['cursed'];
-	    	    update_passive_effects(target_id);
+	    	   	//update_passive_effects(target_id);
 	    	}
 	    }
 

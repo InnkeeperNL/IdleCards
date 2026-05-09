@@ -11364,7 +11364,7 @@ var all_old_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			30,
-			abilities: 			{strike_unit: 1, cursed_touch: 2, plated: 1},
+			abilities: 			{strike_unit: 1, cursed_touch: 3, plated: 1},
 		},
 		quote: '\"Some witches don\'t want to have to walk up to people to curse them.\"',
 		use_old: true,
