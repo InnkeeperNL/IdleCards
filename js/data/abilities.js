@@ -1,4 +1,5 @@
 var ability_base_costs = {
+	burn: 	2,
 	curse: 	1,
 	empower: 2,
 }
@@ -1499,6 +1500,85 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		1,
 		level_cost_hero: 	2,
+	},
+	burning_curses:{
+		description: 	'When an enemy unit or hero is cursed, there is a {LEVEL}0% chance this will apply 1 burn to if.{BURN}',
+		cannot_proc_while_stunned: true,
+		proc: 			'enemy_received_curse',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		hero_tactics: 	['curse_ability'],
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				min_power: 		0,
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'burn',
+				type: 			'apply_burn',
+				subtypes: 		['burn'],
+				amount: 		1,
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 0.2,
+			base_cost_spell_factor: 0.2,
+			base_cost_artifact_factor: 0.2,
+		},
+		ability_level_cost_factors:{
+			curse: 			2,
+			curse_hv: 		2,
+			cursed_touch: 	2,
+		},
+	},
+	burning_curses_hv:{
+		name: 			'burning curses',
+		description: 	'When an enemy unit is cursed, there is a {LEVEL}0% chance this will apply 1 burn to if.{BURN}',
+		cannot_proc_while_stunned: true,
+		proc: 			'enemy_received_curse',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		hero_tactics: 	['curse_ability'],
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				min_power: 		0,
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'burn',
+				type: 			'apply_burn',
+				subtypes: 		['burn'],
+				amount: 		1,
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 0.2,
+			base_cost_spell_factor: 0.2,
+			base_cost_artifact_factor: 0.2,
+		},
+		ability_level_cost_factors:{
+			curse: 			2,
+			curse_hv: 		2,
+			cursed_touch: 	2,
+		},
 	},
 	burning_deaths:{
 		description: 	'Applies {LEVEL} burn to a random enemy unit or hero when any ally creature is destroyed.',

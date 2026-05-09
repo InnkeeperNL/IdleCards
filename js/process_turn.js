@@ -2697,6 +2697,10 @@ function apply_burn(target_id, calculated_amount, origin_id){
 		},total_timeout + 750);
 		total_timeout += 250 * battle_speed;
 		update_passive_effects(target_id);
+		if(calculated_amount > 0)
+		{
+			check_ability_procs(current_unit['origin_side'], 'received_burn', current_unit['unit_id']);
+		}
 	}
 };
 
@@ -2813,6 +2817,10 @@ function apply_curse(target_id, calculated_amount, origin_id){
 		},total_timeout + 750);
 		total_timeout += 250 * battle_speed;
 		update_passive_effects(target_id);
+		if(calculated_amount > 0)
+		{
+			check_ability_procs(current_unit['origin_side'], 'received_curse', current_unit['unit_id']);
+		}
 	}
 };
 
