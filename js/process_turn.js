@@ -3489,7 +3489,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 	    	if(target_unit['effects'] != undefined && target_unit['effects']['cursed'] != undefined)
 	    	{
 	    	    //calculated_amount += target_unit['effects']['cursed'];
-	    	    calculated_amount *=  1 + (target_unit['effects']['cursed'] / 10);
+	    	    calculated_amount *=  1 + (target_unit['effects']['cursed'] / 5);
 	    	    calculated_amount = round_by_percent(calculated_amount);
 	    	    //target_unit['effects']['cursed'] = 0;
 	    	    //target_unit['effects']['cursed'] = Math.floor(target_unit['effects']['cursed'] / 2);
