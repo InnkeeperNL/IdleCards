@@ -183,7 +183,7 @@ function tinker_current(){
 			var card_to_show = '';
 			if(count_object(possible_new_recipes) > 1 || Math.ceil(i / 2) == (i / 2))
 			{
-				chosen_recipe = get_random_key_from_object(possible_new_recipes);
+				chosen_recipe = get_random_key_from_object_based_on_num_value(possible_new_recipes);
 				card_to_show = parse_card(chosen_recipe);
 			}
 
@@ -241,7 +241,7 @@ function get_possible_tinker_results(card_id){
 			});
 			if(can_tinker == true)
 			{
-				possible_new_recipes[current_card_id] = true;
+				possible_new_recipes[current_card_id] = sqr(1 / current_card_info['value']);
 			}
 			
 		}
@@ -265,7 +265,7 @@ function tinker_card(card_id){
 				});
 				if(can_tinker == true)
 				{
-					possible_new_recipes[current_card_id] = true;
+					possible_new_recipes[current_card_id] = sqr(1 / current_card_info['value']);
 				}
 				
 			}
@@ -273,7 +273,7 @@ function tinker_card(card_id){
 
 		if(count_object(possible_new_recipes) > 0)
 		{
-			var chosen_recipe = get_random_key_from_object(possible_new_recipes);
+			var chosen_recipe = get_random_key_from_object_based_on_num_value(possible_new_recipes);
 			gamedata['owned_cards'][card_id] -= 5;
 			gamedata['known_recipes'][chosen_recipe] = true;
 			show_card_details(chosen_recipe);
