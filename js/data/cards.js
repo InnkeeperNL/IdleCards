@@ -6949,7 +6949,7 @@ var all_available_cards = {
 		health: 			3,
 		abilities: 			{strike: 1, build_palisade: 1, resist_magic: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','evade_ability'],
+			theme: 				['subtype_goblin','experiment_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,

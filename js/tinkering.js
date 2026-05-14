@@ -13,17 +13,17 @@ function show_tinker(){
 	var tinkering_list = '';
 	var cards_displayed = 0;
 
-	$.each(gamedata['owned_cards'], function(owned_card_id, amount){
+	eachoa(gamedata['owned_cards'], function(owned_card_id, amount){
 		if(amount >= min_tinker && check_filters(owned_card_id) == false)
 		{
 			var possible_tinker_count = 0;
-			$.each(all_available_cards, function(current_card_id, current_card_info){
+			eachoa(all_available_cards, function(current_card_id, current_card_info){
 				if(gamedata['known_recipes'][current_card_id] == undefined && current_card_info['recipe'] != undefined && current_card_info['recipe'][owned_card_id] != undefined)
 				{
 
 					var can_tinker = true;
-					$.each(current_card_info['recipe'], function(recipe_cost_card_id, recipe_cost_amount){
-						if(gamedata['known_recipes'][recipe_cost_card_id] == undefined && all_available_cards[recipe_cost_card_id]['recipe'] != undefined)
+					eachoa(current_card_info['recipe'], function(recipe_cost_card_id, recipe_cost_amount){
+						if(gamedata['known_recipes'][recipe_cost_card_id] == undefined && all_available_cards[recipe_cost_card_id] != undefined && all_available_cards[recipe_cost_card_id]['recipe'] != undefined)
 						{
 							can_tinker = false;
 						}
@@ -42,11 +42,11 @@ function show_tinker(){
 					var parsed_card = parse_card(owned_card_id, amount + ' (' + possible_tinker_count + ')');
 					if(amount > 4)
 					{
-						tinkering_list += '<div onclick="current_tinker=\'' + owned_card_id + '\';show_content(\'single_tinker\')">' + parsed_card + '</div>';
+						tinkering_list += '<span onclick="current_tinker=\'' + owned_card_id + '\';show_content(\'single_tinker\')">' + parsed_card + '</span>';
 					}
 					else
 					{
-						tinkering_list += '<div class="faded" onclick="current_tinker=\'' + owned_card_id + '\';show_content(\'single_tinker\')">' + parsed_card + '</div>';
+						tinkering_list += '<span class="faded" onclick="current_tinker=\'' + owned_card_id + '\';show_content(\'single_tinker\')">' + parsed_card + '</span>';
 					}
 				}
 			}
@@ -132,10 +132,10 @@ function show_single_tinker(){
 			}
 			var parsed_possible_new_recipes = '';
 			var parsed_possible_new_recipes_count = 0;
-			$.each(possible_new_recipes, function(new_recipe_id, useless_data){
+			eachoa(possible_new_recipes, function(new_recipe_id, useless_data){
 				if(parsed_possible_new_recipes_count < 12)
 				{
-					parsed_possible_new_recipes += '<div onclick="show_card_details(\'' + new_recipe_id + '\')">' + parse_card(new_recipe_id) + '</div>';
+					parsed_possible_new_recipes += '<span onclick="show_card_details(\'' + new_recipe_id + '\')">' + parse_card(new_recipe_id) + '</span>';
 				}
 				parsed_possible_new_recipes_count++;
 			});
@@ -229,11 +229,11 @@ function show_tinker_temp_result(card_to_show, card_to_show_id, show_timeout, hi
 
 function get_possible_tinker_results(card_id){
 	var possible_new_recipes = {};
-	$.each(all_available_cards, function(current_card_id, current_card_info){
+	eachoa(all_available_cards, function(current_card_id, current_card_info){
 		if(gamedata['known_recipes'][current_card_id] == undefined && current_card_info['recipe'] != undefined && current_card_info['recipe'][card_id] != undefined)
 		{
 			var can_tinker = true;
-			$.each(current_card_info['recipe'], function(recipe_cost_card_id, recipe_cost_amount){
+			eachoa(current_card_info['recipe'], function(recipe_cost_card_id, recipe_cost_amount){
 				if(gamedata['known_recipes'][recipe_cost_card_id] == undefined && all_available_cards[recipe_cost_card_id]['recipe'] != undefined)
 				{
 					can_tinker = false;
@@ -253,11 +253,11 @@ function tinker_card(card_id){
 	if(gamedata['owned_cards'][card_id] > 4)
 	{
 		var possible_new_recipes = {};
-		$.each(all_available_cards, function(current_card_id, current_card_info){
+		eachoa(all_available_cards, function(current_card_id, current_card_info){
 			if(gamedata['known_recipes'][current_card_id] == undefined && current_card_info['recipe'] != undefined && current_card_info['recipe'][card_id] != undefined)
 			{
 				var can_tinker = true;
-				$.each(current_card_info['recipe'], function(recipe_cost_card_id, recipe_cost_amount){
+				eachoa(current_card_info['recipe'], function(recipe_cost_card_id, recipe_cost_amount){
 					if(gamedata['known_recipes'][recipe_cost_card_id] == undefined && all_available_cards[recipe_cost_card_id]['basic_reward'] == undefined)
 					{
 						can_tinker = false;

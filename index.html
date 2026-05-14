@@ -145,6 +145,11 @@
 					<span>CRAFT</span>
 				</button>
 
+				<button class="menu_button third tinker_menu_button" data-target-content="tinker">
+					<div class="bg"></div>
+					<span>TINKER</span>
+				</button>
+
 				<button class="menu_button third options_button" data-target-content="options">
 					<div class="bg"></div>
 					<span>OPTIONS</span>
@@ -681,7 +686,7 @@
 		</div>
 		<div id="content_tinker" class="page_container">
 			<div class="home_section">
-				<div class="menu_button slim" data-target-content="craft">BACK</div>
+				<div class="menu_button slim" data-target-content="home">BACK</div>
 				<div class="menu_button slim tinker_min_amount wide" data-target-content="tinker" onclick="toggle_min_tinker()"></div>
 				<div class="select_filters" onclick="show_content('card_filters')">FILTERS</div>
 			</div>
@@ -1179,10 +1184,12 @@
 		if(gamedata['owned_cards'] == undefined || count_object(gamedata['owned_cards']) < 2)
 		{
 			$('.deck_edit_button').hide();
+			$('.tinker_menu_button').hide();
 		}
 		else
 		{
 			$('.deck_edit_button').show();
+			$('.tinker_menu_button').show();
 		}
 		if(gamedata['known_recipes'] == undefined || count_object(gamedata['known_recipes']) == 0)
 		{

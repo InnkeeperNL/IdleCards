@@ -1190,6 +1190,12 @@ div.menu_button.widest
 	opacity: 0.5;
 }
 
+.tinker_menu_button .bg
+{
+	background-image:url('../images/cards/goblin_sapper.jpg');
+	background-position:center;
+	opacity: 0.5;
+}
 
 .quests_button span.quest_button_complete_count,
 .town_button span.scrap_count
