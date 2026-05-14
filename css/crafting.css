@@ -4,6 +4,7 @@
 	width: 100%;
 	margin: 0px;
     margin-top: 0px;
+    text-align: center;
 }
 
 .craft_container 
@@ -300,7 +301,7 @@
 .craftable_with_this
 {
 	position:absolute;
-	bottom:-90px;
+	bottom:0px;
 	left:0px;
 	box-sizing: border-box;
 	text-align:center;
@@ -582,4 +583,53 @@
 .possible_new_recipe.faded_out .card
 {
 	opacity:0;
+}
+
+@media only screen and (max-width:800px) {
+	.single_tinker_container .tinker_card_container
+	{
+		padding-top:30px;
+		position: relative;
+		left:0px;
+		top:0px;
+		margin:auto;
+		transform:scale(1,1);
+		transform-origin:top left;
+		-webkit-transition: all 0.5s ease-in-out;
+		-moz-transition: all 0.5s ease-in-out;
+		-o-transition: all 0.5s ease-in-out;
+		transition: all 0.5s ease-in-out;
+		display: inline-block;
+		width:150px;
+	}
+	.tinker_confirmation_description
+	{
+		margin-top:20px;
+		position: relative;
+		right:0px;
+		top:0px;
+		width:auto;
+	}
+	.tinker_confirmation_button
+	{
+		position: relative;
+		right:0px;
+		top:0px;
+		width:180px;
+		height:40px;
+		display: inline-block;
+	}
+	.craftable_with_this
+	{
+		margin-top:20px;
+		position: relative;
+		right:0px;
+		top:0px;
+	}
+	.possible_new_recipe
+	{
+		position: absolute;
+		right:0px;
+		top:30px;
+	}
 }

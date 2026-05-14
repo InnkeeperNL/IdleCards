@@ -170,7 +170,7 @@ function tinker_current(){
 		setTimeout(function(){
 			$('.tinker_card_container').html('');
 		},500);
-		$('.tinker_card_container').css('left','350px');
+		//$('.tinker_card_container').css('left','350px');
 
 		var possible_new_recipes = get_possible_tinker_results(current_tinker);
 
