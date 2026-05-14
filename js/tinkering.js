@@ -18,7 +18,7 @@ function show_tinker(){
 		{
 			var possible_tinker_count = 0;
 			eachoa(all_available_cards, function(current_card_id, current_card_info){
-				if(gamedata['known_recipes'][current_card_id] == undefined && current_card_info['recipe'] != undefined && current_card_info['recipe'][owned_card_id] != undefined)
+				if(current_card_info['type'] != 'recipe' && gamedata['known_recipes'][current_card_id] == undefined && current_card_info['recipe'] != undefined && current_card_info['recipe'][owned_card_id] != undefined)
 				{
 
 					var can_tinker = true;
@@ -230,7 +230,7 @@ function show_tinker_temp_result(card_to_show, card_to_show_id, show_timeout, hi
 function get_possible_tinker_results(card_id){
 	var possible_new_recipes = {};
 	eachoa(all_available_cards, function(current_card_id, current_card_info){
-		if(gamedata['known_recipes'][current_card_id] == undefined && current_card_info['recipe'] != undefined && current_card_info['recipe'][card_id] != undefined)
+		if(current_card_info['type'] != 'recipe' && gamedata['known_recipes'][current_card_id] == undefined && current_card_info['recipe'] != undefined && current_card_info['recipe'][card_id] != undefined)
 		{
 			var can_tinker = true;
 			eachoa(current_card_info['recipe'], function(recipe_cost_card_id, recipe_cost_amount){
@@ -254,7 +254,7 @@ function tinker_card(card_id){
 	{
 		var possible_new_recipes = {};
 		eachoa(all_available_cards, function(current_card_id, current_card_info){
-			if(gamedata['known_recipes'][current_card_id] == undefined && current_card_info['recipe'] != undefined && current_card_info['recipe'][card_id] != undefined)
+			if(current_card_info['type'] != 'recipe' && gamedata['known_recipes'][current_card_id] == undefined && current_card_info['recipe'] != undefined && current_card_info['recipe'][card_id] != undefined)
 			{
 				var can_tinker = true;
 				eachoa(current_card_info['recipe'], function(recipe_cost_card_id, recipe_cost_amount){
