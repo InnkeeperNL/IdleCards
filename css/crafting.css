@@ -331,6 +331,7 @@
     height: 130px;
     margin-left: 1px;
     margin-right: 1px;
+    margin-top:10px;
 }
 
 .single_cost_container .card
@@ -612,6 +613,7 @@
 	}
 	.tinker_confirmation_button
 	{
+		margin-top:10px;
 		position: relative;
 		right:0px;
 		top:0px;
