@@ -1,0 +1,546 @@
+.current_daily_quest_container,
+.current_quest_container,
+.upgrades_container,
+.single_upgrade_container
+{
+	position: absolute;
+	top:80px;
+	left:0%;
+	right:0%;
+	bottom:0px;
+	padding-bottom: 20px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	text-align: center;
+	width: auto;
+}
+
+.single_upgrade_container
+{
+	left: 10%;
+	right: 10%;
+}
+
+.achievements_container
+{
+	/*overflow-x: hidden;
+    overflow-y: auto;*/
+    overflow: visible;
+    /*height: 505px;
+    width:775px;
+    margin-left:225px;*/
+    position: absolute;
+    left: 27%;
+    right: 2px;
+    top: 80px;
+    bottom: 60px;
+    height: auto;
+    max-height: 100%;
+    width: auto;
+    display: inline-block;
+    margin: 0px;
+    margin-left: 0px;
+    line-height: 0px;
+}
+
+.achievement_details
+{
+	/*position: absolute;
+	top: 75px;
+    left: 20px;
+    width: 195px;*/
+    position: relative;
+    width: 25%;
+	box-sizing:border-box;
+	height:300px;
+	padding:10px;
+	border:3px solid rgba(0,0,0,0.6);
+	border-radius:10px;
+	overflow: hidden;
+	display: inline-block;
+	margin: 0px;
+	margin-top: 10px;
+	margin-left: 1%;
+	text-align: center;
+}
+
+.claim_all_container
+{
+	overflow: visible;
+    /*height: 505px;
+    width:775px;
+    margin-left:225px;*/
+    position: absolute;
+    left: 1%;
+    right: auto;
+    top: 400px;
+    bottom: auto;
+    height: auto;
+    max-height: 100%;
+    width: 25%;
+    display: inline-block;
+    margin: 0px;
+    margin-left: 0px;
+    line-height: 0px;
+    text-align: center;
+}
+
+.menu_button.claim_all_button
+{
+	line-height: initial;
+	margin: 0px;
+	padding: 10px;
+	width: auto;
+	height: auto;
+}
+    
+.menu_button span.daily_quests_complete
+{
+	display: inline-block;
+}
+
+.menu_button.rewards_button
+{
+	box-sizing: border-box;
+	/*width:313px;
+	height:100px;*/
+	padding: 10px;
+	padding-top:35px;
+	margin-bottom:10px;
+	border-radius:5px;
+	overflow: hidden;
+}
+
+@media only screen and (max-width:800px) {
+	.menu_button.rewards_button
+	{
+		font-size: 4vw;
+	}
+
+	.achievement_details
+	{
+		width: 98%;
+		height: 150px;
+		/*padding-bottom: 50px;*/
+	}
+
+	.claim_all_container
+	{
+	    left: 1%;
+	    right: 1%;
+	    top: 140px;
+	    width: auto;
+	}
+
+	.achievements_container
+	{
+		position: absolute;
+		left:2%;
+		right:2%;
+		padding: 0px;
+		/*overflow-x: hidden;
+		overflow-y: auto;*/
+		text-align: center;
+		top: 240px;
+		bottom: 80px;
+		height: auto;
+		width: auto;
+		margin: 0px;
+	}
+
+	/*.achievements_container .achievement
+	{
+		height: 75px;
+	}*/
+
+	/*.achievements_container
+	{
+		width: 98%;
+		text-align: center;
+	}*/
+}
+
+@media only screen and (max-width:400px) {
+	.menu_button.rewards_button
+	{
+		font-size: 8vw;
+	}
+}
+
+.single_quest
+{
+	box-sizing: border-box;
+	display: inline-block;
+    position: relative;
+    width: 45%;
+    margin-right: 2%;
+    margin-left: 2%;
+    height: 205px;
+    margin-bottom: 10px;
+    border: 2px solid #000;
+    color: #fff;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5), inset 10px 10px 10px rgba(255,255,255,0.1);
+    /*background-color:rgba(0,0,0,0.8);*/
+    overflow: hidden;
+}
+
+@media only screen and (max-width:624px) {
+	.single_quest
+	{
+		float: none;
+	    position: relative;
+	    width: 95%;
+	    margin: 0px;
+	    height: 205px;
+	    margin-bottom: 10px;
+	}
+}
+
+.single_quest.complete
+{
+	color:#fff;
+}
+
+.single_quest.claimed
+{
+	color:#ccc;
+	opacity:0.5;
+	box-shadow: none;
+	border: 2px solid #555;
+}
+
+.single_quest .background
+{
+	opacity: 0.5;
+}
+
+.single_quest.claimed .background
+{
+	opacity:0.2;
+}
+
+.single_quest .progress_bar
+{
+	position: absolute;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	background-color:rgba(0,0,0,0.6);
+	box-shadow: inset 40px 0px 20px -20px rgba(0,0,0,0.9), 0px 0px 50px 0px rgba(255,255,255,0.5);
+}
+
+.single_quest_reward_title,
+.single_quest_name
+{
+	font-family: times;
+	font-size:30px;
+	font-weight:bold;
+	position: absolute;
+	top:15px;
+	left:20px;
+	right:20px;
+	text-align: center;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.single_quest_reward_title
+{
+	text-align: left;
+}
+
+.single_quest_description
+{
+	font-family: times;
+	font-size:18px;
+	font-weight:bold;
+	position: absolute;
+	top:55px;
+	left:20px;
+	right:20px;
+	text-align: center;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.claimed .single_quest_description
+{
+	/*font-size:28px;*/
+}
+
+.claimed_text
+{
+	font-size:50px;
+}
+
+.single_quest_reward_title
+{
+	top:auto;
+	bottom:15px;
+	font-size:18px;
+}
+
+.single_quest_reward_container
+{
+	position: absolute;
+	bottom:15px;
+	right:20px;
+}
+
+.single_quest_reward
+{
+	clear:both;
+	font-family: times;
+	font-size:18px;
+	font-weight:bold;
+	float: right;
+	text-align: center;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	margin-top:3px;
+}
+
+.claim_quest_button
+{
+	width: 155px;
+    height: 73px;
+    padding-top: 10px;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+    border: 2px solid #000;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgba(255,255,255,0.8);
+    cursor: pointer;
+    text-align:center;
+    margin:auto;
+}
+
+.quests_reset_time
+{
+	font-family: times;
+	font-size:30px;
+	font-weight:bold;
+	text-align: center;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	margin:auto;
+	color:#fff;
+	clear:both;
+	padding-top:20px;
+}
+.quests_button .quest_button_complete_count
+{
+	top:auto;
+	bottom:15px;
+	font-family: times;
+}
+
+.single_achievement_container
+{
+	box-sizing: border-box;
+	display:inline-block;
+	width:20%;
+	height:20%;
+	position: relative;
+}
+
+.achievement
+{
+	box-sizing: border-box;
+	border:4px solid #222;
+	position: absolute;
+	margin: 0.9%;
+	top: 2px;
+	left: 2px;
+	right: 2px;
+	bottom: 2px;
+	margin: 0px;
+	/*-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;*/
+	border-radius:4px;
+	overflow: hidden;
+	background-color:rgba(0,0,0,0.9);
+	cursor:pointer;
+}
+
+.achievement_progress_bar
+{
+	position: absolute;
+	top:0px;
+	bottom:0px;
+	right:0px;
+	background-color:rgba(155,155,155,0.5);
+}
+
+.achievement.completed
+{
+	border-color:rgba(55,200,55,0.8);
+	background-color:rgba(55,155,55,0.8);
+	box-shadow: 0px 0px 10px rgba(255,255,255,1);
+}
+
+.achievement.completed .achievement_image
+{
+	box-shadow:inset 0px 0px 30px 0px rgba(55,255,55,0.5);
+	opacity: 0.9;
+}
+
+.achievement.claimed
+{
+	border-color:rgba(255,255,255,0.7);
+	background-color:rgba(50,50,50,0.4);
+}
+
+.achievement.claimed .achievement_image
+{
+	box-shadow: none;
+	opacity: 0.9;
+}
+
+.achievement.open
+{
+	width:935px;
+	height:auto;
+	min-height:50px;
+}
+
+.achievement_image
+{
+	box-sizing: border-box;
+	position: absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	background-size:cover;
+	background-position: center;
+	border-radius:0px;
+	opacity: 0.2;
+}
+
+.achievement_details .achievement_image
+{
+	box-sizing: border-box;
+	position: absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	width:auto;
+	height:auto;
+	background-size:cover;
+	background-position: center;
+	border-radius:2px;
+	cursor:default;
+	opacity: 0.2;
+}
+
+.achievement_title
+{
+	position: relative;
+	font-family: 'Caveat Brush', cursive;
+	font-size: 30px;
+	width:100%;
+	color:#fff;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	text-align: center;
+}
+
+.achievement_description
+{
+	margin-top:10px;
+	position: relative;
+	font-family:times;
+	font-weight: bold;
+	font-size: 16px;
+	color:#fff;
+	line-height: 1.4;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.completed_on
+{
+	font-family:times;
+	font-weight: bold;
+	font-size: 16px;
+	color:#fff;
+	line-height: 1.4;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	right:10px;
+}
+
+.achievement_claim_button
+{
+	position: absolute;
+	right:3px;
+	bottom:3px;
+	width: 100px;
+    height: 25px;
+    padding-top: 5px;
+    background-color: rgba(0,0,0,0.2);
+    text-align: center;
+    border: 2px solid #000;
+    font-family: times;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(255,255,255,0.8);
+    cursor: pointer;
+    border-radius: 0px;
+    color: #fff;
+}
+
+.no_achievement_text
+{
+	font-family: times;
+    font-size: 25px;
+    font-style: italic;
+    font-weight: bold;
+    color:#aaa;
+    text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.rewards_buttons_container
+{
+	text-align: center;
+}
+
+.quests_button .quest_button_complete_count,
+.daily_reward_available,
+.achievements_page_button,
+.quests_page_button,
+.daily_quests_page_button,
+.stories_page_button
+{
+	display: inline-block;
+	color:rgba(245, 245, 66,1);
+	font-family: times;
+}
+
+.quests_button .quest_button_complete_count
+{
+	font-size:80px;
+}
+
+@media only screen and (max-width: 800px)
+{
+	.upgrades_container .single_area.menu_button.third
+	{
+    	height: 100px;
+    }
+}
+
+.upgrades_container .single_area span
+{
+	z-index: 1;
+}
+
+.upgrade_percent
+{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color: rgba(0,0,0,0.8);
+}

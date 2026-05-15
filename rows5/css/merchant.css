@@ -1,0 +1,380 @@
+#content_inventory .page_selection,
+#content_my_market .page_selection,
+#content_market .page_selection,
+#content_merchant .page_selection,
+#content_new_buildings .page_selection,
+#content_card_backs .page_selection
+{
+	left:20px;
+}
+
+.current_market_price
+{
+	position: absolute;
+	bottom:20px;
+	right:20px;
+	font-family: 'Caveat Brush', cursive;
+	font-size:18px;
+	text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+	color: #fff;
+}
+
+.sell_card_container
+{
+	position: absolute;
+	left:100px;
+	top:150px;
+	font-family: 'Caveat Brush', cursive;
+	font-size:44px;
+	text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+	color: #fff;
+}
+
+.sell_card_container .card
+{
+	margin-top:10px;
+}
+
+.sell_card_amount_container
+{
+	position: absolute;
+	left: 80px;
+    top: 440px;
+    width: 220px;
+	font-family: times;
+	font-size:18px;
+	text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+	color: #fff;
+}
+
+.sell_card_amount_container div
+{
+	display:inline-block;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+.sell_card_amount_container div.sell_amount
+{
+	font-weight:bold;
+	font-size: 24px;
+	min-width: 40px;
+    text-align: center;
+}
+
+.merchant_image
+{
+	background-position: center center;
+	background-size: cover;
+	position: absolute;
+	left:350px;
+	width:300px;
+	top:150px;
+	height:200px;
+	border-radius:3px;
+	border:2px solid rgba(0,0,0,0.5);
+	box-shadow:inset 0px 0px 0px rgba(0,0,0,0);
+	opacity: 0.8;
+	background-image:url('../images/cards/mystical-5398548_640.jpg');
+}
+
+.merchant_offer
+{
+	position: absolute;
+    left: 350px;
+    top: 375px;
+    width: 300px;
+    font-family: 'Caveat Brush', cursive;
+	text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+	color: #fff;
+	font-size:24px;
+	text-align: center;
+}
+
+.sell_to_merchant_button
+{
+	position: absolute;
+	top:450px;
+	left:350px;
+	width:300px;
+	height:40px;
+	padding-top:10px;
+	background-color:rgba(0,0,0,0.2);
+	text-align:center;
+	border:2px solid #000;
+	font-family: times;
+	font-size:30px;
+	font-weight:bold;
+	color:rgba(255,255,255,0.8);
+	cursor:pointer;
+	border-radius:0px;
+	color:#fff;
+	text-shadow:none;
+	box-shadow: none;
+}
+
+.sell_on_market_container
+{
+	/*display:none;*/
+	position: absolute;
+	left:730px;
+	top:150px;
+	font-family: 'Caveat Brush', cursive;
+	font-size:24px;
+	text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+	color: #fff;
+	width:204px;
+}
+
+.price_amount
+{
+	display: inline-block;
+}
+
+.price_less,
+.price_more
+{
+	margin-top:20px;
+	float:left;
+	text-align: center;
+	width:100px;
+	font-family: times;
+	font-size:18px;
+	text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+	color: #fff;
+}
+
+.place_on_market_button
+{
+	float:left;
+	margin-top:40px;
+	width:200px;
+	height:40px;
+	padding-top:10px;
+	background-color:rgba(0,0,0,0.2);
+	text-align:center;
+	border:2px solid #000;
+	font-family: times;
+	font-size:30px;
+	font-weight:bold;
+	color:rgba(255,255,255,0.8);
+	cursor:pointer;
+	border-radius:0px;
+	color:#fff;
+	text-shadow:none;
+	box-shadow: none;
+}
+
+.market_list
+{
+	position: absolute;
+    left: 20px;
+    top: 100px;
+    right: 0px;
+    bottom: 80px;
+}
+
+.listing
+{
+	width:960px;
+	box-sizing:border-box;
+	padding:10px;
+	margin-bottom:2px;
+	background-color:rgba(0,0,0,0.2);
+	font-size:20px;
+
+}
+
+.listing .no_results
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:24px;
+	text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+	color: #fff;
+	text-align: center;
+	width: 100%;
+    display: block;
+}
+
+.listing:not(.no_hover):hover
+{
+	background-color:rgba(255,255,255,0.2);
+}
+
+.mg
+{
+	background-image:url('../images/magnifying-glass.png');
+	background-position: center center;
+	background-size: cover;
+	opacity: 0.8;
+	display: inline-block;
+	width:30px;
+	height:30px;
+	float:left;
+	margin-right:5px;
+	margin-bottom: -10px;
+    margin-top: -3px;
+}
+
+.single_market_card
+{
+	float:left;
+	margin:4px;
+}
+
+.listing.no_hover .market_cancel_button,
+.market_list.showing_single .single_market_card
+{
+	float:none;
+	margin:auto;
+	width:150px;
+}
+
+.single_market_card .market_description
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:24px;
+	text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+	color: #fff;
+	text-align: center;
+	width: 100%;
+    display: block;
+    padding:5px;
+    padding-top:20px;
+    padding-bottom: 20px;
+    clear: both;
+}
+
+.market_cancel_button,
+.market_sell_button,
+.market_buy_button
+{
+	box-sizing:border-box;
+	font-family: 'Caveat Brush', cursive;
+	font-size:24px;
+	text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+	color: #ccc;
+	text-align: center;
+	width: 100%;
+    display: block;
+    padding:10px;
+    clear: both;
+    border-radius:5px;
+    background-color:rgba(50,150,50,0.9);
+    border:3px solid rgba(155,155,155,1);
+    box-shadow:inset 5px 5px 2px rgba(255,255,255,0.2), inset -5px -5px 2px rgba(0,0,0,0.3), inset 0px 0px 0px 2px rgba(0,0,0,0.9);
+    cursor:pointer;
+}
+
+.market_sell_button
+{
+	background-color: rgba(150,50,50,0.9);
+}
+
+.market_cancel_button
+{
+	background-color: rgba(50,50,50,0.9);
+}
+
+.market_cancel_button:hover,
+.market_sell_button:hover,
+.market_buy_button:hover
+{
+	border-color: rgba(255,255,255,1);
+	color:#fff;
+}
+
+.market_owned_scraps.scrap_count
+{
+	position: absolute;
+	bottom:20px;
+	left:20px;
+	top:auto;
+	right:auto;
+
+}
+
+.owned_scraps,
+.seller,
+.listing_average_cost,
+.listing_cost,
+.listing_amount,
+.listing_name
+{
+	font-family: 'Caveat Brush', cursive;
+	font-size:24px;
+	text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
+	color: #fff;
+	width:340px;
+	display:inline-block;
+}
+
+.selling
+{
+	color:#6c6;
+}
+
+.buying
+{
+	color:#c66;
+}
+
+.owned_scraps,
+.listing_cost,
+.listing_amount,
+.listing_average_cost
+{
+	width:100px;
+	text-align:right;
+}
+
+.seller
+{
+	width:180px;
+	text-align:left;
+	margin-left:20px;
+}
+
+.owned_scraps
+{
+	color:#ccc;
+}
+
+.listing_average_cost span
+{
+	font-size:12px;
+}
+
+.buy_market_listing_button
+{
+	float:right;
+	width:100px;
+	height:30px;
+	padding-top:10px;
+	background-color:rgba(0,0,0,0.2);
+	text-align:center;
+	border:2px solid #000;
+	font-family: times;
+	font-size:20px;
+	font-weight:bold;
+	color:rgba(255,255,255,0.8);
+	cursor:pointer;
+	border-radius:0px;
+	color:#fff;
+	text-shadow:none;
+	box-shadow: none;
+	margin-top:-10px;
+	margin-right:-10px;
+}
+
+.buy_market_listing_button.cancel_button
+{
+	background-color:rgba(100,0,0,0.4);
+}
+
+#content_market .scrap_shop_button
+{
+	position: absolute;
+	bottom:15px;
+	right:10px;
+}
