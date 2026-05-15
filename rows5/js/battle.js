@@ -933,6 +933,10 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 			{
 				can_pick = false;
 			}
+			if(card_info['theme'] != undefined && match_array_values(card_info['theme'], not_theme) > 0)
+			{
+				can_pick = false;
+			}
 			if(can_pick == true)
 			{
 				var pick_chance = 1;
