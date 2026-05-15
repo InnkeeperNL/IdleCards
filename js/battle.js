@@ -411,7 +411,7 @@ function construct_random_deck(size, hero, randomized){
 	var second_color = false;
 	var not_these = [];
 	var not_types = ['cardback'];
-	var not_theme = all_available_cards[hero]['not_theme'];
+	var not_theme = all_available_cards[hero]['hero_version']['not_theme'];
 	if(all_available_cards[hero]['color'][1] != undefined)
 	{
 		second_color = all_available_cards[hero]['color'][1];
@@ -548,7 +548,7 @@ function construct_random_deck(size, hero, randomized){
 				this_card_counter += 1 / card_weight; 
 			}
 		});
-		if(this_card_counter > 4 || (all_available_cards[card_id]['max_in_deck'] != undefined && this_card_counter >= all_available_cards[card_id]['max_in_deck']))
+		if(this_card_counter > 4 || (all_available_cards[card_id] != undefined && all_available_cards[card_id]['max_in_deck'] != undefined && this_card_counter >= all_available_cards[card_id]['max_in_deck']))
 		{
 			var allready_not_these = false;
 			eachoa(not_these, function(not_these_key, not_these_id){
@@ -619,7 +619,7 @@ function construct_random_deck(size, hero, randomized){
 			};
 		}
 	}*/
-	if(artifact_count == 0)
+	if(false && artifact_count == 0)
 	{
 		var chosen_artifact = get_random_card('artifact', undefined, undefined, undefined, undefined, deck_theme, undefined, undefined, not_theme);
 		if(all_available_cards[chosen_artifact] != undefined)
@@ -632,7 +632,7 @@ function construct_random_deck(size, hero, randomized){
 		}
 	}
 
-	random_deck = check_deck_min_enemy_targets(random_deck, deck_theme);
+	//random_deck = check_deck_min_enemy_targets(random_deck, deck_theme);
 
 	if(show_deck_construction == true)
 	{
@@ -845,7 +845,7 @@ function get_random_hero(on_value, min_rarity, max_rarity, common_reduction){
 function get_random_card(type, max_time, color_restriction, second_color_restriction, min_time, theme, not_these, not_types, not_theme){
 	var total_card_count = 0;
 	var picked_card = false;
-	var month = new Date().getMonth() + 1;
+	var month = new Date().getMonth() + 1;	
 	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['type'] != undefined && match_array_values(card_info['type'], not_types) == false && (match_array_values(card_info['type'], type) || type == 'any') && (max_time == undefined || max_time >= card_info['time']) && (min_time == undefined || min_time <= card_info['time']) && (card_info['months_available'] == undefined || match_array_values([month],card_info['months_available']) == true))
 		{
@@ -933,6 +933,10 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 			{
 				can_pick = false;
 			}
+			if(card_info['theme'] != undefined && match_array_values(card_info['theme'], not_theme) > 0)
+			{
+				can_pick = false;
+			}
 			if(can_pick == true)
 			{
 				var pick_chance = 1;
@@ -956,7 +960,9 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 			}
 		}
 	});
-	if(picked_card == false){picked_card = get_random_card(type, max_time, color_restriction, second_color_restriction);}
+	if(picked_card == false){
+		picked_card = get_random_card(type, max_time, color_restriction, second_color_restriction);
+	}
 	return picked_card;
 }
 
