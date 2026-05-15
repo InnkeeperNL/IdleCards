@@ -1319,7 +1319,7 @@ function create_new_building_offer(building_info, trade_slot){
 	}
 	if(found_card == false)
 	{
-		found_card = get_random_card(building_info['shop_type']);
+		found_card = get_random_card_based_on_value(undefined, undefined, building_info['shop_type'], true);
 	}
 
 	var found_offer = false;

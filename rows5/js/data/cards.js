@@ -24,7 +24,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, repair: 1},
 		hero_version: 			{
-			theme: 				['repair_ability','type_structure'],
+			theme: 				['repair_ability','type_structure','type_structure','type_structure'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
