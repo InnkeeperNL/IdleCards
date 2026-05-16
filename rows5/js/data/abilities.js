@@ -1,5 +1,6 @@
 var ability_base_costs = {
 	burn: 		2,
+	cleanse: 	0.4,
 	curse: 		1,
 	draw: 		6,
 	empower: 	2,
@@ -2046,6 +2047,36 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	3,
+	},
+	cleanse:{
+		description: 	'Removes {LEVEL} negative effect(s) from a random ally unit or hero.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				has_negative_effect: true,
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'cleanse',
+				type: 			'reduce_negative_effects',
+				subtypes: 		['cleansing','cleanse_ally'],
+				amount: 		1,
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'cleanse',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.2,
+		},
 	},
 	clone_ally:{
 		ability_subtypes: ['summon_ally','summon_creature'],
@@ -11992,6 +12023,30 @@ var all_abilities = {
 		level_cost: 	-1,
 		cost_factor: 	'full',
 	},
+	turn_cursed_scarecrow:{
+		description: 	'If this is cursed, it becomes a cursed scarecrow.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				has_effect: 	{effect_name: 'cursed', amount: 1, limit: 'min'},
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				type: 		'turn_into',
+				subtypes: 	['shift'],
+				card_id: 	'cursed_scarecrow',
+				amount: 	1
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	2,
+	},
 	turn_enemy:{
 		description: 	'Turns {LEVEL} random enemy non-undead creature unit(s) into an ally.',
 		max_ally_units: 4,
@@ -12023,6 +12078,29 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		15,
 		level_cost_hero: 	4,
+	},
+	turn_scarecrow:{
+		description: 	'If this is not cursed, it returns into a scarecrow.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				has_effect: 	{effect_name: 'cursed', amount: 0, limit: 'max'},
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				type: 		'turn_into_original',
+				subtypes: 	['shift'],
+				amount: 	1
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	0,
 	},
 	uncursable:{
 		description: 		'This is immune to curse effects.',

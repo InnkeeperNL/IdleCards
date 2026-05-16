@@ -36,6 +36,45 @@ var all_available_cards = {
 			peasant: 	2,
 		}
 	},
+	cursed_scarecrow:{
+		name: 				'cursed scarecrow',
+		type: 				'structure',
+		subtypes: 			['wall'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		0,
+		time: 				1,
+		image: 				'cards/cursed_scarecrow.jpg',
+		image_position: 	'top',
+		power: 				2,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, cursed_touch: 2, fearful_aura: 1, turn_scarecrow: 1},
+		quote: '\"It scares away more then just crows.\"',
+	},
+	cursed_talisman:{
+		name: 				'cursed talisman',
+		type: 				'artifact',
+		subtypes: 			['trinket'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/cursed_talisman.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{curse_hv: 1},
+		quote: '\"Worn by many witches.\"',
+		recipe:{
+			herbs: 		2,
+			ore: 		2,
+		}
+	},
 	dagger:{
 		name: 				'dagger',
 		type: 				'artifact',
@@ -57,6 +96,34 @@ var all_available_cards = {
 			wood: 		2,
 		}
 	},
+	dark_rogue:{
+		name: 				'dark rogue',
+		type: 				'creature',
+		subtypes: 			['human','rogue'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dark_rogue.jpg',
+		image_position: 	'top',
+		power: 				2,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{strike: 1, cursed_touch: 2, evade: 1},
+		hero_version: 			{
+			theme: 				['melee_ability','subtype_rogue','curse_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, cursed_touch: 1, evade: 1},
+		},
+		quote: '\"Her strikes leave a mark.\"',
+		recipe:{
+			rogue: 			2,
+			witch: 			2,
+		}
+	},
 	hammer:{
 		name: 				'hammer',
 		type: 				'artifact',
@@ -76,6 +143,27 @@ var all_available_cards = {
 		recipe:{
 			stone: 		2,
 			wood: 		2,
+		}
+	},
+	herbs:{
+		name: 				'herbs',
+		type: 				'artifact',
+		subtypes: 			['plant'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/herbs.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{cleanse: 2},
+		quote: '\"They have medicinal purposes.\"',
+		recipe:{
+			seeds: 		2,
+			water: 		2,
 		}
 	},
 	house:{
@@ -145,7 +233,7 @@ var all_available_cards = {
 		time: 				1,
 		image: 				'cards/rogue.jpg',
 		image_position: 	'top',
-		power: 				1,
+		power: 				2,
 		armor: 				0,
 		health: 			4,
 		abilities: 			{strike: 1, evade: 1},
@@ -180,6 +268,36 @@ var all_available_cards = {
 		recipe:{
 			sword: 			2,
 			water: 			2,
+		}
+	},
+	scarecrow:{
+		name: 				'scarecrow',
+		type: 				'structure',
+		subtypes: 			['wall'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/scarecrow.jpg',
+		image_position: 	'top',
+		power: 				false,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{fearful_aura: 1, turn_cursed_scarecrow: 1},
+		hero_version: 			{
+			theme: 				[],
+			not_theme: 			['empower_hero_ability'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{fearful_aura: 1, curse_hv: 4},
+		},
+		quote: '\"It scares away more then just crows.\"',
+		recipe:{
+			herbs:  	4,
+			wood: 		1,
 		}
 	},
 	scroll:{
@@ -336,9 +454,9 @@ var all_available_cards = {
 		time: 				1,
 		image: 				'cards/village_defender.jpg',
 		image_position: 	'top',
-		power: 				1,
+		power: 				2,
 		armor: 				0,
-		health: 			5,
+		health: 			6,
 		abilities: 			{empowering_structures: 1, strike: 1},
 		hero_version: 			{
 			theme: 				['melee_ability','type_structure','subtype_warrior'],
@@ -378,6 +496,34 @@ var all_available_cards = {
 		quote: '\"Basic defense.\"',
 		recipe:{
 			stone: 		2,
+		}
+	},
+	witch:{
+		name: 				'witch',
+		type: 				'creature',
+		subtypes: 			['human','witch'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/witch.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{curse: 2, strike: 1},
+		hero_version: 			{
+			theme: 				['subtype_witch'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{curse_hv: 2, strike_unit: 1},
+		},
+		quote: '\"She uses the dark arts.\"',
+		recipe:{
+			cursed_talisman: 	2,
+			peasant: 			2,
 		}
 	},
 
