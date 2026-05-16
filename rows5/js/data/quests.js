@@ -1,5 +1,5 @@
 var all_quests = {
-	stinger:{
+	/*stinger:{
 		name: 			'stinger',
 		description: 	'Have allies deal damage to the enemy hero {AMOUNT} time(s).',
 		image: 			"cards/dream_TradingCard-2023-03-12T074521.jpg",
@@ -12,7 +12,7 @@ var all_quests = {
 		reward_per_amount:{
 			scraps: 0.25,
 		},
-	},
+	},*/
 };
 
 var all_achievements = {
@@ -20,7 +20,7 @@ var all_achievements = {
 }
 
 var all_chained_achievements = {
-	almost:{
+	/*almost:{
 		name: 			'almost',
 		description: 	'Loose a battle while the enemy hero has 1 health left {AMOUNT} time(s).',
 		objective: 		'battle_loss_any_health_left_1',
@@ -81,7 +81,7 @@ var all_chained_achievements = {
 		step_effect: 	'min_amount',
 		step_amount: 	30,
 		no_quest: 		true,
-	},
+	},*/
 	army:{
 		name: 			'army',
 		description: 	'Play {AMOUNT} creature card(s).',
@@ -96,7 +96,7 @@ var all_chained_achievements = {
 		card_back: 		'peasant',
 		steps: 			6,
 	},
-	arson:{
+	/*arson:{
 		name: 			'arson',
 		description: 	'Have allies apply {MIN_AMOUNT} burn in a single battle.',
 		objective: 		'ally_performed_burn_total',
@@ -114,8 +114,8 @@ var all_chained_achievements = {
 		step_effect: 	'min_amount',
 		step_amount: 	30,
 		no_quest: 		true,
-	},
-	attunement:{
+	},*/
+	/*attunement:{
 		name: 			'attunement',
 		description: 	'Have allies perform a magical ability {AMOUNT} time(s).',
 		objective: 		'ally_performed_magical',
@@ -126,9 +126,9 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'fire_apprentice',
+		card_back: 		'scroll',
 		steps: 			6,
-	},
+	},*/
 	avoidance:{
 		name: 			'avoidance',
 		description: 	'Have allies avoid an enemy ability in any way {AMOUNT} time(s).',
@@ -140,10 +140,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'mole',
+		card_back: 		'rogue',
 		steps: 			6,
 	},
-	bless:{
+	/*bless:{
 		name: 			'bless',
 		description: 	'Have allies apply a blessing {AMOUNT} time(s).',
 		objective: 		'ally_performed_grant_bless',
@@ -170,7 +170,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'hearty_meal',
 		steps: 			6,
-	},
+	},*/
 	bored:{
 		name: 			'bored',
 		description: 	'Defeat an enemy at 100% power or more no sooner then turn {MIN_AMOUNT}.',
@@ -183,13 +183,13 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'giant_slug',
+		card_back: 		'wall',
 		steps: 			6,
 		step_effect: 	'min_amount',
 		step_amount: 	10,
 		no_quest: 		true,
 	},
-	bureaucrat:{
+	/*bureaucrat:{
 		name: 			'bureaucrat',
 		description: 	'Play or summon {AMOUNT} clerk card(s).',
 		objective: 		'clerk_card_played',
@@ -217,7 +217,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'ignite',
 		steps: 			6,
-	},
+	},*/
 	buy:{
 		name: 			'buy',
 		description: 	'Buy {AMOUNT} card(s) from a merchant.',
@@ -229,7 +229,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'box_of_tricks',
+		card_back: 		'endless_pouch',
 		steps: 			6,
 		no_quest: 		true,
 	},
@@ -259,10 +259,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'haunted_house',
+		card_back: 		'house',
 		steps: 			6,
 	},
-	clergy:{
+	/*clergy:{
 		name: 			'clergy',
 		description: 	'Play or summon {AMOUNT} cleric card(s).',
 		objective: 		'cleric_card_played',
@@ -310,7 +310,7 @@ var all_chained_achievements = {
 		step_effect: 	'min_amount',
 		step_amount: 	10,
 		no_quest: 		true,
-	},
+	},*/
 	crafter:{
 		name: 			'crafter',
 		description: 	'Craft a card {AMOUNT} time(s).',
@@ -336,10 +336,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'cursed_skull',
+		card_back: 		'cursed_talisman',
 		steps: 			6,
 	},
-	dancer:{
+	/*dancer:{
 		name: 			'dancer',
 		description: 	'Have allies move to a different slot {AMOUNT} time(s).',
 		objective: 		'ally_performed_movement',
@@ -371,7 +371,7 @@ var all_chained_achievements = {
 		step_effect: 	'min_amount',
 		step_amount: 	30,
 		no_quest: 		true,
-	},
+	},*/
 	demolisher:{
 		name: 			'demolisher',
 		description: 	'Destroy {AMOUNT} enemy structure(s).',
@@ -383,10 +383,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'breaking_ray',
+		card_back: 		'hammer',
 		steps: 			6,
 	},
-	discard:{
+	/*discard:{
 		name: 			'discard',
 		description: 	'Make the enemy discard a card {AMOUNT} time(s).',
 		objective: 		'ally_performed_discard_enemy',
@@ -447,7 +447,7 @@ var all_chained_achievements = {
 		card_back: 		'blue_dragon',
 		steps: 			6,
 		no_quest: 		true,
-	},
+	},*/
 	draw:{
 		name: 			'draw',
 		description: 	'Have allies draw an additional card {AMOUNT} time(s).',
@@ -459,10 +459,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'research',
+		card_back: 		'scroll',
 		steps: 			6,
 	},
-	duelist:{
+	/*duelist:{
 		name: 			'duelist',
 		description: 	'Have allies counter a melee ability {AMOUNT} time(s).',
 		objective: 		'ally_performed_counter',
@@ -490,7 +490,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'elf',
 		steps: 			6,
-	},
+	},*/
 	empower:{
 		name: 			'empower',
 		description: 	'Have allies empower an ally {AMOUNT} time(s).',
@@ -502,10 +502,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'flag_carrier',
+		card_back: 		'sword',
 		steps: 			6,
 	},
-	eternal:{
+	/*eternal:{
 		name: 			'eternal',
 		description: 	'Have allies return {AMOUNT} card(s) from your grave to your deck.',
 		objective: 		'ally_performed_move_ally_to_deck_from_grave',
@@ -532,7 +532,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'fairy',
 		steps: 			6,
-	},
+	},*/
 	fear:{
 		name: 			'fear',
 		description: 	'Have allies return an enemy to their hand {AMOUNT} time(s).',
@@ -544,10 +544,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'fearful_mask',
+		card_back: 		'scarecrow',
 		steps: 			6,
 	},
-	fire:{
+	/*fire:{
 		name: 			'fire',
 		description: 	'Have allies perform a fire ability {AMOUNT} time(s).',
 		objective: 		'ally_performed_fire',
@@ -607,10 +607,10 @@ var all_chained_achievements = {
 		},
 		card_back: 		'hurricane',
 		steps: 			6,
-	},
+	},*/
 	fortify:{
 		name: 			'fortify',
-		description: 	'Have allies fortify an ally {AMOUNT} time(s).',
+		description: 	'Have allies shield an ally {AMOUNT} time(s).',
 		objective: 		'ally_performed_fortify',
 		amount: 		1,
 		rewards:{
@@ -619,10 +619,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'armor_smith',
+		card_back: 		'shield',
 		steps: 			6,
 	},
-	frost:{
+	/*frost:{
 		name: 			'frost',
 		description: 	'Have allies perform a cold ability {AMOUNT} time(s).',
 		objective: 		'ally_performed_cold',
@@ -635,7 +635,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'frost_mage',
 		steps: 			6,
-	},
+	},*/
 	garden:{
 		name: 			'garden',
 		description: 	'Play or summon {AMOUNT} plant card(s).',
@@ -647,10 +647,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'carnivorous_plant',
+		card_back: 		'herbs',
 		steps: 			6,
 	},
-	gnomeling:{
+	/*gnomeling:{
 		name: 			'gnomeling',
 		description: 	'Play or summon {AMOUNT} gnome card(s).',
 		objective: 		'gnome_card_played',
@@ -691,7 +691,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'dreadnought',
 		steps: 			6,
-	},
+	},*/
 	greed:{
 		name: 			'greed',
 		description: 	'Own at least {MIN_AMOUNT} scraps.',
@@ -705,12 +705,12 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'bank',
+		card_back: 		'scraps_placeholder',
 		steps: 			5,
 		step_effect: 	'min_amount',
 		no_quest: 		true,
 	},
-	guard:{
+	/*guard:{
 		name: 			'guard',
 		description: 	'Have allies guard {AMOUNT} time(s).',
 		objective: 		'ally_performed_guard_now',
@@ -751,8 +751,8 @@ var all_chained_achievements = {
 		},
 		card_back: 		'hungry_wolf',
 		steps: 			6,
-	},
-	healing:{
+	},*/
+	/*healing:{
 		name: 			'healing',
 		description: 	'Have allies heal themselves or allies {AMOUNT} time(s).',
 		objective: 		'ally_performed_healing',
@@ -765,7 +765,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'medic',
 		steps: 			6,
-	},
+	},*/
 	heavy_hitter: {
 		name: 			'heavy hitter',
 		description: 	'Deal {MIN_AMOUNT} or more damage to an enemy in one hit.',
@@ -778,7 +778,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'barbarian',
+		card_back: 		'village_defender',
 		steps: 			6,
 		step_effect: 	'min_amount',
 		step_amount: 	5,
@@ -795,11 +795,11 @@ var all_chained_achievements = {
 				reward_amount: 		2
 			},
 		},
-		card_back: 		'burglar',
+		card_back: 		'thief',
 		steps: 			6,
 		no_quest: 		true,
 	},
-	homebound:{
+	/*homebound:{
 		name: 			'homebound',
 		description: 	'Have {AMOUNT} card(s) return to your hand from play.',
 		objective: 		'ally_performed_move_ally_to_hand',
@@ -812,7 +812,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'pigeon',
 		steps: 			6,
-	},
+	},*/
 	humane:{
 		name: 			'humane',
 		description: 	'Play or summon {AMOUNT} human card(s).',
@@ -824,10 +824,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'conscript',
+		card_back: 		'swordsman',
 		steps: 			6,
 	},
-	imp_lord:{
+	/*imp_lord:{
 		name: 			'imp lord',
 		description: 	'Play or summon {AMOUNT} imp card(s).',
 		objective: 		'imp_card_played',
@@ -840,7 +840,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'imp_lord',
 		steps: 			6,
-	},
+	},*/
 	killer:{
 		name: 			'killer',
 		description: 	'Kill {AMOUNT} enemy creature(s).',
@@ -852,7 +852,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'fencer',
+		card_back: 		'dark_rogue',
 		steps: 			6,
 	},
 	loss:{
@@ -866,11 +866,11 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'witchs_initiate',
+		card_back: 		'witch',
 		steps: 			6,
 		no_quest: 		true,
 	},
-	mage:{
+	/*mage:{
 		name: 			'mage',
 		description: 	'Play or summon {AMOUNT} mage card(s).',
 		objective: 		'mage_card_played',
@@ -897,8 +897,8 @@ var all_chained_achievements = {
 		},
 		card_back: 		'levitate',
 		steps: 			6,
-	},
-	martyr:{
+	},*/
+	/*martyr:{
 		name: 			'martyr',
 		description: 	'Have {AMOUNT} ally creature(s) die.',
 		objective: 		'ally_creature_killed',
@@ -911,8 +911,8 @@ var all_chained_achievements = {
 		},
 		card_back: 		'raging_spirit',
 		steps: 			6,
-	},
-	mason:{
+	},*/
+	/*mason:{
 		name: 			'mason',
 		description: 	'Play or summon {AMOUNT} structure card(s) in a single battle.',
 		objective: 		'structure_card_played_times',
@@ -930,7 +930,7 @@ var all_chained_achievements = {
 		step_effect: 	'min_amount',
 		step_amount: 	10,
 		no_quest: 		true,
-	},
+	},*/
 	merchant:{
 		name: 			'merchant',
 		description: 	'Earn {AMOUNT} scrap(s).',
@@ -945,7 +945,7 @@ var all_chained_achievements = {
 		card_back: 		'thief',
 		steps: 			7,
 	},
-	mouldy:{
+	/*mouldy:{
 		name: 			'mouldy',
 		description: 	'Play or summon {AMOUNT} fungal card(s).',
 		objective: 		'fungus_card_played',
@@ -972,7 +972,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'fastfood',
 		steps: 			6,
-	},
+	},*/
 	mundane:{
 		name: 			'mundane',
 		description: 	'Have allies perform a physical ability {AMOUNT} time(s).',
@@ -984,7 +984,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'smasher',
+		card_back: 		'peasant',
 		steps: 			6,
 	},
 	museum:{
@@ -998,10 +998,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'medkit',
+		card_back: 		'dagger',
 		steps: 			6,
 	},
-	plated:{
+	/*plated:{
 		name: 			'plated',
 		description: 	'Have allies reduce damage with plated {AMOUNT} time(s).',
 		objective: 		'ally_performed_plated',
@@ -1028,7 +1028,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'pirate',
 		steps: 			6,
-	},
+	},*/
 	poison:{
 		name: 			'poison',
 		description: 	'Have allies apply poison {AMOUNT} time(s).',
@@ -1040,7 +1040,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'viper',
+		card_back: 		'rusty_sword',
 		steps: 			6,
 	},
 	pure:{
@@ -1054,10 +1054,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'righteous_lady',
+		card_back: 		'herbs',
 		steps: 			6,
 	},
-	quick:{
+	/*quick:{
 		name: 			'quick',
 		description: 	'Defeat an enemy at 100% power or more no later then turn {MAX_AMOUNT}.',
 		objective: 		'battle_won_any_turn_count',
@@ -1116,7 +1116,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'impending_doom',
 		steps: 			6,
-	},
+	},*/
 	rogue:{
 		name: 			'rogue',
 		description: 	'Play or summon {AMOUNT} rogue card(s).',
@@ -1131,7 +1131,7 @@ var all_chained_achievements = {
 		card_back: 		'rogue',
 		steps: 			6,
 	},
-	runner:{
+	/*runner:{
 		name: 			'runner',
 		description: 	'Have allies run away {AMOUNT} time(s).',
 		objective: 		'ally_performed_run_away',
@@ -1186,7 +1186,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'scavanger',
 		steps: 			6,
-	},
+	},*/
 	sell:{
 		name: 			'sell',
 		description: 	'Sell {AMOUNT} card(s) to a merchant.',
@@ -1198,7 +1198,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'pirate_aspirant',
+		card_back: 		'thief',
 		steps: 			6,
 		no_quest: 		true,
 	},
@@ -1228,10 +1228,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'vulture',
+		card_back: 		'swordsman',
 		steps: 			6,
 	},
-	slow:{
+	/*slow:{
 		name: 			'slow',
 		description: 	'Have allies slow an enemy card {AMOUNT} time(s).',
 		objective: 		'ally_performed_slow_enemy',
@@ -1244,7 +1244,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'paperwork',
 		steps: 			6,
-	},
+	},*/
 	stasher:{
 		name: 			'stasher',
 		description: 	'Open {AMOUNT} stashes.',
@@ -1260,7 +1260,7 @@ var all_chained_achievements = {
 		steps: 			6,
 		no_quest: 		true,
 	},
-	stealth:{
+	/*stealth:{
 		name: 			'stealth',
 		description: 	'Have allies evade an attack using stealth {AMOUNT} time(s).',
 		objective: 		'ally_performed_use_stealth',
@@ -1274,7 +1274,7 @@ var all_chained_achievements = {
 		card_back: 		'scout',
 		steps: 			6,
 		no_quest: 		true,
-	},
+	},*/
 	stinger:{
 		name: 			'stinger',
 		description: 	'Have allies deal exactly 1 damage to the enemy hero {AMOUNT} time(s).',
@@ -1288,7 +1288,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'hornet',
+		card_back: 		'rogue',
 		steps: 			6,
 		no_quest: 		true,
 	},
@@ -1303,10 +1303,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'striker',
+		card_back: 		'swordsman',
 		steps: 			6,
 	},
-	stun:{
+	/*stun:{
 		name: 			'stun',
 		description: 	'Have allies stun an enemy {AMOUNT} time(s).',
 		objective: 		'ally_performed_stun',
@@ -1320,7 +1320,7 @@ var all_chained_achievements = {
 		card_back: 		'iceblade',
 		steps: 			6,
 		no_quest: 		true,
-	},
+	},*/
 	summoner:{
 		name: 			'summoner',
 		description: 	'Defeat a summoned enemy {AMOUNT} time(s).',
@@ -1332,10 +1332,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'imp_horde',
+		card_back: 		'swordsman',
 		steps: 			6,
 	},
-	tactician:{
+	/*tactician:{
 		name: 			'tactician',
 		description: 	'Play {AMOUNT} tactic card(s).',
 		objective: 		'tactic_card_played',
@@ -1376,7 +1376,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'spike_pod',
 		steps: 			6,
-	},
+	},*/
 	tie:{
 		name: 			'tie',
 		description: 	'Have a battle end with both heroes at 0 health {AMOUNT} time(s).',
@@ -1388,7 +1388,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'final_embrace',
+		card_back: 		'wall',
 		steps: 			4,
 		no_quest: 		true,
 	},
@@ -1405,7 +1405,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'toxic_cloud',
+		card_back: 		'rusty_sword',
 		steps: 			5,
 		step_effect: 	'min_amount',
 		step_amount: 	30,
@@ -1439,7 +1439,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'unholy_rite',
+		card_back: 		'witch',
 		steps: 			5,
 		step_effect: 	'min_amount',
 		step_amount: 	30,
@@ -1456,7 +1456,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'berserker',
+		card_back: 		'swordsman',
 		steps: 			6,
 	},
 	walled:{
@@ -1470,10 +1470,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'castle',
+		card_back: 		'wall',
 		steps: 			6,
 	},
-	warder:{
+	/*warder:{
 		name: 			'warder',
 		description: 	'Have allies counter a spell {AMOUNT} time(s).',
 		objective: 		'ally_performed_counter_spell',
@@ -1518,7 +1518,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'phoenix',
 		steps: 			6,
-	},
+	},*/
 	warrior:{
 		name: 			'warrior',
 		description: 	'Play or summon {AMOUNT} warrior card(s).',
@@ -1530,7 +1530,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'shield_warrior',
+		card_back: 		'swordsman',
 		steps: 			6,
 	},
 	witch:{
@@ -1547,7 +1547,7 @@ var all_chained_achievements = {
 		card_back: 		'witch',
 		steps: 			6,
 	},
-	withering:{
+	/*withering:{
 		name: 			'withering',
 		description: 	'Have allies reduce the maximum health of something {AMOUNT} time(s).',
 		objective: 		'ally_performed_wither',
@@ -1588,7 +1588,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'cow',
 		steps: 			6,
-	},
+	},*/
 }
 
 var achievement_card_backs = {};

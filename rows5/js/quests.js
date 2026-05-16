@@ -32,7 +32,7 @@ function show_quests(){
 	eachoa(gamedata['quests'], function(current_quest_id, current_quest_info){
 		if(all_quests[current_quest_info['quest_id']] == undefined)
 		{
-			//delete gamedata['quests'][current_quest_id];
+			delete gamedata['quests'][current_quest_id];
 			console.log('unknown quest: ' + current_quest_id);
 			check_new_quests();
 		}
@@ -345,8 +345,8 @@ function check_new_quests(show_new_message){
 	{
 		if(gamedata['daily_quests'][i] != undefined && all_quests[gamedata['daily_quests'][i]['quest_id']] == undefined)
 		{
-			console.log('unknown daily quest: ' + current_quest_id);
-			//delete gamedata['daily_quests'][i];
+			//console.log('unknown daily quest: ' + current_quest_id);
+			delete gamedata['daily_quests'][i];
 		}
 	}
 	for(var i = 1; i <= 6; i++)

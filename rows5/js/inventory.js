@@ -271,7 +271,7 @@ function use_current_inventory(amount_used){
 						}
 						if(all_available_cards[current_consumable]['reward']['random_amount'] != undefined)
 						{
-							amount_gained += round_by_percent(Math.random() * all_available_cards[current_consumable]['reward']['amount']);
+							amount_gained += round_by_percent(Math.random() * all_available_cards[current_consumable]['reward']['random_amount']);
 						}
 						/*for(i = 0;i < amount_gained;i++)
 						{

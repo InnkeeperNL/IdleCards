@@ -8388,7 +8388,7 @@ var clear_pickup_timers = {};
 var last_spawned_pickup = 0;
 
 function spawn_monthly_pickup(){
-	if(count_object(pickup_rewards) < 100 && last_spawned_pickup + 1000 < nowint())
+	if(count_object(pickup_rewards) < 100 && last_spawned_pickup + 10 < nowint())
 	{
 		last_spawned_pickup = nowint();
 		pickup_counter++;
@@ -8399,15 +8399,16 @@ function spawn_monthly_pickup(){
 		}
 		var pickup_amount = 1;
 		var picked_pickup = get_random_key_from_object_based_on_num_value(possible_pickups);
-		if(Math.random() < 0.75){picked_pickup = 'scraps';pickup_amount = round_by_percent(get_upgrade_factor('floating_scraps', 'any', true));}
+		if(Math.random() < (1/count_object(possible_pickups))){picked_pickup = 'scraps';pickup_amount = round_by_percent(get_upgrade_factor('floating_scraps', 'any', true));}
 		var from_top = Math.floor((Math.random() * 80) + 10);
 		var parsed_pickup = '<div class="pickup pickup_' + pickup_counter + '" style="top:' + from_top + '%" onclick="claim_pickups(' + pickup_counter + ')">' + parse_card(picked_pickup) + '</div>';
 		$('.battle_container').append(parsed_pickup);
 
 		pickup_rewards[temp_pickup_counter] = {card_id: picked_pickup, card_amount: pickup_amount};
 		clear_pickup_timers[temp_pickup_counter] = setTimeout(function(){
-			pickup_rewards = {};
+			delete pickup_rewards[temp_pickup_counter];
 			$('.pickup_' + temp_pickup_counter).remove();
+			clearTimeout(clear_pickup_timers[temp_pickup_counter]);
 		},15000);
 	}
 }
