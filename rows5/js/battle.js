@@ -470,7 +470,6 @@ function construct_random_deck(size, hero, randomized){
 		}
 	}
 	var deck_times = random_deck_times[deck_time_theme];
-	console.log(deck_times);
 	
 	if(all_available_cards[hero]['hero_version']['deck_times'] != undefined)
 	{

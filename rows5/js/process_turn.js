@@ -8451,9 +8451,9 @@ function get_all_possible_pickups(){
 	var all_possible_pickups = {};
 	var month = new Date().getMonth() + 1;
 	eachoa(all_available_cards, function(card_id, card_info){
-		if(match_array_values(month, card_info['months_available']) && card_info['type'] == 'currency')
+		if(match_array_values(month, card_info['months_available']) && (card_info['type'] == 'currency' || card_info['type'] == 'material'))
 		{
-			all_possible_pickups[card_id] = 1 / Math.sqrt(card_info['value']);
+			all_possible_pickups[card_id] = 1 / sqr(card_info['value']);
 		}
 	});
 	all_possible_pickups['peasant'] = 1;
