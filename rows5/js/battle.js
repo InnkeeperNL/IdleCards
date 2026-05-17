@@ -347,17 +347,17 @@ function construct_random_enemy_deck(base_card, size){
 
 var random_deck_times = {
 	basic:{
-		percent_main: 		0,
+		percent_main: 		20,
 	 	percent_slow: 		70,
 	 	percent_massive: 	90,
 	},
 	fast:{
-		percent_main: 		30,
+		percent_main: 		50,
 	 	percent_slow: 		70,
 	 	percent_massive: 	90,
 	},
 	slow:{
-		percent_main: 		0,
+		percent_main: 		20,
 	 	percent_slow: 		70,
 	 	percent_massive: 	85,
 	},
@@ -367,7 +367,7 @@ var random_deck_times = {
 	 	percent_massive: 	200,
 	},
 	muscle:{
-		percent_main: 		0,
+		percent_main: 		20,
 	 	percent_slow: 		75,
 	 	percent_massive: 	90,
 	},
@@ -435,7 +435,7 @@ function construct_random_deck(size, hero, randomized){
 		//deck_theme = all_available_cards[hero]['hero_version']['theme'][get_random_key_from_object(all_available_cards[hero]['hero_version']['theme'])];
 		deck_theme = all_available_cards[hero]['hero_version']['theme'];
 	}
-	var card_id = get_random_card('any', max_time, deck_color, second_color, 0, deck_theme, not_these, not_types);
+	var card_id = get_random_card('any', max_time, deck_color, second_color, 0, deck_theme, not_these, not_types, not_theme);
 	var this_card_counter = 0;
 	var deck_time_theme = get_random_key_from_object(random_deck_times);
 	if(Math.random() < 0.5)
@@ -470,6 +470,7 @@ function construct_random_deck(size, hero, randomized){
 		}
 	}
 	var deck_times = random_deck_times[deck_time_theme];
+	console.log(deck_times);
 	
 	if(all_available_cards[hero]['hero_version']['deck_times'] != undefined)
 	{
@@ -889,7 +890,6 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 				{
 					var total_match = match_array_values(card_info['theme'], theme, true);
 					var match_factor = to_the_nth(1, 10, total_match + 1);
-					//if(total_match > 1){console.log(card_info['name'] + ' matches x' + total_match + ' = x' + match_factor);}
 					pick_chance *= match_factor;
 				}
 				

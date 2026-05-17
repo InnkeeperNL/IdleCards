@@ -9,6 +9,54 @@ Combiner:{
 
 var all_available_cards = {
 
+	armaments:{
+		name: 				'armaments',
+		type: 				'spell',
+		subtypes: 			['tactic'],
+		color: 				['colorless'],
+		theme: 				['subtype_warrior'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/armaments.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{empower_all: 1, fortify_all: 1, minimum_allies: 3},
+		quote: '\"Ready for a fight!\"',
+		recipe:{
+			scroll: 	2,
+			shield: 	2,
+			sword: 		2,
+		}
+	},
+	blacksmith:{
+		name: 				'blacksmith',
+		type: 				'creature',
+		subtypes: 			['human','villager'],
+		color: 				['colorless'],
+		theme: 				['type_creature'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/blacksmith.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, empower_ally: 1},
+		hero_version: 			{
+			theme: 				['melee_ability','type_creature'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, empower_ally: 1},
+		},
+		quote: '\"He can forge great weapons.\"',
+		recipe:{
+			armaments: 	2,
+			carpenter: 	2,
+		}
+	},
 	carpenter:{
 		name: 				'carpenter',
 		type: 				'creature',
@@ -89,11 +137,31 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{empower_arrival: 1},
+		abilities: 			{empower_arrival: 2},
 		quote: '\"For quick strikes.\"',
 		recipe:{
 			ore: 		2,
 			wood: 		2,
+		}
+	},
+	dark_night:{
+		name: 				'dark night',
+		type: 				'spell',
+		subtypes: 			['ritual'],
+		color: 				['colorless'],
+		theme: 				['subtype_witch'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dark_night.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{curse_all: 1, destroy_cursed: 10, echo: 1},
+		quote: '\"Make sure you come home before dark.\"',
+		recipe:{
+			scroll: 	2,
+			stone: 		2,
 		}
 	},
 	dark_rogue:{
@@ -124,6 +192,36 @@ var all_available_cards = {
 			witch: 			2,
 		}
 	},
+	dark_tower:{
+		name: 				'dark tower',
+		type: 				'structure',
+		subtypes: 			['wall','tower'],
+		color: 				['colorless'],
+		theme: 				['subtype_witch'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dark_tower.jpg',
+		image_position: 	'top',
+		power: 				false,
+		armor: 				0,
+		health: 			7,
+		abilities: 			{curse_all: 1, cursed_aura: 1},
+		hero_version: 			{
+			theme: 				['subtype_witch', 'curse_ability'],
+			not_theme: 			['empower_hero_ability'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{curse_all: 1, cursed_aura: 1},
+		},
+		quote: '\"They say an ancient witch used to live there.\"',
+		recipe:{
+			dark_night:  	2,
+			wall: 			2,
+			witch: 			2,
+		}
+	},
 	hammer:{
 		name: 				'hammer',
 		type: 				'artifact',
@@ -143,6 +241,34 @@ var all_available_cards = {
 		recipe:{
 			stone: 		2,
 			wood: 		2,
+		}
+	},
+	herbalist:{
+		name: 				'herbalist',
+		type: 				'creature',
+		subtypes: 			['human','villager'],
+		color: 				['colorless'],
+		theme: 				['type_structure'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/herbalist.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, poison: 1, cleanse: 1},
+		hero_version: 			{
+			theme: 				['subtype_villager'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, poison_hv: 2, cleanse: 2},
+		},
+		quote: '\"There are so many uses for those plants.\"',
+		recipe:{
+			herbs: 		2,
+			peasant: 	2,
 		}
 	},
 	herbs:{
@@ -221,6 +347,46 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1},
 		},
 		quote: '\"They do not want to fight, but will defend their home.\"',
+	},
+	poison_fever:{
+		name: 				'poison fever',
+		type: 				'spell',
+		subtypes: 			['ritual'],
+		color: 				['colorless'],
+		theme: 				['poison_ability'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/poison_fever.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{quicken_poison: 2, echo: 1},
+		quote: '\"Are you feeling okay?\"',
+		recipe:{
+			poison_gas: 	2,
+			scroll: 		2,
+		}
+	},
+	poison_gas:{
+		name: 				'poison gas',
+		type: 				'spell',
+		subtypes: 			['ritual'],
+		color: 				['colorless'],
+		theme: 				['poison_ability'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/poison_gas.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{poison_all: 5, minimum_enemies: 3},
+		quote: '\"What is that smell?\"',
+		recipe:{
+			herbalist: 	2,
+			scroll: 	2,
+		}
 	},
 	rogue:{
 		name: 				'rogue',
@@ -399,7 +565,7 @@ var all_available_cards = {
 		time: 				1,
 		image: 				'cards/swordsman.jpg',
 		image_position: 	'top',
-		power: 				2,
+		power: 				3,
 		armor: 				0,
 		health: 			5,
 		abilities: 			{strike: 1},
@@ -440,6 +606,7 @@ var all_available_cards = {
 		},
 		quote: '\"Where did my purse go?!\"',
 		recipe:{
+			dark_night: 	2,
 			rogue: 			2,
 		}
 	},
@@ -514,7 +681,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{curse: 2, strike: 1},
 		hero_version: 			{
-			theme: 				['subtype_witch'],
+			theme: 				['subtype_witch', 'curse_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1731,7 +1898,7 @@ function check_card(card_id){
 			{
 				card_info['hero_version']['theme'] = {};
 			}
-			eachoa(card_info['hero_version']['subtypes'], function(subtype_key, subtype){
+			/*eachoa(card_info['hero_version']['subtypes'], function(subtype_key, subtype){
 				if(hero_subtype_themes[subtype] != undefined)
 				{
 					eachoa(hero_subtype_themes[subtype], function(new_subtype_key, new_subtype)
@@ -1753,7 +1920,7 @@ function check_card(card_id){
 			if(card_info['hero_version']['not_theme'] == undefined && card_info['hero_version']['power'] === false)
 			{
 				card_info['hero_version']['not_theme'] = ['empower_hero_ability'];
-			}
+			}*/
 			/*}*/
 		}
 

@@ -7,6 +7,7 @@ var ability_base_costs = {
 	fortify: 	2,
 	hasten: 	4,
 	healing: 	4,
+	poison: 	1,
 }
 
 var all_abilities = {
@@ -2051,6 +2052,7 @@ var all_abilities = {
 	cleanse:{
 		description: 	'Removes {LEVEL} negative effect(s) from a random ally unit or hero.',
 		cannot_proc_while_stunned: true,
+		do_not_pause_between: true,
 		proc_amount: 	'ability_level',
 		scales: 		true,
 		targets:	{
@@ -2763,7 +2765,6 @@ var all_abilities = {
 	curse:{
 		description: 	'Applies {LEVEL} curse to a random enemy unit or hero.{CURSE}',
 		cannot_proc_while_stunned: true,
-		scales: 		true,
 		hero_tactics: 	['projectile_ability','blast_ability'],
 		targets:	{
 			0:{
@@ -2801,7 +2802,6 @@ var all_abilities = {
 		description: 	'Applies {LEVEL} curse to all enemy units.{CURSE}',
 		do_not_pause_between: true,
 		cannot_proc_while_stunned: true,
-		scales: 		true,
 		hero_tactics: 	['projectile_ability','blast_ability'],
 		targets:	{
 			0:{
@@ -2864,7 +2864,6 @@ var all_abilities = {
 		name: 			'curse',
 		description: 	'Applies {LEVEL} curse to a random enemy unit.{CURSE}',
 		cannot_proc_while_stunned: true,
-		scales: 		true,
 		hero_tactics: 	['projectile_ability','blast_ability','curse_ability'],
 		targets:	{
 			0:{
@@ -2895,7 +2894,6 @@ var all_abilities = {
 		description: 	'Applies {LEVEL} curse to any enemy unit or hero that deals melee damage to it.{CURSE}',
 		proc: 			'receive_damage',
 		subtypes: 		['melee'],
-		scales: 		true,
 		proc_while_dead: true,
 		hero_tactics: 	['projectile_ability','blast_ability','heal_hero_ability','curse_ability'],
 		targets:	{
@@ -2919,7 +2917,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'curse',
 			base_cost_factor: 1,
-			base_cost_hero_factor: 2,
+			base_cost_hero_factor: 2.5,
 		}
 	},
 	cursed_deaths:{
@@ -2997,7 +2995,6 @@ var all_abilities = {
 	cursed_entry:{
 		description: 	'Applies {LEVEL} curse to all nearby enemy units when played. {CURSE}',
 		proc: 			'on_play',
-		scales: 		true,
 		do_not_pause_between: true,
 		targets:	{
 			0:{
@@ -3058,7 +3055,6 @@ var all_abilities = {
 		description: 	'Applies {LEVEL} curse to any unit or hero it deals damage to.{CURSE}',
 		proc: 			'dealt_damage',
 		proc_while_dead: true,
-		scales: 		true,
 		hero_tactics: 	['projectile_ability','blast_ability','curse_ability'],
 		targets:	{
 			0:{
@@ -3312,7 +3308,6 @@ var all_abilities = {
 		description: 	'When your hero receives damage, this applies {LEVEL} curse to a random enemy unit. {CURSE}',
 		proc: 			'ally_hero_damaged',
 		cannot_proc_while_stunned: true,
-		scales: 		true,
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -4358,7 +4353,7 @@ var all_abilities = {
 		level_cost_hero: 	2,
 	},
 	empower_ally:{
-		description: 	'A random ally creature that has power gains {LEVEL} temporary power. Cannot affect heroes or itself.',
+		description: 	'A random ally creature that has power gains {LEVEL} power. Cannot affect heroes or itself.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		hero_tactics: 	['melee_ability','empower_ally_ability','trample_ability'],
@@ -4377,19 +4372,19 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'power',
-				type: 			'grant_temp_power',
+				type: 			'increase_power',
 				subtypes: 		['empower_any','empower_ally'],
 				amount: 		'ability_level'
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_structure: 1.5,
-		level_cost_spell: 	0.5,
-		level_cost_hero: 	3,
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 3,
+		},
 	},
 	empower_all:{
-		description: 	'All ally creatures that have power gain {LEVEL} temporary power. Cannot affect heroes or itself.',
+		description: 	'All ally creatures that have power gain {LEVEL} power. Cannot affect heroes.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		do_not_pause_between: 	true,
@@ -4400,7 +4395,6 @@ var all_abilities = {
 				target_amount: 	5,
 				position: 		'random',
 				not_types: 		['object','structure'],
-				not_self: 		true,
 				min_hp: 		1,
 				min_power: 		0,
 				side: 			'ally'
@@ -4409,19 +4403,19 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'power',
-				type: 			'grant_temp_power',
+				type: 			'increase_power',
 				subtypes: 		['empower_any','empower_ally'],
 				amount: 		'ability_level'
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		6,
-		level_cost_structure: 4.5,
-		level_cost_spell: 	1.5,
-		level_cost_hero: 	9,
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 9,
+		},
 	},
 	empower_arrival:{
-		description: 	'The first ally creature unit that has power that enters the game gains {LEVEL} power permanently.',
+		description: 	'The first ally creature unit that has power that enters the game gains {LEVEL} power.',
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -5178,7 +5172,6 @@ var all_abilities = {
 		description: 	'When destroyed, applies {LEVEL} curse to a random enemy unit or hero.{CURSE}',
 		proc: 			'own_death',
 		proc_while_dead: true,
-		scales: 		true,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8328,8 +8321,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1.5,
-		level_cost_spell: 	0.375,
+		base_cost:{
+			base_cost_id: 'poison',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
 	},
 	poison_all:{
 		description: 	'Applies {LEVEL} poison to all enemy creatures. {POISON}',
@@ -8355,8 +8351,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_spell: 	1,
+		base_cost:{
+			base_cost_id: 'poison',
+			base_cost_factor: 3,
+			base_cost_spell_factor: 0.75,
+		},
 	},
 	poison_arrivals:{
 		description: 	'Applies {LEVEL} poison to any non-undead enemy creature unit that enters the game.',
@@ -8384,8 +8383,10 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	2.25,
-		level_cost_artifact: 4.5,
+		base_cost:{
+			base_cost_id: 'poison',
+			base_cost_factor: 2,
+		},
 	},
 	poison_aura:{
 		description: 	'Applies {LEVEL} poison to any enemy non-undead creature unit or hero that deals melee damage to it.{POISON}',
@@ -8413,7 +8414,10 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 	1,
+		base_cost:{
+			base_cost_id: 'poison',
+			base_cost_factor: 1,
+		},
 	},
 	poison_hv:{
 		name: 			'poison',
@@ -8439,8 +8443,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1.5,
-		level_cost_spell: 	0.75,
+		base_cost:{
+			base_cost_id: 'poison',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
 	},
 	poisonous_deaths:{
 		description: 	'Applies {LEVEL} poison to a random enemy non-undead creature unit or hero when any ally creature is destroyed.',
@@ -8475,8 +8482,10 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1,
-		level_cost_artifact: 2,
+		base_cost:{
+			base_cost_id: 'poison',
+			base_cost_factor: 1,
+		},
 	},
 	poisonous_deaths_hv:{
 		name: 			'poisonous deaths',
@@ -8504,8 +8513,10 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1,
-		level_cost_artifact: 2,
+		base_cost:{
+			base_cost_id: 'poison',
+			base_cost_factor: 1,
+		},
 	},
 	power_bolt:{
 		description: 	'Deals magical projectile damage equal to this units power to a random enemy unit. Will only target the enemy hero if there are no enemy units.',
@@ -8745,6 +8756,73 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	2,
 		level_cost_artifact: 4,
+	},
+	quicken_poison:{
+		description: 	'Deals {LEVEL} piercing damage to a random poisoned enemy unit or hero multiplied by the poison it suffers.',
+		cannot_proc_while_stunned: true,
+		ability_craft_subtypes:['poison'],
+		hero_tactics: 	['poison_ability'],
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				has_effect: 	{effect_name: 'poisoned', amount: 1, limit: 'min'},
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				has_effect: 	{effect_name: 'poisoned', amount: 1, limit: 'min'},
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'poison',
+				type: 			'damage',
+				subtypes: 		['ignores_armor','ignore_shields','quicken'],
+				amount: 		'target_poison',
+				amount_factor: 	'ability_level',
+			},
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		2,
+		level_cost_spell: 	0.5,
+		average_hits: 		1,
+	},
+	quicken_poison_hv:{
+		name: 			'quicken poison',
+		description: 	'Deals {LEVEL} piercing damage to a random poisoned enemy unit multiplied by the poison it suffers.',
+		cannot_proc_while_stunned: true,
+		ability_craft_subtypes:['poison'],
+		hero_tactics: 	['poison_ability'],
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				has_effect: 	{effect_name: 'poisoned', amount: 1, limit: 'min'},
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'poison',
+				type: 			'damage',
+				subtypes: 		['ignores_armor','ignore_shields','quicken'],
+				amount: 		'target_poison',
+				amount_factor: 	'ability_level',
+			},
+		},
+		animation: 	'combat_zoom',
+		level_cost: 		2,
+		level_cost_spell: 	0.5,
+		average_hits: 		1,
 	},
 	raging_deaths:{
 		description: 	'When an ally creature is detroyed, this gains {LEVEL} temporary power.',
@@ -12366,8 +12444,11 @@ var all_abilities = {
 				amount: 		'ability_level'
 			}
 		},
-		level_cost: 		0,
-		average_hit_cost: 	0.75,
+		base_cost:{
+			base_cost_id: 'poison',
+			base_cost_factor: 0,
+			base_hit_cost_factor: 0.5,
+		},
 	},
 	venomous_hero:{
 		description: 	'When your hero deals damage to a non-undead enemy creature, this will apply {LEVEL} poison to it.',
@@ -12393,7 +12474,10 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 		1,
+		base_cost:{
+			base_cost_id: 'poison',
+			base_cost_factor: 0.5,
+		},
 	},
 	victory_rush:{
 		description: 	'Gains {LEVEL} additional turn(s) when it destroys an enemy.',

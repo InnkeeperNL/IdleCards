@@ -5122,7 +5122,6 @@ function calculate_effect(effect, target_id, origin_id, level){
 			{
 				calculated_amount = 0;
 			}
-			
 		}
 
 		if(calculated_amount == 'target_poison')
