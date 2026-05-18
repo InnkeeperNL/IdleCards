@@ -24,6 +24,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{empower_all: 1, fortify_all: 1, minimum_allies: 3},
 		quote: '\"Ready for a fight!\"',
+		max_in_deck: 		2,
 		recipe:{
 			scroll: 	2,
 			shield: 	2,
@@ -139,6 +140,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{empower_arrival: 2},
 		quote: '\"For quick strikes.\"',
+		max_in_deck: 		2,
 		recipe:{
 			ore: 		2,
 			wood: 		2,
@@ -308,7 +310,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{heal: 1},
 		hero_version: 			{
-			theme: 				['subtype_villager'],
+			theme: 				['subtype_villager','type_creature'],
 			not_theme: 			['empower_hero_ability','type_structure'],
 			power: 				false,
 			armor: 				0,
@@ -363,6 +365,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{quicken_poison: 2, echo: 1},
 		quote: '\"Are you feeling okay?\"',
+		max_in_deck: 		2,
 		recipe:{
 			poison_gas: 	2,
 			scroll: 		2,
@@ -383,6 +386,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{poison_all: 5, minimum_enemies: 3},
 		quote: '\"What is that smell?\"',
+		max_in_deck: 		2,
 		recipe:{
 			herbalist: 	2,
 			scroll: 	2,
@@ -481,6 +485,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{draw: 2},
 		quote: '\"What shall we write?\"',
+		max_in_deck: 		1,
 		recipe:{
 			water:  	2,
 			wood: 		2,
@@ -501,6 +506,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{fortify_hero: 1},
 		quote: '\"A good way to protect your hero.\"',
+		max_in_deck: 		2,
 		recipe:{
 			ore: 		2,
 			wood: 		5,
@@ -549,6 +555,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{empower_hero: 1},
 		quote: '\"A weapon suited for a hero.\"',
+		max_in_deck: 		2,
 		recipe:{
 			dagger:  	2,
 			ore: 		2,
@@ -605,6 +612,7 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, pilfer: 1, evade: 1},
 		},
 		quote: '\"Where did my purse go?!\"',
+		max_in_deck: 		2,
 		recipe:{
 			dark_night: 	2,
 			rogue: 			2,
@@ -613,7 +621,7 @@ var all_available_cards = {
 	village_defender:{
 		name: 				'village defender',
 		type: 				'creature',
-		subtypes: 			['human','warrior'],
+		subtypes: 			['human','villager','warrior'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -626,7 +634,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{empowering_structures: 1, strike: 1},
 		hero_version: 			{
-			theme: 				['melee_ability','type_structure','subtype_warrior'],
+			theme: 				['type_structure','subtype_villager'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,

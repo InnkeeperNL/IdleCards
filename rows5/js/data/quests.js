@@ -1321,7 +1321,7 @@ var all_chained_achievements = {
 		steps: 			6,
 		no_quest: 		true,
 	},*/
-	summoner:{
+	/*summoner:{
 		name: 			'summoner',
 		description: 	'Defeat a summoned enemy {AMOUNT} time(s).',
 		objective: 		'battle_won_summoned',
@@ -1334,7 +1334,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'swordsman',
 		steps: 			6,
-	},
+	},*/
 	/*tactician:{
 		name: 			'tactician',
 		description: 	'Play {AMOUNT} tactic card(s).',

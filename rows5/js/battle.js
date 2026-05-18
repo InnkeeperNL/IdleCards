@@ -960,7 +960,7 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 		}
 	});
 	if(picked_card == false){
-		picked_card = get_random_card(type, max_time, color_restriction, second_color_restriction);
+		picked_card = get_random_card(type, max_time, color_restriction, second_color_restriction, 0, undefined, undefined, not_types, not_theme);
 	}
 	return picked_card;
 }

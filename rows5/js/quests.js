@@ -324,7 +324,7 @@ function check_new_quests(show_new_message){
 				}
 				else
 				{
-					chosen_reward_amount = Math.floor(chosen_reward_amount / all_available_cards[chosen_reward]['value'] / 1);
+					chosen_reward_amount = Math.floor(chosen_reward_amount / all_available_cards[chosen_reward]['value'] / 5);
 					if(chosen_reward_amount < 1){chosen_reward_amount = 1;}
 				}
 				gamedata['quests'][i] = {
