@@ -514,7 +514,7 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 
 	var hero_dropped = false;
 
-	if(chance_card_id != undefined && (all_available_cards['recipe_' + chance_card_id] != undefined) && (gamedata['known_recipes'] == undefined || gamedata['known_recipes'][chance_card_id] == undefined))
+	/*if(chance_card_id != undefined && (all_available_cards['recipe_' + chance_card_id] != undefined) && (gamedata['known_recipes'] == undefined || gamedata['known_recipes'][chance_card_id] == undefined))
 	{
 		//console.log(chance_card_id);
 		var recipe_drop_chance = (((effective_rarity * basic_to_pick) / card_drop_chance_reduction / recipe_drop_chance_reduction) / all_available_cards[chance_card_id]['value']);
@@ -550,7 +550,7 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 				if(show_drops != undefined && show_drops == true){show_drop('card_back_' + chance_card_id, 1);}
 			}
 		}
-	}
+	}*/
 
 	if(chance_card_id != undefined)
 	{
@@ -588,17 +588,17 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 		eachoa(all_available_cards, function(drop_card_id, drop_card_info){
 			if(drop_card_info['value'] <= hero_value /*&& (gamedata['known_recipes'] == undefined || gamedata['known_recipes'][drop_card_id] == undefined || drop_card_info['recipe'] == undefined)*/ /*&& drop_card_info['value'] >= hero_value / 4*/ && drop_card_info['pick_chance'] > 0 && (drop_card_info['type'] == 'spell' || drop_card_info['type'] == 'artifact' || ((drop_card_info['type'] == 'structure' || drop_card_info['type'] == 'creature') && drop_card_info['pick_chance'] > 0 && drop_card_info['hero_version'] == undefined)))
 			{
-				if(drop_card_info['recipe'] != undefined && (gamedata['known_recipes'] == undefined || gamedata['known_recipes'][drop_card_id] == undefined))
+				if(true /*drop_card_info['recipe'] != undefined && (gamedata['known_recipes'] == undefined || gamedata['known_recipes'][drop_card_id] == undefined)*/)
 				{
 					var current_card_drop_chance = 1;
 					if(gamedata['decks'][gamedata['current_deck']][drop_card_id] != undefined)
 					{
 						current_card_drop_chance = 1 + (gamedata['decks'][gamedata['current_deck']][drop_card_id] * get_upgrade_factor('used_non_unit_drop_chance', undefined, true));
 					}
-					possible_extra_drops['recipe_' + drop_card_id] = current_card_drop_chance;
+					//possible_extra_drops['recipe_' + drop_card_id] = current_card_drop_chance;
 					possible_extra_drops[drop_card_id] = current_card_drop_chance;
 				}
-				else
+				/*else
 				{
 					if(drop_card_info['recipe'] != undefined && achievement_card_backs['card_back_' + drop_card_id] == undefined && gamedata['owned_card_backs']['card_back_' + drop_card_id] == undefined)
 					{
@@ -609,7 +609,7 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 						}
 						possible_extra_drops['card_back_' + drop_card_id] = current_card_drop_chance;
 					}
-				}
+				}*/
 			}
 		});
 		if(count_object(possible_extra_drops) > 0)

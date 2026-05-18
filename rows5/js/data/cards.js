@@ -321,8 +321,7 @@ var all_available_cards = {
 		recipe:{
 			hammer:  	1,
 			peasant: 	1,
-			wall: 		1,
-			wood: 		4,
+			wall: 		4,
 		}
 	},
 	peasant:{

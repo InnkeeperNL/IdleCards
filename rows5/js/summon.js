@@ -128,7 +128,7 @@ function show_summon(just_summoned){
 			{
 				parsed_summon += 	'Power: ' + Math.floor(gamedata['current_summon']['level'] * 10) + '%<br/>';
 			}
-			parsed_summon += 	'Drop: ' + drop_chance + '%' + shown_recipe_drop_chance + '<br/>';
+			parsed_summon += 	'Drop: ' + drop_chance + '%' + /*shown_recipe_drop_chance +*/ '<br/>';
 			parsed_summon += 	'Tries: ' + gamedata['current_summon']['tries'] + '<br/>';
 			parsed_summon += 	'Reward: ' + nFormatter(gamedata['current_summon']['reward_count'],3) + '<br/>';
 			parsed_summon += 	'<br/>';
