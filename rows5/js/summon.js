@@ -287,6 +287,11 @@ function show_waves_battle(){
 	show_content('battle');
 }
 
+function get_reward_count_based_on_power(power, bonus){
+	if(bonus == undefined){bonus = get_upgrade_factor('summon_reward', 'any', true);}
+	return Math.ceil((base_battle_reward_count * bonus) * sqr(power));
+}
+
 function summon_now(use_current_altar_card){
 	var summon_stats = get_summon_stats();
 
@@ -310,7 +315,7 @@ function summon_now(use_current_altar_card){
 		tries: 		summon_stats['max_tries'],
 		level: 		found_level,
 		loot_rarity: summon_stats['loot_rarity'],
-		reward_count: round_by_percent((20 * summon_stats['reward_bonus']) * /*sqr*/(get_effective_power_factor(found_level)) * (1 + (found_level / 100))),
+		reward_count: get_reward_count_based_on_power(get_effective_power_factor(found_level)),
 	}
 	selected_pre_summon_buff = '';
 	selected_post_summon_buff = '';

@@ -1470,13 +1470,13 @@ function apply_power_factor(unit, side){
 
 function get_effective_power_factor(fixed_difficulty){
 	if(fixed_difficulty == undefined){fixed_difficulty = difficulty_setting;}
-	var effective_power_factor = sqr(0.5 + (fixed_difficulty / 20));
+	/*var effective_power_factor = sqr(0.5 + (fixed_difficulty / 20));
 	effective_power_factor = fixed_difficulty * 0.1;
 	if(difficulty_setting < 10)
 	{
 		effective_power_factor = fixed_difficulty / 10;
 	}
-	var effective_power_factor = (0.5 + (fixed_difficulty / 20));
+	var effective_power_factor = (0.5 + (fixed_difficulty / 20));*/
 	var effective_power_factor = (0 + (fixed_difficulty / 10));
 	return effective_power_factor
 }

@@ -132,7 +132,7 @@ function end_this_turn(){
 					    {
 					    	defeated_hero_id = battle_info.combat_units[1]['original_card_type'];
 					    }
-					    var reward_amount = round_by_percent((20 * get_upgrade_factor('summon_reward', 'any', true)) * /*sqr*/(get_effective_power_factor(difficulty_setting)) * (1 + (difficulty_setting / 100)));
+					    var reward_amount = get_reward_count_based_on_power(get_effective_power_factor(difficulty_setting));
 						var hero_dropped = add_basic_win_rewards(reward_amount, defeated_hero_id, true);
 						if(hero_dropped == true){total_timeout += 1000;}else{$('.unit_id_1').addClass('dead');}
 						check_quests('battle_won_number_wave',endless_wave_count);
@@ -163,7 +163,7 @@ function end_this_turn(){
 					    if(gamedata['summon_min_power'] == undefined){gamedata['summon_min_power'] = 1;}
 					    gamedata['summon_min_power'] += 1;
 
-					    var reward_amount = 20;
+					    var reward_amount = get_reward_count_based_on_power(get_effective_power_factor(difficulty_setting));
 						
 					    var defeated_hero_id = battle_info.combat_units[1]['card_type'];
 					    if(battle_info.combat_units[1]['original_card_type'] != undefined)

@@ -17,22 +17,24 @@ var all_upgrades = {
 		card_image: 	'death_warrant',
 		type: 			'summon_max_rarity',
 		subtypes:  		['any'],
-		level_cost_scale: 	8,
+		level_cost_scale: 	10,
 		amount: 		1,
 		amount_fixed: 	true,
 		cost: 			{scraps:2,},
 	},
 	aac_summon_drop_chance:{
 		name: 			'Drop chance',
-		description: 	'Increases the drop chance by 5% per level.',
+		description: 	'Increases the drop chance by 10% per level.',
 		needed_upgrades:{
 			aab_summon_rarity: 	2,
 		},
 		card_image: 	'clover',
 		type: 			'summon_loot_rarity',
 		subtypes:  		['any'],
+		amount: 		0.1,
 		level_cost_scale: 	1.1,
 		cost: 			{scraps:10,},
+		max_level: 		10,
 	},
 	aad_used_non_unit_drop_chance:{
 		name: 			'Aimed drops',
@@ -44,8 +46,9 @@ var all_upgrades = {
 		type: 			'used_non_unit_drop_chance',
 		subtypes:  		['any'],
 		amount: 		0.1,
-		level_cost_scale: 	1.05,
+		level_cost_scale: 	0.5,
 		cost: 			{scraps:25,},
+		max_level: 		10,
 	},
 	floating_chance:{
 		name: 			'Floating chance',
@@ -57,11 +60,11 @@ var all_upgrades = {
 		type: 			'floating_chance',
 		subtypes:  		['any'],
 		amount: 		0.025,
-		level_cost_scale: 	1.5,
+		level_cost_scale: 	1,
 		cost: 			{scraps:25,},
 		max_level: 		40,
 	},
-	floating_scraps:{
+	/*floating_scraps:{
 		name: 			'Floating scraps',
 		description: 	'Increases the scraps gained by 1 when picking up floating scraps during combat.',
 		needed_upgrades:{
@@ -74,7 +77,7 @@ var all_upgrades = {
 		level_cost_scale: 	1.1,
 		cost: 			{scraps:10,},
 		max_level: 		50,
-	},
+	},*/
 	game_speed:{
 		name: 			'Game speed',
 		description: 	'Increases the game speed by 5% when set to \'fast\' and by 10% when set to \'fastest\'.',
@@ -85,9 +88,9 @@ var all_upgrades = {
 		type: 			'max_game_speed',
 		subtypes:  		['any'],
 		amount: 		0.1,
-		level_cost_scale: 	1.5,
-		cost: 			{scraps:25,},
-		max_level: 		40,
+		level_cost_scale: 	2,
+		cost: 			{scraps:10,},
+		max_level: 		20,
 	},
 	summon_altar:{
 		name: 			'Altar',
@@ -95,7 +98,7 @@ var all_upgrades = {
 		needed_upgrades:{
 			aaa_rewards: 	5,
 		},
-		card_image: 	'skeletal_sacrifice',
+		card_image: 	'dark_tower',
 		type: 			'show_altar',
 		subtypes:  		['any'],
 		amount: 		100,
@@ -104,7 +107,7 @@ var all_upgrades = {
 		max_level: 		1,
 		//hide_if_maxed: 	true,
 	},
-	summon_altar_rarity:{
+	/*summon_altar_rarity:{
 		name: 			'Altar rarity',
 		description: 	'Increases the maximum rarity of cards sacrificed at the altar by 5%.',
 		needed_upgrades:{
@@ -117,8 +120,8 @@ var all_upgrades = {
 		amount: 		0.05,
 		cost: 			{scraps:25,},
 		max_level: 		50,
-	},
-	summon_buffs:{
+	},*/
+	/*summon_buffs:{
 		name: 			'Summon buffs',
 		description: 	'Increases the number of buffs you can use when summoning an enemy.',
 		needed_upgrades:{
@@ -132,14 +135,14 @@ var all_upgrades = {
 		level_cost_scale: 	1.1,
 		cost: 			{wheelbarrow:25,},
 		max_level: 		4,
-	},
+	},*/
 	summon_common_reduction:{
 		name: 			'Common reduction',
 		description: 	'Reduces the chance of summoning known heroes by 1%.',
 		needed_upgrades:{
 			summon_tries: 	4,
 		},
-		card_image: 	'mana_bulb',
+		card_image: 	'peasant',
 		type: 			'common_reduction',
 		subtypes:  		['any'],
 		level_cost_scale: 	1.5,
@@ -153,7 +156,7 @@ var all_upgrades = {
 		needed_upgrades:{
 			aaa_rewards: 	4,
 		},
-		card_image: 	'archer',
+		card_image: 	'scroll',
 		type: 			'summon_tries',
 		subtypes:  		['any'],
 		amount: 		1,
@@ -165,7 +168,7 @@ var all_upgrades = {
 	},
 	merchant_offers:{
 		name: 			'Merchant offers',
-		description: 	'Reduces the maximum scraps requested by merchants offering cards by 5%.<br>Only affects new offers.',
+		description: 	'Reduces the maximum scraps requested by merchants offering cards by 25%.<br>Only affects new offers.',
 		needed_upgrades:{
 			z_a_town_access: 1,
 			aab_summon_rarity: 	10,
@@ -173,14 +176,14 @@ var all_upgrades = {
 		card_image: 	'pirate',
 		type: 			'merchant_sell',
 		subtypes:  		['any'],
-		amount: 		0.05,
-		level_cost_scale: 	2,
+		amount: 		0.25,
+		level_cost_scale: 	1,
 		cost: 			{scraps:10,},
-		max_level: 		50,
+		max_level: 		10,
 	},
 	merchant_sales:{
 		name: 			'Merchant sales',
-		description: 	'Increases the maximum scraps offered by merchants who want to buy cards by 5%.<br>Only affects new offers.',
+		description: 	'Increases the maximum scraps offered by merchants who want to buy cards by 25%.<br>Only affects new offers.',
 		needed_upgrades:{
 			z_a_town_access: 1,
 			aab_summon_rarity: 	10,
@@ -188,12 +191,12 @@ var all_upgrades = {
 		card_image: 	'mercenary',
 		type: 			'merchant_buy',
 		subtypes:  		['any'],
-		amount: 		0.05,
-		level_cost_scale: 	2,
+		amount: 		0.25,
+		level_cost_scale: 	1,
 		cost: 			{scraps:10,},
-		max_level: 		50,
+		max_level: 		10,
 	},
-	peasants_gained:{
+	/*peasants_gained:{
 		name: 			'Peasants gained',
 		description: 	'Increases the number of peasants gained by 5%.',
 		needed_upgrades:{
@@ -207,7 +210,7 @@ var all_upgrades = {
 		level_cost_scale: 	1.1,
 		cost: 			{scraps:10,},
 		max_level: 		20,
-	},
+	},*/
 	quest_amount:{
 		name: 			'Quest difficulty',
 		description: 	'Increases the difficulty and rewards of quests by 100%. This may unlock new possible rewards.',
@@ -218,9 +221,9 @@ var all_upgrades = {
 		type: 			'quest_amount',
 		subtypes:  		['any'],
 		amount: 		1,
-		level_cost_scale: 	1.5,
+		level_cost_scale: 	1,
 		cost: 			{scraps:10,},
-		max_level: 		50,
+		max_level: 		10,
 	},
 	/*wave_access:{
 		name: 			'Waves',
@@ -269,7 +272,7 @@ var all_upgrades = {
 	},*/
 	z_a_town_access:{
 		name: 			'Town',
-		description: 	'Unlocks the town hall. This produces peasants and trades creatures.',
+		description: 	'Unlocks the town hall. This produces peasants and trades materials.',
 		needed_upgrades:{
 			aab_summon_rarity: 	10,
 		},
@@ -300,12 +303,12 @@ var all_upgrades = {
 	},*/
 	z_b_bank_access:{
 		name: 			'Banking',
-		description: 	'Unlocks the bank. This produces scraps and stashes. Also trades structures.',
+		description: 	'Unlocks the bank. This produces scraps and stashes.',
 		needed_upgrades:{
 			z_a_town_access: 1,
 			wave_access: 1,
 		},
-		card_image: 	'bank',
+		card_image: 	'house',
 		type: 			'bank_access',
 		subtypes:  		['any'],
 		amount: 		100,
@@ -316,11 +319,11 @@ var all_upgrades = {
 	},
 	z_c_alchemist_access:{
 		name: 			'Alchemist',
-		description: 	'Unlocks the alchemist lab. This produces flasks, lets you brew potions for permanent bonusses and trades spells.',
+		description: 	'Unlocks the alchemist lab. This lets you brew potions for permanent bonusses.',
 		needed_upgrades:{
 			z_b_bank_access: 1,
 		},
-		card_image: 	'alchemy_lab',
+		card_image: 	'herbalist',
 		type: 			'alchemist_access',
 		subtypes:  		['any'],
 		amount: 		100,
@@ -739,14 +742,14 @@ $.each(all_upgrades, function(upgrade_id, upgrade_info){
 	{
 		upgrade_info['cost'] = {shard: 1};
 	}
-	if(upgrade_info['level_cost_scale'] != undefined)
+/*	if(upgrade_info['level_cost_scale'] != undefined)
 	{
 		if(upgrade_info['upgrade_type'] == 'potion')
 		{
 			upgrade_info['level_cost_scale'] /= 5;
 		}
 		upgrade_info['level_cost_scale'] /= 2;
-	}
+	}*/
 });
 
 all_upgrades = sortObj(all_upgrades);

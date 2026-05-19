@@ -102,7 +102,7 @@ var all_buildings = {
 				},
 				//production_achievement_bonus: 0.1,
 			},
-			/*stash:{
+			stash:{
 				base_time: 		16 * 2 * 24 * 3600,
 				base_storage: 	1 * 1.25,
 				upgrade_cost_speed:{
@@ -113,8 +113,8 @@ var all_buildings = {
 				},
 				defeated_heroes_speed_bonusses:{
 				},
-				production_achievement_bonus: 0.05,
-			},*/
+				//production_achievement_bonus: 0.05,
+			},
 		},
 		/*recipes:{
 			stash:{
@@ -190,7 +190,7 @@ var all_buildings = {
 				},
 				defeated_heroes_speed_bonusses:{
 				},
-				production_achievement_bonus: 0.05,
+				//production_achievement_bonus: 0.05,
 			},
 		},
 		/*recipes:{
