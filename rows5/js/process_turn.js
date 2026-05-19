@@ -122,6 +122,24 @@ function end_this_turn(){
 				}
 				check_quests('battle_won_any_health_left_' + battle_info.combat_units[2]['current_health']);
 				$('.unit_type_artifact.side_1').addClass('dead');
+				if(current_battle_type != 'test_deck' && current_battle_type != 'chapter_battle' && gamedata['current_faction'] != undefined)
+				{
+					var gained_rep = base_rep_reward;
+					if(fixed_hero != undefined)
+					{
+						gained_rep = difficulty_setting;
+					}
+					if(all_factions[gamedata['current_faction']] != undefined)
+					{
+						timeout_key ++;
+
+						all_timeouts[timeout_key] = setTimeout(function(){
+							gain_current_rep(gained_rep);
+						},total_timeout + 1000);
+					}
+					var current_reputation = gamedata['factions'][gamedata['current_faction']]['reputation'];
+					gamedata['factions'][gamedata['current_faction']]['level'] = calculate_faction_level(current_reputation);
+				}
 				if(current_battle_type == 'summoned')
 				{
 					$('.turn_pointer').addClass('hidden');
