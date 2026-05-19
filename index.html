@@ -9,15 +9,9 @@
 	<script src="js/lib/jquery.js"></script>
 	<script src="js/functions/general.js?v=12346"></script>
 	<script src="js/data/config.js?v=12346"></script>
-	<!-- <script src="js/data/ability_parts.js?v=12346"></script>
-	<script src="js/data/abilities_old.js?v=12346"></script> -->
 	<script src="js/data/abilities.js?v=12346"></script>
-	<script src="js/data/cards_old2a.js?v=12346"></script>
-	<script src="js/data/cards_old2.js?v=12346"></script>
-	<script src="js/data/cards_old.js?v=12346"></script>
 	<script src="js/data/cards.js?v=12346"></script>
 	
-	<!-- <script src="js/data/ca.js?v=12346"></script> -->
 	<script src="js/data/quests.js?v=12346"></script>
 	
 	<script src="js/data/campaigns.js?v=12346"></script>
@@ -58,7 +52,6 @@
 
 	<script src="js/process_turn.js?v=12346"></script>
 	<script src="js/battle.js?v=12346"></script>
-	<!-- <script src="js/all_scripts.js?v=12346"></script> -->
 	<link rel="stylesheet" type="text/css" href="css/deck_edit.css?v=12346">
 	<link rel="stylesheet" type="text/css" href="css/intro.css?v=12346">
 	<link rel="stylesheet" type="text/css" href="css/merchant.css?v=12346">
@@ -110,10 +103,10 @@
 					<span>SUMMON</span>
 				</button>
 
-				<button class="menu_button third waves_button" data-target-content="waves">
+				<!-- <button class="menu_button third waves_button" data-target-content="waves">
 					<div class="bg"></div>
 					<span>WAVES</span>
-				</button>
+				</button> -->
 
 				<button class="menu_button third town_button" data-target-content="town">
 					<div class="bg"></div>
@@ -172,12 +165,13 @@
 				<div class="menu_button  third rewards_button" data-target-content="quests">QUESTS<div class="quests_page_button"></div></div>
 				<div class="menu_button  third rewards_button" data-target-content="achievements">ACHIEVEMENTS<div class="achievements_page_button"></div></div>
 				<div class="menu_button  third rewards_button" data-target-content="inventory">INVENTORY</div>
+				<div class="menu_button  third rewards_button" data-target-content="factions">FACTIONS</div>
 				<div class="menu_button  third rewards_button" data-target-content="card_backs">CARD BACKS</div>
 				<!-- <div class="menu_button  third rewards_button" data-target-content="scrap_shop">SHOP</div> -->
 				<!-- <div class="menu_button  third rewards_button" data-target-content="scrap">SCRAP</div> -->
 				<div class="menu_button  third rewards_button" data-target-content="collection">COLLECTION</div>
 				<!-- <div class="menu_button  third rewards_button" data-target-content="card_creation">CREATE</div> -->
-				<!-- <div class="menu_button  third rewards_button" data-target-content="factions">FACTIONS</div> -->
+				
 			</div>
 		</div>
 		<div id="content_summon" class="page_container">
@@ -354,7 +348,7 @@
 			<div class="building_bg"></div>
 			<div class="home_section">
 				<div class="menu_button slim" data-target-content="town">BACK</div>
-				<div class="menu_button slim upgrade_building_button" data-target-content="upgrade_building">UPGRADE</div>
+				<!-- <div class="menu_button slim upgrade_building_button" data-target-content="upgrade_building">UPGRADE</div> -->
 				<!-- <div class="menu_button slim" data-target-content="delete_building">DESTROY</div> -->
 				<h2></h2>
 			</div>
@@ -873,8 +867,8 @@
 					<div class="types5">
 						<!-- <input type="checkbox" checked class="fragment_type_filter filter_checkbox"></input> <i onclick="togglecheckbox('fragment_type_filter')">Fragments</i><br/> -->
 						<input type="checkbox" checked class="consumable_type_filter filter_checkbox"></input> <i onclick="togglecheckbox('consumable_type_filter')">Consumables</i><br/>
-						<input type="checkbox" checked class="token_type_filter filter_checkbox"></input> <i onclick="togglecheckbox('token_type_filter')">Tokens</i><br/>
-						<!-- <input type="checkbox" checked class="material_type_filter filter_checkbox"></input> <i onclick="togglecheckbox('material_type_filter')">Materials</i><br/> -->
+						<!-- <input type="checkbox" checked class="token_type_filter filter_checkbox"></input> <i onclick="togglecheckbox('token_type_filter')">Tokens</i><br/> -->
+						<input type="checkbox" checked class="material_type_filter filter_checkbox"></input> <i onclick="togglecheckbox('material_type_filter')">Materials</i><br/>
 						<input type="checkbox" checked class="treasure_type_filter filter_checkbox"></input> <i onclick="togglecheckbox('treasure_type_filter')">Treasure</i><br/>
 						<!-- <input type="checkbox" checked class="cardback_type_filter filter_checkbox"></input> <i onclick="togglecheckbox('cardback_type_filter')">Cardbacks</i><br/> -->
 						<input type="checkbox" checked class="currency_type_filter filter_checkbox"></input> <i onclick="togglecheckbox('currency_type_filter')">Currency</i><br/>
@@ -970,7 +964,7 @@
 			check_all_cards();
 			$('.detail_overlay .card_detail').html('<div class="big_text">Generating recipes...<br/><span class="recipe_generation_progress"></span></div>');
 			setTimeout(function(){	
-				generate_all_recipes();
+				//generate_all_recipes();
 				setTimeout(function(){
 					$('.detail_overlay').addClass('hidden');
 					$('.detail_overlay').removeClass('non_clickable');
