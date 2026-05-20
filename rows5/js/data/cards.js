@@ -265,7 +265,7 @@ var all_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, poison_hv: 2, cleanse: 2},
+			abilities: 			{strike_unit: 1, poison_hv: 1, cleanse: 1},
 		},
 		quote: '\"There are so many uses for those plants.\"',
 		recipe:{

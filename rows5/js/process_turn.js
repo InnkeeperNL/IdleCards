@@ -895,12 +895,12 @@ function reset_temp_skills(side){
 
 function reset_temp_health(side){
 	eachoa(battle_info.combat_units, function(unit_id, current_unit){
-		if(combat_alive == true && current_unit['side'] == side && current_unit['armor'] != undefined && current_unit['armor'] != 0)
+		/*if(combat_alive == true && current_unit['side'] == side && current_unit['armor'] != undefined && current_unit['armor'] != 0)
 		{
 			total_timeout += 500 * battle_speed;
 			current_unit['armor'] = 0;
 			check_unit_hp(unit_id);
-		}
+		}*/
 		if(combat_alive == true && current_unit['side'] == side && current_unit['temp_health'] != undefined && current_unit['temp_health'] != 0)
 		{
 			total_timeout += 500 * battle_speed;
@@ -1041,11 +1041,12 @@ function process_passive_effect(unit_id, effect, amount){
 		var temp_burn_reduction = Math.ceil(battle_info.combat_units[unit_id]['effects']['burning'] / 2);
 		//receive_damage(unit_id, undefined, amount, ['fire','burning']);
 		create_projectile(unit_id, unit_id, 'burn', false, undefined, battle_info.combat_units[unit_id]['side'], undefined, undefined, undefined, true);
-		receive_damage(unit_id, undefined, temp_burn_reduction, ['fire','burning']);
+		//receive_damage(unit_id, undefined, temp_burn_reduction, ['fire','burning']);
+		receive_damage(unit_id, undefined, amount, ['fire','burning']);
 		if(battle_info.combat_units[unit_id] != undefined)
 		{
-			battle_info.combat_units[unit_id]['effects']['burning'] -= temp_burn_reduction;
-			//if(battle_info.combat_units[unit_id]['effects']['burning'] > 0){battle_info.combat_units[unit_id]['effects']['burning'] -= 1;}
+			//battle_info.combat_units[unit_id]['effects']['burning'] -= temp_burn_reduction;
+			if(battle_info.combat_units[unit_id]['effects']['burning'] > 0){battle_info.combat_units[unit_id]['effects']['burning'] -= 1;}
 			//battle_info.combat_units[unit_id]['effects']['burning'] = 0;
 			update_passive_effects(unit_id);
 			check_unit_alive(unit_id);
@@ -1056,14 +1057,15 @@ function process_passive_effect(unit_id, effect, amount){
 	{
 
 		create_projectile(unit_id, unit_id, 'poison', false, undefined, battle_info.combat_units[unit_id]['side'], undefined, undefined, undefined, true);
-		receive_damage(unit_id, undefined, Math.ceil(amount / 2), ['poisoned','ignores_armor']);
+		receive_damage(unit_id, undefined, amount, ['poisoned','ignores_armor']);
+		//receive_damage(unit_id, undefined, Math.ceil(amount / 2), ['poisoned','ignores_armor']);
 		//receive_damage(unit_id, undefined, 1, ['poisoned','ignores_armor']);
 		//battle_info.combat_units[unit_id]['effects']['poisoned'] -= 1;
 		//if(battle_info.combat_units[unit_id]['effects']['poisoned'] > 0){battle_info.combat_units[unit_id]['effects']['poisoned'] -= 1;}
 		if(battle_info.combat_units[unit_id] != undefined)
 		{
-			battle_info.combat_units[unit_id]['effects']['poisoned'] = Math.floor(battle_info.combat_units[unit_id]['effects']['poisoned']/ 2);
-			//if(battle_info.combat_units[unit_id]['effects']['poisoned'] > 0){battle_info.combat_units[unit_id]['effects']['poisoned'] -= 1;}
+			//battle_info.combat_units[unit_id]['effects']['poisoned'] = Math.floor(battle_info.combat_units[unit_id]['effects']['poisoned']/ 2);
+			if(battle_info.combat_units[unit_id]['effects']['poisoned'] > 0){battle_info.combat_units[unit_id]['effects']['poisoned'] -= 1;}
 			//battle_info.combat_units[unit_id]['effects']['poisoned'] = 0;
 			update_passive_effects(unit_id);
 			check_unit_alive(unit_id);
