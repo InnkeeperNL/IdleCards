@@ -9,6 +9,35 @@ Combiner:{
 
 var all_available_cards = {
 
+	archer:{
+		name: 				'archer',
+		type: 				'creature',
+		subtypes: 			['human','warrior'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/archer.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{shoot: 1},
+		hero_version: 			{
+			theme: 				['projectile_ability','subtype_warrior'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{shoot_unit: 1},
+		},
+		quote: '\"Keep your distance.\"',
+		recipe:{
+			herbs: 			2,
+			rogue: 			2,
+			wood: 			2,
+		}
+	},
 	armaments:{
 		name: 				'armaments',
 		type: 				'spell',
@@ -389,6 +418,34 @@ var all_available_cards = {
 		recipe:{
 			herbalist: 	2,
 			scroll: 	2,
+		}
+	},
+	rat:{
+		name: 				'rat',
+		type: 				'creature',
+		subtypes: 			['animal','rat'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/rat.jpg',
+		image_position: 	'top right',
+		power: 				1,
+		armor: 				0,
+		health: 			1,
+		abilities: 			{strike: 1, venom: 2, evade: 1},
+		hero_version: 			{
+			theme: 				['poison_ability','subtype_rat'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, venom: 2, evade: 1},
+		},
+		quote: '\"They carry disease.\"',
+		recipe:{
+			seeds: 			2,
+			stone: 			2,
 		}
 	},
 	rogue:{

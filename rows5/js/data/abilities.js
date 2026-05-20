@@ -8935,6 +8935,36 @@ var all_abilities = {
 		//level_cost_spell: 	2.5,
 		level_cost_hero: 	3.5,
 	},
+	rat_power:{
+		description: 	'Gains {LEVEL} temporary power for each ally rat.',
+		cannot_proc_while_stunned: true,
+		proc: 			'basic',
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'ally_subtype_count',
+				subtype_to_count: 'rat',
+				amount_factor: 	'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 1,
+		},
+	},
 	reap:{
 		description: 	'Destroys an enemy creature with {LEVEL} or less health.',
 		cannot_proc_while_stunned: true,
