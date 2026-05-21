@@ -434,18 +434,18 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, venom: 2, evade: 1},
+		abilities: 			{rat_power: 1, strike: 1, evade: 1},
 		hero_version: 			{
-			theme: 				['poison_ability','subtype_rat'],
+			theme: 				['melee_ability','evade_ability','subtype_rat'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, venom: 2, evade: 1},
+			abilities: 			{rat_power: 1, strike_unit: 1, evade: 1},
 		},
-		quote: '\"They carry disease.\"',
+		quote: '\"Dangerous in large numbers.\"',
 		recipe:{
-			seeds: 			2,
 			stone: 			2,
+			water: 			2,
 		}
 	},
 	rogue:{

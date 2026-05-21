@@ -8939,7 +8939,8 @@ var all_abilities = {
 		description: 	'Gains {LEVEL} temporary power for each ally rat.',
 		cannot_proc_while_stunned: true,
 		proc: 			'basic',
-		targets:	{
+		min_effect: 	1,
+		targets:{
 			0:{
 				target: 		'unit_or_hero',
 				target_amount: 	1,
@@ -8954,8 +8955,21 @@ var all_abilities = {
 				projectile: 	'power',
 				type: 			'grant_temp_power',
 				subtypes: 		['empower_any','empower_ally'],
-				amount: 		'ally_subtype_count',
-				subtype_to_count: 'rat',
+				amount: 		'target_count',
+				targets_to_count:{
+					targets:{
+						0:{
+							target: 		'unit_or_hero',
+							target_amount: 	100,
+							position: 		'random',
+							subtypes: 		['rat'],
+							not_self: 		true,
+							min_hp: 		1,
+							side: 			'ally'
+						}
+					},
+					effects:{},
+				},
 				amount_factor: 	'ability_level',
 			},
 		},

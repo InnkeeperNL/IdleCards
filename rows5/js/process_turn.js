@@ -1157,6 +1157,15 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 			ability_can_fire = false;
 		}
 
+		if(current_ability['min_effect'] != undefined)
+		{
+			var tested_ability_effect = calculate_effect(current_ability['effects'][0], unit_id, unit_id, level);
+			if(tested_ability_effect < current_ability['min_effect'])
+			{
+				ability_can_fire = false;
+			}
+		}
+
 		if(current_ability['need_power'] != undefined && current_ability['need_power'] == true)
 		{
 			var current_power = calculate_effect({amount:'origin_power'}, undefined, unit_id, undefined);
@@ -4966,6 +4975,11 @@ function calculate_effect(effect, target_id, origin_id, level){
 			{
 				calculated_amount = count_ally_units(1, 'structure');
 			}
+		}
+
+		if(calculated_amount == 'target_count' && effect['targets_to_count'] != undefined)
+		{
+			calculated_amount = count_object(find_targets(origin_id, effect['targets_to_count']['targets'][0], origin_id, level, effect['targets_to_count']));
 		}
 
 		if(calculated_amount == 'ally_deck_card_count')
