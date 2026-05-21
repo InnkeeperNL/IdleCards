@@ -2080,6 +2080,37 @@ var all_abilities = {
 			base_cost_spell_factor: 0.2,
 		},
 	},
+	cleanse_all:{
+		description: 	'Removes {LEVEL} negative effect(s) from all ally units and your hero.',
+		cannot_proc_while_stunned: true,
+		do_not_pause_between: true,
+		proc_amount: 	1,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	6,
+				position: 		'random',
+				has_negative_effect: true,
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'cleanse',
+				type: 			'reduce_negative_effects',
+				subtypes: 		['cleansing','cleanse_ally'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'cleanse',
+			base_cost_factor: 3,
+			base_cost_spell_factor: 0.6,
+		},
+	},
 	clone_ally:{
 		ability_subtypes: ['summon_ally','summon_creature'],
 		description: 	'Creates a clone of a random ally creature {LEVEL} time(s).',

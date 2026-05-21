@@ -298,8 +298,8 @@ var all_available_cards = {
 		},
 		quote: '\"There are so many uses for those plants.\"',
 		recipe:{
-			herbs: 		2,
-			peasant: 	2,
+			herbs: 			2,
+			water_carrier: 	2,
 		}
 	},
 	herbs:{
@@ -727,6 +727,62 @@ var all_available_cards = {
 		quote: '\"Basic defense.\"',
 		recipe:{
 			stone: 		2,
+		}
+	},
+	water_carrier:{
+		name: 				'water carrier',
+		type: 				'creature',
+		subtypes: 			['human','villager'],
+		color: 				['colorless'],
+		theme: 				['type_structure'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/water_carrier.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, cleanse: 1},
+		hero_version: 			{
+			theme: 				['subtype_villager'],
+			power: 				3,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, cleanse: 1},
+		},
+		quote: '\"Anyone want some water?\"',
+		recipe:{
+			peasant: 	2,
+			well: 		2,
+		}
+	},
+	well:{
+		name: 				'well',
+		type: 				'structure',
+		subtypes: 			['wall'],
+		color: 				['colorless'],
+		theme: 				['type_structure'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/well.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{cleanse_all: 2},
+		hero_version: 			{
+			theme: 				['cleanse_ally_ability'],
+			not_theme: 			['empower_hero_ability'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{cleanse_all: 5},
+		},
+		quote: '\"Refreshing, isn\'t it?\"',
+		recipe:{
+			wall: 		2,
+			water: 		2,
 		}
 	},
 	witch:{
