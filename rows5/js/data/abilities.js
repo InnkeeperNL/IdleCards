@@ -12095,6 +12095,63 @@ var all_abilities = {
 		level_cost_hero: 1,
 		cost_factor: 	'none',
 	},
+	trapping_hero:{
+		description: 	'When an enemy unit deals melee damage to your hero, this has a 25% chance to stun that unit for {LEVEL} round(s).',
+		proc: 			'ally_hero_damaged',
+		subtypes: 		['melee'],
+		ability_subtypes: ['receive_damage_proc'],
+		proc_chance:    25,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		0,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'stun',
+				type: 		'apply_stun',
+				subtypes: 	['stun'],
+				amount: 	'ability_level'
+			}
+		},
+		level_cost: 	2,
+		level_cost_hero: 1,
+		level_cost_artifact: 5,
+	},
+	burning_hero:{
+		description: 	'When an enemy unit deals melee damage to your hero, this applies {LEVEL} burn to it.',
+		proc: 			'ally_hero_damaged',
+		subtypes: 		['melee'],
+		ability_subtypes: ['receive_damage_proc'],
+		//proc_chance: 	50,
+		scales: 		true,
+		cannot_proc_while_stunned: true,
+		hero_tactics: 	['burn_ability','conflagrate_ability','own_death_proc_ability'],
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'burn',
+				type: 		'apply_burn',
+				subtypes: 	['burn','buff_hero'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+	},
 	triumphant_haste:{
 		description: 	'When this deals damage to the enemy hero, it reduces the time left of a card in your hand by {LEVEL}.',
 		proc: 			'dealt_damage_to_hero',

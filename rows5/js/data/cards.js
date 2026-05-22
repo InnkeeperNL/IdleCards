@@ -33,9 +33,8 @@ var all_available_cards = {
 		},
 		quote: '\"Keep your distance.\"',
 		recipe:{
-			herbs: 			2,
 			rogue: 			2,
-			wood: 			2,
+			twine: 			2,
 		}
 	},
 	armaments:{
@@ -172,7 +171,7 @@ var all_available_cards = {
 		max_in_deck: 		2,
 		recipe:{
 			ore: 		2,
-			wood: 		2,
+			stone: 		2,
 		}
 	},
 	dark_night:{
@@ -674,6 +673,28 @@ var all_available_cards = {
 			rogue: 			2,
 		}
 	},
+	twine:{
+		name: 				'twine',
+		type: 				'artifact',
+		subtypes: 			['tool'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/twine.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{trapping_hero: 1},
+		quote: '\"You can really get caught in that.\"',
+		max_in_deck: 		2,
+		recipe:{
+			seeds: 		2,
+			stone: 		2,
+		}
+	},
 	village_defender:{
 		name: 				'village defender',
 		type: 				'creature',
@@ -781,8 +802,8 @@ var all_available_cards = {
 		},
 		quote: '\"Refreshing, isn\'t it?\"',
 		recipe:{
-			wall: 		2,
-			water: 		2,
+			wall: 			2,
+			water: 			2,
 		}
 	},
 	witch:{
@@ -3166,4 +3187,53 @@ function get_card_image_filename(card_id){
 		current_card_image = current_card_image[last_key];
 	}
 	return current_card_image;
+}
+
+function get_base_material_needs_recipes(){
+	var base_materials = {};
+	var base_recipes = {};
+	var needed_recipes = {};
+	eachoa(all_available_cards, function(card_id, card_info){
+		if(card_info['type'] == 'material'/* || card_id == 'peasant'*/)
+		{
+			base_materials[card_id] = true;
+		}
+	});
+	eachoa(base_materials, function(material_id_1, useless_info_1){
+		eachoa(base_materials, function(material_id_2, useless_info_2){
+			var recipe_found = false;
+			if(material_id_1 != material_id_2)
+			{
+				eachoa(all_available_cards, function(possible_recipe_id, possible_recipe_info){
+					if(possible_recipe_info['recipe'] != undefined)
+					{
+						if(count_object(possible_recipe_info['recipe']) == 2 && possible_recipe_info['recipe'][material_id_1] != undefined && possible_recipe_info['recipe'][material_id_2] != undefined)
+						{
+							recipe_found = true;
+							base_recipes[possible_recipe_id] = true_copyobject(possible_recipe_info['recipe']);
+						}
+					}
+				});
+			
+				if(recipe_found == false)
+				{
+					var allready_needed = false;
+					eachoa(needed_recipes, function(needed_id, needed_info){
+						if(needed_info[material_id_1] != undefined && needed_info[material_id_2] != undefined){
+							allready_needed = true;
+						}
+					});
+					if(allready_needed == false)
+					{
+						var new_needed_recipes_key = get_highest_key_in_object(needed_recipes) + 1;
+						needed_recipes[new_needed_recipes_key] = {};
+						needed_recipes[new_needed_recipes_key][material_id_1] = true;
+						needed_recipes[new_needed_recipes_key][material_id_2] = true;
+					}
+				}
+			}
+		});
+	});
+	console.log(base_recipes);
+	console.log(needed_recipes);
 }
