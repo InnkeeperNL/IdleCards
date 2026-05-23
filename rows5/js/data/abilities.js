@@ -1,13 +1,15 @@
 var ability_base_costs = {
 	burn: 		2,
-	cleanse: 	0.4,
+	cleanse: 	1,
 	curse: 		1,
+	destroy: 	8,
 	draw: 		6,
 	empower: 	2,
 	fortify: 	2,
 	hasten: 	4,
 	healing: 	4,
 	poison: 	2,
+	stun: 		4,
 }
 
 var all_abilities = {
@@ -1052,23 +1054,16 @@ var all_abilities = {
 		level_cost: 	4,
 	},
 	break:{
-		description: 	'Destroys up to a total of {LEVEL} enemy artifact(s) or golem(s).',
+		description: 	'Destroys up to a total of {LEVEL} enemy artifact(s) or structure(s).',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use: 'break',
 		hero_tactics: 	['break_ability'],
 		targets:	{
 			0:{
-				target: 	'unit',
+				target: 	'any',
 				target_amount: 5,
-				subtypes: 	['golem'],
-				position: 	'random',
-				side: 		'enemy'
-			},
-			1:{
-				add_targets: true,
-				target: 	'artifact',
-				target_amount: 1,
+				not_types: 	['creature','spell','hero'],
 				position: 	'random',
 				side: 		'enemy'
 			},
@@ -1082,9 +1077,10 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	4,
-		level_cost_hero: 2,
-		level_cost_artifact: 2,
+		base_cost:{
+			base_cost_id: 'destroy',
+			base_cost_factor: 0.75,
+		},
 	},
 	bring_animal:{
 		description: 	'Summons an animal creature unit. Can be used {LEVEL} time(s).',
@@ -3193,6 +3189,35 @@ var all_abilities = {
 		level_cost_spell: 	2,
 		average_hits: 		1,
 	},
+	deadly_trap:{
+		description: 	'When any enemy unit deals melee damage to this, that enemy unit is destroyed.',
+		proc: 			'receive_damage',
+		subtypes: 		['melee'],
+		ability_subtypes: ['receive_damage_proc'],
+		proc_while_dead: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'spikes',
+				type: 			'destroy',
+				subtypes: 		['destroy_enemy'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'red_glow',
+		level_cost: 		4,
+		cost_factor: 		'health',
+	},
 	debilitate:{
 		description: 	'A random enemy creature looses {LEVEL} power and health permanently.',
 		cannot_proc_while_stunned: true,
@@ -3591,8 +3616,8 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	-1,
-		cost_adjustment: 11,
+		level_cost: 	-0.25,
+		cost_adjustment: 3.5,
 	},
 	destroy_structure:{
 		description: 	'Destroys {LEVEL} random enemy structure unit(s).',
@@ -3673,7 +3698,6 @@ var all_abilities = {
 		level_cost: 	-3,
 		average_hits: 	'ability_level',
 	},
-	
 	discard:{
 		description: 	'Discards up to {LEVEL} card(s) from your hand to the grave.',
 		cannot_proc_while_stunned: true,
@@ -4049,7 +4073,7 @@ var all_abilities = {
 		level_cost: 		0.5,
 	},
 	draw:{
-		description: 	'Draws up to a total of {LEVEL} card(s).',
+		description: 	'Draws a total of {LEVEL} card(s).',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		remove_skill: 	'draw',
@@ -4114,7 +4138,7 @@ var all_abilities = {
 		//cost_adjustment: -3,
 	},
 	draw_on_play:{
-		description: 	'When played, draws up to a total of {LEVEL} card(s).',
+		description: 	'When played, draws {LEVEL} card(s).',
 		cannot_proc_while_stunned: true,
 		proc: 			'on_play',
 		proc_amount: 	'ability_level',
@@ -4139,8 +4163,10 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	6,
-		level_cost_artifact: 3,
+		base_cost:{
+			base_cost_id: 'draw',
+			base_cost_factor: 1,
+		},
 		ability_level_cost_factors:{
 			homebound: 		1.5,
 		},
@@ -6668,6 +6694,34 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		8,
 	},
+	grow_plant:{
+		hide_amount: 	true,
+		description: 	'Has a {LEVEL}0% chance to add a plant card to your hand. If your hand is full, it will add it to your deck instead.',
+		proc: 			'basic',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_plant'],
+				card_subtype: 	'plant',
+				card_status: 	'hand',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	guard:{
 		description: 	'When played, an enemy unit enters the game or any unit is destroyed, if there is no opposing enemy unit, this unit will move to a free slot with an opposing unit. Can be used once each round.',
 		delay: 			1,
@@ -7518,7 +7572,8 @@ var all_abilities = {
 						0:{
 							type: 		'summon_unit',
 							subtypes: 	['summon_ally','summon_structure'],
-							card_id: 	'trap',
+							card_type: 	'structure',
+							card_subtype: 'trap',
 							forced_slot: 'origin_old_slot',
 							amount: 	1,
 						}
@@ -9665,10 +9720,10 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_artifact: 6,
-		level_cost_spell: 	1,
-		level_cost_hero: 	3,
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 1,
+		},
 	},
 	restore_enemy:{
 		description: 	'Heals the enemy hero by {LEVEL}.',
@@ -11763,7 +11818,8 @@ var all_abilities = {
 			0:{
 				type: 		'summon_unit',
 				subtypes: 	['summon_ally','summon_structure'],
-				card_id: 	'trap',
+				card_type: 	'structure',
+				card_subtype: 'trap',
 				amount: 	1
 			}
 		},
@@ -11999,7 +12055,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'red_glow',
-		level_cost: 		0.4,
+		level_cost: 		0.5,
 		level_cost_hero: 	2,
 		average_hits: 		1,
 		cost_factor: 		'health',
@@ -12067,11 +12123,13 @@ var all_abilities = {
 		cost_adjustment: 	2,
 	},
 	trap:{
-		description: 	'Any enemy unit or hero that deals melee damage to this has a 25% chance to be stunned for {LEVEL} round(s).',
+		hide_amount: 	true,
+		description: 	'Any enemy unit or hero that deals melee damage to this has a {LEVEL}0% chance to be stunned for 1 round.',
 		proc: 			'receive_damage',
 		subtypes: 		['melee'],
 		proc_while_dead: true,
-		proc_chance:    25,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability'],
 		targets:	{
 			0:{
@@ -12088,19 +12146,22 @@ var all_abilities = {
 				projectile: 'stun',
 				type: 		'apply_stun',
 				subtypes: 	['stun'],
-				amount: 	'ability_level'
+				amount: 	1
 			}
 		},
-		level_cost: 	2,
-		level_cost_hero: 1,
+		base_cost:{
+			base_cost_id: 	'stun',
+			base_cost_factor: 0.1,
+		},
 		cost_factor: 	'none',
 	},
 	trapping_hero:{
-		description: 	'When an enemy unit deals melee damage to your hero, this has a 25% chance to stun that unit for {LEVEL} round(s).',
+		description: 	'When an enemy unit deals melee damage to your hero, this has a {LEVEL}0% chance to stun that unit for 1 round.',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
-		proc_chance:    25,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -12116,12 +12177,14 @@ var all_abilities = {
 				projectile: 'stun',
 				type: 		'apply_stun',
 				subtypes: 	['stun'],
-				amount: 	'ability_level'
+				amount: 	1
 			}
 		},
-		level_cost: 	2,
-		level_cost_hero: 1,
-		level_cost_artifact: 5,
+		base_cost:{
+			base_cost_id: 	'stun',
+			base_cost_factor: 0.1,
+		},
+		cost_factor: 	'none',
 	},
 	burning_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, this applies {LEVEL} burn to it.',

@@ -33,7 +33,7 @@ var all_available_cards = {
 		},
 		quote: '\"Keep your distance.\"',
 		recipe:{
-			rogue: 			2,
+			trapper: 		2,
 			twine: 			2,
 		}
 	},
@@ -54,8 +54,7 @@ var all_available_cards = {
 		quote: '\"Ready for a fight!\"',
 		max_in_deck: 		2,
 		recipe:{
-			scroll: 	2,
-			shield: 	2,
+			protective_bubble: 	2,
 			sword: 		2,
 		}
 	},
@@ -84,6 +83,47 @@ var all_available_cards = {
 		recipe:{
 			armaments: 	2,
 			carpenter: 	2,
+		}
+	},
+	blossom:{
+		name: 				'blossom',
+		type: 				'spell',
+		subtypes: 			['plant'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/blossom.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{cleanse: 1, heal: 1, echo: 1},
+		quote: '\"So pretty!\"',
+		max_in_deck: 		2,
+		recipe:{
+			meadow: 	2,
+			scroll: 	2,
+		}
+	},
+	breaking_ray:{
+		name: 				'breaking ray',
+		type: 				'spell',
+		subtypes: 			['ritual'],
+		color: 				['colorless'],
+		theme: 				['subtype_rogue'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/breaking_ray.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{break: 1},
+		quote: '\"There was a bright light... Then it was broken.\"',
+		recipe:{
+			scroll: 	2,
+			spike_trap: 	2,
 		}
 	},
 	carpenter:{
@@ -148,8 +188,8 @@ var all_available_cards = {
 		abilities: 			{curse_hv: 1},
 		quote: '\"Worn by many witches.\"',
 		recipe:{
-			herbs: 		2,
-			ore: 		2,
+			dagger: 		2,
+			toad: 			2,
 		}
 	},
 	dagger:{
@@ -171,7 +211,6 @@ var all_available_cards = {
 		max_in_deck: 		2,
 		recipe:{
 			ore: 		2,
-			stone: 		2,
 		}
 	},
 	dark_night:{
@@ -187,11 +226,11 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{curse_all: 1, destroy_cursed: 10, echo: 1},
+		abilities: 			{curse_all: 1, destroy_cursed: 5, echo: 1},
 		quote: '\"Make sure you come home before dark.\"',
 		recipe:{
+			dagger: 	2,
 			scroll: 	2,
-			stone: 		2,
 		}
 	},
 	dark_rogue:{
@@ -248,7 +287,7 @@ var all_available_cards = {
 		quote: '\"They say an ancient witch used to live there.\"',
 		recipe:{
 			dark_night:  	2,
-			wall: 			2,
+			scarecrow: 		2,
 			witch: 			2,
 		}
 	},
@@ -269,8 +308,8 @@ var all_available_cards = {
 		abilities: 			{repair: 1},
 		quote: '\"A usefull tool.\"',
 		recipe:{
-			stone: 		2,
-			wood: 		2,
+			spike_trap: 	2,
+			wall: 			2,
 		}
 	},
 	herbalist:{
@@ -315,11 +354,41 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{cleanse: 2},
+		abilities: 			{cleanse: 1},
 		quote: '\"They have medicinal purposes.\"',
 		recipe:{
-			seeds: 		2,
-			water: 		2,
+			meadow: 	2,
+			dagger: 	2,
+		}
+	},
+	horse:{
+		name: 				'horse',
+		type: 				'creature',
+		subtypes: 			['animal'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/horse.jpg',
+		image_position: 	'top left',
+		power: 				2,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{charge: 1, strike: 1},
+		hero_version: 			{
+			theme: 				['subtype_animal','type_creature'],
+			not_theme: 			[],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, ally_charges: 1},
+		},
+		quote: '\"A mighty beast of the plains.\"',
+		recipe:{
+			blossom: 	2,
+			sheep: 		2,
 		}
 	},
 	house:{
@@ -347,9 +416,62 @@ var all_available_cards = {
 		},
 		quote: '\"A nice place to rest.\"',
 		recipe:{
-			hammer:  	1,
-			peasant: 	1,
-			wall: 		4,
+			peasant: 	2,
+			wall: 		2,
+		}
+	},
+	meadow:{
+		name: 				'meadow',
+		type: 				'structure',
+		subtypes: 			['plant'],
+		color: 				['colorless'],
+		theme: 				['type_creature'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/meadow.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{grow_plant: 2},
+		hero_version: 			{
+			theme: 				['type_creature'],
+			not_theme: 			['empower_hero_ability','type_structure'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{grow_plant: 6},
+		},
+		quote: '\"Look at all the pretty flowers!\"',
+		recipe:{
+			seeds:  	2,
+		}
+	},
+	messenger:{
+		name: 				'messenger',
+		type: 				'creature',
+		subtypes: 			['human','clerk'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/messenger.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{run_away: 1, strike: 1, draw_on_play: 1},
+		hero_version: 			{
+			theme: 				['melee_ability','subtype_human'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, evade: 1, draw: 1},
+		},
+		quote: '\"I bring an urgent message!\"',
+		recipe:{
+			runner:  	2,
+			scribe: 	2,
 		}
 	},
 	peasant:{
@@ -377,6 +499,33 @@ var all_available_cards = {
 		},
 		quote: '\"They do not want to fight, but will defend their home.\"',
 	},
+	plague_rat:{
+		name: 				'plague rat',
+		type: 				'creature',
+		subtypes: 			['animal','rat'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/plague_rat.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			1,
+		abilities: 			{strike: 1, venom: 2, evade: 1},
+		hero_version: 			{
+			theme: 				['melee_ability','evade_ability','subtype_rat'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, venom: 2, evade: 1},
+		},
+		quote: '\"The bite is just the start.\"',
+		recipe:{
+			rat: 			2,
+			scorpion: 		2,
+		}
+	},
 	poison_fever:{
 		name: 				'poison fever',
 		type: 				'spell',
@@ -395,7 +544,7 @@ var all_available_cards = {
 		max_in_deck: 		2,
 		recipe:{
 			poison_gas: 	2,
-			scroll: 		2,
+			sword: 			2,
 		}
 	},
 	poison_gas:{
@@ -415,8 +564,29 @@ var all_available_cards = {
 		quote: '\"What is that smell?\"',
 		max_in_deck: 		2,
 		recipe:{
-			herbalist: 	2,
+			toad: 		2,
 			scroll: 	2,
+		}
+	},
+	protective_bubble:{
+		name: 				'protective bubble',
+		type: 				'spell',
+		subtypes: 			['ritual'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/protective_bubble.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{fortify_ally: 2, echo: 1},
+		quote: '\"It will keep you safe.\"',
+		max_in_deck: 		2,
+		recipe:{
+			scroll: 	2,
+			wall: 		2,
 		}
 	},
 	rat:{
@@ -443,8 +613,8 @@ var all_available_cards = {
 		},
 		quote: '\"Dangerous in large numbers.\"',
 		recipe:{
-			stone: 			2,
-			water: 			2,
+			wall: 			2,
+			toad: 			2,
 		}
 	},
 	rogue:{
@@ -471,8 +641,35 @@ var all_available_cards = {
 		},
 		quote: '\"Quick on his feet.\"',
 		recipe:{
-			dagger: 			2,
-			peasant: 			2,
+			rat: 			2,
+			thug: 			2,
+		}
+	},
+	runner:{
+		name: 				'runner',
+		type: 				'creature',
+		subtypes: 			['human','villager'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/runner.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{run_away: 1, strike: 1},
+		hero_version: 			{
+			theme: 				['melee_ability','subtype_human'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, evade: 1},
+		},
+		quote: '\"Get out of the way!\"',
+		recipe:{
+			peasant: 		2,
+			toad: 			2,
 		}
 	},
 	rusty_sword:{
@@ -492,7 +689,7 @@ var all_available_cards = {
 		quote: '\"Sometimes you only need to hit them once.\"',
 		recipe:{
 			sword: 			2,
-			water: 			2,
+			toad: 			2,
 		}
 	},
 	scarecrow:{
@@ -521,8 +718,36 @@ var all_available_cards = {
 		},
 		quote: '\"It scares away more then just crows.\"',
 		recipe:{
-			herbs:  	4,
-			wood: 		1,
+			meadow:  	2,
+			wall: 		2,
+		}
+	},
+	scorpion:{
+		name: 				'scorpion',
+		type: 				'creature',
+		subtypes: 			['animal','arachnid'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/scorpion.jpg',
+		image_position: 	'bottom',
+		power: 				1,
+		armor: 				0,
+		health: 			3,
+		abilities: 			{strike: 1, venom: 2},
+		hero_version: 			{
+			theme: 				['melee_ability','evade_ability','subtype_animal'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, venom: 2},
+		},
+		quote: '\"They have a painful sting.\"',
+		recipe:{
+			spike_trap: 	2,
+			toad: 			2,
 		}
 	},
 	scroll:{
@@ -542,8 +767,63 @@ var all_available_cards = {
 		quote: '\"What shall we write?\"',
 		max_in_deck: 		1,
 		recipe:{
-			water:  	2,
-			wood: 		2,
+			water:  	1,
+			wood: 		1,
+		}
+	},
+	scribe:{
+		name: 				'scribe',
+		type: 				'creature',
+		subtypes: 			['human','clerk'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/scribe.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, draw_on_play: 1},
+		hero_version: 			{
+			theme: 				['type_structure','subtype_villager'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, draw: 1},
+		},
+		quote: '\"Listen to her. She knows a lot.\"',
+		recipe:{
+			peasant: 		2,
+			scroll: 		2,
+		}
+	},
+	sheep:{
+		name: 				'sheep',
+		type: 				'creature',
+		subtypes: 			['animal'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/sheep.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, restore: 1},
+		hero_version: 			{
+			theme: 				['type_structure','subtype_villager'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, restore: 1},
+		},
+		quote: '\"Wool, milk and meat. Everything you need!\"',
+		recipe:{
+			meadow: 	2,
+			toad: 		2,
 		}
 	},
 	shield:{
@@ -563,8 +843,8 @@ var all_available_cards = {
 		quote: '\"A good way to protect your hero.\"',
 		max_in_deck: 		2,
 		recipe:{
-			ore: 		2,
-			wood: 		5,
+			dagger: 		2,
+			wall: 			2,
 		}
 	},
 	shieldman:{
@@ -595,6 +875,26 @@ var all_available_cards = {
 			swordsman: 		2,
 		}
 	},
+	spike_trap:{
+		name: 				'spike trap',
+		type: 				'structure',
+		subtypes: 			['trap'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/spike_trap.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			1,
+		abilities: 			{trap: 10, thorns: 3},
+		quote: '\"Careful not to fall in.\"',
+		recipe:{
+			wood: 		2,
+		}
+	},
 	sword:{
 		name: 				'sword',
 		type: 				'artifact',
@@ -612,8 +912,8 @@ var all_available_cards = {
 		quote: '\"A weapon suited for a hero.\"',
 		max_in_deck: 		2,
 		recipe:{
-			dagger:  	2,
-			ore: 		2,
+			dagger:  		2,
+			spike_trap: 	2,
 		}
 	},
 	swordsman:{
@@ -669,8 +969,91 @@ var all_available_cards = {
 		quote: '\"Where did my purse go?!\"',
 		max_in_deck: 		2,
 		recipe:{
-			dark_night: 	2,
+			breaking_ray: 	2,
 			rogue: 			2,
+		}
+	},
+	thug:{
+		name: 				'thug',
+		type: 				'creature',
+		subtypes: 			['human','rogue'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/thug.jpg',
+		image_position: 	'top',
+		power: 				2,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{strike: 1},
+		hero_version: 			{
+			theme: 				['melee_ability','subtype_rogue'],
+			power: 				3,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1},
+		},
+		quote: '\"They find a knife and suddenly think they can bully you.\"',
+		recipe:{
+			dagger: 			2,
+			peasant: 			2,
+		}
+	},
+	toad:{
+		name: 				'toad',
+		type: 				'creature',
+		subtypes: 			['animal','amphibian'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/toad.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			1,
+		abilities: 			{strike: 1, run_away: 1, poison_aura: 2},
+		hero_version: 			{
+			theme: 				['melee_ability','evade_ability','subtype_animal'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, evade: 1, poison_aura: 1},
+		},
+		quote: '\"Hard to catch and dangerous when you do.\"',
+		recipe:{
+			water: 			2,
+		}
+	},
+	trapper:{
+		name: 				'trapper',
+		type: 				'creature',
+		subtypes: 			['human','rogue'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/trapper.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, trap: 5},
+		hero_version: 			{
+			theme: 				['melee_ability','subtype_rogue'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, trap: 5},
+		},
+		quote: '\"Ha ha! I got you!\"',
+		recipe:{
+			peasant: 			2,
+			spike_trap: 		2,
 		}
 	},
 	twine:{
@@ -687,12 +1070,12 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{trapping_hero: 1},
+		abilities: 			{trapping_hero: 2},
 		quote: '\"You can really get caught in that.\"',
 		max_in_deck: 		2,
 		recipe:{
-			seeds: 		2,
-			stone: 		2,
+			meadow: 		2,
+			spike_trap: 	2,
 		}
 	},
 	village_defender:{
@@ -767,15 +1150,15 @@ var all_available_cards = {
 		abilities: 			{strike: 1, cleanse: 1},
 		hero_version: 			{
 			theme: 				['subtype_villager'],
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, cleanse: 1},
+			abilities: 			{strike_unit: 1, cleanse: 2},
 		},
 		quote: '\"Anyone want some water?\"',
 		recipe:{
+			meadow: 	2,
 			peasant: 	2,
-			well: 		2,
 		}
 	},
 	well:{
@@ -791,19 +1174,19 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{cleanse_all: 2},
+		abilities: 			{cleanse: 1, heal: 1},
 		hero_version: 			{
 			theme: 				['cleanse_ally_ability'],
 			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{cleanse_all: 5},
+			abilities: 			{cleanse: 2, heal: 1},
 		},
 		quote: '\"Refreshing, isn\'t it?\"',
 		recipe:{
 			wall: 			2,
-			water: 			2,
+			water_carrier: 	2,
 		}
 	},
 	witch:{
@@ -1406,7 +1789,7 @@ function check_not_used_in_recipes(){
 	var min_card_id = '';
 	var not_used_amount = 0;
 	eachoa(all_available_cards, function(card_id, card_info){
-		if(card_info['used_in_recipes'] == undefined && (card_info['type'] == 'creature' || card_info['type'] == 'structure' || card_info['type'] == 'artifact' || card_info['type'] == 'spell') && card_info['pick_chance'] > 0)
+		if(card_info['used_in_recipes'] == 0 && (card_info['type'] == 'creature' || card_info['type'] == 'structure' || card_info['type'] == 'artifact' || card_info['type'] == 'spell') && card_info['pick_chance'] > 0)
 		{
 			if(card_info['value'] < min_value || min_value == 0)
 			{
@@ -2111,19 +2494,14 @@ function check_card(card_id){
 		{
 			all_available_cards['card_back_' + card_id]['value'] = card_info['value'] * 25;
 		}
-	    /*var used_in_recipes = 0;
+	    var used_in_recipes = 0;
 	    eachoa(all_available_cards, function(other_card_id, other_card_info){
 	    	if(other_card_info['recipe'] != undefined && other_card_info['recipe'][card_id] != undefined)
 	    	{
 	    		used_in_recipes++;
 	    	}
 	    });
-	    card_info['used_in_recipes'] = used_in_recipes;*/
-	    if(card_info['old'] == true && card_info['time'] < 1 && card_info['time'] !== false && card_info['pick_chance'] > 0)
-	    {
-	    	console.log('deleting ' + card_id);
-	    	delete all_available_cards[card_id];
-	    }
+	    card_info['used_in_recipes'] = used_in_recipes;
 	}
 }
 
@@ -3189,12 +3567,14 @@ function get_card_image_filename(card_id){
 	return current_card_image;
 }
 
-function get_base_material_needs_recipes(){
+function get_base_material_needs_recipes(base_material_value, base_material_value_max, show_peasants){
+	if(base_material_value_max == undefined){base_material_value_max = base_material_value;}
 	var base_materials = {};
 	var base_recipes = {};
 	var needed_recipes = {};
 	eachoa(all_available_cards, function(card_id, card_info){
-		if(card_info['type'] == 'material'/* || card_id == 'peasant'*/)
+		/*if(card_info['type'] == 'material' || card_id == 'peasant')*/
+		if((base_material_value == undefined && card_info['type'] == 'material') || (base_material_value != undefined && card_info['value'] >= base_material_value && card_info['value'] <= base_material_value_max) || (show_peasants != undefined && show_peasants == true && card_id == 'peasant'))
 		{
 			base_materials[card_id] = true;
 		}
@@ -3207,7 +3587,7 @@ function get_base_material_needs_recipes(){
 				eachoa(all_available_cards, function(possible_recipe_id, possible_recipe_info){
 					if(possible_recipe_info['recipe'] != undefined)
 					{
-						if(count_object(possible_recipe_info['recipe']) == 2 && possible_recipe_info['recipe'][material_id_1] != undefined && possible_recipe_info['recipe'][material_id_2] != undefined)
+						if(count_object(possible_recipe_info['recipe']) >= 2 && possible_recipe_info['recipe'][material_id_1] != undefined && possible_recipe_info['recipe'][material_id_2] != undefined)
 						{
 							recipe_found = true;
 							base_recipes[possible_recipe_id] = true_copyobject(possible_recipe_info['recipe']);

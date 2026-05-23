@@ -2275,7 +2275,19 @@ function process_effect(target_id, origin_id, effect, level){
 				if(effect['type'] == 'add_card_to_deck')
 				{
 					for (var i = calculated_amount - 1; i >= 0; i--) {
-						add_card_to_combat_deck(battle_info.combat_units[target_id]['side'], effect['card_id'], effect['card_status']);
+						var card_type_to_summon = undefined;
+    					if(effect['card_type'] != undefined){card_type_to_summon = calculate_effect({amount:effect['card_type']}, target_id, origin_id, level);}
+    					var card_time_to_summon = 100;
+    					if(effect['card_time'] != undefined){card_time_to_summon = calculate_effect({amount:effect['card_time']}, target_id, origin_id, level);}
+    					var card_time_min_to_summon = undefined;
+    					if(effect['card_time_min'] != undefined){card_time_min_to_summon = calculate_effect({amount:effect['card_time_min']}, target_id, origin_id, level);}
+    					var card_color_to_summon = undefined;
+    					if(effect['card_color'] != undefined){card_color_to_summon = calculate_effect({amount:effect['card_color']}, target_id, origin_id, level);}
+    					var card_subtype_to_summon = undefined;
+    					if(effect['card_subtype'] != undefined && typeof(effect['card_subtype']) != 'string'){card_subtype_to_summon = effect['card_subtype'];}
+    					if(effect['card_subtype'] != undefined && typeof(effect['card_subtype']) == 'string'){card_subtype_to_summon = calculate_effect({amount:effect['card_subtype']}, target_id, origin_id, level);}
+    					var card_to_summon = get_random_card_based_on_time(card_type_to_summon, card_time_to_summon, card_color_to_summon, card_color_to_summon, card_subtype_to_summon, card_time_min_to_summon, undefined, effect['not_subtypes']);
+						add_card_to_combat_deck(battle_info.combat_units[target_id]['side'], card_to_summon, effect['card_status']);
 					};	
 				}
 				if(effect['type'] == 'draw_card')
