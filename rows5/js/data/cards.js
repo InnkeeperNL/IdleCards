@@ -29,7 +29,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{arcane_bolt: 2},
+			abilities: 			{arcane_bolt_hv: 2},
 		},
 		quote: '\"She is starting to learn.\"',
 		recipe:{
@@ -78,7 +78,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{arcane_bolt: 2},
+			abilities: 			{arcane_bolt_hv: 2},
 		},
 		quote: '\"She controls the magical energy.\"',
 		recipe:{
@@ -105,7 +105,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{arcane_bolt: 2},
+			abilities: 			{arcane_bolt_hv: 2},
 		},
 		quote: '\"Do not go near it.\"',
 		recipe:{
