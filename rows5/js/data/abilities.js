@@ -7396,14 +7396,14 @@ var all_abilities = {
 		average_hit_cost: 	1,
 	},
 	igniting_hero:{
-		description: 	'When your hero deals damage to a non-undead enemy creature, this will apply {LEVEL} burn to it. {BURN}',
+		description: 	'When your hero deals damage to an enemy unit, this will apply {LEVEL} burn to it. {BURN}',
 		proc: 			'enemy_damaged_by_hero',
 		ability_subtypes: ['dealt_damage_proc'],
 		scales: 		true,
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
-				target: 		'unit_or_hero',
+				target: 		'unit',
 				target_amount: 	1,
 				position: 		'random',
 				not_types: 		['object','structure'],
