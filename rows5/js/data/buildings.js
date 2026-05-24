@@ -2,7 +2,7 @@ var all_buildings = {
 	aa_town_hall:{
 		name: 			'town hall',
 		fragment_id: 	'shard',
-		image: 			'cards/dream_TradingCard-2024-12-08T062700.373.jpg',
+		image: 			'cards/house.jpg',
 		description: 	'Produces peasants.',
 		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
 		//type: 			'none',
@@ -81,7 +81,7 @@ var all_buildings = {
 	a3_bank:{
 		name: 			'bank',
 		fragment_id: 	'shard',
-		image: 			'cards/dream_TradingCard-2025-01-19T051830.026.jpg',
+		image: 			'cards/stash.jpg',
 		description: 	'<i>Produces scraps and stashes.</i>',
 		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
 		type: 			'shop',
@@ -133,7 +133,7 @@ var all_buildings = {
 	a2_alchemist:{
 		name: 			'alchemist lab',
 		fragment_id: 	'shard',
-		image: 			'cards/dream_TradingCard-2025-02-05T060919.678.jpg',
+		image: 			'cards/herbalist.jpg',
 		description: 	'<i>Allows you to brew potions.</i>',
 		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
 		type: 			'none',
@@ -171,7 +171,7 @@ var all_buildings = {
 	a4_treasury:{
 		name: 			'treasury',
 		fragment_id: 	'shard',
-		image: 			'cards/dream_TradingCard-2025-01-19T055525.326.jpg',
+		image: 			'cards/chest.jpg',
 		description: 	'<i>Produces troves.</i>',
 		upgrade_description: 'By upgrading this building you will increase the production and maximum storage.',
 		type: 			'shop',

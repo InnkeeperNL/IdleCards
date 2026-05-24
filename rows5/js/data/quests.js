@@ -183,7 +183,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'wall',
+		card_back: 		'string',
 		steps: 			6,
 		step_effect: 	'min_amount',
 		step_amount: 	10,
@@ -459,7 +459,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'scroll',
+		card_back: 		'scribe',
 		steps: 			6,
 	},
 	/*duelist:{
@@ -647,7 +647,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'herbs',
+		card_back: 		'meadow',
 		steps: 			6,
 	},
 	/*gnomeling:{
@@ -824,7 +824,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'swordsman',
+		card_back: 		'thug',
 		steps: 			6,
 	},
 	/*imp_lord:{
@@ -852,7 +852,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'dark_rogue',
+		card_back: 		'poison_fever',
 		steps: 			6,
 	},
 	loss:{
@@ -866,7 +866,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'witch',
+		card_back: 		'spike_trap',
 		steps: 			6,
 		no_quest: 		true,
 	},
@@ -984,7 +984,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'peasant',
+		card_back: 		'thug',
 		steps: 			6,
 	},
 	museum:{
@@ -1040,7 +1040,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'rusty_sword',
+		card_back: 		'plague_rat',
 		steps: 			6,
 	},
 	pure:{
@@ -1228,7 +1228,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'swordsman',
+		card_back: 		'dark_night',
 		steps: 			6,
 	},
 	/*slow:{
@@ -1288,7 +1288,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'rogue',
+		card_back: 		'toad',
 		steps: 			6,
 		no_quest: 		true,
 	},
@@ -1303,7 +1303,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'swordsman',
+		card_back: 		'horse',
 		steps: 			6,
 	},
 	/*stun:{
@@ -1388,7 +1388,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'wall',
+		card_back: 		'meadow',
 		steps: 			4,
 		no_quest: 		true,
 	},
@@ -1405,7 +1405,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'rusty_sword',
+		card_back: 		'poison_gas',
 		steps: 			5,
 		step_effect: 	'min_amount',
 		step_amount: 	30,
@@ -1439,7 +1439,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'witch',
+		card_back: 		'dark_tower',
 		steps: 			5,
 		step_effect: 	'min_amount',
 		step_amount: 	30,
@@ -1456,7 +1456,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'swordsman',
+		card_back: 		'blossom',
 		steps: 			6,
 	},
 	walled:{

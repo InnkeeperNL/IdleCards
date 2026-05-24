@@ -1,4 +1,5 @@
 var ability_base_costs = {
+	arcane_bolt: 3,
 	burn: 		2,
 	cleanse: 	1,
 	curse: 		1,
@@ -10,6 +11,7 @@ var ability_base_costs = {
 	healing: 	4,
 	poison: 	2,
 	stun: 		4,
+	thorns: 	0.5,
 }
 
 var all_abilities = {
@@ -349,9 +351,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4.5,
-		level_cost_spell: 	1.125,
-		cost_adjustment: 	-0.5,
+		base_cost:{
+			base_cost_id: 		'arcane_bolt',
+			base_cost_factor: 	1,
+			base_cost_spell_factor: 0.25,
+		},
 		average_hits: 		'ability_level',
 	},
 	arcane_bolt_hv:{
@@ -379,9 +383,10 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3.5,
-		level_cost_spell: 	1,
-		cost_adjustment: 	-0.5,
+		base_cost:{
+			base_cost_id: 		'arcane_bolt',
+			base_cost_factor: 	1,
+		},
 		average_hits: 		'ability_level',
 	},
 	avoid_structure:{
@@ -1062,7 +1067,7 @@ var all_abilities = {
 		targets:	{
 			0:{
 				target: 	'any',
-				target_amount: 5,
+				target_amount: 1,
 				not_types: 	['creature','spell','hero'],
 				position: 	'random',
 				side: 		'enemy'
@@ -1500,8 +1505,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1,
-		level_cost_hero: 	2,
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 1,
+			base_cost_hero_factor: 1.5,
+		},
 	},
 	burning_curses:{
 		description: 	'When an enemy unit or hero is cursed, there is a {LEVEL}0% chance this will apply 1 burn to if.{BURN}',
@@ -6804,8 +6812,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		20,
-		level_cost_spell: 	5,
+		base_cost:{
+			base_cost_id: 'hasten',
+			base_cost_factor: 5,
+			base_cost_spell_factor: 1.25,
+		},
 	},
 	hasten_on_act:{
 		name: 			'hasten',
@@ -7383,6 +7394,35 @@ var all_abilities = {
 		},
 		level_cost: 		0,
 		average_hit_cost: 	1,
+	},
+	igniting_hero:{
+		description: 	'When your hero deals damage to a non-undead enemy creature, this will apply {LEVEL} burn to it. {BURN}',
+		proc: 			'enemy_damaged_by_hero',
+		ability_subtypes: ['dealt_damage_proc'],
+		scales: 		true,
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'apply_burn',
+				subtypes: 		['burn','ally_hero_deals_damage'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 0.5,
+		},
 	},
 	incinerate:{
 		description: 	'Destroys {LEVEL} burning enemy unit(s).',
@@ -11428,9 +11468,11 @@ var all_abilities = {
 		level_cost_spell: 	0.75,
 	},
 	stunning_touch:{
-		description: 	'Has a 35% chance to apply {LEVEL} stun to any enemy unit or hero it damages.',
+		hide_amount: 	true,
+		description: 	'Has a {LEVEL}0% chance to stun any enemy unit or hero it damages.',
 		proc: 			'dealt_damage',
-		proc_chance: 	35,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		proc_while_dead: true,
 		targets:	{
 			0:{
@@ -11445,11 +11487,14 @@ var all_abilities = {
 			0:{
 				type: 			'apply_stun',
 				subtypes: 		['stun','apply_stun','stun_enemy'],
-				amount: 		'ability_level'
+				amount: 		1
 			}
 		},
-		level_cost: 		0,
-		average_hit_cost: 	1,
+		base_cost:{
+			base_cost_id: 	'stun',
+			base_cost_factor: 0.1,
+		},
+		cost_factor: 	'none',
 	},
 	submerged:{
 		name: 			'submerged',
@@ -12055,8 +12100,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'red_glow',
-		level_cost: 		0.5,
-		level_cost_hero: 	2,
+		base_cost:{
+			base_cost_id: 	'thorns',
+			base_cost_factor: 1,
+			base_cost_hero_factor: 2,
+		},
 		average_hits: 		1,
 		cost_factor: 		'health',
 	},
@@ -12156,6 +12204,7 @@ var all_abilities = {
 		cost_factor: 	'none',
 	},
 	trapping_hero:{
+		hide_amount: 	true,
 		description: 	'When an enemy unit deals melee damage to your hero, this has a {LEVEL}0% chance to stun that unit for 1 round.',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
