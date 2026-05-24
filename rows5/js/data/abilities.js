@@ -7406,7 +7406,6 @@ var all_abilities = {
 				target: 		'unit',
 				target_amount: 	1,
 				position: 		'random',
-				not_types: 		['object','structure'],
 				origin_unit: 	true,
 				side: 			'enemy'
 			},
