@@ -10043,7 +10043,7 @@ var all_abilities = {
 				projectile: 	'resurrect',
 				type: 			'healing',
 				subtypes: 		['resurrect'],
-				amount: 		'ability_level',
+				amount: 		1,
 			},
 		},
 		animation: 			'combat_zoom',
