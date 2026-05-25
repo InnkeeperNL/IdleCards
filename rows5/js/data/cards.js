@@ -1,12 +1,3 @@
-/*
-Combiner:{
-  combine:"/abilities.js",
-  combine:"/cards.js",
-  combine:"/quests.js",
-  output:"/ca.js"
-}
-*/
-
 var all_available_cards = {
 
 	apprentice:{
@@ -33,8 +24,8 @@ var all_available_cards = {
 		},
 		quote: '\"She is starting to learn.\"',
 		recipe:{
-			magic_dust: 		2,
-			peasant: 			2,
+			magic_dust: 	2,
+			seer: 			2,
 		}
 	},
 	arcane_bolts:{
@@ -137,7 +128,7 @@ var all_available_cards = {
 		},
 		quote: '\"Keep your distance.\"',
 		recipe:{
-			trapper: 		2,
+			runner: 		2,
 			twine: 			2,
 		}
 	},
@@ -159,7 +150,7 @@ var all_available_cards = {
 		max_in_deck: 		2,
 		recipe:{
 			protective_bubble: 	2,
-			sword: 		2,
+			sword: 				2,
 		}
 	},
 	blacksmith:{
@@ -226,8 +217,8 @@ var all_available_cards = {
 		abilities: 			{break: 1},
 		quote: '\"There was a bright light... Then it was broken.\"',
 		recipe:{
-			scroll: 	2,
-			spike_trap: 	2,
+			miner: 			2,
+			scroll: 		2,
 		}
 	},
 	carpenter:{
@@ -253,8 +244,8 @@ var all_available_cards = {
 		},
 		quote: '\"I am sure we can fix that.\"',
 		recipe:{
-			hammer: 	2,
-			peasant: 	2,
+			hammer: 		2,
+			torchbearer: 	2,
 		}
 	},
 	cursed_scarecrow:{
@@ -314,7 +305,8 @@ var all_available_cards = {
 		quote: '\"For quick strikes.\"',
 		max_in_deck: 		2,
 		recipe:{
-			ore: 		2,
+			ore: 			1,
+			wood: 			1,
 		}
 	},
 	dark_night:{
@@ -386,7 +378,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{curse_all: 1, cursed_aura: 1},
+			abilities: 			{curse_all: 1, cursed_aura: 2},
 		},
 		quote: '\"They say an ancient witch used to live there.\"',
 		recipe:{
@@ -451,6 +443,33 @@ var all_available_cards = {
 			wood: 		1,
 		}
 	},
+	flame_archer:{
+		name: 				'flame archer',
+		type: 				'creature',
+		subtypes: 			['human','warrior'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/flame_archer.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{shoot: 1, ignites: 1},
+		hero_version: 			{
+			theme: 				['projectile_ability','subtype_warrior'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{shoot_unit: 1, ignites: 1},
+		},
+		quote: '\"Set it aflame from afar.\"',
+		recipe:{
+			archer: 		2,
+			flame_dagger: 	2,
+		}
+	},
 	flame_dagger:{
 		name: 				'flame dagger',
 		type: 				'artifact',
@@ -468,8 +487,8 @@ var all_available_cards = {
 		abilities: 			{igniting_hero: 1},
 		quote: '\"It can be used to light a fire or stab a foe.\"',
 		recipe:{
-			dagger: 	2,
-			fire_pit: 	2,
+			dagger: 		2,
+			fire_pit: 		2,
 		}
 	},
 	flame_rogue:{
@@ -549,6 +568,35 @@ var all_available_cards = {
 			sword: 			2,
 		}
 	},
+	furnace:{
+		name: 				'furnace',
+		type: 				'structure',
+		subtypes: 			['wall'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/furnace.jpg',
+		image_position: 	'right',
+		power: 				false,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{burn: 2},
+		hero_version: 			{
+			theme: 				['fire_ability'],
+			not_theme: 			['empower_hero_ability'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{burn_hv: 2},
+		},
+		quote: '\"Careful! Hot!\"',
+		recipe:{
+			fire_pit: 		2,
+			wall: 			2,
+		}
+	},
 	hammer:{
 		name: 				'hammer',
 		type: 				'artifact',
@@ -594,8 +642,8 @@ var all_available_cards = {
 		},
 		quote: '\"There are so many uses for those plants.\"',
 		recipe:{
-			herbs: 			2,
-			water_carrier: 	2,
+			herbs: 		2,
+			well: 		2,
 		}
 	},
 	herbs:{
@@ -615,8 +663,8 @@ var all_available_cards = {
 		abilities: 			{cleanse: 1},
 		quote: '\"They have medicinal purposes.\"',
 		recipe:{
-			meadow: 	2,
 			dagger: 	2,
+			meadow: 	2,
 		}
 	},
 	horse:{
@@ -674,8 +722,8 @@ var all_available_cards = {
 		},
 		quote: '\"A nice place to rest.\"',
 		recipe:{
-			fire_pit: 	2,
-			wall: 		2,
+			furnace: 	2,
+			well: 		2,
 		}
 	},
 	magic_dust:{
@@ -723,7 +771,8 @@ var all_available_cards = {
 		},
 		quote: '\"Look at all the pretty flowers!\"',
 		recipe:{
-			seeds:  	2,
+			seeds:  	1,
+			water: 		1,
 		}
 	},
 	messenger:{
@@ -749,8 +798,36 @@ var all_available_cards = {
 		},
 		quote: '\"I bring an urgent message!\"',
 		recipe:{
-			runner:  	2,
 			scribe: 	2,
+			thug: 		2,
+		}
+	},
+	miner:{
+		name: 				'miner',
+		type: 				'creature',
+		subtypes: 			['human','villager'],
+		color: 				['colorless'],
+		theme: 				['type_structure'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/miner.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, demolish: 1},
+		hero_version: 			{
+			theme: 				['repair_ability','type_structure','type_structure','type_structure'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, demolish: 1},
+		},
+		quote: '\"Do not let them get near the wall.\"',
+		recipe:{
+			ore: 		1,
+			peasant: 	1,
 		}
 	},
 	peasant:{
@@ -805,6 +882,34 @@ var all_available_cards = {
 			scorpion: 		2,
 		}
 	},
+	plague_skeleton:{
+		name: 				'plague skeleton',
+		type: 				'creature',
+		subtypes: 			['undead'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/plague_skeleton.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			1,
+		abilities: 			{strike: 1, venom: 2, resurrect: 8, undead: 1},
+		hero_version: 			{
+			theme: 				['subtype_undead','poison_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, venom: 2, resurrect: 10, undead: 1},
+		},
+		quote: '\"After the plague ended, they started it anew.\"',
+		recipe:{
+			poison_gas: 		2,
+			slimy_skeleton: 	2,
+		}
+	},
 	poison_fever:{
 		name: 				'poison fever',
 		type: 				'spell',
@@ -839,7 +944,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{poison_all: 5, minimum_enemies: 3},
+		abilities: 			{poison_all: 3, minimum_enemies: 3},
 		quote: '\"What is that smell?\"',
 		max_in_deck: 		2,
 		recipe:{
@@ -896,6 +1001,33 @@ var all_available_cards = {
 			toad: 			2,
 		}
 	},
+	rat_catcher:{
+		name: 				'rat catcher',
+		type: 				'creature',
+		subtypes: 			['human','villager'],
+		color: 				['colorless'],
+		theme: 				['subtype_rat'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/rat_catcher.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, catch_rat: 2},
+		hero_version: 			{
+			theme: 				['subtype_rat'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, catch_rat: 2},
+		},
+		quote: '\"What a cute little furry thing!\"',
+		recipe:{
+			rat: 		2,
+			trapper: 	2,
+		}
+	},
 	rogue:{
 		name: 				'rogue',
 		type: 				'creature',
@@ -947,8 +1079,8 @@ var all_available_cards = {
 		},
 		quote: '\"Get out of the way!\"',
 		recipe:{
-			peasant: 		2,
-			toad: 			2,
+			peasant: 		1,
+			wood: 			1,
 		}
 	},
 	rusty_sword:{
@@ -968,7 +1100,7 @@ var all_available_cards = {
 		quote: '\"Sometimes you only need to hit them once.\"',
 		recipe:{
 			sword: 			2,
-			toad: 			2,
+			well: 			2,
 		}
 	},
 	scarecrow:{
@@ -1074,8 +1206,36 @@ var all_available_cards = {
 		},
 		quote: '\"Listen to her. She knows a lot.\"',
 		recipe:{
-			peasant: 		2,
-			scroll: 		2,
+			seer: 		2,
+			scroll: 	2,
+		}
+	},
+	seer:{
+		name: 				'seer',
+		type: 				'creature',
+		subtypes: 			['human','cleric'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/seer.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, doom: 1},
+		hero_version: 			{
+			theme: 				['subtype_cleric','doom_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, doom: 2},
+		},
+		quote: '\"She sees your fate.\"',
+		recipe:{
+			peasant: 		1,
+			seeds: 			1,
 		}
 	},
 	sheep:{
@@ -1154,6 +1314,34 @@ var all_available_cards = {
 			swordsman: 		2,
 		}
 	},
+	skeleton:{
+		name: 				'skeleton',
+		type: 				'creature',
+		subtypes: 			['undead'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/skeleton.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			1,
+		abilities: 			{strike: 1, resurrect: 8, undead: 1},
+		hero_version: 			{
+			theme: 				['subtype_undead'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, resurrect: 10, undead: 1},
+		},
+		quote: '\"They do not know why they have risen.\"',
+		recipe:{
+			peasant: 	1,
+			stone: 		1,
+		}
+	},
 	spike_trap:{
 		name: 				'spike trap',
 		type: 				'structure',
@@ -1171,7 +1359,62 @@ var all_available_cards = {
 		abilities: 			{thorns: 3, stunning_touch: 10},
 		quote: '\"Careful not to fall in.\"',
 		recipe:{
-			wood: 		2,
+			seeds: 		1,
+			wood: 		1,
+		}
+	},
+	slimeling:{
+		name: 				'slimeling',
+		type: 				'creature',
+		subtypes: 			['slime'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/slimeling.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			3,
+		abilities: 			{strike: 1, stunning_touch: 5},
+		hero_version: 			{
+			theme: 				['melee_ability','subtype_slime','stun_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, stunning_touch: 5},
+		},
+		quote: '\"Sticky little thing.\"',
+		recipe:{
+			ore: 			1,
+			water: 			1,
+		}
+	},
+	slimy_skeleton:{
+		name: 				'slimy skeleton',
+		type: 				'creature',
+		subtypes: 			['undead','slime'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/slimy_skeleton.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			1,
+		abilities: 			{strike: 1, stunning_touch: 5, resurrect: 8, undead: 1},
+		hero_version: 			{
+			theme: 				['subtype_undead','subtype_slime','stun_ability'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, stunning_touch: 5, resurrect: 10, undead: 1},
+		},
+		quote: '\"I wonder what killed him to look like that.\"',
+		recipe:{
+			skeleton: 			2,
+			slimeling: 			2,
 		}
 	},
 	sword:{
@@ -1220,7 +1463,7 @@ var all_available_cards = {
 		quote: '\"Ready for a fight.\"',
 		recipe:{
 			sword: 			2,
-			peasant: 		2,
+			thug: 			2,
 		}
 	},
 	thief:{
@@ -1276,8 +1519,8 @@ var all_available_cards = {
 		},
 		quote: '\"They find a knife and suddenly think they can bully you.\"',
 		recipe:{
-			dagger: 			2,
-			peasant: 			2,
+			dagger: 	2,
+			runner: 	2,
 		}
 	},
 	toad:{
@@ -1293,7 +1536,7 @@ var all_available_cards = {
 		image_position: 	'top',
 		power: 				1,
 		armor: 				0,
-		health: 			1,
+		health: 			2,
 		abilities: 			{strike: 1, run_away: 1, poison_aura: 2},
 		hero_version: 			{
 			theme: 				['poison_ability','evade_ability','subtype_animal'],
@@ -1304,7 +1547,37 @@ var all_available_cards = {
 		},
 		quote: '\"Hard to catch and dangerous when you do.\"',
 		recipe:{
-			water: 			2,
+			stone: 			1,
+			water: 			1,
+		},
+		verified: true,
+	},
+	torchbearer:{
+		name: 				'torchbearer',
+		type: 				'creature',
+		subtypes: 			['human','villager'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/torchbearer.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, ignites: 1},
+		hero_version: 			{
+			theme: 				['melee_ability','subtype_villager','burn_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, ignites: 2},
+		},
+		quote: '\"Quick hot strikes.\"',
+		recipe:{
+			fire_pit: 	2,
+			runner: 	2,
 		}
 	},
 	trapper:{
@@ -1331,7 +1604,7 @@ var all_available_cards = {
 		},
 		quote: '\"Ha ha! I got you!\"',
 		recipe:{
-			peasant: 			2,
+			runner: 			2,
 			spike_trap: 		2,
 		}
 	},
@@ -1353,8 +1626,8 @@ var all_available_cards = {
 		quote: '\"You can really get caught in that.\"',
 		max_in_deck: 		2,
 		recipe:{
-			meadow: 		2,
-			spike_trap: 	2,
+			ore: 		1,
+			seeds: 		1,
 		}
 	},
 	village_defender:{
@@ -1409,7 +1682,8 @@ var all_available_cards = {
 		},
 		quote: '\"Basic defense.\"',
 		recipe:{
-			stone: 		2,
+			ore: 		1,
+			stone: 		1,
 		}
 	},
 	water_carrier:{
@@ -1436,8 +1710,8 @@ var all_available_cards = {
 		},
 		quote: '\"Anyone want some water?\"',
 		recipe:{
-			meadow: 	2,
-			peasant: 	2,
+			peasant: 	1,
+			water: 		1,
 		}
 	},
 	well:{
@@ -1493,7 +1767,7 @@ var all_available_cards = {
 		quote: '\"She uses the dark arts.\"',
 		recipe:{
 			cursed_talisman: 	2,
-			peasant: 			2,
+			seer: 				2,
 		}
 	},
 

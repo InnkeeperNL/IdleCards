@@ -120,7 +120,7 @@ function show_summon(just_summoned){
 			var parsed_summoned_hero = parse_card(gamedata['current_summon']['hero'], new_card, true, undefined);
 			/*if(gamedata['owned_cards'][gamedata['current_summon']['hero']] == undefined){unowned_class = 'unowned_summon';}*/
 			
-			if(gamedata['known_recipes'] != undefined && gamedata['known_recipes'][gamedata['current_summon']['hero']] == undefined && all_available_cards[gamedata['current_summon']['hero']]['recipe'] != undefined){unowned_class = 'unowned_summon';}
+			//if(gamedata['known_recipes'] != undefined && gamedata['known_recipes'][gamedata['current_summon']['hero']] == undefined && all_available_cards[gamedata['current_summon']['hero']]['recipe'] != undefined){unowned_class = 'unowned_summon';}
 			parsed_summon += '<span class="' + unowned_class + '" onclick="show_card_details(\'' + gamedata['current_summon']['hero'] + '\', true)">' + parsed_summoned_hero + '</span>';
 			parsed_summon += '<span class="summon_stats">';
 			parsed_summon += 	'<br/>';

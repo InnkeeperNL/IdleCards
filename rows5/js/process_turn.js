@@ -638,7 +638,7 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 			{
 				current_drop_chance /= recipe_drop_chance_reduction;
 			}
-			console.log(chosen_extra_drop + ' drop chance: ' + current_drop_chance);
+			//console.log(chosen_extra_drop + ' drop chance: ' + current_drop_chance);
 			if(Math.random() < current_drop_chance)
 			{
 				all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
@@ -1499,7 +1499,9 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 
 								if(any_effect_fired == true && current_ability['reduce_skill_after_use'] != undefined && battle_info['combat_units'][unit_id] != undefined && battle_info['combat_units'][unit_id]['type'] != 'spell')
 								{
-									grant_skill(unit_id, unit_id, -1, current_ability['reduce_skill_after_use'], false);
+									var amount_to_reduce = 1;
+									if(current_ability['reduce_skill_after_use_amount'] != undefined){amount_to_reduce = current_ability['reduce_skill_after_use_amount'];}
+									grant_skill(unit_id, unit_id, (-1 * amount_to_reduce), current_ability['reduce_skill_after_use'], false);
 									check_visible_skills(unit_id);
 								}
 								if(any_effect_fired == true && current_ability['remove_skill_after_use'] != undefined && battle_info['combat_units'][unit_id] != undefined && battle_info['combat_units'][unit_id]['type'] != 'spell')

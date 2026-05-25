@@ -4,12 +4,15 @@ var ability_base_costs = {
 	cleanse: 	1,
 	curse: 		1,
 	destroy: 	8,
+	doom: 		1,
 	draw: 		6,
 	empower: 	2,
+	fear:  		2,
 	fortify: 	2,
 	hasten: 	4,
 	healing: 	4,
-	poison: 	2,
+	poison: 	1.5,
+	resurrect: 	0.4,
 	stun: 		4,
 	thorns: 	0.5,
 }
@@ -1388,8 +1391,12 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_spell: 	0.5,
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
+		level_cost_cum: true,
 	},
 	burn_arrivals:{
 		description: 	'Applies {LEVEL} burn to a any enemy unit that enters the game.',
@@ -1417,8 +1424,12 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	3,
-		level_cost_artifact: 6,
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
+		level_cost_cum: true,
 	},
 	burn_hv:		{
 		name: 			'burn',
@@ -1447,8 +1458,12 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	2,
-		level_cost_spell: 	0.5,
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
+		level_cost_cum: true,
 	},
 	burn_all:{
 		description: 	'Applies {LEVEL} burn to all enemy units. Will not target the enemy hero.{BURN}',
@@ -1476,8 +1491,12 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		6,
-		level_cost_spell: 	1.5,
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 3,
+			base_cost_spell_factor: 0.75,
+		},
+		level_cost_cum: true,
 	},
 	burning_aura:{
 		description: 	'Applies {LEVEL} burn to any enemy unit or hero that deals melee damage to it. {BURN}',
@@ -1507,9 +1526,11 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'burn',
-			base_cost_factor: 1,
-			base_cost_hero_factor: 1.5,
+			base_cost_factor: 0.2,
+			base_cost_hero_factor: 0.75,
 		},
+		cost_factor: 		'health',
+		level_cost_cum: true,
 	},
 	burning_curses:{
 		description: 	'When an enemy unit or hero is cursed, there is a {LEVEL}0% chance this will apply 1 burn to if.{BURN}',
@@ -1622,7 +1643,12 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	2,
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
+		level_cost_cum: true,
 	},
 	burning_deaths_hv:{
 		name: 			'burning deaths',
@@ -1650,8 +1676,12 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	2,
-		level_cost_artifact: 4,
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
+		level_cost_cum: true,
 	},
 	burning_entry:{
 		description: 	'Applies {LEVEL} burn to all nearby enemy units when played. {BURN}',
@@ -1683,7 +1713,12 @@ var all_abilities = {
 				amount: 		'ability_level',
 			}
 		},
-		level_cost: 	0.75,
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
+		level_cost_cum: true,
 	},
 	burning_hero:{
 		description: 	'When an enemy unit deals melee damage to your hero, this applies {LEVEL} burn to it.',
@@ -1713,9 +1748,12 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_artifact: 5,
-		level_cost_hero: 	2.5,
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
+		level_cost_cum: true,
 	},
 	carry_away:{
 		description: 	'If there is a damaged ally creature unit next to this, it will return it to your hand. Will not send away summoned units. If it does, this also returns to your hand.',
@@ -1790,6 +1828,34 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 		1.2,
 		level_cost_hero: 	2.4,
+	},
+	catch_rat:{
+		hide_amount: 	true,
+		description: 	'Has a {LEVEL}0% chance to add a rat card to your hand. If your hand is full, it will add it to your deck instead.',
+		proc: 			'basic',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_rat'],
+				card_subtype: 	'rat',
+				card_status: 	'hand',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
 	},
 	channel_life:{
 		description: 	'Reduces the time left of the card in your hand with the highest time left by {LEVEL}. If it does, this deals 1 damage to itself.',
@@ -2951,9 +3017,10 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		base_cost:{
 			base_cost_id: 'curse',
-			base_cost_factor: 1,
-			base_cost_hero_factor: 2.5,
-		}
+			base_cost_factor: 0.2,
+			base_cost_hero_factor: 0.75,
+		},
+		cost_factor: 		'health',
 	},
 	cursed_deaths:{
 		description: 	'Applies {LEVEL} curse to a random enemy unit or hero when any ally creature is destroyed.',
@@ -3315,7 +3382,7 @@ var all_abilities = {
 		level_cost: 	-4,
 	},
 	demolish:{
-		description: 	'Destroys any non-golem structure unit it deals damage to.',
+		description: 	'Destroys any structure unit it deals damage to.',
 		proc: 			'dealt_damage',
 		//subtypes: 		['damage'],
 		proc_while_dead: true,
@@ -3325,7 +3392,6 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				not_types: 		['creature'],
-				not_subtypes: 	['golem'],
 				origin_unit: 	true,
 				side: 			'any'
 			},
@@ -3338,8 +3404,11 @@ var all_abilities = {
 				amount: 		1
 			}
 		},
-		level_cost: 		1,
-		average_hit_cost: 	1,
+		base_cost:{
+			base_cost_id: 'destroy',
+			base_cost_factor: 0,
+			base_hit_cost_factor: 0.4,
+		},
 	},
 	desperate_burn:{
 		description: 	'When your hero receives damage, this applies {LEVEL} burn to a random enemy unit. {BURN}',
@@ -3854,8 +3923,11 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 	1.5,
-		level_cost_spell: 0.375,
+		base_cost:{
+			base_cost_id: 'doom',
+			base_cost_factor: 1,
+			level_cost_spell: 0.25,
+		},
 	},
 	doom_all:{
 		description: 	'Applies {LEVEL} doom to all enemy units.{DOOM}',
@@ -3882,8 +3954,11 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 	4.5,
-		level_cost_spell: 1.125,
+		base_cost:{
+			base_cost_id: 'doom',
+			base_cost_factor: 3,
+			level_cost_spell: 0.75,
+		},
 	},
 	doom_ally:{
 		description: 	'Applies {LEVEL} doom to a random ally unit.{DOOM}',
@@ -3937,8 +4012,11 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1,
-		level_cost_artifact: 2,
+		base_cost:{
+			base_cost_id: 'doom',
+			base_cost_factor: 1,
+			level_cost_spell: 0.25,
+		},
 	},
 	doom_self:{
 		description: 	'Applies {LEVEL} doom to itself.{DOOM}',
@@ -3990,8 +4068,12 @@ var all_abilities = {
 				increase_timeout: 500,
 			}
 		},
-		level_cost: 		0.5,
-		level_cost_hero: 	1,
+		base_cost:{
+			base_cost_id: 'doom',
+			base_cost_factor: 0.2,
+			base_cost_hero_factor: 0.75,
+		},
+		cost_factor: 		'health',
 	},
 	dooming_deaths:{
 		description: 	'Applies {LEVEL} doom to a random enemy unit when any ally creature is destroyed. {DOOM}',
@@ -4019,9 +4101,11 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1.5,
-		level_cost_artifact: 3,
-		level_cost_structure: 1,
+		base_cost:{
+			base_cost_id: 'doom',
+			base_cost_factor: 1,
+			base_cost_structure_factor: 0.75,
+		},
 	},
 	dooming_entry:{
 		description: 	'When played, applies {LEVEL} doom to all nearby enemy units.{DOOM}',
@@ -4043,7 +4127,10 @@ var all_abilities = {
 				increase_timeout: 500,
 			}
 		},
-		level_cost: 		1,
+		base_cost:{
+			base_cost_id: 'doom',
+			base_cost_factor: 1,
+		},
 	},
 	dooming_touch:{
 		description: 	'Applies {LEVEL} doom to any unit it deals damage to.{DOOM}',
@@ -4068,11 +4155,14 @@ var all_abilities = {
 				increase_timeout: 500,
 			}
 		},
-		level_cost: 		0,
+		base_cost:{
+			base_cost_id: 'doom',
+			base_cost_factor: 0,
+			base_hit_cost_factor: 0.5,
+		},
 		ability_level_cost_factors:{
 			backlash: 		-1,
 		},
-		average_hit_cost: 	0.75,
 	},
 	doomward:{
 		description: 		'This is immune to doom.',
@@ -5029,7 +5119,7 @@ var all_abilities = {
 		level_cost: 	1,
 	},
 	fearful_aura:{
-		description: 	'When this receives melee damage from a non-undead, non-horror enemy creature unit, that unit returns to their owner\'s hand. Any summoned units this targets disappear.',
+		description: 	'When this receives melee damage from a non-undead enemy creature unit, that unit returns to their owner\'s hand. Any summoned units this targets disappear.',
 		proc: 			'receive_damage',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
@@ -5043,7 +5133,7 @@ var all_abilities = {
 				position: 		'random',
 				origin_unit: 	true,
 				not_types: 		['structure','object'],
-				not_subtypes: 	['horror'],
+				//not_subtypes: 	['horror','undead'],
 				max_abilities: 	{undead: 0},
 				side: 			'enemy',
 			},
@@ -5058,7 +5148,12 @@ var all_abilities = {
 				side: 			'enemy',
 			}
 		},
-		level_cost: 	2,
+		base_cost:{
+			base_cost_id: 'fear',
+			base_cost_factor: 0.2,
+			base_cost_hero_factor: 0.75,
+		},
+		cost_factor: 		'health',
 	},
 	fearful_hero:{
 		description: 	'When your hero receives melee damage from a non-undead, non-horror enemy creature unit, there is a 25% chance that unit will return to their owner\'s hand. Any summoned units this targets disappear.',
@@ -5299,7 +5394,7 @@ var all_abilities = {
 		level_cost: 		-5,
 	},
 	final_doom:{
-		description: 	'When destroyed, applies {LEVEL} doom to a random enemy unit or hero.{DOOM}',
+		description: 	'When destroyed, applies {LEVEL} doom to a random enemy unit.{DOOM}',
 		proc: 			'own_death',
 		proc_while_dead: true,
 		targets:	{
@@ -5322,8 +5417,10 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 	0.75,
-		level_cost_spell: 0.175,
+		base_cost:{
+			base_cost_id: 'doom',
+			base_cost_factor: 0.5,
+		},
 		ability_level_cost_factors:{
 			resurrect: 		2,
 		},
@@ -7392,8 +7489,12 @@ var all_abilities = {
 		ability_level_cost_factors:{
 			backlash: 		-1,
 		},
-		level_cost: 		0,
-		average_hit_cost: 	1,
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 0,
+			base_hit_cost_factor: 0.4,
+		},
+		level_cost_cum: true,
 	},
 	igniting_hero:{
 		description: 	'When your hero deals damage to an enemy unit, this will apply {LEVEL} burn to it. {BURN}',
@@ -7420,8 +7521,9 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'burn',
-			base_cost_factor: 0.5,
+			base_cost_factor: 0.4,
 		},
+		level_cost_cum: true,
 	},
 	incinerate:{
 		description: 	'Destroys {LEVEL} burning enemy unit(s).',
@@ -8451,6 +8553,7 @@ var all_abilities = {
 			base_cost_factor: 1,
 			base_cost_spell_factor: 0.25,
 		},
+		level_cost_cum: true,
 	},
 	poison_all:{
 		description: 	'Applies {LEVEL} poison to all enemy creatures. {POISON}',
@@ -8481,6 +8584,7 @@ var all_abilities = {
 			base_cost_factor: 3,
 			base_cost_spell_factor: 0.75,
 		},
+		level_cost_cum: true,
 	},
 	poison_arrivals:{
 		description: 	'Applies {LEVEL} poison to any non-undead enemy creature unit that enters the game.',
@@ -8512,6 +8616,7 @@ var all_abilities = {
 			base_cost_id: 'poison',
 			base_cost_factor: 2,
 		},
+		level_cost_cum: true,
 	},
 	poison_aura:{
 		description: 	'Applies {LEVEL} poison to any enemy non-undead creature unit or hero that deals melee damage to it.{POISON}',
@@ -8541,8 +8646,11 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		base_cost:{
 			base_cost_id: 'poison',
-			base_cost_factor: 1,
+			base_cost_factor: 0.2,
+			base_cost_hero_factor: 0.75,
 		},
+		cost_factor: 		'health',
+		level_cost_cum: true,
 	},
 	poison_hv:{
 		name: 			'poison',
@@ -8573,6 +8681,7 @@ var all_abilities = {
 			base_cost_factor: 1,
 			base_cost_spell_factor: 0.25,
 		},
+		level_cost_cum: true,
 	},
 	poisonous_deaths:{
 		description: 	'Applies {LEVEL} poison to a random enemy non-undead creature unit or hero when any ally creature is destroyed.',
@@ -8610,7 +8719,9 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'poison',
 			base_cost_factor: 1,
+			base_cost_structure_factor: 0.75,
 		},
+		level_cost_cum: true,
 	},
 	poisonous_deaths_hv:{
 		name: 			'poisonous deaths',
@@ -8641,7 +8752,9 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'poison',
 			base_cost_factor: 1,
+			base_cost_structure_factor: 0.75,
 		},
+		level_cost_cum: true,
 	},
 	power_bolt:{
 		description: 	'Deals magical projectile damage equal to this units power to a random enemy unit. Will only target the enemy hero if there are no enemy units.',
@@ -9906,10 +10019,14 @@ var all_abilities = {
 		level_cost_spell: 	1.5,
 	},
 	resurrect:{
-		description: 	'When this\' health reaches 0, it has a 60% chance to come back to life with {LEVEL} health.',
+		hide_amount: 	true,
+		description: 	'When this\' health reaches 0, it has a {LEVEL}0% chance to come back to life with 1 health. The chance to resurrect is reduced by 20% every time it does.',
 		proc: 			'own_death',
-		proc_chance: 	60,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		proc_while_dead: true,
+		reduce_skill_after_use: 'resurrect',
+		reduce_skill_after_use_amount: 2,
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -9930,9 +10047,11 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
-		level_cost_hero: 	1,
-		additional_levels_cost: -2,
+		base_cost:{
+			base_cost_id: 	'resurrect',
+			base_cost_factor: 1,
+			base_cost_hero_factor: 0.4,
+		},
 	},
 	resurrect_ally:{
 		description: 	'When an ally creature unit\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 1 health.',
@@ -12692,6 +12811,7 @@ var all_abilities = {
 			base_cost_factor: 0,
 			base_hit_cost_factor: 0.5,
 		},
+		level_cost_cum: true,
 	},
 	venomous_hero:{
 		description: 	'When your hero deals damage to a non-undead enemy creature, this will apply {LEVEL} poison to it.',
@@ -12721,6 +12841,7 @@ var all_abilities = {
 			base_cost_id: 'poison',
 			base_cost_factor: 0.5,
 		},
+		level_cost_cum: true,
 	},
 	victory_rush:{
 		description: 	'Gains {LEVEL} additional turn(s) when it destroys an enemy.',

@@ -117,7 +117,7 @@ function show_single_tinker(){
 			owned_amount = gamedata['owned_cards'][current_tinker];
 		}
 		var parsed_current_card = parse_card(current_tinker, owned_amount);
-		$('.single_tinker_container').append('<div class="tinker_card_container">' + parsed_current_card + '</div>');
+		$('.single_tinker_container').append('<div class="tinker_card_container"><span onclick="show_card_details(\'' + current_tinker + '\', true)">' + parsed_current_card + '</span></div>');
 		if(owned_amount >= 0)
 		{
 			
