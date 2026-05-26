@@ -348,7 +348,7 @@
 .battle_container .projectile.projectile_stun,
 .icon.icon_stun
 {
-	
+	font-size: 0px;
 	background-image: url(../images/whirlwind.svg);
 }
 
