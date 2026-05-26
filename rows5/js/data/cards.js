@@ -437,7 +437,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{burning_aura: 1},
 		hero_version: 			{
-			theme: 				['fire_ability'],
+			theme: 				['burn_ability'],
 			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
@@ -592,7 +592,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{burn: 2},
 		hero_version: 			{
-			theme: 				['fire_ability'],
+			theme: 				['burn_ability'],
 			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
