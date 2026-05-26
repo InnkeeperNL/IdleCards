@@ -24,8 +24,9 @@ var all_available_cards = {
 		},
 		quote: '\"She is starting to learn.\"',
 		recipe:{
-			magic_dust: 	2,
-			seer: 			2,
+			magic_dust: 	1,
+			seer: 			1,
+			twine: 			1,
 		}
 	},
 	arcane_bolts:{
@@ -45,8 +46,9 @@ var all_available_cards = {
 		quote: '\"Release the energy!\"',
 		max_in_deck: 		2,
 		recipe:{
-			magic_dust: 	2,
-			scroll: 		2,
+			magic_dust: 	1,
+			scroll: 		1,
+			slimeling: 		1,
 		}
 	},
 	arcane_mage:{
@@ -128,8 +130,9 @@ var all_available_cards = {
 		},
 		quote: '\"Keep your distance.\"',
 		recipe:{
-			runner: 		2,
-			twine: 			2,
+			runner: 		1,
+			twine: 			1,
+			toad: 			1,
 		}
 	},
 	armaments:{
@@ -197,8 +200,9 @@ var all_available_cards = {
 		quote: '\"So pretty!\"',
 		max_in_deck: 		2,
 		recipe:{
-			meadow: 	2,
-			scroll: 	2,
+			meadow: 		1,
+			scroll: 		1,
+			water_carrier: 	1,
 		}
 	},
 	breaking_ray:{
@@ -217,8 +221,9 @@ var all_available_cards = {
 		abilities: 			{break: 1},
 		quote: '\"There was a bright light... Then it was broken.\"',
 		recipe:{
-			miner: 			2,
-			scroll: 		2,
+			miner: 			1,
+			scroll: 		1,
+			skeleton: 		1,
 		}
 	},
 	carpenter:{
@@ -283,8 +288,9 @@ var all_available_cards = {
 		abilities: 			{curse_hv: 1},
 		quote: '\"Worn by many witches.\"',
 		recipe:{
-			dagger: 		2,
-			toad: 			2,
+			dagger: 		1,
+			skeleton: 		1,
+			toad: 			1,
 		}
 	},
 	dagger:{
@@ -325,8 +331,9 @@ var all_available_cards = {
 		abilities: 			{curse_all: 1, destroy_cursed: 5, echo: 1},
 		quote: '\"Make sure you come home before dark.\"',
 		recipe:{
-			dagger: 	2,
-			scroll: 	2,
+			dagger: 	1,
+			scroll: 	1,
+			twine: 		1,
 		}
 	},
 	dark_rogue:{
@@ -487,8 +494,9 @@ var all_available_cards = {
 		abilities: 			{igniting_hero: 1},
 		quote: '\"It can be used to light a fire or stab a foe.\"',
 		recipe:{
-			dagger: 		2,
-			fire_pit: 		2,
+			dagger: 		1,
+			fire_pit: 		1,
+			magic_dust: 	1,
 		}
 	},
 	flame_rogue:{
@@ -593,8 +601,9 @@ var all_available_cards = {
 		},
 		quote: '\"Careful! Hot!\"',
 		recipe:{
-			fire_pit: 		2,
-			wall: 			2,
+			fire_pit: 		1,
+			spike_trap: 	1,
+			wall: 			1,
 		}
 	},
 	hammer:{
@@ -614,8 +623,9 @@ var all_available_cards = {
 		abilities: 			{repair: 1},
 		quote: '\"A usefull tool.\"',
 		recipe:{
-			spike_trap: 	2,
-			wall: 			2,
+			spike_trap: 	1,
+			twine: 			1,
+			wall: 			1,
 		}
 	},
 	herbalist:{
@@ -663,8 +673,9 @@ var all_available_cards = {
 		abilities: 			{cleanse: 1},
 		quote: '\"They have medicinal purposes.\"',
 		recipe:{
-			dagger: 	2,
-			meadow: 	2,
+			dagger: 	1,
+			meadow: 	1,
+			slimeling: 	1,
 		}
 	},
 	horse:{
@@ -948,8 +959,9 @@ var all_available_cards = {
 		quote: '\"What is that smell?\"',
 		max_in_deck: 		2,
 		recipe:{
-			toad: 		2,
-			scroll: 	2,
+			fire_pit: 	1,
+			toad: 		1,
+			scroll: 	1,
 		}
 	},
 	protective_bubble:{
@@ -969,8 +981,9 @@ var all_available_cards = {
 		quote: '\"It will keep you safe.\"',
 		max_in_deck: 		2,
 		recipe:{
-			scroll: 	2,
-			wall: 		2,
+			runner: 	1,
+			scroll: 	1,
+			wall: 		1,
 		}
 	},
 	rat:{
@@ -997,8 +1010,9 @@ var all_available_cards = {
 		},
 		quote: '\"Dangerous in large numbers.\"',
 		recipe:{
-			wall: 			2,
-			toad: 			2,
+			slimeling: 		1,
+			toad: 			1,
+			wall: 			1,
 		}
 	},
 	rat_catcher:{
@@ -1129,8 +1143,9 @@ var all_available_cards = {
 		},
 		quote: '\"It scares away more then just crows.\"',
 		recipe:{
-			meadow:  	2,
-			wall: 		2,
+			magic_dust: 	1,
+			meadow:  		1,
+			wall: 			1,
 		}
 	},
 	scorpion:{
@@ -1157,8 +1172,9 @@ var all_available_cards = {
 		},
 		quote: '\"They have a painful sting.\"',
 		recipe:{
-			spike_trap: 	2,
-			toad: 			2,
+			spike_trap: 	1,
+			toad: 			1,
+			water_carrier: 	1,
 		}
 	},
 	scroll:{
@@ -1206,8 +1222,9 @@ var all_available_cards = {
 		},
 		quote: '\"Listen to her. She knows a lot.\"',
 		recipe:{
-			seer: 		2,
-			scroll: 	2,
+			seer: 		1,
+			scroll: 	1,
+			spike_trap: 1,
 		}
 	},
 	seer:{
@@ -1261,8 +1278,9 @@ var all_available_cards = {
 		},
 		quote: '\"Wool, milk and meat. Everything you need!\"',
 		recipe:{
-			meadow: 	2,
-			toad: 		2,
+			meadow: 	1,
+			seer: 		1,
+			toad: 		1,
 		}
 	},
 	shield:{
@@ -1282,8 +1300,9 @@ var all_available_cards = {
 		quote: '\"A good way to protect your hero.\"',
 		max_in_deck: 		2,
 		recipe:{
-			dagger: 		2,
-			wall: 			2,
+			dagger: 		1,
+			seer: 			1,
+			wall: 			1,
 		}
 	},
 	shieldman:{
@@ -1413,8 +1432,9 @@ var all_available_cards = {
 		},
 		quote: '\"I wonder what killed him to look like that.\"',
 		recipe:{
-			skeleton: 			2,
-			slimeling: 			2,
+			skeleton: 			1,
+			slimeling: 			1,
+			water_carrier: 		1,
 		}
 	},
 	sword:{
@@ -1434,8 +1454,9 @@ var all_available_cards = {
 		quote: '\"A weapon suited for a hero.\"',
 		max_in_deck: 		2,
 		recipe:{
-			dagger:  		2,
-			spike_trap: 	2,
+			dagger:  		1,
+			miner: 			1,
+			spike_trap: 	1,
 		}
 	},
 	swordsman:{
@@ -1519,8 +1540,9 @@ var all_available_cards = {
 		},
 		quote: '\"They find a knife and suddenly think they can bully you.\"',
 		recipe:{
-			dagger: 	2,
-			runner: 	2,
+			dagger: 		1,
+			runner: 		1,
+			water_carrier: 	1,
 		}
 	},
 	toad:{
@@ -1576,8 +1598,9 @@ var all_available_cards = {
 		},
 		quote: '\"Quick hot strikes.\"',
 		recipe:{
-			fire_pit: 	2,
-			runner: 	2,
+			fire_pit: 	1,
+			runner: 	1,
+			seer: 		1,
 		}
 	},
 	trapper:{
@@ -1604,8 +1627,9 @@ var all_available_cards = {
 		},
 		quote: '\"Ha ha! I got you!\"',
 		recipe:{
-			runner: 			2,
-			spike_trap: 		2,
+			runner: 			1,
+			slimeling: 			1,
+			spike_trap: 		1,
 		}
 	},
 	twine:{
@@ -1738,8 +1762,9 @@ var all_available_cards = {
 		},
 		quote: '\"Refreshing, isn\'t it?\"',
 		recipe:{
-			wall: 			2,
-			water_carrier: 	2,
+			miner: 			1,
+			wall: 			1,
+			water_carrier: 	1,
 		}
 	},
 	witch:{
