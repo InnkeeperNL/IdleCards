@@ -12290,7 +12290,7 @@ var all_abilities = {
 	},
 	trap:{
 		hide_amount: 	true,
-		description: 	'Any enemy unit or hero that deals melee damage to this has a {LEVEL}0% chance to be stunned for 1 round.',
+		description: 	'Any enemy unit or hero that deals melee damage to this has a {LEVEL}0% chance to be stunned.',
 		proc: 			'receive_damage',
 		subtypes: 		['melee'],
 		proc_while_dead: true,
