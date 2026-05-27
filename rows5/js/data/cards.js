@@ -226,6 +226,35 @@ var all_available_cards = {
 			skeleton: 		1,
 		}
 	},
+	burning_skeleton:{
+		name: 				'burning skeleton',
+		type: 				'creature',
+		subtypes: 			['undead'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/burning_skeleton.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			1,
+		abilities: 			{strike: 1, burning_deaths: 1, resurrect: 8, undead: 1},
+		hero_version: 			{
+			theme: 				['subtype_undead','burn_ability','ally_creature_death_proc_ability','own_death_proc_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, burning_deaths: 1, resurrect: 10, undead: 1},
+		},
+		quote: '\"Did you hear that story of that guy that jumped into the volcano?\"',
+		recipe:{
+			fire_pit: 		1,
+			skeleton: 		1,
+			twine: 			1,
+		}
+	},
 	carpenter:{
 		name: 				'carpenter',
 		type: 				'creature',
@@ -1680,6 +1709,35 @@ var all_available_cards = {
 		recipe:{
 			house: 			2,
 			swordsman: 		2,
+		}
+	},
+	volcano:{
+		name: 				'volcano',
+		type: 				'structure',
+		subtypes: 			['wall'],
+		color: 				['colorless'],
+		theme: 				['type_structure'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/volcano.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			8,
+		abilities: 			{burn_all: 1, burning_aura: 2},
+		hero_version: 			{
+			theme: 				['burn_ability','burn_ability'],
+			not_theme: 			['empower_hero_ability'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{burn_all: 1, burning_aura: 1},
+		},
+		quote: '\"Run away!\"',
+		recipe:{
+			fire_pit: 		1,
+			meadow: 		1,
+			miner: 			1,
 		}
 	},
 	wall:{
