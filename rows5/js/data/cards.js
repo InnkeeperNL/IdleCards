@@ -1329,7 +1329,7 @@ var all_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, restore: 1},
+			abilities: 			{strike_unit: 1, restore: 2},
 		},
 		quote: '\"Wool, milk and meat. Everything you need!\"',
 		recipe:{
