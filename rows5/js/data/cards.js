@@ -246,7 +246,7 @@ var all_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, burning_deaths: 1, resurrect: 10, undead: 1},
+			abilities: 			{strike_unit: 1, burning_deaths_hv: 1, resurrect: 10, undead: 1},
 		},
 		quote: '\"Did you hear that story of that guy that jumped into the volcano?\"',
 		recipe:{
