@@ -423,6 +423,28 @@ var all_available_cards = {
 			witch: 			2,
 		}
 	},
+	eruption:{
+		name: 				'eruption',
+		type: 				'spell',
+		subtypes: 			['event'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/volcano.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{burn_all: 3, minimum_enemies: 3},
+		quote: '\"Run away!\"',
+		recipe:{
+			fire_pit: 		1,
+			meadow: 		1,
+			miner: 			1,
+		},
+		max_in_deck: 1,
+	},
 	fire_assassin:{
 		name: 				'fire assassin',
 		type: 				'creature',
@@ -991,7 +1013,8 @@ var all_available_cards = {
 			fire_pit: 	1,
 			toad: 		1,
 			scroll: 	1,
-		}
+		},
+		max_in_deck: 1,
 	},
 	protective_bubble:{
 		name: 				'protective bubble',
@@ -1709,35 +1732,6 @@ var all_available_cards = {
 		recipe:{
 			house: 			2,
 			swordsman: 		2,
-		}
-	},
-	volcano:{
-		name: 				'volcano',
-		type: 				'structure',
-		subtypes: 			['wall'],
-		color: 				['colorless'],
-		theme: 				['type_structure'],
-		craft_theme: 		[],
-		pick_chance: 		1,
-		time: 				1,
-		image: 				'cards/volcano.jpg',
-		power: 				false,
-		armor: 				0,
-		health: 			8,
-		abilities: 			{burn_all: 1, burning_aura: 2},
-		hero_version: 			{
-			theme: 				['burn_ability','burn_ability'],
-			not_theme: 			['empower_hero_ability'],
-			power: 				false,
-			armor: 				0,
-			health: 			40,
-			abilities: 			{burn_all: 1, burning_aura: 1},
-		},
-		quote: '\"Run away!\"',
-		recipe:{
-			fire_pit: 		1,
-			meadow: 		1,
-			miner: 			1,
 		}
 	},
 	wall:{
