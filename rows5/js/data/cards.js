@@ -17,6 +17,7 @@ var all_available_cards = {
 		abilities: 			{arcane_bolt: 1},
 		hero_version: 			{
 			theme: 				['subtype_mage','subtype_arcane'],
+			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -68,6 +69,7 @@ var all_available_cards = {
 		abilities: 			{arcane_bolt: 2},
 		hero_version: 			{
 			theme: 				['subtype_mage','subtype_arcane'],
+			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -95,6 +97,7 @@ var all_available_cards = {
 		abilities: 			{arcane_bolt: 1},
 		hero_version: 			{
 			theme: 				['subtype_mage','subtype_arcane'],
+			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
