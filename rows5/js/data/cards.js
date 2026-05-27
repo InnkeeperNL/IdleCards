@@ -1844,7 +1844,7 @@ var all_available_cards = {
 		quote: '\"She uses the dark arts.\"',
 		recipe:{
 			cursed_talisman: 	2,
-			seer: 				2,
+			scribe: 			2,
 		}
 	},
 

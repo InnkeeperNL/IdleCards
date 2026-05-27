@@ -1466,15 +1466,15 @@ var all_abilities = {
 		level_cost_cum: true,
 	},
 	burn_all:{
-		description: 	'Applies {LEVEL} burn to all enemy units. Will not target the enemy hero.{BURN}',
+		description: 	'Applies {LEVEL} burn to all enemies.{BURN}',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		do_not_pause_between: true,
 		hero_tactics: 	['burn_ability','conflagrate_ability'],
 		targets:	{
 			0:{
-				target: 	'unit',
-				target_amount: 5,
+				target: 	'unit_or_hero',
+				target_amount: 6,
 				position: 	'random',
 				min_hp: 	1,
 				side: 		'enemy'
@@ -4539,7 +4539,7 @@ var all_abilities = {
 		},
 	},
 	empower_all:{
-		description: 	'All ally creatures that have power gain {LEVEL} power. Cannot affect heroes.',
+		description: 	'All ally creature units that have power gain {LEVEL} power. Cannot affect heroes.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		do_not_pause_between: 	true,
@@ -6176,15 +6176,15 @@ var all_abilities = {
 	},
 	fortify_all:{
 		name: 			'shield all',
-		description: 	'Grants all ally units {LEVEL} shield. Cannot affect heroes. {SHIELD}',
+		description: 	'Grants all allies {LEVEL} shield.{SHIELD}',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: true,
 		scales: 		true,
 		hero_tactics: 	['active_healing_ability','plated_ability','cleanse_ally_ability'],
 		targets:	{
 			0:{
-				target: 		'unit',
-				target_amount: 	5,
+				target: 		'unit_or_hero',
+				target_amount: 	6,
 				position: 		'random',
 				min_hp: 		1,
 				side: 			'ally'
@@ -7025,14 +7025,14 @@ var all_abilities = {
 		level_cost: 		4,
 	},
 	heal:{
-		description: 	'Heals a random damaged ally creature unit {LEVEL} time(s). Cannot affect heroes.',
+		description: 	'Heals a random damaged ally creature {LEVEL} time(s).',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		hero_tactics: 	['cleanse_ally_ability','type_creature','plated_ability','resist_magic_ability'],
 		proc_amount: 	'ability_level',
 		targets:	{
 			0:{
-				target: 		'unit',
+				target: 		'unit_or_hero',
 				target_amount: 	1,
 				not_types: 		['object','structure'],
 				position: 		'random',
@@ -7058,14 +7058,14 @@ var all_abilities = {
 		},
 	},
 	heal_all:{
-		description: 	'Heals all damaged ally creature units by {LEVEL}.',
+		description: 	'Heals all damaged ally creatures by {LEVEL}.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		hero_tactics: 	['cleanse_ally_ability','type_creature','plated_ability','resist_magic_ability'],
 		targets:	{
 			0:{
-				target: 		'unit',
-				target_amount: 	5,
+				target: 		'unit_or_hero',
+				target_amount: 	6,
 				not_types: 		['object','structure'],
 				position: 		'random',
 				min_hp: 		1,
@@ -7082,9 +7082,12 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	12,
-		level_cost_structure: 9,
-		level_cost_spell: 3,
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 3,
+			base_cost_structure_factor: 1.5,
+			base_cost_spell_factor: 0.75,
+		},
 	},
 	hellfire:{
 		description: 	'Deals {LEVEL} magical fire damage, multiplied by the distance form their hero, to the enemy unit furthest from their hero.',
@@ -8518,7 +8521,7 @@ var all_abilities = {
 		cost_factor: 	'none',
 	},
 	poison:{
-		description: 	'Applies {LEVEL} poison to a random enemy creature. Will only target the enemy hero if there are no enemy units.{POISON}',
+		description: 	'Applies {LEVEL} poison to a random enemy creature. Will only target the enemy hero if there are no enemy creature units.{POISON}',
 		scales: 		true,
 		hero_tactics: 	['poison_ability','break_ability','wither_ability'],
 		targets:	{
@@ -8562,8 +8565,8 @@ var all_abilities = {
 		hero_tactics: 	['poison_ability','break_ability','wither_ability'],
 		targets:	{
 			0:{
-				target: 		'unit',
-				target_amount: 	5,
+				target: 		'unit_or_hero',
+				target_amount: 	6,
 				position: 		'random',
 				not_types: 		['object','structure'],
 				min_hp: 		1,
@@ -9734,13 +9737,13 @@ var all_abilities = {
 		cost_on_top: 		true,
 	},
 	repair:{
-		description: 	'Repairs a random non-plant damaged ally structure by {LEVEL}. Cannot affect heroes.',
+		description: 	'Repairs a random non-plant damaged ally structure by {LEVEL}.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		hero_tactics: 	['type_structure'],
 		targets:	{
 			0:{
-				target: 		'unit',
+				target: 		'unit_or_hero',
 				target_amount: 	1,
 				not_types: 		['object','creature'],
 				not_subtypes: 	['plant'],
