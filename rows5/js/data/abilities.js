@@ -9877,7 +9877,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 1,
+			base_cost_factor: 0.5,
 		},
 	},
 	restore_enemy:{
