@@ -446,7 +446,6 @@ var all_available_cards = {
 			meadow: 		1,
 			miner: 			1,
 		},
-		max_in_deck: 1,
 	},
 	fire_assassin:{
 		name: 				'fire assassin',
@@ -1017,7 +1016,7 @@ var all_available_cards = {
 			toad: 		1,
 			scroll: 	1,
 		},
-		max_in_deck: 1,
+		max_in_deck: 2,
 	},
 	protective_bubble:{
 		name: 				'protective bubble',
