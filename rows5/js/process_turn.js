@@ -2914,7 +2914,7 @@ function apply_doom(target_id, calculated_amount, origin_id){
 		update_passive_effects(target_id);
 		if(current_unit['effects']['doom'] >= 10)
 		{
-			destroy_unit(unit_id, origin_id);
+			destroy_unit(target_id, origin_id);
 		}
 	}
 };
