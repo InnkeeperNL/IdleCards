@@ -1097,6 +1097,35 @@ var all_available_cards = {
 			trapper: 	2,
 		}
 	},
+	rock_seer:{
+		name: 				'rock seer',
+		type: 				'creature',
+		subtypes: 			['human','cleric'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/rock_seer.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, doom_stunned: 2},
+		hero_version: 			{
+			theme: 				['subtype_cleric','doom_ability','stun_enemy_ability'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, doom_stunned: 4},
+		},
+		quote: '\"Keep moving, or your fate fill catch up to you.\"',
+		recipe:{
+			miner: 			1,
+			seer: 			1,
+			slimeling: 		1,
+		}
+	},
 	rogue:{
 		name: 				'rogue',
 		type: 				'creature',
@@ -1474,6 +1503,7 @@ var all_available_cards = {
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/slimy_skeleton.jpg',
+		image_position: 	'top',
 		power: 				1,
 		armor: 				0,
 		health: 			1,

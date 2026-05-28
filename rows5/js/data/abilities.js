@@ -4042,6 +4042,38 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 	-1,
 	},
+	doom_stunned:{
+		description: 	'When any enemy unit becomes stunned, this applies {LEVEL} doom to it.{DOOM}',
+		cannot_proc_while_stunned: true,
+		proc: 			'enemy_got_stunned',
+		hero_tactics: 	['doom_ability','subtype_wall','heal_hero_ability'],
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				has_effect: 	{effect_name: 'doom', amount: 9, limit: 'max'},
+				min_hp: 		0,
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'doom',
+				type: 			'apply_doom',
+				subtypes: 		['magical','doom'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		animation: 	'combat_zoom',
+		base_cost:{
+			base_cost_id: 'doom',
+			base_cost_factor: 1,
+			level_cost_spell: 0.25,
+		},
+	},
 	dooming_aura:{
 		description: 	'When this receives melee damage from an enemy unit, this applies {LEVEL} doom to it. {DOOM}.',
 		proc: 			'receive_damage',
@@ -12314,7 +12346,7 @@ var all_abilities = {
 			0:{
 				projectile: 'stun',
 				type: 		'apply_stun',
-				subtypes: 	['stun'],
+				subtypes: 	['stun','stun_enemy'],
 				amount: 	1
 			}
 		},

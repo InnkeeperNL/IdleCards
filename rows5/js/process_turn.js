@@ -1120,9 +1120,11 @@ function update_passive_effects(unit_id){
 	eachoa(battle_info.combat_units[unit_id]['effects'], function(effect, amount){
 		if(amount > 0)
 		{
+			var amount_to_show = amount + '';
+			if(effect == 'stunned'){amount_to_show = '&nbsp;';}
 			timeout_key ++;
 			all_timeouts[timeout_key] = setTimeout(function(){
-				$('.unit_id_' + unit_id + ' .unit_effects').prepend('<div class="effect_' + effect + '">' + amount + '</div>');
+				$('.unit_id_' + unit_id + ' .unit_effects').prepend('<div class="effect_' + effect + '">' + amount_to_show + '</div>');
 			},total_timeout);		
 		}
 	});
@@ -2180,7 +2182,7 @@ function process_effect(target_id, origin_id, effect, level){
 
 					if(effect['type'] == 'apply_stun')
 					{
-						apply_stun(target_id, calculated_amount, origin_id, effect['allways_apply']);
+						apply_stun(target_id, calculated_amount, origin_id, effect);
 						check_visible_skills(target_id);
 					}
 					
@@ -2988,7 +2990,8 @@ function apply_blessed(target_id, calculated_amount, origin_id){
 	}
 };
 
-function apply_stun(target_id, calculated_amount, origin_id, allways_apply){
+function apply_stun(target_id, calculated_amount, origin_id, effect){
+	var allways_apply = effect['allways_apply'];
 	if(calculated_amount > 0 && battle_info.combat_units[target_id] != undefined)
 	{
 		var current_unit = battle_info.combat_units[target_id];
@@ -3032,6 +3035,7 @@ function apply_stun(target_id, calculated_amount, origin_id, allways_apply){
 			},total_timeout + 250);
 			total_timeout += 250 * battle_speed;*/
 			update_passive_effects(target_id);
+			check_ability_procs(current_unit['side'], 'got_stunned', target_id, effect['subtypes']);
 		}
 	}
 };
