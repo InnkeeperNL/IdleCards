@@ -5107,7 +5107,7 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				pause_before: 		500,
+				pause_before: 		0,
 				self_projectile: 	'dodge',
 				subtypes: 			['evade','evasion'],
 				increase_timeout: 	-500,

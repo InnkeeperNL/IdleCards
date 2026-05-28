@@ -2473,7 +2473,7 @@ function process_effect(target_id, origin_id, effect, level){
 			all_timeouts[timeout_key] = setTimeout(function(){
 				$('.battle_container .unit_id_' + target_id).removeClass('dodge');
 			},total_timeout + 500);
-			total_timeout += 500 * battle_speed;
+			total_timeout += 1500 * battle_speed;
 
 			if(battle_info.combat_units[origin_id] != undefined)
 			{
