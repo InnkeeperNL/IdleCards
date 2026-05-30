@@ -2,7 +2,7 @@ var ability_base_costs = {
 	arcane_bolt: 3,
 	burn: 		2,
 	cleanse: 	1,
-	curse: 		1,
+	curse: 		0.5,
 	destroy: 	8,
 	doom: 		1,
 	draw: 		6,
@@ -13,6 +13,7 @@ var ability_base_costs = {
 	healing: 	4,
 	poison: 	1.5,
 	resurrect: 	0.4,
+	stealth: 	2,
 	stun: 		4,
 	thorns: 	0.5,
 }
@@ -1848,7 +1849,7 @@ var all_abilities = {
 				projectile: 		'book',
 				projectile_target: 	'deck',
 				type: 		'add_card_to_deck',
-				subtypes: 	['summon_ally','summon_rat'],
+				subtypes: 	['summon_ally','summon_rat','summon_creature'],
 				card_subtype: 	'rat',
 				card_status: 	'hand',
 				amount: 	1
@@ -2179,6 +2180,39 @@ var all_abilities = {
 			base_cost_id: 'cleanse',
 			base_cost_factor: 3,
 			base_cost_spell_factor: 0.6,
+		},
+	},
+	cleansing_deaths:{
+		description: 	'Removes {LEVEL} negative effect(s) from a random ally unit or your hero when any ally creature is destroyed.',
+		proc: 			'ally_creature_death',
+		cannot_proc_while_stunned: true,
+		do_not_pause_between: true,
+		proc_amount: 	'ability_level',
+		scales: 		true,
+		hero_tactics: 	['ally_creature_death_proc_ability','type_creature'],
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				has_negative_effect: true,
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'cleanse',
+				type: 			'reduce_negative_effects',
+				subtypes: 		['cleansing','cleanse_ally'],
+				amount: 		1,
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'cleanse',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.2,
 		},
 	},
 	clone_ally:{
@@ -3693,8 +3727,8 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	-0.25,
-		cost_adjustment: 3.5,
+		level_cost: 	-0.5,
+		cost_adjustment: 6,
 	},
 	destroy_structure:{
 		description: 	'Destroys {LEVEL} random enemy structure unit(s).',
@@ -6135,7 +6169,7 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				pause_before: 		500,
+				pause_before: 		0,
 				self_projectile: 	'fly',
 				subtypes: 			['flying','evade'],
 				increase_timeout: 	-500,
@@ -7340,9 +7374,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		5,
-		level_cost_hero: 	4,
-		level_cost_spell: 	1.25,
+		base_cost:{
+			base_cost_id: 	'stealth',
+			base_cost_factor: 4,
+			base_cost_spell_factor: 1,
+		},
 	},
 	hide_hero:{
 		ability_subtypes: ['evade'],
@@ -11350,8 +11386,11 @@ var all_abilities = {
 				increase_timeout: -500
 			}
 		},
-		level_cost: 		2,
-		level_cost_hero: 	0.25,
+		base_cost:{
+			base_cost_id: 	'stealth',
+			base_cost_factor: 1,
+			base_cost_hero_factor: 0.125,
+		},
 	},
 	step_aside:{
 		description: 	'If there is an opposing unit, this unit will move to an adjacent slot with no opposing unit when played, any enemy unit enters the game, an enemy moved or on its turn. Can be used once each round.',
@@ -11532,7 +11571,7 @@ var all_abilities = {
 		additional_levels_cost: 0.5,
 	},
 	stun:{
-		description: 	'Stuns a random enemy unit for {LEVEL} turn(s).',
+		description: 	'Stuns {LEVEL} random enemy unit(s).',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		targets:	{
@@ -11554,8 +11593,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_spell: 	1,
+		base_cost:{
+			base_cost_id: 	'stun',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
 	},
 	stun_construct:{
 		description: 	'Stuns a random enemy artifact or golem for {LEVEL} turn(s).',
@@ -11632,6 +11674,7 @@ var all_abilities = {
 				target: 		'unit_or_hero',
 				target_amount: 	1,
 				position: 		'random',
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'max'},
 				origin_unit: 	true,
 				side: 			'enemy'
 			},
@@ -12337,6 +12380,7 @@ var all_abilities = {
 				target: 		'unit_or_hero',
 				target_amount: 	1,
 				position: 		'random',
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'max'},
 				origin_unit: 	true,
 				min_hp: 		0,
 				side: 			'enemy'
@@ -12369,6 +12413,7 @@ var all_abilities = {
 				target: 		'unit_or_hero',
 				target_amount: 	1,
 				position: 		'random',
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'max'},
 				origin_unit: 	true,
 				min_hp: 		0,
 				side: 			'enemy'
@@ -13377,7 +13422,7 @@ $.each(all_abilities, function(ability_id, ability_info){
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{BURN}").join('<br/><i>Burn: Suffers fire damage equal to the burn it suffers at the end of each turn. The amount of burn is reduced by 1 each time it deals damage.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{POISON}").join('<br/><i>Poison: Suffers piercing poison damage at the end of each turn equal to the amount of poison. The amount of poison is reduced by 1 each time it deals damage.</i>');
 	//all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received. Curse is removed whenever it takes effect.</i>');
-	all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received by 20%, rounded randomly.</i>');
+	all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received by 10%, rounded randomly.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{BLESSED}").join('<br/><i>Blessed: There is a 10% chance per blessing that this will return to your deck when destroyed.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{DOOM}").join('<br/><i>Doom: There is a 10% chance per doom that this will be destroyed at the end of its turn. If a unit has 10 or more doom on it, it is destroyed immediately.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{SHIELD}").join('<br/><i>Shield: Absorbs the first incoming damage.</i>');

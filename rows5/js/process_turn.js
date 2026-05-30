@@ -2914,6 +2914,7 @@ function apply_doom(target_id, calculated_amount, origin_id){
 		update_passive_effects(target_id);
 		if(current_unit['effects']['doom'] >= 10)
 		{
+			create_projectile(target_id, target_id, 'doom', false, undefined, battle_info.combat_units[target_id]['side'], undefined, undefined, undefined, true);
 			destroy_unit(target_id, origin_id);
 		}
 	}
@@ -3548,7 +3549,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 	    	if(target_unit['effects'] != undefined && target_unit['effects']['cursed'] != undefined)
 	    	{
 	    	    //calculated_amount += target_unit['effects']['cursed'];
-	    	    calculated_amount *=  1 + (target_unit['effects']['cursed'] / 5);
+	    	    calculated_amount *=  1 + (target_unit['effects']['cursed'] / 10);
 	    	    calculated_amount = round_by_percent(calculated_amount);
 	    	    //target_unit['effects']['cursed'] = 0;
 	    	    //target_unit['effects']['cursed'] = Math.floor(target_unit['effects']['cursed'] / 2);

@@ -134,7 +134,7 @@ var all_available_cards = {
 		quote: '\"Keep your distance.\"',
 		recipe:{
 			runner: 		1,
-			twine: 			1,
+			skeleton: 		1,
 			toad: 			1,
 		}
 	},
@@ -226,7 +226,7 @@ var all_available_cards = {
 		recipe:{
 			miner: 			1,
 			scroll: 		1,
-			skeleton: 		1,
+			twine: 			1,
 		}
 	},
 	burning_skeleton:{
@@ -245,7 +245,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{strike: 1, burning_deaths: 1, resurrect: 8, undead: 1},
 		hero_version: 			{
-			theme: 				['subtype_undead','burn_ability','ally_creature_death_proc_ability','own_death_proc_ability'],
+			theme: 				['subtype_undead','burn_ability','ally_creature_death_proc_ability','own_death_proc_ability','summon_creature_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -254,8 +254,8 @@ var all_available_cards = {
 		quote: '\"Did you hear that story of that guy that jumped into the volcano?\"',
 		recipe:{
 			fire_pit: 		1,
+			miner: 			1,
 			skeleton: 		1,
-			twine: 			1,
 		}
 	},
 	carpenter:{
@@ -321,8 +321,8 @@ var all_available_cards = {
 		quote: '\"Worn by many witches.\"',
 		recipe:{
 			dagger: 		1,
-			skeleton: 		1,
 			toad: 			1,
+			twine: 			1,
 		}
 	},
 	dagger:{
@@ -360,12 +360,12 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{curse_all: 1, destroy_cursed: 5, echo: 1},
+		abilities: 			{curse_all: 2, destroy_cursed: 10, echo: 1},
 		quote: '\"Make sure you come home before dark.\"',
 		recipe:{
 			dagger: 	1,
 			scroll: 	1,
-			twine: 		1,
+			skeleton: 		1,
 		}
 	},
 	dark_rogue:{
@@ -382,13 +382,13 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, cursed_touch: 2, evade: 1},
+		abilities: 			{strike: 1, cursed_touch: 4, evade: 1},
 		hero_version: 			{
 			theme: 				['melee_ability','subtype_rogue','curse_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, cursed_touch: 1, evade: 1},
+			abilities: 			{strike_unit: 1, cursed_touch: 2, evade: 1},
 		},
 		quote: '\"Her strikes leave a mark.\"',
 		recipe:{
@@ -410,20 +410,49 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			7,
-		abilities: 			{curse_all: 1, cursed_aura: 1},
+		abilities: 			{curse_all: 2, cursed_aura: 2},
 		hero_version: 			{
 			theme: 				['subtype_witch', 'curse_ability'],
 			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{curse_all: 1, cursed_aura: 2},
+			abilities: 			{curse_all: 2, cursed_aura: 4},
 		},
 		quote: '\"They say an ancient witch used to live there.\"',
 		recipe:{
 			dark_night:  	2,
 			scarecrow: 		2,
 			witch: 			2,
+		}
+	},
+	death_cleric:{
+		name: 				'death cleric',
+		type: 				'creature',
+		subtypes: 			['human','cleric'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/death_cleric.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, cleansing_deaths: 2},
+		hero_version: 			{
+			theme: 				['subtype_cleric','ally_creature_death_proc_ability','own_death_proc_ability','summon_creature_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, cleansing_deaths: 2},
+		},
+		quote: '\"There is serenity in death.\"',
+		recipe:{
+			magic_dust: 		1,
+			skeleton: 			1,
+			water_carrier: 		1,
 		}
 	},
 	eruption:{
@@ -444,7 +473,7 @@ var all_available_cards = {
 		recipe:{
 			fire_pit: 		1,
 			meadow: 		1,
-			miner: 			1,
+			spike_trap: 	1,
 		},
 	},
 	fire_assassin:{
@@ -488,7 +517,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{burning_aura: 1},
+		abilities: 			{burning_aura: 2},
 		hero_version: 			{
 			theme: 				['burn_ability'],
 			not_theme: 			['empower_hero_ability'],
@@ -655,9 +684,30 @@ var all_available_cards = {
 		quote: '\"Careful! Hot!\"',
 		recipe:{
 			fire_pit: 		1,
-			spike_trap: 	1,
+			twine: 			1,
 			wall: 			1,
 		}
+	},
+	grasping_vines:{
+		name: 				'grasping vines',
+		type: 				'spell',
+		subtypes: 			['plant'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/grasping_vines.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{stun: 1, echo: 1},
+		quote: '\"The jungle is a dangerous place.\"',
+		recipe:{
+			meadow: 		1,
+			runner: 		1,
+			twine: 			1,
+		},
 	},
 	hammer:{
 		name: 				'hammer',
@@ -676,8 +726,8 @@ var all_available_cards = {
 		abilities: 			{repair: 1},
 		quote: '\"A usefull tool.\"',
 		recipe:{
+			skeleton: 		1,
 			spike_trap: 	1,
-			twine: 			1,
 			wall: 			1,
 		}
 	},
@@ -731,6 +781,28 @@ var all_available_cards = {
 			slimeling: 	1,
 		}
 	},
+	hideout:{
+		name: 				'hideout',
+		type: 				'spell',
+		subtypes: 			['tactic'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/hideout.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{hide_ally: 1, echo: 1},
+		quote: '\"Sometimes, you just have to hide.\"',
+		recipe:{
+			magic_dust: 	1,
+			miner: 			1,
+			runner: 		1,
+		}
+	},
 	horse:{
 		name: 				'horse',
 		type: 				'creature',
@@ -782,7 +854,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{heal: 2},
+			abilities: 			{heal: 1, cleanse: 1, fortify_ally: 1},
 		},
 		quote: '\"A nice place to rest.\"',
 		recipe:{
@@ -1165,8 +1237,8 @@ var all_available_cards = {
 		image: 				'cards/runner.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			5,
-		abilities: 			{run_away: 1, strike: 1},
+		health: 			4,
+		abilities: 			{run_away: 1, strike: 1, evade: 1},
 		hero_version: 			{
 			theme: 				['melee_ability','subtype_human'],
 			power: 				2,
@@ -1222,7 +1294,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{fearful_aura: 1, curse_hv: 4},
+			abilities: 			{fearful_aura: 1, curse_hv: 8},
 		},
 		quote: '\"It scares away more then just crows.\"',
 		recipe:{
@@ -1465,6 +1537,35 @@ var all_available_cards = {
 			wood: 		1,
 		}
 	},
+	slime_pit:{
+		name: 				'slime pit',
+		type: 				'structure',
+		subtypes: 			['wall'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/slime_pit.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{trap: 10, poison_aura: 2},
+		hero_version: 			{
+			theme: 				['poison_ability','stun_ability'],
+			not_theme: 			['empower_hero_ability'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{trap: 5, poison_aura: 2},
+		},
+		quote: '\"Do not fall into it!\"',
+		recipe:{
+			fire_pit: 		1,
+			slimeling: 		1,
+			water_carrier: 	1,
+		}
+	},
 	slimeling:{
 		name: 				'slimeling',
 		type: 				'creature',
@@ -1518,7 +1619,7 @@ var all_available_cards = {
 		recipe:{
 			skeleton: 			1,
 			slimeling: 			1,
-			water_carrier: 		1,
+			twine: 				1,
 		}
 	},
 	sword:{
@@ -1871,7 +1972,7 @@ var all_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{curse_hv: 2, strike_unit: 1},
+			abilities: 			{curse_hv: 4, strike_unit: 1},
 		},
 		quote: '\"She uses the dark arts.\"',
 		recipe:{
@@ -4229,14 +4330,16 @@ function get_card_image_filename(card_id){
 	return current_card_image;
 }
 
-function get_base_material_needs_recipes(base_material_value, base_material_value_max, show_peasants){
+function get_base_material_needs_recipes(base_material_value, base_material_value_max, show_peasants, once_only){
 	if(base_material_value_max == undefined){base_material_value_max = base_material_value;}
+	if(once_only == undefined){once_only = false;}
 	var base_materials = {};
 	var base_recipes = {};
+	var materials_used = {};
 	var needed_recipes = {};
 	eachoa(all_available_cards, function(card_id, card_info){
 		/*if(card_info['type'] == 'material' || card_id == 'peasant')*/
-		if((base_material_value == undefined && card_info['type'] == 'material') || (base_material_value != undefined && card_info['value'] >= base_material_value && card_info['value'] <= base_material_value_max) || (show_peasants != undefined && show_peasants == true && card_id == 'peasant'))
+		if(card_info['type'] != 'recipe' && ((base_material_value == undefined && card_info['type'] == 'material') || (base_material_value != undefined && card_info['value'] >= base_material_value && card_info['value'] <= base_material_value_max) || (show_peasants != undefined && show_peasants == true && card_id == 'peasant')))
 		{
 			base_materials[card_id] = true;
 		}
@@ -4246,25 +4349,54 @@ function get_base_material_needs_recipes(base_material_value, base_material_valu
 			var recipe_found = false;
 			if(material_id_1 != material_id_2)
 			{
+				var base_recipes_found = {};
 				eachoa(all_available_cards, function(possible_recipe_id, possible_recipe_info){
-					if(possible_recipe_info['recipe'] != undefined)
+					if(possible_recipe_info['type'] != 'recipe' && possible_recipe_info['recipe'] != undefined)
 					{
 						if(count_object(possible_recipe_info['recipe']) >= 2 && possible_recipe_info['recipe'][material_id_1] != undefined && possible_recipe_info['recipe'][material_id_2] != undefined)
 						{
 							recipe_found = true;
+							base_recipes_found[possible_recipe_id] = true_copyobject(possible_recipe_info['recipe']);
 							base_recipes[possible_recipe_id] = true_copyobject(possible_recipe_info['recipe']);
+							if(materials_used[material_id_1] == undefined){materials_used[material_id_1] = 0;}
+							if(materials_used[material_id_2] == undefined){materials_used[material_id_2] = 0;}
+							materials_used[material_id_1] += 1;
+							materials_used[material_id_2] += 1;
 						}
 					}
 				});
+
+				if(count_object(base_recipes_found) > 1)
+				{
+					console.log('double recipes found!');
+					console.log(base_recipes_found);
+				}
 			
 				if(recipe_found == false)
 				{
 					var allready_needed = false;
-					eachoa(needed_recipes, function(needed_id, needed_info){
-						if(needed_info[material_id_1] != undefined && needed_info[material_id_2] != undefined){
+					if(once_only == true)
+					{
+						if(materials_used[material_id_1] != undefined || materials_used[material_id_2] != undefined)
+						{
 							allready_needed = true;
+							eachoa(needed_recipes, function(needed_recipe_id, needed_recipe){
+								if(needed_recipe[material_id_1] != undefined || needed_recipe[material_id_2] != undefined)
+								{
+									delete needed_recipes[needed_recipe_id];
+								}
+							});
 						}
-					});
+						
+					}
+					if(allready_needed == false)
+					{
+						eachoa(needed_recipes, function(needed_id, needed_info){
+							if(needed_info[material_id_1] != undefined && needed_info[material_id_2] != undefined){
+								allready_needed = true;
+							}
+						});
+					}
 					if(allready_needed == false)
 					{
 						var new_needed_recipes_key = get_highest_key_in_object(needed_recipes) + 1;
@@ -4278,4 +4410,8 @@ function get_base_material_needs_recipes(base_material_value, base_material_valu
 	});
 	console.log(base_recipes);
 	console.log(needed_recipes);
+	if(once_only == true)
+	{
+		console.log(materials_used);
+	}
 }
