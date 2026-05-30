@@ -2934,14 +2934,14 @@ var all_abilities = {
 		}
 	},
 	curse_all:{
-		description: 	'Applies {LEVEL} curse to all enemy units.{CURSE}',
+		description: 	'Applies {LEVEL} curse to all enemy units and the enemy hero.{CURSE}',
 		do_not_pause_between: true,
 		cannot_proc_while_stunned: true,
 		hero_tactics: 	['projectile_ability','blast_ability'],
 		targets:	{
 			0:{
-				target: 		'unit',
-				target_amount: 	5,
+				target: 		'unit_or_hero',
+				target_amount: 	6,
 				position: 		'random',
 				min_hp: 		1,
 				side: 			'enemy'
