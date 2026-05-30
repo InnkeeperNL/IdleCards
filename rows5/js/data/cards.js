@@ -417,7 +417,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{curse_all: 2, cursed_aura: 4},
+			abilities: 			{curse_all_hv: 2, cursed_aura: 4},
 		},
 		quote: '\"They say an ancient witch used to live there.\"',
 		recipe:{

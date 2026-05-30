@@ -2963,6 +2963,37 @@ var all_abilities = {
 			base_cost_spell_factor: 0.75,
 		}
 	},
+	curse_all_hv:{
+		name: 			'curse all',
+		description: 	'Applies {LEVEL} curse to all enemy units.{CURSE}',
+		do_not_pause_between: true,
+		cannot_proc_while_stunned: true,
+		hero_tactics: 	['projectile_ability','blast_ability'],
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	5,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				pause_before: 	500,
+				projectile: 	'curse',
+				type: 			'apply_curse',
+				subtypes: 		['magical','curse'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 	'combat_zoom',
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 3,
+			base_cost_spell_factor: 0.75,
+		}
+	},
 	curse_arrivals:{
 		description: 	'Applies {LEVEL} curse to any enemy unit that enters the game.',
 		proc: 			'enemy_unit_card_played',
