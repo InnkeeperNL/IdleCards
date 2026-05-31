@@ -1063,16 +1063,15 @@ var all_abilities = {
 		level_cost: 	4,
 	},
 	break:{
-		description: 	'Destroys up to a total of {LEVEL} enemy artifact(s) or structure(s).',
+		description: 	'Destroys up to a total of {LEVEL} enemy artifact(s).',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use: 'break',
 		hero_tactics: 	['break_ability'],
 		targets:	{
 			0:{
-				target: 	'any',
+				target: 	'artifact',
 				target_amount: 1,
-				not_types: 	['creature','spell','hero'],
 				position: 	'random',
 				side: 		'enemy'
 			},
@@ -1088,7 +1087,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'destroy',
-			base_cost_factor: 0.75,
+			base_cost_factor: 0.5,
 		},
 	},
 	bring_animal:{
@@ -4021,8 +4020,8 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		base_cost:{
 			base_cost_id: 'doom',
-			base_cost_factor: 3,
-			level_cost_spell: 0.75,
+			base_cost_factor: 2,
+			level_cost_spell: 0.5,
 		},
 	},
 	doom_ally:{
@@ -8585,26 +8584,16 @@ var all_abilities = {
 		cost_factor: 		'health',
 	},
 	plunder:{
-		description: 	'When this deals damage to the enemy hero, destroy an enemy artifact or non-golem structure unit.',
+		description: 	'When this deals damage to the enemy hero, destroy {LEVEL} enemy artifact(s).',
 		proc: 			'dealt_damage_to_hero',
 		ability_subtypes:['dealt_damage_proc'],
 		cannot_proc_while_stunned: true,
-		proc_amount: 	'ability_level',
 		targets:	{
-			0:{
-				target: 	'unit',
-				target_amount: 5,
-				not_types: 	['creature'],
-				not_subtypes: 	['golem'],
-				position: 	'random',
-				side: 		'enemy'
-			},
 			1:{
-				add_targets: true,
-				target: 	'artifact',
-				target_amount: 1,
-				position: 	'random',
-				side: 		'enemy'
+				target: 		'artifact',
+				target_amount: 	'ability_level',
+				position: 		'random',
+				side: 			'enemy'
 			},
 		},
 		effects:{
@@ -8616,7 +8605,10 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	0.5,
+		base_cost:{
+			base_cost_id: 'destroy',
+			base_cost_factor: 0.4,
+		},
 		cost_factor: 	'none',
 	},
 	poison:{
