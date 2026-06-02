@@ -15,7 +15,7 @@ var all_buildings = {
 		type: 			'shop',
 
 		productions:{
-			peasant:{
+			/*peasant:{
 				base_time: 		1 * 3600,
 				base_storage: 	1 * 5,
 				upgrade_cost_speed:{
@@ -27,10 +27,23 @@ var all_buildings = {
 				defeated_heroes_speed_bonusses:{
 				},
 				//production_achievement_bonus: 0.1,
+			},*/
+			scraps_placeholder:{
+				base_time: 		1 * 1 * 3600,
+				base_storage: 	1 * 8,
+				upgrade_cost_speed:{
+					peasant: 		10,
+				},
+				upgrade_cost_storage:{
+					peasant: 		10,
+				},
+				defeated_heroes_speed_bonusses:{
+				},
+				//production_achievement_bonus: 0.1,
 			},
 		},
 
-		shop_type: 		['material'],
+		shop_type: 		['creature','structure','artifact'],
 
 		/*recipes:{
 			stash:{

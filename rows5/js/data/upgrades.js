@@ -56,7 +56,7 @@ var all_upgrades = {
 		needed_upgrades:{
 			aab_summon_rarity: 	5,
 		},
-		card_image: 	'water',
+		card_image: 	'arcane_bolts',
 		type: 			'floating_chance',
 		subtypes:  		['any'],
 		amount: 		0.025,
@@ -166,7 +166,7 @@ var all_upgrades = {
 		cost: 			{shard:5,},
 		max_level: 		9,
 	},
-	merchant_offers:{
+	/*merchant_offers:{
 		name: 			'Merchant offers',
 		description: 	'Reduces the maximum scraps requested by merchants offering cards by 25%.<br>Only affects new offers.',
 		needed_upgrades:{
@@ -180,7 +180,7 @@ var all_upgrades = {
 		level_cost_scale: 	1,
 		cost: 			{scraps:10,},
 		max_level: 		10,
-	},
+	},*/
 	merchant_sales:{
 		name: 			'Merchant sales',
 		description: 	'Increases the maximum scraps offered by merchants who want to buy cards by 25%.<br>Only affects new offers.',

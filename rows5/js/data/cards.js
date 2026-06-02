@@ -2215,7 +2215,7 @@ var all_available_cards = {
 	//########################################################## CURRENCY ###############################################################################################
 	//##################################################################################################################################################################
 
-	ore:{
+	/*ore:{
 		name: 				'ore',
 		subtypes: 			['resource'],
 		value: 				1,
@@ -2299,7 +2299,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{},
 		quote: 'Used in crafting'
-	},
+	},*/
 	
 	//##################################################################################################################################################################
 	//########################################################## REWARDS ###############################################################################################
@@ -2351,7 +2351,7 @@ var all_available_cards = {
 	},
 	stash:{
 		name: 				'stash',
-		value: 				15,
+		value: 				25,
 		type: 				'consumable',
 		basic_reward: 		true,
 		color: 				['none'],
@@ -2362,7 +2362,7 @@ var all_available_cards = {
 		armor: 				false,
 		health: 			false,
 		abilities: 			{},
-/*		reward: 			{
+		reward: 			{
 			type: 			'random_card',
 			pick_amount: 	1,
 			amount: 		1,
@@ -2370,8 +2370,8 @@ var all_available_cards = {
 			description: 	'Awards 1 random card.',
 			text: 			'&nbsp;',
 			amount_used: 	[1,5,'all'],
-		},*/
-		reward: 			{
+		},
+		/*reward: 			{
 			type: 			'random_card',
 			pick_amount: 	3,
 			amount: 		1,
@@ -2381,11 +2381,11 @@ var all_available_cards = {
 			pickable: 		true,
 			description: 	'Lets you pick a stack of random materials.',
 			text: 			'Pick a material.',
-		},
+		},*/
 	},
 	chest:{
 		name: 				'chest',
-		value: 				50,
+		value: 				100,
 		type: 				'consumable',
 		basic_reward: 		true,
 		color: 				['none'],
@@ -2398,17 +2398,18 @@ var all_available_cards = {
 		abilities: 			{},
 		reward: 			{
 			type: 			'random_card',
-			pick_amount: 	1,
+			pick_amount: 	3,
 			amount: 		1,
-			min_value: 		2,
+			min_value: 		10,
+			pickable: 		true,
 			description: 	'Awards 1 random card.',
 			text: 			'&nbsp;',
-			amount_used: 	[1,5,'all'],
+			amount_used: 	[1],
 		},
 	},
 	trove:{
 		name: 				'trove',
-		value: 				50,
+		value: 				100,
 		type: 				'consumable',
 		basic_reward: 		true,
 		color: 				['none'],
@@ -2492,7 +2493,7 @@ function calculate_card_value(card_id, show_calc){
 	//console.log('calculating ' + card_id);
 	var current_card_value = 0;
 	if(all_available_cards[card_id] == undefined){console.log(card_id)};
-	if(false /*all_available_cards[card_id]['recipe'] == undefined || show_calc != undefined || true*/)
+	if(all_available_cards[card_id]['recipe'] == undefined || show_calc != undefined || true)
 	{
 		if(all_available_cards[card_id]['value'] == undefined)
 		{
@@ -2512,7 +2513,8 @@ function calculate_card_value(card_id, show_calc){
 		eachoa(all_available_cards[card_id]['abilities'], function(ability_id, ability_level){
 			ability_count +=  0.8 + (ability_level / 5);
 		});*/
-		current_card_value *= (ability_count * ability_count);
+		var ability_value_factor = sqr(0.75 + (ability_count /4));
+		current_card_value *= ability_value_factor;
 		if(show_calc != undefined && show_calc == true){console.log('abilities: ' + current_card_value);}
 		//current_card_value += all_available_cards[card_id]['power'];
 		//current_card_value += all_available_cards[card_id]['health'] / 4;

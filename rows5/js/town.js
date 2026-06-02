@@ -877,10 +877,10 @@ function show_single_building(){
 				if(offer_info['sold'] == undefined)
 				{
 					parsed_expedition += 	'<div class="offer_image" onclick="show_card_details(\'' + offer_info['card_id'] + '\')">' + parse_card(offer_info['card_id'], /*owned_amount + ' / ' +*/ temp_offer_amount) + '</div>';
-					if(offer_info['buysell'] == 'buy' && gamedata['known_recipes'] != undefined && gamedata['known_recipes'][offer_info['card_id']] != undefined)
+					/*if(offer_info['buysell'] == 'buy' && gamedata['known_recipes'] != undefined && gamedata['known_recipes'][offer_info['card_id']] != undefined)
 					{
 						parsed_expedition += 	'<div class="craft_offer_button" onclick="show_content(\'craft\');show_card_recipe(\'' + offer_info['card_id'] + '\')">CRAFT</div>';
-					}
+					}*/
 					if(owned_amount >= offer_info['card_amount'] && offer_info['buysell'] == 'buy' && offer_info['sold'] == undefined)
 					{
 						parsed_expedition += 	'<div class="complete_expedition_button complete_offer_button buysell_sell" onclick="complete_offer(' + offer_key + ')">SELL</div>';
@@ -1253,7 +1253,7 @@ function check_current_offers(){
 	{
 		gamedata['town'][current_building_id]['current_offers'] = {};
 	}
-	for (var i = 0; i < /*building_level*/ 2; i++) {
+	for (var i = 0; i < /*building_level*/ 1; i++) {
 		if(current_building['current_offers'][i] != undefined && new Date(current_building['current_offers'][i]['offer_expires']).toString() == 'Invalid Date')
 		{
 			current_building['current_offers'][i]['offer_expires'] = new Date().addMinutes(10);
@@ -1286,7 +1286,7 @@ function create_new_building_offer(building_info, trade_slot){
 	var found_card = false;
 	if(buysell == 'buy')
 	{
-		if(found_card == false && gamedata['known_recipes'] != undefined && count_object(gamedata['known_recipes']) > 1 && Math.random() > 0.1)
+		/*if(found_card == false && gamedata['known_recipes'] != undefined && count_object(gamedata['known_recipes']) > 1 && Math.random() > 0.1)
 		{
 			var possible_cards = {};
 			$.each(gamedata['known_recipes'], function(recipe_id,useless_info){
@@ -1300,7 +1300,7 @@ function create_new_building_offer(building_info, trade_slot){
 			{
 				found_card = get_random_key_from_object(possible_cards);
 			}
-		}
+		}*/
 		if(found_card == false && Math.random() > 0.1)
 		{
 			var possible_cards = {};
@@ -1310,7 +1310,7 @@ function create_new_building_offer(building_info, trade_slot){
 					possible_cards[recipe_id] = true;
 				}
 			});
-			
+			console.log(possible_cards);
 			if(count_object(possible_cards) > 0)
 			{
 				found_card = get_random_key_from_object(possible_cards);
