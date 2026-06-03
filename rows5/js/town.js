@@ -1301,19 +1301,19 @@ function create_new_building_offer(building_info, trade_slot){
 				found_card = get_random_key_from_object(possible_cards);
 			}
 		}*/
-		if(found_card == false && Math.random() > 0.1)
+		if(found_card == false && Math.random() > 0)
 		{
 			var possible_cards = {};
 			$.each(gamedata['owned_cards'], function(recipe_id,useless_info){
 				if(match_array_values(all_available_cards[recipe_id]['type'], building_info['shop_type']))
 				{
-					possible_cards[recipe_id] = true;
+					possible_cards[recipe_id] = 1 + gamedata['owned_cards'][recipe_id];
 				}
 			});
 			//console.log(possible_cards);
 			if(count_object(possible_cards) > 0)
 			{
-				found_card = get_random_key_from_object(possible_cards);
+				found_card = get_random_key_from_object_based_on_num_value(possible_cards);
 			}
 		}
 	}

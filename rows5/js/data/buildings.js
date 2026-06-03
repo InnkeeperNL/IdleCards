@@ -225,7 +225,7 @@ var all_buildings = {
 		},
 		//shop_type: 		['artifact'],
 	},*/
-	a1_library:{
+	/*a1_library:{
 		name: 			'library',
 		fragment_id: 	'shard',
 		image: 			'cards/dream_TradingCard72.jpg',
@@ -236,7 +236,7 @@ var all_buildings = {
 		needed_upgrades:{
 			z_aa_library_access: 1,
 		},
-		/*productions:{
+		productions:{
 			scraps_placeholder:{
 				base_time: 		8 * 1 * 3600,
 				base_storage: 	0.5 * 100,
@@ -250,16 +250,16 @@ var all_buildings = {
 				},
 				production_achievement_bonus: 0.1,
 			},
-		},*/
-		/*recipes:{
+		},
+		recipes:{
 			chest:{
 				costs:{
 					stash: 		5,
 				}
 			},
-		},*/
+		},
 		shop_type: 		['spell','artifact'],
-	},
+	},*/
 }
 
 /*var all_adventures = {

@@ -900,7 +900,7 @@ function show_card_details(card_id, hero_version, amount, added_button, combat_v
 			{
 				parsed_card_details += 		' scraps';
 			}*/
-			if(current_card['recipe'] != undefined && current_card['type'] != 'recipe')
+			/*if(current_card['recipe'] != undefined && current_card['type'] != 'recipe')
 			{
 				if(gamedata['known_recipes'] != undefined && gamedata['known_recipes'][card_id] != undefined)
 				{
@@ -918,7 +918,7 @@ function show_card_details(card_id, hero_version, amount, added_button, combat_v
 			if(current_card['used_in_recipes'] > 1)
 			{
 				parsed_card_details += 		'<br/>Used in ' + current_card['used_in_recipes'] + ' recipes';
-			}
+			}*/
 
 			if(gamedata['owned_cards'][card_id] != undefined)
 			{
