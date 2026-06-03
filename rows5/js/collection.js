@@ -34,7 +34,7 @@ function show_collection(){
 			{
 				var parsed_card = parse_card(card_id);
 				var unowned_class = '';
-				if(gamedata['known_recipes'] != undefined && gamedata['known_recipes'][card_id] == undefined && all_available_cards[card_id]['recipe'] != undefined){unowned_class = 'unowned_summon';}
+				//if(gamedata['known_recipes'] != undefined && gamedata['known_recipes'][card_id] == undefined && all_available_cards[card_id]['recipe'] != undefined){unowned_class = 'unowned_summon';}
 				if(gamedata['owned_cards'][card_id] != undefined)
 				{
 					tinkering_list += '<div class="collection_card_container ' + unowned_class + '" onclick="show_card_details(\'' + card_id + '\')">' + parsed_card + '</div>';
@@ -77,8 +77,8 @@ function show_collection(){
 	var percent_recipes_collected = Math.floor(known_recipes / recipe_count * 100);
 	if(collected == 0){percent_collected = 0;}
 	if(known_recipes == 0){percent_recipes_collected = 0;}
-	$('.collection_count').html('Cards: ' + percent_collected + '%');
-	$('.collection_recipe_count').html('Recipes: ' + percent_recipes_collected + '%');
+	$('.collection_count').html('Collected: ' + percent_collected + '%');
+	/*$('.collection_recipe_count').html('Recipes: ' + percent_recipes_collected + '%');*/
 };
 
 function set_collection_page(amount){

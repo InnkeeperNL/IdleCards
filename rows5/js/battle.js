@@ -785,11 +785,15 @@ function get_random_hero(on_value, min_rarity, max_rarity, common_reduction){
 			else
 			{
 				var temp_rarity = card['value'];
-				if(common_reduction != undefined && temp_rarity < common_reduction && (gamedata['known_recipes'][card_id] != undefined || card['recipe'] == undefined)/*gamedata['owned_cards'][card_id] != undefined && gamedata['owned_cards'][card_id] > 5*/)
+				if(common_reduction != undefined && temp_rarity < common_reduction /*&& (gamedata['known_recipes'][card_id] != undefined || card['recipe'] == undefined)*//*gamedata['owned_cards'][card_id] != undefined && gamedata['owned_cards'][card_id] > 5*/)
 				{
 					/*var temp_correction = common_reduction - card['value'];
 					temp_rarity = common_reduction * temp_correction;*/
 					temp_rarity = common_reduction;
+				}
+				if(gamedata['owned_cards'][card_id] != undefined)
+				{
+					temp_rarity /= 1 + (gamedata['owned_cards'][card_id]);
 				}
 				available_hero_count += 1 / (temp_rarity * temp_rarity);
 			}
@@ -811,11 +815,15 @@ function get_random_hero(on_value, min_rarity, max_rarity, common_reduction){
 			else
 			{
 				var temp_rarity = card['value'];
-				if(common_reduction != undefined && temp_rarity < common_reduction && (gamedata['known_recipes'][card_id] != undefined || card['recipe'] == undefined))
+				if(common_reduction != undefined && temp_rarity < common_reduction /*&& (gamedata['known_recipes'][card_id] != undefined || card['recipe'] == undefined)*/)
 				{
 					/*var temp_correction = common_reduction - card['value'];
 					temp_rarity = common_reduction * temp_correction;*/
 					temp_rarity = common_reduction;
+				}
+				if(gamedata['owned_cards'][card_id] != undefined)
+				{
+					temp_rarity /= 1 + (gamedata['owned_cards'][card_id]);
 				}
 				picked_hero_number -= 1 / (temp_rarity * temp_rarity);
 			}

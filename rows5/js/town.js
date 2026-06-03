@@ -1310,7 +1310,7 @@ function create_new_building_offer(building_info, trade_slot){
 					possible_cards[recipe_id] = true;
 				}
 			});
-			console.log(possible_cards);
+			//console.log(possible_cards);
 			if(count_object(possible_cards) > 0)
 			{
 				found_card = get_random_key_from_object(possible_cards);
@@ -1327,7 +1327,7 @@ function create_new_building_offer(building_info, trade_slot){
 	{
 		var offer_amount = 10 - Math.floor(/*Math.sqrt*/(Math.random() * 10));
 		if(all_available_cards[found_card]['unique'] != undefined && all_available_cards[found_card]['unique'] == true){offer_amount = 1;}
-		if(buysell == 'buy' && gamedata['owned_cards'][found_card] != undefined && offer_amount < gamedata['owned_cards'][found_card] && gamedata['owned_cards'][found_card] > 0)
+		if(buysell == 'buy' && gamedata['owned_cards'][found_card] != undefined /*&& offer_amount < gamedata['owned_cards'][found_card]*/ && gamedata['owned_cards'][found_card] > 0)
 		{
 			offer_amount = Math.ceil(Math.random() * gamedata['owned_cards'][found_card] * 1);
 		}

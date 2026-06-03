@@ -61,8 +61,8 @@ var all_upgrades = {
 		subtypes:  		['any'],
 		amount: 		0.025,
 		level_cost_scale: 	1,
-		cost: 			{scraps:25,},
-		max_level: 		40,
+		cost: 			{scraps:5,},
+		max_level: 		20,
 	},
 	/*floating_scraps:{
 		name: 			'Floating scraps',
@@ -89,7 +89,7 @@ var all_upgrades = {
 		subtypes:  		['any'],
 		amount: 		0.1,
 		level_cost_scale: 	2,
-		cost: 			{scraps:10,},
+		cost: 			{scraps:5,},
 		max_level: 		20,
 	},
 	summon_altar:{

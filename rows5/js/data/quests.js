@@ -20,7 +20,7 @@ var all_achievements = {
 }
 
 var all_chained_achievements = {
-	/*almost:{
+	almost:{
 		name: 			'almost',
 		description: 	'Loose a battle while the enemy hero has 1 health left {AMOUNT} time(s).',
 		objective: 		'battle_loss_any_health_left_1',
@@ -31,11 +31,11 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'cry_for_help',
+		card_back: 		'rock_seer',
 		steps: 			5,
 		no_quest: 		true,
 	},
-	aquatic:{
+	/*aquatic:{
 		name: 			'aquatic',
 		description: 	'Play or summon {AMOUNT} aquatic card(s).',
 		objective: 		'aquatic_card_played',
@@ -48,7 +48,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'starfish',
 		steps: 			6,
-	},
+	},*/
 	arcane:{
 		name: 			'arcane',
 		description: 	'Have allies shoot {AMOUNT} arcane bolt(s).',
@@ -60,7 +60,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'arcane_missiles',
+		card_back: 		'arcane_mage',
 		steps: 			6,
 	},
 	arcane_storm:{
@@ -76,12 +76,12 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'arcane_storm',
+		card_back: 		'arcane_bolts',
 		steps: 			5,
 		step_effect: 	'min_amount',
 		step_amount: 	30,
 		no_quest: 		true,
-	},*/
+	},
 	army:{
 		name: 			'army',
 		description: 	'Play {AMOUNT} creature card(s).',
@@ -96,7 +96,7 @@ var all_chained_achievements = {
 		card_back: 		'peasant',
 		steps: 			6,
 	},
-	/*arson:{
+	arson:{
 		name: 			'arson',
 		description: 	'Have allies apply {MIN_AMOUNT} burn in a single battle.',
 		objective: 		'ally_performed_burn_total',
@@ -109,13 +109,13 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'arson',
+		card_back: 		'eruption',
 		steps: 			5,
 		step_effect: 	'min_amount',
 		step_amount: 	30,
 		no_quest: 		true,
-	},*/
-	/*attunement:{
+	},
+	attunement:{
 		name: 			'attunement',
 		description: 	'Have allies perform a magical ability {AMOUNT} time(s).',
 		objective: 		'ally_performed_magical',
@@ -128,7 +128,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'scroll',
 		steps: 			6,
-	},*/
+	},
 	avoidance:{
 		name: 			'avoidance',
 		description: 	'Have allies avoid an enemy ability in any way {AMOUNT} time(s).',
@@ -189,7 +189,7 @@ var all_chained_achievements = {
 		step_amount: 	10,
 		no_quest: 		true,
 	},
-	/*bureaucrat:{
+	bureaucrat:{
 		name: 			'bureaucrat',
 		description: 	'Play or summon {AMOUNT} clerk card(s).',
 		objective: 		'clerk_card_played',
@@ -200,7 +200,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'bureaucrat',
+		card_back: 		'scribe',
 		steps: 			6,
 		no_quest: 		true,
 	},
@@ -215,10 +215,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'ignite',
+		card_back: 		'torchbearer',
 		steps: 			6,
-	},*/
-	buy:{
+	},
+	/*buy:{
 		name: 			'buy',
 		description: 	'Buy {AMOUNT} card(s) from a merchant.',
 		objective: 		'buy_card_in_town',
@@ -232,7 +232,7 @@ var all_chained_achievements = {
 		card_back: 		'endless_pouch',
 		steps: 			6,
 		no_quest: 		true,
-	},
+	},*/
 	chester:{
 		name: 			'chester',
 		description: 	'Open {AMOUNT} chest(s).',
@@ -262,7 +262,7 @@ var all_chained_achievements = {
 		card_back: 		'house',
 		steps: 			6,
 	},
-	/*clergy:{
+	clergy:{
 		name: 			'clergy',
 		description: 	'Play or summon {AMOUNT} cleric card(s).',
 		objective: 		'cleric_card_played',
@@ -273,10 +273,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'nun',
+		card_back: 		'death_cleric',
 		steps: 			6,
 		no_quest: 		true,
-	},
+	},/*
 	close_call:{
 		name: 			'close call',
 		description: 	'Win a battle while your hero has 1 health left {AMOUNT} time(s).',
@@ -311,7 +311,7 @@ var all_chained_achievements = {
 		step_amount: 	10,
 		no_quest: 		true,
 	},*/
-	crafter:{
+	/*crafter:{
 		name: 			'crafter',
 		description: 	'Craft a card {AMOUNT} time(s).',
 		objective: 		'craft_card_of_value',
@@ -324,7 +324,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'carpenter',
 		steps: 			5,
-	},
+	},*/
 	curse:{
 		name: 			'curse',
 		description: 	'Have allies apply a curse {AMOUNT} time(s).',

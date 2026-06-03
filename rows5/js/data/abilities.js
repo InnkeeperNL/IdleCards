@@ -1498,6 +1498,40 @@ var all_abilities = {
 		},
 		level_cost_cum: true,
 	},
+	burn_all_hv:{
+		name: 			'burn all',
+		description: 	'Applies {LEVEL} burn to all enemy units.{BURN}',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		do_not_pause_between: true,
+		hero_tactics: 	['burn_ability','conflagrate_ability'],
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 5,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				pause_before: 	500,
+				projectile: 'burn',
+				type: 		'apply_burn',
+				subtypes: 	['burn'],
+				amount: 	'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 3,
+			base_cost_spell_factor: 0.75,
+		},
+		level_cost_cum: true,
+	},
 	burning_aura:{
 		description: 	'Applies {LEVEL} burn to any enemy unit or hero that deals melee damage to it. {BURN}',
 		proc: 			'receive_damage',
@@ -8658,6 +8692,38 @@ var all_abilities = {
 			0:{
 				target: 		'unit_or_hero',
 				target_amount: 	6,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'apply_poison',
+				projectile: 	'poison',
+				subtypes: 		['poison'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'poison',
+			base_cost_factor: 3,
+			base_cost_spell_factor: 0.75,
+		},
+		level_cost_cum: true,
+	},
+	poison_all_hv:{
+		name: 			'poison all',
+		description: 	'Applies {LEVEL} poison to all enemy creature units. {POISON}',
+		scales: 		true,
+		do_not_pause_between: 	true,
+		hero_tactics: 	['poison_ability','break_ability','wither_ability'],
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	5,
 				position: 		'random',
 				not_types: 		['object','structure'],
 				min_hp: 		1,

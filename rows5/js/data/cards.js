@@ -407,7 +407,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{curse_all: 2, destroy_cursed: 10, echo: 1},
+		abilities: 			{curse_all_hv: 2, destroy_cursed: 10, echo: 1},
 		quote: '\"Make sure you come home before dark.\"',
 		recipe:{
 			dagger: 	1,
@@ -515,7 +515,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{burn_all: 3, minimum_enemies: 3},
+		abilities: 			{burn_all_hv: 3, minimum_enemies: 3},
 		quote: '\"Run away!\"',
 		recipe:{
 			fire_pit: 		1,
@@ -1016,7 +1016,6 @@ var all_available_cards = {
 	peasant:{
 		name: 				'peasant',
 		type: 				'creature',
-		basic_reward: 		true,
 		value: 				1,
 		subtypes: 			['human','villager'],
 		color: 				['colorless'],
@@ -1127,7 +1126,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{poison_all: 3, minimum_enemies: 3},
+		abilities: 			{poison_all_hv: 3, minimum_enemies: 3},
 		quote: '\"What is that smell?\"',
 		max_in_deck: 		2,
 		recipe:{
