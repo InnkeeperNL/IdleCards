@@ -181,7 +181,7 @@ var all_buildings = {
 		//shop_type: 		['spell'],
 	},*/
 	
-	a4_treasury:{
+	/*a4_treasury:{
 		name: 			'treasury',
 		fragment_id: 	'shard',
 		image: 			'cards/chest.jpg',
@@ -206,7 +206,7 @@ var all_buildings = {
 				//production_achievement_bonus: 0.05,
 			},
 		},
-		/*recipes:{
+		recipes:{
 			compass:{
 				costs:{
 					spyglass: 	10,
@@ -222,9 +222,9 @@ var all_buildings = {
 					compass: 	10,
 				}
 			},
-		},*/
+		},
 		//shop_type: 		['artifact'],
-	},
+	},*/
 	a1_library:{
 		name: 			'library',
 		fragment_id: 	'shard',

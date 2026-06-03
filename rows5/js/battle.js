@@ -793,7 +793,7 @@ function get_random_hero(on_value, min_rarity, max_rarity, common_reduction){
 				}
 				if(gamedata['owned_cards'][card_id] != undefined)
 				{
-					temp_rarity /= 1 + (gamedata['owned_cards'][card_id]);
+					temp_rarity *= 1 + (gamedata['owned_cards'][card_id]);
 				}
 				available_hero_count += 1 / (temp_rarity * temp_rarity);
 			}
