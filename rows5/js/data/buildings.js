@@ -143,7 +143,7 @@ var all_buildings = {
 		},
 		shop_type: 		['structure'],
 	},*/
-	a2_alchemist:{
+	/*a2_alchemist:{
 		name: 			'alchemist lab',
 		fragment_id: 	'shard',
 		image: 			'cards/herbalist.jpg',
@@ -155,15 +155,15 @@ var all_buildings = {
 		},
 		new_mission_title: 'BREW',
 		expeditions: 	['research_new_potion'],
-		/*recipes:{
+		recipes:{
 			flask:{
 				costs:{
 					clover: 	1,
 				}
 			},
-		},*/
+		},
 		show_potions: true,
-		/*productions:{
+		productions:{
 			flask:{
 				base_time: 		4 * 5 * 24 * 3600,
 				base_storage: 	1 * 1,
@@ -177,9 +177,9 @@ var all_buildings = {
 				},
 				production_achievement_bonus: 0.05,
 			},
-		},*/
+		},
 		//shop_type: 		['spell'],
-	},
+	},*/
 	
 	a4_treasury:{
 		name: 			'treasury',

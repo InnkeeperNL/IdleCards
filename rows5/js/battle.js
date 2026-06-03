@@ -841,7 +841,7 @@ function get_random_hero(on_value, min_rarity, max_rarity, common_reduction){
 			}
 		}
 	});
-	if(picked_hero == false && min_rarity != undefined)
+	if(picked_hero == false && min_rarity != undefined && min_rarity > 1)
 	{
 		min_rarity /= 2;
 		picked_hero = get_random_hero(on_value, min_rarity, max_rarity, common_reduction);
