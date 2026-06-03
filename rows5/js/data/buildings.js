@@ -91,7 +91,7 @@ var all_buildings = {
 
 		//expeditions: 	['send_in_peasants','conscript_soldiers'],
 	},
-	a3_bank:{
+	/*a3_bank:{
 		name: 			'bank',
 		fragment_id: 	'shard',
 		image: 			'cards/stash.jpg',
@@ -129,7 +129,7 @@ var all_buildings = {
 				//production_achievement_bonus: 0.05,
 			},
 		},
-		/*recipes:{
+		recipes:{
 			stash:{
 				costs:{
 					spyglass: 	2,
@@ -141,8 +141,8 @@ var all_buildings = {
 				}
 			},
 		},
-		shop_type: 		['structure'],*/
-	},
+		shop_type: 		['structure'],
+	},*/
 	a2_alchemist:{
 		name: 			'alchemist lab',
 		fragment_id: 	'shard',
