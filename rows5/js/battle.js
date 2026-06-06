@@ -632,7 +632,7 @@ function construct_random_deck(size, hero, randomized){
 		}
 	}
 
-	//random_deck = check_deck_min_enemy_targets(random_deck, deck_theme);
+	random_deck = check_deck_min_enemy_targets(random_deck, deck_theme);
 
 	if(show_deck_construction == true)
 	{

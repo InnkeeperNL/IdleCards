@@ -16,7 +16,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{arcane_bolt: 1},
 		hero_version: 			{
-			theme: 				['subtype_mage','subtype_arcane'],
+			theme: 				['subtype_mage','subtype_arcane','damaging_hero'],
 			not_theme: 			['empower_hero_ability','empower_ally_ability'],
 			power: 				false,
 			armor: 				0,
@@ -68,7 +68,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{arcane_bolt: 2},
 		hero_version: 			{
-			theme: 				['subtype_mage','subtype_arcane'],
+			theme: 				['subtype_mage','subtype_arcane','damaging_hero'],
 			not_theme: 			['empower_hero_ability','empower_ally_ability'],
 			power: 				false,
 			armor: 				0,
@@ -96,7 +96,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{arcane_bolt: 1},
 		hero_version: 			{
-			theme: 				['subtype_mage','subtype_arcane'],
+			theme: 				['subtype_mage','subtype_arcane','damaging_hero'],
 			not_theme: 			['empower_hero_ability','empower_ally_ability'],
 			power: 				false,
 			armor: 				0,
@@ -126,6 +126,7 @@ var all_available_cards = {
 		abilities: 			{shoot: 1},
 		hero_version: 			{
 			theme: 				['projectile_ability','subtype_warrior'],
+			not_theme: 			['empower_ally_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -143,7 +144,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['tactic'],
 		color: 				['colorless'],
-		theme: 				['subtype_warrior'],
+		theme: 				['subtype_warrior','aoe'],
 		not_theme: 			['type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -364,7 +365,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{curse_hv: 1},
+		abilities: 			{curse_all_hv: 1},
 		quote: '\"Worn by many witches.\"',
 		recipe:{
 			toad: 			1,
@@ -377,8 +378,8 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['weapon'],
 		color: 				['colorless'],
-		theme: 				['subtype_rogue'],
-		not_theme: 			['type_structure'],
+		theme: 				['subtype_rogue','damaging_hero'],
+		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -386,7 +387,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{empower_arrival: 2},
+		abilities: 			{stabbing_hero: 1},
 		quote: '\"For quick strikes.\"',
 		max_in_deck: 		2,
 		recipe:{
@@ -399,7 +400,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
-		theme: 				['subtype_witch'],
+		theme: 				['subtype_witch','aoe'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -429,13 +430,13 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, cursed_touch: 4, evade: 1},
+		abilities: 			{strike: 1, cursed_touch: 4, evade: 3},
 		hero_version: 			{
 			theme: 				['melee_ability','subtype_rogue','curse_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, cursed_touch: 2, evade: 1},
+			abilities: 			{strike_unit: 1, cursed_touch: 2, evade: 3},
 		},
 		quote: '\"Her strikes leave a mark.\"',
 		recipe:{
@@ -507,7 +508,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['event'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['aoe'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -537,13 +538,13 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, ignites: 1, run_away: 1, evade: 1, stealth: 1},
+		abilities: 			{strike: 1, ignites: 1, run_away: 1, evade: 3, stealth: 1},
 		hero_version: 			{
 			theme: 				['melee_ability','subtype_rogue','burn_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, ignites: 1, evade: 1},
+			abilities: 			{strike_unit: 1, ignites: 1, evade: 3},
 		},
 		quote: '\"Quick hot strikes.\"',
 		recipe:{
@@ -642,13 +643,13 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, ignites: 1, evade: 1},
+		abilities: 			{strike: 1, ignites: 1, evade: 3},
 		hero_version: 			{
 			theme: 				['melee_ability','subtype_rogue','burn_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, ignites: 1, evade: 1},
+			abilities: 			{strike_unit: 1, ignites: 1, evade: 3},
 		},
 		quote: '\"Quick hot strikes.\"',
 		recipe:{
@@ -862,7 +863,7 @@ var all_available_cards = {
 		time: 				1,
 		image: 				'cards/horse.jpg',
 		image_position: 	'top left',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
 		health: 			5,
 		abilities: 			{charge: 1, strike: 1},
@@ -950,7 +951,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{grow_plant: 6},
+			abilities: 			{grow_plant: 3},
 		},
 		quote: '\"Look at all the pretty flowers!\"',
 		recipe:{
@@ -977,7 +978,7 @@ var all_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, evade: 1, draw: 1},
+			abilities: 			{strike_unit: 1, evade: 3, draw: 1},
 		},
 		quote: '\"I bring an urgent message!\"',
 		recipe:{
@@ -1050,13 +1051,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, venom: 2, evade: 1},
+		abilities: 			{strike: 1, venom: 1, spread_plague: 1, call_rat: 2, evade: 4},
 		hero_version: 			{
 			theme: 				['poison_ability','evade_ability','subtype_rat'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, venom: 2, evade: 1},
+			abilities: 			{strike_unit: 1, venom: 1, spread_plague: 1, call_rat: 1, evade: 4},
 		},
 		quote: '\"The bite is just the start.\"',
 		recipe:{
@@ -1118,7 +1119,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
-		theme: 				['poison_ability'],
+		theme: 				['poison_ability','aoe'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -1172,13 +1173,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{rat_power: 1, strike: 1, evade: 1},
+		abilities: 			{strike: 1, call_rat: 2, evade: 4},
 		hero_version: 			{
 			theme: 				['melee_ability','evade_ability','subtype_rat'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{rat_power: 1, strike_unit: 1, evade: 1},
+			abilities: 			{strike_unit: 1, call_rat: 1, evade: 4},
 		},
 		quote: '\"Dangerous in large numbers.\"',
 		recipe:{
@@ -1200,19 +1201,37 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, catch_rat: 2},
+		abilities: 			{strike: 1, call_rat: 2},
 		hero_version: 			{
 			theme: 				['subtype_rat'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, catch_rat: 2},
+			abilities: 			{strike_unit: 1, call_rat: 2},
 		},
 		quote: '\"What a cute little furry thing!\"',
 		recipe:{
 			plague_rat: 	2,
 			herbalist: 		2,
 		}
+	},
+	rat_flute:{
+		name: 				'rat flute',
+		type: 				'artifact',
+		subtypes: 			['trinket'],
+		color: 				['colorless'],
+		theme: 				['subtype_rat'],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/rat_flute.jpg',
+		image_position: 	'bottom',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{call_rat: 1},
+		quote: '\"Get ready for an infestation.\"',
 	},
 	rock_biter:{
 		name: 				'rock biter',
@@ -1286,13 +1305,13 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, evade: 1},
+		abilities: 			{strike: 1, evade: 3},
 		hero_version: 			{
 			theme: 				['melee_ability','subtype_rogue'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, evade: 1},
+			abilities: 			{strike_unit: 1, evade: 3},
 		},
 		quote: '\"Quick on his feet.\"',
 		recipe:{
@@ -1313,13 +1332,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{run_away: 1, strike: 1, evade: 1},
+		abilities: 			{run_away: 1, strike: 1, evade: 3},
 		hero_version: 			{
 			theme: 				['melee_ability','subtype_human'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, evade: 1},
+			abilities: 			{strike_unit: 1, evade: 3},
 		},
 		quote: '\"Get out of the way!\"',
 		recipe:{
@@ -1591,7 +1610,7 @@ var all_available_cards = {
 			stone: 		1,
 		}
 	},
-	spike_trap:{
+	/*spike_trap:{
 		name: 				'spike trap',
 		type: 				'structure',
 		subtypes: 			['trap'],
@@ -1599,7 +1618,7 @@ var all_available_cards = {
 		theme: 				[],
 		not_theme: 			[],
 		craft_theme: 		[],
-		pick_chance: 		1,
+		pick_chance: 		0,
 		time: 				1,
 		image: 				'cards/spike_trap.jpg',
 		power: 				false,
@@ -1611,7 +1630,7 @@ var all_available_cards = {
 			seeds: 		1,
 			wood: 		1,
 		}
-	},
+	},*/
 	slime_pit:{
 		name: 				'slime pit',
 		type: 				'structure',
@@ -1767,7 +1786,7 @@ var all_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, break: 1, evade: 1},
+			abilities: 			{strike_unit: 1, break: 1, evade: 3},
 		},
 		quote: '\"Where did my purse go?!\"',
 		max_in_deck: 		2,
@@ -1825,7 +1844,7 @@ var all_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, evade: 1, poison_aura: 1},
+			abilities: 			{strike_unit: 1, evade: 3, poison_aura: 1},
 		},
 		quote: '\"Hard to catch and dangerous when you do.\"',
 		recipe:{
@@ -1962,7 +1981,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{fortify_all: 1},
+			abilities: 			{fortify_ally: 3},
 		},
 		quote: '\"Basic defense.\"',
 		recipe:{
@@ -2917,8 +2936,21 @@ function calculate_card_time(card_id, show_calc, hero_version){
 			}
 			else
 			{
-				level_cost *= card[ability['cost_factor']];
-				if(show_calc!=undefined){console.log(ability_id + ': x' + card[ability['cost_factor']] + '');}
+				var cost_factor_increase = card[ability['cost_factor']];
+				if(ability['cost_factor_factor'] != undefined)
+				{
+					if(ability['cost_factor_factor'] < 1)
+					{
+						cost_factor_increase = (1 - ability['cost_factor_factor']) + (card[ability['cost_factor']] * ability['cost_factor_factor']);
+					}
+					else
+					{
+						cost_factor_increase = (1 - ability['cost_factor_factor']) + (card[ability['cost_factor']] * ability['cost_factor_factor']);
+					}
+					
+				}
+				level_cost *= cost_factor_increase;
+				if(show_calc!=undefined){console.log(ability_id + ': ' + card[ability['cost_factor']] + ' x ' + ability['cost_factor'] + ' = x' + cost_factor_increase + '');}
 			}
 		}
 		eachoa(ability['ability_level_cost_factors'], function(ability_cost_factor_id, ability_cost_factor_amount){
@@ -2955,6 +2987,7 @@ function calculate_card_time(card_id, show_calc, hero_version){
 				var total_skill_cost = ability_level * level_cost;
 				if(ability['min_cost'] != undefined && ability['min_cost'] > total_skill_cost)
 				{
+					if(show_calc!=undefined){console.log(ability_id + ' total: ' + (total_skill_cost) + ' points');}
 					if(show_calc!=undefined){console.log(ability_id + ' min cost: ' + (ability['min_cost']) + ' points');}
 					if((/*test_mode == true || */show_calc!=undefined) && ability['min_cost'] > (ability_level + 1) * level_cost && (ability['cost_factor'] == undefined || (ability['cost_factor'] != 'full' && ability['cost_factor'] != 'health')))
 					{
@@ -2970,6 +3003,7 @@ function calculate_card_time(card_id, show_calc, hero_version){
 				var total_skill_cost = ability_level * level_cost;
 				if(ability['min_cost'] != undefined && ability['min_cost'] > total_skill_cost)
 				{
+					if(show_calc!=undefined){console.log(ability_id + ' total: ' + (total_skill_cost) + ' points');}
 					if(show_calc!=undefined){console.log(ability_id + ' min cost: ' + (ability['min_cost']) + ' points');}
 					if((/*test_mode == true || */show_calc!=undefined) && ability['min_cost'] > (ability_level + 1) * level_cost && (ability['cost_factor'] == undefined || (ability['cost_factor'] != 'full' && ability['cost_factor'] != 'health')))
 					{
@@ -3080,7 +3114,7 @@ function calculate_card_time(card_id, show_calc, hero_version){
 		//calculated_time = 0;
 	}
 	if(calculated_time < 0){calculated_time = 0;}
-	if(calculated_time !== false && calculated_time < 1 && card['verified'] == undefined && card['pick_chance'] > 0)
+	if(calculated_time !== false && calculated_time < 0.5 && card['verified'] == undefined && card['pick_chance'] > 0)
 	{
 		console.log(card_id + ' cost = ' + calculated_time);
 		//calculated_time = 0;

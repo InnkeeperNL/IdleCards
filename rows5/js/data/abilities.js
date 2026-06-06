@@ -7,6 +7,7 @@ var ability_base_costs = {
 	doom: 		1,
 	draw: 		6,
 	empower: 	2,
+	evade: 		0.1,
 	fear:  		2,
 	fortify: 	2,
 	hasten: 	4,
@@ -14,7 +15,9 @@ var ability_base_costs = {
 	poison: 	1.5,
 	resurrect: 	0.4,
 	stealth: 	2,
+	strike: 	2,
 	stun: 		4,
+	summon: 	10,
 	thorns: 	0.5,
 }
 
@@ -358,6 +361,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'arcane_bolt',
 			base_cost_factor: 	1,
+			base_cost_hero_factor: 1.5,
 			base_cost_spell_factor: 0.25,
 		},
 		average_hits: 		'ability_level',
@@ -390,6 +394,8 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'arcane_bolt',
 			base_cost_factor: 	1,
+			base_cost_hero_factor: 1.5,
+			base_cost_spell_factor: 0.25,
 		},
 		average_hits: 		'ability_level',
 	},
@@ -1789,6 +1795,40 @@ var all_abilities = {
 		},
 		level_cost_cum: true,
 	},
+	call_rat:{
+		hide_amount: 	true,
+		description: 	'Has a {LEVEL}0% chance to add a basic rat card to your hand. If your hand is full, it will add it to your deck instead.',
+		proc: 			'basic',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_rat','summon_creature'],
+				card_id: 	'rat',
+				//card_subtype: 	'rat',
+				card_status: 	'hand',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.2,
+			base_cost_artifact_factor: 0.25,
+			base_cost_hero_factor: 0.25,
+		},
+	},
 	carry_away:{
 		description: 	'If there is a damaged ally creature unit next to this, it will return it to your hand. Will not send away summoned units. If it does, this also returns to your hand.',
 		cannot_proc_while_stunned: true,
@@ -1862,34 +1902,6 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 		1.2,
 		level_cost_hero: 	2.4,
-	},
-	catch_rat:{
-		hide_amount: 	true,
-		description: 	'Has a {LEVEL}0% chance to add a rat card to your hand. If your hand is full, it will add it to your deck instead.',
-		proc: 			'basic',
-		proc_chance: 	10,
-		proc_factor: 	'ability_level',
-		cannot_proc_while_stunned: true,
-		targets:	{
-			0:{
-				target: 		'hero',
-				target_amount: 	1,
-				side: 			'ally'
-			},
-		},
-		effects:{
-			0:{
-				projectile: 		'book',
-				projectile_target: 	'deck',
-				type: 		'add_card_to_deck',
-				subtypes: 	['summon_ally','summon_rat','summon_creature'],
-				card_subtype: 	'rat',
-				card_status: 	'hand',
-				amount: 	1
-			}
-		},
-		animation: 			'combat_zoom',
-		level_cost: 		2,
 	},
 	channel_life:{
 		description: 	'Reduces the time left of the card in your hand with the highest time left by {LEVEL}. If it does, this deals 1 damage to itself.',
@@ -5187,11 +5199,14 @@ var all_abilities = {
 		cost_factor: 	'full',
 	},
 	evade:{
-		description: 	'Gives this unit a 35% chance to avoid any incoming melee or projectile effect.',
+		hide_amount: 	true,
+		description: 	'Gives this unit a {LEVEL}0% chance to avoid any incoming melee or projectile effect.',
 		proc: 			'avoid_effect',
 		subtypes: 		['melee','projectile'],
 		negated_by_ability: 	['precision'],
-		effect: 		35,
+		//effect: 		35,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		hero_tactics: 	['movement_ability','evade_ability'],
 		targets:	{
@@ -5211,13 +5226,15 @@ var all_abilities = {
 				increase_timeout: 	-500,
 			}
 		},
-		level_cost: 		0.5,
-		min_cost: 			2,
-		level_cost_hero: 	1.5,
-		ability_level_cost_factors:{
-			flying: 		2,
+		base_cost:{
+			base_cost_id: 		'evade',
+			base_cost_factor: 	1,
+			base_cost_hero_factor: 2,
 		},
-		cost_factor: 		'health',
+		level_cost_cum: 	true,
+		//min_cost: 			2,
+		cost_factor: 			'health',
+		cost_factor_factor: 	0.5,
 	},
 	fear:{
 		description: 	'When played, returns {LEVEL} non-undead, non-horror enemy creature unit(s) to their owner\'s hand. Will target the nearest enemy. Any summoned units this targets disappear.',
@@ -6219,7 +6236,8 @@ var all_abilities = {
 		proc: 			'avoid_effect',
 		subtypes: 				['melee'],
 		negated_by_ability: 	['flying', 'reach'],
-		effect: 		50,
+		proc_chance: 	50,
+		//effect: 		50,
 		cannot_proc_while_stunned: true,
 		not_on_hero: 	true,
 		targets:	{
@@ -6948,6 +6966,7 @@ var all_abilities = {
 				projectile: 		'book',
 				projectile_target: 	'deck',
 				type: 		'add_card_to_deck',
+				card_id: 	'random',
 				subtypes: 	['summon_ally','summon_plant'],
 				card_subtype: 	'plant',
 				card_status: 	'hand',
@@ -6955,7 +6974,12 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1,
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.2,
+			base_cost_artifact_factor: 0.25,
+			base_cost_hero_factor: 0.25,
+		},
 	},
 	guard:{
 		description: 	'When played, an enemy unit enters the game or any unit is destroyed, if there is no opposing enemy unit, this unit will move to a free slot with an opposing unit. Can be used once each round.',
@@ -10806,10 +10830,13 @@ var all_abilities = {
 			}
 		},
 		animation: 		'attack',
-		level_cost: 	4,
+		base_cost:{
+			base_cost_id: 		'arcane_bolt',
+			base_cost_factor: 	1,
+			base_cost_spell_factor: 0.25,
+		},
 		cost_factor: 	'power',
 		average_hits: 	'ability_level',
-		additional_levels_cost: 2,
 	},
 	shoot_unit:{
 		description: 	'Deals physical projectile damage equal to its power to a random enemy unit {LEVEL} time(s).',
@@ -10835,10 +10862,13 @@ var all_abilities = {
 			}
 		},
 		animation: 		'attack',
-		level_cost: 	3,
+		base_cost:{
+			base_cost_id: 		'arcane_bolt',
+			base_cost_factor: 	1,
+			base_cost_spell_factor: 0.25,
+		},
 		cost_factor: 	'power',
 		average_hits: 	'ability_level',
-		additional_levels_cost: 1,
 	},
 	shoot_arrival:{
 		description: 	'When an enemy unit enters the game, this deals {LEVEL} physical projectile damage to it. Can be used once.',
@@ -11328,6 +11358,121 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	4,
 	},
+	spread_plague:{
+		description: 	'Turns {LEVEL} adjacent basic rat(s) into a plague rat.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'adjacent',
+				card_ids: 		['rat'],
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'poison',
+				type: 		'turn_into',
+				subtypes: 	['transform'],
+				card_id: 	'plague_rat',
+				amount: 	1
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
+	},
+	stab:{
+		description: 	'Deal {LEVEL} physical damage to the nearest enemy unit or hero.',
+		scales: 		true,
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'nearest',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'strike',
+				type: 			'damage',
+				subtypes: 		['physical','melee','stabbing'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'attack',
+		base_cost:{
+			base_cost_id: 		'strike',
+			base_cost_factor: 	1,
+		},
+		average_hits: 	1,
+	},
+	stab_hv:{
+		description: 	'Deal {LEVEL} physical damage to the nearest enemy unit.',
+		scales: 		true,
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'nearest',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'strike',
+				type: 			'damage',
+				subtypes: 		['physical','melee','stabbing'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'attack',
+		base_cost:{
+			base_cost_id: 		'strike',
+			base_cost_factor: 	1,
+		},
+		average_hits: 	1,
+	},
+	stabbing_hero:{
+		description: 	'When your hero deals damage to an enemy unit, it will deal {LEVEL} physical melee damage to the nearest enemy unit.',
+		proc: 			'enemy_damaged_by_hero',
+		ability_subtypes: ['dealt_damage_proc'],
+		not_subtypes: 	['stabbing'],
+		scales: 		true,
+		cannot_proc_while_stunned: true,
+		min_enemy_units: 1,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				//projectile: 	'strike',
+				type: 			'random_ability',
+				subtypes: 		['stabbing'],
+				ability_options: ['stab_hv'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'strike',
+			base_cost_factor: 	1,
+		},
+		average_hits: 	1,
+	},
 	static_aura:{
 		description: 	'Deals {LEVEL} magical lightning damage to any unit or hero that deals melee damage to it.',
 		proc: 			'receive_damage',
@@ -11454,7 +11599,7 @@ var all_abilities = {
 		proc: 			'avoid_effect',
 		subtypes: 		['melee','projectile'],
 		negated_by_ability: 	['precision'],
-		effect: 		100,
+		proc_chance: 	100,
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -11787,7 +11932,7 @@ var all_abilities = {
 		proc: 			'avoid_effect',
 		subtypes: 				['projectile','melee'],
 		subtypes_while_origin_has_ability: 	{melee: ['flying'],},
-		effect: 		50,
+		proc_chance: 		50,
 		hero_tactics: 	['submerge_ability','water_ability'],
 		targets:	{
 			0:{
@@ -12983,14 +13128,14 @@ var all_abilities = {
 		level_cost_cum: true,
 	},
 	venomous_hero:{
-		description: 	'When your hero deals damage to a non-undead enemy creature, this will apply {LEVEL} poison to it.',
+		description: 	'When your hero deals damage to a non-undead enemy creature unit, this will apply {LEVEL} poison to it.',
 		proc: 			'enemy_damaged_by_hero',
 		ability_subtypes: ['dealt_damage_proc'],
 		scales: 		true,
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
-				target: 		'unit_or_hero',
+				target: 		'unit',
 				target_amount: 	1,
 				position: 		'random',
 				not_types: 		['object','structure'],
