@@ -6355,7 +6355,7 @@ var all_abilities = {
 	},
 	fortify_ally:{
 		name: 			'shield ally',
-		description: 	'Grants a random ally unit or hero {LEVEL} shield. Cannot affect itself. {SHIELD}',
+		description: 	'The unit or hero with the lowest shield gains {LEVEL} shield. Cannot affect itself. {SHIELD}',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		hero_tactics: 	['active_healing_ability','plated_ability','cleanse_ally_ability'],
@@ -6366,6 +6366,7 @@ var all_abilities = {
 				position: 		'random',
 				not_self: 		true,
 				min_hp: 		1,
+				lowest_armor: 	true,
 				side: 			'ally'
 			},
 		},

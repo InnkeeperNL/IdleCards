@@ -5703,6 +5703,11 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 			all_targets = filter_targets_by_highest_armor(all_targets);
 		}
 
+		if(target_peramaters['lowest_armor'] != undefined && target_peramaters['lowest_armor'] == true)
+		{
+			all_targets = filter_targets_by_lowest_armor(all_targets);
+		}
+
 		if(target_peramaters['highest_cost'] != undefined && target_peramaters['highest_cost'] == true)
 		{
 			all_targets = filter_targets_by_highest_cost(all_targets);
@@ -6423,6 +6428,31 @@ function filter_targets_by_highest_armor(all_targets){
 	eachoa(all_targets, function(target_id, target_unit_id){
 		if(battle_info.combat_units[target_unit_id]['armor'] < highest_armor)
 		{
+			delete all_targets[target_id];
+		}
+	});
+
+	return all_targets;
+}
+
+function filter_targets_by_lowest_armor(all_targets){
+	var lowest_armor = 100000;
+	eachoa(all_targets, function(target_id, target_unit_id){
+		var current_armor = 0;
+		if(battle_info.combat_units[target_unit_id]['armor'] != undefined)
+		{
+			current_armor = battle_info.combat_units[target_unit_id]['armor'];
+		}	
+		if(current_armor < lowest_armor)
+		{
+			lowest_armor = battle_info.combat_units[target_unit_id]['armor'];
+		}
+	});
+	//console.log('lowest armor: ' + lowest_armor);
+	eachoa(all_targets, function(target_id, target_unit_id){
+		if(battle_info.combat_units[target_unit_id]['armor'] != undefined && battle_info.combat_units[target_unit_id]['armor'] > lowest_armor)
+		{
+			//console.log('removed ' + battle_info.combat_units[target_unit_id]['name'] + '(' + battle_info.combat_units[target_unit_id]['armor'] + ')');
 			delete all_targets[target_id];
 		}
 	});
