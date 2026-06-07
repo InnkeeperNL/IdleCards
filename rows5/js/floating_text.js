@@ -1,4 +1,5 @@
 var floating_text_amount = 0;
+var floating_text_timeouts = {};
 
 function parse_floating_text(floating_text, color, down){
 	floating_text_amount++;
@@ -18,10 +19,10 @@ function parse_floating_text(floating_text, color, down){
 	parsed_floating_text += 	floating_text;
 	parsed_floating_text += '</div>';
 
-	
-	/*setTimeout(function(){
+	floating_text_timeouts[temp_floating_text_amount] = setTimeout(function(){
 		$('.floating_text_' + temp_floating_text_amount).remove();
-	},3000);*/
+		clearTimeout(floating_text_timeouts[temp_floating_text_amount]);
+	},5000);
 
 	return parsed_floating_text;
 }

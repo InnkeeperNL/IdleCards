@@ -4,7 +4,7 @@ var ability_base_costs = {
 	cleanse: 	0.5,
 	curse: 		1,
 	destroy: 	8,
-	doom: 		1,
+	doom: 		0.5,
 	draw: 		6,
 	empower: 	2,
 	evade: 		0.1,
@@ -236,8 +236,8 @@ var all_abilities = {
 				amount: 		1,
 			}
 		},
-		level_cost: 	2,
-		level_cost_spell: 1,
+		level_cost: 	1,
+		level_cost_spell: 0.25,
 	},
 	ally_seeks_enemy:{
 		description: 	'If there is an ally creature unit whithout an opposing enemy unit, this will move that creature to a free slot with an opposing unit. If used by a creature, it cannot target itself.',
@@ -3364,6 +3364,36 @@ var all_abilities = {
 		level_cost_spell: 	2,
 		average_hits: 		1,
 	},
+	damage_moving:{
+		description: 	'Deal {LEVEL} physical damage to any enemy unit that moves to a different slot.',
+		proc: 			'enemy_moved',
+		scales: 		true,
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'spikes',
+				type: 			'damage',
+				subtypes: 		['physical'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'strike',
+			base_cost_factor: 	0.5,
+		},
+		average_hits: 	1,
+	},
 	deadly_trap:{
 		description: 	'When any enemy unit deals melee damage to this, that enemy unit is destroyed.',
 		proc: 			'receive_damage',
@@ -4363,7 +4393,10 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	6,
+		base_cost:{
+			base_cost_id: 'draw',
+			base_cost_factor: 1,
+		},
 		//level_cost_spell: 3.5,
 		//cost_adjustment: -3,
 	},
@@ -5039,7 +5072,7 @@ var all_abilities = {
 		ability_subtypes: 	['hasten','deck_control'],
 		description: 	'Uses all energy it has to reduce the time left of the card in your hand, with the highest time left, by the energy used.',
 		cannot_proc_while_stunned: true,
-		targets:	{
+		targets:{
 			0:{
 				target: 		'any',
 				target_amount: 	1,
@@ -5137,6 +5170,39 @@ var all_abilities = {
 		level_cost_structure: 0.75,
 	},
 	enrage:{
+		description: 	'When this unit receives damage, it gains {LEVEL} power.',
+		proc: 			'receive_damage',
+		proc_amount: 	1,
+		cannot_proc_while_stunned: true,
+		proc_while_dead: true,
+		scales: 		true,
+		hero_tactics: 	['heal_hero_ability','bolster_hero_ability'],
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower_any','enrage','empower_ally'],
+				amount: 		'ability_level',
+			},
+		},
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.5,
+		},
+		cost_factor: 			'health',
+	},
+	enrage_hv:{
+		name: 			'enrage',
 		description: 	'When this unit receives damage, it gains {LEVEL} temporary power.',
 		proc: 			'receive_damage',
 		proc_amount: 	1,
@@ -5162,7 +5228,10 @@ var all_abilities = {
 				amount: 		'ability_level',
 			},
 		},
-		level_cost: 		2,
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 1,
+		},
 	},
 	eternal:		{
 		description: 	'Returns to its owner\'s deck when destroyed.',
@@ -6685,6 +6754,29 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		1,
 	},
+	gain_mana:{
+		description: 	'This gains {LEVEL} mana each turn.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 	'any',
+				target_amount: 1,
+				position: 	'self',
+				min_hp: 	1,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'mana',
+				type: 		'apply_mana',
+				subtypes: 	['gain_mana'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	go_again:{
 		description: 	'Has a 50% chance to get another turn.',
 		proc_chance: 	50,
@@ -7702,6 +7794,31 @@ var all_abilities = {
 		level_cost: 		16,
 		level_cost_spell: 	4,
 	},
+	increase_mana:{
+		description: 	'An ally that has mana gains {LEVEL} mana.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 	'any',
+				target_amount: 1,
+				position: 	'random',
+				has_effect: 	{effect_name: 'mana', amount: 0, limit: 'min'},
+				min_hp: 	1,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'mana',
+				type: 		'apply_mana',
+				subtypes: 	['gain_mana'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		2,
+		level_cost_hero: 	3,
+	},
 	jolt:{
 		description: 	'A random ally creature unit that has power either gains or looses {LEVEL} temporary power.',
 		cannot_proc_while_stunned: true,
@@ -8120,6 +8237,119 @@ var all_abilities = {
 		},
 		level_cost: 	1,
 		cost_factor: 	'full',
+	},
+	mana_bolt:{
+		description: 	'Deals {LEVEL} magical projectile damage to an enemy unit for every mana this has. This then looses all mana. Will target the enemy hero if there are no enemy units.',
+		cannot_proc_while_stunned: true,
+		has_mana: 		true,
+		proc_amount: 	1,
+		targets:{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'magic',
+				type: 			'damage',
+				subtypes: 		['magical','arcane_bolts','projectile','on_spellcast','spellbolt'],
+				amount: 		'origin_mana',
+				amount_factor: 	'ability_level',
+			}
+		},
+		on_success:{
+			targets:{
+				0:{
+					target: 		'any',
+					target_amount: 	1,
+					position: 		'self',
+					has_effect: 	{effect_name: 'mana', amount: 1, limit: 'min'},
+					side: 			'any'
+				},
+			},
+			effects:{
+				0:{
+					type: 		'set_effect_amount',
+					effect_names:{
+						mana: 	0,
+					},
+					subtypes: 	[],
+					amount: 	1
+				}
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'arcane_bolt',
+			base_cost_factor: 	1,
+			base_cost_hero_factor: 1,
+		},
+		average_hits: 		1,
+	},
+	mana_bolt_hv:{
+		name: 			'mana bolt',
+		description: 	'Deals {LEVEL} magical projectile damage to an enemy unit for every mana this has, rounded up. This then looses all mana.',
+		cannot_proc_while_stunned: true,
+		has_mana: 		true,
+		proc_amount: 	1,
+		targets:{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'magic',
+				type: 			'damage',
+				subtypes: 		['magical','arcane_bolts','projectile','on_spellcast','spellbolt'],
+				amount: 		'origin_mana',
+				amount_factor: 	'ability_level',
+			}
+		},
+		on_success:{
+			targets:{
+				0:{
+					target: 		'any',
+					target_amount: 	1,
+					position: 		'self',
+					has_effect: 	{effect_name: 'mana', amount: 1, limit: 'min'},
+					side: 			'any'
+				},
+			},
+			effects:{
+				0:{
+					type: 		'set_effect_amount',
+					effect_names:{
+						mana: 	0,
+					},
+					subtypes: 	[],
+					amount: 	1
+				}
+			},
+
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'arcane_bolt',
+			base_cost_factor: 	1,
+			base_cost_hero_factor: 1,
+		},
+		average_hits: 		1,
 	},
 	marred_vines:{
 		description: 	'When this takes damage, there is a 50% chance it summons {LEVEL} vine(s).',

@@ -872,6 +872,10 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 					}
 				});
 			}
+			if(card_info['needs_theme'] != undefined && match_array_values(card_info['needs_theme'], theme) == false)
+			{
+				can_pick = false;
+			}
 			if(not_these != undefined && match_array_values(not_these, card_id) == true)
 			{
 				can_pick = false;
@@ -927,6 +931,10 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 						can_pick = false;
 					}
 				});
+			}
+			if(card_info['needs_theme'] != undefined && match_array_values(card_info['needs_theme'], theme) == false)
+			{
+				can_pick = false;
 			}
 			if(not_these != undefined && match_array_values(not_these, card_id) == true)
 			{

@@ -1118,7 +1118,7 @@ function update_passive_effects(unit_id){
 	$('.unit_id_' + unit_id + ' .unit_effects').html('');
 	},total_timeout);		
 	eachoa(battle_info.combat_units[unit_id]['effects'], function(effect, amount){
-		if(amount > 0)
+		if(amount > 0 || effect == 'mana')
 		{
 			var amount_to_show = amount + '';
 			if(effect == 'stunned'){amount_to_show = '&nbsp;';}
@@ -1636,6 +1636,10 @@ function check_ability_can_fire(unit_id, current_ability, level, origin_id){
 			ability_can_fire = false;
 		}
 		if(current_ability['has_used_ability'] != undefined && current_ability['has_used_ability'] == false && battle_info['combat_units'][unit_id]['used_ability'] != undefined && battle_info['combat_units'][unit_id]['used_ability'] == true)
+		{
+			ability_can_fire = false;
+		}
+		if(current_ability['has_mana'] != undefined && current_ability['has_mana'] == true && (battle_info['combat_units'][unit_id]['effects'] == undefined || battle_info['combat_units'][unit_id]['effects']['mana'] == undefined || battle_info['combat_units'][unit_id]['effects']['mana'] == 0))
 		{
 			ability_can_fire = false;
 		}
@@ -2210,6 +2214,11 @@ function process_effect(target_id, origin_id, effect, level){
 						apply_energy(target_id, calculated_amount, origin_id);
 					}
 
+					if(effect['type'] == 'apply_mana')
+					{
+						apply_mana(target_id, calculated_amount, origin_id);
+					}
+
 					if(effect['type'] == 'apply_blessed')
 					{
 						apply_blessed(target_id, calculated_amount, origin_id);
@@ -2780,7 +2789,7 @@ function set_effect_amount(target_id, calculated_amount, origin_id, effect_info)
 		}
 		eachoa(effect_info['effect_names'], function(effect_name, effect_level){
 			current_unit['effects'][effect_name] = effect_level;
-			if(effect_level < 1){delete	current_unit['effects'][effect_name];}
+			if(effect_level < 1 && effect_name != 'mana'){delete	current_unit['effects'][effect_name];}
 		});
 		if(effect_info['effect_name'] != undefined)
 		{
@@ -2965,6 +2974,40 @@ function apply_energy(target_id, calculated_amount, origin_id){
 		update_passive_effects(target_id);
 	}
 };
+
+function apply_mana(target_id, calculated_amount, origin_id){
+	if(calculated_amount != 0 && battle_info.combat_units[target_id] != undefined)
+	{
+		var current_unit = battle_info.combat_units[target_id];
+		if(current_unit['effects'] == undefined)
+		{
+			current_unit['effects'] = {};
+		}
+		if(current_unit['effects']['mana'] == undefined)
+		{
+			current_unit['effects']['mana'] = calculated_amount;
+		}
+		else
+		{
+			current_unit['effects']['mana'] += calculated_amount;
+		}
+		if(current_unit['effects']['mana'] < 0)
+		{
+			current_unit['effects']['mana'] = 0;
+		}
+		timeout_key ++;
+		all_timeouts[timeout_key] = setTimeout(function(){
+			$('.battle_container .unit_id_' + target_id + ' .card_image').addClass('blue_glow');
+		},total_timeout);
+		timeout_key ++;
+		all_timeouts[timeout_key] = setTimeout(function(){
+			$('.battle_container .unit_id_' + target_id + ' .card_image').removeClass('blue_glow');
+		},total_timeout + 500);
+		total_timeout += 250 * battle_speed;
+		update_passive_effects(target_id);
+	}
+};
+
 
 function apply_blessed(target_id, calculated_amount, origin_id){
 	if(calculated_amount > 0 && battle_info.combat_units[target_id] != undefined)
@@ -5053,6 +5096,21 @@ function calculate_effect(effect, target_id, origin_id, level){
 			
 		}
 
+		if(calculated_amount == 'origin_mana')
+		{
+			if(battle_info.combat_units[origin_id]['effects'] != undefined && battle_info.combat_units[origin_id]['effects']['mana'] != undefined)
+			{
+				calculated_amount = battle_info.combat_units[origin_id]['effects']['mana'];
+			}
+			else
+			{
+				calculated_amount = 0;
+			}
+			
+		}
+
+		
+
 		if(calculated_amount == 'origin_poison')
 		{
 			if(battle_info.combat_units[origin_id]['effects'] != undefined && battle_info.combat_units[origin_id]['effects']['poisoned'] != undefined)
@@ -6210,7 +6268,7 @@ function filter_targets_by_has_effect(all_targets, effect_paramaters, level){
 		}
 		else
 		{
-			if(battle_info.combat_units[target_unit_id]['effects'][effect_paramaters['effect_name']] == undefined && real_amount != 0 && effect_paramaters['limit'] == 'min')
+			if(battle_info.combat_units[target_unit_id]['effects'][effect_paramaters['effect_name']] == undefined /*&& real_amount != 0*/ && effect_paramaters['limit'] == 'min')
 			{
 				delete all_targets[target_id];
 			}

@@ -14,14 +14,16 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{arcane_bolt: 1},
+		abilities: 			{gain_mana: 1, mana_bolt: 1},
+		effects: 			{mana: 0},
 		hero_version: 			{
-			theme: 				['subtype_mage','subtype_arcane','damaging_hero'],
+			theme: 				['subtype_mage','subtype_arcane','gain_mana_ability'],
 			not_theme: 			['empower_hero_ability','empower_ally_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{arcane_bolt_hv: 2},
+			abilities: 			{gain_mana: 1, mana_bolt_hv: 2},
+			effects: 			{mana: 0},
 		},
 		quote: '\"She is starting to learn.\"',
 		recipe:{
@@ -66,14 +68,16 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{arcane_bolt: 2},
+		abilities: 			{gain_mana: 1, mana_bolt: 2},
+		effects: 			{mana: 0},
 		hero_version: 			{
-			theme: 				['subtype_mage','subtype_arcane','damaging_hero'],
+			theme: 				['subtype_mage','subtype_arcane','gain_mana_ability'],
 			not_theme: 			['empower_hero_ability','empower_ally_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{arcane_bolt_hv: 2},
+			abilities: 			{increase_mana: 1, mana_bolt_hv: 2},
+			effects: 			{mana: 0},
 		},
 		quote: '\"She controls the magical energy.\"',
 		recipe:{
@@ -87,6 +91,7 @@ var all_available_cards = {
 		subtypes: 			['wall','arcane'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['gain_mana_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -94,20 +99,16 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{arcane_bolt: 1},
+		abilities: 			{increase_mana: 1},
 		hero_version: 			{
-			theme: 				['subtype_mage','subtype_arcane','damaging_hero'],
+			theme: 				['gain_mana_ability'],
 			not_theme: 			['empower_hero_ability','empower_ally_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{arcane_bolt_hv: 2},
+			abilities: 			{increase_mana: 2},
 		},
 		quote: '\"Do not go near it.\"',
-		recipe:{
-			arcane_mage: 		2,
-			dark_tower: 		2,
-		}
 	},
 	archer:{
 		name: 				'archer',
@@ -175,7 +176,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{doom_all: 1, echo: 1},
+		abilities: 			{doom_all: 2, echo: 1},
 		quote: '\"You know what is coming.\"',
 		recipe:{
 			scroll: 		1,
@@ -224,7 +225,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{cleanse: 1, heal: 1, echo: 1},
+		abilities: 			{cleanse: 2, heal: 1, echo: 1},
 		quote: '\"So pretty!\"',
 		max_in_deck: 		2,
 		recipe:{
@@ -277,6 +278,31 @@ var all_available_cards = {
 			twine: 			1,
 		}
 	},
+	brown_bear:{
+		name: 				'brown bear',
+		type: 				'creature',
+		subtypes: 			['animal'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/brown_bear.jpg',
+		power: 				3,
+		armor: 				0,
+		health: 			6,
+		abilities: 			{strike: 1},
+		hero_version: 			{
+			theme: 				['subtype_animal','type_creature'],
+			not_theme: 			[],
+			power: 				3,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1},
+		},
+		quote: '\"Do not mess with that.\"',
+	},
 	burning_skeleton:{
 		name: 				'burning skeleton',
 		type: 				'creature',
@@ -293,7 +319,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{strike: 1, burning_deaths: 1, resurrect: 8, undead: 1},
 		hero_version: 			{
-			theme: 				['subtype_undead','burn_ability','ally_creature_death_proc_ability','own_death_proc_ability','summon_creature_ability'],
+			theme: 				['type_creature','burn_ability','ally_creature_death_proc_ability','own_death_proc_ability','summon_creature_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -312,6 +338,7 @@ var all_available_cards = {
 		subtypes: 			['human','villager'],
 		color: 				['colorless'],
 		theme: 				['type_structure'],
+		needs_theme: 		['type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -461,7 +488,7 @@ var all_available_cards = {
 		health: 			7,
 		abilities: 			{curse_all: 1, cursed_aura: 1},
 		hero_version: 			{
-			theme: 				['subtype_witch', 'curse_ability'],
+			theme: 				['subtype_witch', 'projectile_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -490,7 +517,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, cleansing_deaths: 2},
 		hero_version: 			{
-			theme: 				['subtype_cleric','ally_creature_death_proc_ability','own_death_proc_ability','summon_creature_ability'],
+			theme: 				['type_creature','ally_creature_death_proc_ability','own_death_proc_ability','summon_creature_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -546,7 +573,7 @@ var all_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, ignites: 1, evade: 3},
 		},
-		quote: '\"Quick hot strikes.\"',
+		quote: '\"You will not see him until you feel it burn.\"',
 		recipe:{
 			dark_rogue: 	2,
 			flame_rogue: 	2,
@@ -868,7 +895,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{charge: 1, strike: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','type_creature'],
+			theme: 				['melee_ability','movement_ability'],
 			not_theme: 			[],
 			power: 				2,
 			armor: 				0,
@@ -910,6 +937,23 @@ var all_available_cards = {
 			well: 		2,
 		}
 	},
+	ignite:{
+		name: 				'ignite',
+		type: 				'spell',
+		subtypes: 			['tactic'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/ignite.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{burn: 1, draw_on_play: 1},
+		quote: '\"Lets light the fire.\"',
+		max_in_deck: 		2,
+	},
 	magic_dust:{
 		name: 				'magic dust',
 		type: 				'spell',
@@ -930,6 +974,24 @@ var all_available_cards = {
 			seeds:  	1,
 			stone: 		1,
 		}
+	},
+	mana_orb:{
+		name: 				'mana orb',
+		type: 				'artifact',
+		subtypes: 			['trinket'],
+		color: 				['colorless'],
+		theme: 				[],
+		needs_theme: 		['gain_mana_ability'],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/mana_orb.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{increase_mana: 1},
+		quote: '\"Endless magical energy.\"',
 	},
 	meadow:{
 		name: 				'meadow',
@@ -1099,6 +1161,7 @@ var all_available_cards = {
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
 		theme: 				['poison_ability'],
+		needs_theme: 		['poison_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -1159,6 +1222,31 @@ var all_available_cards = {
 			wall: 			1,
 		}
 	},
+	raging_bear:{
+		name: 				'raging bear',
+		type: 				'creature',
+		subtypes: 			['animal'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/raging_bear.jpg',
+		power: 				3,
+		armor: 				0,
+		health: 			6,
+		abilities: 			{strike: 1, enrage: 1},
+		hero_version: 			{
+			theme: 				['subtype_animal','type_creature','empower_ally_ability'],
+			not_theme: 			[],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, enrage_hv: 1},
+		},
+		quote: '\"Do not poke the bear!\"',
+	},
 	rat:{
 		name: 				'rat',
 		type: 				'creature',
@@ -1176,7 +1264,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, call_rat: 2, evade: 4},
 		hero_version: 			{
 			theme: 				['melee_ability','evade_ability','subtype_rat'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, call_rat: 1, evade: 4},
@@ -1204,7 +1292,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, call_rat: 2},
 		hero_version: 			{
 			theme: 				['subtype_rat'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, call_rat: 2},
@@ -1221,6 +1309,7 @@ var all_available_cards = {
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
 		theme: 				['subtype_rat'],
+		needs_theme: 		['subtype_rat','summon_creature_ability'],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -1268,6 +1357,7 @@ var all_available_cards = {
 		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
 		theme: 				['stun_ability'],
+		needs_theme: 		['stun_ability'],
 		craft_theme: 		['subtype_cleric'],
 		pick_chance: 		1,
 		time: 				1,
@@ -1279,7 +1369,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, doom_stunned: 2},
 		hero_version: 			{
 			theme: 				['doom_ability','stun_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, doom_stunned: 4},
@@ -1308,7 +1398,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, evade: 3},
 		hero_version: 			{
 			theme: 				['melee_ability','subtype_rogue'],
-			power: 				2,
+			power: 				3,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, evade: 3},
@@ -1334,11 +1424,11 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{run_away: 1, strike: 1, evade: 3},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_human'],
+			theme: 				['movement_ability','projectile_ability','evade_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, evade: 3},
+			abilities: 			{strike_unit: 1, ally_runs_away: 1, evade: 3},
 		},
 		quote: '\"Get out of the way!\"',
 		recipe:{
@@ -1383,7 +1473,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{fearful_aura: 1, turn_cursed_scarecrow: 1},
 		hero_version: 			{
-			theme: 				['curse_ability'],
+			theme: 				['movement_ability','type_creature'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -1490,13 +1580,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, doom: 1},
+		abilities: 			{strike: 1, doom: 2},
 		hero_version: 			{
 			theme: 				['subtype_cleric','doom_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, doom: 2},
+			abilities: 			{strike_unit: 1, doom: 4},
 		},
 		quote: '\"She sees your fate.\"',
 		recipe:{
@@ -1571,7 +1661,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, fortify_self: 1},
 		hero_version: 			{
 			theme: 				['melee_ability','subtype_warrior'],
-			power: 				2,
+			power: 				3,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, fortify_self: 1},
@@ -1599,7 +1689,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, resurrect: 8, undead: 1},
 		hero_version: 			{
 			theme: 				['subtype_undead'],
-			power: 				2,
+			power: 				3,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, resurrect: 10, undead: 1},
@@ -1610,9 +1700,9 @@ var all_available_cards = {
 			stone: 		1,
 		}
 	},
-	/*spike_trap:{
+	spike_trap:{
 		name: 				'spike trap',
-		type: 				'structure',
+		type: 				'artifact',
 		subtypes: 			['trap'],
 		color: 				['colorless'],
 		theme: 				[],
@@ -1623,14 +1713,10 @@ var all_available_cards = {
 		image: 				'cards/spike_trap.jpg',
 		power: 				false,
 		armor: 				0,
-		health: 			1,
-		abilities: 			{thorns: 3, stunning_touch: 10},
+		health: 			false,
+		abilities: 			{damage_moving: 1, stunning_touch: 2},
 		quote: '\"Careful not to fall in.\"',
-		recipe:{
-			seeds: 		1,
-			wood: 		1,
-		}
-	},*/
+	},
 	slime_pit:{
 		name: 				'slime pit',
 		type: 				'structure',
@@ -1704,7 +1790,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, stunning_touch: 5, resurrect: 8, undead: 1},
 		hero_version: 			{
 			theme: 				['subtype_undead','subtype_slime','stun_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, stunning_touch: 5, resurrect: 10, undead: 1},
@@ -1783,7 +1869,7 @@ var all_available_cards = {
 		abilities: 			{run_away: 1, strike: 1, plunder: 1},
 		hero_version: 			{
 			theme: 				['melee_ability','subtype_rogue'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, break: 1, evade: 3},
@@ -1875,7 +1961,7 @@ var all_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, ignites: 2},
 		},
-		quote: '\"Quick hot strikes.\"',
+		quote: '\"She carries a torch to light the way.\"',
 		recipe:{
 			fire_pit: 		1,
 			seer: 			1,
@@ -2074,6 +2160,31 @@ var all_available_cards = {
 			death_cleric: 		2,
 		}
 	},
+	wombat:{
+		name: 				'wombat',
+		type: 				'creature',
+		subtypes: 			['animal'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/wombat.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{strike: 1, enrage: 1},
+		hero_version: 			{
+			theme: 				['subtype_animal','type_creature','empower_ally_ability'],
+			not_theme: 			[],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, enrage_hv: 1},
+		},
+		quote: '\"Those have a powerful bite.\"',
+	},
 
 	//##################################################################################################################################################################
 	//########################################################## TREASURE ###############################################################################################
@@ -2081,7 +2192,7 @@ var all_available_cards = {
 	crown:{
 		name: 				'crown',
 		description: 		'Passively increases all peasants gained by 1%.',
-		value: 				75,
+		value: 				25,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -2096,7 +2207,7 @@ var all_available_cards = {
 	cup_of_blood:{
 		name: 				'cup of blood',
 		description: 		'Passively increases the maximum rarity of cards sacrificed at the altar by 1%.',
-		value: 				75,
+		value: 				50,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -2111,7 +2222,7 @@ var all_available_cards = {
 	enchanted_net:{
 		name: 				'enchanted net',
 		description: 		'Passively increases floating scraps gained by 1%.',
-		value: 				20,
+		value: 				25,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -2126,7 +2237,7 @@ var all_available_cards = {
 	endless_pouch:{
 		name: 				'endless pouch',
 		description: 		'Passively increases all scraps gained by 1%.',
-		value: 				125,
+		value: 				100,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -2141,7 +2252,7 @@ var all_available_cards = {
 	gloves_of_midas:{
 		name: 				'gloves of Midas',
 		description: 		'Passively increases troves gained by 1%.',
-		value: 				1000,
+		value: 				100,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -2156,7 +2267,7 @@ var all_available_cards = {
 	golden_saddle:{
 		name: 				'golden saddle',
 		description: 		'Passively increases all rewards from battles and quests by 1%.',
-		value: 				500,
+		value: 				250,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -2171,7 +2282,7 @@ var all_available_cards = {
 	loupe:{
 		name: 				'loupe',
 		description: 		'Passively increases all shards gained by 1%.',
-		value: 				250,
+		value: 				100,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -2186,7 +2297,7 @@ var all_available_cards = {
 	rope_of_binding:{
 		name: 				'rope of binding',
 		description: 		'Passively increases the chance for loot items to drop after winning a battle by 1%.',
-		value: 				100,
+		value: 				50,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -2201,7 +2312,7 @@ var all_available_cards = {
 	thieves_cloak:{
 		name: 				'thieves\' cloak',
 		description: 		'Passively increases the maximum scraps offered by merchants by 1%.',
-		value: 				100,
+		value: 				50,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -2216,7 +2327,7 @@ var all_available_cards = {
 	war_banner:{
 		name: 				'war banner',
 		description: 		'Passively increases the maximum rarity of summoned enemies by 1%.',
-		value: 				75,
+		value: 				25,
 		type: 				'treasure',
 		color: 				['none'],
 		pick_chance: 		0,
@@ -2323,7 +2434,7 @@ var all_available_cards = {
 	//########################################################## REWARDS ###############################################################################################
 	//##################################################################################################################################################################
 	
-	flask:{
+	/*flask:{
 		name: 				'flask',
 		value: 				25,
 		type: 				'treasure',
@@ -2337,7 +2448,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{},
 		quote: 'Used in alchemy'
-	},
+	},*/
 	potion_placeholder:{
 		name: 				'potion',
 		value: 				1,
