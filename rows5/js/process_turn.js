@@ -3563,7 +3563,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 	    	{
 	    	    //calculated_amount += target_unit['effects']['cursed'];
 	    	    calculated_amount *=  1 + (target_unit['effects']['cursed'] / 10);
-	    	    calculated_amount = round_by_percent(calculated_amount);
+	    	    calculated_amount = Math.ceil(calculated_amount);
 	    	    //target_unit['effects']['cursed'] = 0;
 	    	    //target_unit['effects']['cursed'] = Math.floor(target_unit['effects']['cursed'] / 2);
 	    	    //if(target_unit['effects']['cursed'] < 1)
@@ -5708,6 +5708,11 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 			all_targets = filter_targets_by_lowest_armor(all_targets);
 		}
 
+		if(target_peramaters['lowest_effects'] != undefined)
+		{
+			all_targets = filter_targets_by_lowest_effects(all_targets, target_peramaters['lowest_effects']);
+		}
+
 		if(target_peramaters['highest_cost'] != undefined && target_peramaters['highest_cost'] == true)
 		{
 			all_targets = filter_targets_by_highest_cost(all_targets);
@@ -6453,6 +6458,44 @@ function filter_targets_by_lowest_armor(all_targets){
 		if(battle_info.combat_units[target_unit_id]['armor'] != undefined && battle_info.combat_units[target_unit_id]['armor'] > lowest_armor)
 		{
 			//console.log('removed ' + battle_info.combat_units[target_unit_id]['name'] + '(' + battle_info.combat_units[target_unit_id]['armor'] + ')');
+			delete all_targets[target_id];
+		}
+	});
+
+	return all_targets;
+}
+
+function filter_targets_by_lowest_effects(all_targets, effect_types){
+	var lowest_effects = 100000;
+	eachoa(all_targets, function(target_id, target_unit_id){
+		var current_effect_count = 0;
+		if(battle_info.combat_units[target_unit_id]['effects'] != undefined)
+		{
+			eachoa(battle_info.combat_units[target_unit_id]['effects'], function(effect_id, effect_count){
+				if(effect_types == undefined || match_array_values(effect_id, effect_types))
+				{
+					current_effect_count += effect_count;
+				}
+			});
+		}	
+		if(current_effect_count < lowest_effects)
+		{
+			lowest_effects = current_effect_count;
+		}
+	});
+	eachoa(all_targets, function(target_id, target_unit_id){
+		var current_effect_count = 0;
+		if(battle_info.combat_units[target_unit_id]['effects'] != undefined)
+		{
+			eachoa(battle_info.combat_units[target_unit_id]['effects'], function(effect_id, effect_count){
+				if(effect_types == undefined || match_array_values(effect_id, effect_types))
+				{
+					current_effect_count += effect_count;
+				}
+			});
+		}	
+		if(current_effect_count > lowest_effects)
+		{
 			delete all_targets[target_id];
 		}
 	});

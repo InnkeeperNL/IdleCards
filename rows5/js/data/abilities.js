@@ -1,8 +1,8 @@
 var ability_base_costs = {
 	arcane_bolt: 3,
 	burn: 		2,
-	cleanse: 	1,
-	curse: 		0.5,
+	cleanse: 	0.5,
+	curse: 		1,
 	destroy: 	8,
 	doom: 		1,
 	draw: 		6,
@@ -2943,23 +2943,17 @@ var all_abilities = {
 		level_cost_artifact: 	2,
 	},
 	curse:{
-		description: 	'Applies {LEVEL} curse to a random enemy unit or hero.{CURSE}',
+		description: 	'Applies {LEVEL} curse to the enemy unit or hero with the lowest curse.{CURSE}',
 		cannot_proc_while_stunned: true,
 		hero_tactics: 	['projectile_ability','blast_ability'],
 		targets:	{
 			0:{
-				target: 		'unit',
-				target_amount: 	1,
-				position: 		'random',
-				min_hp: 		1,
-				side: 			'enemy'
-			},
-			1:{
 				target: 		'unit_or_hero',
 				target_amount: 	1,
 				position: 		'random',
 				min_hp: 		1,
-				side: 			'enemy'
+				side: 			'enemy',
+				lowest_effects: ['cursed'],
 			},
 		},
 		effects:{
@@ -2989,7 +2983,7 @@ var all_abilities = {
 				target_amount: 	6,
 				position: 		'random',
 				min_hp: 		1,
-				side: 			'enemy'
+				side: 			'enemy',
 			},
 		},
 		effects:{
@@ -3073,7 +3067,7 @@ var all_abilities = {
 	},
 	curse_hv:{
 		name: 			'curse',
-		description: 	'Applies {LEVEL} curse to a random enemy unit.{CURSE}',
+		description: 	'Applies {LEVEL} curse to the enemy unit with the lowest curse.{CURSE}',
 		cannot_proc_while_stunned: true,
 		hero_tactics: 	['projectile_ability','blast_ability','curse_ability'],
 		targets:	{
@@ -3082,7 +3076,8 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				min_hp: 		1,
-				side: 			'enemy'
+				side: 			'enemy',
+				lowest_effects: ['cursed'],
 			},
 		},
 		effects:{
@@ -3133,7 +3128,7 @@ var all_abilities = {
 		cost_factor: 		'health',
 	},
 	cursed_deaths:{
-		description: 	'Applies {LEVEL} curse to a random enemy unit or hero when any ally creature is destroyed.',
+		description: 	'Applies {LEVEL} curse to the enemy unit or hero with the lowest curse when any ally creature is destroyed.',
 		proc: 			'ally_creature_death',
 		ability_subtypes:['on_death_proc'],
 		cannot_proc_while_stunned: true,
@@ -3141,18 +3136,12 @@ var all_abilities = {
 		hero_tactics: 	['projectile_ability','blast_ability','type_creature','own_death_proc_ability','curse_ability'],
 		targets:	{
 			0:{
-				target: 		'unit',
-				target_amount: 	1,
-				position: 		'random',
-				min_hp: 		1,
-				side: 			'enemy'
-			},
-			1:{
 				target: 		'unit_or_hero',
 				target_amount: 	1,
 				position: 		'random',
 				min_hp: 		1,
-				side: 			'enemy'
+				side: 			'enemy',
+				lowest_effects: ['cursed'],
 			},
 		},
 		effects:{
@@ -3173,7 +3162,7 @@ var all_abilities = {
 	},
 	cursed_deaths_hv:{
 		name: 			'cursed deaths',
-		description: 	'Applies {LEVEL} curse to a random enemy unit when any ally creature is destroyed.',
+		description: 	'Applies {LEVEL} curse to the enemy unit with the lowest curse when any ally creature is destroyed.',
 		proc: 			'ally_creature_death',
 		ability_subtypes:['on_death_proc'],
 		cannot_proc_while_stunned: true,
@@ -3185,7 +3174,8 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				min_hp: 		1,
-				side: 			'enemy'
+				side: 			'enemy',
+				lowest_effects: ['cursed'],
 			},
 		},
 		effects:{
@@ -13657,7 +13647,7 @@ $.each(all_abilities, function(ability_id, ability_info){
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{BURN}").join('<br/><i>Burn: Suffers fire damage equal to the burn it suffers at the end of each turn. The amount of burn is reduced by 1 each time it deals damage.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{POISON}").join('<br/><i>Poison: Suffers piercing poison damage at the end of each turn equal to the amount of poison. The amount of poison is reduced by 1 each time it deals damage.</i>');
 	//all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received. Curse is removed whenever it takes effect.</i>');
-	all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received by 10%, rounded randomly.</i>');
+	all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received by 10%, rounded up.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{BLESSED}").join('<br/><i>Blessed: There is a 10% chance per blessing that this will return to your deck when destroyed.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{DOOM}").join('<br/><i>Doom: There is a 10% chance per doom that this will be destroyed at the end of its turn. If a unit has 10 or more doom on it, it is destroyed immediately.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{SHIELD}").join('<br/><i>Shield: Absorbs the first incoming damage.</i>');

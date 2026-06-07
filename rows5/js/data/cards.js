@@ -365,7 +365,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{curse_all_hv: 1},
+		abilities: 			{curse_hv: 2},
 		quote: '\"Worn by many witches.\"',
 		recipe:{
 			toad: 			1,
@@ -408,7 +408,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{curse_all_hv: 2, destroy_cursed: 10, echo: 1},
+		abilities: 			{curse_all_hv: 1, destroy_cursed: 10, echo: 1},
 		quote: '\"Make sure you come home before dark.\"',
 		recipe:{
 			dagger: 	1,
@@ -430,7 +430,7 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, cursed_touch: 4, evade: 3},
+		abilities: 			{strike: 1, cursed_touch: 2, evade: 3},
 		hero_version: 			{
 			theme: 				['melee_ability','subtype_rogue','curse_ability'],
 			power: 				2,
@@ -459,14 +459,14 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			7,
-		abilities: 			{curse_all: 2, cursed_aura: 2},
+		abilities: 			{curse_all: 1, cursed_aura: 1},
 		hero_version: 			{
 			theme: 				['subtype_witch', 'curse_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{curse_all_hv: 2, cursed_aura: 4},
+			abilities: 			{curse_all_hv: 1, cursed_aura: 2},
 		},
 		quote: '\"They say an ancient witch used to live there.\"',
 		recipe:{
@@ -494,7 +494,7 @@ var all_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, cleansing_deaths: 2},
+			abilities: 			{strike_unit: 1, cleansing_deaths: 4},
 		},
 		quote: '\"There is serenity in death.\"',
 		recipe:{
@@ -821,7 +821,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{cleanse: 1},
+		abilities: 			{cleanse: 2},
 		quote: '\"They have medicinal purposes.\"',
 		recipe:{
 			dagger: 	1,
@@ -1388,7 +1388,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{fearful_aura: 1, curse_hv: 8},
+			abilities: 			{fearful_aura: 1, curse_all_hv: 1},
 		},
 		quote: '\"It scares away more then just crows.\"',
 		recipe:{
@@ -1519,7 +1519,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, restore: 1},
 		hero_version: 			{
-			theme: 				['fortify_ability','subtype_animal','cleanse_ally_ability'],
+			theme: 				['fortify_ability','subtype_animal','cleanse_ally_ability','empower_ally_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -2003,13 +2003,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, cleanse: 1},
+		abilities: 			{strike: 1, cleanse: 2},
 		hero_version: 			{
 			theme: 				['subtype_villager'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, cleanse: 2},
+			abilities: 			{strike_unit: 1, cleanse: 4},
 		},
 		quote: '\"Anyone want some water?\"',
 		recipe:{
@@ -2030,14 +2030,14 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{cleanse: 1, heal: 1},
+		abilities: 			{cleanse: 2, heal: 1},
 		hero_version: 			{
 			theme: 				['type_creature'],
 			not_theme: 			['empower_hero_ability','damaging_hero','type_structure'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{cleanse: 2, heal: 1},
+			abilities: 			{cleanse: 4, heal: 1},
 		},
 		quote: '\"Refreshing, isn\'t it?\"',
 		recipe:{
@@ -2066,7 +2066,7 @@ var all_available_cards = {
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{curse_hv: 4, strike_unit: 1},
+			abilities: 			{curse_hv: 2, strike_unit: 1},
 		},
 		quote: '\"She uses the dark arts.\"',
 		recipe:{
@@ -3179,7 +3179,7 @@ var ideal_hero_hp = 40;
 var hero_hp_cost_factor = 4;
 
 var hero_subtype_themes = {
-	rogue: 			['subtype_rogue','evade_ability'],
+	/*rogue: 			['subtype_rogue','evade_ability'],
 	clerk: 			['subtype_clerk','deck_control_ability'],
 	cleric: 		['subtype_cleric','cleanse_ally_ability','active_healing_ability'],
 	mermaid: 		['subtype_mermaid'],
@@ -3203,7 +3203,7 @@ var hero_subtype_themes = {
 	jotnar: 		['subtype_jotnar'],
 	gnome: 			['subtype_gnome'],
 	royal: 			['subtype_royal'],
-	horror: 		['subtype_horror'],
+	horror: 		['subtype_horror'],*/
 }
 
 function check_card(card_id){
