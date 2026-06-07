@@ -1155,6 +1155,11 @@
 	font-size:24px;*/
 }
 
+.unit_effects .effect_mana
+{
+	background-image:url('../images/potion-ball.svg');
+}
+
 .unit_effects .effect_doom
 {
 	/*color:rgba(163, 16, 121,0.9);*/

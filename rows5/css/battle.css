@@ -277,6 +277,12 @@
 	background-image: url(../images/wind-hole.svg);
 }
 
+.battle_container .projectile.projectile_mana,
+.icon.icon_mana
+{
+	background-image: url(../images/potion-ball.svg);
+}
+
 .battle_container .projectile.projectile_broken,
 .icon.icon_broken
 {
