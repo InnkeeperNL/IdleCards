@@ -2995,15 +2995,18 @@ function apply_mana(target_id, calculated_amount, origin_id){
 		{
 			current_unit['effects']['mana'] = 0;
 		}
-		timeout_key ++;
-		all_timeouts[timeout_key] = setTimeout(function(){
-			$('.battle_container .unit_id_' + target_id + ' .card_image').addClass('blue_glow');
-		},total_timeout);
-		timeout_key ++;
-		all_timeouts[timeout_key] = setTimeout(function(){
-			$('.battle_container .unit_id_' + target_id + ' .card_image').removeClass('blue_glow');
-		},total_timeout + 500);
-		total_timeout += 250 * battle_speed;
+		if(calculated_amount > 0)
+		{
+			timeout_key ++;
+			all_timeouts[timeout_key] = setTimeout(function(){
+				$('.battle_container .unit_id_' + target_id + ' .card_image').addClass('blue_glow');
+			},total_timeout);
+			timeout_key ++;
+			all_timeouts[timeout_key] = setTimeout(function(){
+				$('.battle_container .unit_id_' + target_id + ' .card_image').removeClass('blue_glow');
+			},total_timeout + 500);
+			total_timeout += 250 * battle_speed;
+		}
 		update_passive_effects(target_id);
 	}
 };

@@ -6775,7 +6775,7 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1,
+		level_cost: 		2,
 	},
 	go_again:{
 		description: 	'Has a 50% chance to get another turn.',
@@ -7795,7 +7795,7 @@ var all_abilities = {
 		level_cost_spell: 	4,
 	},
 	increase_mana:{
-		description: 	'An ally that has mana gains {LEVEL} mana.',
+		description: 	'An ally that uses mana gains {LEVEL} mana.',
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
@@ -7803,6 +7803,7 @@ var all_abilities = {
 				target_amount: 1,
 				position: 	'random',
 				has_effect: 	{effect_name: 'mana', amount: 0, limit: 'min'},
+				lowest_effects: ['mana'],
 				min_hp: 	1,
 				side: 		'ally'
 			},
@@ -7817,7 +7818,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		2,
-		level_cost_hero: 	3,
+		//level_cost_hero: 	3,
 	},
 	jolt:{
 		description: 	'A random ally creature unit that has power either gains or looses {LEVEL} temporary power.',
@@ -8239,7 +8240,7 @@ var all_abilities = {
 		cost_factor: 	'full',
 	},
 	mana_bolt:{
-		description: 	'Deals {LEVEL} magical projectile damage to an enemy unit for every mana this has. This then looses all mana. Will target the enemy hero if there are no enemy units.',
+		description: 	'Uses up to {LEVEL} mana to deal magical projectile damage to an enemy unit for every mana used. Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
 		has_mana: 		true,
 		proc_amount: 	1,
@@ -8265,7 +8266,7 @@ var all_abilities = {
 				type: 			'damage',
 				subtypes: 		['magical','arcane_bolts','projectile','on_spellcast','spellbolt'],
 				amount: 		'origin_mana',
-				amount_factor: 	'ability_level',
+				max_amount: 	'ability_level',
 			}
 		},
 		on_success:{
@@ -8280,26 +8281,21 @@ var all_abilities = {
 			},
 			effects:{
 				0:{
-					type: 		'set_effect_amount',
-					effect_names:{
-						mana: 	0,
-					},
-					subtypes: 	[],
-					amount: 	1
+					type: 		'apply_mana',
+					subtypes: 	['use_mana'],
+					amount: 	'ability_level',
+					amount_factor: -1,
 				}
 			},
 		},
 		animation: 			'combat_zoom',
-		base_cost:{
-			base_cost_id: 		'arcane_bolt',
-			base_cost_factor: 	1,
-			base_cost_hero_factor: 1,
-		},
+		level_cost: 		1,
+		cost_adjustment: 	1,
 		average_hits: 		1,
 	},
 	mana_bolt_hv:{
 		name: 			'mana bolt',
-		description: 	'Deals {LEVEL} magical projectile damage to an enemy unit for every mana this has, rounded up. This then looses all mana.',
+		description: 	'Uses up to {LEVEL} mana to deal magical projectile damage to an enemy unit for every mana used..',
 		cannot_proc_while_stunned: true,
 		has_mana: 		true,
 		proc_amount: 	1,
@@ -8318,7 +8314,7 @@ var all_abilities = {
 				type: 			'damage',
 				subtypes: 		['magical','arcane_bolts','projectile','on_spellcast','spellbolt'],
 				amount: 		'origin_mana',
-				amount_factor: 	'ability_level',
+				max_amount: 	'ability_level',
 			}
 		},
 		on_success:{
@@ -8333,22 +8329,16 @@ var all_abilities = {
 			},
 			effects:{
 				0:{
-					type: 		'set_effect_amount',
-					effect_names:{
-						mana: 	0,
-					},
-					subtypes: 	[],
-					amount: 	1
+					type: 		'apply_mana',
+					subtypes: 	['use_mana'],
+					amount: 	'ability_level',
+					amount_factor: -1,
 				}
 			},
-
 		},
 		animation: 			'combat_zoom',
-		base_cost:{
-			base_cost_id: 		'arcane_bolt',
-			base_cost_factor: 	1,
-			base_cost_hero_factor: 1,
-		},
+		level_cost: 		1,
+		cost_adjustment: 	1,
 		average_hits: 		1,
 	},
 	marred_vines:{
