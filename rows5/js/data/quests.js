@@ -418,7 +418,7 @@ var all_chained_achievements = {
 		step_effect: 	'min_amount',
 		step_amount: 	30,
 		no_quest: 		true,
-	},
+	},*/
 	doom:{
 		name: 			'doom',
 		description: 	'Have allies apply doom {AMOUNT} time(s).',
@@ -430,10 +430,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'oracle',
+		card_back: 		'seer',
 		steps: 			6,
 	},
-	dragon:{
+	/*dragon:{
 		name: 			'dragon',
 		description: 	'Play or summon {AMOUNT} dragon card(s).',
 		objective: 		'dragon_card_played',
@@ -461,6 +461,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'scribe',
 		steps: 			6,
+		no_quest: 		true,
 	},
 	/*duelist:{
 		name: 			'duelist',
@@ -546,6 +547,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'scarecrow',
 		steps: 			6,
+		no_quest: 		true,
 	},
 	/*fire:{
 		name: 			'fire',
@@ -560,7 +562,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'fire_mage',
 		steps: 			6,
-	},
+	},*/
 	flare:{
 		name: 			'flare',
 		description: 	'Play {AMOUNT} spell card(s) in a single battle.',
@@ -574,13 +576,13 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'flare',
+		card_back: 		'ignite',
 		steps: 			6,
 		step_effect: 	'min_amount',
 		step_amount: 	10,
 		no_quest: 		true,
 	},
-	fly:{
+	/*fly:{
 		name: 			'fly',
 		description: 	'Have allies evade an attack by flying {AMOUNT} time(s).',
 		objective: 		'ally_performed_flying',
@@ -723,7 +725,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'cadet',
 		steps: 			6,
-	},
+	},*/
 	hasten:{
 		name: 			'hasten',
 		description: 	'Have allies hasten a card {AMOUNT} time(s).',
@@ -735,10 +737,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'signaler',
+		card_back: 		'magic_dust',
 		steps: 			6,
 	},
-	hunger:{
+	/*hunger:{
 		name: 			'hunger',
 		description: 	'Have allies feast or leech {AMOUNT} time(s).',
 		objective: 		'ally_performed_feast',
@@ -784,7 +786,7 @@ var all_chained_achievements = {
 		step_amount: 	5,
 		no_quest: 		true,
 	},
-	heist:{
+	/*heist:{
 		name: 			'heist',
 		description: 	'Have allies steal an artifact {AMOUNT} time(s).',
 		objective: 		'ally_performed_steal',
@@ -798,7 +800,7 @@ var all_chained_achievements = {
 		card_back: 		'thief',
 		steps: 			6,
 		no_quest: 		true,
-	},
+	},*/
 	/*homebound:{
 		name: 			'homebound',
 		description: 	'Have {AMOUNT} card(s) return to your hand from play.',
@@ -1014,10 +1016,10 @@ var all_chained_achievements = {
 		},
 		card_back: 		'soldier',
 		steps: 			6,
-	},
+	},*/
 	plunder:{
 		name: 			'plunder',
-		description: 	'Have allies break or plunder an artifact or structure {AMOUNT} time(s).',
+		description: 	'Have allies break or plunder an artifact {AMOUNT} time(s).',
 		objective: 		'ally_performed_break',
 		amount: 		0.2,
 		rewards:{
@@ -1026,9 +1028,9 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'pirate',
+		card_back: 		'breaking_ray',
 		steps: 			6,
-	},*/
+	},
 	poison:{
 		name: 			'poison',
 		description: 	'Have allies apply poison {AMOUNT} time(s).',
@@ -1057,7 +1059,7 @@ var all_chained_achievements = {
 		card_back: 		'herbs',
 		steps: 			6,
 	},
-	/*quick:{
+	quick:{
 		name: 			'quick',
 		description: 	'Defeat an enemy at 100% power or more no later then turn {MAX_AMOUNT}.',
 		objective: 		'battle_won_any_turn_count',
@@ -1069,13 +1071,13 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'front_runner',
+		card_back: 		'scorpion',
 		steps: 			6,
 		step_effect: 	'max_amount',
 		step_amount: 	-5,
 		no_quest: 		true,
 	},
-	resist_magic:{
+	/*resist_magic:{
 		name: 			'resist magic',
 		description: 	'Have allies resist magic damage {AMOUNT} time(s).',
 		objective: 		'ally_performed_resist_magic',
@@ -1088,7 +1090,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'elf_youngster',
 		steps: 			6,
-	},
+	},*/
 	resurrect:{
 		name: 			'resurrect',
 		description: 	'Have allies resurrect {AMOUNT} time(s).',
@@ -1103,7 +1105,7 @@ var all_chained_achievements = {
 		card_back: 		'skeleton',
 		steps: 			6,
 	},
-	ritualist:{
+	/*ritualist:{
 		name: 			'ritualist',
 		description: 	'Play {AMOUNT} ritual card(s).',
 		objective: 		'ritual_card_played',

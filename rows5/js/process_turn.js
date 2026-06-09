@@ -1250,6 +1250,10 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 		{
 			ability_can_fire = false;
 		}
+		if(current_ability['min_ally_structures'] != undefined && count_ally_units(battle_info['combat_units'][unit_id]['side'], 'structure', true) < current_ability['min_ally_structures'])
+		{
+			ability_can_fire = false;
+		}
 		if(current_ability['min_enemy_units'] != undefined && count_enemy_units(battle_info['combat_units'][unit_id]['side']) < current_ability['min_enemy_units'])
 		{
 			ability_can_fire = false;
@@ -1753,10 +1757,11 @@ function count_double_free_slots(){
 	return double_free_slots;
 }
 
-function count_ally_units(side, type){
+function count_ally_units(side, type, count_hero){
 	var ally_unit_count = 0;
+	if(count_hero == undefined){count_hero = false;}
 	eachoa(battle_info['combat_units'], function(unit_id, unit_info){
-		if(unit_info['side'] == side && unit_info['slot'] > 0 && unit_info['current_health'] != undefined && unit_info['current_health'] > 0 && (type == undefined || type == 'any' || type == unit_info['type']))
+		if(unit_info['side'] == side && (unit_info['slot'] > 0 || (count_hero == true && unit_info['slot'] >= 0)) && unit_info['current_health'] != undefined && unit_info['current_health'] > 0 && (type == undefined || type == 'any' || type == unit_info['type']))
 		{
 			ally_unit_count++;
 		}

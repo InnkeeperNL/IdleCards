@@ -4966,7 +4966,7 @@ var all_abilities = {
 		description: 	'Gains {LEVEL} temporary power for each ally structure.',
 		cannot_proc_while_stunned: true,
 		proc: 			'basic',
-		min_ally_structure_units: 1,
+		min_ally_structures: 1,
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -4982,7 +4982,21 @@ var all_abilities = {
 				projectile: 	'power',
 				type: 			'grant_temp_power',
 				subtypes: 		['empower_any','empower_ally'],
-				amount: 		'ally_structure_count',
+				amount: 		'target_count',
+				targets_to_count:{
+					targets:{
+						0:{
+							target: 		'unit_or_hero',
+							target_amount: 	100,
+							position: 		'random',
+							not_types: 		['creature'],
+							not_self: 		true,
+							min_hp: 		1,
+							side: 			'ally'
+						}
+					},
+					effects:{},
+				},
 				amount_factor: 	'ability_level',
 			},
 		},
@@ -4990,7 +5004,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'empower',
 			base_cost_factor: 1,
-			base_cost_structure_factor: 2,
+			base_cost_structure_factor: 1.5,
 		},
 	},
 	experiment:{
@@ -11482,8 +11496,12 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4.5,
-		cost_adjustment: 	-0.5,
+		base_cost:{
+			base_cost_id: 		'arcane_bolt',
+			base_cost_factor: 	1,
+			base_cost_hero_factor: 1.5,
+			base_cost_spell_factor: 0.25,
+		},
 		average_hits: 		'ability_level',
 	},
 	spell_bolt_hv:{
@@ -11513,8 +11531,12 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3.5,
-		cost_adjustment: 	-0.5,
+		base_cost:{
+			base_cost_id: 		'arcane_bolt',
+			base_cost_factor: 	1,
+			base_cost_hero_factor: 1.5,
+			base_cost_spell_factor: 0.25,
+		},
 		average_hits: 		'ability_level',
 	},
 	spellpower:{
