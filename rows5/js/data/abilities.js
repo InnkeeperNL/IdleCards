@@ -10,7 +10,7 @@ var ability_base_costs = {
 	evade: 		0.1,
 	fear:  		2,
 	fortify: 	2,
-	hasten: 	4,
+	hasten: 	3,
 	healing: 	4,
 	poison: 	1.5,
 	resurrect: 	0.4,
@@ -3645,9 +3645,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_hero: 	4,
-		level_cost_artifact: 4,
+		base_cost:{
+			base_cost_id: 'hasten',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
 	},
 	destroy:{
 		description: 	'Destroys {LEVEL} random enemy unit(s).',
@@ -11544,8 +11546,9 @@ var all_abilities = {
 		level_cost: 		2,
 	},
 	spellrush:{
-		description: 	'Reduces the time left of a random card in your hand by {LEVEL} after any spell card is played.',
+		description: 	'After any spell card is played, reduces the time left of a random card in your hand {LEVEL} time(s).',
 		proc: 			'any_spell_card_played',
+		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		hero_tactics: 	['type_spell','draw_cards_ability','restore_hero_ability','echo_ability','summon_ally_ability','move_ally_to_deck_ability'],
 		targets:	{
@@ -11562,12 +11565,15 @@ var all_abilities = {
 				projectile_target: 	'deck',
 				type: 				'reduce_ready_time',
 				subtypes: 			['hasten','deck_control','on_spellcast'],
-				amount: 			'ability_level',
+				amount: 			1,
 				side: 				'ally',
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	4,
+		base_cost:{
+			base_cost_id: 'hasten',
+			base_cost_factor: 1,
+		},
 	},
 	spread_plague:{
 		description: 	'Turns {LEVEL} adjacent basic rat(s) into a plague rat.',
