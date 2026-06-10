@@ -22,6 +22,58 @@ var ability_base_costs = {
 }
 
 var all_abilities = {
+	add_ignite:{
+		hide_amount: 	true,
+		description: 	'Adds {LEVEL} ignite cards to both decks.',
+		proc: 			'basic',
+		proc_amount: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		targets:{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				//projectile_target: 	'deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_spell'],
+				card_id: 	'ignite',
+				card_status: 	'deck',
+				amount: 	1
+			},
+
+		},
+		on_success:{
+			targets:{
+				0:{
+					target: 		'hero',
+					target_amount: 	1,
+					side: 			'enemy'
+				},
+			},
+			effects:{
+				0:{
+					projectile: 		'book',
+					//projectile_target: 	'deck',
+					type: 		'add_card_to_deck',
+					subtypes: 	['summon_ally','summon_spell'],
+					card_id: 	'ignite',
+					//card_subtype: 	'rat',
+					card_status: 	'deck',
+					amount: 	1
+				},
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.2,
+		},
+	},
 	adrenaline:{
 		description: 	'Gains {LEVEL} temporary power whenever it destroys another unit.',
 		proc: 			'kill',

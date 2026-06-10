@@ -1747,6 +1747,23 @@ var all_available_cards = {
 			stone: 		1,
 		}
 	},
+	slow_burn:{
+		name: 				'slow burn',
+		type: 				'spell',
+		subtypes: 			['ritual'],
+		color: 				['colorless'],
+		theme: 				['type_spell'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/slow_burn.jpg',
+		image_position: 	'bottom',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{add_ignite: 1, echo: 1},
+		quote: '\"Just let it smolder for a while.\"',
+	},
 	spike_trap:{
 		name: 				'spike trap',
 		type: 				'artifact',
