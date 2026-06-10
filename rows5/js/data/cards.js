@@ -243,11 +243,6 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{quicken_poison_hv: 1, venomous_hero: 1},
 		quote: '\"Careful not to spill that.\"',
-		recipe:{
-			magic_dust: 	1,
-			spike_trap: 	1,
-			toad: 			1,
-		}
 	},
 	breaking_ray:{
 		name: 				'breaking ray',
@@ -640,13 +635,8 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{igniting_hero: 1},
+		abilities: 			{igniting_hero: 3},
 		quote: '\"It can be used to light a fire or stab a foe.\"',
-		recipe:{
-			dagger: 		1,
-			fire_pit: 		1,
-			magic_dust: 	1,
-		}
 	},
 	flame_rogue:{
 		name: 				'flame rogue',
@@ -718,7 +708,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{empower_hero: 1, igniting_hero: 1},
+		abilities: 			{empower_hero: 1, igniting_hero: 3},
 		quote: '\"Stike the enemy and set them ablaze!\"',
 		recipe:{
 			eruption: 		2,
