@@ -170,11 +170,6 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{doom_all: 2, echo: 1},
 		quote: '\"You know what is coming.\"',
-		recipe:{
-			scroll: 		1,
-			seer: 			1,
-			spike_trap: 	1,
-		}
 	},
 	blacksmith:{
 		name: 				'blacksmith',
@@ -231,7 +226,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
-		theme: 				['damaging_hero'],
+		theme: 				['damaging_hero','poison_ability'],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -335,7 +330,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, repair: 1},
 		hero_version: 			{
-			theme: 				['repair_ability','type_structure','type_structure','type_structure'],
+			theme: 				['type_structure'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -772,7 +767,7 @@ var all_available_cards = {
 		subtypes: 			['weapon'],
 		color: 				['colorless'],
 		theme: 				['type_structure'],
-		not_theme: 			['type_creature'],
+		needs_theme: 		['type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -782,18 +777,13 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{repair: 1},
 		quote: '\"A usefull tool.\"',
-		recipe:{
-			runner: 		1,
-			seer: 			1,
-			wall: 			1,
-		}
 	},
 	herbalist:{
 		name: 				'herbalist',
 		type: 				'creature',
 		subtypes: 			['human','villager'],
 		color: 				['colorless'],
-		theme: 				['type_structure'],
+		theme: 				[],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -804,7 +794,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, poison: 1, cleanse: 1},
 		hero_version: 			{
-			theme: 				['subtype_villager'],
+			theme: 				['poison_ability','cleanse_ally_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -843,7 +833,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['tactic'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['subtype_rogue','evade_ability'],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -973,7 +963,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{strike: 1, spellrush: 2},
 		hero_version: 			{
-			theme: 				['type_spell','subtype_animal','summon_ally_ability','echo_ability'],
+			theme: 				['subtype_animal','echo_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1014,7 +1004,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{cleanse: 2, spellrush: 1},
 		hero_version: 			{
-			theme: 				['type_spell','summon_ally_ability','echo_ability'],
+			theme: 				['type_creature','summon_ally_ability','echo_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -1339,7 +1329,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, call_rat: 2},
 		hero_version: 			{
 			theme: 				['subtype_rat'],
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, call_rat: 2},
@@ -1375,6 +1365,7 @@ var all_available_cards = {
 		subtypes: 			['animal'],
 		color: 				['colorless'],
 		theme: 				['type_structure'],
+		needs_theme: 		['type_structure'],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -1403,7 +1394,7 @@ var all_available_cards = {
 		type: 				'creature',
 		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
-		theme: 				['stun_ability'],
+		theme: 				['stun_ability','resurrect_ability','own_death_proc_ability'],
 		needs_theme: 		['stun_ability'],
 		craft_theme: 		['subtype_cleric'],
 		pick_chance: 		1,
@@ -1413,20 +1404,15 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, doom_stunned: 2},
+		abilities: 			{strike: 1, stunned_longevity: 2},
 		hero_version: 			{
-			theme: 				['doom_ability','stun_ability'],
+			theme: 				['stun_ability','resurrect_ability','own_death_proc_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, doom_stunned: 4},
+			abilities: 			{strike_unit: 1, stunned_longevity: 4},
 		},
 		quote: '\"Keep moving, or your fate fill catch up to you.\"',
-		recipe:{
-			magic_dust: 	1,
-			seer: 			1,
-			slimeling: 		1,
-		}
 	},
 	rogue:{
 		name: 				'rogue',
@@ -1618,7 +1604,7 @@ var all_available_cards = {
 		type: 				'creature',
 		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['resurrect_ability','own_death_proc_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -1627,19 +1613,15 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, doom: 2},
+		abilities: 			{strike: 1, longevity: 1},
 		hero_version: 			{
-			theme: 				['subtype_cleric','doom_ability'],
+			theme: 				['subtype_cleric','resurrect_ability','own_death_proc_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, doom: 4},
+			abilities: 			{strike_unit: 1, longevity: 2},
 		},
 		quote: '\"She sees your fate.\"',
-		recipe:{
-			peasant: 		1,
-			seeds: 			1,
-		}
 	},
 	sheep:{
 		name: 				'sheep',
@@ -1663,11 +1645,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, restore: 2},
 		},
 		quote: '\"Wool, milk and meat. Everything you need!\"',
-		recipe:{
-			meadow: 	1,
-			seer: 		1,
-			skeleton: 	1,
-		}
 	},
 	shield:{
 		name: 				'shield',
@@ -1752,7 +1729,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
-		theme: 				['type_spell'],
+		theme: 				['type_spell','burn_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -1763,6 +1740,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{add_ignite: 1, echo: 1},
 		quote: '\"Just let it smolder for a while.\"',
+		max_in_deck: 1,
 	},
 	spike_trap:{
 		name: 				'spike trap',
@@ -1911,10 +1889,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1},
 		},
 		quote: '\"Ready for a fight.\"',
-		recipe:{
-			sword: 			2,
-			rock_seer: 		2,
-		}
 	},
 	thief:{
 		name: 				'thief',
@@ -2026,11 +2000,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, ignites: 2},
 		},
 		quote: '\"She carries a torch to light the way.\"',
-		recipe:{
-			fire_pit: 		1,
-			seer: 			1,
-			twine: 			1,
-		}
 	},
 	trapper:{
 		name: 				'trapper',
@@ -2088,7 +2057,8 @@ var all_available_cards = {
 		type: 				'creature',
 		subtypes: 			['human','villager','warrior'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['type_structure'],
+		needs_theme: 		['type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -2190,11 +2160,6 @@ var all_available_cards = {
 			abilities: 			{cleanse: 4, heal: 1},
 		},
 		quote: '\"Refreshing, isn\'t it?\"',
-		recipe:{
-			miner: 			1,
-			seer: 			1,
-			water_carrier: 	1,
-		}
 	},
 	witch:{
 		name: 				'witch',

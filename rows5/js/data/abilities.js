@@ -1878,7 +1878,6 @@ var all_abilities = {
 			base_cost_id: 		'summon',
 			base_cost_factor: 	0.2,
 			base_cost_artifact_factor: 0.25,
-			base_cost_hero_factor: 0.25,
 		},
 	},
 	carry_away:{
@@ -8307,6 +8306,35 @@ var all_abilities = {
 		level_cost: 	1,
 		cost_factor: 	'full',
 	},
+	longevity:{
+		ability_subtypes: ['resurrect'],
+		description: 	'Grants an ally creature a {LEVEL}0% chance to resurrect or increases it\'s chance to resurrect by {LEVEL}0%.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'resurrect',
+				type: 			'grant_skill',
+				subtypes: 		['magical','grant_resurrect'],
+				skill_id: 		'resurrect',
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 	'resurrect',
+			base_cost_factor: 2,
+			base_cost_hero_factor: 3,
+		},
+	},
 	mana_bolt:{
 		description: 	'Uses up to {LEVEL} mana to deal magical projectile damage to an enemy unit for every mana used. Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
@@ -12186,6 +12214,36 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		3,
 		level_cost_spell: 	0.75,
+	},
+	stunned_longevity:{
+		ability_subtypes: ['resurrect'],
+		description: 	'When an enemy becomes stunned, this grants an ally creature a {LEVEL}0% chance to resurrect or increases it\'s chance to resurrect by {LEVEL}0%.',
+		cannot_proc_while_stunned: true,
+		proc: 			'enemy_got_stunned',
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'resurrect',
+				type: 			'grant_skill',
+				subtypes: 		['magical','grant_resurrect'],
+				skill_id: 		'resurrect',
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 	'resurrect',
+			base_cost_factor: 1,
+			base_cost_hero_factor: 1.5,
+		},
 	},
 	stunning_touch:{
 		hide_amount: 	true,
