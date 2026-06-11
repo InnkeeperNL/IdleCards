@@ -1110,6 +1110,7 @@ var skills_to_show_icon = {
 	wounded: 	'wound',
 	blessed: 	'bless',
 	counter_spell: 'magic_shield',
+	resurrect: 	'resurrect',
 }
 
 function update_passive_effects(unit_id){
@@ -1131,9 +1132,11 @@ function update_passive_effects(unit_id){
 	eachoa(battle_info.combat_units[unit_id]['abilities'], function(ability_id, ability_level){
 		if(ability_level > 0 && skills_to_show_icon[ability_id] != undefined)
 		{
+			var amount_to_show = ability_level + '';
+			if(ability_id == 'resurrect'){amount_to_show = ability_level + '0';}
 			timeout_key ++;
 			all_timeouts[timeout_key] = setTimeout(function(){
-				$('.unit_id_' + unit_id + ' .unit_effects').prepend('<div class="projectile_' + skills_to_show_icon[ability_id] + '">' + ability_level + '</div>');
+				$('.unit_id_' + unit_id + ' .unit_effects').prepend('<div class="projectile_' + skills_to_show_icon[ability_id] + '">' + amount_to_show + '</div>');
 			},total_timeout);		
 		}
 	});

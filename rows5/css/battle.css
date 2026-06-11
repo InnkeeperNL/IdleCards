@@ -460,10 +460,11 @@
 	background-image: url(../images/crossed-swords.svg);
 }
 
-.battle_container .projectile.projectile_resurrect,
+.battle_container .projectile_resurrect,
 .icon.icon_resurrect
 {
 	background-image: url(../images/raise-zombie.svg);
+	font-size: 16px;
 }
 
 .battle_container .projectile.projectile_repair,
