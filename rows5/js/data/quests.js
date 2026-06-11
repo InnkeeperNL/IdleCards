@@ -419,7 +419,7 @@ var all_chained_achievements = {
 		step_amount: 	30,
 		no_quest: 		true,
 	},*/
-	doom:{
+	/*doom:{
 		name: 			'doom',
 		description: 	'Have allies apply doom {AMOUNT} time(s).',
 		objective: 		'ally_performed_doom',
@@ -432,7 +432,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'seer',
 		steps: 			6,
-	},
+	},*/
 	/*dragon:{
 		name: 			'dragon',
 		description: 	'Play or summon {AMOUNT} dragon card(s).',
