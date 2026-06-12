@@ -8330,8 +8330,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 	'resurrect',
-			base_cost_factor: 4,
-			base_cost_hero_factor: 6,
+			base_cost_factor: 2,
+			base_cost_hero_factor: 3,
 		},
 	},
 	mana_bolt:{
@@ -12240,8 +12240,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 	'resurrect',
-			base_cost_factor: 2,
-			base_cost_hero_factor: 3,
+			base_cost_factor: 1,
+			base_cost_hero_factor: 1.5,
 		},
 	},
 	stunning_touch:{
