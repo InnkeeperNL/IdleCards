@@ -464,6 +464,8 @@
 .icon.icon_resurrect
 {
 	background-image: url(../images/raise-zombie.svg);
+	font-size: 16px;
+	line-height: 24px;
 }
 
 .battle_container .projectile.projectile_repair,

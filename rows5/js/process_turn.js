@@ -1133,7 +1133,7 @@ function update_passive_effects(unit_id){
 		if(ability_level > 0 && skills_to_show_icon[ability_id] != undefined)
 		{
 			var amount_to_show = ability_level + '';
-			if(ability_id == 'resurrect'){amount_to_show = ability_level + '0';}
+			if(ability_id == 'resurrect'){amount_to_show = ability_level + '0%';}
 			timeout_key ++;
 			all_timeouts[timeout_key] = setTimeout(function(){
 				$('.unit_id_' + unit_id + ' .unit_effects').prepend('<div class="projectile_' + skills_to_show_icon[ability_id] + '">' + amount_to_show + '</div>');

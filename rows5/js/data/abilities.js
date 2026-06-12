@@ -26,7 +26,6 @@ var all_abilities = {
 		hide_amount: 	true,
 		description: 	'Adds {LEVEL} ignite cards to both decks.',
 		proc: 			'basic',
-		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		targets:{
 			0:{
@@ -43,7 +42,7 @@ var all_abilities = {
 				subtypes: 	['summon_ally','summon_spell'],
 				card_id: 	'ignite',
 				card_status: 	'deck',
-				amount: 	1
+				amount: 	'ability_level'
 			},
 
 		},
@@ -64,7 +63,7 @@ var all_abilities = {
 					card_id: 	'ignite',
 					//card_subtype: 	'rat',
 					card_status: 	'deck',
-					amount: 	1
+					amount: 	'ability_level'
 				},
 			}
 		},
@@ -5363,7 +5362,7 @@ var all_abilities = {
 		cost_factor_factor: 	0.5,
 	},
 	fear:{
-		description: 	'When played, returns {LEVEL} non-undead, non-horror enemy creature unit(s) to their owner\'s hand. Will target the nearest enemy. Any summoned units this targets disappear.',
+		description: 	'When played, returns {LEVEL} non-undead enemy creature unit(s) to their owner\'s hand. Will target the nearest enemy first.',
 		proc: 			'on_play',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
@@ -5392,7 +5391,7 @@ var all_abilities = {
 		level_cost: 	1,
 	},
 	fearful_aura:{
-		description: 	'When this receives melee damage from a non-undead enemy creature unit, that unit returns to their owner\'s hand. Any summoned units this targets disappear.',
+		description: 	'When this receives melee damage from a non-undead enemy creature unit, that unit returns to their owner\'s hand.',
 		proc: 			'receive_damage',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
