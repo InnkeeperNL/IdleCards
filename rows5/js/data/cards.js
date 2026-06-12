@@ -1506,7 +1506,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{fearful_aura: 1, turn_cursed_scarecrow: 1},
 		hero_version: 			{
-			theme: 				['movement_ability','type_creature'],
+			theme: 				['movement_ability','type_creature','dealt_damage_proc_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -1525,7 +1525,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['dealt_damage_proc_ability'],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -1561,11 +1561,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, venom: 2},
 		},
 		quote: '\"They have a painful sting.\"',
-		recipe:{
-			meadow: 	1,
-			toad: 		1,
-			wall: 		1,
-		}
 	},
 	scroll:{
 		name: 				'scroll',
@@ -1924,7 +1919,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{run_away: 1, strike: 1, plunder: 1},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_rogue'],
+			theme: 				['melee_ability','subtype_rogue','dealt_damage_proc_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1980,20 +1975,15 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			2,
-		abilities: 			{strike: 1, run_away: 1, poison_aura: 2},
+		abilities: 			{strike: 1, guard: 1, poison_aura: 2},
 		hero_version: 			{
-			theme: 				['poison_ability','evade_ability','subtype_animal'],
+			theme: 				['poison_ability','movement_ability','subtype_animal'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, evade: 3, poison_aura: 1},
+			abilities: 			{strike_unit: 1,  ally_guards: 1, poison_aura: 1},
 		},
-		quote: '\"Hard to catch and dangerous when you do.\"',
-		recipe:{
-			stone: 			1,
-			water: 			1,
-		},
-		verified: true,
+		quote: '\"Harmless unless you touch it.\"',
 	},
 	torchbearer:{
 		name: 				'torchbearer',
