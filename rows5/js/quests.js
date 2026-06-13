@@ -202,7 +202,7 @@ function show_daily_quests(){
 		parsed_quest += '<div class="single_quest_reward_title">Reward:</div>';
 		parsed_quest += 	'<div class="single_quest_reward_container">';
 		eachoa(quest_info['rewards'], function(reward_type, reward_info){
-			reward_info = (reward_info * get_upgrade_factor('summon_reward', 'any', true));
+			reward_info = (reward_info * get_upgrade_factor('quest_reward', 'any', true));
 			if(reward_type == 'scraps')
 			{
 				var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
@@ -316,8 +316,8 @@ function check_new_quests(show_new_message){
 				var quest_amount = Math.ceil(((Math.random() * (all_quests[new_quest_id]['max_amount'] - (all_quests[new_quest_id]['min_amount'] / 2)) * 1) + (all_quests[new_quest_id]['min_amount'] / 2))  * get_upgrade_factor('quest_amount', 'any', true));
 				var chosen_reward = get_random_key_from_object_based_on_num_value(random_loot_drops);
 				//console.log(chosen_reward);
-				var chosen_reward_amount = all_quests[new_quest_id]['reward_per_amount']['scraps'] * quest_amount * get_upgrade_factor('summon_reward', 'any', true);
-				if(Math.random() < 0.25 || all_available_cards[chosen_reward]['value'] > chosen_reward_amount / 10)
+				var chosen_reward_amount = all_quests[new_quest_id]['reward_per_amount']['scraps'] * quest_amount * get_upgrade_factor('quest_reward', 'any', true);
+				if(Math.random() < 0.25 || all_available_cards[chosen_reward]['value'] > chosen_reward_amount / 5)
 				{
 					chosen_reward = 'scraps';
 					chosen_reward_amount = Math.floor(chosen_reward_amount);
@@ -639,7 +639,7 @@ function claim_daily_quest(current_quest_id){
 			}
 		});*/
 		eachoa(all_quests[current_quest_info['quest_id']]['rewards'], function(reward_type, reward_info){
-			reward_info = Math.floor(reward_info * get_upgrade_factor('summon_reward', 'any', true));
+			reward_info = Math.floor(reward_info * get_upgrade_factor('quest_reward', 'any', true));
 			all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
 				reward_id: 		reward_type,
 				reward_amount: 	reward_info,

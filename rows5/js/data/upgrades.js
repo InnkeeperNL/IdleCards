@@ -3,7 +3,7 @@ var current_upgrade = false;
 var all_upgrades = {
 	aaa_rewards:{
 		name: 			'Rewards',
-		description: 	'Increases the rewards of newly summoned enemies, waves and completing quests by 5% each level.',
+		description: 	'Increases the rewards of newly summoned enemies by 5% each level.',
 		card_image: 	'chest',
 		type: 			'summon_reward',
 		subtypes:  		['any'],
@@ -42,7 +42,7 @@ var all_upgrades = {
 		needed_upgrades:{
 			aac_summon_drop_chance: 	10,
 		},
-		card_image: 	'thief',
+		card_image: 	'loupe',
 		type: 			'used_non_unit_drop_chance',
 		subtypes:  		['any'],
 		amount: 		0.1,
@@ -64,20 +64,20 @@ var all_upgrades = {
 		cost: 			{scraps:5,},
 		max_level: 		20,
 	},
-	/*floating_scraps:{
+	floating_scraps:{
 		name: 			'Floating scraps',
 		description: 	'Increases the scraps gained by 1 when picking up floating scraps during combat.',
 		needed_upgrades:{
-			floating_chance: 	5,
+			floating_chance: 	10,
 		},
 		card_image: 	'scraps_placeholder',
 		type: 			'floating_scraps',
 		subtypes:  		['any'],
 		amount: 		1,
-		level_cost_scale: 	1.1,
-		cost: 			{scraps:10,},
-		max_level: 		50,
-	},*/
+		level_cost_scale: 	1,
+		cost: 			{scraps:50,},
+		max_level: 		9,
+	},
 	game_speed:{
 		name: 			'Game speed',
 		description: 	'Increases the game speed by 5% when set to \'fast\' and by 10% when set to \'fastest\'.',
@@ -96,7 +96,7 @@ var all_upgrades = {
 		name: 			'Altar',
 		description: 	'Unlocks the altar.',
 		needed_upgrades:{
-			aaa_rewards: 	5,
+			aaa_rewards: 	4,
 		},
 		card_image: 	'dark_tower',
 		type: 			'show_altar',
@@ -136,7 +136,7 @@ var all_upgrades = {
 		cost: 			{wheelbarrow:25,},
 		max_level: 		4,
 	},*/
-	summon_common_reduction:{
+	/*summon_common_reduction:{
 		name: 			'Common reduction',
 		description: 	'Reduces the chance of summoning known heroes by 1%.',
 		needed_upgrades:{
@@ -149,22 +149,22 @@ var all_upgrades = {
 		amount: 		0.01,
 		cost: 			{scraps:25,},
 		max_level: 		10,
-	},
+	},*/
 	summon_tries:{
 		name: 			'Summon tries',
 		description: 	'Increases the number of times you can try to defeat the same summoned enemy.',
 		needed_upgrades:{
-			aaa_rewards: 	4,
+			aaa_rewards: 	5,
 		},
 		card_image: 	'meadow',
 		type: 			'summon_tries',
 		subtypes:  		['any'],
 		amount: 		1,
 		amount_fixed: 	true,
-		level_cost_scale: 	0.5,
+		level_cost_scale: 	1,
 		//level_cost_type: 'next_level',
-		cost: 			{shard:5,},
-		max_level: 		9,
+		cost: 			{scraps:100,},
+		max_level: 		4,
 	},
 	/*merchant_offers:{
 		name: 			'Merchant offers',
@@ -181,6 +181,21 @@ var all_upgrades = {
 		cost: 			{scraps:10,},
 		max_level: 		10,
 	},*/
+	merchant_count:{
+		name: 			'Merchant count',
+		description: 	'Increases the number of merchants in town.',
+		needed_upgrades:{
+			merchant_sales: 	5,
+		},
+		card_image: 	'scribe',
+		type: 			'merchant_count',
+		subtypes:  		['any'],
+		amount: 		1,
+		amount_fixed: 	true,
+		level_cost_scale: 	0.25,
+		cost: 			{scraps:100,},
+		max_level: 		4,
+	},
 	merchant_sales:{
 		name: 			'Merchant sales',
 		description: 	'Increases the maximum scraps offered by merchants who want to buy cards by 25%.<br>Only affects new offers.',
@@ -188,7 +203,7 @@ var all_upgrades = {
 			z_a_town_access: 1,
 			aab_summon_rarity: 	10,
 		},
-		card_image: 	'scraps_placeholder',
+		card_image: 	'thief',
 		type: 			'merchant_buy',
 		subtypes:  		['any'],
 		amount: 		0.25,
@@ -196,7 +211,7 @@ var all_upgrades = {
 		cost: 			{scraps:10,},
 		max_level: 		10,
 	},
-	/*peasants_gained:{
+	peasants_gained:{
 		name: 			'Peasants gained',
 		description: 	'Increases the number of peasants gained by 5%.',
 		needed_upgrades:{
@@ -210,7 +225,7 @@ var all_upgrades = {
 		level_cost_scale: 	1.1,
 		cost: 			{scraps:10,},
 		max_level: 		20,
-	},*/
+	},
 	quest_amount:{
 		name: 			'Quest difficulty',
 		description: 	'Increases the difficulty and rewards of quests by 100%. This may unlock new possible rewards.',
@@ -223,6 +238,20 @@ var all_upgrades = {
 		amount: 		1,
 		level_cost_scale: 	1,
 		cost: 			{scraps:10,},
+		max_level: 		20,
+	},
+	quest_reward:{
+		name: 			'Quest rewards',
+		description: 	'Increases the rewards of new quests by 5%.',
+		needed_upgrades:{
+			quest_amount: 10,
+		},
+		card_image: 	'rat_flute',
+		type: 			'quest_reward',
+		subtypes:  		['any'],
+		amount: 		0.05,
+		level_cost_scale: 	1,
+		cost: 			{scraps:50,},
 		max_level: 		10,
 	},
 	/*wave_access:{
@@ -272,7 +301,7 @@ var all_upgrades = {
 	},*/
 	z_a_town_access:{
 		name: 			'Town',
-		description: 	'Unlocks the town hall. This produces peasants and trades materials.',
+		description: 	'Unlocks the town. This produces scraps and merchants buy cards here..',
 		needed_upgrades:{
 			aab_summon_rarity: 	10,
 		},

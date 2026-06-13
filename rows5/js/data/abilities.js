@@ -5,12 +5,12 @@ var ability_base_costs = {
 	curse: 		1,
 	destroy: 	8,
 	doom: 		0.5,
-	draw: 		6,
+	draw: 		4,
 	empower: 	2,
 	evade: 		0.1,
 	fear:  		2,
 	fortify: 	2,
-	hasten: 	3,
+	hasten: 	2,
 	healing: 	4,
 	poison: 	1.5,
 	resurrect: 	0.4,
@@ -24,8 +24,8 @@ var ability_base_costs = {
 var all_abilities = {
 	add_ignite:{
 		hide_amount: 	true,
-		description: 	'Adds {LEVEL} ignite cards to both decks.',
-		proc: 			'basic',
+		description: 	'When played, this adds {LEVEL} ignite cards to both decks.',
+		proc: 			'on_play',
 		cannot_proc_while_stunned: true,
 		targets:{
 			0:{
@@ -37,12 +37,12 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				//projectile_target: 	'deck',
+				projectile_target: 	'deck',
 				type: 		'add_card_to_deck',
 				subtypes: 	['summon_ally','summon_spell'],
 				card_id: 	'ignite',
 				card_status: 	'deck',
-				amount: 	'ability_level'
+				amount: 	'ability_level',
 			},
 
 		},
@@ -57,20 +57,21 @@ var all_abilities = {
 			effects:{
 				0:{
 					projectile: 		'book',
-					//projectile_target: 	'deck',
+					projectile_target: 	'deck',
 					type: 		'add_card_to_deck',
 					subtypes: 	['summon_ally','summon_spell'],
 					card_id: 	'ignite',
 					//card_subtype: 	'rat',
 					card_status: 	'deck',
-					amount: 	'ability_level'
+					amount: 	'ability_level',
+					side: 		'enemy',
 				},
 			}
 		},
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.2,
+			base_cost_factor: 	0.1,
 		},
 	},
 	adrenaline:{
@@ -212,6 +213,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				not_types: 		['structure','object'],
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'max'},
 				not_self: 		true,
 				min_hp: 		1,
 				min_power: 		0,
@@ -243,6 +245,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				not_types: 		['structure','object'],
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'max'},
 				has_opposing: 	false,
 				min_hp: 		1,
 				side: 			'ally'
@@ -272,6 +275,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				not_types: 		['structure'],
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'max'},
 				has_opposing: 	true,
 				min_hp: 		1,
 				side: 			'ally'
@@ -300,6 +304,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				not_types: 		['structure','object'],
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'max'},
 				not_self: 		true,
 				has_opposing: 	false,
 				min_hp: 		1,
@@ -1876,7 +1881,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'summon',
 			base_cost_factor: 	0.2,
-			base_cost_artifact_factor: 0.25,
 		},
 	},
 	carry_away:{
@@ -2218,7 +2222,7 @@ var all_abilities = {
 	cleanse:{
 		description: 	'Removes {LEVEL} negative effect(s) from a random ally unit or hero.',
 		cannot_proc_while_stunned: true,
-		do_not_pause_between: true,
+		//do_not_pause_between: true,
 		proc_amount: 	'ability_level',
 		scales: 		true,
 		targets:	{
@@ -2243,13 +2247,13 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'cleanse',
 			base_cost_factor: 1,
-			base_cost_spell_factor: 0.2,
+			base_cost_spell_factor: 0.25,
 		},
 	},
 	cleanse_all:{
 		description: 	'Removes {LEVEL} negative effect(s) from all ally units and your hero.',
 		cannot_proc_while_stunned: true,
-		do_not_pause_between: true,
+		//do_not_pause_between: true,
 		proc_amount: 	1,
 		scales: 		true,
 		targets:	{
@@ -2274,14 +2278,14 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'cleanse',
 			base_cost_factor: 3,
-			base_cost_spell_factor: 0.6,
+			base_cost_spell_factor: 0.75,
 		},
 	},
 	cleansing_deaths:{
 		description: 	'Removes {LEVEL} negative effect(s) from a random ally unit or your hero when any ally creature is destroyed.',
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
-		do_not_pause_between: true,
+		//do_not_pause_between: true,
 		proc_amount: 	'ability_level',
 		scales: 		true,
 		hero_tactics: 	['ally_creature_death_proc_ability','type_creature'],
@@ -2307,7 +2311,40 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'cleanse',
 			base_cost_factor: 1,
-			base_cost_spell_factor: 0.2,
+			base_cost_spell_factor: 0.25,
+		},
+	},
+	cleansing_spells:{
+		description: 	'After any spell card is played, this removes {LEVEL} negative effect(s) from a random ally unit or your hero.',
+		proc: 			'any_spell_card_played',
+		cannot_proc_while_stunned: true,
+		//do_not_pause_between: true,
+		proc_amount: 	'ability_level',
+		scales: 		true,
+		hero_tactics: 	['ally_creature_death_proc_ability','type_creature'],
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				has_negative_effect: true,
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'cleanse',
+				type: 			'reduce_negative_effects',
+				subtypes: 		['cleansing','cleanse_ally'],
+				amount: 		1,
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'cleanse',
+			base_cost_factor: 0.5,
+			base_cost_spell_factor: 0.125,
 		},
 	},
 	clone_ally:{
@@ -5320,7 +5357,7 @@ var all_abilities = {
 				side: 		'ally',
 			}
 		},
-		level_cost: 	2,
+		level_cost: 	1,
 		cost_factor: 	'full',
 	},
 	evade:{
@@ -5817,11 +5854,14 @@ var all_abilities = {
 				side: 			'ally',
 			}
 		},
+		base_cost:{
+			base_cost_id: 'hasten',
+			base_cost_factor: 0.25,
+		},
 		animation: 			'combat_zoom',
 		ability_level_cost_factors:{
 			resurrect: 		2,
 		},
-		level_cost: 		1,
 	},
 	final_pay_life:{
 		description: 	'When destroyed, this deals {LEVEL} to your hero.',
@@ -7126,8 +7166,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'summon',
 			base_cost_factor: 	0.2,
-			base_cost_artifact_factor: 0.25,
-			base_cost_hero_factor: 0.25,
 		},
 	},
 	guard:{
@@ -7214,8 +7252,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'hasten',
-			base_cost_factor: 5,
-			base_cost_spell_factor: 1.25,
+			base_cost_factor: 4,
+			base_cost_spell_factor: 1,
 		},
 	},
 	hasten_on_act:{
@@ -7245,8 +7283,10 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_spell: 	1,
+		base_cost:{
+			base_cost_id: 'hasten',
+			base_cost_factor: 0.25,
+		},
 	},
 	hasten_on_kill:{
 		description: 	'Reduces the time left of a card in your hand by {LEVEL} when it destroys a unit.',
@@ -7271,6 +7311,10 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'hasten',
+			base_cost_factor: 0.25,
+		},
 	},
 	hasten_slowest:{
 		description: 	'Reduces the time left of the card in your hand with the highest time left by {LEVEL}.',
@@ -7298,8 +7342,10 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_spell: 	2,
+		base_cost:{
+			base_cost_id: 'hasten',
+			base_cost_factor: 1,
+		},
 	},
 	hatch_chicken:{
 		description: 	'Has a 50% chance to turn into a chicken when destroyed by damage.',
@@ -7811,6 +7857,7 @@ var all_abilities = {
 		proc_factor: 	'ability_level',
 		ability_subtypes: ['dealt_damage_proc'],
 		cannot_proc_while_stunned: true,
+		hide_amount: true,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8306,7 +8353,7 @@ var all_abilities = {
 		cost_factor: 	'full',
 	},
 	longevity:{
-		ability_subtypes: ['resurrect'],
+		ability_subtypes: ['resurrect','own_death_proc'],
 		description: 	'Grants an ally creature a {LEVEL}0% chance to resurrect or increases it\'s chance to resurrect by {LEVEL}0%.',
 		cannot_proc_while_stunned: true,
 		targets:	{
@@ -8314,6 +8361,7 @@ var all_abilities = {
 				target: 		'unit_or_hero',
 				target_amount: 	1,
 				position: 		'random',
+				not_types: 		['structure','object'],
 				min_hp: 		1,
 				side: 			'ally'
 			},
@@ -11577,9 +11625,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'arcane_bolt',
-			base_cost_factor: 	1,
-			base_cost_hero_factor: 1.5,
-			base_cost_spell_factor: 0.25,
+			base_cost_factor: 	0.5,
+			base_cost_hero_factor: 1,
 		},
 		average_hits: 		'ability_level',
 	},
@@ -11612,9 +11659,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'arcane_bolt',
-			base_cost_factor: 	1,
-			base_cost_hero_factor: 1.5,
-			base_cost_spell_factor: 0.25,
+			base_cost_factor: 	0.5,
+			base_cost_hero_factor: 1,
 		},
 		average_hits: 		'ability_level',
 	},
@@ -11647,7 +11693,7 @@ var all_abilities = {
 		level_cost: 		2,
 	},
 	spellrush:{
-		description: 	'After any spell card is played, reduces the time left of a random card in your hand {LEVEL} time(s).',
+		description: 	'After any spell card is played, this reduces the time left of a random card in your hand {LEVEL} time(s).',
 		proc: 			'any_spell_card_played',
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
@@ -11673,7 +11719,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'hasten',
-			base_cost_factor: 1,
+			base_cost_factor: 0.5,
 		},
 	},
 	spread_plague:{
@@ -11759,18 +11805,21 @@ var all_abilities = {
 		average_hits: 	1,
 	},
 	stabbing_hero:{
-		description: 	'When your hero deals damage to an enemy unit, it will deal {LEVEL} physical melee damage to the nearest enemy unit.',
+		description: 	'When your hero deals damage to an enemy unit, it has a {LEVEL}0% chance to deal 1 physical melee damage to the nearest enemy unit.',
 		proc: 			'enemy_damaged_by_hero',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		ability_subtypes: ['dealt_damage_proc'],
 		not_subtypes: 	['stabbing'],
-		scales: 		true,
 		cannot_proc_while_stunned: true,
 		min_enemy_units: 1,
+		hide_amount: true,
 		targets:	{
 			0:{
 				target: 		'hero',
 				target_amount: 	1,
 				position: 		'random',
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'max'},
 				min_hp: 		1,
 				side: 			'ally'
 			},
@@ -11787,7 +11836,8 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'strike',
-			base_cost_factor: 	1,
+			base_cost_factor: 	0.1,
+			base_cost_artifact_factor: 0.3,
 		},
 		average_hits: 	1,
 	},
@@ -12215,7 +12265,7 @@ var all_abilities = {
 		level_cost_spell: 	0.75,
 	},
 	stunned_longevity:{
-		ability_subtypes: ['resurrect'],
+		ability_subtypes: ['resurrect','own_death_proc'],
 		description: 	'When an enemy becomes stunned, this grants an ally creature a {LEVEL}0% chance to resurrect or increases it\'s chance to resurrect by {LEVEL}0%.',
 		cannot_proc_while_stunned: true,
 		proc: 			'enemy_got_stunned',
@@ -12224,6 +12274,7 @@ var all_abilities = {
 				target: 		'unit_or_hero',
 				target_amount: 	1,
 				position: 		'random',
+				not_types: 		['structure','object'],
 				min_hp: 		1,
 				side: 			'ally'
 			},
@@ -13068,8 +13119,10 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_spell: 	0.5,
+		base_cost:{
+			base_cost_id: 'hasten',
+			base_cost_factor: 0.25,
+		},
 	},
 	trophy_kill:{
 		description: 	'Restores {LEVEL} health to your hero whenever it destroys an enemy unit.',

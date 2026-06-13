@@ -41,11 +41,6 @@ var all_available_cards = {
 		abilities: 			{arcane_bolt: 5},
 		quote: '\"Release the energy!\"',
 		max_in_deck: 		2,
-		recipe:{
-			magic_dust: 	1,
-			runner: 		1,
-			scroll: 		1,
-		}
 	},
 	arcane_mage:{
 		name: 				'arcane mage',
@@ -72,10 +67,6 @@ var all_available_cards = {
 			abilities: 			{arcane_bolt_hv: 1, spell_bolt_hv: 1},
 		},
 		quote: '\"She controls the magical energy.\"',
-		recipe:{
-			apprentice: 		2,
-			arcane_bolts: 		2,
-		}
 	},
 	arcane_tower:{
 		name: 				'arcane tower',
@@ -215,11 +206,6 @@ var all_available_cards = {
 		abilities: 			{cleanse: 2, heal: 1, echo: 1},
 		quote: '\"So pretty!\"',
 		max_in_deck: 		2,
-		recipe:{
-			meadow: 		1,
-			scroll: 		1,
-			water_carrier: 	1,
-		}
 	},
 	bottle_of_poison:{
 		name: 				'bottle of poison',
@@ -396,7 +382,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{stabbing_hero: 1},
+		abilities: 			{stabbing_hero: 3},
 		quote: '\"For quick strikes.\"',
 		max_in_deck: 		2,
 		recipe:{
@@ -527,11 +513,6 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{burn_all_hv: 3, minimum_enemies: 3},
 		quote: '\"Run away!\"',
-		recipe:{
-			fire_pit: 		1,
-			meadow: 		1,
-			runner: 		1,
-		},
 	},
 	fire_assassin:{
 		name: 				'fire assassin',
@@ -755,11 +736,6 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{stun: 1, echo: 1},
 		quote: '\"The jungle is a dangerous place.\"',
-		recipe:{
-			meadow: 			1,
-			spike_trap: 		1,
-			twine: 				1,
-		},
 	},
 	hammer:{
 		name: 				'hammer',
@@ -822,11 +798,6 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{cleanse: 2},
 		quote: '\"They have medicinal purposes.\"',
-		recipe:{
-			dagger: 	1,
-			meadow: 	1,
-			slimeling: 	1,
-		}
 	},
 	hideout:{
 		name: 				'hideout',
@@ -960,14 +931,14 @@ var all_available_cards = {
 		image: 				'cards/mana_beetle.jpg',
 		power: 				1,
 		armor: 				0,
-		health: 			1,
+		health: 			3,
 		abilities: 			{strike: 1, spellrush: 2},
 		hero_version: 			{
 			theme: 				['subtype_animal','echo_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, spellrush: 1},
+			abilities: 			{strike_unit: 1, spellrush: 2},
 		},
 		quote: '\"Those wander around mana pools.\"',
 	},
@@ -986,7 +957,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{spellrush: 1},
+		abilities: 			{spell_bolt_hv: 1, spellrush: 1},
 		quote: '\"Endless magical energy.\"',
 	},
 	mana_pool:{
@@ -1002,13 +973,13 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{cleanse: 2, spellrush: 1},
+		abilities: 			{cleansing_spells: 3, spellrush: 2},
 		hero_version: 			{
 			theme: 				['type_creature','summon_ally_ability','echo_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{cleanse: 2, spellrush: 2},
+			abilities: 			{cleansing_spells: 6, spellrush: 4},
 		},
 		quote: '\"So this is where they fill the mana potions.\"',
 	},
@@ -1043,7 +1014,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{grow_plant: 2},
+		abilities: 			{grow_plant: 3},
 		hero_version: 			{
 			theme: 				['type_creature','stun_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
@@ -1053,10 +1024,6 @@ var all_available_cards = {
 			abilities: 			{grow_plant: 3},
 		},
 		quote: '\"Look at all the pretty flowers!\"',
-		recipe:{
-			seeds:  	1,
-			water: 		1,
-		}
 	},
 	messenger:{
 		name: 				'messenger',
@@ -1394,7 +1361,7 @@ var all_available_cards = {
 		type: 				'creature',
 		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
-		theme: 				['stun_ability','resurrect_ability','own_death_proc_ability'],
+		theme: 				['stun_ability'],
 		needs_theme: 		['stun_ability'],
 		craft_theme: 		['subtype_cleric'],
 		pick_chance: 		1,
@@ -1514,11 +1481,6 @@ var all_available_cards = {
 			abilities: 			{fearful_aura: 1, curse_all_hv: 1},
 		},
 		quote: '\"It scares away more then just crows.\"',
-		recipe:{
-			magic_dust: 	1,
-			meadow:  		1,
-			miner: 			1,
-		}
 	},
 	scary_scream:{
 		name: 				'scary scream',
@@ -1535,7 +1497,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{fear: 5},
+		abilities: 			{fear: 5, minimum_enemies: 3},
 		quote: '\"Did you hear that? Let\'s get out of here!\"',
 	},
 	scorpion:{
@@ -1617,7 +1579,7 @@ var all_available_cards = {
 		type: 				'creature',
 		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
-		theme: 				['resurrect_ability','own_death_proc_ability'],
+		theme: 				[],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -1732,10 +1694,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, resurrect: 10, undead: 1},
 		},
 		quote: '\"They do not know why they have risen.\"',
-		recipe:{
-			peasant: 	1,
-			stone: 		1,
-		}
 	},
 	slow_burn:{
 		name: 				'slow burn',
@@ -1763,7 +1721,7 @@ var all_available_cards = {
 		theme: 				[],
 		not_theme: 			[],
 		craft_theme: 		[],
-		pick_chance: 		0,
+		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/spike_trap.jpg',
 		power: 				false,
@@ -2517,7 +2475,7 @@ var all_available_cards = {
 	},
 	stash:{
 		name: 				'stash',
-		value: 				25,
+		value: 				15,
 		type: 				'consumable',
 		basic_reward: 		true,
 		color: 				['none'],
@@ -2551,7 +2509,7 @@ var all_available_cards = {
 	},
 	chest:{
 		name: 				'chest',
-		value: 				100,
+		value: 				30,
 		type: 				'consumable',
 		basic_reward: 		true,
 		color: 				['none'],

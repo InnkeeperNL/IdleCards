@@ -1253,7 +1253,7 @@ function check_current_offers(){
 	{
 		gamedata['town'][current_building_id]['current_offers'] = {};
 	}
-	for (var i = 0; i < /*building_level*/ 1; i++) {
+	for (var i = 0; i < get_upgrade_factor('merchant_count', undefined, true)/*building_level 1 */; i++) {
 		if(current_building['current_offers'][i] != undefined && new Date(current_building['current_offers'][i]['offer_expires']).toString() == 'Invalid Date')
 		{
 			current_building['current_offers'][i]['offer_expires'] = new Date().addMinutes(10);
@@ -1282,7 +1282,7 @@ function check_current_offers(){
 function create_new_building_offer(building_info, trade_slot){
 	var buysell = 'buy';
 	//if(Math.random() > 0.75){buysell = 'sell';}
-	if(trade_slot != undefined && trade_slot == 1){buysell = 'sell';}
+	//if(trade_slot != undefined && trade_slot == 1){buysell = 'sell';}
 	var found_card = false;
 	if(buysell == 'buy')
 	{
