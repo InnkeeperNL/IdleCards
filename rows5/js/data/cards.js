@@ -184,7 +184,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{curse: 2, echo: 1},
+		abilities: 			{curse: 2, draw_on_act: 1},
 		quote: '\"You know what is coming.\"',
 	},
 	blacksmith:{
@@ -228,7 +228,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{cleanse: 2, heal: 1, echo: 1},
+		abilities: 			{cleanse: 2, heal: 1, draw_on_act: 1},
 		quote: '\"So pretty!\"',
 		max_in_deck: 		2,
 	},
@@ -263,7 +263,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{break: 1, echo: 1},
+		abilities: 			{break: 1, draw_on_act: 1},
 		quote: '\"There was a bright light... Then it was broken.\"',
 		recipe:{
 			miner: 			1,
@@ -428,7 +428,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{curse_all_hv: 1, destroy_cursed: 10, echo: 1},
+		abilities: 			{curse_all_hv: 1, destroy_cursed: 10, draw_on_act: 1},
 		quote: '\"Make sure you come home before dark.\"',
 		recipe:{
 			dagger: 	1,
@@ -784,7 +784,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{stun: 1, echo: 1},
+		abilities: 			{stun: 1, draw_on_act: 1},
 		quote: '\"The jungle is a dangerous place.\"',
 	},
 	hammer:{
@@ -863,7 +863,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{hide_ally: 1, echo: 1},
+		abilities: 			{hide_ally: 1, draw_on_act: 1},
 		quote: '\"Sometimes, you just have to hide.\"',
 		recipe:{
 			magic_dust: 	1,
@@ -943,7 +943,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{burn: 1, echo: 1},
+		abilities: 			{burn: 1, draw_on_act: 1},
 		quote: '\"Lets light the fire.\"',
 		max_in_deck: 		2,
 	},
@@ -960,7 +960,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{hasten_all: 1, echo: 1},
+		abilities: 			{hasten_all: 1, draw_on_act: 1},
 		quote: '\"A sprinkle of magic.\"',
 		max_in_deck: 		1,
 		recipe:{
@@ -1223,7 +1223,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{quicken_poison: 2, echo: 1},
+		abilities: 			{quicken_poison: 2, draw_on_act: 1},
 		quote: '\"Are you feeling okay?\"',
 		max_in_deck: 		2,
 		recipe:{
@@ -1267,7 +1267,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{fortify_ally: 2, echo: 1},
+		abilities: 			{fortify_ally: 2, draw_on_act: 1},
 		quote: '\"It will keep you safe.\"',
 		max_in_deck: 		2,
 		recipe:{

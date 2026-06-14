@@ -4560,8 +4560,9 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'draw',
-			base_cost_factor: 1,
+			base_cost_factor: 0.5,
 		},
+		level_cost_cum: true,
 		//level_cost_spell: 3.5,
 		//cost_adjustment: -3,
 	},
