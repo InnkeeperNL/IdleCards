@@ -1851,6 +1851,69 @@ var all_abilities = {
 		},
 		level_cost_cum: true,
 	},
+	burning_stuns:{
+		description: 	'When an enemy becomes stunned, this applies {LEVEL} burn to it.',
+		cannot_proc_while_stunned: true,
+		proc: 			'enemy_got_stunned',
+		hide_amount: 	true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'burn',
+				type: 		'apply_burn',
+				subtypes: 	['burn'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
+		level_cost_cum: true,
+	},
+	burning_stuns_hv:{
+		name: 			'burning stuns',
+		description: 	'When an enemy unit becomes stunned, this applies {LEVEL} burn to it.',
+		cannot_proc_while_stunned: true,
+		proc: 			'enemy_got_stunned',
+		hide_amount: 	true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'burn',
+				type: 		'apply_burn',
+				subtypes: 	['burn'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
+		level_cost_cum: true,
+	},
 	call_rat:{
 		hide_amount: 	true,
 		description: 	'Has a {LEVEL}0% chance to add a basic rat card to your hand. If your hand is full, it will add it to your deck instead.',
@@ -2677,9 +2740,16 @@ var all_abilities = {
 			},
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		2,
-		level_cost_spell: 	0.5,
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
 		average_hits: 		1,
+		ability_level_cost_factors:{
+			burn: 		2,
+			burn_hv: 	2,
+		},
 	},
 	conflagrate_hv:{
 		name: 			'conflagrate',
@@ -2708,10 +2778,16 @@ var all_abilities = {
 			},
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		2,
-		level_cost_spell: 	0.5,
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
 		average_hits: 		1,
-		
+		ability_level_cost_factors:{
+			burn: 			2,
+			burn_hv: 		2,
+		},
 	},
 	consume_creature:{
 		description: 	'Each turn, this destroys 1 random non-undead ally creature unit with no more than 1 health. If it does, This gains {LEVEL} temporary power and heals itself by {LEVEL}. Will target units with the lowest cost first.',
@@ -5012,6 +5088,50 @@ var all_abilities = {
 		level_cost_spell: 	0.25,
 		level_cost_hero: 	1.5,
 	},
+	empowering_fire:{
+		description: 	'Gains {LEVEL} temporary power for each burning unit or hero.',
+		cannot_proc_while_stunned: true,
+		proc: 			'basic',
+		min_effect:  	1,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'target_count',
+				targets_to_count:{
+					targets:{
+						0:{
+							target: 		'unit_or_hero',
+							target_amount: 	100,
+							position: 		'random',
+							has_effect: 	{effect_name: 'burning', amount: 1, limit: 'min'},
+							min_hp: 		1,
+							side: 			'any'
+						}
+					},
+					effects:{},
+				},
+				amount_factor: 	'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 1,
+			base_cost_structure_factor: 1.5,
+		},
+	},
 	empowering_shields:{
 		description: 	'When an ally unit or hero gains shield, there is a {LEVEL}0% chance it will gain 1 temporary power.',
 		cannot_proc_while_stunned: true,
@@ -5397,6 +5517,69 @@ var all_abilities = {
 		//min_cost: 			2,
 		cost_factor: 			'health',
 		cost_factor_factor: 	0.5,
+	},
+	fate:{
+		ability_subtypes: ['resurrect','own_death_proc'],
+		description: 	'Grants an ally creature a {LEVEL}0% chance to resurrect or increases it\'s chance to resurrect by {LEVEL}0%.',
+		cannot_proc_while_stunned: true,
+		hide_amount: 	true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure','object'],
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'resurrect',
+				type: 			'grant_skill',
+				subtypes: 		['magical','grant_resurrect'],
+				skill_id: 		'resurrect',
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 	'resurrect',
+			base_cost_factor: 2,
+			base_cost_hero_factor: 3,
+		},
+	},
+	fated_stuns:{
+		ability_subtypes: ['resurrect','own_death_proc'],
+		description: 	'When an enemy becomes stunned, this grants an ally creature a {LEVEL}0% chance to resurrect or increases it\'s chance to resurrect by {LEVEL}0%.',
+		cannot_proc_while_stunned: true,
+		proc: 			'enemy_got_stunned',
+		hide_amount: 	true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure','object'],
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'resurrect',
+				type: 			'grant_skill',
+				subtypes: 		['magical','grant_resurrect'],
+				skill_id: 		'resurrect',
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 	'resurrect',
+			base_cost_factor: 1,
+			base_cost_hero_factor: 1.5,
+		},
 	},
 	fear:{
 		description: 	'When played, returns {LEVEL} non-undead enemy creature unit(s) to their owner\'s hand. Will target the nearest enemy first.',
@@ -8351,36 +8534,6 @@ var all_abilities = {
 		},
 		level_cost: 	1,
 		cost_factor: 	'full',
-	},
-	longevity:{
-		ability_subtypes: ['resurrect','own_death_proc'],
-		description: 	'Grants an ally creature a {LEVEL}0% chance to resurrect or increases it\'s chance to resurrect by {LEVEL}0%.',
-		cannot_proc_while_stunned: true,
-		targets:	{
-			0:{
-				target: 		'unit_or_hero',
-				target_amount: 	1,
-				position: 		'random',
-				not_types: 		['structure','object'],
-				min_hp: 		1,
-				side: 			'ally'
-			},
-		},
-		effects:{
-			0:{
-				projectile: 	'resurrect',
-				type: 			'grant_skill',
-				subtypes: 		['magical','grant_resurrect'],
-				skill_id: 		'resurrect',
-				amount: 		'ability_level',
-			}
-		},
-		animation: 			'combat_zoom',
-		base_cost:{
-			base_cost_id: 	'resurrect',
-			base_cost_factor: 2,
-			base_cost_hero_factor: 3,
-		},
 	},
 	mana_bolt:{
 		description: 	'Uses up to {LEVEL} mana to deal magical projectile damage to an enemy unit for every mana used. Will target the enemy hero if there are no enemy units.',
@@ -12263,37 +12416,6 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		3,
 		level_cost_spell: 	0.75,
-	},
-	stunned_longevity:{
-		ability_subtypes: ['resurrect','own_death_proc'],
-		description: 	'When an enemy becomes stunned, this grants an ally creature a {LEVEL}0% chance to resurrect or increases it\'s chance to resurrect by {LEVEL}0%.',
-		cannot_proc_while_stunned: true,
-		proc: 			'enemy_got_stunned',
-		targets:	{
-			0:{
-				target: 		'unit_or_hero',
-				target_amount: 	1,
-				position: 		'random',
-				not_types: 		['structure','object'],
-				min_hp: 		1,
-				side: 			'ally'
-			},
-		},
-		effects:{
-			0:{
-				projectile: 	'resurrect',
-				type: 			'grant_skill',
-				subtypes: 		['magical','grant_resurrect'],
-				skill_id: 		'resurrect',
-				amount: 		'ability_level',
-			}
-		},
-		animation: 			'combat_zoom',
-		base_cost:{
-			base_cost_id: 	'resurrect',
-			base_cost_factor: 1,
-			base_cost_hero_factor: 1.5,
-		},
 	},
 	stunning_touch:{
 		hide_amount: 	true,
