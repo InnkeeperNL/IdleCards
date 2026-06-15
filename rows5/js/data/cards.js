@@ -1,5 +1,29 @@
 var all_available_cards = {
 
+	alchemist:{
+		name: 				'alchemist',
+		type: 				'creature',
+		subtypes: 			['human','villager'],
+		color: 				['colorless'],
+		theme: 				['subtype_potion'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/alchemist.jpg',
+		image_position: 	'right',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, brew_potion: 2},
+		hero_version: 			{
+			theme: 				['subtype_potion'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, brew_potion: 2},
+		},
+		quote: '\"You never know what the result will be.\"',
+	},
 	apprentice:{
 		name: 				'apprentice',
 		type: 				'creature',
@@ -184,7 +208,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{curse: 2, draw_on_act: 1},
+		abilities: 			{curse: 2, echo: 1},
 		quote: '\"You know what is coming.\"',
 	},
 	blacksmith:{
@@ -228,7 +252,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{cleanse: 2, heal: 1, draw_on_act: 1},
+		abilities: 			{cleanse: 2, heal: 1, echo: 1},
 		quote: '\"So pretty!\"',
 		max_in_deck: 		2,
 	},
@@ -263,7 +287,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{break: 1, draw_on_act: 1},
+		abilities: 			{break: 1, echo: 1},
 		quote: '\"There was a bright light... Then it was broken.\"',
 		recipe:{
 			miner: 			1,
@@ -428,7 +452,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{curse_all_hv: 1, destroy_cursed: 10, draw_on_act: 1},
+		abilities: 			{curse_all_hv: 1, destroy_cursed: 10, echo: 1},
 		quote: '\"Make sure you come home before dark.\"',
 		recipe:{
 			dagger: 	1,
@@ -784,7 +808,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{stun: 1, draw_on_act: 1},
+		abilities: 			{stun: 1, echo: 1},
 		quote: '\"The jungle is a dangerous place.\"',
 	},
 	hammer:{
@@ -863,7 +887,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{hide_ally: 1, draw_on_act: 1},
+		abilities: 			{hide_ally: 1, echo: 1},
 		quote: '\"Sometimes, you just have to hide.\"',
 		recipe:{
 			magic_dust: 	1,
@@ -960,7 +984,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{hasten_all: 1, draw_on_act: 1},
+		abilities: 			{hasten_all: 1, echo: 1},
 		quote: '\"A sprinkle of magic.\"',
 		max_in_deck: 		1,
 		recipe:{
@@ -982,13 +1006,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			3,
-		abilities: 			{strike: 1, spellrush: 2},
+		abilities: 			{strike: 1, spellrush: 1},
 		hero_version: 			{
 			theme: 				['subtype_animal','echo_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, spellrush: 2},
+			abilities: 			{strike_unit: 1, spellrush: 1},
 		},
 		quote: '\"Those wander around mana pools.\"',
 	},
@@ -1023,13 +1047,13 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{cleansing_spells: 3, spellrush: 2},
+		abilities: 			{cleansing_spells: 1, spellrush: 1},
 		hero_version: 			{
 			theme: 				['type_creature','summon_ally_ability','echo_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{cleansing_spells: 6, spellrush: 4},
+			abilities: 			{cleansing_spells: 3, spellrush: 2},
 		},
 		quote: '\"So this is where they fill the mana potions.\"',
 	},
@@ -1048,7 +1072,10 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{desperate_haste: 1},
+		abilities: 			{mana_drink: 2},
+		effects:{
+			mana: 	1,
+		},
 		quote: '\"Drink when in need.\"',
 	},
 	meadow:{
@@ -1223,7 +1250,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{quicken_poison: 2, draw_on_act: 1},
+		abilities: 			{quicken_poison: 2, echo: 1},
 		quote: '\"Are you feeling okay?\"',
 		max_in_deck: 		2,
 		recipe:{
@@ -1267,7 +1294,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{fortify_ally: 2, draw_on_act: 1},
+		abilities: 			{fortify_ally: 2, echo: 1},
 		quote: '\"It will keep you safe.\"',
 		max_in_deck: 		2,
 		recipe:{
@@ -1950,7 +1977,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{run_away: 1, strike: 1, plunder: 1},
+		abilities: 			{run_away: 1, strike: 1, plunder: 1, coward: 1},
 		hero_version: 			{
 			theme: 				['melee_ability','subtype_rogue','dealt_damage_proc_ability'],
 			power: 				2,
@@ -1960,10 +1987,6 @@ var all_available_cards = {
 		},
 		quote: '\"Where did my purse go?!\"',
 		max_in_deck: 		2,
-		recipe:{
-			breaking_ray: 	8,
-			messenger:		2,
-		}
 	},
 	thug:{
 		name: 				'thug',

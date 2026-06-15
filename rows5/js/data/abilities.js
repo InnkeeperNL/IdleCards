@@ -1152,6 +1152,57 @@ var all_abilities = {
 			base_cost_factor: 0.5,
 		},
 	},
+	brew_potion:{
+		hide_amount: true,
+		description: 	'Has a {LEVEL}0% chance to increase the uses of an ally potion by 1. If there is no ally potion, add a potion card to your hand.',
+		cannot_proc_while_stunned: true,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 	'artifact',
+				target_amount: 1,
+				position: 	'random',
+				has_effect: 	{effect_name: 'mana', amount: 0, limit: 'min'},
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'mana',
+				type: 		'apply_mana',
+				subtypes: 	['gain_mana'],
+				amount: 	1,
+			},
+		},
+		on_no_targets:{
+			targets:{
+				0:{
+					target: 		'hero',
+					target_amount: 	1,
+					side: 			'ally'
+				},
+			},
+			effects:{
+				0:{
+					projectile: 		'book',
+					projectile_target: 	'deck',
+					type: 		'add_card_to_deck',
+					card_id: 	'random',
+					subtypes: 	['summon_ally','brew_potion'],
+					card_subtype: 	'potion',
+					card_status: 	'hand',
+					amount: 	1
+				}
+			},
+			animation: 			'combat_zoom',
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.2,
+		},
+	},
 	bring_animal:{
 		description: 	'Summons an animal creature unit. Can be used {LEVEL} time(s).',
 		proc: 			'basic',
@@ -2406,8 +2457,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'cleanse',
-			base_cost_factor: 0.5,
-			base_cost_spell_factor: 0.125,
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
 		},
 	},
 	clone_ally:{
@@ -3076,6 +3127,49 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	3,
 		cost_adjustment: -2,
+	},
+	coward:{
+		description: 	'If this is the only ally unit in game, or has an opposing unit, it returns to its owner\'s hand. If this was summoned, it disappears.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				has_opposing: 	true,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'teleport',
+				type: 			'move_to_deck',
+				subtypes: 		['move_ally_to_hand'],
+				new_status: 	'hand',
+				side: 			'ally',
+			}
+		},
+		on_failure:{
+			max_ally_units: 1,
+			targets:	{
+				0:{
+					target: 		'any',
+					target_amount: 	1,
+					position: 		'self',
+					side: 			'ally',
+				},
+			},
+			effects:{
+				0:{
+					projectile: 	'teleport',
+					type: 			'move_to_deck',
+					subtypes: 		['move_ally_to_hand'],
+					new_status: 	'hand',
+					side: 			'ally',
+				}
+			},
+		},
+		level_cost: 	1,
 	},
 	cracked_sheep:{
 		description: 	'When any artifact is destroyed, this summons {LEVEL} lamb(s).',
@@ -8638,6 +8732,55 @@ var all_abilities = {
 		cost_adjustment: 	1,
 		average_hits: 		1,
 	},
+	mana_drink:{
+		description: 	'If this has a drink left and you have 5 or more cards in your hand, reduces the time left of all cards in your hand by {LEVEL}.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		do_not_pause_between: 	true,
+		has_mana: 				true,
+		min_ally_hand_cards: 5,
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	10,
+				status: 		'hand',
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'hasten',
+				projectile_target: 'deck',
+				type: 			'reduce_ready_time',
+				subtypes: 		['hasten','deck_control'],
+				amount: 		'ability_level',
+				side: 			'ally',
+			}
+		},
+		on_success:{
+			targets:{
+				0:{
+					target: 		'any',
+					target_amount: 	1,
+					position: 		'self',
+					has_effect: 	{effect_name: 'mana', amount: 1, limit: 'min'},
+					side: 			'any'
+				},
+			},
+			effects:{
+				0:{
+					type: 		'apply_mana',
+					subtypes: 	['drink_potion'],
+					amount: 	-1,
+				}
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'hasten',
+			base_cost_factor: 0.5,
+		},
+	},
 	marred_vines:{
 		description: 	'When this takes damage, there is a 50% chance it summons {LEVEL} vine(s).',
 		proc: 			'receive_damage',
@@ -11873,7 +12016,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'hasten',
-			base_cost_factor: 0.5,
+			base_cost_factor: 1,
 		},
 	},
 	spread_plague:{
