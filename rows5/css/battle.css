@@ -460,6 +460,14 @@
 	background-image: url(../images/crossed-swords.svg);
 }
 
+
+
+.battle_container .projectile_regeneration,
+.icon.icon_regeneration
+{
+	background-image: url(../images/linden-leaf.svg);
+}
+
 .battle_container .projectile_resurrect,
 .icon.icon_resurrect
 {

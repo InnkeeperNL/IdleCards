@@ -1111,6 +1111,7 @@ var skills_to_show_icon = {
 	blessed: 	'bless',
 	counter_spell: 'magic_shield',
 	resurrect: 	'resurrect',
+	regeneration: 'regeneration',
 }
 
 function update_passive_effects(unit_id){

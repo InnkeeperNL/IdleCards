@@ -8488,6 +8488,56 @@ var all_abilities = {
 		level_cost: 8,
 		level_cost_spell: 2,
 	},
+	leafy_drink:{
+		hide_amount: 	true,
+		description: 	'If your hero is damaged and not regenerating, this grants your hero {LEVEL} regeneration.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		has_mana: 				true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				damaged: 		true,
+				side: 			'ally',
+				max_abilities: 	{regeneration: 0},
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'regeneration',
+				type: 			'grant_skill',
+				subtypes: 		['magical','grant_regeneration'],
+				skill_id: 		'regeneration',
+				amount: 		'ability_level'
+			},
+		},
+		on_success:{
+			targets:{
+				0:{
+					target: 		'any',
+					target_amount: 	1,
+					position: 		'self',
+					has_effect: 	{effect_name: 'mana', amount: 1, limit: 'min'},
+					side: 			'any'
+				},
+			},
+			effects:{
+				0:{
+					type: 		'apply_mana',
+					subtypes: 	['drink_potion'],
+					amount: 	-1,
+				}
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.15,
+		},
+	},
 	leech_hero:{
 		description: 	'When this deals damage to the enemy hero, this heals your hero by the damage dealt.',
 		proc: 			'dealt_damage_to_hero',
@@ -10588,6 +10638,34 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 		level_cost_hero: 	3,
+	},
+	regeneration:{
+		description: 	'Heals itself by 1 each turn. Can be used {LEVEL} time(s).',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		hero_tactics: 	['bolster_ability','regeneration_ability'],
+		reduce_skill_after_use: 'regeneration',
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				side: 			'ally',
+				damaged: 		true,
+			},
+		},
+		effects:{
+			0:{
+				projectile:		'healing',
+				type: 			'healing',
+				subtypes: 		['healing','regeneration'],
+				amount: 		1
+			}
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+		level_cost_hero: 	0.5,
 	},
 	release_bird:{
 		description: 	'Summons {LEVEL} bird creature(s) when destroyed.',
