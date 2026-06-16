@@ -5826,6 +5826,35 @@ var all_abilities = {
 		level_cost: 	0.2,
 		level_cost_hero: 1,
 	},
+	fill_potion:{
+		hide_amount: true,
+		description: 	'Has a {LEVEL}0% chance to increase the uses of an ally potion by 1.',
+		cannot_proc_while_stunned: true,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 	'artifact',
+				target_amount: 1,
+				position: 	'random',
+				has_effect: 	{effect_name: 'mana', amount: 0, limit: 'min'},
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'mana',
+				type: 		'apply_mana',
+				subtypes: 	['gain_mana'],
+				amount: 	1,
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'healing',
+			base_cost_factor: 	0.2,
+		},
+	},
 	final_bolster_hero:{
 		description: 	'When destroyed, your hero gains {LEVEL} temporary health.',
 		proc: 			'own_death',
@@ -6938,6 +6967,31 @@ var all_abilities = {
 		level_cost_artifact: 	-4,
 		cost_factor: 	'full',
 	},
+	fragile_if_empty:{
+		description: 	'When your hero receives damage, if this has no uses left, this is destroyed.',
+		proc: 'ally_hero_damaged',
+		targets:	{
+			0:{
+				target: 	'any',
+				target_amount: 1,
+				position: 	'self',
+				has_effect: 	{effect_name: 'mana', amount: 0, limit: 'max'},
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['destroy'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	-0.5,
+		level_cost_artifact: 	-2,
+		cost_factor: 	'full',
+	},
 	freeze:{
 		description: 	'Freezes {LEVEL} random enemy creature(s). Removes any burn and poison from the target.',
 		cannot_proc_while_stunned: true,
@@ -7714,6 +7768,56 @@ var all_abilities = {
 			base_cost_factor: 3,
 			base_cost_structure_factor: 1.5,
 			base_cost_spell_factor: 0.75,
+		},
+	},
+	health_drink:{
+		hide_amount: 	true,
+		description: 	'If your hero has 10 health or less, this heals your hero by {LEVEL}.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		do_not_pause_between: 	true,
+		has_mana: 				true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				max_hp: 		10,
+				damaged: 		true,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'healing',
+				type: 			'healing',
+				subtypes: 		['healing','active_healing','heal_hero','buff_hero'],
+				amount: 		'ability_level'
+			},
+		},
+		on_success:{
+			targets:{
+				0:{
+					target: 		'any',
+					target_amount: 	1,
+					position: 		'self',
+					has_effect: 	{effect_name: 'mana', amount: 1, limit: 'min'},
+					side: 			'any'
+				},
+			},
+			effects:{
+				0:{
+					type: 		'apply_mana',
+					subtypes: 	['drink_potion'],
+					amount: 	-1,
+				}
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.1,
 		},
 	},
 	hellfire:{
@@ -8733,6 +8837,7 @@ var all_abilities = {
 		average_hits: 		1,
 	},
 	mana_drink:{
+		hide_amount: 	true,
 		description: 	'If this has a drink left and you have 5 or more cards in your hand, reduces the time left of all cards in your hand by {LEVEL}.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
@@ -8778,7 +8883,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'hasten',
-			base_cost_factor: 0.5,
+			base_cost_factor: 1,
 		},
 	},
 	marred_vines:{
