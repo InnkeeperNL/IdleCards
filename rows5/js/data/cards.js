@@ -295,6 +295,22 @@ var all_available_cards = {
 			twine: 			1,
 		}
 	},
+	brew_potion:{
+		name: 				'brew potion',
+		type: 				'spell',
+		subtypes: 			['ritual'],
+		color: 				['colorless'],
+		theme: 				['subtype_potion'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/brew_potion.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{brew_potion: 10, echo: 1},
+		quote: '\"Now add the eye of newt.\"',
+	},
 	brown_bear:{
 		name: 				'brown bear',
 		type: 				'creature',
@@ -524,7 +540,7 @@ var all_available_cards = {
 		health: 			7,
 		abilities: 			{curse_all: 1, cursed_aura: 1},
 		hero_version: 			{
-			theme: 				['subtype_witch', 'projectile_ability'],
+			theme: 				['subtype_witch', 'projectile_ability','heal_hero_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -650,7 +666,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{burning_aura: 2},
 		hero_version: 			{
-			theme: 				['burn_ability'],
+			theme: 				['burn_ability','heal_hero_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -813,6 +829,27 @@ var all_available_cards = {
 			wall: 			1,
 			water_carrier: 	1,
 		}
+	},
+	grand_healing_potion:{
+		name: 				'grand healing potion',
+		type: 				'artifact',
+		subtypes: 			['potion'],
+		color: 				['colorless'],
+		theme: 				[],
+		needs_theme: 		[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/grand_healing_potion.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{health_drink: 15, fragile_if_empty: 1},
+		effects:{
+			mana: 	1,
+		},
+		quote: '\"Hold on to it. It will save your life!\"',
 	},
 	grasping_vines:{
 		name: 				'grasping vines',
@@ -1636,7 +1673,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{fearful_aura: 1, turn_cursed_scarecrow: 1},
 		hero_version: 			{
-			theme: 				['movement_ability','type_creature','dealt_damage_proc_ability'],
+			theme: 				['movement_ability','type_creature','dealt_damage_proc_ability','heal_hero_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -1776,7 +1813,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, restore: 1},
 		hero_version: 			{
-			theme: 				['fortify_ability','subtype_animal','cleanse_ally_ability','empower_ally_ability'],
+			theme: 				['fortify_ability','subtype_animal','cleanse_ally_ability','empower_ally_ability','heal_hero_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -1908,7 +1945,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{trap: 10, poison_aura: 2},
 		hero_version: 			{
-			theme: 				['poison_ability','stun_ability'],
+			theme: 				['poison_ability','stun_ability','heal_hero_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -2094,7 +2131,7 @@ var all_available_cards = {
 		health: 			2,
 		abilities: 			{strike: 1, guard: 1, poison_aura: 2},
 		hero_version: 			{
-			theme: 				['poison_ability','movement_ability','subtype_animal'],
+			theme: 				['poison_ability','movement_ability','subtype_animal','heal_hero_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,

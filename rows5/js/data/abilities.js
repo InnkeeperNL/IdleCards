@@ -1201,6 +1201,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'summon',
 			base_cost_factor: 	0.2,
+			base_cost_spell_factor: 0.05,
 		},
 	},
 	bring_animal:{
@@ -6989,7 +6990,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	-0.5,
-		level_cost_artifact: 	-2,
+		level_cost_artifact: 	-1,
 		cost_factor: 	'full',
 	},
 	freeze:{
@@ -7817,7 +7818,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.1,
+			base_cost_factor: 0.2,
 		},
 	},
 	hellfire:{
