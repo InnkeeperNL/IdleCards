@@ -1224,6 +1224,16 @@
 	top:2px;
 	bottom:0px;
 	padding: 0px;
+	text-align: right;
+	max-width: 100%;
+}
+
+.unit_type_artifact .unit_effects div
+{
+	width:100%;
+	height:100%;
+	max-width: 30px;
+	max-height: 30px;
 	text-align: center;
 }
 
@@ -1234,7 +1244,7 @@
 .unit_type_artifact .unit_effects .effect_blessed,
 .unit_type_artifact .unit_effects .effect_stunned
 {
-	min-width: 30px;
+	width: 30px;
 	min-height: 30px;
 	/*font-size: 16px;
 	height: auto;*/
@@ -1679,6 +1689,10 @@
 	.card_detail .card_value
 	{
 		bottom: 60px;
+	}
+	.portrait .battle_container .unit.unit_type_artifact .unit_effects, .unit_type_artifact .unit_effects
+	{
+		text-align: center;
 	}
 }
 
