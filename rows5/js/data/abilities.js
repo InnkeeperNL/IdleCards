@@ -12229,6 +12229,35 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	1,
 	},
+	spread_slime:{
+		description: 	'When this receives damage, this has a {LEVEL}0% chance to summon a slimeling.',
+		proc: 			'receive_damage',
+		max_ally_units: 4,
+		proc_chance: 'ability_level',
+		proc_factor: 10,
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'slimeling',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.025,
+		},
+		cost_factor: 	'health',
+	},
 	stab:{
 		description: 	'Deal {LEVEL} physical damage to the nearest enemy unit or hero.',
 		scales: 		true,
