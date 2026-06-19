@@ -4782,7 +4782,7 @@ var all_abilities = {
 		average_hits: 	1,
 	},
 	echo:{
-		description: 	'Has a 75% chance to return to its owner\'s hand if this used an ability.',
+		description: 	'Has a 75% chance to return to its owner\'s hand if this used an ability. If your hand is full, this will return to your deck.',
 		cannot_proc_while_stunned: true,
 		has_used_ability: true,
 		proc_chance: 	75,
@@ -12286,6 +12286,7 @@ var all_abilities = {
 		level_cost: 	1,
 	},
 	spread_slime:{
+		hide_amount: 	true,
 		description: 	'When this receives damage, this has a {LEVEL}0% chance to summon a slimeling.',
 		proc: 			'receive_damage',
 		max_ally_units: 4,
@@ -12311,6 +12312,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'summon',
 			base_cost_factor: 	0.025,
+			base_cost_hero_factor: 0.25,
 		},
 		cost_factor: 	'health',
 	},

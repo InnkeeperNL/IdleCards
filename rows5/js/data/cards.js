@@ -976,10 +976,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, poison_hv: 1, cleanse: 1},
 		},
 		quote: '\"There are so many uses for those plants.\"',
-		recipe:{
-			herbs: 			2,
-			slime_pit: 		2,
-		}
 	},
 	herbs:{
 		name: 				'herbs',
@@ -1443,12 +1439,6 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{poison_all_hv: 3, minimum_enemies: 3},
 		quote: '\"What is that smell?\"',
-		max_in_deck: 		2,
-		recipe:{
-			fire_pit: 	1,
-			toad: 		1,
-			scroll: 	1,
-		},
 		max_in_deck: 2,
 	},
 	protective_bubble:{
@@ -2084,14 +2074,14 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{trap: 10, poison_aura: 2},
+		abilities: 			{trap: 10, spread_slime: 3},
 		hero_version: 			{
 			theme: 				['poison_ability','stun_ability','heal_hero_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{trap: 5, poison_aura: 2},
+			abilities: 			{trap: 5, spread_slime: 1},
 		},
 		quote: '\"Do not fall into it!\"',
 	},
