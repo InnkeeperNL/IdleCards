@@ -9818,6 +9818,62 @@ var all_abilities = {
 		description: 	'If any ability can target only prime targets, it will target only prime targets.',
 		level_cost: 	1,
 	},
+	pure_drink:{
+		hide_amount: 	true,
+		description: 	'If your hero has 5 or more negative effects, this removes all negative effects from it.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		do_not_pause_between: 	true,
+		has_mana: 				true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				has_negative_effect: 5,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'cleanse',
+				target_projectile: 'cleanse',
+				type: 		'set_effect_amount',
+				effect_names:{
+					burning: 	0,
+					cursed: 	0,
+					doom: 		0,
+					poisoned: 	0,
+				},
+				subtypes: 	['cleanse_ally'],
+				amount: 	1,
+			}
+		},
+		on_success:{
+			targets:{
+				0:{
+					target: 		'any',
+					target_amount: 	1,
+					position: 		'self',
+					has_effect: 	{effect_name: 'mana', amount: 1, limit: 'min'},
+					side: 			'any'
+				},
+			},
+			effects:{
+				0:{
+					type: 		'apply_mana',
+					subtypes: 	['drink_potion'],
+					amount: 	-1,
+				}
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'cleanse',
+			base_cost_factor: 1,
+		},
+	},
 	purify:{
 		description: 	'Removes all negative effects from {LEVEL} random ally unit(s) or your hero.',
 		cannot_proc_while_stunned: true,

@@ -5618,9 +5618,9 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 			all_targets = filter_targets_by_not_damaged(all_targets);
 		}
 
-		if(target_peramaters['has_negative_effect'] != undefined && target_peramaters['has_negative_effect'] == true)
+		if(target_peramaters['has_negative_effect'] != undefined && target_peramaters['has_negative_effect'] > 0)
 		{
-			all_targets = filter_targets_by_has_negative_effect(all_targets);
+			all_targets = filter_targets_by_has_negative_effect(all_targets, target_peramaters['has_negative_effect']);
 		}
 
 		if(target_peramaters['has_effect'] != undefined)
@@ -6260,14 +6260,16 @@ function filter_targets_by_is_transformed(all_targets){
 	return all_targets;
 }
 
-function filter_targets_by_has_negative_effect(all_targets){
+function filter_targets_by_has_negative_effect(all_targets, min_amount){
 	eachoa(all_targets, function(target_id, target_unit_id){
-		if(battle_info.combat_units[target_unit_id]['effects'] == undefined ||
-		((battle_info.combat_units[target_unit_id]['effects']['burning'] == undefined || battle_info.combat_units[target_unit_id]['effects']['burning'] == 0) &&
-			(battle_info.combat_units[target_unit_id]['effects']['poisoned'] == undefined || battle_info.combat_units[target_unit_id]['effects']['poisoned'] == 0) &&
-			(battle_info.combat_units[target_unit_id]['effects']['cursed'] == undefined || battle_info.combat_units[target_unit_id]['effects']['cursed'] == 0) &&
-			(battle_info.combat_units[target_unit_id]['effects']['doom'] == undefined || battle_info.combat_units[target_unit_id]['effects']['doom'] == 0) /* &&
-			(battle_info.combat_units[target_unit_id]['effects']['stunned'] == undefined || battle_info.combat_units[target_unit_id]['effects']['stunned'] == 0)*/))
+		var effect_amount = 0;
+		if(battle_info.combat_units[target_unit_id]['effects'] != undefined){
+			if(battle_info.combat_units[target_unit_id]['effects']['burning'] != undefined){effect_amount += battle_info.combat_units[target_unit_id]['effects']['burning'];}
+			if(battle_info.combat_units[target_unit_id]['effects']['poisoned'] != undefined){effect_amount += battle_info.combat_units[target_unit_id]['effects']['poisoned'];}
+			if(battle_info.combat_units[target_unit_id]['effects']['cursed'] != undefined){effect_amount += battle_info.combat_units[target_unit_id]['effects']['cursed'];}
+			if(battle_info.combat_units[target_unit_id]['effects']['doom'] != undefined){effect_amount += battle_info.combat_units[target_unit_id]['effects']['doom'];}
+		}
+		if(effect_amount < min_amount)
 		{
 			delete all_targets[target_id];
 		}

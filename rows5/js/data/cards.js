@@ -1473,6 +1473,27 @@ var all_available_cards = {
 			wall: 			1,
 		}
 	},
+	pure_potion:{
+		name: 				'pure potion',
+		type: 				'artifact',
+		subtypes: 			['potion'],
+		color: 				['colorless'],
+		theme: 				[],
+		needs_theme: 		[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/pure_potion.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{pure_drink: 1, fragile_if_empty: 1},
+		effects:{
+			mana: 	1,
+		},
+		quote: '\"Made with the water of a crystal spring.\"',
+	},
 	purple_ooze:{
 		name: 				'purple ooze',
 		type: 				'creature',
