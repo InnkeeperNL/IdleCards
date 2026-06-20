@@ -2000,7 +2000,7 @@ var all_abilities = {
 	},
 	call_witch:{
 		hide_amount: 	true,
-		description: 	'Has a {LEVEL}0% chance to add a random witch card to your hand. If your hand is full, it will add it to your deck instead.',
+		description: 	'Has a {LEVEL}0% chance to add a random witch creature card to your hand. If your hand is full, it will add it to your deck instead.',
 		proc: 			'basic',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
@@ -2019,6 +2019,7 @@ var all_abilities = {
 				type: 		'add_card_to_deck',
 				subtypes: 	['summon_ally','summon_witch','summon_creature'],
 				card_id: 	'random',
+				card_type: 	'creature',
 				card_subtype: 	'witch',
 				card_status: 	'hand',
 				amount: 	1
@@ -2028,6 +2029,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'summon',
 			base_cost_factor: 	0.3,
+			base_cost_spell_factor: 0.1,
 		},
 	},
 	carry_away:{

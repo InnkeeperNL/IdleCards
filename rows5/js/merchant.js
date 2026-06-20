@@ -904,7 +904,6 @@ function check_filters(card_id, hero_version){
 			var temp_ability_description = all_abilities[ability_key]['description'].toLowerCase();
 			if(temp_ability_description.indexOf(filters['ability']) != -1){
 				ability_matched = true;
-				console.log(card_id)
 			}
 		});
 
