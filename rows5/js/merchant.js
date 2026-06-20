@@ -895,11 +895,16 @@ function check_filters(card_id, hero_version){
 				}
 			}
 			
+			temp_ability_name = temp_ability_name.toLowerCase();
+			
 			if(temp_ability_name.indexOf(filters['ability']) != -1){
 				ability_matched = true;
 			}
-			if(all_abilities[ability_key]['description'].indexOf(filters['ability']) != -1){
+
+			var temp_ability_description = all_abilities[ability_key]['description'].toLowerCase();
+			if(temp_ability_description.indexOf(filters['ability']) != -1){
 				ability_matched = true;
+				console.log(card_id)
 			}
 		});
 

@@ -1904,7 +1904,7 @@ var all_abilities = {
 		level_cost_cum: true,
 	},
 	burning_stuns:{
-		description: 	'When an enemy becomes stunned, this applies {LEVEL} burn to it.',
+		description: 	'When an enemy becomes stunned, this applies {LEVEL} burn to it. {BURN}',
 		cannot_proc_while_stunned: true,
 		proc: 			'enemy_got_stunned',
 		hide_amount: 	true,
@@ -1936,7 +1936,7 @@ var all_abilities = {
 	},
 	burning_stuns_hv:{
 		name: 			'burning stuns',
-		description: 	'When an enemy unit becomes stunned, this applies {LEVEL} burn to it.',
+		description: 	'When an enemy unit becomes stunned, this applies {LEVEL} burn to it. {BURN}',
 		cannot_proc_while_stunned: true,
 		proc: 			'enemy_got_stunned',
 		hide_amount: 	true,
@@ -1996,6 +1996,38 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'summon',
 			base_cost_factor: 	0.2,
+		},
+	},
+	call_witch:{
+		hide_amount: 	true,
+		description: 	'Has a {LEVEL}0% chance to add a random witch card to your hand. If your hand is full, it will add it to your deck instead.',
+		proc: 			'basic',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_witch','summon_creature'],
+				card_id: 	'random',
+				card_subtype: 	'witch',
+				card_status: 	'hand',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.3,
 		},
 	},
 	carry_away:{
@@ -3201,6 +3233,7 @@ var all_abilities = {
 		level_cost_artifact: 	2,
 	},
 	curse:{
+		hide_amount: true,
 		description: 	'Applies {LEVEL} curse to the enemy unit or hero with the lowest curse.{CURSE}',
 		cannot_proc_while_stunned: true,
 		hero_tactics: 	['projectile_ability','blast_ability'],
@@ -3231,6 +3264,7 @@ var all_abilities = {
 		}
 	},
 	curse_all:{
+		hide_amount: true,
 		description: 	'Applies {LEVEL} curse to all enemy units and the enemy hero.{CURSE}',
 		do_not_pause_between: true,
 		cannot_proc_while_stunned: true,
@@ -3261,6 +3295,7 @@ var all_abilities = {
 		}
 	},
 	curse_all_hv:{
+		hide_amount: true,
 		name: 			'curse all',
 		description: 	'Applies {LEVEL} curse to all enemy units.{CURSE}',
 		do_not_pause_between: true,
@@ -3292,6 +3327,7 @@ var all_abilities = {
 		}
 	},
 	curse_arrivals:{
+		hide_amount: true,
 		description: 	'Applies {LEVEL} curse to any enemy unit that enters the game.',
 		proc: 			'enemy_unit_card_played',
 		cannot_proc_while_stunned: true,
@@ -3324,6 +3360,7 @@ var all_abilities = {
 		}
 	},
 	curse_hv:{
+		hide_amount: true,
 		name: 			'curse',
 		description: 	'Applies {LEVEL} curse to the enemy unit with the lowest curse.{CURSE}',
 		cannot_proc_while_stunned: true,
@@ -3355,6 +3392,7 @@ var all_abilities = {
 		}
 	},
 	cursed_aura:{
+		hide_amount: true,
 		description: 	'Applies {LEVEL} curse to any enemy unit or hero that deals melee damage to it.{CURSE}',
 		proc: 			'receive_damage',
 		subtypes: 		['melee'],
@@ -3386,6 +3424,7 @@ var all_abilities = {
 		cost_factor: 		'health',
 	},
 	cursed_deaths:{
+		hide_amount: true,
 		description: 	'Applies {LEVEL} curse to the enemy unit or hero with the lowest curse when any ally creature is destroyed.',
 		proc: 			'ally_creature_death',
 		ability_subtypes:['on_death_proc'],
@@ -3419,6 +3458,7 @@ var all_abilities = {
 		}
 	},
 	cursed_deaths_hv:{
+		hide_amount: true,
 		name: 			'cursed deaths',
 		description: 	'Applies {LEVEL} curse to the enemy unit with the lowest curse when any ally creature is destroyed.',
 		proc: 			'ally_creature_death',
@@ -3453,6 +3493,7 @@ var all_abilities = {
 		}
 	},
 	cursed_entry:{
+		hide_amount: true,
 		description: 	'Applies {LEVEL} curse to all nearby enemy units when played. {CURSE}',
 		proc: 			'on_play',
 		do_not_pause_between: true,
@@ -3480,6 +3521,7 @@ var all_abilities = {
 		}
 	},
 	cursed_hero:{
+		hide_amount: true,
 		description: 	'When an enemy unit deals melee damage to your hero, this will apply {LEVEL} curse to it.',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
@@ -3511,7 +3553,71 @@ var all_abilities = {
 			base_cost_hero_factor: 2,
 		}
 	},
+	cursed_stuns:{
+		hide_amount: true,
+		description: 	'When an enemy becomes stunned, this applies {LEVEL} curse to it. {CURSE}',
+		cannot_proc_while_stunned: true,
+		proc: 			'enemy_got_stunned',
+		hide_amount: 	true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'curse',
+				type: 		'apply_curse',
+				subtypes: 	['magical','curse'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
+	},
+	cursed_stuns_hv:{
+		hide_amount: true,
+		name: 			'cursed stuns',
+		description: 	'When an enemy unit becomes stunned, this applies {LEVEL} curse to it. {CURSE}',
+		cannot_proc_while_stunned: true,
+		proc: 			'enemy_got_stunned',
+		hide_amount: 	true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'curse',
+				type: 		'apply_curse',
+				subtypes: 	['magical','curse'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
+	},
 	cursed_touch:{
+		hide_amount: true,
 		description: 	'Applies {LEVEL} curse to any unit or hero it deals damage to.{CURSE}',
 		proc: 			'dealt_damage',
 		proc_while_dead: true,
@@ -4062,6 +4168,7 @@ var all_abilities = {
 		cost_adjustment: -1,
 	},
 	destroy_cursed:{
+		hide_amount: true,
 		description: 	'Destroys a random enemy unit that has {LEVEL} curse or more.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
@@ -6990,7 +7097,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	-0.5,
-		level_cost_artifact: 	-1,
+		level_cost_artifact: 	-2,
 		cost_factor: 	'full',
 	},
 	freeze:{
@@ -9820,7 +9927,7 @@ var all_abilities = {
 	},
 	pure_drink:{
 		hide_amount: 	true,
-		description: 	'If your hero has 5 or more negative effects, this removes all negative effects from it.',
+		description: 	'If your hero has 5 or more negative effects, this cleanses all negative effects from it.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
@@ -9871,7 +9978,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'cleanse',
-			base_cost_factor: 1,
+			base_cost_factor: 5,
 		},
 	},
 	purify:{
@@ -14035,6 +14142,7 @@ var all_abilities = {
 		average_hits: 	1,
 	},
 	venom:{
+		hide_amount: true,
 		description: 	'Applies {LEVEL} poison to any non-undead creature it damages.{POISON}',
 		proc: 			'dealt_damage',
 		ability_subtypes: 	['dealt_damage_proc'],
@@ -14066,6 +14174,7 @@ var all_abilities = {
 		level_cost_cum: true,
 	},
 	venomous_hero:{
+		hide_amount: true,
 		description: 	'When your hero deals damage to a non-undead enemy creature unit, this will apply {LEVEL} poison to it.',
 		proc: 			'enemy_damaged_by_hero',
 		ability_subtypes: ['dealt_damage_proc'],

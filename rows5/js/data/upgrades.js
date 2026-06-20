@@ -441,7 +441,7 @@ var all_upgrades = {
 	},
 	zz_chest_potion:{
 		name: 			'Chest potion',
-		description: 	'2% bonus to rewards of newly summoned enemies, waves and completing quests.',
+		description: 	'2% bonus to rewards of newly summoned enemies.',
 		card_image: 	'chest',
 		upgrade_type: 	'potion',
 		type: 			'summon_reward',

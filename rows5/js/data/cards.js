@@ -211,6 +211,30 @@ var all_available_cards = {
 		abilities: 			{curse: 2, echo: 1},
 		quote: '\"You know what is coming.\"',
 	},
+	badger:{
+		name: 				'badger',
+		type: 				'creature',
+		subtypes: 			['animal'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/badger.jpg',
+		image_position: 	'left',
+		power: 				2,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{strike: 1},
+		hero_version: 			{
+			theme: 				['melee_ability','subtype_animal'],
+			power: 				3,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1},
+		},
+		quote: '\"Strong and very aggressive.\"',
+	},
 	blacksmith:{
 		name: 				'blacksmith',
 		type: 				'creature',
@@ -233,10 +257,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, empower_ally: 1},
 		},
 		quote: '\"He can forge great weapons.\"',
-		recipe:{
-			carpenter: 	2,
-			house: 		2,
-		}
 	},
 	blossom:{
 		name: 				'blossom',
@@ -470,11 +490,6 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{curse_hv: 2},
 		quote: '\"Worn by many witches.\"',
-		recipe:{
-			toad: 			1,
-			twine: 			1,
-			water_carrier: 	1,
-		}
 	},
 	dagger:{
 		name: 				'dagger',
@@ -572,10 +587,30 @@ var all_available_cards = {
 			abilities: 			{curse_all_hv: 1, cursed_aura: 2},
 		},
 		quote: '\"They say an ancient witch used to live there.\"',
-		recipe:{
-			dark_night:  	2,
-			scarecrow: 		2,
-		}
+	},
+	dark_witch:{
+		name: 				'dark witch',
+		type: 				'creature',
+		subtypes: 			['human','witch'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dark_witch.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{curse: 3, destroy_cursed: 10, strike: 1},
+		hero_version: 			{
+			theme: 				['subtype_witch', 'curse_ability'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{curse_hv: 3, destroy_cursed: 10, strike_unit: 1},
+		},
+		quote: '\"You will be consumed by darkness.\"',
 	},
 	death_cleric:{
 		name: 				'death cleric',
@@ -698,10 +733,29 @@ var all_available_cards = {
 			abilities: 			{burning_aura: 2},
 		},
 		quote: '\"Come warm yourself.\"',
-		recipe:{
-			stone: 		1,
-			wood: 		1,
-		}
+	},
+	fire_witch:{
+		name: 				'fire witch',
+		type: 				'creature',
+		subtypes: 			['human','witch'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/fire_witch.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{curse: 1, strike: 1, burn: 1},
+		hero_version: 			{
+			theme: 				['subtype_witch', 'curse_ability','burn_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{curse_hv: 1, strike_unit: 1, burn_hv: 1},
+		},
+		quote: '\"She uses dark fire.\"',
 	},
 	flame_archer:{
 		name: 				'flame archer',
@@ -725,10 +779,6 @@ var all_available_cards = {
 			abilities: 			{shoot_unit: 1, ignites: 1},
 		},
 		quote: '\"Set it aflame from afar.\"',
-		recipe:{
-			archer: 			2,
-			burning_skeleton: 	2,
-		}
 	},
 	flame_dagger:{
 		name: 				'flame dagger',
@@ -824,6 +874,30 @@ var all_available_cards = {
 			flame_dagger: 	2,
 		}
 	},
+	forest_witch:{
+		name: 				'forest witch',
+		type: 				'creature',
+		subtypes: 			['human','witch'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/forest_witch.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{curse: 1, strike: 1, cleanse: 1},
+		hero_version: 			{
+			theme: 				['subtype_witch', 'curse_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{curse_hv: 1, strike_unit: 1, cleanse: 2},
+		},
+		quote: '\"She must come from a dark forest.\"',
+	},
 	furnace:{
 		name: 				'furnace',
 		type: 				'structure',
@@ -914,6 +988,30 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, venom: 1, stunning_touch: 5},
 		},
 		quote: '\"Toxic stickiness.\"',
+	},
+	grinning_witch:{
+		name: 				'grinning witch',
+		type: 				'creature',
+		subtypes: 			['human','witch'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/grinning_witch.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, cursed_stuns: 1},
+		hero_version: 			{
+			theme: 				['subtype_witch', 'curse_ability', 'stun_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, cursed_stuns_hv: 2},
+		},
+		quote: '\"It seems you are having a bad day.\"',
 	},
 	hammer:{
 		name: 				'hammer',
@@ -1010,11 +1108,29 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{hide_ally: 1, echo: 1},
 		quote: '\"Sometimes, you just have to hide.\"',
-		recipe:{
-			magic_dust: 	1,
-			twine: 			1,
-			wall: 			1,
-		}
+	},
+	high_witch:{
+		name: 				'high witch',
+		type: 				'creature',
+		subtypes: 			['human','witch'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/high_witch.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			8,
+		abilities: 			{curse_all: 1, strike: 1, call_witch: 2},
+		hero_version: 			{
+			theme: 				['subtype_witch', 'curse_ability'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{curse_all_hv: 1, strike_unit: 1, call_witch: 1},
+		},
+		quote: '\"Leader of witches.\"',
 	},
 	horse:{
 		name: 				'horse',
@@ -1441,6 +1557,30 @@ var all_available_cards = {
 		quote: '\"What is that smell?\"',
 		max_in_deck: 2,
 	},
+	poison_witch:{
+		name: 				'poison witch',
+		type: 				'creature',
+		subtypes: 			['human','witch'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/poison_witch.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{curse: 1, strike: 1, poison: 1},
+		hero_version: 			{
+			theme: 				['subtype_witch', 'curse_ability','poison_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{curse_hv: 1, strike_unit: 1, poison_hv: 1},
+		},
+		quote: '\"She uses dark poison.\"',
+	},
 	protective_bubble:{
 		name: 				'protective bubble',
 		type: 				'spell',
@@ -1482,7 +1622,7 @@ var all_available_cards = {
 		effects:{
 			mana: 	1,
 		},
-		quote: '\"Made with the water of a crystal spring.\"',
+		quote: '\"Made with the water from a crystal spring.\"',
 	},
 	purple_ooze:{
 		name: 				'purple ooze',
@@ -1735,10 +1875,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, evade: 3},
 		},
 		quote: '\"Quick on his feet.\"',
-		recipe:{
-			hideout: 		2,
-			thug: 			2,
-		}
 	},
 	runner:{
 		name: 				'runner',
@@ -1762,10 +1898,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, ally_runs_away: 1, evade: 3},
 		},
 		quote: '\"Get out of the way!\"',
-		recipe:{
-			peasant: 		1,
-			wood: 			1,
-		}
 	},
 	/*rusty_sword:{
 		name: 				'rusty sword',
@@ -1812,6 +1944,30 @@ var all_available_cards = {
 			abilities: 			{fearful_aura: 1, curse_all_hv: 1},
 		},
 		quote: '\"It scares away more then just crows.\"',
+	},
+	scared_witch:{
+		name: 				'scared witch',
+		type: 				'creature',
+		subtypes: 			['human','witch'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/scared_witch.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{strike: 1, curse: 1, coward: 1},
+		hero_version: 			{
+			theme: 				['subtype_witch', 'curse_ability', 'stun_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{curse_hv: 1, strike_unit: 1, evade: 3},
+		},
+		quote: '\"Just because I cursed you does not mean you have to get angry.\"',
 	},
 	scary_scream:{
 		name: 				'scary scream',
@@ -2221,7 +2377,7 @@ var all_available_cards = {
 		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
-		health: 			4,
+		health: 			5,
 		abilities: 			{strike: 1},
 		hero_version: 			{
 			theme: 				['melee_ability','subtype_rogue'],
@@ -2231,11 +2387,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1},
 		},
 		quote: '\"They find a knife and suddenly think they can bully you.\"',
-		recipe:{
-			dagger: 		1,
-			runner: 		1,
-			twine: 			1,
-		}
 	},
 	toad:{
 		name: 				'toad',
@@ -2335,6 +2486,30 @@ var all_available_cards = {
 			ore: 		1,
 			seeds: 		1,
 		}
+	},
+	venom_witch:{
+		name: 				'venom witch',
+		type: 				'creature',
+		subtypes: 			['human','witch'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/venom_witch.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, venom: 2, cursed_touch: 2},
+		hero_version: 			{
+			theme: 				['subtype_witch', 'curse_ability','poison_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, venom: 2, cursed_touch: 2},
+		},
+		quote: '\"She has a dark touch.\"',
 	},
 	village_defender:{
 		name: 				'village defender',
@@ -2468,10 +2643,6 @@ var all_available_cards = {
 			abilities: 			{curse_hv: 2, strike_unit: 1},
 		},
 		quote: '\"She uses the dark arts.\"',
-		recipe:{
-			cursed_talisman: 	2,
-			death_cleric: 		2,
-		}
 	},
 	wombat:{
 		name: 				'wombat',
@@ -2603,7 +2774,7 @@ var all_available_cards = {
 	},
 	golden_saddle:{
 		name: 				'golden saddle',
-		description: 		'Passively increases all rewards from battles and quests by 1%.',
+		description: 		'Passively increases all rewards from battles by 1%.',
 		value: 				250,
 		type: 				'treasure',
 		color: 				['none'],

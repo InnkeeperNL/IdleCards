@@ -1027,7 +1027,7 @@ function show_card_details(card_id, hero_version, amount, added_button, combat_v
 			parsed_card_details += 		'<div class="single_ability">';
 			parsed_card_details += 			'<span class="single_ability_name" style="color:' + current_ability['name_color'] + '">';
 			parsed_card_details += 				current_ability['name'];
-			if(current_ability['hide_amount'] == undefined || current_ability['hide_amount'] == false)
+			if(current_ability['hide_amount'] == undefined || current_ability['hide_amount'] == false || false)
 			{
 				if(temp_amount > 1 || current_ability['show_amount_adjustment'] != undefined || ability_level['level_2'] != undefined)
 				{
@@ -1037,10 +1037,7 @@ function show_card_details(card_id, hero_version, amount, added_button, combat_v
 					}
 					
 					parsed_card_details +=		' ' + temp_amount;
-					if(current_ability['post_name'] != undefined)
-					{
-						parsed_card_details +=		current_ability['post_name'];
-					}
+					
 				}
 				if(ability_level['level_2'] != undefined && ability_level['level_2'] > 1)
 				{
@@ -1050,6 +1047,10 @@ function show_card_details(card_id, hero_version, amount, added_button, combat_v
 				{
 					parsed_card_details +=		' (' + starting_delay + ')';
 				}
+			}
+			if(current_ability['post_name'] != undefined)
+			{
+				parsed_card_details +=		current_ability['post_name'];
 			}
 			
 			parsed_card_details += 			'</span>';

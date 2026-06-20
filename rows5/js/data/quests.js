@@ -183,7 +183,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'string',
+		card_back: 		'twine',
 		steps: 			6,
 		step_effect: 	'min_amount',
 		step_amount: 	10,
@@ -768,6 +768,20 @@ var all_chained_achievements = {
 		card_back: 		'medic',
 		steps: 			6,
 	},*/
+	heavy_drinker:{
+		name: 			'heavy drinker',
+		description: 	'Use a potion {AMOUNT} time(s).',
+		objective: 		'ally_performed_drink_potion',
+		amount: 		0.2,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'pure_potion',
+		steps: 			6,
+	},
 	heavy_hitter: {
 		name: 			'heavy hitter',
 		description: 	'Deal {MIN_AMOUNT} or more damage to an enemy in one hit.',
@@ -1019,7 +1033,7 @@ var all_chained_achievements = {
 	},*/
 	plunder:{
 		name: 			'plunder',
-		description: 	'Have allies break or plunder an artifact {AMOUNT} time(s).',
+		description: 	'Have allies destroy an artifact or demolish a structure {AMOUNT} time(s).',
 		objective: 		'ally_performed_break',
 		amount: 		0.2,
 		rewards:{
