@@ -164,10 +164,6 @@ var all_available_cards = {
 		abilities: 			{empower_all: 1, fortify_all: 1, minimum_allies: 3},
 		quote: '\"Ready for a fight!\"',
 		max_in_deck: 		2,
-		recipe:{
-			protective_bubble: 	2,
-			shield: 			2,
-		}
 	},
 	arsonist:{
 		name: 				'arsonist',
@@ -305,7 +301,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
-		theme: 				['damaging_hero','poison_ability'],
+		theme: 				['damaging_hero'],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -315,7 +311,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{quicken_poison_hv: 1, venomous_hero: 1},
+		abilities: 			{quicken_poison_hv: 1, venomous_hero: 3},
 		quote: '\"Careful not to spill that.\"',
 	},
 	breaking_ray:{
@@ -333,11 +329,6 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{break: 1, echo: 1},
 		quote: '\"There was a bright light... Then it was broken.\"',
-		recipe:{
-			miner: 			1,
-			scroll: 		1,
-			twine: 			1,
-		}
 	},
 	brew_potion:{
 		name: 				'brew potion',
@@ -518,7 +509,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
-		theme: 				['subtype_witch','aoe'],
+		theme: 				['subtype_witch'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -526,13 +517,9 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{curse_all_hv: 1, destroy_cursed: 10, echo: 1},
+		abilities: 			{curse_all_hv: 1, destroy_cursed: 5, echo: 1},
 		quote: '\"Make sure you come home before dark.\"',
-		recipe:{
-			dagger: 	1,
-			scroll: 	1,
-			skeleton: 		1,
-		}
+		max_in_deck: 1,
 	},
 	dark_rogue:{
 		name: 				'dark rogue',
@@ -557,10 +544,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, cursed_touch: 2, evade: 3},
 		},
 		quote: '\"Her strikes leave a mark.\"',
-		recipe:{
-			rogue: 			2,
-			witch: 			2,
-		}
 	},
 	dark_tower:{
 		name: 				'dark tower',
@@ -602,13 +585,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{curse: 3, destroy_cursed: 10, strike: 1},
+		abilities: 			{curse: 3, destroy_cursed: 8, strike: 1},
 		hero_version: 			{
-			theme: 				['subtype_witch', 'curse_ability'],
+			theme: 				['subtype_witch','curse_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{curse_hv: 3, destroy_cursed: 10, strike_unit: 1},
+			abilities: 			{curse_hv: 3, destroy_cursed: 8, strike_unit: 1},
 		},
 		quote: '\"You will be consumed by darkness.\"',
 	},
@@ -890,7 +873,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{curse: 1, strike: 1, cleanse: 1},
 		hero_version: 			{
-			theme: 				['subtype_witch', 'curse_ability'],
+			theme: 				['subtype_witch','curse_ability','cleanse_ally_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -995,6 +978,7 @@ var all_available_cards = {
 		subtypes: 			['human','witch'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['stun_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -1003,9 +987,9 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, cursed_stuns: 1},
+		abilities: 			{strike: 1, cursed_stuns: 2},
 		hero_version: 			{
-			theme: 				['subtype_witch', 'curse_ability', 'stun_ability'],
+			theme: 				['subtype_witch', 'curse_ability','stun_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1045,7 +1029,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{health_drink: 5, fragile_if_empty: 1},
+		abilities: 			{health_drink: 7, fragile_if_empty: 1},
 		effects:{
 			mana: 	1,
 		},
@@ -1124,7 +1108,7 @@ var all_available_cards = {
 		health: 			8,
 		abilities: 			{curse_all: 1, strike: 1, call_witch: 2},
 		hero_version: 			{
-			theme: 				['subtype_witch', 'curse_ability'],
+			theme: 				['subtype_witch','curse_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -1223,7 +1207,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{leafy_drink: 5, fragile_if_empty: 1},
+		abilities: 			{leafy_drink: 4, fragile_if_empty: 1},
 		effects:{
 			mana: 	1,
 		},
@@ -1573,7 +1557,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{curse: 1, strike: 1, poison: 1},
 		hero_version: 			{
-			theme: 				['subtype_witch', 'curse_ability','poison_ability'],
+			theme: 				['subtype_witch','curse_ability','poison_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1596,12 +1580,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{fortify_ally: 2, echo: 1},
 		quote: '\"It will keep you safe.\"',
-		max_in_deck: 		2,
-		recipe:{
-			skeleton: 		1,
-			spike_trap: 	1,
-			wall: 			1,
-		}
+		max_in_deck: 		1,
 	},
 	pure_potion:{
 		name: 				'pure potion',
@@ -1618,7 +1597,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{pure_drink: 1, fragile_if_empty: 1},
+		abilities: 			{pure_drink: 3, fragile_if_empty: 1},
 		effects:{
 			mana: 	1,
 		},
@@ -1772,6 +1751,27 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{call_rat: 1},
 		quote: '\"Get ready for an infestation.\"',
+	},
+	rat_potion:{
+		name: 				'rat potion',
+		type: 				'artifact',
+		subtypes: 			['potion', 'rat'],
+		color: 				['colorless'],
+		theme: 				[],
+		needs_theme: 		[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/rat_potion.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{health_drink: 1, release_rat: 1, fragile_if_empty: 1},
+		effects:{
+			mana: 	1,
+		},
+		quote: '\"Don\'t tell me you are going to drink that.\"',
 	},
 	red_ooze:{
 		name: 				'red ooze',
@@ -1959,9 +1959,9 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, curse: 1, coward: 1},
+		abilities: 			{curse: 1, strike: 1, coward: 1},
 		hero_version: 			{
-			theme: 				['subtype_witch', 'curse_ability', 'stun_ability'],
+			theme: 				['subtype_witch','curse_ability','evade_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2503,7 +2503,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, venom: 2, cursed_touch: 2},
 		hero_version: 			{
-			theme: 				['subtype_witch', 'curse_ability','poison_ability'],
+			theme: 				['subtype_witch','curse_ability','poison_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2632,7 +2632,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{curse: 2, strike: 1},
 		hero_version: 			{
-			theme: 				['subtype_witch', 'curse_ability'],
+			theme: 				['subtype_witch','curse_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,

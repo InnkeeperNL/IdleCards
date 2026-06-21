@@ -8600,7 +8600,7 @@ var all_abilities = {
 	},
 	leafy_drink:{
 		hide_amount: 	true,
-		description: 	'If your hero is damaged and not regenerating, this grants your hero {LEVEL} regeneration.',
+		description: 	'If your hero is damaged and not regenerating, this grants your hero {LEVEL} regeneration.<br/><i>Regeneration: If damaged, this heals itself by {LEVEL}. Reduce the amount of healing by 1 after each use.</i>',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		has_mana: 				true,
@@ -8647,6 +8647,7 @@ var all_abilities = {
 			base_cost_id: 'healing',
 			base_cost_factor: 0.15,
 		},
+		level_cost_cum: true,
 	},
 	leech_hero:{
 		description: 	'When this deals damage to the enemy hero, this heals your hero by the damage dealt.',
@@ -9929,7 +9930,7 @@ var all_abilities = {
 	},
 	pure_drink:{
 		hide_amount: 	true,
-		description: 	'If your hero has 5 or more negative effects, this cleanses all negative effects from it.',
+		description: 	'If your hero has {LEVEL} or more negative effects, this cleanses all negative effects from it.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
@@ -9939,7 +9940,7 @@ var all_abilities = {
 				target: 		'hero',
 				target_amount: 	1,
 				position: 		'random',
-				has_negative_effect: 5,
+				has_negative_effect: 'ability_level',
 				min_hp: 		1,
 				side: 			'ally'
 			},
@@ -9980,7 +9981,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'cleanse',
-			base_cost_factor: 5,
+			base_cost_factor: 2,
 		},
 	},
 	purify:{
@@ -10806,7 +10807,7 @@ var all_abilities = {
 		level_cost_hero: 	3,
 	},
 	regeneration:{
-		description: 	'Heals itself by 1 each turn. Can be used {LEVEL} time(s).',
+		description: 	'If damaged, this heals itself by {LEVEL}. Reduce the amount of healing by 1 after each use.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		hero_tactics: 	['bolster_ability','regeneration_ability'],
@@ -10826,12 +10827,13 @@ var all_abilities = {
 				projectile:		'healing',
 				type: 			'healing',
 				subtypes: 		['healing','regeneration'],
-				amount: 		1
+				amount: 		'ability_level',
 			}
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		1,
 		level_cost_hero: 	0.5,
+		level_cost_cum: 	true,
 	},
 	release_bird:{
 		description: 	'Summons {LEVEL} bird creature(s) when destroyed.',
@@ -10916,6 +10918,37 @@ var all_abilities = {
 		},
 		level_cost_artifact: 0.75,
 		cost_on_top: 		true,
+	},
+	release_rat:{
+		hide_amount: 	true,
+		description: 	'When destroyed, adds {LEVEL} basic rat card(s) to your hand. If your hand is full, it will add them to your deck instead.',
+		proc: 			'own_death',
+		proc_amount: 	'ability_level',
+		proc_while_dead: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_rat','summon_creature'],
+				card_id: 	'rat',
+				//card_subtype: 	'rat',
+				card_status: 	'hand',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.5,
+		},
 	},
 	repair:{
 		description: 	'Repairs a random non-plant damaged ally structure by {LEVEL}.',
@@ -14177,10 +14210,11 @@ var all_abilities = {
 	},
 	venomous_hero:{
 		hide_amount: true,
-		description: 	'When your hero deals damage to a non-undead enemy creature unit, this will apply {LEVEL} poison to it.',
+		description: 	'When your hero deals damage to an enemy unit, this has a {LEVEL}0% chance to apply 1 poison to that unit.{POISON}',
 		proc: 			'enemy_damaged_by_hero',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		ability_subtypes: ['dealt_damage_proc'],
-		scales: 		true,
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
@@ -14196,15 +14230,14 @@ var all_abilities = {
 			0:{
 				type: 			'apply_poison',
 				subtypes: 		['poison','ally_hero_deals_damage'],
-				amount: 		'ability_level'
+				amount: 		1
 			}
 		},
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'poison',
-			base_cost_factor: 0.5,
+			base_cost_factor: 0.2,
 		},
-		level_cost_cum: true,
 	},
 	victory_rush:{
 		description: 	'Gains {LEVEL} additional turn(s) when it destroys an enemy.',

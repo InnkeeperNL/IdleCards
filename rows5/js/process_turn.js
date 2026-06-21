@@ -5618,9 +5618,11 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 			all_targets = filter_targets_by_not_damaged(all_targets);
 		}
 
-		if(target_peramaters['has_negative_effect'] != undefined && target_peramaters['has_negative_effect'] > 0)
+		if(target_peramaters['has_negative_effect'] != undefined && (target_peramaters['has_negative_effect'] > 0 || target_peramaters['has_negative_effect'] == 'ability_level'))
 		{
-			all_targets = filter_targets_by_has_negative_effect(all_targets, target_peramaters['has_negative_effect']);
+			var min_negative_effects = target_peramaters['has_negative_effect'];
+			if(min_negative_effects == 'ability_level'){min_negative_effects = level;}
+			all_targets = filter_targets_by_has_negative_effect(all_targets, min_negative_effects);
 		}
 
 		if(target_peramaters['has_effect'] != undefined)
