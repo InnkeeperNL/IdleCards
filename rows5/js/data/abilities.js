@@ -12401,6 +12401,58 @@ var all_abilities = {
 			base_cost_factor: 1,
 		},
 	},
+	spread_blight:{
+		description: 	'Turns {LEVEL} adjacent dark rat(s) or plague rat(s) into a blight rat.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'adjacent',
+				card_ids: 		['dark_rat','plague_rat'],
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'curse',
+				type: 		'turn_into',
+				subtypes: 	['transform'],
+				card_id: 	'blight_rat',
+				amount: 	1
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
+	},
+	spread_darkness:{
+		description: 	'Turns {LEVEL} adjacent basic rat(s) into a dark rat.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'adjacent',
+				card_ids: 		['rat'],
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'curse',
+				type: 		'turn_into',
+				subtypes: 	['transform'],
+				card_id: 	'dark_rat',
+				amount: 	1
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
+	},
 	spread_plague:{
 		description: 	'Turns {LEVEL} adjacent basic rat(s) into a plague rat.',
 		cannot_proc_while_stunned: true,
