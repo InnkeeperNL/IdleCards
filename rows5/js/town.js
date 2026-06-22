@@ -1329,7 +1329,7 @@ function create_new_building_offer(building_info, trade_slot){
 		if(all_available_cards[found_card]['unique'] != undefined && all_available_cards[found_card]['unique'] == true){offer_amount = 1;}
 		if(buysell == 'buy' && gamedata['owned_cards'][found_card] != undefined /*&& offer_amount < gamedata['owned_cards'][found_card]*/ && gamedata['owned_cards'][found_card] > 0)
 		{
-			offer_amount = Math.ceil(Math.random() * gamedata['owned_cards'][found_card] * 1);
+			offer_amount = Math.ceil(Math.random() * gamedata['owned_cards'][found_card] * 0.5);
 		}
 		var offer_price = Math.ceil(all_available_cards[found_card]['value'] * offer_amount * (1 + (Math.random() * (5 / get_upgrade_factor('merchant_' + buysell, undefined, true)))));
 		if(buysell == 'buy')
