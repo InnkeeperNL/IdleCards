@@ -4171,13 +4171,13 @@ var all_abilities = {
 	},
 	destroy_cursed:{
 		hide_amount: true,
-		description: 	'Destroys a random enemy unit that has {LEVEL} curse or more.',
+		description: 	'Destroys all enemy units that have {LEVEL} curse or more.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		targets:	{
 			0:{
 				target: 	'unit',
-				target_amount: 1,
+				target_amount: 5,
 				position: 	'random',
 				has_effect: 	{effect_name: 'cursed', amount: 'ability_level', limit: 'min'},
 				side: 		'enemy'
@@ -4192,8 +4192,8 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	-0.5,
-		cost_adjustment: 6,
+		level_cost: 	-0.9,
+		cost_adjustment: 10,
 	},
 	destroy_structure:{
 		description: 	'Destroys {LEVEL} random enemy structure unit(s).',
