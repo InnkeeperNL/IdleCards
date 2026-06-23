@@ -141,11 +141,6 @@ var all_available_cards = {
 			abilities: 			{shoot_unit: 1},
 		},
 		quote: '\"Keep your distance.\"',
-		recipe:{
-			runner: 		1,
-			skeleton: 		1,
-			toad: 			1,
-		}
 	},
 	armaments:{
 		name: 				'armaments',
@@ -320,6 +315,29 @@ var all_available_cards = {
 		},
 		quote: '\"Cursed and toxic stickiness.\"',
 	},
+	boar:{
+		name: 				'boar',
+		type: 				'creature',
+		subtypes: 			['animal'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/boar.jpg',
+		power: 				2,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{charge: 1, strike: 1},
+		hero_version: 			{
+			theme: 				['melee_ability','subtype_animal'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, enrage_hv: 1},
+		},
+		quote: '\"Do not give it any room.\"',
+	},
 	bottle_of_poison:{
 		name: 				'bottle of poison',
 		type: 				'artifact',
@@ -409,20 +427,15 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, burning_deaths: 1, resurrect: 8, undead: 1},
+		abilities: 			{strike: 1, burning_aura: 1, resurrect: 8, undead: 1},
 		hero_version: 			{
 			theme: 				['type_creature','burn_ability','ally_creature_death_proc_ability','own_death_proc_ability','summon_creature_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, burning_deaths_hv: 1, resurrect: 10, undead: 1},
+			abilities: 			{strike_unit: 1, burning_aura: 1, resurrect: 10, undead: 1},
 		},
 		quote: '\"Did you hear that story of that guy that jumped into the volcano?\"',
-		recipe:{
-			fire_pit: 		1,
-			miner: 			1,
-			skeleton: 		1,
-		}
 	},
 	carpenter:{
 		name: 				'carpenter',
@@ -833,6 +846,29 @@ var all_available_cards = {
 			abilities: 			{shoot_unit: 1, ignites: 1},
 		},
 		quote: '\"Set it aflame from afar.\"',
+	},
+	flame_boar:{
+		name: 				'flame boar',
+		type: 				'creature',
+		subtypes: 			['animal'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/flame_boar.jpg',
+		power: 				2,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{charge: 1, strike: 1, ignites: 2},
+		hero_version: 			{
+			theme: 				['melee_ability','subtype_animal'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, enrage_hv: 1, ignites: 1},
+		},
+		quote: '\"I saw a flame running through the forest.\"',
 	},
 	flame_dagger:{
 		name: 				'flame dagger',
@@ -2365,11 +2401,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, stunning_touch: 5, resurrect: 10, undead: 1},
 		},
 		quote: '\"I wonder what killed him to look like that.\"',
-		recipe:{
-			skeleton: 			1,
-			slimeling: 			1,
-			twine: 				1,
-		}
 	},
 	sword:{
 		name: 				'sword',
