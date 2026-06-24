@@ -40,7 +40,11 @@ function show_summon(just_summoned){
 				parsed_summon += 	' - ' + nFormatter(summon_stats['max_rarity'],3);
 			}
 			parsed_summon += 	'<br/>';
-			parsed_summon += 	'Tries: ' + (summon_stats['max_tries']) + '<br/>';
+			if(get_upgrade_factor('summon_tries', 'any', true) > 1)
+			{
+				parsed_summon += 	'Tries: ' + (summon_stats['max_tries']);
+			}
+			parsed_summon += 	'<br/>';
 			parsed_summon += 	'Reward: ' + nFormatter(Math.floor(summon_stats['reward_bonus'] * 100),3) + '%<br/>';
 			parsed_summon += 	'<br/>';
 			parsed_summon += '</span>';
@@ -68,7 +72,7 @@ function show_summon(just_summoned){
 				parsed_summon += '</span>';
 			}*/
 			parsed_summon += 	'<br/><br/>';
-			if(/*count_object(gamedata['summon_pre_buffs']) < summon_stats['max_pre_buffs'] &&*/ selected_pre_summon_buff != '' && all_available_cards[selected_pre_summon_buff] != undefined)
+			/*if(selected_pre_summon_buff != '' && all_available_cards[selected_pre_summon_buff] != undefined)
 			{
 				parsed_summon += '<div class="selected_pre_summon_buff_container">';
 					parsed_summon += '<span class="selected_pre_summon_buff">' + parse_card(selected_pre_summon_buff) + '</span>';
@@ -92,7 +96,7 @@ function show_summon(just_summoned){
 						parsed_summon += '<span class="summon_consumable" onclick="select_summon_pre_buff(\'' + card_id + '\')">' + parsed_consumable + '</span>';
 					}
 				});
-			}
+			}*/
 			parsed_summon += 	'<br/><br/>';
 		parsed_summon += '</div>';
 	}
@@ -129,13 +133,17 @@ function show_summon(just_summoned){
 				parsed_summon += 	'Power: ' + Math.floor(gamedata['current_summon']['level'] * 10) + '%<br/>';
 			}
 			parsed_summon += 	'Drop: ' + drop_chance + '%' + /*shown_recipe_drop_chance +*/ '<br/>';
-			parsed_summon += 	'Tries: ' + gamedata['current_summon']['tries'] + '<br/>';
+			if(get_upgrade_factor('summon_tries', 'any', true) > 1)
+			{
+				parsed_summon += 	'Tries: ' + (gamedata['current_summon']['tries']);
+			}
+			parsed_summon += 	'<br/>';
 			parsed_summon += 	'Reward: ' + nFormatter(gamedata['current_summon']['reward_count'],3) + '<br/>';
 			parsed_summon += 	'<br/>';
 			parsed_summon += '</span>';
 			parsed_summon += '<div class="menu_button slim summon button" onclick="endless_waves=false;selected_post_summon_buff=\'\'" data-target-content="summoned_battle">FIGHT</div><br/><br/>';
 			
-			if(selected_post_summon_buff != '' && all_available_cards[selected_post_summon_buff] != undefined)
+			/*if(selected_post_summon_buff != '' && all_available_cards[selected_post_summon_buff] != undefined)
 			{
 				parsed_summon += '<div class="selected_pre_summon_buff_container">';
 					parsed_summon += '<span class="selected_pre_summon_buff">' + parse_card(selected_post_summon_buff) + '</span>';
@@ -149,7 +157,7 @@ function show_summon(just_summoned){
 					var parsed_consumable = parse_card(card_id, gamedata['owned_cards'][card_id]);
 					parsed_summon += '<span class="summon_consumable" onclick="select_summon_post_buff(\'' + card_id + '\')">' + parsed_consumable + '</span>';
 				}
-			});
+			});*/
 
 			if(summon_stats['max_rarity'] > 1 || summon_stats['max_level'] > 0)
 			{
@@ -463,7 +471,11 @@ function show_altar(){
 		parsed_summon += 	'Drop chance: ~' + drop_chance + '%';
 	}
 	parsed_summon += 	'<br/>';
-	parsed_summon += 	'Tries: ' + (summon_stats['max_tries']) + '<br/>';
+	if(get_upgrade_factor('summon_tries', 'any', true) > 1)
+	{
+		parsed_summon += 	'Tries: ' + (summon_stats['max_tries']);
+	}
+	parsed_summon += 	'<br/>';
 	parsed_summon += 	'Reward: ' + nFormatter(Math.floor(summon_stats['reward_bonus'] * 100),3) + '%<br/>';
 	parsed_summon += 	'<br/>';
 	parsed_summon += '</span>';
@@ -478,7 +490,7 @@ function show_altar(){
 		parsed_summon += '<div class="menu_button slim summon button" onclick="current_altar=\'\'" data-target-content="altar">CLEAR</div><br/><br/>';
 	}
 
-	for (var i = 1; i < summon_stats['max_pre_buffs'] + 1; i++) {
+	/*for (var i = 1; i < summon_stats['max_pre_buffs'] + 1; i++) {
 		parsed_summon += '<span class="pebuff" onclick="remove_prebuff(\'' + i + '\')">';
 		var parsed_prebuff = parse_card('empty_card_orange');
 		if(gamedata['summon_pre_buffs'][i] != undefined)
@@ -493,7 +505,7 @@ function show_altar(){
 		parsed_summon += '</span>';
 	}
 	parsed_summon += 	'<br/><br/>';
-	if(/*count_object(gamedata['summon_pre_buffs']) < summon_stats['max_pre_buffs'] &&*/ selected_pre_summon_buff != '' && all_available_cards[selected_pre_summon_buff] != undefined)
+	if(selected_pre_summon_buff != '' && all_available_cards[selected_pre_summon_buff] != undefined)
 	{
 		parsed_summon += '<div class="selected_pre_summon_buff_container">';
 			parsed_summon += '<span class="selected_pre_summon_buff">' + parse_card(selected_pre_summon_buff) + '</span>';
@@ -517,7 +529,7 @@ function show_altar(){
 				parsed_summon += '<span class="summon_consumable" onclick="select_summon_pre_buff(\'' + card_id + '\')">' + parsed_consumable + '</span>';
 			}
 		});
-	}
+	}*/
 	parsed_summon += 	'</div>';
 
 	$('.altar_container').html(parsed_summon);

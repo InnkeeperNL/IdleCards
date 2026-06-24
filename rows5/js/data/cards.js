@@ -1450,7 +1450,7 @@ var all_available_cards = {
 	messenger:{
 		name: 				'messenger',
 		type: 				'creature',
-		subtypes: 			['human','clerk'],
+		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -1469,10 +1469,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, evade: 3, draw: 1},
 		},
 		quote: '\"I bring an urgent message!\"',
-		recipe:{
-			bad_omen: 	2,
-			scribe: 	2,
-		}
 	},
 	miner:{
 		name: 				'miner',
@@ -2125,7 +2121,7 @@ var all_available_cards = {
 	scribe:{
 		name: 				'scribe',
 		type: 				'creature',
-		subtypes: 			['human','clerk'],
+		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -2145,11 +2141,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, draw: 1},
 		},
 		quote: '\"Listen to her. She knows a lot.\"',
-		recipe:{
-			scroll: 	1,
-			slimeling: 	1,
-			wall: 		1,
-		}
 	},
 	seer:{
 		name: 				'seer',

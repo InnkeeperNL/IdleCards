@@ -262,7 +262,7 @@ var all_chained_achievements = {
 		card_back: 		'house',
 		steps: 			6,
 	},
-	/*clergy:{
+	clergy:{
 		name: 			'clergy',
 		description: 	'Play or summon {AMOUNT} cleric card(s).',
 		objective: 		'cleric_card_played',
@@ -276,7 +276,7 @@ var all_chained_achievements = {
 		card_back: 		'death_cleric',
 		steps: 			6,
 		no_quest: 		true,
-	},*//*
+	},/*
 	close_call:{
 		name: 			'close call',
 		description: 	'Win a battle while your hero has 1 health left {AMOUNT} time(s).',

@@ -1286,19 +1286,19 @@
 		if(gamedata['upgrades'] != undefined && gamedata['upgrades']['summon_altar'] != undefined){
 			parsed_stats += '<div class="left_stats">Max altar rarity:</div><div class="right_stats">' + (Math.floor(get_upgrade_factor('altar_rarity', 'any', true) * get_upgrade_factor('summon_max_rarity', 'any', true))) + '</div>';
 		}
-		if(gamedata['highest_wave_ever'] != undefined && gamedata['highest_wave_ever'] > 1){parsed_stats += '<div class="stats_title">Waves</div>';}
-		if(gamedata['highest_wave_ever'] != undefined && gamedata['highest_wave_ever'] > 1){parsed_stats += '<div class="left_stats">Highest wave:</div><div class="right_stats">' + nFormatter(gamedata['highest_wave_ever'],3) + '</div>';}
+		/*if(gamedata['highest_wave_ever'] != undefined && gamedata['highest_wave_ever'] > 1){parsed_stats += '<div class="stats_title">Waves</div>';}
+		if(gamedata['highest_wave_ever'] != undefined && gamedata['highest_wave_ever'] > 1){parsed_stats += '<div class="left_stats">Highest wave:</div><div class="right_stats">' + nFormatter(gamedata['highest_wave_ever'],3) + '</div>';}*/
 		parsed_stats += '<div class="stats_title">Cards</div>';
 		if(gamedata['owned_cards'] != undefined){parsed_stats += '<div class="left_stats">Cards owned:</div><div class="right_stats">' + nFormatter(count_owned_cards(),3) + '</div>';}
 		if(gamedata['decks'] != undefined){parsed_stats += '<div class="left_stats">Decks owned:</div><div class="right_stats">' + nFormatter(count_object(gamedata['decks']),3) + '</div>';}
-		if(gamedata['known_recipes'] != undefined){parsed_stats += '<div class="left_stats">Recipes known:</div><div class="right_stats">' + nFormatter(count_object(gamedata['known_recipes']),3) + '</div>';}
-		if(gamedata['known_recipes'] != undefined){parsed_stats += '<div class="left_stats">Card backs:</div><div class="right_stats">' + nFormatter(count_object(gamedata['owned_card_backs']),3) + '</div>';}
+		//if(gamedata['known_recipes'] != undefined){parsed_stats += '<div class="left_stats">Recipes known:</div><div class="right_stats">' + nFormatter(count_object(gamedata['known_recipes']),3) + '</div>';}
+		if(gamedata['owned_card_backs'] != undefined && count_object(gamedata['owned_card_backs']) > 0){parsed_stats += '<div class="left_stats">Card backs:</div><div class="right_stats">' + nFormatter(count_object(gamedata['owned_card_backs']),3) + '</div>';}
 		
 		if(gamedata['upgrades'] != undefined){
 			parsed_stats += '<div class="stats_title">Upgrades</div>';
 			parsed_stats += '<div class="left_stats">Upgrades bought:</div><div class="right_stats">' + nFormatter(count_upgrades_bought(),3) + '</div>';
 			var floating_scraps_gained = get_upgrade_factor('floating_scraps', 'any', true) * get_upgrade_factor('loot', 'scraps', true);
-			parsed_stats += '<div class="left_stats">Floating scraps:</div><div class="right_stats">' + (Math.floor(floating_scraps_gained * 10) / 10) + '</div>';
+			parsed_stats += '<div class="left_stats">Floating scraps:</div><div class="right_stats">' + (Math.floor(floating_scraps_gained * 100) / 100) + '</div>';
 			parsed_stats += '<div class="left_stats">Peasant factor:</div><div class="right_stats">' + (Math.floor(get_upgrade_factor('loot', 'peasant', true) * 100) / 100) + '</div>';
 			parsed_stats += '<div class="left_stats">Shard factor:</div><div class="right_stats">' + (Math.floor(get_upgrade_factor('loot', 'shard', true) * 100) / 100) + '</div>';
 		}
@@ -1306,9 +1306,9 @@
 		{
 			parsed_stats += '<div class="stats_title">Merchants</div>';
 			parsed_stats += '<div class="left_stats">Max scraps offered:</div><div class="right_stats">' + (Math.floor(get_upgrade_factor('merchant_buy', 'any', true) * 100)) + '%</div>';
-			parsed_stats += '<div class="left_stats">Max scraps demanded:</div><div class="right_stats">' + (Math.floor((1 + (5 / get_upgrade_factor('merchant_sell', 'any', true))) * 100)) + '%</div>';
+			//parsed_stats += '<div class="left_stats">Max scraps demanded:</div><div class="right_stats">' + (Math.floor((1 + (5 / get_upgrade_factor('merchant_sell', 'any', true))) * 100)) + '%</div>';
 		}
-
+		parsed_stats += '<div class="stats_title">&nbsp;</div>';
 		$('.stats_container').html(parsed_stats);
 	}
 
