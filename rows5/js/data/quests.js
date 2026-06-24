@@ -189,7 +189,7 @@ var all_chained_achievements = {
 		step_amount: 	10,
 		no_quest: 		true,
 	},
-	bureaucrat:{
+	/*bureaucrat:{
 		name: 			'bureaucrat',
 		description: 	'Play or summon {AMOUNT} clerk card(s).',
 		objective: 		'clerk_card_played',
@@ -203,7 +203,7 @@ var all_chained_achievements = {
 		card_back: 		'scribe',
 		steps: 			6,
 		no_quest: 		true,
-	},
+	},*/
 	burn:{
 		name: 			'burn',
 		description: 	'Have allies apply burn {AMOUNT} time(s).',
@@ -262,7 +262,7 @@ var all_chained_achievements = {
 		card_back: 		'house',
 		steps: 			6,
 	},
-	clergy:{
+	/*clergy:{
 		name: 			'clergy',
 		description: 	'Play or summon {AMOUNT} cleric card(s).',
 		objective: 		'cleric_card_played',
@@ -276,7 +276,7 @@ var all_chained_achievements = {
 		card_back: 		'death_cleric',
 		steps: 			6,
 		no_quest: 		true,
-	},/*
+	},*//*
 	close_call:{
 		name: 			'close call',
 		description: 	'Win a battle while your hero has 1 health left {AMOUNT} time(s).',
@@ -840,7 +840,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'thug',
+		card_back: 		'high_witch',
 		steps: 			6,
 	},
 	/*imp_lord:{
@@ -1261,6 +1261,20 @@ var all_chained_achievements = {
 		card_back: 		'paperwork',
 		steps: 			6,
 	},*/
+	slimy:{
+		name: 			'slimy',
+		description: 	'Play or summon {AMOUNT} slime card(s).',
+		objective: 		'slime_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'slimeling',
+		steps: 			6,
+	},
 	stasher:{
 		name: 			'stasher',
 		description: 	'Open {AMOUNT} stashes.',
@@ -1322,7 +1336,7 @@ var all_chained_achievements = {
 		card_back: 		'horse',
 		steps: 			6,
 	},
-	/*stun:{
+	stun:{
 		name: 			'stun',
 		description: 	'Have allies stun an enemy {AMOUNT} time(s).',
 		objective: 		'ally_performed_stun',
@@ -1333,10 +1347,9 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'iceblade',
+		card_back: 		'trapper',
 		steps: 			6,
-		no_quest: 		true,
-	},*/
+	},
 	/*summoner:{
 		name: 			'summoner',
 		description: 	'Defeat a summoned enemy {AMOUNT} time(s).',
