@@ -3,7 +3,7 @@ var all_available_cards = {
 	alchemist:{
 		name: 				'alchemist',
 		type: 				'creature',
-		subtypes: 			['human','villager'],
+		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
 		theme: 				['subtype_potion'],
 		craft_theme: 		[],
@@ -40,7 +40,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{arcane_bolt: 1},
 		hero_version: 			{
-			theme: 				['subtype_mage','subtype_arcane'],
+			theme: 				['subtype_mage','subtype_arcane','damaging_hero'],
 			not_theme: 			['empower_hero_ability','empower_ally_ability'],
 			power: 				false,
 			armor: 				0,
@@ -83,7 +83,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{arcane_bolt: 1, spell_bolt: 1},
 		hero_version: 			{
-			theme: 				['subtype_mage','subtype_arcane','type_spell','echo_ability'],
+			theme: 				['subtype_mage','subtype_arcane','type_spell','echo_ability','damaging_hero'],
 			not_theme: 			['empower_hero_ability','empower_ally_ability'],
 			power: 				false,
 			armor: 				0,
@@ -108,7 +108,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{arcane_bolt: 1},
 		hero_version: 			{
-			theme: 				['subtype_mage','subtype_arcane'],
+			theme: 				['subtype_mage','subtype_arcane','damaging_hero'],
 			not_theme: 			['empower_hero_ability','empower_ally_ability'],
 			power: 				false,
 			armor: 				0,
@@ -134,7 +134,6 @@ var all_available_cards = {
 		abilities: 			{shoot: 1},
 		hero_version: 			{
 			theme: 				['projectile_ability','subtype_warrior'],
-			not_theme: 			['empower_ally_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -218,7 +217,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_animal'],
+			theme: 				['subtype_animal'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -330,7 +329,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{charge: 1, strike: 1},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_animal'],
+			theme: 				['empower_ally_ability','subtype_animal'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -343,7 +342,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
-		theme: 				['damaging_hero'],
+		theme: 				['damaging_hero','poison_ability'],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -404,7 +403,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{strike: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','type_creature'],
+			theme: 				['subtype_animal'],
 			not_theme: 			[],
 			power: 				3,
 			armor: 				0,
@@ -427,13 +426,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, burning_aura: 1, resurrect: 8, undead: 1},
+		abilities: 			{strike: 1, burning_aura: 2, resurrect: 8, undead: 1},
 		hero_version: 			{
-			theme: 				['type_creature','burn_ability','ally_creature_death_proc_ability','own_death_proc_ability','summon_creature_ability'],
-			power: 				2,
+			theme: 				['subtype_undead','burn_ability','ally_creature_death_proc_ability'],
+			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, burning_aura: 1, resurrect: 10, undead: 1},
+			abilities: 			{strike_unit: 1, burning_aura: 2, resurrect: 10, undead: 1},
 		},
 		quote: '\"Did you hear that story of that guy that jumped into the volcano?\"',
 	},
@@ -471,7 +470,7 @@ var all_available_cards = {
 		subtypes: 			['tool'],
 		color: 				['colorless'],
 		theme: 				['subtype_potion'],
-		needs_theme: 		['subtype_potion'],
+		needs_theme: 		[],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -560,17 +559,13 @@ var all_available_cards = {
 		abilities: 			{stabbing_hero: 3},
 		quote: '\"For quick strikes.\"',
 		max_in_deck: 		2,
-		recipe:{
-			ore: 			1,
-			wood: 			1,
-		}
 	},
 	dark_night:{
 		name: 				'dark night',
 		type: 				'spell',
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
-		theme: 				['subtype_witch'],
+		theme: 				[],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -621,7 +616,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, cursed_touch: 2, evade: 3},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_rogue','curse_ability'],
+			theme: 				['subtype_rogue','curse_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -671,7 +666,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{curse_all: 1, destroy_cursed: 8, strike: 1},
 		hero_version: 			{
-			theme: 				['subtype_witch','curse_ability'],
+			theme: 				['curse_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -695,18 +690,13 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, cleansing_deaths: 2},
 		hero_version: 			{
-			theme: 				['type_creature','ally_creature_death_proc_ability','own_death_proc_ability','summon_creature_ability'],
+			theme: 				['ally_creature_death_proc_ability','own_death_proc_ability','summon_creature_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, cleansing_deaths: 4},
 		},
 		quote: '\"There is serenity in death.\"',
-		recipe:{
-			magic_dust: 		1,
-			skeleton: 			1,
-			water_carrier: 		1,
-		}
 	},
 	eruption:{
 		name: 				'eruption',
@@ -740,17 +730,13 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, ignites: 1, run_away: 1, evade: 3, stealth: 1},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_rogue','burn_ability'],
+			theme: 				['subtype_rogue','burn_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, ignites: 1, evade: 3},
 		},
 		quote: '\"You will not see him until you feel it burn.\"',
-		recipe:{
-			dark_rogue: 	2,
-			flame_rogue: 	2,
-		}
 	},
 	fire_mage:{
 		name: 				'fire mage',
@@ -768,7 +754,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{burn: 1, conflagrate: 1, resist_fire: 1},
 		hero_version: 			{
-			theme: 				['subtype_mage','burn_ability'],
+			theme: 				['burn_ability'],
 			not_theme: 			['empower_hero_ability','empower_ally_ability'],
 			power: 				false,
 			armor: 				0,
@@ -792,7 +778,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{burning_aura: 2},
 		hero_version: 			{
-			theme: 				['burn_ability','heal_hero_ability'],
+			theme: 				['burn_ability','heal_hero_ability','run_away_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -816,7 +802,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{curse: 1, strike: 1, burn: 1},
 		hero_version: 			{
-			theme: 				['subtype_witch', 'curse_ability','burn_ability'],
+			theme: 				['curse_ability','burn_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -839,7 +825,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{shoot: 1, ignites: 1},
 		hero_version: 			{
-			theme: 				['projectile_ability','subtype_warrior'],
+			theme: 				['projectile_ability','burn_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -862,7 +848,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{charge: 1, strike: 1, ignites: 2},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_animal'],
+			theme: 				['burn_ability','subtype_animal','empower_ally_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -903,17 +889,13 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, ignites: 1, evade: 3},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_rogue','burn_ability'],
+			theme: 				['subtype_rogue','burn_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, ignites: 1, evade: 3},
 		},
 		quote: '\"Quick hot strikes.\"',
-		recipe:{
-			flame_archer: 	2,
-			messenger: 		2,
-		}
 	},
 	flame_warrior:{
 		name: 				'flame warrior',
@@ -931,7 +913,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, ignites: 2},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_warrior'],
+			theme: 				['burn_ability','subtype_warrior'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -955,10 +937,6 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{empower_hero: 1, igniting_hero: 3},
 		quote: '\"Stike the enemy and set them ablaze!\"',
-		recipe:{
-			eruption: 		2,
-			flame_dagger: 	2,
-		}
 	},
 	forest_witch:{
 		name: 				'forest witch',
@@ -976,7 +954,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{curse: 1, strike: 1, cleanse: 1},
 		hero_version: 			{
-			theme: 				['subtype_witch','curse_ability','cleanse_ally_ability'],
+			theme: 				['curse_ability','cleanse_ally_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1000,7 +978,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{burn: 2},
 		hero_version: 			{
-			theme: 				['burn_ability'],
+			theme: 				['burn_ability','type_structure'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -1008,11 +986,6 @@ var all_available_cards = {
 			abilities: 			{burn_hv: 2},
 		},
 		quote: '\"Careful! Hot!\"',
-		recipe:{
-			fire_pit: 		1,
-			wall: 			1,
-			water_carrier: 	1,
-		}
 	},
 	grand_healing_potion:{
 		name: 				'grand healing potion',
@@ -1092,7 +1065,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, cursed_stuns: 2},
 		hero_version: 			{
-			theme: 				['subtype_witch','curse_ability','stun_ability'],
+			theme: 				['stun_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1211,7 +1184,7 @@ var all_available_cards = {
 		health: 			8,
 		abilities: 			{curse_all: 1, strike: 1, call_witch: 2},
 		hero_version: 			{
-			theme: 				['subtype_witch','curse_ability'],
+			theme: 				['subtype_witch'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -1236,7 +1209,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{charge: 1, strike: 1},
 		hero_version: 			{
-			theme: 				['melee_ability','movement_ability'],
+			theme: 				['subtype_animal','movement_ability'],
 			not_theme: 			[],
 			power: 				2,
 			armor: 				0,
@@ -1244,10 +1217,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, ally_charges: 1},
 		},
 		quote: '\"A mighty beast of the plains.\"',
-		recipe:{
-			blossom: 	2,
-			sheep: 		2,
-		}
 	},
 	house:{
 		name: 				'house',
@@ -1265,7 +1234,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{heal: 1, cleanse: 1, fortify_ally: 1},
 		hero_version: 			{
-			theme: 				['subtype_villager','type_creature'],
+			theme: 				['type_creature','active_healing_ability'],
 			not_theme: 			['empower_hero_ability','type_structure','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -1273,10 +1242,6 @@ var all_available_cards = {
 			abilities: 			{heal: 1, cleanse: 1, fortify_ally: 1},
 		},
 		quote: '\"A nice place to rest.\"',
-		recipe:{
-			furnace: 	2,
-			well: 		2,
-		}
 	},
 	ignite:{
 		name: 				'ignite',
@@ -1300,7 +1265,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['potion','plant'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['heal_hero_ability'],
 		needs_theme: 		[],
 		not_theme: 			[],
 		craft_theme: 		[],
@@ -1332,10 +1297,6 @@ var all_available_cards = {
 		abilities: 			{hasten_all: 1, echo: 1},
 		quote: '\"A sprinkle of magic.\"',
 		max_in_deck: 		1,
-		recipe:{
-			seeds:  	1,
-			stone: 		1,
-		}
 	},
 	mana_beetle:{
 		name: 				'mana beetle',
@@ -1353,7 +1314,7 @@ var all_available_cards = {
 		health: 			3,
 		abilities: 			{strike: 1, spellrush: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','echo_ability'],
+			theme: 				['summon_ally_ability','subtype_animal','echo_ability','type_spell'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1366,7 +1327,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
-		theme: 				['type_spell'],
+		theme: 				['type_spell','echo_ability'],
 		needs_theme: 		['type_spell'],
 		not_theme: 			[],
 		craft_theme: 		[],
@@ -1394,7 +1355,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{cleansing_spells: 1, spellrush: 1},
 		hero_version: 			{
-			theme: 				['type_creature','summon_ally_ability','echo_ability'],
+			theme: 				['summon_ally_ability','echo_ability','type_spell'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -1407,7 +1368,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['potion'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['draw_cards_ability'],
 		needs_theme: 		[],
 		not_theme: 			[],
 		craft_theme: 		[],
@@ -1438,7 +1399,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{grow_plant: 3},
 		hero_version: 			{
-			theme: 				['type_creature','stun_ability'],
+			theme: 				['type_creature','subtype_plant'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -1462,7 +1423,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{run_away: 1, strike: 1, draw_on_play: 1},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_human'],
+			theme: 				['draw_cards_ability','hasten_ability','summon_ally_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -1486,17 +1447,13 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, demolish: 1},
 		hero_version: 			{
-			theme: 				['repair_ability','type_structure','type_structure','type_structure'],
+			theme: 				['subtype_human','type_structure','demolish_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, demolish: 1},
 		},
 		quote: '\"Do not let them get near the wall.\"',
-		recipe:{
-			ore: 		1,
-			peasant: 	1,
-		}
 	},
 	orange_ooze:{
 		name: 				'orange ooze',
@@ -1514,7 +1471,7 @@ var all_available_cards = {
 		health: 			12,
 		abilities: 			{strike: 1, cursed_touch: 1, ignites: 1, stunning_touch: 5, spread_slime: 1},
 		hero_version: 			{
-			theme: 				['subtype_slime','stun_ability','burn_ability', 'curse_ability'],
+			theme: 				['subtype_slime','stun_ability','burn_ability','curse_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1538,7 +1495,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_human'],
+			theme: 				['subtype_human'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -1614,10 +1571,6 @@ var all_available_cards = {
 		abilities: 			{quicken_poison: 2, echo: 1},
 		quote: '\"Are you feeling okay?\"',
 		max_in_deck: 		2,
-		recipe:{
-			grasping_vines: 2,
-			poison_gas: 	2,
-		}
 	},
 	poison_gas:{
 		name: 				'poison gas',
@@ -1652,7 +1605,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{curse: 1, strike: 1, poison: 1},
 		hero_version: 			{
-			theme: 				['subtype_witch','curse_ability','poison_ability'],
+			theme: 				['curse_ability','poison_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1673,7 +1626,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{fortify_ally: 2, echo: 1},
+		abilities: 			{fortify_all: 1, echo: 1},
 		quote: '\"It will keep you safe.\"',
 		max_in_deck: 		1,
 	},
@@ -1696,6 +1649,7 @@ var all_available_cards = {
 		effects:{
 			mana: 	1,
 		},
+		max_in_deck: 		1,
 		quote: '\"Made with the water from a crystal spring.\"',
 	},
 	purple_ooze:{
@@ -1763,7 +1717,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{strike: 1, enrage: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','type_creature','empower_ally_ability'],
+			theme: 				['subtype_animal','empower_ally_ability'],
 			not_theme: 			[],
 			power: 				2,
 			armor: 				0,
@@ -1795,11 +1749,6 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, call_rat: 1, evade: 4},
 		},
 		quote: '\"Dangerous in large numbers.\"',
-		recipe:{
-			miner: 			1,
-			slimeling: 		1,
-			toad: 			1,
-		}
 	},
 	rat_catcher:{
 		name: 				'rat catcher',
@@ -1900,18 +1849,13 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{empowering_structures: 1, strike: 1, demolish: 1},
 		hero_version: 			{
-			theme: 				['type_structure'],
+			theme: 				['demolish_ability','type_structure','type_creature'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{empowering_structures: 1, strike_unit: 1, demolish: 1},
 		},
 		quote: '\"It feels at home underground.\"',
-		recipe:{
-			miner: 			1,
-			runner: 		1,
-			spike_trap: 	1,
-		}
 	},
 	rock_seer:{
 		name: 				'rock seer',
@@ -1930,7 +1874,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, fated_stuns: 2},
 		hero_version: 			{
-			theme: 				['stun_ability','resurrect_ability','own_death_proc_ability'],
+			theme: 				['stun_ability','resurrect_ability','own_death_proc_ability','ally_creature_death_proc_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1954,7 +1898,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, evade: 3},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_rogue'],
+			theme: 				['subtype_rogue'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -1977,7 +1921,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{run_away: 1, strike: 1, evade: 3},
 		hero_version: 			{
-			theme: 				['movement_ability','projectile_ability','evade_ability'],
+			theme: 				['movement_ability','projectile_ability','dealt_damage_proc_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2047,7 +1991,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{curse: 1, strike: 1, coward: 1},
 		hero_version: 			{
-			theme: 				['subtype_witch','curse_ability','evade_ability'],
+			theme: 				['curse_ability','evade_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2134,7 +2078,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, draw_on_play: 1},
 		hero_version: 			{
-			theme: 				['subtype_villager'],
+			theme: 				['draw_cards_ability','hasten_ability','summon_ally_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2158,7 +2102,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, fate: 2},
 		hero_version: 			{
-			theme: 				['subtype_cleric','resurrect_ability','own_death_proc_ability'],
+			theme: 				['resurrect_ability','own_death_proc_ability','ally_creature_death_proc_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2181,7 +2125,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, restore: 1},
 		hero_version: 			{
-			theme: 				['fortify_ability','subtype_animal','cleanse_ally_ability','empower_ally_ability','heal_hero_ability'],
+			theme: 				['fortify_ability','cleanse_ally_ability','empower_ally_ability','active_healing_ability','buff_hero_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -2205,11 +2149,6 @@ var all_available_cards = {
 		abilities: 			{fortify_hero: 1},
 		quote: '\"A good way to protect your hero.\"',
 		max_in_deck: 		2,
-		recipe:{
-			dagger: 		1,
-			miner: 			1,
-			wall: 			1,
-		}
 	},
 	shieldman:{
 		name: 				'shieldman',
@@ -2227,17 +2166,13 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, fortify_self: 1},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_warrior'],
+			theme: 				['subtype_warrior','fortify_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, fortify_self: 1},
 		},
 		quote: '\"They can survive a lot.\"',
-		recipe:{
-			armaments: 			2,
-			village_defender:  	2,
-		}
 	},
 	skeleton:{
 		name: 				'skeleton',
@@ -2255,7 +2190,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{strike: 1, resurrect: 8, undead: 1},
 		hero_version: 			{
-			theme: 				['subtype_undead'],
+			theme: 				['resurrect_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -2337,7 +2272,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{trap: 10, spread_slime: 3},
 		hero_version: 			{
-			theme: 				['poison_ability','stun_ability','heal_hero_ability'],
+			theme: 				['subtype_slime','stun_ability','heal_hero_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -2361,7 +2296,7 @@ var all_available_cards = {
 		health: 			3,
 		abilities: 			{strike: 1, stunning_touch: 5},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_slime','stun_ability'],
+			theme: 				['subtype_slime','stun_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2385,7 +2320,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{strike: 1, stunning_touch: 5, resurrect: 8, undead: 1},
 		hero_version: 			{
-			theme: 				['subtype_undead','subtype_slime','stun_ability'],
+			theme: 				['resurrect_ability','subtype_slime','stun_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2409,11 +2344,6 @@ var all_available_cards = {
 		abilities: 			{empower_hero: 1},
 		quote: '\"A weapon suited for a hero.\"',
 		max_in_deck: 		2,
-		recipe:{
-			dagger:  		1,
-			spike_trap: 	1,
-			water_carrier: 	1,
-		}
 	},
 	swordsman:{
 		name: 				'swordsman',
@@ -2431,7 +2361,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_warrior'],
+			theme: 				['subtype_warrior'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -2455,8 +2385,8 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{run_away: 1, strike: 1, plunder: 1, coward: 1},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_rogue','dealt_damage_proc_ability'],
-			power: 				2,
+			theme: 				['subtype_rogue','buff_hero_ability'],
+			power: 				1,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, break: 1, evade: 3},
@@ -2480,7 +2410,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_rogue'],
+			theme: 				['subtype_rogue'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -2528,7 +2458,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, ignites: 1},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_villager','burn_ability'],
+			theme: 				['burn_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2552,18 +2482,13 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, trap: 5},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_rogue'],
+			theme: 				['movement_ability','stun_ability','buff_hero_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, trap: 5},
 		},
 		quote: '\"Ha ha! I got you!\"',
-		recipe:{
-			runner: 			1,
-			slimeling: 			1,
-			water_carrier: 		1,
-		}
 	},
 	twine:{
 		name: 				'twine',
@@ -2582,10 +2507,6 @@ var all_available_cards = {
 		abilities: 			{trapping_hero: 2},
 		quote: '\"You can really get caught in that.\"',
 		max_in_deck: 		2,
-		recipe:{
-			ore: 		1,
-			seeds: 		1,
-		}
 	},
 	venom_witch:{
 		name: 				'venom witch',
@@ -2603,7 +2524,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, venom: 2, cursed_touch: 2},
 		hero_version: 			{
-			theme: 				['subtype_witch','curse_ability','poison_ability'],
+			theme: 				['curse_ability','poison_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2628,17 +2549,13 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{empowering_structures: 1, strike: 1},
 		hero_version: 			{
-			theme: 				['type_structure','subtype_villager'],
+			theme: 				['type_structure'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{empowering_structures: 1, strike_unit: 1},
 		},
 		quote: '\"They will defend their village.\"',
-		recipe:{
-			rock_biter: 	2,
-			trapper: 		2,
-		}
 	},
 	wall:{
 		name: 				'wall',
@@ -2655,7 +2572,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{fortify_ally: 1},
 		hero_version: 			{
-			theme: 				['melee_ability','subtype_human'],
+			theme: 				['subtype_warrior'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -2663,10 +2580,6 @@ var all_available_cards = {
 			abilities: 			{fortify_ally: 3},
 		},
 		quote: '\"Basic defense.\"',
-		recipe:{
-			ore: 		1,
-			stone: 		1,
-		}
 	},
 	water_carrier:{
 		name: 				'water carrier',
@@ -2684,7 +2597,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, cleanse: 2},
 		hero_version: 			{
-			theme: 				['subtype_villager'],
+			theme: 				['subtype_human','cleanse_ally_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2732,7 +2645,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{curse: 2, strike: 1},
 		hero_version: 			{
-			theme: 				['subtype_witch','curse_ability'],
+			theme: 				['curse_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2772,7 +2685,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{call_witch: 1, cursed_aura: 1},
 		hero_version: 			{
-			theme: 				['subtype_witch'],
+			theme: 				['heal_hero_ability','subtype_witch','movement_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -2797,7 +2710,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, enrage: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','type_creature','empower_ally_ability'],
+			theme: 				['subtype_animal','empower_ally_ability','movement_ability','heal_hero_ability'],
 			not_theme: 			[],
 			power: 				2,
 			armor: 				0,
