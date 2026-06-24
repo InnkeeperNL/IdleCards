@@ -2014,7 +2014,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{fear: 5, minimum_enemies: 3},
+		abilities: 			{fear: 5, slow_all: 1, minimum_enemies: 3},
 		quote: '\"Did you hear that? Let\'s get out of here!\"',
 	},
 	scorpion:{

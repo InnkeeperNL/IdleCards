@@ -8199,6 +8199,10 @@ function draw_card(side, specific_card_id, card_type, damage_on_fail, show_drawn
 		{
 			check_ability_procs(side, 'card_drawn', chosen_card_id, []);
 		}
+		if(chosen_card_id != false && show_drawn == false)
+		{
+			check_ability_procs(side, 'card_moved_to_hand', chosen_card_id, []);
+		}
 	}
 	if(deck_card_count == 0 && combat_alive == true && damage_on_fail != undefined)
 	{

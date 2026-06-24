@@ -14,6 +14,7 @@ var ability_base_costs = {
 	healing: 	4,
 	poison: 	1.5,
 	resurrect: 	0.4,
+	slow: 		1,
 	stealth: 	2,
 	strike: 	2,
 	stun: 		4,
@@ -12022,8 +12023,11 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	4,
-		level_cost_spell: 1,
+		base_cost:{
+			base_cost_id: 		'slow',
+			base_cost_factor: 	1,
+			base_cost_spell_factor: 0.25,
+		},
 	},
 	slow_all:{
 		description: 	'Increases the time left of all enemy cards by {LEVEL}.',
@@ -12050,8 +12054,11 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	20,
-		level_cost_spell: 5,
+		base_cost:{
+			base_cost_id: 		'slow',
+			base_cost_factor: 	5,
+			base_cost_spell_factor: 1.25,
+		},
 	},
 	slow_enemy_draws:{
 		description: 	'When the enemy draws a card, this increases the time left of that card by {LEVEL}.',
