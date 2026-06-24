@@ -619,7 +619,7 @@ function construct_random_deck(size, hero, randomized){
 			};
 		}
 	}*/
-	if(false && artifact_count == 0)
+	if(artifact_count == 0)
 	{
 		var chosen_artifact = get_random_card('artifact', undefined, undefined, undefined, undefined, deck_theme, undefined, undefined, not_theme);
 		if(all_available_cards[chosen_artifact] != undefined)
