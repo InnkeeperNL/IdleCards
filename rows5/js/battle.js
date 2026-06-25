@@ -1094,7 +1094,7 @@ function test_based_on_time(amount, type, max_time, color_restriction, second_co
 	console.log('highest: ' + highest);
 }
 
-function get_random_card_based_on_value(min_value, color, type, all_pick_chance, not_these, max_value){
+function get_random_card_based_on_value(min_value, color, type, all_pick_chance, not_these, max_value, rare_chance){
 	var total_card_count = 0;
 	var picked_card = false;
 	if(min_value == undefined)
@@ -1117,20 +1117,21 @@ function get_random_card_based_on_value(min_value, color, type, all_pick_chance,
 		if((not_these == undefined || match_array_values(not_these, card_id) == false) && (card_info['recipe'] != undefined || type == 'fragment' || true) && (card_info['pick_chance'] > 0 || card_info['basic_reward'] != undefined || all_pick_chance != undefined) && ((type == undefined && card_info['type'] != 'cardback' && card_info['type'] != 'consumable' && card_info['type'] != 'currency' && card_info['type'] != 'item' && card_info['type'] != 'treasure') || match_array_values(card_info['type'], type) == true ) && card_info['value'] != undefined && card_info['value'] >= min_value && (max_value == undefined || card_info['value'] <= max_value) && (color == undefined || card_info['color'][0] == color) && (card_info['months_available'] == undefined || match_array_values([month],card_info['months_available']) == true))
 		{
 			//if(card_info['pick_chance'] != undefined){pick_chance = card_info['pick_chance'];}
-			var pick_chance = get_pick_chance_on_value(card_info['value'], min_value);
+			var pick_chance = get_pick_chance_on_value(card_info['value'], min_value, rare_chance);
 			//for(i=1;i<min_value;i++){pick_chance=pick_chance/(1+pick_chance);}
 			//console.log(card_id + ' = ' + Math.floor(pick_chance / pure_card_chance * 100) + ' ~ ' + pick_chance);
 			total_card_count += pick_chance;
 		}	
 		
 	});
+	//console.log(total_card_count);
 	var picked_card_number = (Math.random() * total_card_count);
 	eachoa(all_available_cards, function(card_id, card_info){
 
 		if((not_these == undefined || match_array_values(not_these, card_id) == false) && (card_info['recipe'] != undefined || type == 'fragment' || true) && (card_info['pick_chance'] > 0 || card_info['basic_reward'] != undefined || all_pick_chance != undefined) && ((type == undefined && card_info['type'] != 'cardback' && card_info['type'] != 'consumable' && card_info['type'] != 'currency' && card_info['type'] != 'item' && card_info['type'] != 'treasure') || match_array_values(card_info['type'], type) == true ) && card_info['value'] != undefined && card_info['value'] >= min_value && (max_value == undefined || card_info['value'] <= max_value) && (color == undefined || card_info['color'][0] == color) && (card_info['months_available'] == undefined || match_array_values([month],card_info['months_available']) == true))
 		{
 			//if(card_info['pick_chance'] != undefined){pick_chance = card_info['pick_chance'];}
-			var pick_chance = get_pick_chance_on_value(card_info['value'], min_value);
+			var pick_chance = get_pick_chance_on_value(card_info['value'], min_value, rare_chance);
 			//for(i=1;i<min_value;i++){pick_chance=pick_chance/(1+pick_chance);}
 			picked_card_number -= pick_chance;
 			if(picked_card_number <= 0 && picked_card == false)
@@ -1142,14 +1143,17 @@ function get_random_card_based_on_value(min_value, color, type, all_pick_chance,
 	return picked_card;
 }
 
-function get_pick_chance_on_value(value, min_value){
+function get_pick_chance_on_value(value, min_value, rare_chance){
 	var pick_chance = 1;
-	var base_number = 100000;
+	var base_number = 1;
+	if(rare_chance == undefined){rare_chance = 1;}
+	rare_chance *= get_upgrade_factor('inventory_rare_chance', 'any', true);
 	if(min_value == undefined || min_value < 1){min_value = 1;}
 	if(value != undefined)
 	{
 		if(value < 1){value = 1;}
-		pick_chance = base_number / (value * (1 + value / 10));
+		//pick_chance = base_number / (value * (1 + value / 10));
+		pick_chance = base_number / (1 * (1 + (value / rare_chance)));
 	}
 	
 	//pick_chance = (base_number * pick_chance / 10) + sqr(min_value);
