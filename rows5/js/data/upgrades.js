@@ -4,7 +4,7 @@ var all_upgrades = {
 	aaa_rewards:{
 		name: 			'Rewards',
 		description: 	'Increases the rewards of newly summoned enemies by 5% each level.',
-		card_image: 	'chest',
+		card_image: 	'shard',
 		type: 			'summon_reward',
 		subtypes:  		['any'],
 		amount: 		0.05,
@@ -19,12 +19,13 @@ var all_upgrades = {
 		subtypes:  		['any'],
 		level_cost_scale: 	10,
 		amount: 		1,
+		level_cost_scale: 	1.1,
 		amount_fixed: 	true,
 		cost: 			{scraps:2,},
 	},
 	aac_summon_drop_chance:{
 		name: 			'Drop chance',
-		description: 	'Increases the drop chance by 10% per level.',
+		description: 	'Increases the drop chance of heroes and loot by 10% per level.',
 		needed_upgrades:{
 			aab_summon_rarity: 	2,
 		},
@@ -40,7 +41,7 @@ var all_upgrades = {
 		name: 			'Aimed drops',
 		description: 	'Increases the chance a used spell or artifact will drop by 10% per level.',
 		needed_upgrades:{
-			aac_summon_drop_chance: 	10,
+			aac_summon_drop_chance: 	5,
 		},
 		card_image: 	'loupe',
 		type: 			'used_non_unit_drop_chance',
@@ -49,6 +50,53 @@ var all_upgrades = {
 		level_cost_scale: 	0.5,
 		cost: 			{scraps:25,},
 		max_level: 		10,
+	},
+	aae_stash_drops:{
+		name: 			'Stash drops',
+		description: 	'Increases the chance stashes will drop as loot from battles by 100%.',
+		needed_upgrades:{
+			aac_summon_drop_chance: 10,
+		},
+		card_image: 	'stash',
+		type: 			'loot_drop_chance',
+		subtypes:  		['stash'],
+		amount: 		1,
+		level_cost_scale: 	1.5,
+		cost: 			{scraps: 25},
+		max_level: 		10,
+		//hide_if_maxed: 	true,
+	},
+	aaf_chest_drops:{
+		name: 			'Chest drops',
+		description: 	'Increases the chance chests will drop as loot from battles by 100%.',
+		needed_upgrades:{
+			aae_stash_drops: 1,
+			aac_summon_drop_chance: 10,
+		},
+		card_image: 	'chest',
+		type: 			'loot_drop_chance',
+		subtypes:  		['chest'],
+		amount: 		1,
+		level_cost_scale: 	1.5,
+		cost: 			{scraps: 50},
+		max_level: 		10,
+		//hide_if_maxed: 	true,
+	},
+	aag_trove_drops:{
+		name: 			'Trove drops',
+		description: 	'Increases the chance troves will drop as loot from battles by 100%.',
+		needed_upgrades:{
+			aaf_chest_drops: 1,
+			aac_summon_drop_chance: 15,
+		},
+		card_image: 	'trove',
+		type: 			'loot_drop_chance',
+		subtypes:  		['trove'],
+		amount: 		1,
+		level_cost_scale: 	1.5,
+		cost: 			{scraps: 100},
+		max_level: 		10,
+		//hide_if_maxed: 	true,
 	},
 	floating_chance:{
 		name: 			'Floating chance',
@@ -154,6 +202,7 @@ var all_upgrades = {
 		name: 			'Summon tries',
 		description: 	'Increases the number of times you can try to defeat the same summoned enemy.',
 		needed_upgrades:{
+			quest_amount: 	1,
 			aaa_rewards: 	5,
 		},
 		card_image: 	'meadow',
@@ -330,7 +379,7 @@ var all_upgrades = {
 		max_level: 		1,
 		//hide_if_maxed: 	true,
 	},*/
-	z_b_bank_access:{
+	/*z_b_bank_access:{
 		name: 			'Banking',
 		description: 	'Unlocks the bank. This produces scraps and stashes.',
 		needed_upgrades:{
@@ -360,7 +409,7 @@ var all_upgrades = {
 		cost: 			{shard: 100, scraps:10000,},
 		max_level: 		1,
 		//hide_if_maxed: 	true,
-	},
+	},*/
 	/*z_d_treasury_access:{
 		name: 			'Treasury',
 		description: 	'Unlocks the treasury. This produces troves, lets you convert spyglasses into higher tier items and trades artifacts.',

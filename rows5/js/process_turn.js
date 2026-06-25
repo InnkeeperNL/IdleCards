@@ -585,7 +585,7 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 			$('.unit_id_1').addClass('side_2');
 			$('.unit_id_1').addClass('won_hero');
 		}
-		eachoa(all_available_cards[chance_card_id]['loot'], function(loot_id, loot_chance){
+		/*eachoa(all_available_cards[chance_card_id]['loot'], function(loot_id, loot_chance){
 			if(Math.random() * 100 < loot_chance)
 			{
 				all_current_rewards[get_highest_key_in_object(all_current_rewards) + 1] = {
@@ -596,7 +596,7 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 				if(show_drops != undefined && show_drops == true){show_drop(loot_id, 1);}
 				basic_to_pick -= Math.ceil(all_available_cards[loot_id]['value'] / 2);
 			}
-		});
+		});*/
 	}
 
 	if(/*hero_dropped == false && */chance_card_id != undefined && all_available_cards[chance_card_id] != undefined)
