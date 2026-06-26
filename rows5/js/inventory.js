@@ -261,7 +261,7 @@ function use_current_inventory(amount_used){
 						var gained_card = get_random_card_based_on_value(all_available_cards[current_consumable]['reward']['min_value'], all_available_cards[current_consumable]['reward']['color'],all_available_cards[current_consumable]['reward']['card_type'], all_available_cards[current_consumable]['reward']['all_pick_chance'], gained_cards, all_available_cards[current_consumable]['reward']['max_value'], all_available_cards[current_consumable]['reward']['rare_chance']);
 						if(gained_card == false)
 						{
-							gained_card = get_random_card_based_on_value(all_available_cards[current_consumable]['reward']['min_value'], all_available_cards[current_consumable]['reward']['color'],all_available_cards[current_consumable]['reward']['card_type'], true, undefined, all_available_cards[current_consumable]['reward']['max_value'], all_available_cards[current_consumable]['reward']['rare_chance']);
+							gained_card = get_random_card_based_on_value(all_available_cards[current_consumable]['reward']['min_value'], all_available_cards[current_consumable]['reward']['color'],all_available_cards[current_consumable]['reward']['card_type'], true, gained_cards, all_available_cards[current_consumable]['reward']['max_value'], all_available_cards[current_consumable]['reward']['rare_chance']);
 						}
 						gained_cards[get_highest_key_in_object(gained_cards) + 1] = gained_card;
 						var amount_gained = 1;

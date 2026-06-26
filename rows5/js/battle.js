@@ -1146,7 +1146,7 @@ function get_random_card_based_on_value(min_value, color, type, all_pick_chance,
 function get_pick_chance_on_value(value, min_value, rare_chance){
 	var pick_chance = 1;
 	var base_number = 1;
-	if(rare_chance == undefined){rare_chance = 1;}
+	if(rare_chance == undefined){rare_chance = 0.1;}
 	rare_chance *= get_upgrade_factor('inventory_rare_chance', 'any', true);
 	if(min_value == undefined || min_value < 1){min_value = 1;}
 	if(value != undefined)

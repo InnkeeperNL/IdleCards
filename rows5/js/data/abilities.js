@@ -2253,7 +2253,7 @@ var all_abilities = {
 								1:{
 									projectile: 'hoof',
 									type: 		'grant_temp_power',
-									subtypes: 	['charge','empower_ally'],
+									subtypes: 	['charge','empower_any','empower_ally'],
 									amount: 	'latest_result',
 									amount_factor: 'ability_level',
 								},
@@ -7790,6 +7790,37 @@ var all_abilities = {
 			base_cost_factor: 1,
 		},
 	},
+	hastening_deaths:{
+		description: 	'Reduces the time left of the card in your hand with the highest time left by {LEVEL} when any ally creature is destroyed.',
+		proc: 			'ally_creature_death',
+		cannot_proc_while_stunned: true,
+		//do_not_pause_between: true,
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	1,
+				status: 		'hand',
+				side: 			'ally',
+				highest_time_left: true,
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'hasten',
+				projectile_target: 'deck',
+				type: 			'reduce_ready_time',
+				subtypes: 		['hasten','deck_control'],
+				amount: 		'ability_level',
+				side: 			'ally',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'hasten',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
+	},
 	hatch_chicken:{
 		description: 	'Has a 50% chance to turn into a chicken when destroyed by damage.',
 		proc: 			'own_death',
@@ -9082,6 +9113,7 @@ var all_abilities = {
 		level_cost: 	-0.05,
 		cost_factor: 	'full',
 		level_cost_cum: true,
+		hide_amount: 	false,
 	},
 	max_hand_cards:{
 		name: 		'hand cards:',
@@ -9091,6 +9123,7 @@ var all_abilities = {
 		remove_skill: 	'max_hand_cards',
 		show_amount_adjustment: 0,
 		level_cost: 	0,
+		hide_amount: 	false,
 	},
 	maximum_allies:{
 		name: 		'allies:',
@@ -9102,6 +9135,7 @@ var all_abilities = {
 		level_cost: 	0.25,
 		cost_adjustment: 	-1,
 		cost_on_top: true,
+		hide_amount: 	false,
 	},
 	maximum_enemies:{
 		name: 		'enemies:',
@@ -9113,6 +9147,7 @@ var all_abilities = {
 		level_cost: 	0.25,
 		cost_adjustment: -1,
 		cost_on_top: 	true,
+		hide_amount: 	false,
 	},
 	minimum_allies:{
 		name: 			'allies:',
@@ -9123,6 +9158,7 @@ var all_abilities = {
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
 		cost_on_top: 	true,
+		hide_amount: 	false,
 	},
 	minimum_ally_creatures:{
 		name: 			'ally creatures:',
@@ -9133,6 +9169,7 @@ var all_abilities = {
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
 		cost_on_top: 	true,
+		hide_amount: 	false,
 	},
 	minimum_dead_ally_creatures:{
 		name: 			'dead ally creatures:',
@@ -9143,6 +9180,7 @@ var all_abilities = {
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
 		cost_on_top: 	true,
+		hide_amount: 	false,
 	},
 	minimum_enemies:{
 		name: 			'enemies:',
@@ -9154,6 +9192,7 @@ var all_abilities = {
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
 		cost_on_top: 	true,
+		hide_amount: 	false,
 	},
 	minimum_enemy_creatures:{
 		name: 			'enemy creatures:',
@@ -9165,6 +9204,7 @@ var all_abilities = {
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
 		cost_on_top: 	true,
+		hide_amount: 	false,
 	},
 	min_hand_cards:{
 		name: 			'hand cards:',
@@ -9175,6 +9215,7 @@ var all_abilities = {
 		remove_skill: 	'min_hand_cards',
 		show_amount_adjustment: 0,
 		level_cost: 	0,
+		hide_amount: 	false,
 	},
 	morph_ally:{
 		description: 	'Turns the ally creature with the lowest cost into a random creature with an equal or higher cost. Can be used once.',
@@ -10807,6 +10848,37 @@ var all_abilities = {
 		level_cost: 		2,
 		level_cost_hero: 	3,
 	},
+	regenerating_deaths:{
+		description: 	'Applies {LEVEL} regeneration to a random damaged ally unit or hero when any ally creature is destroyed.',
+		proc: 			'ally_creature_death',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				damaged: 		true,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'regeneration',
+				type: 			'grant_skill',
+				subtypes: 		['magical','grant_regeneration'],
+				skill_id: 		'regeneration',
+				amount: 		'ability_level'
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.5,
+		},
+		level_cost_cum: true,
+	},
 	regeneration:{
 		description: 	'If damaged, this heals itself by {LEVEL}. Reduce the amount of healing by 1 after each use.',
 		cannot_proc_while_stunned: true,
@@ -11203,9 +11275,10 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
-		level_cost_artifact: 6,
-		level_cost_spell: 	1.5,
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.5,
+		},
 	},
 	restoring_spells:{
 		description: 	'When any ally spell is cast, this heals your hero by {LEVEL}.',
@@ -12033,6 +12106,39 @@ var all_abilities = {
 		description: 	'Increases the time left of all enemy cards by {LEVEL}.',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
+		hero_tactics: 	['discard_enemy_ability','slow_enemy_ability'],
+		targets:	{
+			0:{
+				target: 			'card',
+				target_amount: 		10,
+				status: 			'hand',
+				can_target_zero: 	true,
+				side: 				'enemy',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'slow',
+				projectile_target: 	'deck',
+				type: 				'increase_ready_time',
+				subtypes: 			['slow','slow_enemy','deck_control'],
+				amount: 			'ability_level',
+				side: 				'enemy',
+			}
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'slow',
+			base_cost_factor: 	5,
+			base_cost_spell_factor: 1.25,
+		},
+	},
+	slow_all_on_act:{
+		name: 			'slow all',
+		description: 	'If this used another ability, increases the time left of all enemy cards by {LEVEL}.',
+		cannot_proc_while_stunned: true,
+		do_not_pause_between: 	true,
+		has_used_ability: true,
 		hero_tactics: 	['discard_enemy_ability','slow_enemy_ability'],
 		targets:	{
 			0:{
