@@ -143,17 +143,17 @@ var all_upgrades = {
 	},
 	game_speed:{
 		name: 			'Game speed',
-		description: 	'Increases the game speed by 5% when set to \'fast\' and by 10% when set to \'fastest\'.',
+		description: 	'Increases the game speed by 10% when set to \'fast\' and by 20% when set to \'fastest\'.',
 		needed_upgrades:{
 			aab_summon_rarity: 	5,
 		},
 		card_image: 	'messenger',
 		type: 			'max_game_speed',
 		subtypes:  		['any'],
-		amount: 		0.1,
+		amount: 		0.2,
 		level_cost_scale: 	2,
 		cost: 			{scraps:5,},
-		max_level: 		20,
+		max_level: 		10,
 	},
 	summon_altar:{
 		name: 			'Altar',
