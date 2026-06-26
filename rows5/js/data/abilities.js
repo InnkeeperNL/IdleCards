@@ -11345,7 +11345,7 @@ var all_abilities = {
 		},
 	},
 	resurrect_ally:{
-		description: 	'When an ally creature unit\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 1 health.',
+		description: 	'When an ally creature\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 1 health.',
 		proc: 			'ally_creature_death',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
@@ -11362,6 +11362,16 @@ var all_abilities = {
 				side: 			'ally',
 				slot_free: 		true
 			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				not_self: 		true,
+				origin_unit: 	true,
+				max_hp: 		0,
+				min_total_hp: 	1,
+				side: 			'ally',
+			},
 		},
 		effects:{
 			0:{
@@ -11372,8 +11382,11 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_structure: 1.5,
+		base_cost:{
+			base_cost_id: 	'resurrect',
+			base_cost_factor: 2,
+			base_cost_hero_factor: 2.5,
+		},
 	},
 	resurrect_hero:{
 		description: 	'When your hero\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 1 health.',
