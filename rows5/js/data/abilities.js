@@ -4025,6 +4025,34 @@ var all_abilities = {
 		},
 		level_cost_cum: true,
 	},
+	desperate_power:{
+		description: 	'When your hero receives damage, this gains {LEVEL} power.',
+		proc: 			'ally_hero_damaged',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower_any','enrage','empower_ally'],
+				amount: 		'ability_level',
+			},
+		},
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.5,
+		},
+	},
 	desperate_wither:{
 		description: 	'When your hero receives damage, this reduces the maximum health of a random enemy unit by {LEVEL}.',
 		proc: 			'ally_hero_damaged',

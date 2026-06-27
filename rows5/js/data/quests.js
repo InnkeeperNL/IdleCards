@@ -276,7 +276,7 @@ var all_chained_achievements = {
 		card_back: 		'death_cleric',
 		steps: 			6,
 		no_quest: 		true,
-	},/*
+	},
 	close_call:{
 		name: 			'close call',
 		description: 	'Win a battle while your hero has 1 health left {AMOUNT} time(s).',
@@ -288,7 +288,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'gravestone',
+		card_back: 		'seer',
 		steps: 			5,
 		no_quest: 		true,
 	},
@@ -305,12 +305,12 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'conscription',
+		card_back: 		'skirmisher',
 		steps: 			6,
 		step_effect: 	'min_amount',
 		step_amount: 	10,
 		no_quest: 		true,
-	},*/
+	},
 	/*crafter:{
 		name: 			'crafter',
 		description: 	'Craft a card {AMOUNT} time(s).',
@@ -350,9 +350,9 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'blade_dancer',
+		card_back: 		'runner',
 		steps: 			6,
-	},
+	},*//*
 	dark_fate:{
 		name: 			'dark fate',
 		description: 	'Have allies apply {MIN_AMOUNT} doom in a single battle.',
@@ -712,7 +712,7 @@ var all_chained_achievements = {
 		step_effect: 	'min_amount',
 		no_quest: 		true,
 	},
-	/*guard:{
+	guard:{
 		name: 			'guard',
 		description: 	'Have allies guard {AMOUNT} time(s).',
 		objective: 		'ally_performed_guard_now',
@@ -723,9 +723,9 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'cadet',
+		card_back: 		'guard',
 		steps: 			6,
-	},*/
+	},
 	hasten:{
 		name: 			'hasten',
 		description: 	'Have allies hasten a card {AMOUNT} time(s).',
@@ -1147,7 +1147,7 @@ var all_chained_achievements = {
 		card_back: 		'rogue',
 		steps: 			6,
 	},
-	/*runner:{
+	runner:{
 		name: 			'runner',
 		description: 	'Have allies run away {AMOUNT} time(s).',
 		objective: 		'ally_performed_run_away',
@@ -1158,9 +1158,9 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'fawn',
+		card_back: 		'runner',
 		steps: 			6,
-	},
+	},/*
 	saboteur:{
 		name: 			'saboteur',
 		description: 	'Destroy {AMOUNT} enemy structure(s) with your hero.',
