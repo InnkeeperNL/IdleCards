@@ -418,7 +418,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'arcane_bolt',
 			base_cost_factor: 	1,
-			base_cost_hero_factor: 1.5,
 			base_cost_spell_factor: 0.25,
 		},
 		average_hits: 		'ability_level',
@@ -451,7 +450,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'arcane_bolt',
 			base_cost_factor: 	1,
-			base_cost_hero_factor: 1.5,
+			base_cost_hero_factor: 1.25,
 			base_cost_spell_factor: 0.25,
 		},
 		average_hits: 		'ability_level',
@@ -1126,6 +1125,7 @@ var all_abilities = {
 		level_cost: 	4,
 	},
 	break:{
+		name: 			'break artifact',
 		description: 	'Destroys up to a total of {LEVEL} enemy artifact(s).',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
@@ -1151,6 +1151,35 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'destroy',
 			base_cost_factor: 0.5,
+		},
+	},
+	break_hv:{
+		name: 			'break artifact',
+		description: 	'Has a {LEVEL}0% chance to destroy an enemy artifact.',
+		cannot_proc_while_stunned: true,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 	'artifact',
+				target_amount: 1,
+				position: 	'random',
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'broken',
+				type: 		'destroy',
+				subtypes: 	['break'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'destroy',
+			base_cost_factor: 0.05,
+			base_cost_hero_factor: 0.25,
 		},
 	},
 	brew_potion:{
@@ -2030,7 +2059,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'summon',
 			base_cost_factor: 	0.3,
-			base_cost_spell_factor: 0.1,
+			base_cost_spell_factor: 0.075,
 		},
 	},
 	carry_away:{
@@ -3583,8 +3612,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'curse',
-			base_cost_factor: 1,
-			base_cost_spell_factor: 0.25,
+			base_cost_factor: 0.5,
+			base_cost_spell_factor: 0.125,
 		},
 	},
 	cursed_stuns_hv:{
@@ -3615,8 +3644,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'curse',
-			base_cost_factor: 1,
-			base_cost_spell_factor: 0.25,
+			base_cost_factor: 0.5,
+			base_cost_spell_factor: 0.125,
 		},
 	},
 	cursed_touch:{
@@ -3904,7 +3933,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'destroy',
 			base_cost_factor: 0,
-			base_hit_cost_factor: 0.4,
+			base_hit_cost_factor: 0.25,
 		},
 	},
 	desperate_burn:{
@@ -3932,7 +3961,12 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 1,
+			base_cost_hero_factor: 1.5,
+		},
+		level_cost_cum: true,
 	},
 	desperate_curse:{
 		description: 	'When your hero receives damage, this applies {LEVEL} curse to a random enemy unit. {CURSE}',
@@ -3951,7 +3985,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'curse',
 				type: 			'apply_curse',
-				subtypes: 		['magical','curse','buff_hero'],
+				subtypes: 		['magical','curse'],
 				amount: 		'ability_level',
 			}
 		},
@@ -3960,6 +3994,36 @@ var all_abilities = {
 			base_cost_id: 'curse',
 			base_cost_factor: 1,
 		}
+	},
+	desperate_poison:{
+		description: 	'When your hero receives damage, this applies {LEVEL} poison to a random enemy unit. {POISON}',
+		proc: 			'ally_hero_damaged',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'apply_poison',
+				projectile: 	'poison',
+				subtypes: 		['poison'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'poison',
+			base_cost_factor: 1,
+			base_cost_hero_factor: 1.5,
+		},
+		level_cost_cum: true,
 	},
 	desperate_wither:{
 		description: 	'When your hero receives damage, this reduces the maximum health of a random enemy unit by {LEVEL}.',
@@ -4733,6 +4797,37 @@ var all_abilities = {
 		},
 		ability_level_cost_factors:{
 			homebound: 		1.5,
+		},
+	},
+	draw_cards:{
+		description: 	'Has a {LEVEL}0% chance to draw a card.',
+		cannot_proc_while_stunned: true,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		min_cards_in_deck: 	1,
+		max_hand_cards: 	9,
+		hero_tactics: 	['hasten_ability','move_ally_to_deck_ability'],
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 				'draw_card',
+				subtypes: 			['draw_cards','deck_control'],
+				amount: 			1
+			}
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'draw',
+			base_cost_factor: 0.4,
+			base_cost_hero_factor: 1,
 		},
 	},
 	draw_on_act:{
@@ -5723,37 +5818,6 @@ var all_abilities = {
 		//min_cost: 			2,
 		cost_factor: 			'health',
 		cost_factor_factor: 	0.5,
-	},
-	fate:{
-		ability_subtypes: ['resurrect','own_death_proc'],
-		description: 	'Grants an ally creature a {LEVEL}0% chance to resurrect or increases it\'s chance to resurrect by {LEVEL}0%.',
-		cannot_proc_while_stunned: true,
-		hide_amount: 	true,
-		targets:	{
-			0:{
-				target: 		'unit_or_hero',
-				target_amount: 	1,
-				position: 		'random',
-				not_types: 		['structure','object'],
-				min_hp: 		1,
-				side: 			'ally'
-			},
-		},
-		effects:{
-			0:{
-				projectile: 	'resurrect',
-				type: 			'grant_skill',
-				subtypes: 		['magical','grant_resurrect'],
-				skill_id: 		'resurrect',
-				amount: 		'ability_level',
-			}
-		},
-		animation: 			'combat_zoom',
-		base_cost:{
-			base_cost_id: 	'resurrect',
-			base_cost_factor: 2,
-			base_cost_hero_factor: 3,
-		},
 	},
 	fated_stuns:{
 		ability_subtypes: ['resurrect','own_death_proc'],
@@ -8118,8 +8182,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_hero: 	2,
+		base_cost:{
+			base_cost_id: 	'stealth',
+			base_cost_factor: 4,
+			base_cost_hero_factor: 2,
+		},
 		cost_on_top: 	true,
 	},
 	hide_hv:{
@@ -12082,6 +12149,37 @@ var all_abilities = {
 		level_cost: 	1,
 		level_cost_artifact: 0.25,
 		average_hits: 	0.25,
+	},
+	skew_fate:{
+		ability_subtypes: ['resurrect','own_death_proc'],
+		description: 	'Grants an ally creature a {LEVEL}0% chance to resurrect or increases it\'s chance to resurrect by {LEVEL}0%.',
+		cannot_proc_while_stunned: true,
+		hide_amount: 	true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure','object'],
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'resurrect',
+				type: 			'grant_skill',
+				subtypes: 		['magical','grant_resurrect'],
+				skill_id: 		'resurrect',
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 	'resurrect',
+			base_cost_factor: 2,
+			base_cost_hero_factor: 3,
+		},
 	},
 	slow:{
 		description: 	'Increases the time left of the enemy card with the lowest time left {LEVEL} time(s).',
