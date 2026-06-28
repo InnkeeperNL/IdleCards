@@ -60,7 +60,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'arcane_mage',
+		card_back: 		'arcane_bolts',
 		steps: 			6,
 	},
 	arcane_storm:{
@@ -126,7 +126,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'scroll',
+		card_back: 		'apprentice',
 		steps: 			6,
 	},
 	avoidance:{
@@ -754,7 +754,7 @@ var all_chained_achievements = {
 		card_back: 		'hungry_wolf',
 		steps: 			6,
 	},*/
-	/*healing:{
+	healing:{
 		name: 			'healing',
 		description: 	'Have allies heal themselves or allies {AMOUNT} time(s).',
 		objective: 		'ally_performed_healing',
@@ -765,9 +765,9 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'medic',
+		card_back: 		'well',
 		steps: 			6,
-	},*/
+	},
 	heavy_drinker:{
 		name: 			'heavy drinker',
 		description: 	'Use a potion {AMOUNT} time(s).',
@@ -886,7 +886,7 @@ var all_chained_achievements = {
 		steps: 			6,
 		no_quest: 		true,
 	},
-	/*mage:{
+	mage:{
 		name: 			'mage',
 		description: 	'Play or summon {AMOUNT} mage card(s).',
 		objective: 		'mage_card_played',
@@ -911,10 +911,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'levitate',
+		card_back: 		'scroll',
 		steps: 			6,
-	},*/
-	/*martyr:{
+	},
+	martyr:{
 		name: 			'martyr',
 		description: 	'Have {AMOUNT} ally creature(s) die.',
 		objective: 		'ally_creature_killed',
@@ -925,10 +925,10 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'raging_spirit',
+		card_back: 		'plague_skeleton',
 		steps: 			6,
-	},*/
-	/*mason:{
+	},
+	mason:{
 		name: 			'mason',
 		description: 	'Play or summon {AMOUNT} structure card(s) in a single battle.',
 		objective: 		'structure_card_played_times',
@@ -941,12 +941,12 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'mason',
+		card_back: 		'carpenter',
 		steps: 			6,
 		step_effect: 	'min_amount',
 		step_amount: 	10,
 		no_quest: 		true,
-	},*/
+	},
 	merchant:{
 		name: 			'merchant',
 		description: 	'Earn {AMOUNT} scrap(s).',
@@ -1488,7 +1488,7 @@ var all_chained_achievements = {
 		card_back: 		'blossom',
 		steps: 			6,
 	},
-	walled:{
+	/*walled:{
 		name: 			'walled',
 		description: 	'Play or summon {AMOUNT} wall card(s).',
 		objective: 		'wall_card_played',
@@ -1501,7 +1501,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'wall',
 		steps: 			6,
-	},
+	},*/
 	/*warder:{
 		name: 			'warder',
 		description: 	'Have allies counter a spell {AMOUNT} time(s).',
@@ -1603,7 +1603,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'zombie',
 		steps: 			6,
-	},
+	},*/
 	zoo:{
 		name: 			'zoo',
 		description: 	'Play or summon {AMOUNT} animal card(s).',
@@ -1615,9 +1615,9 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'cow',
+		card_back: 		'badger',
 		steps: 			6,
-	},*/
+	},
 }
 
 var achievement_card_backs = {};

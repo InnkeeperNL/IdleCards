@@ -563,7 +563,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['aoe'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -948,7 +948,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['weapon'],
 		color: 				['colorless'],
-		theme: 				['empower_hero_ability','damaging_hero'],
+		theme: 				['empower_hero_ability','damaging_hero','subtype_warrior'],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -1230,7 +1230,7 @@ var all_available_cards = {
 		health: 			8,
 		abilities: 			{curse_all: 1, strike: 1, call_witch: 2},
 		hero_version: 			{
-			theme: 				['subtype_witch'],
+			theme: 				['curse_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -1589,7 +1589,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1},
 		hero_version: 			{
-			theme: 				['subtype_human'],
+			theme: 				['type_creature'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -1873,7 +1873,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
-		theme: 				['subtype_rat'],
+		theme: 				['subtype_rat','type_creature'],
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/rat_flute.jpg',
@@ -2446,12 +2446,28 @@ var all_available_cards = {
 		},
 		quote: '\"I wonder what killed him to look like that.\"',
 	},
+	soul_cord:{
+		name: 				'soul cord',
+		type: 				'artifact',
+		subtypes: 			['tool'],
+		color: 				['colorless'],
+		theme: 				['subtype_undead'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/soul_cord.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{resurrect_ally: 1},
+		quote: '\"Where do you think you are going?!\"',
+	},
 	sword:{
 		name: 				'sword',
 		type: 				'artifact',
 		subtypes: 			['weapon'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['subtype_warrior'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -4434,7 +4450,7 @@ function check_no_aoe_yet(show_found){
 			{
 				incomplete_count++;
 				console.log('Needs aoe: ' + card_id);
-				/*eachoa(card_info['hero_version']['theme'], function(them_id, theme_name){
+				eachoa(card_info['hero_version']['theme'], function(them_id, theme_name){
 					if(theme_name != 'muscle' && theme_name != 'defense' && theme_name != 'aoe')
 					{
 						if(good_aoe_themes[theme_name] == undefined)
@@ -4443,13 +4459,13 @@ function check_no_aoe_yet(show_found){
 						}
 						good_aoe_themes[theme_name]++;
 					}
-				});*/
+				});
 			}
 		}
 	});
 	if(incomplete_count > 0)
 	{
-		console.log(all_aoe_themes);
+		console.log(good_aoe_themes);
 		console.log(incomplete_count);
 	}
 	else
