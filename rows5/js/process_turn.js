@@ -638,10 +638,7 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 			var current_drop_chance = (((effective_rarity * basic_to_pick) / card_drop_chance_reduction) / all_available_cards[chosen_extra_drop]['value']);
 			if(gamedata['decks'][gamedata['current_deck']][chosen_extra_drop] != undefined && gamedata['decks'][gamedata['current_deck']][chosen_extra_drop] > 0)
 			{
-				console.log(chosen_extra_drop);
-				console.log(current_drop_chance);
 				current_drop_chance *= (gamedata['decks'][gamedata['current_deck']][chosen_extra_drop] * get_upgrade_factor('used_non_unit_drop_chance', undefined, true));
-				console.log(current_drop_chance);
 			}
 			/*if(all_available_cards[chosen_extra_drop]['type'] == 'recipe' || all_available_cards[chosen_extra_drop]['type'] == 'cardback')
 			{

@@ -5875,9 +5875,10 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 	'resurrect',
-			base_cost_factor: 1,
-			base_cost_hero_factor: 1.5,
+			base_cost_factor: 0.5,
+			base_cost_hero_factor: 2,
 		},
+		level_cost_cum: true,
 	},
 	fear:{
 		description: 	'When played, returns {LEVEL} non-undead enemy creature unit(s) to their owner\'s hand. Will target the nearest enemy first.',
@@ -9013,7 +9014,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'teleport',
 				type: 			'move_to_deck',
-				subtypes: 		['move_ally_to_deck'],
+				subtypes: 		['move_ally_to_deck','echo'],
 				new_status: 	'deck',
 				side: 			'ally',
 				pause_before: 	2000,
@@ -12204,9 +12205,10 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 	'resurrect',
-			base_cost_factor: 2,
-			base_cost_hero_factor: 3,
+			base_cost_factor: 1,
+			base_cost_hero_factor: 3.5,
 		},
+		level_cost_cum: true,
 	},
 	slow:{
 		description: 	'Increases the time left of the enemy card with the lowest time left {LEVEL} time(s).',

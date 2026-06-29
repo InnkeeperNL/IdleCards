@@ -83,8 +83,8 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{arcane_bolt: 1, spell_bolt: 1},
 		hero_version: 			{
-			theme: 				['subtype_mage','subtype_arcane','type_spell','echo_ability','damaging_hero'],
-			not_theme: 			['empower_hero_ability','empower_ally_ability'],
+			theme: 				['echo_ability','damaging_hero','summon_ally_ability','any_spell_card_played_proc_ability','draw_cards_ability'],
+			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -1434,7 +1434,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{strike: 1, spellrush: 1, final_hasten: 4},
 		hero_version: 			{
-			theme: 				['summon_ally_ability','subtype_animal','echo_ability','type_spell'],
+			theme: 				['summon_ally_ability','subtype_animal','echo_ability','any_spell_card_played_proc_ability','draw_cards_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -1499,7 +1499,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{cleansing_spells: 1, spellrush: 1},
 		hero_version: 			{
-			theme: 				['summon_ally_ability','echo_ability','type_spell'],
+			theme: 				['summon_ally_ability','echo_ability','any_spell_card_played_proc_ability','draw_cards_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -2019,10 +2019,10 @@ var all_available_cards = {
 		abilities: 			{strike: 1, fated_stuns: 2},
 		hero_version: 			{
 			theme: 				['stun_ability','resurrect_ability','own_death_proc_ability','ally_creature_death_proc_ability'],
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, fated_stuns: 4},
+			abilities: 			{strike_unit: 1, fated_stuns: 3},
 		},
 		quote: '\"Keep moving, or your fate fill catch up to you.\"',
 	},
@@ -2247,7 +2247,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, skew_fate: 2},
 		hero_version: 			{
 			theme: 				['resurrect_ability','own_death_proc_ability','ally_creature_death_proc_ability'],
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, skew_fate: 2},
