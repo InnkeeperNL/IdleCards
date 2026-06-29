@@ -608,13 +608,13 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 			{
 				if(true /*drop_card_info['recipe'] != undefined && (gamedata['known_recipes'] == undefined || gamedata['known_recipes'][drop_card_id] == undefined)*/)
 				{
-					var current_card_drop_chance = 1;
-					if(gamedata['decks'][gamedata['current_deck']][drop_card_id] != undefined)
+					//var current_card_drop_chance = 1;
+					/*if(gamedata['decks'][gamedata['current_deck']][drop_card_id] != undefined)
 					{
 						current_card_drop_chance = 1 + (gamedata['decks'][gamedata['current_deck']][drop_card_id] * get_upgrade_factor('used_non_unit_drop_chance', undefined, true));
-					}
+					}*/
 					//possible_extra_drops['recipe_' + drop_card_id] = current_card_drop_chance;
-					possible_extra_drops[drop_card_id] = current_card_drop_chance;
+					possible_extra_drops[drop_card_id] = 1;
 				}
 				/*else
 				{
@@ -633,11 +633,20 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 		if(count_object(possible_extra_drops) > 0)
 		{
 			var chosen_extra_drop = get_random_key_from_object_based_on_num_value(possible_extra_drops);
+			var current_card_drop_chance = 1;
+			
 			var current_drop_chance = (((effective_rarity * basic_to_pick) / card_drop_chance_reduction) / all_available_cards[chosen_extra_drop]['value']);
-			if(all_available_cards[chosen_extra_drop]['type'] == 'recipe' || all_available_cards[chosen_extra_drop]['type'] == 'cardback')
+			if(gamedata['decks'][gamedata['current_deck']][chosen_extra_drop] != undefined && gamedata['decks'][gamedata['current_deck']][chosen_extra_drop] > 0)
+			{
+				console.log(chosen_extra_drop);
+				console.log(current_drop_chance);
+				current_drop_chance *= (gamedata['decks'][gamedata['current_deck']][chosen_extra_drop] * get_upgrade_factor('used_non_unit_drop_chance', undefined, true));
+				console.log(current_drop_chance);
+			}
+			/*if(all_available_cards[chosen_extra_drop]['type'] == 'recipe' || all_available_cards[chosen_extra_drop]['type'] == 'cardback')
 			{
 				current_drop_chance /= recipe_drop_chance_reduction;
-			}
+			}*/
 			//console.log(chosen_extra_drop + ' drop chance: ' + current_drop_chance);
 			if(Math.random() < current_drop_chance)
 			{
