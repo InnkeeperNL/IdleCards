@@ -9020,7 +9020,6 @@ var all_abilities = {
 			}
 		},
 		level_cost: 	1,
-		cost_factor: 	'full',
 	},
 	mana_bolt:{
 		description: 	'Uses up to {LEVEL} mana to deal magical projectile damage to an enemy unit for every mana used. Will target the enemy hero if there are no enemy units.',
@@ -13497,6 +13496,40 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 		24,
 		level_cost_spell: 	6,
+	},
+	summon_human:{
+		hide_amount: 	true,
+		description: 	'Has a {LEVEL}0% chance to add a random human creature card to your hand. If your hand is full, it will add it to your deck instead.',
+		proc: 			'basic',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_human','summon_creature'],
+				card_id: 	'random',
+				card_type: 	'creature',
+				card_subtype: 	'human',
+				card_status: 	'hand',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.3,
+			base_cost_spell_factor: 0.075,
+		},
 	},
 	summon_imp:{
 		description: 	'Summons up to {LEVEL} imp type unit(s).',
