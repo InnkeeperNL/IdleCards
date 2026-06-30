@@ -305,7 +305,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'skirmisher',
+		card_back: 		'conscription',
 		steps: 			6,
 		step_effect: 	'min_amount',
 		step_amount: 	10,
