@@ -140,7 +140,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'rogue',
+		card_back: 		'fire_assassin',
 		steps: 			6,
 	},
 	/*bless:{
@@ -1417,7 +1417,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'meadow',
+		card_back: 		'hideout',
 		steps: 			4,
 		no_quest: 		true,
 	},
