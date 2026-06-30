@@ -182,7 +182,7 @@ var all_achievements = {
 		name: 			'free bird',
 		description: 	'Sacrifice a birdcage.',
 		card_image: 	'birdcage',
-		objective: 		'birdcage_affected_by_sacrifice',
+		objective: 		'birdcage_affected_by_sacrifice_ally',
 		amount: 		1,
 		hide_details: 	true,
 		rewards:{
@@ -254,7 +254,7 @@ var all_achievements = {
 		name: 			'lamb chops',
 		description: 	'Sacrifice a lamb.',
 		card_image: 	'lamb',
-		objective: 		'lamb_affected_by_sacrifice',
+		objective: 		'lamb_affected_by_sacrifice_ally',
 		amount: 		1,
 		hide_details: 	true,
 		rewards:{
