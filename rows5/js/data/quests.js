@@ -16,7 +16,44 @@ var all_quests = {
 };
 
 var all_achievements = {
-
+	bunny_hop:{
+		name: 			'bunny hop',
+		description: 	'Have a bunny kill the enemy hero.',
+		card_image: 	'bunny',
+		objective: 		'enemy_hero_killed_by_named_bunny',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_bunny',
+				reward_amount: 		1
+			},
+		}
+	},
+	leet:{
+		name: 			'leet',
+		description: 	'Own exactly 1337 scraps.',
+		card_image: 	'grinning_witch',
+		objective: 		'scraps_owned',
+		min_amount: 	1337,
+		max_amount: 	1337,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'scraps',
+				reward_amount: 		1337
+			},
+			1:{
+				reward_id: 			'card_back_grinning_witch',
+				reward_amount: 		1
+			},
+		}
+	},
 }
 
 var all_chained_achievements = {

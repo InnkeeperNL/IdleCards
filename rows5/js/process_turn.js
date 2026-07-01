@@ -3700,7 +3700,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
     		{
     			if(target_unit['slot'] == 0)
     			{
-    				check_quests('enemy_hero_damaged');
+    				check_quests('enemy_hero_damaged', calculated_amount);
     			}
     			else
     			{

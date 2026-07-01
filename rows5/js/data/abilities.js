@@ -7969,6 +7969,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'healing',
 			base_cost_factor: 1,
+			base_cost_artifact_factor: 0.5,
 			base_cost_structure_factor: 0.5,
 			base_cost_spell_factor: 0.25,
 		},
@@ -8216,36 +8217,6 @@ var all_abilities = {
 			base_cost_factor: 4,
 			base_cost_hero_factor: 2,
 		},
-		cost_on_top: 	true,
-	},
-	hide_hv:{
-		name: 			'hide',
-		description: 	'Grants itself stealth every turn.',
-		cannot_proc_while_stunned: true,
-		ability_subtypes: 	['evade'],
-		hero_tactics: 	['evade_ability'],
-		targets:	{
-			0:{
-				target: 		'unit_or_hero',
-				target_amount: 	1,
-				position: 		'self',
-				max_abilities: 	{stealth: 0},
-				min_hp: 		1,
-				side: 			'ally'
-			},
-		},
-		effects:{
-			0:{
-				projectile: 'dodge',
-				type: 		'set_skill',
-				subtypes: 	['grant_stealth'],
-				skill_id: 	'stealth',
-				amount: 	1
-			}
-		},
-		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_hero: 	2,
 		cost_on_top: 	true,
 	},
 	hide_ally:{
