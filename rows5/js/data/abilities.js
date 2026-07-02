@@ -1231,6 +1231,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'summon',
 			base_cost_factor: 	0.2,
+			base_cost_artifact_factor: 0.1,
 			base_cost_spell_factor: 0.05,
 		},
 	},
@@ -8008,7 +8009,7 @@ var all_abilities = {
 	},
 	health_drink:{
 		hide_amount: 	true,
-		description: 	'If your hero has 10 health or less, this heals your hero by {LEVEL}.',
+		description: 	'If your hero has 10 health or less, this heals your hero by {LEVEL}. This consumes one drink.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
@@ -8699,7 +8700,7 @@ var all_abilities = {
 	},
 	leafy_drink:{
 		hide_amount: 	true,
-		description: 	'If your hero is damaged and not regenerating, this grants your hero {LEVEL} regeneration.<br/><i>Regeneration: If damaged, this heals itself by {LEVEL}. Reduce the amount of healing by 1 after each use.</i>',
+		description: 	'If your hero is damaged and not regenerating, this grants your hero {LEVEL} regeneration. This consumes one drink.<br/><i>Regeneration: If damaged, this heals itself by {LEVEL}. Reduce the amount of healing by 1 after each use.</i>',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		has_mana: 				true,
@@ -9097,7 +9098,7 @@ var all_abilities = {
 	},
 	mana_drink:{
 		hide_amount: 	true,
-		description: 	'If this has a drink left and you have 5 or more cards in your hand, reduces the time left of all cards in your hand by {LEVEL}.',
+		description: 	'If this has a drink left and you have 5 or more cards in your hand, reduces the time left of all cards in your hand by {LEVEL}. This consumes one drink.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
@@ -9690,7 +9691,10 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'destroy',
-			base_cost_factor: 0.4,
+			base_cost_factor: 0.2,
+		},
+		ability_level_cost_factors:{
+			run_away: 		2,
 		},
 		cost_factor: 	'none',
 	},
@@ -10038,7 +10042,7 @@ var all_abilities = {
 	},
 	pure_drink:{
 		hide_amount: 	true,
-		description: 	'If your hero has {LEVEL} or more negative effects, this cleanses all negative effects from it.',
+		description: 	'If your hero has {LEVEL} or more negative effects, this cleanses all negative effects from it. This consumes one drink.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
@@ -10915,7 +10919,7 @@ var all_abilities = {
 		level_cost_hero: 	3,
 	},
 	regenerating_deaths:{
-		description: 	'Applies {LEVEL} regeneration to a random damaged ally unit or hero when any ally creature is destroyed.',
+		description: 	'Applies {LEVEL} regeneration to a random damaged ally unit or hero when any ally creature is destroyed.<br/><i>Regeneration: If damaged, this heals itself by {LEVEL}. Reduce the amount of healing by 1 after each use.</i>',
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,

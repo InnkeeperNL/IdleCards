@@ -8153,7 +8153,7 @@ function draw_card(side, specific_card_id, card_type, damage_on_fail, show_drawn
 	var deck_card_count = count_deck_cards(deck, card_type);
 	var chosen_card_number = Math.ceil(Math.random() * deck_card_count);
 	var drew_card = false;
-	var first_free_hand_slot = get_first_free_hand_slot(deck);
+	var first_free_hand_slot = get_first_free_hand_slot(side);
 	var chosen_card_time = 0;
 	var chosen_card_id = false;
 
@@ -8169,7 +8169,7 @@ function draw_card(side, specific_card_id, card_type, damage_on_fail, show_drawn
 				if(((chosen_card_number == 0 && specific_card_id == undefined) || (specific_card_id != undefined && deck_card_id == specific_card_id)) && drew_card == false)
 				{
 					chosen_card_id = deck_card_id;
-					if(all_available_cards[deck_card['card_id']]['abilities']['righthand'] != undefined){first_free_hand_slot = get_last_free_hand_slot(deck);}
+					if(all_available_cards[deck_card['card_id']]['abilities']['righthand'] != undefined){first_free_hand_slot = get_last_free_hand_slot(side);}
 					deck_card['status'] = 'hand';
 					deck_card['hand_slot'] = first_free_hand_slot;
 					deck_card['time_left'] = all_available_cards[deck_card['card_id']]['time'];
@@ -8324,8 +8324,9 @@ function show_unit_details(side, slot){
 	}
 }
 
-function get_first_free_hand_slot(deck){
+function get_first_free_hand_slot(side){
 	var found_free_slot = false;
+	var deck = battle_info['deck_' + side];
 	for(var t=1;t<11;t++){
 		var this_slot_free = true;
 		if(found_free_slot == false){
@@ -8348,8 +8349,9 @@ function get_first_free_hand_slot(deck){
 	return found_free_slot;
 }
 
-function get_last_free_hand_slot(deck){
+function get_last_free_hand_slot(side){
 	var found_free_slot = false;
+	var deck = battle_info['deck_' + side];
 	for(var t=10;t>0;t--){
 		var this_slot_free = true;
 		if(found_free_slot == false){
