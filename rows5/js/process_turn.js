@@ -1559,7 +1559,7 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 							{
 								if(count_object(all_targets) == 0 && current_ability['on_no_targets'] != undefined)
 								{
-									process_ability(unit_id, current_ability['on_no_targets'], level, origin_id, any_effect_fired);
+									any_effect_fired = process_ability(unit_id, current_ability['on_no_targets'], level, origin_id, any_effect_fired);
 								}
 							}
 						};

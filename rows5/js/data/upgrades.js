@@ -70,7 +70,7 @@ var all_upgrades = {
 		description: 	'Increases the chance chests will drop as loot from battles by 100%.',
 		needed_upgrades:{
 			aae_stash_drops: 1,
-			aac_summon_drop_chance: 10,
+			aac_summon_drop_chance: 15,
 		},
 		card_image: 	'chest',
 		type: 			'loot_drop_chance',
@@ -86,7 +86,7 @@ var all_upgrades = {
 		description: 	'Increases the chance troves will drop as loot from battles by 100%.',
 		needed_upgrades:{
 			aaf_chest_drops: 1,
-			aac_summon_drop_chance: 15,
+			aac_summon_drop_chance: 20,
 		},
 		card_image: 	'trove',
 		type: 			'loot_drop_chance',
