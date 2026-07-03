@@ -18,7 +18,7 @@ var all_upgrades = {
 		type: 			'summon_max_rarity',
 		subtypes:  		['any'],
 		amount: 		1,
-		level_cost_scale: 	2,
+		level_cost_scale: 	3,
 		amount_fixed: 	true,
 		cost: 			{scraps:2,},
 	},
@@ -245,7 +245,22 @@ var all_upgrades = {
 		cost: 			{scraps:10,},
 		max_level: 		10,
 	},*/
-	merchant_count:{
+	merchant_sales:{
+		name: 			'Merchant sales',
+		description: 	'Increases the maximum scraps offered by merchants who want to buy cards by 25%.<br>Only affects new offers.',
+		needed_upgrades:{
+			z_a_town_access: 1,
+			aab_summon_rarity: 	10,
+		},
+		card_image: 	'thief',
+		type: 			'merchant_buy',
+		subtypes:  		['any'],
+		amount: 		0.25,
+		level_cost_scale: 	1,
+		cost: 			{scraps:10,},
+		max_level: 		10,
+	},
+	merchant_sales_count:{
 		name: 			'Merchant count',
 		description: 	'Increases the number of merchants in town.',
 		needed_upgrades:{
@@ -260,19 +275,32 @@ var all_upgrades = {
 		cost: 			{scraps:100,},
 		max_level: 		4,
 	},
-	merchant_sales:{
-		name: 			'Merchant sales',
-		description: 	'Increases the maximum scraps offered by merchants who want to buy cards by 25%.<br>Only affects new offers.',
+	merchant_sales_decline:{
+		name: 			'Decline merchants',
+		description: 	'Allows you to decline merchants. A new merchant will arrive in 10 minutes.',
 		needed_upgrades:{
-			z_a_town_access: 1,
-			aab_summon_rarity: 	10,
+			merchant_sales_count: 1,
 		},
-		card_image: 	'thief',
-		type: 			'merchant_buy',
+		card_image: 	'runner',
+		type: 			'decline_merchants',
 		subtypes:  		['any'],
 		amount: 		0.25,
 		level_cost_scale: 	1,
-		cost: 			{scraps:10,},
+		cost: 			{scraps:500,},
+		max_level: 		1,
+	},
+	merchant_sales_decline_speed:{
+		name: 			'Merchant cooldown',
+		description: 	'Reduces the time it takes for a new merchant to arrive after selling or declining.',
+		needed_upgrades:{
+			merchant_sales_decline: 1,
+		},
+		card_image: 	'skirmisher',
+		type: 			'offer_decline_time',
+		subtypes:  		['any'],
+		amount: 		0.25,
+		level_cost_scale: 	1,
+		cost: 			{scraps:100,},
 		max_level: 		10,
 	},
 	peasants_gained:{

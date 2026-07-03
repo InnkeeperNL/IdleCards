@@ -862,37 +862,48 @@ function show_single_building(){
 				var temp_offer_amount = '';
 				if(offer_info['card_amount'] > 1){temp_offer_amount = '' + offer_info['card_amount'] + 'x ';}
 				var parsed_expedition = '';
-				parsed_expedition += '<div class="single_expedition single_offer"><span class="single_new_expedition_name">' + capitalizeFirstLetter(all_available_cards[offer_info['card_id']]['name']) + '</span><br/><span class="single_new_expedition_description">' + capitalizeFirstLetter(offer_info['buysell']) + 'ing: ' + temp_offer_amount + '' + capitalizeFirstLetter(all_available_cards[offer_info['card_id']]['name']) + '. <br/></span>';
-				
-				if(offer_info['buysell'] == 'buy'){parsed_expedition+='Offer: ' + nFormatter(offer_info['offer_price'],3) + ' scraps.';}
-				if(offer_info['buysell'] == 'sell'){parsed_expedition+='Price: ' + nFormatter(offer_info['offer_price'],3) + ' scraps.';}
-				var offer_percent = (offer_info['offer_price'] / (all_available_cards[offer_info['card_id']]['value'] * offer_info['card_amount'])) * 100;
-				parsed_expedition+='<br/>(' + nFormatter(offer_percent,0) + '%)';
-				var owned_amount = 0;
+				if(offer_info['declined'] == undefined)
+				{
+					parsed_expedition += '<div class="single_expedition single_offer"><span class="single_new_expedition_name">' + capitalizeFirstLetter(all_available_cards[offer_info['card_id']]['name']) + '</span><br/><span class="single_new_expedition_description">' + capitalizeFirstLetter(offer_info['buysell']) + 'ing: ' + temp_offer_amount + '' + capitalizeFirstLetter(all_available_cards[offer_info['card_id']]['name']) + '. <br/></span>';
+					
+					if(offer_info['buysell'] == 'buy'){parsed_expedition+='Offer: ' + nFormatter(offer_info['offer_price'],3) + ' scraps.';}
+					if(offer_info['buysell'] == 'sell'){parsed_expedition+='Price: ' + nFormatter(offer_info['offer_price'],3) + ' scraps.';}
+					var offer_percent = (offer_info['offer_price'] / (all_available_cards[offer_info['card_id']]['value'] * offer_info['card_amount'])) * 100;
+					parsed_expedition+='<br/>(' + nFormatter(offer_percent,0) + '%)';
+					var owned_amount = 0;
 
-				if(gamedata['owned_cards'][offer_info['card_id']] != undefined)
-				{
-					owned_amount = gamedata['owned_cards'][offer_info['card_id']];
-				}
-				if(offer_info['sold'] == undefined)
-				{
-					parsed_expedition += 	'<div class="offer_image" onclick="show_card_details(\'' + offer_info['card_id'] + '\')">' + parse_card(offer_info['card_id'], /*owned_amount + ' / ' +*/ temp_offer_amount) + '</div>';
-					/*if(offer_info['buysell'] == 'buy' && gamedata['known_recipes'] != undefined && gamedata['known_recipes'][offer_info['card_id']] != undefined)
+					if(gamedata['owned_cards'][offer_info['card_id']] != undefined)
 					{
-						parsed_expedition += 	'<div class="craft_offer_button" onclick="show_content(\'craft\');show_card_recipe(\'' + offer_info['card_id'] + '\')">CRAFT</div>';
-					}*/
-					if(owned_amount >= offer_info['card_amount'] && offer_info['buysell'] == 'buy' && offer_info['sold'] == undefined)
-					{
-						parsed_expedition += 	'<div class="complete_expedition_button complete_offer_button buysell_sell" onclick="complete_offer(' + offer_key + ')">SELL</div>';
+						owned_amount = gamedata['owned_cards'][offer_info['card_id']];
 					}
-					if(gamedata['scraps'] >= offer_info['offer_price'] && offer_info['buysell'] == 'sell' && offer_info['sold'] == undefined)
+					if(offer_info['sold'] == undefined)
 					{
-						parsed_expedition += 	'<div class="complete_expedition_button complete_offer_button" onclick="complete_offer(' + offer_key + ')">BUY</div>';
+						parsed_expedition += 	'<div class="offer_image" onclick="show_card_details(\'' + offer_info['card_id'] + '\')">' + parse_card(offer_info['card_id'], /*owned_amount + ' / ' +*/ temp_offer_amount) + '</div>';
+						/*if(offer_info['buysell'] == 'buy' && gamedata['known_recipes'] != undefined && gamedata['known_recipes'][offer_info['card_id']] != undefined)
+						{
+							parsed_expedition += 	'<div class="craft_offer_button" onclick="show_content(\'craft\');show_card_recipe(\'' + offer_info['card_id'] + '\')">CRAFT</div>';
+						}*/
+						if(get_upgrade_factor('decline_merchants',undefined,true) > 1 && get_upgrade_factor('merchant_count', undefined, true) >= offer_key)
+						{
+							parsed_expedition += 	'<div class="craft_offer_button" onclick="decline_offer(' + offer_key + ')">DECLINE</div>';
+						}
+						if(owned_amount >= offer_info['card_amount'] && offer_info['buysell'] == 'buy' && offer_info['sold'] == undefined)
+						{
+							parsed_expedition += 	'<div class="complete_expedition_button complete_offer_button buysell_sell" onclick="complete_offer(' + offer_key + ')">SELL</div>';
+						}
+						if(gamedata['scraps'] >= offer_info['offer_price'] && offer_info['buysell'] == 'sell' && offer_info['sold'] == undefined)
+						{
+							parsed_expedition += 	'<div class="complete_expedition_button complete_offer_button" onclick="complete_offer(' + offer_key + ')">BUY</div>';
+						}
+					}
+					else
+					{
+						parsed_expedition += '<span class="single_new_expedition_description">Trade complete.</span>';
 					}
 				}
 				else
 				{
-					parsed_expedition += '<span class="single_new_expedition_description">Trade complete.</span>';
+					parsed_expedition += '<div class="single_expedition single_offer"><span class="single_new_expedition_name">Waiting for new merchant</span><br/><span class="single_new_expedition_description"><br/></span>';
 				}
 				parsed_expedition += 	'<div class="timer" data-complete-time="' + new Date(offer_info['offer_expires']).getTime() + '" data-complete-function="show_single_building"></div>';
 				parsed_expedition += '</div>';
@@ -1200,11 +1211,26 @@ function clear_all_offers(){
 	});
 }
 
+function decline_offer(offer_key){
+	var current_building = 	gamedata['town'][current_building_id];
+	var building_info = 	all_buildings[current_building['building_id']];
+	var offer_info = 	current_building['current_offers'][offer_key];
+	offer_info['declined'] = true;
+	var offer_decline_time = 10 / get_upgrade_factor('offer_decline_time',undefined,true);
+	if(new Date().addMinutes(offer_decline_time) < new Date(offer_info['offer_expires']))
+	{
+		offer_info['offer_expires'] = new Date().addMinutes(offer_decline_time);
+	}
+	saveToLocalStorage();
+	show_single_building();
+}
+
 function complete_offer(offer_key){
 	var current_building = 	gamedata['town'][current_building_id];
 	var building_info = 	all_buildings[current_building['building_id']];
 	var offer_info = 	current_building['current_offers'][offer_key];
 	var owned_amount = 0;
+	var offer_decline_time = 10 / get_upgrade_factor('offer_decline_time',undefined,true);
 	if(gamedata['owned_cards'][offer_info['card_id']] != undefined)
 	{
 		owned_amount = gamedata['owned_cards'][offer_info['card_id']];
@@ -1217,9 +1243,9 @@ function complete_offer(offer_key){
 			gamedata['scraps'] += offer_info['offer_price'];
 			offer_info['sold'] = true;
 			check_quests('sell_card_in_town', undefined, offer_info['card_amount']);
-			if(new Date().addMinutes(10) < new Date(offer_info['offer_expires']))
+			if(new Date().addMinutes(offer_decline_time) < new Date(offer_info['offer_expires']))
 			{
-				offer_info['offer_expires'] = new Date().addMinutes(10);
+				offer_info['offer_expires'] = new Date().addMinutes(offer_decline_time);
 			}
 			saveToLocalStorage();
 		}
@@ -1233,9 +1259,9 @@ function complete_offer(offer_key){
 			gamedata['scraps'] -= offer_info['offer_price'];
 			offer_info['sold'] = true;
 			check_quests('buy_card_in_town', undefined, offer_info['card_amount']);
-			if(new Date().addMinutes(10) < new Date(offer_info['offer_expires']))
+			if(new Date().addMinutes(offer_decline_time) < new Date(offer_info['offer_expires']))
 			{
-				offer_info['offer_expires'] = new Date().addMinutes(10);
+				offer_info['offer_expires'] = new Date().addMinutes(offer_decline_time);
 			}
 			saveToLocalStorage();
 		}
