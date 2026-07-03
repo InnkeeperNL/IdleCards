@@ -1330,13 +1330,13 @@ function create_new_building_offer(building_info, trade_slot){
 		if(found_card == false && Math.random() > 0)
 		{
 			var possible_cards = {};
-			$.each(gamedata['owned_cards'], function(recipe_id,useless_info){
-				if(match_array_values(all_available_cards[recipe_id]['type'], building_info['shop_type']))
+			$.each(gamedata['owned_cards'], function(recipe_id,owned_amount){
+				if(match_array_values(all_available_cards[recipe_id]['type'], building_info['shop_type']) && recipe_id != 'peasant')
 				{
-					possible_cards[recipe_id] = 1 + gamedata['owned_cards'][recipe_id];
+					possible_cards[recipe_id] = 1 + sqr(owned_amount);
 				}
 			});
-			//console.log(possible_cards);
+			console.log(possible_cards);
 			if(count_object(possible_cards) > 0)
 			{
 				found_card = get_random_key_from_object_based_on_num_value(possible_cards);

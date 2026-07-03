@@ -18,7 +18,7 @@ var all_upgrades = {
 		type: 			'summon_max_rarity',
 		subtypes:  		['any'],
 		amount: 		1,
-		level_cost_scale: 	3,
+		level_cost_scale: 	5,
 		amount_fixed: 	true,
 		cost: 			{scraps:2,},
 	},

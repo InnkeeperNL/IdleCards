@@ -10945,7 +10945,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.5,
+			base_cost_factor: 1,
 		},
 		level_cost_cum: true,
 	},
@@ -11094,10 +11094,11 @@ var all_abilities = {
 		},
 	},
 	repair:{
-		description: 	'Repairs a random non-plant damaged ally structure by {LEVEL}.',
+		description: 	'Repairs a random non-plant damaged ally structure {LEVEL} time(s).',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		hero_tactics: 	['type_structure'],
+		proc_amount: 	'ability_level',
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -11115,7 +11116,7 @@ var all_abilities = {
 				projectile:		'repair',
 				type: 			'healing',
 				subtypes: 		['repairing'],
-				amount: 		'ability_level'
+				amount: 		1
 			}
 		},
 		animation: 	'combat_zoom',
