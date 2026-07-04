@@ -556,7 +556,7 @@
 		<div id="content_card_backs" class="page_container">
 			<div class="home_section">
 				<div class="menu_button slim" data-target-content="rewards">BACK</div>
-				<div class="menu_button slim" onclick="clear_card_back();" data-target-content="card_backs">RESET</div>
+				<div class="menu_button slim select_filters" onclick="clear_card_back();" data-target-content="card_backs">RESET</div>
 				<!-- <div class="menu_button slim show_hand_colors_button widest" onclick="toggle_show_hand_colors();" data-target-content="card_backs">RESET</div> -->
 				
 			</div>
@@ -1076,6 +1076,7 @@
 
 
 	function show_home(){
+		clear_unused_cardbacks();
 		var version_number = 'V';
 		version_number += main_version;
 		version_number += '.' + count_object(all_buildings);

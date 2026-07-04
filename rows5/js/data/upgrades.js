@@ -13,7 +13,7 @@ var all_upgrades = {
 	},
 	aab_summon_rarity:{
 		name: 			'Summon rarity',
-		description: 	'Increases the maximum rarity of summoned enemies.<br/>This includes wave bosses.',
+		description: 	'Increases the maximum rarity of summoned enemies.',
 		card_image: 	'trapper',
 		type: 			'summon_max_rarity',
 		subtypes:  		['any'],
@@ -26,7 +26,8 @@ var all_upgrades = {
 		name: 			'Drop chance',
 		description: 	'Increases the drop chance of heroes and loot by 10% per level.',
 		needed_upgrades:{
-			aab_summon_rarity: 	2,
+			game_speed: 		1,
+			aab_summon_rarity: 	5,
 		},
 		card_image: 	'breaking_ray',
 		type: 			'summon_loot_rarity',
@@ -54,6 +55,7 @@ var all_upgrades = {
 		name: 			'Stash drops',
 		description: 	'Increases the chance stashes will drop as loot from battles by 100%.',
 		needed_upgrades:{
+			aad_used_non_unit_drop_chance: 1,
 			aac_summon_drop_chance: 10,
 		},
 		card_image: 	'stash',
@@ -117,21 +119,22 @@ var all_upgrades = {
 		name: 			'Floating chance',
 		description: 	'Increases the chance a floating reward appears during combat.',
 		needed_upgrades:{
-			aab_summon_rarity: 	5,
+			game_speed: 		5,
+			aab_summon_rarity: 	10,
 		},
 		card_image: 	'arcane_bolts',
 		type: 			'floating_chance',
 		subtypes:  		['any'],
-		amount: 		0.025,
+		amount: 		0.05,
 		level_cost_scale: 	1,
 		cost: 			{scraps:5,},
-		max_level: 		20,
+		max_level: 		10,
 	},
 	floating_scraps:{
 		name: 			'Floating scraps',
 		description: 	'Increases the scraps gained by 1 when picking up floating scraps during combat.',
 		needed_upgrades:{
-			floating_chance: 	10,
+			floating_chance: 	5,
 		},
 		card_image: 	'scraps_placeholder',
 		type: 			'floating_scraps',
@@ -145,7 +148,7 @@ var all_upgrades = {
 		name: 			'Game speed',
 		description: 	'Increases the game speed by 10% when set to \'fast\' and by 20% when set to \'fastest\'.',
 		needed_upgrades:{
-			aab_summon_rarity: 	5,
+			aab_summon_rarity: 	2,
 		},
 		card_image: 	'messenger',
 		type: 			'max_game_speed',
@@ -159,6 +162,7 @@ var all_upgrades = {
 		name: 			'Altar',
 		description: 	'Unlocks the altar.',
 		needed_upgrades:{
+			quest_amount: 	1,
 			aaa_rewards: 	4,
 		},
 		card_image: 	'dark_tower',
@@ -217,8 +221,7 @@ var all_upgrades = {
 		name: 			'Summon tries',
 		description: 	'Increases the number of times you can try to defeat the same summoned enemy.',
 		needed_upgrades:{
-			quest_amount: 	1,
-			aaa_rewards: 	5,
+			summon_altar: 	1,
 		},
 		card_image: 	'meadow',
 		type: 			'summon_tries',
@@ -250,7 +253,6 @@ var all_upgrades = {
 		description: 	'Increases the maximum scraps offered by merchants who want to buy cards by 25%.<br>Only affects new offers.',
 		needed_upgrades:{
 			z_a_town_access: 1,
-			aab_summon_rarity: 	10,
 		},
 		card_image: 	'thief',
 		type: 			'merchant_buy',
@@ -271,7 +273,7 @@ var all_upgrades = {
 		subtypes:  		['any'],
 		amount: 		1,
 		amount_fixed: 	true,
-		level_cost_scale: 	0.25,
+		level_cost_scale: 	1,
 		cost: 			{scraps:100,},
 		max_level: 		4,
 	},
@@ -305,18 +307,17 @@ var all_upgrades = {
 	},
 	peasants_gained:{
 		name: 			'Peasants gained',
-		description: 	'Increases the number of peasants gained by 5%.',
+		description: 	'Increases the number of peasants gained by 10%.',
 		needed_upgrades:{
 			z_a_town_access: 1,
-			aab_summon_rarity: 	10,
 		},
 		card_image: 	'peasant',
 		type: 			'loot',
 		subtypes:  		['peasant'],
-		amount: 		0.05,
+		amount: 		0.1,
 		level_cost_scale: 	1.1,
 		cost: 			{scraps:10,},
-		max_level: 		20,
+		max_level: 		10,
 	},
 	quest_amount:{
 		name: 			'Quest difficulty',
@@ -393,9 +394,10 @@ var all_upgrades = {
 	},*/
 	z_a_town_access:{
 		name: 			'Town',
-		description: 	'Unlocks the town. This produces scraps and merchants buy cards here..',
+		description: 	'Unlocks the town. This produces scraps and merchants buy cards here.',
 		needed_upgrades:{
-			aab_summon_rarity: 	10,
+			floating_chance:  	1,
+			aab_summon_rarity: 	20,
 		},
 		card_image: 	'house',
 		type: 			'show_town',
@@ -999,18 +1001,23 @@ function parse_upgrade_button(upgrade_id, requirements_met){
 		}
 		else
 		{
-			parsed_upgrade_button += '<div class="menu_button third single_area hero_unavailable">';
+			parsed_upgrade_button += '<div class="menu_button third single_area hero_unavailable" onclick="current_upgrade=\'' + upgrade_id + '\';set_upgrades_back_button(\'upgrades\')" data-target-content="single_upgrade">';
 			parsed_upgrade_button += 	'<div class="bg" style="background-image:url(images/' + upgrade_info['image'] + ')"></div>';
 			parsed_upgrade_button += 	'<span style="color:rgba(255,0,0,1)">';
+			var unlock_gotten = 0;
+			var unlock_needed = 0;
 			$.each(upgrade_info['needed_upgrades'], function(needed_id, needed_level){
 				if(gamedata['upgrades'][needed_id] == undefined || gamedata['upgrades'][needed_id] < needed_level)
 				{
 					var effective_needed_level = 0;
 					if(gamedata['upgrades'][needed_id] != undefined){effective_needed_level = gamedata['upgrades'][needed_id];}
+					unlock_needed += needed_level;
+					unlock_gotten += effective_needed_level;
 					parsed_upgrade_button += all_upgrades[needed_id]['name'] + ': ' + effective_needed_level + ' / ' + needed_level + '<br/>';
 				}
 			});
 			parsed_upgrade_button += 	'</span>';
+			parsed_upgrade_button += 	'<div class="upgrade_percent" style="width:' + (100 - ((unlock_gotten / unlock_needed) * 100)) + '%"></div>';
 		}
 		parsed_upgrade_button += '</div>';
 	}
@@ -1111,8 +1118,19 @@ function show_single_upgrade(){
 		if(upgrade_info['cost'] == undefined){can_upgrade = false;}
 		var effective_level = 0;
 		if(gamedata['upgrades'][current_upgrade] != undefined){effective_level = gamedata['upgrades'][current_upgrade];}
-		parsed_upgrade += capitalizeFirstLetter(upgrade_info['name']) + '<br/>';
-		parsed_upgrade += 'level ' + effective_level + '<br/>';
+		var requirements_met = true;
+		$.each(upgrade_info['needed_upgrades'], function(needed_id, needed_level){
+			if(gamedata['upgrades'][needed_id] != undefined && gamedata['upgrades'][needed_id] < needed_level)
+			{
+				requirements_met = false;
+			}
+		});
+		parsed_upgrade += '<h1>' + capitalizeFirstLetter(upgrade_info['name']) + '</h1><br/>';
+		if(requirements_met == true)
+		{
+			parsed_upgrade += 'level ' + effective_level + '';
+		}
+		parsed_upgrade += '<br/><br/>';
 		/*if(upgrade_info['amount_fixed'] == undefined || upgrade_info['amount_fixed'] == false)
 		{
 			if(effective_level > 0)
@@ -1131,41 +1149,44 @@ function show_single_upgrade(){
 			parsed_upgrade += 'Effect: +' + (Math.round((total_factor - 1) * 100) / 100) + ' ' + upgrade_info['description'] + '<br/>';
 		}*/
 		parsed_upgrade += 'Effect: ' + upgrade_info['description'] + '<br/><br/>';
-		if(upgrade_info['max_level'] == undefined || upgrade_info['max_level'] > effective_level)
+		if(requirements_met == true)
 		{
-			$.each(upgrade_info['cost'], function(cost_id, cost_amount){
-				var owned_amount = 0;
-				var actual_cost = cost_amount;
-				if(gamedata['upgrades'][current_upgrade] != undefined)
-				{
-					actual_cost = calculate_upgrade_upgrade_cost(gamedata['upgrades'][current_upgrade], actual_cost, upgrade_info);
-				}
-				else
-				{
-					actual_cost = Math.ceil(actual_cost);
-				}
-				if(gamedata['owned_cards'][cost_id] != undefined && gamedata['owned_cards'][cost_id] > 0){owned_amount = gamedata['owned_cards'][cost_id];}
-				if(cost_id == 'scraps'){owned_amount = gamedata['scraps'];}
-				var cost_name = 'Scraps';
-				if(all_available_cards[cost_id] != undefined){cost_name = capitalizeFirstLetter(all_available_cards[cost_id]['name']);}
-				if(owned_amount < actual_cost)
-				{
-					can_upgrade = false;
-					parsed_upgrade += cost_name + ': <span style="color:red">' + nFormatter(owned_amount,3) + ' / ' + nFormatter(actual_cost,3) + '<br/></span>';
-				}
-				else
-				{
-					parsed_upgrade += cost_name + ': <span>' + nFormatter(owned_amount,3) + ' / ' + nFormatter(actual_cost,3) + '<br/></span>';
-				}
-			});
-			if(can_upgrade == true)
+			if(upgrade_info['max_level'] == undefined || upgrade_info['max_level'] > effective_level)
 			{
-				parsed_upgrade += 	'<br/><div class="production_upgrade_button" onclick="upgrade_current_upgrade()">UPGRADE</div>';
+				$.each(upgrade_info['cost'], function(cost_id, cost_amount){
+					var owned_amount = 0;
+					var actual_cost = cost_amount;
+					if(gamedata['upgrades'][current_upgrade] != undefined)
+					{
+						actual_cost = calculate_upgrade_upgrade_cost(gamedata['upgrades'][current_upgrade], actual_cost, upgrade_info);
+					}
+					else
+					{
+						actual_cost = Math.ceil(actual_cost);
+					}
+					if(gamedata['owned_cards'][cost_id] != undefined && gamedata['owned_cards'][cost_id] > 0){owned_amount = gamedata['owned_cards'][cost_id];}
+					if(cost_id == 'scraps'){owned_amount = gamedata['scraps'];}
+					var cost_name = 'Scraps';
+					if(all_available_cards[cost_id] != undefined){cost_name = capitalizeFirstLetter(all_available_cards[cost_id]['name']);}
+					if(owned_amount < actual_cost)
+					{
+						can_upgrade = false;
+						parsed_upgrade += cost_name + ': <span style="color:red">' + nFormatter(owned_amount,3) + ' / ' + nFormatter(actual_cost,3) + '<br/></span>';
+					}
+					else
+					{
+						parsed_upgrade += cost_name + ': <span>' + nFormatter(owned_amount,3) + ' / ' + nFormatter(actual_cost,3) + '<br/></span>';
+					}
+				});
+				if(can_upgrade == true)
+				{
+					parsed_upgrade += 	'<br/><div class="production_upgrade_button" onclick="upgrade_current_upgrade()">UPGRADE</div>';
+				}
 			}
-		}
-		else
-		{
-			parsed_upgrade += '<span style="color:green">Maxed</span>';
+			else
+			{
+				parsed_upgrade += '<span style="color:green">Maxed</span>';
+			}
 		}
 		$('.single_upgrade_container').html(parsed_upgrade);
 	}

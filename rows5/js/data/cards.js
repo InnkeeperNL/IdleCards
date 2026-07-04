@@ -1651,10 +1651,10 @@ var all_available_cards = {
 		time: 				1,
 		image: 				'cards/miner.jpg',
 		image_position: 	'top',
-		power: 				1,
+		power: 				2,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 2, demolish: 1},
+		abilities: 			{strike: 1, demolish: 1},
 		hero_version: 			{
 			theme: 				['subtype_human','type_structure','demolish_ability'],
 			power: 				2,
@@ -4519,10 +4519,14 @@ function learn_all_recipes(){
 
 function check_no_achievement_yet(card_theme, max_shown){
 	var achievable_cardbacks = {};
-	var shown = 0;
+	var shown = 1;
 	eachoa(all_achievements, function(achievement_id, achievement_info){
 		eachoa(achievement_info['rewards'], function(rewards_id, rewards_info){
-			achievable_cardbacks[rewards_info['reward_id']] = true;
+			var reward_info_id = rewards_info['reward_id'];
+			if(reward_info_id.replace('card_back_','') != reward_info_id)
+			{
+				achievable_cardbacks[rewards_info['reward_id']] = true;
+			}
 		});
 	});
 	eachoa(all_available_cards, function(card_id, card_info){
@@ -4530,6 +4534,19 @@ function check_no_achievement_yet(card_theme, max_shown){
 		{
 			shown++;
 			console.log(card_id);
+		}
+	});
+	return achievable_cardbacks;
+}
+
+function clear_unused_cardbacks(){
+	achievable_cardbacks = check_no_achievement_yet(undefined, 0);
+	eachoa(all_available_cards, function(card_id, card_info){
+		if(card_info['type'] == 'cardback' && achievable_cardbacks[card_id] == undefined)
+		{
+			delete all_card_backs[card_id];
+			delete all_available_cards[card_id];
+
 		}
 	});
 }

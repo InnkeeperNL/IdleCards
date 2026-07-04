@@ -496,7 +496,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'scribe',
+		card_back: 		'messenger',
 		steps: 			6,
 		no_quest: 		true,
 	},
@@ -1251,7 +1251,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'thief',
+		card_back: 		'scribe',
 		steps: 			6,
 		no_quest: 		true,
 	},

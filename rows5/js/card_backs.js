@@ -27,7 +27,7 @@ function show_card_backs(){
 
 	$.each(all_card_backs, function(card_back_id, card_image){
 
-		if(gamedata['owned_card_backs'][card_back_id] != undefined)
+		if(true || gamedata['owned_card_backs'][card_back_id] != undefined)
 		{
 			collectable ++;
 			cards_displayed ++;
@@ -55,7 +55,7 @@ function show_card_backs(){
 				}
 				else
 				{
-					tinkering_list += '<div class="not_in_collection">' + parsed_card + '</div>';
+					tinkering_list += '<span class="card_back_container not_in_collection">' + parsed_card + '</span>';
 				}
 			}
 		}
@@ -83,10 +83,10 @@ function show_card_backs(){
 	else
 	{
 		var percent_collected = 0;
-		if(cards_displayed > 0){percent_collected = Math.floor((cards_displayed / count_object(all_card_backs)) * 100);}
+		if(cards_displayed > 0){percent_collected = Math.floor((count_object(gamedata['owned_card_backs']) / count_object(all_card_backs)) * 100);}
 		if(tinkering_list != '')
 		{
-			$('.tinkering_container').html('<div class="tinkering_list">' + tinkering_list + '</div><div class="collection_recipe_count">Collected: ' + percent_collected + '%</div>');
+			$('.tinkering_container').html('<div class="tinkering_list">' + tinkering_list + '</div><div class="collection_count">Collected: ' + percent_collected + '%</div>');
 		}
 	}
 
@@ -99,7 +99,14 @@ function set_card_back_page(amount){
 };
 
 function set_card_back(card_back_id){
-	gamedata['hand_card_back'] = all_card_backs[card_back_id];
+	if(gamedata['hand_card_back'] == all_card_backs[card_back_id])
+	{
+		gamedata['hand_card_back'] = '';
+	}
+	else
+	{
+		gamedata['hand_card_back'] = all_card_backs[card_back_id];
+	}
 	saveToLocalStorage();
 	show_card_backs();
 }

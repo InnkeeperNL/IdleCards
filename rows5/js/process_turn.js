@@ -4686,7 +4686,10 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 						};
 						if(unit_id == 1)
 						{
-							check_quests('enemy_hero_killed_by_' + killed_by_subtype);
+							var possible_quest_string = 'enemy_hero_killed_by_' + killed_by_subtype;
+							if(all_achievement_goals[possible_quest_string] != undefined){
+								check_quests(possible_quest_string);
+							};
 						}
 						else
 						{
@@ -4715,6 +4718,13 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 							check_quests(possible_quest_string);
 						};
 					});
+					if(unit_id == 1)
+					{
+						var possible_quest_string = 'enemy_hero_killed_by_named_' + battle_info.combat_units[origin_id]['card_type'];
+						if(all_achievement_goals[possible_quest_string] != undefined){
+							check_quests(possible_quest_string);
+						};
+					}
 				}
 			}
 			if(unit['side'] == 2)

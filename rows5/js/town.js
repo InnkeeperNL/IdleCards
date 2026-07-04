@@ -1336,7 +1336,7 @@ function create_new_building_offer(building_info, trade_slot){
 					possible_cards[recipe_id] = 1 + sqr(owned_amount);
 				}
 			});
-			console.log(possible_cards);
+			//console.log(possible_cards);
 			if(count_object(possible_cards) > 0)
 			{
 				found_card = get_random_key_from_object_based_on_num_value(possible_cards);

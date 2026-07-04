@@ -1804,7 +1804,7 @@
 		position: absolute;
 		top: auto;
 		bottom:  25px;
-	    right: 10px;
+	    right: 20px;
 	    font-family: 'Caveat Brush', cursive;
 	    font-size: 20px;
 	    text-shadow: 1px 1px 0px rgba(0,0,0,1), 1px -1px 0px rgba(0,0,0,1), -1px 1px 0px rgba(0,0,0,1), -1px -1px 0px rgba(0,0,0,1), 1px 1px 3px rgba(0,0,0,1);
@@ -1813,7 +1813,7 @@
 	.collection_recipe_count
 	{
 		right: auto;
-		left: 10px;
+		left: 20px;
 	}
 }
 
