@@ -5877,7 +5877,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 	'resurrect',
 			base_cost_factor: 1,
-			base_cost_hero_factor: 1,
+			//base_cost_hero_factor: 1,
 		},
 		level_cost_cum: true,
 	},

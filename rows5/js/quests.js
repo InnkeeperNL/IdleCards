@@ -317,7 +317,7 @@ function check_new_quests(show_new_message){
 				var chosen_reward = get_random_key_from_object_based_on_num_value(random_loot_drops);
 				//console.log(chosen_reward);
 				var chosen_reward_amount = all_quests[new_quest_id]['reward_per_amount']['scraps'] * quest_amount * get_upgrade_factor('quest_reward', 'any', true);
-				if(Math.random() < 0.20 || all_available_cards[chosen_reward]['value'] > chosen_reward_amount / 4)
+				if(Math.random() < 0.75 || all_available_cards[chosen_reward]['value'] > chosen_reward_amount / 4)
 				{
 					chosen_reward = 'scraps';
 					chosen_reward_amount = Math.floor(chosen_reward_amount);

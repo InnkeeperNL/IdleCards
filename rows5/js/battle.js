@@ -469,7 +469,7 @@ function construct_random_deck(size, hero, randomized){
 			deck_time_theme = 'muscle';
 		}
 	}
-	var deck_times = random_deck_times[deck_time_theme];
+	var deck_times = true_copyobject(random_deck_times[deck_time_theme]);
 	
 	if(all_available_cards[hero]['hero_version']['deck_times'] != undefined)
 	{
@@ -477,9 +477,9 @@ function construct_random_deck(size, hero, randomized){
 			deck_times[deck_time_type] = deck_time_percent;
 		});
 	}
-	if(size < 30)
+	if(size < 20)
 	{
-		var deck_size_ratio = 30 / size;
+		var deck_size_ratio = 20 / size;
 		eachoa(deck_times, function(deck_time_type, deck_time_percent){
 			deck_times[deck_time_type] *= deck_size_ratio;
 		});
@@ -525,16 +525,16 @@ function construct_random_deck(size, hero, randomized){
 		if(deck_percent >= deck_times['percent_main'])
 		{
 			min_time = 4;
-			max_time = 8;
+			max_time = 7;
 		}
 		if(deck_percent >= deck_times['percent_slow'])
 		{
-			min_time = 9;
-			max_time = 12;
+			min_time = 8;
+			max_time = 11;
 		}
 		if(deck_percent >= deck_times['percent_massive'])
 		{
-			min_time = 13;
+			min_time = 12;
 			max_time = 100;
 		}
 		if(second_color != undefined)
@@ -621,7 +621,7 @@ function construct_random_deck(size, hero, randomized){
 	}*/
 	if(artifact_count == 0)
 	{
-		var chosen_artifact = get_random_card('artifact', undefined, undefined, undefined, undefined, deck_theme, undefined, undefined, not_theme);
+		var chosen_artifact = get_random_card('artifact', undefined, undefined, undefined, undefined, deck_theme, not_these, undefined, not_theme);
 		if(all_available_cards[chosen_artifact] != undefined)
 		{
 			random_deck[0] = {
@@ -632,7 +632,7 @@ function construct_random_deck(size, hero, randomized){
 		}
 	}
 
-	random_deck = check_deck_min_enemy_targets(random_deck, deck_theme);
+	random_deck = check_deck_min_enemy_targets(random_deck, deck_theme, not_these);
 
 	if(show_deck_construction == true)
 	{
@@ -664,7 +664,7 @@ function construct_random_deck(size, hero, randomized){
 	return random_deck;
 }
 
-function check_deck_min_enemy_targets(random_deck, deck_theme){
+function check_deck_min_enemy_targets(random_deck, deck_theme, not_these){
 	var deck_size = count_object(random_deck);
 	var theme_to_check = 'aoe';
 	var min_enemies_ability_count = 0;
@@ -692,10 +692,10 @@ function check_deck_min_enemy_targets(random_deck, deck_theme){
 		for (var i = 3; i >= 0; i--) {
 			temp_deck_theme[get_highest_key_in_object(temp_deck_theme) + 1] = theme_to_check;
 		}
-		var new_card = get_random_card('any', non_min_enemy_cards[chosen_card_to_replace] + 2, undefined, undefined, non_min_enemy_cards[chosen_card_to_replace] - 2, temp_deck_theme, undefined, undefined);
+		var new_card = get_random_card('any', non_min_enemy_cards[chosen_card_to_replace] + 2, undefined, undefined, non_min_enemy_cards[chosen_card_to_replace] - 2, temp_deck_theme, not_these, undefined);
 		if(new_card == false)
 		{
-			new_card = get_random_card('any', non_min_enemy_cards[chosen_card_to_replace] + 2, undefined, undefined, non_min_enemy_cards[chosen_card_to_replace] - 2, [theme_to_check], undefined, undefined);
+			new_card = get_random_card('any', non_min_enemy_cards[chosen_card_to_replace] + 2, undefined, undefined, non_min_enemy_cards[chosen_card_to_replace] - 2, [theme_to_check], not_these, undefined);
 		}
 		if(show_deck_construction == true)
 		{
@@ -708,8 +708,22 @@ function check_deck_min_enemy_targets(random_deck, deck_theme){
 				status: 	'deck',
 				time_left: 	all_available_cards[new_card]['time'],
 			}
+			if(all_available_cards[new_card]['max_in_deck'] != undefined)
+			{
+				var this_card_counter = 0;
+				eachoa(random_deck, function(useless_key, count_card_info){
+					if(count_card_info['card_id'] == new_card)
+					{
+						this_card_counter += 1; 
+					}
+				});
+				if(all_available_cards[new_card]['max_in_deck'] >= this_card_counter)
+				{
+					not_these[get_highest_key_in_object(not_these) + 1] = new_card;
+				}
+			}
 		}
-		random_deck = check_deck_min_enemy_targets(random_deck, deck_theme);
+		random_deck = check_deck_min_enemy_targets(random_deck, deck_theme, not_these);
 	}
 	return random_deck;
 }
