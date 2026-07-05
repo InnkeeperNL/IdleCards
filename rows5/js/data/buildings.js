@@ -43,7 +43,7 @@ var all_buildings = {
 			},
 		},
 
-		shop_type: 		['creature','structure','artifact'],
+		shop_type: 		['creature','structure','artifact','spell'],
 
 		/*recipes:{
 			stash:{
