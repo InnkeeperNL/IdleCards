@@ -40,10 +40,10 @@ function show_summon(just_summoned){
 				parsed_summon += 	' - ' + nFormatter(summon_stats['max_rarity'],3);
 			}
 			parsed_summon += 	'<br/>';
-			if(get_upgrade_factor('summon_tries', 'any', true) > 1)
+			/*if(get_upgrade_factor('summon_tries', 'any', true) > 1)
 			{
 				parsed_summon += 	'Tries: ' + (summon_stats['max_tries']);
-			}
+			}*/
 			parsed_summon += 	'<br/>';
 			parsed_summon += 	'Reward: ' + nFormatter(Math.floor(summon_stats['reward_bonus'] * 100),3) + '%<br/>';
 			parsed_summon += 	'<br/>';
@@ -133,7 +133,7 @@ function show_summon(just_summoned){
 				parsed_summon += 	'Power: ' + Math.floor(gamedata['current_summon']['level'] * 10) + '%<br/>';
 			}
 			parsed_summon += 	'Drop: ' + drop_chance + '%' + /*shown_recipe_drop_chance +*/ '<br/>';
-			if(get_upgrade_factor('summon_tries', 'any', true) > 1)
+			if(gamedata['current_summon']['tries'] > 1)
 			{
 				parsed_summon += 	'Tries: ' + (gamedata['current_summon']['tries']);
 			}
@@ -309,18 +309,20 @@ function summon_now(use_current_altar_card){
 	correct_summon_stats(summon_stats);
 
 	//console.log(summon_stats['max_rarity']);
+	var current_tries = 1;
 
 	var chosen_summon = get_random_hero(true, summon_stats['min_rarity'], summon_stats['max_rarity'], summon_stats['common_reduction']);
 	if(use_current_altar_card != undefined && use_current_altar_card == true && all_available_cards[current_altar] != undefined && gamedata['owned_cards'][current_altar] != undefined && gamedata['owned_cards'][current_altar] > 0)
 	{
 		chosen_summon = current_altar;
 		gamedata['owned_cards'][current_altar] -= 1;
+		current_tries = summon_stats['max_tries'];
 		current_altar = '';
 	}
 	var found_level = /*round_by_percent*/(summon_stats['min_level'] + (Math.random() * (summon_stats['max_level'] - summon_stats['min_level'])));
 	gamedata['current_summon'] = {
 		hero: 		chosen_summon,
-		tries: 		summon_stats['max_tries'],
+		tries: 		current_tries,
 		level: 		found_level,
 		loot_rarity: summon_stats['loot_rarity'],
 		reward_count: get_reward_count_based_on_power(get_effective_power_factor(found_level)),
@@ -466,7 +468,8 @@ function show_altar(){
 	}
 	else
 	{
-		var drop_chance = Math.floor(((summon_stats['loot_rarity'] * round_by_percent((20 * summon_stats['reward_bonus']) * /*sqr*/(get_effective_power_factor(average_level)) * (1 + (average_level / 100))) / card_drop_chance_reduction) / all_available_cards[current_altar]['value']) * 100);
+		//var drop_chance = Math.floor(((summon_stats['loot_rarity'] * round_by_percent((20 * summon_stats['reward_bonus']) * /*sqr*/() * (1 + (average_level / 100))) / card_drop_chance_reduction) / all_available_cards[current_altar]['value']) * 100);
+		var drop_chance = Math.floor((((summon_stats['loot_rarity'] * get_reward_count_based_on_power(get_effective_power_factor(average_level))) / card_drop_chance_reduction) / all_available_cards[current_altar]['value']) * 100);
 		if(drop_chance > 100){drop_chance = 100;}
 		parsed_summon += 	'Drop chance: ~' + drop_chance + '%';
 	}
