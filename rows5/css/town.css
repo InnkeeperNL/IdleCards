@@ -669,7 +669,7 @@ span.done_expeditions
 {
     position: absolute;
     right:15px;
-    top:17px;
+    bottom:17px;
 }
 
 .single_building_recipe_craft_button,
