@@ -1426,7 +1426,7 @@ var all_available_cards = {
 			health: 			40,
 			abilities: 			{strike_unit: 1, regenerating_deaths: 1},
 		},
-		quote: '\"We may fall, but we will regrow.\"',
+		quote: '\"We may hurt us, but we will regrow.\"',
 	},
 	leafy_potion:{
 		name: 				'leafy potion',
