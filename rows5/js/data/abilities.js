@@ -5168,9 +5168,10 @@ var all_abilities = {
 		level_cost_hero: 	2,
 	},
 	empower_ally:{
-		description: 	'A random ally creature that has power gains {LEVEL} power. Cannot affect heroes or itself.',
+		description: 	'Has a {LEVEL}0% chance to increase the power of a random ally creature unit by 1. Cannot affect itself.',
 		cannot_proc_while_stunned: true,
-		scales: 		true,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		hero_tactics: 	['melee_ability','empower_ally_ability','trample_ability'],
 		targets:	{
 			0:{
@@ -5189,13 +5190,13 @@ var all_abilities = {
 				projectile: 	'power',
 				type: 			'increase_power',
 				subtypes: 		['empower_any','empower_ally'],
-				amount: 		'ability_level'
+				amount: 		1
 			},
 		},
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 3,
+			base_cost_factor: 0.3,
 		},
 	},
 	empower_all:{
@@ -7058,7 +7059,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'fortify',
-			base_cost_factor: 1,
+			base_cost_factor: 0.65,
 			base_cost_spell_factor: 0.25,
 		}
 	},
@@ -8700,7 +8701,7 @@ var all_abilities = {
 	},
 	leafy_drink:{
 		hide_amount: 	true,
-		description: 	'If your hero is damaged and not regenerating, this grants your hero {LEVEL} regeneration. This consumes one drink.<br/><i>Regeneration: If damaged, this heals itself by {LEVEL}. Reduce the amount of healing by 1 after each use.</i>',
+		description: 	'If your hero is damaged and not regenerating, this grants your hero {LEVEL} regeneration. This consumes one drink.{REGEN}',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		has_mana: 				true,
@@ -8745,9 +8746,9 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.15,
+			base_cost_factor: 0.2,
 		},
-		level_cost_cum: true,
+		//level_cost_cum: true,
 	},
 	leech_hero:{
 		description: 	'When this deals damage to the enemy hero, this heals your hero by the damage dealt.',
@@ -10918,8 +10919,41 @@ var all_abilities = {
 		level_cost: 		2,
 		level_cost_hero: 	3,
 	},
+	regenerates:{
+		description: 	'Applies {LEVEL} regeneration to itself when this receives damage.{REGEN}',
+		proc: 			'receive_damage',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				damaged: 		true,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'regeneration',
+				type: 			'grant_skill',
+				subtypes: 		['magical','grant_regeneration'],
+				skill_id: 		'regeneration',
+				amount: 		'ability_level'
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.2,
+			base_cost_hero_factor: 0.5,
+		},
+		cost_factor: 		'health',
+		//level_cost_cum: true,
+	},
 	regenerating_deaths:{
-		description: 	'Applies {LEVEL} regeneration to a random damaged ally unit or hero when any ally creature is destroyed.<br/><i>Regeneration: If damaged, this heals itself by {LEVEL}. Reduce the amount of healing by 1 after each use.</i>',
+		description: 	'Applies {LEVEL} regeneration to a random damaged ally unit or hero when any ally creature is destroyed.{REGEN}',
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -10947,14 +10981,15 @@ var all_abilities = {
 			base_cost_id: 'healing',
 			base_cost_factor: 1,
 		},
-		level_cost_cum: true,
+		//level_cost_cum: true,
 	},
 	regeneration:{
-		description: 	'If damaged, this heals itself by {LEVEL}. Reduce the amount of healing by 1 after each use.',
+		description: 	'If damaged, this heals itself by {LEVEL}. Reduce the amount of healing by the amount healed.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		hero_tactics: 	['bolster_ability','regeneration_ability'],
 		reduce_skill_after_use: 'regeneration',
+		reduce_by_used_amount: true,
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -10974,9 +11009,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1,
-		level_cost_hero: 	0.5,
-		level_cost_cum: 	true,
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 1,
+		},
+		//level_cost_cum: true,
 	},
 	release_bird:{
 		description: 	'Summons {LEVEL} bird creature(s) when destroyed.',
@@ -12820,7 +12857,7 @@ var all_abilities = {
 				type: 			'random_ability',
 				subtypes: 		['stabbing'],
 				ability_options: ['stab_hv'],
-				amount: 		'ability_level'
+				amount: 		1
 			}
 		},
 		animation: 		'combat_zoom',
@@ -15056,6 +15093,7 @@ $.each(all_abilities, function(ability_id, ability_info){
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{BLESSED}").join('<br/><i>Blessed: There is a 10% chance per blessing that this will return to your deck when destroyed.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{DOOM}").join('<br/><i>Doom: There is a 10% chance per doom that this will be destroyed at the end of its turn. If a unit has 10 or more doom on it, it is destroyed immediately.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{SHIELD}").join('<br/><i>Shield: Absorbs the first incoming damage.</i>');
+	all_abilities[ability_id]['description'] = ability_info['description'].split("{REGEN}").join('<br/><i>Regeneration: Heals by the amount of regeneration. Reduces the regeneration by the amount healed.</i>');
 });
 
 function calc_proc_effect(test_amount, proc_chance){

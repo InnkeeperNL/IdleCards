@@ -1524,7 +1524,9 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 
 								if(any_effect_fired == true && current_ability['reduce_skill_after_use'] != undefined && battle_info['combat_units'][unit_id] != undefined && battle_info['combat_units'][unit_id]['type'] != 'spell')
 								{
+									//console.log(latest_result);
 									var amount_to_reduce = 1;
+									if(current_ability['reduce_by_used_amount'] != undefined && current_ability['reduce_by_used_amount'] == true){amount_to_reduce = latest_result;}
 									if(current_ability['reduce_skill_after_use_amount'] != undefined){amount_to_reduce = current_ability['reduce_skill_after_use_amount'];}
 									grant_skill(unit_id, unit_id, (-1 * amount_to_reduce), current_ability['reduce_skill_after_use'], false);
 									check_visible_skills(unit_id);
@@ -2054,7 +2056,7 @@ function process_effect(target_id, origin_id, effect, level){
 
 					if(effect['type'] == 'healing')
 					{
-						receive_healing(target_id, origin_id, calculated_amount, effect['subtypes']);
+						latest_result = receive_healing(target_id, origin_id, calculated_amount, effect['subtypes']);
 					}
 
 					if(effect['type'] == 'set_hp')
@@ -3920,6 +3922,7 @@ function receive_healing(target_id, origin_id, calculated_amount,subtypes){
 		//total_timeout += 500 * battle_speed;
 		check_unit_hp(target_id);
 	}
+	return calculated_amount;
 }
 
 function set_hp(target_id, origin_id, calculated_amount,subtypes){
