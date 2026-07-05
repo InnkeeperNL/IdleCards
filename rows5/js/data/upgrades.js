@@ -319,6 +319,21 @@ var all_upgrades = {
 		cost: 			{scraps:10,},
 		max_level: 		10,
 	},
+	power_moves:{
+		name: 			'Power moves',
+		description: 	'Increases the game speed by an additional 10% when set to \'fast\' and by 20% when set to \'fastest\'.',
+		needed_upgrades:{
+			game_speed: 		10,
+			peasants_gained: 	10,
+		},
+		card_image: 	'lone_charge',
+		type: 			'max_game_speed',
+		subtypes:  		['any'],
+		amount: 		0.2,
+		level_cost_scale: 	2,
+		cost: 			{scraps:1000,},
+		max_level: 		5,
+	},
 	quest_amount:{
 		name: 			'Quest difficulty',
 		description: 	'Increases the difficulty and rewards of quests by 100%. This may unlock new possible rewards.',
