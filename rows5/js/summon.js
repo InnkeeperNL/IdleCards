@@ -473,7 +473,7 @@ function show_altar(){
 		if(drop_chance > 100){drop_chance = 100;}
 		parsed_summon += 	'Drop chance: ~' + drop_chance + '%';
 	}
-	parsed_summon += 	'<br/>';
+		parsed_summon += 	'<br/>';
 	if(get_upgrade_factor('summon_tries', 'any', true) > 1)
 	{
 		parsed_summon += 	'Tries: ' + (summon_stats['max_tries']);
