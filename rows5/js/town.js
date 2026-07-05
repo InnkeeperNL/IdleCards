@@ -862,9 +862,11 @@ function show_single_building(){
 				var temp_offer_amount = '';
 				if(offer_info['card_amount'] > 1){temp_offer_amount = '' + offer_info['card_amount'] + 'x ';}
 				var parsed_expedition = '';
+				var on_cooldown = '';
+				if(offer_info['declined'] != undefined || offer_info['sold'] != undefined){on_cooldown = 'on_cooldown';}
 				if(offer_info['declined'] == undefined)
 				{
-					parsed_expedition += '<div class="single_expedition single_offer"><span class="single_new_expedition_name">' + capitalizeFirstLetter(all_available_cards[offer_info['card_id']]['name']) + '</span><br/><span class="single_new_expedition_description">' + capitalizeFirstLetter(offer_info['buysell']) + 'ing: ' + temp_offer_amount + '' + capitalizeFirstLetter(all_available_cards[offer_info['card_id']]['name']) + '. <br/></span>';
+					parsed_expedition += '<div class="single_expedition ' + on_cooldown + ' single_offer"><span class="single_new_expedition_name">' + capitalizeFirstLetter(all_available_cards[offer_info['card_id']]['name']) + '</span><br/><span class="single_new_expedition_description">' + capitalizeFirstLetter(offer_info['buysell']) + 'ing: ' + temp_offer_amount + '' + capitalizeFirstLetter(all_available_cards[offer_info['card_id']]['name']) + '. <br/></span>';
 					
 					if(offer_info['buysell'] == 'buy'){parsed_expedition+='Offer: ' + nFormatter(offer_info['offer_price'],3) + ' scraps.';}
 					if(offer_info['buysell'] == 'sell'){parsed_expedition+='Price: ' + nFormatter(offer_info['offer_price'],3) + ' scraps.';}
@@ -903,7 +905,7 @@ function show_single_building(){
 				}
 				else
 				{
-					parsed_expedition += '<div class="single_expedition single_offer"><span class="single_new_expedition_name">Waiting for new merchant</span><br/><span class="single_new_expedition_description"><br/></span>';
+					parsed_expedition += '<div class="single_expedition ' + on_cooldown + ' single_offer"><span class="single_new_expedition_name">Waiting for new merchant</span><br/><span class="single_new_expedition_description"><br/></span>';
 				}
 				parsed_expedition += 	'<div class="timer" data-complete-time="' + new Date(offer_info['offer_expires']).getTime() + '" data-complete-function="show_single_building"></div>';
 				parsed_expedition += '</div>';

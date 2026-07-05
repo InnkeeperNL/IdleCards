@@ -669,6 +669,12 @@ span.done_expeditions
 {
     position: absolute;
     right:15px;
+    top:17px;
+}
+
+.single_expedition.on_cooldown .timer
+{
+    top:auto;
     bottom:17px;
 }
 
