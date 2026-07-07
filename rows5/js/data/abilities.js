@@ -13288,7 +13288,7 @@ var all_abilities = {
 			}
 		},
 		animation: 		'attack',
-		level_cost: 	1,
+		level_cost: 	0.5,
 		cost_factor: 	'power',
 		average_hits: 	0.25,
 		additional_levels_cost: 0.5,

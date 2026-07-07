@@ -1767,7 +1767,7 @@ var all_available_cards = {
 		type: 				'creature',
 		subtypes: 			['human','witch'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['ally_creature_death_proc_ability','summon_ally_creature_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -1778,7 +1778,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, raise_dead: 10},
 		hero_version: 			{
-			theme: 				['curse_ability'],
+			theme: 				['ally_creature_death_proc_ability','summon_ally_creature_ability','subtype_witch'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
