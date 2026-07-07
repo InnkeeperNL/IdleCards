@@ -16,7 +16,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, brew_potion: 2},
 		hero_version: 			{
-			theme: 				['subtype_potion'],
+			theme: 				['subtype_potion','active_healing_ability','cleanse_ally_ability','fortify_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -1610,6 +1610,7 @@ var all_available_cards = {
 		subtypes: 			['human','cleric','mage'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['echo_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
