@@ -5269,7 +5269,6 @@ var all_abilities = {
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['melee_ability','move_ally_to_hand_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -5292,10 +5291,13 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_structure: 1.75,
-		level_cost_artifact: 3,
-		level_cost_hero: 	3,
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.5,
+			base_cost_hero_factor: 1,
+			base_cost_structure_factor: 0.25,
+			base_cost_artifact_factor: 1,
+		},
 	},
 	empower_hero:{
 		description: 	'Your hero gains {LEVEL} temporary power.',
@@ -5320,8 +5322,11 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_spell: 	0.5,
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
 	},
 	empower_imp:{
 		description: 	'An all imp unit that have power gain {LEVEL} temporary power. Cannot affect itself.',
@@ -8008,6 +8013,40 @@ var all_abilities = {
 			base_cost_spell_factor: 0.75,
 		},
 	},
+	healing_spells:{
+		description: 	'After any spell card is played, this heals a random damaged ally creature {LEVEL} time(s).',
+		proc: 			'any_spell_card_played',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				not_types: 		['object','structure'],
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally',
+				damaged: 		true,
+			},
+		},
+		effects:{
+			0:{
+				projectile:		'healing',
+				type: 			'healing',
+				subtypes: 		['healing','active_healing'],
+				amount: 		1
+			}
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 1,
+			base_cost_artifact_factor: 0.5,
+			base_cost_structure_factor: 0.5,
+			base_cost_spell_factor: 0.25,
+		},
+	},
 	health_drink:{
 		hide_amount: 	true,
 		description: 	'If your hero has 10 health or less, this heals your hero by {LEVEL}. This consumes one drink.',
@@ -10391,6 +10430,58 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		2,
+	},
+	raise_dead:{
+		ability_subtypes: ['summon_ally','summon_creature'],
+		description: 	'Has a {LEVEL}0% chance to remove a creature card from your grave from the game and summon a random undead creature.',
+		cannot_proc_while_stunned: true,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		max_ally_units: 4,
+		min_ally_creature_cards_in_grave: 1,
+		targets:	{
+			0:{
+				target: 	'card',
+				target_amount: 1,
+				status: 	'grave',
+				types: 		['creature'],
+				side: 		'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'resurrect',
+				projectile_target: 	'deck',
+				type: 				'remove_card',
+				side: 				'ally',
+			},
+		},
+		on_each_success:{
+			targets:{
+				0:{
+					target: 		'hero',
+					target_amount: 	1,
+					side: 			'ally'
+				},
+			},
+			effects:{
+				0:{
+					pause_before: -1000,
+					type: 		'summon_unit',
+					subtypes: 	['summon_ally','summon_creature'],
+					card_id: 	'random',
+					card_type: 	'creature',
+					card_subtype: 'undead',
+					amount: 	1
+				},
+			},
+		},
+		
+		animation: 	'combat_zoom',
+		base_cost:{
+			base_cost_id: 'summon',
+			base_cost_factor: 0.075,
+		},
 	},
 	raise_skeleton:{
 		ability_subtypes: ['summon_ally','summon_creature'],
@@ -13201,6 +13292,9 @@ var all_abilities = {
 		cost_factor: 	'power',
 		average_hits: 	0.25,
 		additional_levels_cost: 0.5,
+		ability_level_cost_factors:{
+			coward: 		2,
+		},
 	},
 	stun:{
 		description: 	'Stuns {LEVEL} random enemy unit(s).',

@@ -469,6 +469,7 @@
 }
 
 .battle_container .projectile_resurrect,
+.battle_container .hand_card.deck_slot.projectile_resurrect,
 .icon.icon_resurrect
 {
 	background-image: url(../images/raise-zombie.svg);
