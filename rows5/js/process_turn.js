@@ -5680,6 +5680,11 @@ function find_targets(unit_id, target_peramaters, origin_id, level, current_abil
 			all_targets = filter_targets_by_max_hp(all_targets, target_peramaters['max_hp'], origin_id, level);
 		}
 
+		if(target_peramaters['max_hp_percent'] != undefined)
+		{
+			all_targets = filter_targets_by_max_hp(all_targets, target_peramaters['max_hp_percent'], origin_id, level, true);
+		}
+
 		if(target_peramaters['min_armor'] != undefined && target_peramaters['min_armor'] > 0)
 		{
 			all_targets = filter_targets_by_min_armor(all_targets, target_peramaters['min_armor']);
@@ -6390,13 +6395,17 @@ function filter_targets_by_min_total_hp(all_targets, min_hp){
 	return all_targets;
 }
 
-function filter_targets_by_max_hp(all_targets, max_hp, origin_id, level){
+function filter_targets_by_max_hp(all_targets, max_hp, origin_id, level, use_percentage){
 	eachoa(all_targets, function(target_id, target_unit_id){
 		var current_max_hp = calculate_effect({amount:max_hp}, target_unit_id, origin_id, level);
 		var current_total_hp = battle_info.combat_units[target_unit_id]['current_health'];
 		if(battle_info.combat_units[target_unit_id]['temp_health'] != undefined)
 		{
 			current_total_hp += battle_info.combat_units[target_unit_id]['temp_health'];
+		}
+		if(use_percentage != undefined && use_percentage == true)
+		{
+			current_total_hp = (current_total_hp / battle_info.combat_units[target_unit_id]['health']) * 100;
 		}
 		if(current_total_hp > current_max_hp)
 		{

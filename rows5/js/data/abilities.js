@@ -11,7 +11,7 @@ var ability_base_costs = {
 	fear:  		2,
 	fortify: 	2,
 	hasten: 	2,
-	healing: 	4,
+	healing: 	3,
 	poison: 	1.5,
 	resurrect: 	0.2,
 	slow: 		2,
@@ -7711,8 +7711,9 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.2,
+			base_cost_factor: 	0.1,
 		},
+		level_cost_cum: true,
 	},
 	guard:{
 		description: 	'When played, an enemy unit enters the game or any unit is destroyed, if there is no opposing enemy unit, this unit will move to a free slot with an opposing unit. Can be used once each round.',
@@ -8052,7 +8053,7 @@ var all_abilities = {
 	},
 	health_drink:{
 		hide_amount: 	true,
-		description: 	'If your hero has 10 health or less, this heals your hero by {LEVEL}. This consumes one drink.',
+		description: 	'If your hero has 50% health or less, this heals your hero by {LEVEL}. This consumes one drink.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
@@ -8063,7 +8064,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				min_hp: 		1,
-				max_hp: 		10,
+				max_hp_percent: 50,
 				damaged: 		true,
 				side: 			'ally'
 			},
@@ -11367,7 +11368,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.5,
+			base_cost_factor: 0.75,
 		},
 	},
 	restore_enemy:{
