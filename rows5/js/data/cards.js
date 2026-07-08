@@ -498,7 +498,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, ignites: 1, burning_aura: 1, resurrect: 10, undead: 1},
+		abilities: 			{strike: 1, ignites: 1, burning_aura: 1, resurrect: 5, undead: 1},
 		hero_version: 			{
 			theme: 				['subtype_undead','burn_ability','ally_creature_death_proc_ability'],
 			power: 				2,
@@ -643,7 +643,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, cursed_touch: 1, cursed_aura: 1, resurrect: 10, undead: 1},
+		abilities: 			{strike: 1, cursed_touch: 1, cursed_aura: 1, resurrect: 5, undead: 1},
 		hero_version: 			{
 			theme: 				['subtype_undead','poison_ability','ally_creature_death_proc_ability'],
 			power: 				2,
@@ -1872,7 +1872,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, venom: 1, poison_aura: 1, resurrect: 10, undead: 1},
+		abilities: 			{strike: 1, venom: 1, poison_aura: 1, resurrect: 5, undead: 1},
 		hero_version: 			{
 			theme: 				['subtype_undead','poison_ability','ally_creature_death_proc_ability'],
 			power: 				2,
@@ -2303,7 +2303,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{slow: 1, fearful_aura: 1},
+			abilities: 			{slow: 1, fearful_hero: 3},
 		},
 		quote: '\"It scares away more then just crows.\"',
 	},
@@ -2569,7 +2569,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, resurrect: 10, undead: 1},
+		abilities: 			{strike: 1, resurrect: 5, undead: 1},
 		hero_version: 			{
 			theme: 				['resurrect_ability'],
 			power: 				3,
@@ -2699,7 +2699,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, stunning_touch: 3, trap: 3, resurrect: 10, undead: 1},
+		abilities: 			{strike: 1, stunning_touch: 3, trap: 3, resurrect: 5, undead: 1},
 		hero_version: 			{
 			theme: 				['resurrect_ability','subtype_slime','stun_ability'],
 			power: 				2,

@@ -13,7 +13,7 @@ var ability_base_costs = {
 	hasten: 	2,
 	healing: 	4,
 	poison: 	1.5,
-	resurrect: 	0.4,
+	resurrect: 	0.2,
 	slow: 		2,
 	stealth: 	2,
 	strike: 	2,
@@ -5882,7 +5882,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 	'resurrect',
-			base_cost_factor: 1,
+			base_cost_factor: 2,
 			//base_cost_hero_factor: 1,
 		},
 		level_cost_cum: true,
@@ -5954,12 +5954,12 @@ var all_abilities = {
 		cost_factor: 		'health',
 	},
 	fearful_hero:{
-		description: 	'When your hero receives melee damage from a non-undead, non-horror enemy creature unit, there is a 25% chance that unit will return to their owner\'s hand. Any summoned units this targets disappear.',
+		description: 	'When your hero receives melee damage from a non-undead enemy creature unit, there is a {LEVEL}0% chance that unit will return to their owner\'s hand. Any summoned units this targets disappear.',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
-		proc_chance: 	25,
-		proc_amount: 	1,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability'],
 		targets:	{
@@ -5969,7 +5969,7 @@ var all_abilities = {
 				position: 		'random',
 				origin_unit: 	true,
 				not_types: 		['structure','object'],
-				not_subtypes: 	['horror'],
+				//not_subtypes: 	['horror'],
 				max_abilities: 	{undead: 0},
 				side: 			'enemy',
 			},
@@ -5984,8 +5984,11 @@ var all_abilities = {
 				side: 			'enemy',
 			}
 		},
-		level_cost: 	1,
-		level_cost_artifact: 2,
+		base_cost:{
+			base_cost_id: 'fear',
+			base_cost_factor: 0.1,
+			base_cost_hero_factor: 0.5,
+		},
 	},
 	feast:{
 		description: 	'When any enemy living creature is killed by this, that creature is detroyed. This then heals itself by {LEVEL}.',
@@ -6463,7 +6466,7 @@ var all_abilities = {
 		level_cost: 		-3,
 	},
 	final_slow:{
-		description: 	'When destroyed, increases the time left of the enemy card with the lowest time by {LEVEL}.',
+		description: 	'When destroyed, increases the time left of a random enemy card by {LEVEL}.',
 		proc: 			'own_death',
 		proc_while_dead: true,
 		targets:	{
@@ -6472,7 +6475,7 @@ var all_abilities = {
 				target_amount: 		1,
 				status: 			'hand',
 				can_target_zero: 	true,
-				lowest_time_left: 	true,
+				//lowest_time_left: 	true,
 				side: 				'enemy',
 			},
 		},
@@ -11541,8 +11544,9 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 	'resurrect',
 			base_cost_factor: 1,
-			base_cost_hero_factor: 0.4,
+			base_cost_hero_factor: 0.1,
 		},
+		level_cost_cum: true,
 	},
 	resurrect_ally:{
 		description: 	'When an ally creature\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 1 health.',
@@ -11587,6 +11591,7 @@ var all_abilities = {
 			base_cost_factor: 2,
 			base_cost_hero_factor: 2.5,
 		},
+		level_cost_cum: true,
 	},
 	resurrect_hero:{
 		description: 	'When your hero\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 1 health.',
@@ -12310,12 +12315,12 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 	'resurrect',
-			base_cost_factor: 2,
+			base_cost_factor: 4,
 		},
 		level_cost_cum: true,
 	},
 	slow:{
-		description: 	'Increases the time left of the enemy card with the lowest time left {LEVEL} time(s).',
+		description: 	'Increases the time left of a random enemy card {LEVEL} time(s).',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		hero_tactics: 	['discard_enemy_ability','slow_enemy_ability'],
@@ -12325,7 +12330,7 @@ var all_abilities = {
 				target_amount: 		1,
 				status: 			'hand',
 				can_target_zero: 	true,
-				lowest_time_left: 	true,
+				//lowest_time_left: 	true,
 				side: 			'enemy',
 			},
 		},
