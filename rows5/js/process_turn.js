@@ -1133,7 +1133,7 @@ function update_passive_effects(unit_id){
 			if(effect == 'stunned'){amount_to_show = '&nbsp;';}
 			timeout_key ++;
 			all_timeouts[timeout_key] = setTimeout(function(){
-				$('.unit_id_' + unit_id + ' .unit_effects').prepend('<div class="effect_' + effect + '">' + amount_to_show + '</div>');
+				$('.unit_id_' + unit_id + ' .unit_effects').append('<div class="effect_' + effect + '">' + amount_to_show + '</div>');
 			},total_timeout);		
 		}
 	});
@@ -1144,7 +1144,7 @@ function update_passive_effects(unit_id){
 			if(ability_id == 'resurrect'){amount_to_show = ability_level + '0%';}
 			timeout_key ++;
 			all_timeouts[timeout_key] = setTimeout(function(){
-				$('.unit_id_' + unit_id + ' .unit_effects').prepend('<div class="projectile_' + skills_to_show_icon[ability_id] + '">' + amount_to_show + '</div>');
+				$('.unit_id_' + unit_id + ' .unit_effects').append('<div class="projectile_' + skills_to_show_icon[ability_id] + '">' + amount_to_show + '</div>');
 			},total_timeout);		
 		}
 	});
