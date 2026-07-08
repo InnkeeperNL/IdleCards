@@ -2722,7 +2722,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{resurrect_ally: 1},
+		abilities: 			{resurrect_ally: 2},
 		quote: '\"Where do you think you are going?!\"',
 	},
 	sword:{
