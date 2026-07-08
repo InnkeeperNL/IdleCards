@@ -1044,15 +1044,16 @@ function process_passive_effect(unit_id, effect, amount){
 	if(battle_info.combat_units[unit_id] != undefined && effect == 'burning' && combat_alive == true)
 	{
 		
-		var temp_burn_reduction = Math.ceil(battle_info.combat_units[unit_id]['effects']['burning'] / 2);
+		//var temp_burn_reduction = Math.ceil(battle_info.combat_units[unit_id]['effects']['burning'] / 2);
 		//receive_damage(unit_id, undefined, amount, ['fire','burning']);
 		create_projectile(unit_id, unit_id, 'burn', false, undefined, battle_info.combat_units[unit_id]['side'], undefined, undefined, undefined, true);
 		//receive_damage(unit_id, undefined, temp_burn_reduction, ['fire','burning']);
 		receive_damage(unit_id, undefined, amount, ['fire','burning']);
 		if(battle_info.combat_units[unit_id] != undefined)
 		{
+			battle_info.combat_units[unit_id]['effects']['burning'] = Math.floor(battle_info.combat_units[unit_id]['effects']['burning']/ 2);
 			//battle_info.combat_units[unit_id]['effects']['burning'] -= temp_burn_reduction;
-			if(battle_info.combat_units[unit_id]['effects']['burning'] > 0){battle_info.combat_units[unit_id]['effects']['burning'] -= 1;}
+			//if(battle_info.combat_units[unit_id]['effects']['burning'] > 0){battle_info.combat_units[unit_id]['effects']['burning'] -= 1;}
 			//battle_info.combat_units[unit_id]['effects']['burning'] = 0;
 			update_passive_effects(unit_id);
 			check_unit_alive(unit_id);
@@ -1070,8 +1071,8 @@ function process_passive_effect(unit_id, effect, amount){
 		//if(battle_info.combat_units[unit_id]['effects']['poisoned'] > 0){battle_info.combat_units[unit_id]['effects']['poisoned'] -= 1;}
 		if(battle_info.combat_units[unit_id] != undefined)
 		{
-			//battle_info.combat_units[unit_id]['effects']['poisoned'] = Math.floor(battle_info.combat_units[unit_id]['effects']['poisoned']/ 2);
-			if(battle_info.combat_units[unit_id]['effects']['poisoned'] > 0){battle_info.combat_units[unit_id]['effects']['poisoned'] -= 1;}
+			battle_info.combat_units[unit_id]['effects']['poisoned'] = Math.floor(battle_info.combat_units[unit_id]['effects']['poisoned']/ 2);
+			//if(battle_info.combat_units[unit_id]['effects']['poisoned'] > 0){battle_info.combat_units[unit_id]['effects']['poisoned'] -= 1;}
 			//battle_info.combat_units[unit_id]['effects']['poisoned'] = 0;
 			update_passive_effects(unit_id);
 			check_unit_alive(unit_id);

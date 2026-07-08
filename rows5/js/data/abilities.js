@@ -15183,8 +15183,8 @@ $.each(all_abilities, function(ability_id, ability_info){
 	}
 	
 	all_abilities[ability_id]['name_color'] = 'rgba(255,255,255,0.9)';
-	all_abilities[ability_id]['description'] = ability_info['description'].split("{BURN}").join('<br/><i>Burn: Suffers fire damage equal to the burn it suffers at the end of each turn. The amount of burn is reduced by 1 each time it deals damage.</i>');
-	all_abilities[ability_id]['description'] = ability_info['description'].split("{POISON}").join('<br/><i>Poison: Suffers piercing poison damage at the end of each turn equal to the amount of poison. The amount of poison is reduced by 1 each time it deals damage.</i>');
+	all_abilities[ability_id]['description'] = ability_info['description'].split("{BURN}").join('<br/><i>Burn: Suffers fire damage equal to the burn it suffers at the end of each turn. The amount of burn is halved each time it deals damage.</i>');
+	all_abilities[ability_id]['description'] = ability_info['description'].split("{POISON}").join('<br/><i>Poison: Suffers piercing poison damage at the end of each turn equal to the amount of poison. The amount of poison is halved each time it deals damage.</i>');
 	//all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received. Curse is removed whenever it takes effect.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received by 10%, rounded up.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{BLESSED}").join('<br/><i>Blessed: There is a 10% chance per blessing that this will return to your deck when destroyed.</i>');
