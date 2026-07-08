@@ -3803,7 +3803,7 @@ function calculate_card_value(card_id, show_calc){
 		}
 	}
 
-	if(all_available_cards[card_id]['value'] == undefined)
+	if(all_available_cards[card_id]['value'] == undefined && (all_available_cards[card_id]['pick_chance'] == undefined || all_available_cards[card_id]['pick_chance'] > 0))
 	{
 		all_available_cards[card_id]['value'] = 1;
 	}
@@ -4575,7 +4575,7 @@ function check_card(card_id){
 			//card_info['time'] = Math.ceil(card_info['time'] / (1 + (card_info['time'] / 60)) );
 			card_info['time'] = Math.ceil(card_info['time']);
 		}
-	    if(card_info['value'] == undefined)
+	    if(card_info['value'] == undefined && (card_info['pick_chance'] == undefined || card_info['pick_chance'] > 0))
 	    {
 	    	//console.log(card_info['name']);
 	    	card_info['value'] = calculate_card_value(card_id);
