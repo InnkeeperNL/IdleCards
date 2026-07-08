@@ -347,34 +347,34 @@ function construct_random_enemy_deck(base_card, size){
 
 var random_deck_times = {
 	basic:{
-		percent_main: 		20,
-	 	percent_slow: 		70,
-	 	percent_massive: 	90,
+		percent_main: 		60,
+	 	percent_slow: 		90,
+	 	percent_massive: 	1000,
 	},
 	fast:{
-		percent_main: 		50,
-	 	percent_slow: 		70,
-	 	percent_massive: 	90,
+		percent_main: 		70,
+	 	percent_slow: 		95,
+	 	percent_massive: 	1000,
 	},
 	slow:{
-		percent_main: 		20,
-	 	percent_slow: 		70,
-	 	percent_massive: 	85,
+		percent_main: 		40,
+	 	percent_slow: 		80,
+	 	percent_massive: 	1000,
 	},
 	cheap:{
-		percent_main: 		55,
-	 	percent_slow: 		90,
-	 	percent_massive: 	200,
+		percent_main: 		80,
+	 	percent_slow: 		95,
+	 	percent_massive: 	1000,
 	},
 	muscle:{
-		percent_main: 		20,
-	 	percent_slow: 		75,
-	 	percent_massive: 	90,
+		percent_main: 		50,
+	 	percent_slow: 		90,
+	 	percent_massive: 	1000,
 	},
 	cheap_only:{
-		percent_main: 		85,
-	 	percent_slow: 		90,
-	 	percent_massive: 	95,
+		percent_main: 		90,
+	 	percent_slow: 		95,
+	 	percent_massive: 	1000,
 	}
 }
 
@@ -524,13 +524,13 @@ function construct_random_deck(size, hero, randomized){
 		max_time = 3;
 		if(deck_percent >= deck_times['percent_main'])
 		{
-			min_time = 4;
-			max_time = 7;
+			min_time = 5;
+			max_time = 8;
 		}
 		if(deck_percent >= deck_times['percent_slow'])
 		{
-			min_time = 8;
-			max_time = 11;
+			min_time = 9;
+			max_time = 110;
 		}
 		if(deck_percent >= deck_times['percent_massive'])
 		{
