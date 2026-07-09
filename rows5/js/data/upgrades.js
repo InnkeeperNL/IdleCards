@@ -359,7 +359,7 @@ var all_upgrades = {
 		subtypes:  		['any'],
 		amount: 		0.05,
 		level_cost_scale: 	1,
-		cost: 			{scraps:50,},
+		cost: 			{scraps:500,},
 		max_level: 		10,
 	},
 	/*wave_access:{
