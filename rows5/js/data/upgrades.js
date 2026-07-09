@@ -1028,7 +1028,7 @@ function parse_upgrade_button(upgrade_id, requirements_met){
 					if(gamedata['upgrades'][needed_id] != undefined){effective_needed_level = gamedata['upgrades'][needed_id];}
 					unlock_needed += needed_level;
 					unlock_gotten += effective_needed_level;
-					parsed_upgrade_button += all_upgrades[needed_id]['name'] + ': ' + effective_needed_level + ' / ' + needed_level + '<br/>';
+					parsed_upgrade_button += all_upgrades[needed_id]['name'] + ': ' + effective_needed_level + '/' + needed_level + '<br/>';
 				}
 			});
 			parsed_upgrade_button += 	'</span>';
@@ -1186,11 +1186,11 @@ function show_single_upgrade(){
 					if(owned_amount < actual_cost)
 					{
 						can_upgrade = false;
-						parsed_upgrade += cost_name + ': <span style="color:red">' + nFormatter(owned_amount,3) + ' / ' + nFormatter(actual_cost,3) + '<br/></span>';
+						parsed_upgrade += cost_name + ': <span style="color:red">' + nFormatter(owned_amount,3) + '/' + nFormatter(actual_cost,3) + '<br/></span>';
 					}
 					else
 					{
-						parsed_upgrade += cost_name + ': <span>' + nFormatter(owned_amount,3) + ' / ' + nFormatter(actual_cost,3) + '<br/></span>';
+						parsed_upgrade += cost_name + ': <span>' + nFormatter(owned_amount,3) + '/' + nFormatter(actual_cost,3) + '<br/></span>';
 					}
 				});
 				if(can_upgrade == true)
