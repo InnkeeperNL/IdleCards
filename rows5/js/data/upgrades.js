@@ -1186,11 +1186,11 @@ function show_single_upgrade(){
 					if(owned_amount < actual_cost)
 					{
 						can_upgrade = false;
-						parsed_upgrade += cost_name + ': <span style="color:red">' + nFormatter(owned_amount,3) + '/' + nFormatter(actual_cost,3) + '<br/></span>';
+						parsed_upgrade += cost_name + ': <span style="color:red">' + nFormatter(owned_amount,3) + '</span><span> / ' + nFormatter(actual_cost,3) + '<br/></span>';
 					}
 					else
 					{
-						parsed_upgrade += cost_name + ': <span>' + nFormatter(owned_amount,3) + '/' + nFormatter(actual_cost,3) + '<br/></span>';
+						parsed_upgrade += cost_name + ': <span>' + nFormatter(owned_amount,3) + ' / ' + nFormatter(actual_cost,3) + '<br/></span>';
 					}
 				});
 				if(can_upgrade == true)
