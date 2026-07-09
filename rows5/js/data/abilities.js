@@ -11015,11 +11015,11 @@ var all_abilities = {
 		level_cost_hero: 	3,
 	},
 	regenerates:{
-		description: 	'When this receives damage, it has a {LEVEL}0% chance to add 1 regeneration to itself.{REGEN}',
+		description: 	'When this receives damage, it applies {LEVEL} regeneration to itself.{REGEN}',
 		proc: 			'receive_damage',
 		cannot_proc_while_stunned: true,
-		proc_chance: 	10,
-		proc_factor: 	'ability_level',
+		/*proc_chance: 	10,
+		proc_factor: 	'ability_level',*/
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -11037,17 +11037,17 @@ var all_abilities = {
 				effect_id:  	'regeneration',
 				subtypes: 		['magical','grant_regeneration'],
 				//skill_id: 		'regeneration',
-				amount: 		1
+				amount: 		'ability_level'
 			},
 		},
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.02,
-			base_cost_hero_factor: 0.3,
+			base_cost_factor: 1,
+			base_cost_hero_factor: 1,
 		},
-		cost_factor: 		'health',
-		//level_cost_cum: true,
+		//cost_factor: 		'health',
+		level_cost_cum: true,
 	},
 	regenerating_deaths:{
 		description: 	'Applies {LEVEL} regeneration to a random damaged ally unit or hero when any ally creature is destroyed.{REGEN}',
@@ -15197,7 +15197,7 @@ $.each(all_abilities, function(ability_id, ability_info){
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{BLESSED}").join('<br/><i>Blessed: There is a 10% chance per blessing that this will return to your deck when destroyed.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{DOOM}").join('<br/><i>Doom: There is a 10% chance per doom that this will be destroyed at the end of its turn. If a unit has 10 or more doom on it, it is destroyed immediately.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{SHIELD}").join('<br/><i>Shield: Absorbs the first incoming damage.</i>');
-	all_abilities[ability_id]['description'] = ability_info['description'].split("{REGEN}").join('<br/><i>Regeneration: If damaged, heals by the amount of regeneration. The amount of regeneration is reduced by 1 after each use.</i>');
+	all_abilities[ability_id]['description'] = ability_info['description'].split("{REGEN}").join('<br/><i>Regeneration: If damaged, heals by the amount of regeneration. The amount of regeneration is halved each turn.</i>');
 });
 
 function calc_proc_effect(test_amount, proc_chance){
