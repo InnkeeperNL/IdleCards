@@ -1110,6 +1110,16 @@ function process_passive_effect(unit_id, effect, amount){
 		check_unit_alive(unit_id, undefined, true);
 		total_timeout += 750 * battle_speed;
 	}
+	if(battle_info.combat_units[unit_id] != undefined && effect == 'regeneration' && combat_alive == true)
+	{
+		timeout_key ++;
+		passive_effect_count++;
+		var temp_passive_effect_count = passive_effect_count + 0;
+		create_projectile(unit_id, unit_id, 'regeneration', false, undefined, battle_info.combat_units[unit_id]['side'], undefined, undefined, undefined, true);
+		receive_healing(unit_id, undefined, amount, ['regeneration']);
+		battle_info.combat_units[unit_id]['effects']['regeneration'] = Math.floor(battle_info.combat_units[unit_id]['effects']['regeneration']/ 2);
+		update_passive_effects(unit_id);
+	}
 }
 
 var skills_to_show_icon = {
@@ -2208,6 +2218,11 @@ function process_effect(target_id, origin_id, effect, level){
 						apply_burn(target_id, calculated_amount, origin_id);
 					}
 
+					if(effect['type'] == 'apply_effect')
+					{
+						apply_effect(target_id, calculated_amount, origin_id, effect['effect_id']);
+					}
+
 					if(effect['type'] == 'reduce_burn')
 					{
 						reduce_burn(target_id, calculated_amount, origin_id);
@@ -2800,6 +2815,43 @@ function apply_burn(target_id, calculated_amount, origin_id){
 		if(calculated_amount > 0)
 		{
 			check_ability_procs(current_unit['origin_side'], 'received_burn', current_unit['unit_id']);
+		}
+	}
+};
+
+function apply_effect(target_id, calculated_amount, origin_id, effect_id){
+	if(calculated_amount > 0 && battle_info.combat_units[target_id] != undefined && effect_id != undefined)
+	{
+		var current_unit = battle_info.combat_units[target_id];
+		if(current_unit['effects'] == undefined)
+		{
+			current_unit['effects'] = {};
+		}
+		if(current_unit['effects'][effect_id] == undefined)
+		{
+			current_unit['effects'][effect_id] = calculated_amount;
+		}
+		else
+		{
+			current_unit['effects'][effect_id] += calculated_amount;
+		}
+		timeout_key ++;
+		passive_effect_count++;
+		var temp_passive_effect_count = passive_effect_count + 0;
+		all_timeouts[timeout_key] = setTimeout(function(){
+			//$('.battle_container .unit_id_' + target_id + ' .card_image').addClass('burned');
+			$('.battle_container .unit_id_' + target_id + ' .card_image').append('<div class="just_' + effect_id + 'ed passive_effect_' + temp_passive_effect_count + '"></div>');
+		},total_timeout);
+		timeout_key ++;
+		all_timeouts[timeout_key] = setTimeout(function(){
+			//$('.battle_container .unit_id_' + target_id + ' .card_image').removeClass('burned');
+			$('.battle_container .unit_id_' + target_id + ' .card_image .passive_effect_' + temp_passive_effect_count + '').remove();
+		},total_timeout + 750);
+		total_timeout += 250 * battle_speed;
+		update_passive_effects(target_id);
+		if(calculated_amount > 0)
+		{
+			check_ability_procs(current_unit['origin_side'], 'received_' + effect_id, current_unit['unit_id']);
 		}
 	}
 };

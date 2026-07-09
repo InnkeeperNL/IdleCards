@@ -8756,15 +8756,15 @@ var all_abilities = {
 				min_hp: 		1,
 				damaged: 		true,
 				side: 			'ally',
-				max_abilities: 	{regeneration: 0},
+				has_effect: 	{effect_name: 'regeneration', amount: 0, limit: 'max'},
 			},
 		},
 		effects:{
 			0:{
 				projectile: 	'regeneration',
-				type: 			'grant_skill',
+				type: 			'apply_effect',
+				effect_id:  	'regeneration',
 				subtypes: 		['magical','grant_regeneration'],
-				skill_id: 		'regeneration',
 				amount: 		'ability_level'
 			},
 		},
@@ -11033,9 +11033,10 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'regeneration',
-				type: 			'grant_skill',
+				type: 			'apply_effect',
+				effect_id:  	'regeneration',
 				subtypes: 		['magical','grant_regeneration'],
-				skill_id: 		'regeneration',
+				//skill_id: 		'regeneration',
 				amount: 		1
 			},
 		},
@@ -11066,9 +11067,9 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'regeneration',
-				type: 			'grant_skill',
+				type: 			'apply_effect',
+				effect_id:  	'regeneration',
 				subtypes: 		['magical','grant_regeneration'],
-				skill_id: 		'regeneration',
 				amount: 		'ability_level'
 			},
 		},
