@@ -3820,6 +3820,77 @@ var all_abilities = {
 		level_cost: 		4,
 		cost_factor: 		'health',
 	},
+	death_bolt:{
+		description: 	'When an ally creature dies, this deals 1 magical projectile damage to a random enemy unit {LEVEL} time(s). Will only target the enemy hero if there are no enemy units.',
+		cannot_proc_while_stunned: true,
+		proc: 			'ally_creature_death',
+		proc_amount: 	'ability_level',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'magic',
+				type: 			'damage',
+				subtypes: 		['magical','projectile','arcane_bolts'],
+				amount: 		1,
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'arcane_bolt',
+			base_cost_factor: 	1,
+			base_cost_spell_factor: 0.25,
+		},
+		average_hits: 		'ability_level',
+	},
+	death_bolt_hv:{
+		name: 			'death bolt',
+		description: 	'When an ally creature dies, this deals 1 magical projectile damage to a random enemy unit {LEVEL} time(s). Will not target the enemy hero.',
+		cannot_proc_while_stunned: true,
+		proc: 			'ally_creature_death',
+		proc_amount: 	'ability_level',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'magic',
+				type: 			'damage',
+				subtypes: 		['magical','projectile','arcane_bolts'],
+				amount: 		1,
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'arcane_bolt',
+			base_cost_factor: 	1,
+			base_cost_hero_factor: 1.25,
+			base_cost_spell_factor: 0.25,
+		},
+		average_hits: 		'ability_level',
+	},
 	debilitate:{
 		description: 	'A random enemy creature looses {LEVEL} power and health permanently.',
 		cannot_proc_while_stunned: true,
@@ -6918,21 +6989,21 @@ var all_abilities = {
 		additional_levels_cost: 1,
 	},
 	flying:{
-		description: 	'Gives this unit a 50% chance to avoid any incoming melee effect, unless the effect comes from a unit that also has the flying ability.',
+		hide_amount: 	true,
+		description: 	'Gives this unit a {LEVEL}0% chance to avoid any incoming melee effect, unless the effect comes from a unit that also has the flying ability.',
 		proc: 			'avoid_effect',
-		subtypes: 				['melee'],
+		subtypes: 		['melee'],
 		negated_by_ability: 	['flying', 'reach'],
-		proc_chance: 	50,
-		//effect: 		50,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
-		not_on_hero: 	true,
 		targets:	{
 			0:{
-				target: 	'unit_or_hero',
-				target_amount: 1,
-				position: 	'self',
-				min_hp: 	1,
-				side: 		'ally'
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				side: 			'ally'
 			},
 		},
 		effects:{
@@ -6943,10 +7014,14 @@ var all_abilities = {
 				increase_timeout: 	-500,
 			}
 		},
-		level_cost: 		0.75,
-		min_cost: 			3,
-		level_cost_hero: 	1.5,
-		cost_factor: 		'health',
+		base_cost:{
+			base_cost_id: 		'evade',
+			base_cost_factor: 	0.5,
+			base_cost_hero_factor: 1,
+		},
+		level_cost_cum: 	true,
+		cost_factor: 			'health',
+		cost_factor_factor: 	0.5,
 	},
 	flying_arrivals:{
 		ability_subtypes: ['flying'],
@@ -11516,7 +11591,7 @@ var all_abilities = {
 	},
 	resurrect:{
 		hide_amount: 	true,
-		description: 	'When this\' health reaches 0, it has a {LEVEL}0% chance to come back to life with 1 health. The chance to resurrect is reduced by 20% every time it does.',
+		description: 	'When its health reaches 0, this has a {LEVEL}0% chance to come back to life with 1 health. The chance to resurrect is reduced by 20% every time it does.',
 		proc: 			'own_death',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',

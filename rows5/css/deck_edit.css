@@ -1603,6 +1603,7 @@
 	left: 170px;
 	bottom: 10px;
     overflow-y: auto;
+    padding-right: 15px;
 }
 
 .portrait .card_detail .ability_details
