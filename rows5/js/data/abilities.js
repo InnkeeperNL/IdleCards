@@ -11107,7 +11107,7 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				projectile: 	'regeneration',
+				//projectile: 	'regeneration',
 				type: 			'apply_effect',
 				effect_id:  	'regeneration',
 				subtypes: 		['magical','grant_regeneration'],

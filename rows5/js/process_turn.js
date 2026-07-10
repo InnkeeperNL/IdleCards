@@ -1110,7 +1110,7 @@ function process_passive_effect(unit_id, effect, amount){
 		check_unit_alive(unit_id, undefined, true);
 		total_timeout += 750 * battle_speed;
 	}
-	if(battle_info.combat_units[unit_id] != undefined && effect == 'regeneration' && combat_alive == true)
+	if(battle_info.combat_units[unit_id] != undefined && effect == 'regeneration' && combat_alive == true && battle_info.combat_units[unit_id]['current_health'] > 0)
 	{
 		timeout_key ++;
 		passive_effect_count++;
