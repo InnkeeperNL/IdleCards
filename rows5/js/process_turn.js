@@ -1827,6 +1827,7 @@ function process_effect(target_id, origin_id, effect, level){
 	var prev_any_effect_fired = any_effect_fired;
 	var any_effect_fired = true;
 	var effect_avoided = false;
+	var show_avoided = true;
 	var target_immune = false;
 
 	if(battle_info.combat_units[target_id] != undefined)
@@ -1895,75 +1896,87 @@ function process_effect(target_id, origin_id, effect, level){
 			var origin_side = battle_info.combat_units[origin_id]['side'] + 0;
 			if(battle_info.combat_units[target_id] != undefined)
 			{
-
-				
-				eachoa(battle_info.combat_units[target_id]['abilities'], function(ability_id, ability_level){
-					var has_avoid = all_abilities[ability_id]['proc'];
-					if(match_array_values(has_avoid, 'avoid_effect'))
-					{
-						var avoid_subtypes = all_abilities[ability_id]['subtypes'];
-						var can_avoid = match_array_values(avoid_subtypes, effect['subtypes']);
-						if(can_avoid == true && all_abilities[ability_id]['subtypes_while_origin_has_ability'] != undefined && battle_info.combat_units[origin_id] != undefined)
+				if(match_array_values(effect['subtypes'], 'projectile') && battle_info.combat_units[target_id]['armor'] != undefined && battle_info.combat_units[target_id]['armor'] > 0 && Math.random() < battle_info.combat_units[target_id]['armor'] / 10)
+				{
+					effect_avoided = true;
+					show_avoided = false;
+			        latest_result = 0;
+			        //total_timeout -= 1000 * battle_speed;	
+			        total_timeout += 500 * battle_speed;			
+			        create_projectile(target_id, target_id, 'shield', false, undefined, battle_info.combat_units[target_id]['side'], undefined, undefined, undefined, true);
+			    	battle_info.combat_units[target_id]['armor'] -= 1;
+			    	check_unit_hp(target_id);
+				}
+				else
+				{
+					eachoa(battle_info.combat_units[target_id]['abilities'], function(ability_id, ability_level){
+						var has_avoid = all_abilities[ability_id]['proc'];
+						if(match_array_values(has_avoid, 'avoid_effect'))
 						{
-							if(battle_info.combat_units[origin_id] == undefined)
+							var avoid_subtypes = all_abilities[ability_id]['subtypes'];
+							var can_avoid = match_array_values(avoid_subtypes, effect['subtypes']);
+							if(can_avoid == true && all_abilities[ability_id]['subtypes_while_origin_has_ability'] != undefined && battle_info.combat_units[origin_id] != undefined)
 							{
-								can_avoid = false;
-							}
-							else
-							{
-								eachoa(all_abilities[ability_id]['subtypes_while_origin_has_ability'], function(subtype_id, origin_has_ability){
-									if(match_array_values(subtype_id, effect['subtypes']))
-									{
-										var origin_has_current_ability = false;
-										eachoa(battle_info.combat_units[origin_id]['abilities'], function(origin_ability_key, origin_ability_level){
-											if(origin_ability_level > 0 && match_array_values(origin_ability_key, origin_has_ability))
-											{
-												origin_has_current_ability = true;
-											}
-										});
-										if(origin_has_current_ability == false)
+								if(battle_info.combat_units[origin_id] == undefined)
+								{
+									can_avoid = false;
+								}
+								else
+								{
+									eachoa(all_abilities[ability_id]['subtypes_while_origin_has_ability'], function(subtype_id, origin_has_ability){
+										if(match_array_values(subtype_id, effect['subtypes']))
 										{
-											can_avoid = false;
+											var origin_has_current_ability = false;
+											eachoa(battle_info.combat_units[origin_id]['abilities'], function(origin_ability_key, origin_ability_level){
+												if(origin_ability_level > 0 && match_array_values(origin_ability_key, origin_has_ability))
+												{
+													origin_has_current_ability = true;
+												}
+											});
+											if(origin_has_current_ability == false)
+											{
+												can_avoid = false;
+											}
 										}
-									}
-								});
+									});
+								}
 							}
-						}
-						if(can_avoid == true)
-						{
-							var avoid_chance = calculate_effect({amount:all_abilities[ability_id]['proc_chance'],amount_factor:all_abilities[ability_id]['proc_factor']}, target_id, origin_id, ability_level);
-							var avoid_rolled = (Math.random() * 100);
-							var effect_negated = false;
-							var prev_effect_avoided = false;
-							if(effect_avoided == true){prev_effect_avoided = true;}
+							if(can_avoid == true)
+							{
+								var avoid_chance = calculate_effect({amount:all_abilities[ability_id]['proc_chance'],amount_factor:all_abilities[ability_id]['proc_factor']}, target_id, origin_id, ability_level);
+								var avoid_rolled = (Math.random() * 100);
+								var effect_negated = false;
+								var prev_effect_avoided = false;
+								if(effect_avoided == true){prev_effect_avoided = true;}
 
-							if(all_abilities[ability_id]['cannot_proc_while_stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == 0)
-			        		{
-			        			if(effect_avoided == false && avoid_rolled <= avoid_chance)
-			        			{
-			        			    if(all_abilities[ability_id]['negated_by_ability'] != undefined)
-			            			{	
-			            				eachoa(all_abilities[ability_id]['negated_by_ability'], function(useless_key, negated_ability_key){
-			            					eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, useless_data){
-			            						if(ability_key == negated_ability_key)
-			            						{
-			            							effect_negated = true;
-			            						}
-			            					});
-			            				});
-			            			}
-			            			if(effect_negated == false)
-			            			{
-			            				effect_avoided = true;
-			            				latest_result = 0;
-			            				process_ability(target_id, all_abilities[ability_id], ability_level, origin_id, undefined, 'avoid_effect', undefined, 100);
-			            			}
-			        			}
-			        		}
-			        	}
-					}
-					
-				});
+								if(all_abilities[ability_id]['cannot_proc_while_stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == undefined || battle_info.combat_units[target_id]['effects']['stunned'] == 0)
+				        		{
+				        			if(effect_avoided == false && avoid_rolled <= avoid_chance)
+				        			{
+				        			    if(all_abilities[ability_id]['negated_by_ability'] != undefined)
+				            			{	
+				            				eachoa(all_abilities[ability_id]['negated_by_ability'], function(useless_key, negated_ability_key){
+				            					eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, useless_data){
+				            						if(ability_key == negated_ability_key)
+				            						{
+				            							effect_negated = true;
+				            						}
+				            					});
+				            				});
+				            			}
+				            			if(effect_negated == false)
+				            			{
+				            				effect_avoided = true;
+				            				latest_result = 0;
+				            				process_ability(target_id, all_abilities[ability_id], ability_level, origin_id, undefined, 'avoid_effect', undefined, 100);
+				            			}
+				        			}
+				        		}
+				        	}
+						}
+						
+					});
+				}
 
 			}
 
@@ -2523,19 +2536,23 @@ function process_effect(target_id, origin_id, effect, level){
 		}
 		if(effect_avoided == true)
 		{
-			all_timeouts[timeout_key] = setTimeout(function(){
-				$('.battle_container .unit_id_' + target_id).removeClass('dodge');
-			},total_timeout);
-			timeout_key ++;
-			all_timeouts[timeout_key] = setTimeout(function(){
-				$('.battle_container .unit_id_' + target_id).addClass('dodge');
-			},total_timeout + 50);
-			
-			timeout_key ++;
-			all_timeouts[timeout_key] = setTimeout(function(){
-				$('.battle_container .unit_id_' + target_id).removeClass('dodge');
-			},total_timeout + 500);
+			if(show_avoided == true)
+			{
+				all_timeouts[timeout_key] = setTimeout(function(){
+					$('.battle_container .unit_id_' + target_id).removeClass('dodge');
+				},total_timeout);
+				timeout_key ++;
+				all_timeouts[timeout_key] = setTimeout(function(){
+					$('.battle_container .unit_id_' + target_id).addClass('dodge');
+				},total_timeout + 50);
+				
+				timeout_key ++;
+				all_timeouts[timeout_key] = setTimeout(function(){
+					$('.battle_container .unit_id_' + target_id).removeClass('dodge');
+				},total_timeout + 500);
+			}
 			total_timeout += 1500 * battle_speed;
+
 
 			if(battle_info.combat_units[origin_id] != undefined)
 			{

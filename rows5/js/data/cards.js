@@ -1299,7 +1299,7 @@ var all_available_cards = {
 	hammer:{
 		name: 				'hammer',
 		type: 				'artifact',
-		subtypes: 			['weapon'],
+		subtypes: 			['tool'],
 		color: 				['colorless'],
 		theme: 				['type_structure'],
 		needs_theme: 		['type_structure'],
@@ -5149,6 +5149,31 @@ function count_card_subtypes(type){
 		}
 	});
 	return card_subtypes;
+}
+
+function count_quest_cards(){
+	var all_needed_cards = {};
+	eachoa(all_chained_achievements, function(quest_id, quest_info){
+		var current_quest_proc = quest_info['objective'] + '';
+		var card_needed = current_quest_proc.replaceAll('_card_played', '');
+		if(current_quest_proc != card_needed && card_needed == card_needed.replaceAll('_times', ''))
+		{
+			all_needed_cards[card_needed] = 0;
+		}
+	});
+	eachoa(all_available_cards, function(card_id, card_info){
+		eachoa(all_needed_cards, function(needed_card_id, needed_card_amount){
+			if(match_array_values(card_info['type'], needed_card_id) || match_array_values(card_info['subtypes'], needed_card_id))
+			{
+				all_needed_cards[needed_card_id]++;
+			}
+		});
+	});
+	all_needed_cards = sortObj(all_needed_cards, 'value');
+	eachoa(all_needed_cards, function(needed_card_id, needed_card_amount){
+		console.log(needed_card_id + ': ' + needed_card_amount);
+	});
+	return all_needed_cards;
 }
 
 function show_card_times(card_time){
