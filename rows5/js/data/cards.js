@@ -1500,6 +1500,31 @@ var all_available_cards = {
 		abilities: 			{stun: 5, minimum_enemies: 3},
 		quote: '\"This time the jungle grasps them all.\"',
 	},
+	leaf_caster:{
+		name: 				'leaf caster',
+		type: 				'creature',
+		subtypes: 			['human','mage'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/leaf_caster.jpg',
+		image_position: 	'top',
+		power: 				false,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{arcane_bolt: 1, regenerate_ally: 1},
+		hero_version: 			{
+			theme: 				['subtype_mage','subtype_plant','damaging_hero'],
+			not_theme: 			['empower_hero_ability','empower_ally_ability'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{arcane_bolt_hv: 1, regenerate_ally: 1},
+		},
+		quote: '\"Unlocking the magic within the leaves.\"',
+	},
 	leaf_cleric:{
 		name: 				'leaf cleric',
 		type: 				'creature',
@@ -2773,6 +2798,30 @@ var all_available_cards = {
 		abilities: 			{resurrect_ally: 2},
 		quote: '\"Where do you think you are going?!\"',
 	},
+	sundrew:{
+		name: 				'sundrew',
+		type: 				'structure',
+		subtypes: 			['plant','slime'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/sundrew.jpg',
+		image_position: 	'top',
+		power: 				false,
+		armor: 				0,
+		health: 			8,
+		abilities: 			{trap: 4, thorns: 1, feast: 3},
+		hero_version: 			{
+			theme: 				['subtype_slime','subtype_plant'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{trap: 4, thorns: 1, feast: 2},
+		},
+		quote: '\"Do not touch it or it will grab you and eat you.\"',
+	},
 	sword:{
 		name: 				'sword',
 		type: 				'artifact',
@@ -3050,6 +3099,54 @@ var all_available_cards = {
 			abilities: 			{empowering_structures: 1, strike_unit: 1},
 		},
 		quote: '\"They will defend their village.\"',
+	},
+	vine_caster:{
+		name: 				'vine caster',
+		type: 				'creature',
+		subtypes: 			['human','mage'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/vine_caster.jpg',
+		image_position: 	'top',
+		power: 				false,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{arcane_bolt: 1, stunning_touch: 3},
+		hero_version: 			{
+			theme: 				['subtype_mage','subtype_plant','damaging_hero'],
+			not_theme: 			['empower_hero_ability','empower_ally_ability'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{arcane_bolt_hv: 2, stunning_touch: 3},
+		},
+		quote: '\"Oh, you did not just throw that geen stuff at me!\"',
+	},
+	vine_slime:{
+		name: 				'vine slime',
+		type: 				'creature',
+		subtypes: 			['plant','slime'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/vine_slime.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, stunning_touch: 3, regenerates: 1},
+		hero_version: 			{
+			theme: 				['subtype_slime','subtype_plant'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, stunning_touch: 3, regenerates: 1},
+		},
+		quote: '\"I\'m not sure what it is, but it sure is sticky.\"',
 	},
 	wall:{
 		name: 				'wall',
@@ -4226,14 +4323,15 @@ function calculate_card_time(card_id, show_calc, hero_version){
 				var cost_factor_increase = card[ability['cost_factor']];
 				if(ability['cost_factor_factor'] != undefined)
 				{
-					if(ability['cost_factor_factor'] < 1)
+					cost_factor_increase = card[ability['cost_factor']] * ability['cost_factor_factor'];
+					/*if(ability['cost_factor_factor'] < 1)
 					{
 						cost_factor_increase = (1 - ability['cost_factor_factor']) + (card[ability['cost_factor']] * ability['cost_factor_factor']);
 					}
 					else
 					{
 						cost_factor_increase = (1 - ability['cost_factor_factor']) + (card[ability['cost_factor']] * ability['cost_factor_factor']);
-					}
+					}*/
 					
 				}
 				level_cost *= cost_factor_increase;

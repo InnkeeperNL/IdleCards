@@ -6108,8 +6108,11 @@ var all_abilities = {
 				},
 			},	
 		},
-		level_cost: 	0.2,
-		level_cost_hero: 1,
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 1/6,
+			base_cost_hero_factor: 1/3,
+		},
 	},
 	fill_potion:{
 		hide_amount: true,
@@ -11089,6 +11092,36 @@ var all_abilities = {
 		level_cost: 		2,
 		level_cost_hero: 	3,
 	},
+	regenerate_ally:{
+		description: 	'Applies {LEVEL} regeneration to a random damaged ally unit or hero.{REGEN}',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				damaged: 		true,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'regeneration',
+				type: 			'apply_effect',
+				effect_id:  	'regeneration',
+				subtypes: 		['magical','grant_regeneration'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 1,
+		},
+		level_cost_cum: true,
+	},
 	regenerates:{
 		description: 	'When this receives damage, it applies {LEVEL} regeneration to itself.{REGEN}',
 		proc: 			'receive_damage',
@@ -14145,6 +14178,7 @@ var all_abilities = {
 		},
 		average_hits: 		1,
 		cost_factor: 		'health',
+		cost_factor_factor: 	0.5,
 	},
 	trample:{
 		description: 	'When this kills a unit with physical melee damage, the excess damage is dealt to the enemy hero.',
