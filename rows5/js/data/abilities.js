@@ -11162,6 +11162,42 @@ var all_abilities = {
 		//cost_factor: 		'health',
 		level_cost_cum: true,
 	},
+	regenerates_hv:{
+		name: 			'regenerates',
+		description: 	'When this receives damage, it has a {LEVEL}0% chance to apply 1 regeneration to itself.{REGEN}',
+		proc: 			'receive_damage',
+		cannot_proc_while_stunned: true,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				damaged: 		true,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				//projectile: 	'regeneration',
+				type: 			'apply_effect',
+				effect_id:  	'regeneration',
+				subtypes: 		['magical','grant_regeneration'],
+				//skill_id: 		'regeneration',
+				amount: 		1
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.1,
+			//base_cost_hero_factor: 1,
+		},
+		//cost_factor: 		'health',
+		level_cost_cum: true,
+	},
 	regenerating_deaths:{
 		description: 	'Applies {LEVEL} regeneration to a random damaged ally unit or hero when any ally creature is destroyed.{REGEN}',
 		proc: 			'ally_creature_death',
