@@ -817,7 +817,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{curse_all: 1, destroy_cursed: 8, strike: 1},
+		abilities: 			{curse_all: 1, destroy_cursed: 4, strike: 1},
 		hero_version: 			{
 			theme: 				['curse_ability'],
 			power: 				1,
@@ -3284,7 +3284,7 @@ var all_available_cards = {
 		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
-		health: 			4,
+		health: 			2,
 		abilities: 			{run_away: 1, striking_entry: 1, strike: 1, coward: 1, evade: 3},
 		hero_version: 			{
 			theme: 				['subtype_rogue','curse_ability','move_ally_to_hand_ability'],
@@ -5451,6 +5451,19 @@ function show_card_times(card_time){
 			}
 		});
 	}
+}
+
+function count_card_values(){
+	var all_card_values = {};
+	eachoa(all_available_cards, function(card_id, card_info){
+		if((card_info['pick_chance'] == undefined || card_info['pick_chance'] > 0) && (card_info['type'] == 'creature' || card_info['type'] == 'structure' || card_info['type'] == 'artifact'  || card_info['type'] == 'spell'))
+		{
+			if(card_info['value'] == undefined){console.log(card_id);}
+			if(all_card_values[card_info['value']] == undefined){all_card_values[card_info['value']] = 0;}
+			all_card_values[card_info['value']]++;
+		}
+	});
+	return all_card_values;
 }
 
 var default_card = {
