@@ -11157,7 +11157,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'healing',
 			base_cost_factor: 0.5,
-			base_cost_hero_factor: 0.75,
+			base_cost_hero_factor: 1,
 		},
 		//cost_factor: 		'health',
 		level_cost_cum: true,

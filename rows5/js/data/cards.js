@@ -3267,7 +3267,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{trap: 9, regenerates: 1},
+			abilities: 			{trap: 7, regenerates: 1},
 		},
 		quote: '\"We cut it down, but it grew right back!\"',
 	},
