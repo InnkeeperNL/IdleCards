@@ -72,7 +72,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.1,
+			base_cost_factor: 	0.05,
 		},
 	},
 	adrenaline:{
@@ -1230,9 +1230,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.2,
-			base_cost_artifact_factor: 0.1,
-			base_cost_spell_factor: 0.05,
+			base_cost_factor: 	0.1,
+			base_cost_spell_factor: 0.025,
 		},
 	},
 	bring_animal:{
@@ -2026,7 +2025,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.2,
+			base_cost_factor: 	0.1,
 		},
 	},
 	call_witch:{
@@ -2059,8 +2058,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.3,
-			base_cost_spell_factor: 0.075,
+			base_cost_factor: 	0.1,
+			base_cost_spell_factor: 0.025,
 		},
 	},
 	carry_away:{
@@ -5985,7 +5984,10 @@ var all_abilities = {
 				side: 			'enemy',
 			}
 		},
-		level_cost: 	1,
+		base_cost:{
+			base_cost_id: 'fear',
+			base_cost_factor: 0.25,
+		},
 	},
 	fearful_aura:{
 		description: 	'When this receives melee damage from a non-undead enemy creature unit, that unit returns to their owner\'s hand.',
@@ -6058,7 +6060,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'fear',
 			base_cost_factor: 0.1,
-			base_cost_hero_factor: 0.5,
+			base_cost_hero_factor: 0.2,
 		},
 	},
 	feast:{
@@ -7791,7 +7793,6 @@ var all_abilities = {
 			base_cost_id: 		'summon',
 			base_cost_factor: 	0.1,
 		},
-		level_cost_cum: true,
 	},
 	guard:{
 		description: 	'When played, an enemy unit enters the game or any unit is destroyed, if there is no opposing enemy unit, this unit will move to a free slot with an opposing unit. Can be used once each round.',
@@ -8136,6 +8137,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
 		has_mana: 				true,
+		ability_subtypes: ['drink_potion'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -8826,6 +8828,7 @@ var all_abilities = {
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		has_mana: 				true,
+		ability_subtypes: ['drink_potion'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -9226,6 +9229,7 @@ var all_abilities = {
 		do_not_pause_between: 	true,
 		has_mana: 				true,
 		min_ally_hand_cards: 5,
+		ability_subtypes: ['drink_potion'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -10169,6 +10173,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
 		has_mana: 				true,
+		ability_subtypes: ['drink_potion'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -11065,7 +11070,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		4,
 	},
-	regenerate:{
+	/*regenerate:{
 		description: 	'Heals itself by {LEVEL} each turn.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -11091,7 +11096,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 		level_cost_hero: 	3,
-	},
+	},*/
 	regenerate_ally:{
 		description: 	'Applies {LEVEL} regeneration to a random damaged ally unit or hero.{REGEN}',
 		cannot_proc_while_stunned: true,
@@ -11118,7 +11123,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 1,
+			base_cost_factor: 0.75,
 		},
 		level_cost_cum: true,
 	},
@@ -11151,8 +11156,8 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 1,
-			base_cost_hero_factor: 1,
+			base_cost_factor: 0.5,
+			base_cost_hero_factor: 0.75,
 		},
 		//cost_factor: 		'health',
 		level_cost_cum: true,
@@ -11184,11 +11189,11 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 1,
+			base_cost_factor: 0.75,
 		},
 		level_cost_cum: true,
 	},
-	regeneration:{
+	/*regeneration:{
 		description: 	'If damaged, this heals itself by {LEVEL}. The amount of regeneration is reduced by 1 after each use.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -11219,7 +11224,7 @@ var all_abilities = {
 			base_cost_factor: 1,
 		},
 		level_cost_cum: true,
-	},
+	},*/
 	release_bird:{
 		description: 	'Summons {LEVEL} bird creature(s) when destroyed.',
 		proc: 			'own_death',
@@ -12458,7 +12463,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'slow',
 			base_cost_factor: 	1,
-			base_cost_hero_factor: 	1.5,
+			base_cost_hero_factor: 	2,
 			base_cost_spell_factor: 0.25,
 		},
 		level_cost_cum: true,
@@ -12979,8 +12984,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.025,
-			base_cost_hero_factor: 0.25,
+			base_cost_factor: 	0.02,
+			base_cost_hero_factor: 0.2,
 		},
 		cost_factor: 	'health',
 	},
@@ -13617,11 +13622,12 @@ var all_abilities = {
 		level_cost_spell: 	3,
 	},
 	summon_creature:{
-		description: 	'Summons {LEVEL} creature unit(s).',
+		hide_amount: 	true,
+		description: 	'Has a {LEVEL}0% chance to add a random creature card to your hand. If your hand is full, it will add it to your deck instead.',
 		proc: 			'basic',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
-		max_ally_units: 4,
-		proc_amount: 'ability_level',
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -13631,16 +13637,22 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				type: 		'summon_unit',
-				subtypes: 	['summon_ally','summon_creature'],
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_human','summon_creature'],
 				card_id: 	'random',
 				card_type: 	'creature',
+				card_status: 	'hand',
 				amount: 	1
 			}
 		},
-		animation: 	'combat_zoom',
-		level_cost: 		24,
-		level_cost_spell: 	6,
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.1,
+			base_cost_spell_factor: 0.025,
+		},
 	},
 	summon_frog:{
 		description: 	'Summons {LEVEL} frog(s).',
@@ -13753,8 +13765,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.3,
-			base_cost_spell_factor: 0.075,
+			base_cost_factor: 	0.1,
+			base_cost_spell_factor: 0.025,
 		},
 	},
 	summon_imp:{
@@ -14600,7 +14612,10 @@ var all_abilities = {
 				side: 			'enemy',
 			}
 		},
-		level_cost: 	3,
+		base_cost:{
+			base_cost_id: 'fear',
+			base_cost_factor: 1.5,
+		},
 	},
 	upkeep_creature:{
 		name: 			'upkeep: creature',

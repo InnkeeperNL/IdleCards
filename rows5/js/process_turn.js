@@ -1119,6 +1119,7 @@ function process_passive_effect(unit_id, effect, amount){
 		receive_healing(unit_id, undefined, amount, ['regeneration']);
 		battle_info.combat_units[unit_id]['effects']['regeneration'] = Math.floor(battle_info.combat_units[unit_id]['effects']['regeneration']/ 2);
 		update_passive_effects(unit_id);
+		total_timeout += 500 * battle_speed;
 	}
 }
 

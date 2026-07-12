@@ -14,13 +14,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, brew_potion: 2},
+		abilities: 			{strike: 1, brew_potion: 5},
 		hero_version: 			{
 			theme: 				['subtype_potion','active_healing_ability','cleanse_ally_ability','fortify_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, brew_potion: 2},
+			abilities: 			{strike_unit: 1, brew_potion: 5},
 		},
 		quote: '\"You never know what the result will be.\"',
 	},
@@ -40,7 +40,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{arcane_bolt: 1},
 		hero_version: 			{
-			theme: 				['subtype_mage','subtype_arcane','damaging_hero'],
+			theme: 				['subtype_mage','damaging_hero'],
 			not_theme: 			['empower_hero_ability','empower_ally_ability'],
 			power: 				false,
 			armor: 				0,
@@ -144,7 +144,7 @@ var all_available_cards = {
 	arcane_tower:{
 		name: 				'arcane tower',
 		type: 				'structure',
-		subtypes: 			['wall','arcane'],
+		subtypes: 			['wall','mage'],
 		color: 				['colorless'],
 		theme: 				[],
 		needs_theme: 		['gain_mana_ability'],
@@ -157,7 +157,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{arcane_bolt: 1},
 		hero_version: 			{
-			theme: 				['subtype_mage','subtype_arcane','damaging_hero'],
+			theme: 				['subtype_mage','damaging_hero'],
 			not_theme: 			['empower_hero_ability','empower_ally_ability'],
 			power: 				false,
 			armor: 				0,
@@ -311,7 +311,7 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			2,
-		abilities: 			{strike: 1, cursed_touch: 2, venom: 2, spread_blight: 1, call_rat: 2, evade: 4},
+		abilities: 			{strike: 1, cursed_touch: 2, venom: 2, spread_blight: 1, call_rat: 3, evade: 4},
 		hero_version: 			{
 			theme: 				['poison_ability','curse_ability','subtype_rat'],
 			power: 				1,
@@ -688,6 +688,31 @@ var all_available_cards = {
 		quote: '\"For quick strikes.\"',
 		max_in_deck: 		2,
 	},
+	dark_fortress:{
+		name: 				'dark fortress',
+		type: 				'structure',
+		subtypes: 			['wall','fortress'],
+		color: 				['colorless'],
+		theme: 				['subtype_witch'],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/dark_fortress.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			8,
+		abilities: 			{curse_all: 1, destroy_cursed: 5, fortify_self: 2},
+		hero_version: 			{
+			theme: 				['curse_ability', 'projectile_ability'],
+			not_theme: 			['empower_hero_ability','damaging_hero'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{curse_all_hv: 1, destroy_cursed: 10, fortify_self: 1},
+		},
+		quote: '\"Please tell me we do not have to go there.\"',
+	},
 	dark_night:{
 		name: 				'dark night',
 		type: 				'spell',
@@ -718,7 +743,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, cursed_touch: 1, spread_darkness: 1, call_rat: 2, evade: 4},
+		abilities: 			{strike: 1, cursed_touch: 1, spread_darkness: 1, call_rat: 3, evade: 4},
 		hero_version: 			{
 			theme: 				['curse_ability','subtype_rat'],
 			power: 				1,
@@ -1505,7 +1530,7 @@ var all_available_cards = {
 		type: 				'creature',
 		subtypes: 			['human','mage'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['subtype_plant'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -1539,13 +1564,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, regenerating_deaths: 1, grow_plant: 1},
+		abilities: 			{strike: 1, regenerating_deaths: 1},
 		hero_version: 			{
 			theme: 				['ally_creature_death_proc_ability','own_death_proc_ability','summon_creature_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, regenerating_deaths: 1, grow_plant: 1},
+			abilities: 			{strike_unit: 1, regenerating_deaths: 2},
 		},
 		quote: '\"You may hurt us, but we will regrow.\"',
 	},
@@ -1604,6 +1629,31 @@ var all_available_cards = {
 		abilities: 			{hasten_all: 1, echo: 1},
 		quote: '\"A sprinkle of magic.\"',
 		max_in_deck: 		1,
+	},
+	magic_portal:{
+		name: 				'magic portal',
+		type: 				'structure',
+		subtypes: 			['wall','mage'],
+		color: 				['colorless'],
+		theme: 				['subtype_witch'],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/magic_portal.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			8,
+		abilities: 			{unsummon_enemy: 1, summon_creature: 5},
+		hero_version: 			{
+			theme: 				['dealt_damage_to_hero_proc_ability', 'ally_creature_card_played_proc_ability'],
+			not_theme: 			['empower_hero_ability','damaging_hero'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{unsummon_enemy: 1, summon_creature: 3},
+		},
+		quote: '\"Please tell me we do not have to go there.\"',
 	},
 	mana_beetle:{
 		name: 				'mana beetle',
@@ -1761,7 +1811,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{grow_plant: 3},
+			abilities: 			{grow_plant: 6},
 		},
 		quote: '\"Look at all the pretty flowers!\"',
 	},
@@ -1897,7 +1947,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, venom: 1, spread_plague: 1, call_rat: 2, evade: 4},
+		abilities: 			{strike: 1, venom: 1, spread_plague: 1, call_rat: 3, evade: 4},
 		hero_version: 			{
 			theme: 				['poison_ability','subtype_rat'],
 			power: 				1,
@@ -2121,7 +2171,7 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{strike: 1, call_rat: 2, evade: 4},
+		abilities: 			{strike: 1, call_rat: 3, evade: 4},
 		hero_version: 			{
 			theme: 				['subtype_rat'],
 			power: 				2,
@@ -2144,13 +2194,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, call_rat: 4},
+		abilities: 			{strike: 1, call_rat: 5},
 		hero_version: 			{
 			theme: 				['subtype_rat'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, call_rat: 2},
+			abilities: 			{strike_unit: 1, call_rat: 5},
 			time_theme: 		'cheap',
 		},
 		quote: '\"What a cute little furry thing!\"',
@@ -2287,6 +2337,30 @@ var all_available_cards = {
 		},
 		quote: '\"Quick on his feet.\"',
 	},
+	root_monster:{
+		name: 				'root monster',
+		type: 				'creature',
+		subtypes: 			['plant'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/root_monster.jpg',
+		image_position: 	'top',
+		power: 				2,
+		armor: 				0,
+		health: 			8,
+		abilities: 			{strike: 1, fearful_aura: 1, regenerates: 1},
+		hero_version: 			{
+			theme: 				['subtype_plant','run_away_ability','charge_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, fearful_hero: 3, regenerates: 1},
+		},
+		quote: '\"Deep in the jungle there are horrors you wish you had never seen.\"',
+	},
 	runner:{
 		name: 				'runner',
 		type: 				'creature',
@@ -2352,7 +2426,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{slow: 1, fearful_hero: 3},
+			abilities: 			{slow: 1, fearful_hero: 4},
 		},
 		quote: '\"It scares away more then just crows.\"',
 	},
@@ -3193,7 +3267,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{trap: 7, regenerates: 1},
+			abilities: 			{trap: 9, regenerates: 1},
 		},
 		quote: '\"We cut it down, but it grew right back!\"',
 	},
@@ -3377,7 +3451,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{curse_all: 1, call_witch: 10},
+		abilities: 			{curse_all: 1, call_witch: 10, long_echo: 1},
 		quote: '\"Some say there are many more.\"',
 		max_in_deck: 		2,
 	},
@@ -3394,14 +3468,14 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{call_witch: 1, cursed_aura: 1},
+		abilities: 			{call_witch: 3, cursed_aura: 1},
 		hero_version: 			{
 			theme: 				['heal_hero_ability','subtype_witch','movement_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{call_witch: 1, cursed_aura: 2},
+			abilities: 			{call_witch: 3, cursed_aura: 2},
 		},
 		quote: '\"A brother and sister once went in there and never came out.\"',
 	},
@@ -5251,27 +5325,117 @@ function count_card_subtypes(type){
 
 function count_quest_cards(){
 	var all_needed_cards = {};
+	var achievement_factors = {};
 	eachoa(all_chained_achievements, function(quest_id, quest_info){
 		var current_quest_proc = quest_info['objective'] + '';
 		var card_needed = current_quest_proc.replaceAll('_card_played', '');
 		if(current_quest_proc != card_needed && card_needed == card_needed.replaceAll('_times', ''))
 		{
 			all_needed_cards[card_needed] = 0;
+			if(achievement_factors[card_needed] == undefined)
+			{
+				achievement_factors[card_needed] = quest_info['amount'] / 10;
+			}
 		}
 	});
 	eachoa(all_available_cards, function(card_id, card_info){
-		eachoa(all_needed_cards, function(needed_card_id, needed_card_amount){
-			if(match_array_values(card_info['type'], needed_card_id) || match_array_values(card_info['subtypes'], needed_card_id))
+		if(card_info['pick_chance'] == undefined || card_info['pick_chance'] > 0)
+		{
+			eachoa(all_needed_cards, function(needed_card_id, needed_card_amount){
+				if(match_array_values(card_info['type'], needed_card_id) || match_array_values(card_info['subtypes'], needed_card_id))
+				{
+					all_needed_cards[needed_card_id]++;
+				}
+			});
+		}
+	});
+	eachoa(all_needed_cards, function(card_id, card_amount){
+		if(achievement_factors[card_id] != undefined)
+		{
+			all_needed_cards[card_id] /= achievement_factors[card_id];
+			if(achievement_factors[card_id] != 1)
 			{
-				all_needed_cards[needed_card_id]++;
+				//console.log(card_id + ' factor: ' + achievement_factors[card_id]);
 			}
-		});
+		}
+		else
+		{
+			//console.log(card_id + ' needs a factor');
+		}
 	});
 	all_needed_cards = sortObj(all_needed_cards, 'value');
 	eachoa(all_needed_cards, function(needed_card_id, needed_card_amount){
 		console.log(needed_card_id + ': ' + needed_card_amount);
 	});
 	return all_needed_cards;
+}
+
+function count_quest_ability_cards(){
+	var all_needed_cards = {};
+	var achievement_factors = {};
+	eachoa(all_chained_achievements, function(quest_id, quest_info){
+		var current_quest_proc = quest_info['objective'] + '';
+		var card_needed = current_quest_proc.replaceAll('ally_performed_', '');
+		if(current_quest_proc != card_needed && card_needed == card_needed.replaceAll('_times', '') && card_needed == card_needed.replaceAll('_total', ''))
+		{
+			all_needed_cards[card_needed] = 0;
+			if(achievement_factors[card_needed] == undefined)
+			{
+				achievement_factors[card_needed] = quest_info['amount'] / 10;
+			}
+		}
+	});
+	eachoa(all_available_cards, function(card_id, card_info){
+		if(card_info['pick_chance'] == undefined || card_info['pick_chance'] > 0)
+		{
+			eachoa(all_needed_cards, function(needed_card_id, needed_card_amount){
+				if(match_array_values(card_info['theme'], needed_card_id + '_ability'))
+				{
+					all_needed_cards[needed_card_id]++;
+				}
+			});
+		}
+	});
+
+	var temp_all_needed_cards = true_copyobject(all_needed_cards);
+	//console.log(temp_all_needed_cards);
+
+	eachoa(all_needed_cards, function(card_id, card_amount){
+		if(achievement_factors[card_id] != undefined)
+		{
+			all_needed_cards[card_id] /= achievement_factors[card_id];
+			if(achievement_factors[card_id] != 1)
+			{
+				//console.log(card_id + ' factor: ' + achievement_factors[card_id]);
+			}
+		}
+		else
+		{
+			//console.log(card_id + ' needs a factor');
+		}
+	});
+
+	all_needed_cards = sortObj(all_needed_cards, 'value');
+	eachoa(all_needed_cards, function(needed_card_id, needed_card_amount){
+		console.log(needed_card_id + ': ' + nFormatter(needed_card_amount, 1));
+	});
+	return all_needed_cards;
+}
+
+function suggest_new_card_based_on_quests(){
+	var card_types = count_quest_cards();
+	var card_abilities = count_quest_ability_cards();
+	var type_picked = false;
+	var subtype_picked = false;
+	var ability_picked = false;
+	eachoa(card_types, function(type_id, type_count){
+		if(type_picked == false && (type_id == 'creature' || type_id == 'structure' || type_id == 'artifact'  || type_id == 'spell')){type_picked = type_id;}
+		if(subtype_picked == false && type_id != 'creature' && type_id != 'structure' && type_id != 'artifact' && type_id != 'spell'){subtype_picked = type_id;}
+	});
+	eachoa(card_abilities, function(type_id, type_count){
+		if(ability_picked == false){ability_picked = type_id;}
+	});
+	console.log(' A ' + subtype_picked + ' ' + type_picked + ' with a ' + ability_picked + ' ability');
 }
 
 function show_card_times(card_time){

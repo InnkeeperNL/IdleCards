@@ -289,7 +289,7 @@ var all_chained_achievements = {
 		name: 			'city',
 		description: 	'Play {AMOUNT} structure card(s).',
 		objective: 		'structure_card_played',
-		amount: 		1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -575,7 +575,7 @@ var all_chained_achievements = {
 		name: 			'fear',
 		description: 	'Have allies return an enemy to their hand {AMOUNT} time(s).',
 		objective: 		'ally_performed_move_enemy_to_hand',
-		amount: 	1,
+		amount: 	0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -941,7 +941,7 @@ var all_chained_achievements = {
 		name: 			'magician',
 		description: 	'Play {AMOUNT} spell card(s).',
 		objective: 		'spell_card_played',
-		amount: 		1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
