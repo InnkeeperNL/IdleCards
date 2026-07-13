@@ -582,7 +582,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['food'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['subtype_rat'],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
