@@ -5490,6 +5490,68 @@ var all_abilities = {
 		level_cost_spell: 	0.25,
 		level_cost_hero: 	1.5,
 	},
+	empower_rat:{
+		description: 	'A random ally rat creature that has power gains {LEVEL} power. Cannot affect heroes or itself.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				subtypes: 		['rat'],
+				not_self: 		true,
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 2,
+		},
+	},
+	empower_rats:{
+		description: 	'All ally rat creatures that have power gain {LEVEL} power. Cannot affect heroes or itself.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	5,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				subtypes: 		['rat'],
+				not_self: 		true,
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 5,
+		},
+	},
 	empowering_fire:{
 		description: 	'Gains {LEVEL} temporary power for each burning unit or hero.',
 		cannot_proc_while_stunned: true,

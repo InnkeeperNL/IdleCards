@@ -2244,6 +2244,31 @@ var all_available_cards = {
 		abilities: 			{call_rat: 2},
 		quote: '\"Get ready for an infestation.\"',
 	},
+	rat_king:{
+		name: 				'rat king',
+		type: 				'creature',
+		subtypes: 			['animal','rat'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/rat_king.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			1,
+		abilities: 			{strike: 1, call_rat: 5, empower_rat: 1, coward: 1},
+		hero_version: 			{
+			theme: 				['subtype_rat'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, call_rat: 1, empower_rat: 1, evade: 4},
+		},
+		quote: '\"It brings out the courage in other rats.\"',
+		unique: true,
+	},
 	rat_potion:{
 		name: 				'rat potion',
 		type: 				'artifact',
@@ -4125,6 +4150,10 @@ function calculate_card_value(card_id, show_calc){
 		/*current_card_value = current_card_value * current_card_value;
 		current_card_value /= 10;
 		if(show_calc != undefined && show_calc == true){console.log('correction: ' + current_card_value);}*/
+		if(all_available_cards[card_id]['unique'] != undefined && all_available_cards[card_id]['unique'] == true)
+		{
+			current_card_value *= 2;
+		}
 		current_card_value = Math.ceil(current_card_value);
 	}
 	else
