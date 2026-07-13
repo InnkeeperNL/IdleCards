@@ -927,7 +927,7 @@ var all_chained_achievements = {
 		name: 			'mage',
 		description: 	'Play or summon {AMOUNT} mage card(s).',
 		objective: 		'mage_card_played',
-		amount: 		1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -1626,7 +1626,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'autumn_witch',
 		steps: 			6,
-	},
+	},*/
 	zombie:{
 		name: 			'zombie',
 		description: 	'Play or summon {AMOUNT} undead card(s).',
@@ -1638,14 +1638,14 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'zombie',
+		card_back: 		'skeleton',
 		steps: 			6,
-	},*/
+	},
 	zoo:{
 		name: 			'zoo',
 		description: 	'Play or summon {AMOUNT} animal card(s).',
 		objective: 		'animal_card_played',
-		amount: 		1,
+		amount: 		0.75,
 		rewards:{
 			0:{
 				reward_id: 			'stash',

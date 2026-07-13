@@ -2058,8 +2058,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.1,
-			base_cost_spell_factor: 0.025,
+			base_cost_factor: 	0.2,
+			base_cost_spell_factor: 0.05,
 		},
 	},
 	carry_away:{
@@ -4872,7 +4872,6 @@ var all_abilities = {
 		remove_skill: 	'draw',
 		min_cards_in_deck: 	1,
 		max_hand_cards: 	9,
-		hero_tactics: 	['hasten_ability','move_ally_to_deck_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -4905,7 +4904,6 @@ var all_abilities = {
 		proc_factor: 	'ability_level',
 		min_cards_in_deck: 	1,
 		max_hand_cards: 	9,
-		hero_tactics: 	['hasten_ability','move_ally_to_deck_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -4939,7 +4937,6 @@ var all_abilities = {
 		min_cards_in_deck: 	1,
 		max_hand_cards: 	9,
 		has_used_ability: 	true,
-		hero_tactics: 	['hasten_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -4973,7 +4970,6 @@ var all_abilities = {
 		remove_skill: 	'draw_on_play',
 		min_cards_in_deck: 	1,
 		max_hand_cards: 	9,
-		hero_tactics: 	['hasten_ability','move_ally_to_deck_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -7791,7 +7787,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.1,
+			base_cost_factor: 	0.15,
 		},
 	},
 	guard:{
@@ -11192,11 +11188,11 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.1,
-			//base_cost_hero_factor: 1,
+			base_cost_factor: 0.05,
+			base_cost_hero_factor: 0.1,
 		},
 		//cost_factor: 		'health',
-		level_cost_cum: true,
+		//level_cost_cum: true,
 	},
 	regenerating_deaths:{
 		description: 	'Applies {LEVEL} regeneration to a random damaged ally unit or hero when any ally creature is destroyed.{REGEN}',
@@ -13686,8 +13682,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.1,
-			base_cost_spell_factor: 0.025,
+			base_cost_factor: 	0.15,
+			base_cost_spell_factor: 0.0375,
 		},
 	},
 	summon_frog:{
@@ -13801,8 +13797,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.1,
-			base_cost_spell_factor: 0.025,
+			base_cost_factor: 	0.15,
+			base_cost_spell_factor: 0.0375,
 		},
 	},
 	summon_imp:{
