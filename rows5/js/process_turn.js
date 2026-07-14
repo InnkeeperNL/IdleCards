@@ -2562,6 +2562,15 @@ function process_effect(target_id, origin_id, effect, level){
 					process_ability(origin_id, effect['on_avoided'], ability_level, undefined, 'on_avoided');
 				}
 			}
+			if(battle_info.combat_units[target_id] != undefined)
+			{
+				eachoa(battle_info.combat_units[target_id]['abilities'], function(ability_key, ability_level){
+					if(match_array_values(all_abilities[ability_key]['proc'], 'has_avoided') == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], subtypes) == true) && (all_abilities[ability_key]['not_subtypes'] == undefined || match_array_values(all_abilities[ability_key]['not_subtypes'], subtypes) == false))
+					{
+						process_ability(target_id, all_abilities[ability_key], ability_level, target_id, undefined, 'been_avoided');
+					}
+				});
+			}
 			if(battle_info.combat_units[origin_id] != undefined)
 			{
 				eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){

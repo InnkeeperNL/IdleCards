@@ -450,14 +450,14 @@ var all_available_cards = {
 		power: 				3,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike: 1},
+		abilities: 			{strike: 1, adrenaline: 8},
 		hero_version: 			{
 			theme: 				['subtype_animal'],
 			not_theme: 			[],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1},
+			abilities: 			{strike_unit: 1, adrenaline_hv: 1},
 		},
 		quote: '\"Do not mess with that.\"',
 	},
@@ -480,7 +480,7 @@ var all_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, hide: 1},
+			abilities: 			{strike_unit: 1, evade: 3, hide: 1},
 		},
 		quote: '\"Cute but very hard to find.\"',
 	},
@@ -767,13 +767,13 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, cursed_touch: 2, evade: 3},
+		abilities: 			{strike: 1, cursed_touch: 2, evade: 3, healing_evasion: 10},
 		hero_version: 			{
-			theme: 				['subtype_rogue','curse_ability'],
+			theme: 				['subtype_rogue','curse_ability','evade_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, cursed_touch: 2, evade: 3},
+			abilities: 			{strike_unit: 1, cursed_touch: 2, evade: 3, healing_evasion: 2},
 		},
 		quote: '\"Her strikes leave a mark.\"',
 	},
@@ -952,7 +952,7 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, ignites: 1, run_away: 1, evade: 3, stealth: 1},
+		abilities: 			{run_away: 1, strike: 1, ignites: 1, evade: 3, stealth: 1},
 		hero_version: 			{
 			theme: 				['subtype_rogue','burn_ability'],
 			power: 				2,
@@ -1564,7 +1564,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{arcane_bolt: 1, regenerate_ally: 1},
 		hero_version: 			{
-			theme: 				['subtype_mage','subtype_plant','damaging_hero'],
+			theme: 				['subtype_mage','grant_regeneration_ability'],
 			not_theme: 			['empower_hero_ability','empower_ally_ability'],
 			power: 				false,
 			armor: 				0,
@@ -1589,7 +1589,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, regenerating_deaths: 1},
 		hero_version: 			{
-			theme: 				['ally_creature_death_proc_ability','own_death_proc_ability','summon_creature_ability'],
+			theme: 				['ally_creature_death_proc_ability','own_death_proc_ability','summon_creature_ability','grant_regeneration_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -1872,16 +1872,16 @@ var all_available_cards = {
 		time: 				1,
 		image: 				'cards/miner.jpg',
 		image_position: 	'top',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, demolish: 1},
+		abilities: 			{strike: 1, demolish: 1, scavange: 5},
 		hero_version: 			{
 			theme: 				['subtype_human','type_structure','demolish_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, demolish: 1},
+			abilities: 			{strike_unit: 1, demolish: 1, scavange_hv: 1},
 		},
 		quote: '\"Do not let them get near the wall.\"',
 	},
@@ -2326,13 +2326,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{empowering_structures: 1, strike: 1, demolish: 1},
+		abilities: 			{empowering_structures: 1, strike: 1, demolish: 1, scavange: 6},
 		hero_version: 			{
 			theme: 				['demolish_ability','type_structure','type_creature'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{empowering_structures: 1, strike_unit: 1, demolish: 1},
+			abilities: 			{empowering_structures: 1, strike_unit: 1, demolish: 1, scavange_hv: 1},
 		},
 		quote: '\"It feels at home underground.\"',
 	},
@@ -2375,13 +2375,13 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, evade: 3},
+		abilities: 			{strike: 1, evade: 3, healing_evasion: 10},
 		hero_version: 			{
-			theme: 				['subtype_rogue'],
+			theme: 				['subtype_rogue','evade_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, evade: 3},
+			abilities: 			{strike_unit: 1, evade: 3, healing_evasion: 2},
 		},
 		quote: '\"Quick on his feet.\"',
 	},
@@ -2401,7 +2401,7 @@ var all_available_cards = {
 		health: 			8,
 		abilities: 			{strike: 1, fearful_aura: 1, regenerates: 1},
 		hero_version: 			{
-			theme: 				['subtype_plant','run_away_ability','charge_ability'],
+			theme: 				['subtype_plant','run_away_ability','charge_ability','grant_regeneration_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -3006,7 +3006,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			8,
-		abilities: 			{trap: 4, thorns: 1, feast: 3},
+		abilities: 			{trap: 4, thorns: 2, feast: 3},
 		hero_version: 			{
 			theme: 				['subtype_slime','subtype_plant'],
 			power: 				false,
@@ -3047,13 +3047,13 @@ var all_available_cards = {
 		power: 				3,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1},
+		abilities: 			{strike: 1, adrenaline: 8},
 		hero_version: 			{
 			theme: 				['subtype_warrior'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1},
+			abilities: 			{strike_unit: 1, adrenaline_hv: 1},
 		},
 		quote: '\"Ready for a fight.\"',
 	},
@@ -3357,7 +3357,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, stunning_touch: 3, regenerates: 1},
 		hero_version: 			{
-			theme: 				['subtype_slime','subtype_plant'],
+			theme: 				['subtype_slime','subtype_plant','grant_regeneration_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -3405,7 +3405,7 @@ var all_available_cards = {
 		health: 			7,
 		abilities: 			{trap: 7, regenerates: 1},
 		hero_version: 			{
-			theme: 				['subtype_plant', 'active_healing_ability','subtype_warrior'],
+			theme: 				['grant_regeneration_ability','stun_ability','run_away_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -4562,7 +4562,7 @@ function calculate_card_time(card_id, show_calc, hero_version){
 		eachoa(ability['ability_level_cost_factors'], function(ability_cost_factor_id, ability_cost_factor_amount){
 			if(card['abilities'][ability_cost_factor_id] != undefined)
 			{
-				level_cost *= (ability_cost_factor_amount * card['abilities'][ability_cost_factor_id]);
+				level_cost *= 1 + ((ability_cost_factor_amount - 1) * card['abilities'][ability_cost_factor_id]);
 				if(show_calc!=undefined){console.log(ability_cost_factor_id + ': x' + ability_cost_factor_amount);}
 			}
 		});

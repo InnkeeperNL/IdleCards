@@ -76,31 +76,63 @@ var all_abilities = {
 		},
 	},
 	adrenaline:{
-		description: 	'Gains {LEVEL} temporary power whenever it destroys another unit.',
+		description: 	'When this destroys something, it has a {LEVEL}0% chance to gain 1 power.',
 		proc: 			'kill',
 		cannot_proc_while_stunned: true,
-		scales: 		true,
-		hero_tactics: 	['empower_hero_ability'],
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		proc_while_dead: true,
 		targets:	{
 			0:{
-				target: 	'unit_or_hero',
-				target_amount: 1,
-				position: 	'self',
-				min_hp: 	1,
-				min_power: 	0,
-				side: 		'ally'
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				min_power: 		0,
+				side: 			'ally'
 			},
 		},
 		effects:{
 			0:{
 				projectile: 	'power',
-				type: 		'grant_temp_power',
+				type: 			'increase_power',
 				subtypes: 		['empower_any','empower_ally'],
-				amount: 	'ability_level'
+				amount: 		1,
 			},
 		},
-		animation: 	'combat_zoom',
-		level_cost: 	1,
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.025,
+		},
+	},
+	adrenaline_hv:{
+		name: 			'adrenaline',
+		description: 	'When this destroys something, it gains {LEVEL} temporary power.',
+		proc: 			'kill',
+		cannot_proc_while_stunned: true,
+		proc_while_dead: true,
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		1,
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.25,
+		},
 	},
 	air_blast:{
 		description: 	'Deals {LEVEL} physical damage to all enemy units. Deals double damage to flying units.',
@@ -4004,7 +4036,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'destroy',
 			base_cost_factor: 0,
-			base_hit_cost_factor: 0.25,
+			base_hit_cost_factor: 0.2,
 		},
 	},
 	desperate_burn:{
@@ -8154,6 +8186,41 @@ var all_abilities = {
 			base_cost_spell_factor: 0.75,
 		},
 	},
+	healing_evasion:{
+		description: 	'When this evades an ability, it has a {LEVEL}0% chance to heal itself by 1.',
+		proc: 			'has_avoided',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				side: 			'any',
+				damaged: 		true,
+			},
+		},
+		effects:{
+			0:{
+				self_projectile: 'healing',
+				type: 			'healing',
+				subtypes: 		['healing','active_healing'],
+				amount: 		1
+			}
+		},
+		//animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.025,
+		},
+		ability_level_cost_factors:{
+			evade: 		1.1,
+			flying: 	1.05,
+			hide: 		2,
+		},
+	},
 	healing_spells:{
 		description: 	'After any spell card is played, this heals a random damaged ally creature {LEVEL} time(s).',
 		proc: 			'any_spell_card_played',
@@ -8397,10 +8464,10 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 	'stealth',
-			base_cost_factor: 4,
-			base_cost_hero_factor: 2,
+			base_cost_factor: 2,
+			base_cost_hero_factor: 1,
 		},
-		cost_on_top: 	true,
+		//cost_on_top: 	true,
 	},
 	hide_ally:{
 		ability_subtypes: ['evade'],
@@ -8433,8 +8500,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 	'stealth',
-			base_cost_factor: 4,
-			base_cost_spell_factor: 1,
+			base_cost_factor: 2,
+			base_cost_spell_factor: 0.5,
 		},
 	},
 	hide_hero:{
@@ -8463,9 +8530,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_hero: 	2,
-		level_cost_spell: 	1,
+		base_cost:{
+			base_cost_id: 	'stealth',
+			base_cost_factor: 2,
+			base_cost_spell_factor: 0.5,
+		},
 	},
 	hide_on_kill:{
 		description: 	'Grants itself stealth when it destroys a unit.',
@@ -8492,6 +8561,10 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 	'stealth',
+			base_cost_factor: 1,
+		},
 	},
 	hide_on_spell_cast:{
 		description: 	'Grants itself stealth when any spell card is played.',
@@ -12187,13 +12260,43 @@ var all_abilities = {
 		average_hits: 	'ability_level',
 	},
 	scavange:{
+		description: 	'When any structure or artifact is destroyed, this has a {LEVEL}0% chance to gain 1 power.',
+		proc: 			['artifact_death','structure_death'],
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		proc_while_dead: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower_any','enrage','empower_ally'],
+				amount: 		1,
+			},
+		},
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.05,
+		},
+	},
+	scavange_hv:{
+		name: 			'scavange',
 		description: 	'When any structure or artifact is destroyed, this gains {LEVEL} temporary power.',
 		proc: 			['artifact_death','structure_death'],
 		proc_amount: 	1,
 		cannot_proc_while_stunned: true,
 		proc_while_dead: true,
 		scales: 		true,
-		hero_tactics: 	['type_structure','type_artifact','summon_structure_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -12212,7 +12315,10 @@ var all_abilities = {
 				amount: 		'ability_level',
 			},
 		},
-		level_cost: 		1,
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.5,
+		},
 	},
 	seek_creature:{
 		description: 	'This unit will move to a free slot with an opposing creature if it is not facing a creature.',
