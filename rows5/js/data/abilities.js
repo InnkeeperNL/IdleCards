@@ -1484,6 +1484,37 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 		6,
 	},
+	bring_spell:{
+		hide_amount: 	true,
+		description: 	'When played, adds {LEVEL} random spell card(s) to your hand. If your hand is full, it will add them to your deck instead.',
+		proc: 			'on_play',
+		proc_amount: 	'ability_level',
+		proc_while_dead: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_rat','summon_creature'],
+				card_id: 	'random',
+				card_type: 	'spell',
+				card_status: 	'hand',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.5,
+		},
+	},
 	bring_structure:{
 		description: 	'Summons a non-plant structure unit. Can be used {LEVEL} time(s).',
 		proc: 			'basic',
@@ -5028,9 +5059,8 @@ var all_abilities = {
 		},
 	},
 	earth_blast:{
-		description: 	'Deals {LEVEL} physical earth damage to all enemy units.',
+		description: 	'Deals {LEVEL} physical damage to all enemy units.',
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['curse_ability'],
 		scales: true,
 		targets:	{
 			0:{
@@ -5045,7 +5075,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'stone',
 				type: 			'damage',
-				subtypes: 		['physical','earth','blast'],
+				subtypes: 		['physical'],
 				amount: 		'ability_level',
 			}
 		},
@@ -15408,6 +15438,36 @@ var all_abilities = {
 			}
 		},
 		level_cost: 	1,
+	},
+	write_spell:{
+		hide_amount: 	true,
+		description: 	'Has a {LEVEL}0% chance to add a random spell card to your hand. If your hand is full, it will add them to your deck instead.',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_rat','summon_creature'],
+				card_id: 	'random',
+				card_type: 	'spell',
+				card_status: 	'hand',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.1,
+		},
 	},
 	auto_learn:{
 		name: 			'learned on pickup',
