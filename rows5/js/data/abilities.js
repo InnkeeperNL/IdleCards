@@ -9270,7 +9270,7 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				projectile: 	'teleport',
+				self_projectile: 	'teleport',
 				type: 			'move_to_deck',
 				subtypes: 		['move_ally_to_deck','echo'],
 				new_status: 	'deck',
