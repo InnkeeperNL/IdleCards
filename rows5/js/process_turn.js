@@ -1002,6 +1002,11 @@ function check_ability_delay(unit_id, ability_id){
 			current_unit['ability_delays'][ability_id] = calculate_effect({amount:battle_info.combat_units[unit_id]['abilities'][ability_id]['delay']}, undefined, unit_id, battle_info.combat_units[unit_id]['abilities'][ability_id]);
 			something_changed = true;
 		}
+
+		/*if(battle_info.combat_units[unit_id] != undefined && something_changed == true)
+		{
+			console.log('set delay for ' + battle_info.combat_units[unit_id]['name'] + ' ' + ability_id);
+		}*/
 		
 		/*if(battle_info.combat_units[unit_id] != undefined && something_changed == true)
 		{
@@ -4908,7 +4913,17 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 					eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
 						if(match_array_values(all_abilities[ability_key]['proc'], ['kill','kill_' + temp_unit_type]) == true)
 						{
-							process_ability(origin_id, all_abilities[ability_key], ability_level, unit_id, undefined, 'kill');
+							if(check_ability_can_fire(origin_id, all_abilities[ability_key], ability_level, unit_id) == true)
+			    			{
+				    			if(battle_info.combat_units[origin_id]['ability_delays'][ability_key] == undefined || battle_info.combat_units[origin_id]['ability_delays'][ability_key] < 1)
+				    			{
+									var on_kill_skill_used = process_ability(origin_id, all_abilities[ability_key], ability_level, unit_id, undefined, 'kill');
+									if(on_kill_skill_used > 0)
+									{
+										check_ability_delay(origin_id, ability_key);
+									}
+								}
+							}
 						}
 					});
 				}

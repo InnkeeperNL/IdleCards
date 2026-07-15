@@ -236,7 +236,7 @@ var all_available_cards = {
 	attack_dog:{
 		name: 				'attack dog',
 		type: 				'creature',
-		subtypes: 			['animal','canine'],
+		subtypes: 			['animal','carnivore'],
 		color: 				['colorless'],
 		theme: 				[],
 		not_theme: 			[],
@@ -250,7 +250,7 @@ var all_available_cards = {
 		health: 			2,
 		abilities: 			{strike: 1, adrenaline: 10, frenzy: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','empower_ally_ability'],
+			theme: 				['subtype_carnivore','empower_ally_ability','kill_proc_ability'],
 			not_theme: 			[],
 			power: 				2,
 			armor: 				0,
@@ -279,7 +279,7 @@ var all_available_cards = {
 	badger:{
 		name: 				'badger',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','carnivore'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -292,7 +292,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal'],
+			theme: 				['active_healing_ability','subtype_carnivore','empower_ally_ability'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -392,7 +392,7 @@ var all_available_cards = {
 	boar:{
 		name: 				'boar',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','hoofed'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -404,7 +404,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{charge: 1, strike: 1},
 		hero_version: 			{
-			theme: 				['empower_ally_ability','subtype_animal'],
+			theme: 				['empower_ally_ability','movement_ability','move_ally_to_hand_ability','heal_hero_ability','subtype_hoofed'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -465,7 +465,7 @@ var all_available_cards = {
 	brown_bear:{
 		name: 				'brown bear',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','carnivore'],
 		color: 				['colorless'],
 		theme: 				[],
 		not_theme: 			[],
@@ -478,7 +478,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{strike: 1, adrenaline: 8},
 		hero_version: 			{
-			theme: 				['subtype_animal'],
+			theme: 				['empower_ally_ability','curse_ability','subtype_carnivore'],
 			not_theme: 			[],
 			power: 				3,
 			armor: 				0,
@@ -490,7 +490,7 @@ var all_available_cards = {
 	bunny:{
 		name: 				'bunny',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','hare'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -502,7 +502,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{strike: 1, hide: 1, run_away: 1},
 		hero_version: 			{
-			theme: 				['evade_ability','subtype_animal'],
+			theme: 				['evade_ability','subtype_hare','run_away_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -582,7 +582,7 @@ var all_available_cards = {
 	cavalry:{
 		name: 				'cavalry',
 		type: 				'creature',
-		subtypes: 			['animal','human','warrior'],
+		subtypes: 			['animal','hoofed','human','warrior'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -940,7 +940,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{strike: 1, venom: 2, hide: 1},
 		hero_version: 			{
-			theme: 				['poison_ability','subtype_animal'],
+			theme: 				['poison_ability','subtype_serpent','evade_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -1133,7 +1133,7 @@ var all_available_cards = {
 	flame_boar:{
 		name: 				'flame boar',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','hoofed'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -1145,7 +1145,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{charge: 1, strike: 1, ignites: 2},
 		hero_version: 			{
-			theme: 				['burn_ability','subtype_animal','empower_ally_ability'],
+			theme: 				['burn_ability','subtype_hoofed','empower_ally_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1516,7 +1516,7 @@ var all_available_cards = {
 	horse:{
 		name: 				'horse',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','hoofed'],
 		color: 				['colorless'],
 		theme: 				[],
 		not_theme: 			[],
@@ -1530,7 +1530,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{charge: 1, strike: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','movement_ability'],
+			theme: 				['subtype_hoofed','movement_ability','empower_ally_ability'],
 			not_theme: 			[],
 			power: 				2,
 			armor: 				0,
@@ -1743,7 +1743,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{strike: 1, spellrush: 1, final_hasten: 4},
 		hero_version: 			{
-			theme: 				['summon_ally_ability','subtype_animal','echo_ability','any_spell_card_played_proc_ability','draw_cards_ability'],
+			theme: 				['summon_ally_ability','subtype_insect','echo_ability','any_spell_card_played_proc_ability','draw_cards_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -2207,7 +2207,7 @@ var all_available_cards = {
 	raging_bear:{
 		name: 				'raging bear',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','carnivore'],
 		color: 				['colorless'],
 		theme: 				[],
 		not_theme: 			[],
@@ -2220,7 +2220,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{strike: 1, enrage: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','empower_ally_ability'],
+			theme: 				['subtype_carnivore','empower_ally_ability','heal_hero_ability'],
 			not_theme: 			[],
 			power: 				2,
 			armor: 				0,
@@ -2282,7 +2282,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
-		theme: 				['subtype_rat','subtype_animal'],
+		theme: 				['subtype_rat'],
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/rat_flute.jpg',
@@ -2603,7 +2603,7 @@ var all_available_cards = {
 		health: 			3,
 		abilities: 			{strike: 1, venom: 2},
 		hero_version: 			{
-			theme: 				['poison_ability','subtype_animal'],
+			theme: 				['poison_ability','subtype_arachnid'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2707,7 +2707,7 @@ var all_available_cards = {
 	sheep:{
 		name: 				'sheep',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','hoofed'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -2916,7 +2916,7 @@ var all_available_cards = {
 	skirmisher:{
 		name: 				'skirmisher',
 		type: 				'creature',
-		subtypes: 			['animal','human','warrior'],
+		subtypes: 			['animal','hoofed','human','warrior'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -3165,7 +3165,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, venom: 2, counter: 1},
 		hero_version: 			{
-			theme: 				['poison_ability','subtype_animal'],
+			theme: 				['poison_ability','subtype_serpent'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -3238,7 +3238,7 @@ var all_available_cards = {
 		health: 			2,
 		abilities: 			{strike: 1, guard: 1, poison_aura: 2},
 		hero_version: 			{
-			theme: 				['poison_ability','movement_ability','subtype_animal','heal_hero_ability'],
+			theme: 				['poison_ability','movement_ability','subtype_amphibian','heal_hero_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -3718,7 +3718,7 @@ var all_available_cards = {
 	wombat:{
 		name: 				'wombat',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','marsupial'],
 		color: 				['colorless'],
 		theme: 				[],
 		not_theme: 			[],
@@ -3731,7 +3731,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, enrage: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal','empower_ally_ability','movement_ability','heal_hero_ability'],
+			theme: 				['subtype_marsupial','empower_ally_ability','movement_ability','heal_hero_ability'],
 			not_theme: 			[],
 			power: 				2,
 			armor: 				0,
