@@ -125,7 +125,7 @@ var all_abilities = {
 				projectile: 	'power',
 				type: 			'grant_temp_power',
 				subtypes: 		['empower_any','empower_ally'],
-				amount: 		1,
+				amount: 		'ability_level',
 			},
 		},
 		animation: 		'combat_zoom',
