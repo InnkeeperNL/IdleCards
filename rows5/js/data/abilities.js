@@ -19,7 +19,7 @@ var ability_base_costs = {
 	strike: 	2,
 	stun: 		4,
 	summon: 	10,
-	thorns: 	0.5,
+	thorns: 	1,
 }
 
 var all_abilities = {
@@ -14453,8 +14453,6 @@ var all_abilities = {
 			base_cost_hero_factor: 2,
 		},
 		average_hits: 		1,
-		cost_factor: 		'health',
-		cost_factor_factor: 	0.5,
 	},
 	trample:{
 		description: 	'When this kills a unit with physical melee damage, the excess damage is dealt to the enemy hero.',
