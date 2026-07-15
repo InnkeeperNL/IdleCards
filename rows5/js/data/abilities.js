@@ -131,7 +131,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.25,
+			base_cost_factor: 0.5,
 		},
 	},
 	air_blast:{
@@ -2061,11 +2061,12 @@ var all_abilities = {
 	},
 	call_rat:{
 		hide_amount: 	true,
-		description: 	'Has a {LEVEL}0% chance to add a basic rat card to your hand. If your hand is full, it will add it to your deck instead.',
+		description: 	'If you hand is not full, this has a {LEVEL}0% chance to add a basic rat card to your hand.',
 		proc: 			'basic',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
+		max_hand_cards: 	9,
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -7480,6 +7481,37 @@ var all_abilities = {
 		},
 		level_cost: 		0,
 		average_hit_cost: 	2,
+	},
+	frenzy:{
+		description: 	'Gains {LEVEL} additional turn(s) when it destroys an enemy. Can be used once each round.',
+		proc: 			'kill',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		hero_tactics: 	['curse_ability','stun_ability','reveal_ability'],
+		delay: 			1,
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				//projectile: 'go_again',
+				type: 		'go_again',
+				subtypes: 	['victory_rush'],
+				amount: 	1
+			},
+		},
+		animation: 			'red_glow',
+		base_cost:{
+			base_cost_id: 			'strike',
+			base_cost_factor: 		1,
+		},
+		level_cost_cum: true,
 	},
 	frost_bolt:{
 		description: 	'Deals {LEVEL} physical cold projectile damage to a random enemy unit. Has a 25% chance to stun any unit or hero it deals damage to. Will target the enemy hero if there are no enemy units.',
