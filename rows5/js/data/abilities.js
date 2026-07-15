@@ -11893,11 +11893,12 @@ var all_abilities = {
 		level_cost_cum: true,
 	},
 	resurrect_ally:{
-		description: 	'When an ally creature\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 1 health.',
+		description: 	'When an ally creature\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 1 health. The chance to resurrect is reduced by 20% every time it does.',
 		proc: 			'ally_creature_death',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
-		hero_tactics: 	['own_death_proc_ability','type_creature','ally_creature_death_proc_ability'],
+		reduce_skill_after_use: 'resurrect_ally',
+		reduce_skill_after_use_amount: 2,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -11932,8 +11933,9 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 	'resurrect',
-			base_cost_factor: 2,
-			base_cost_hero_factor: 2.5,
+			base_cost_factor: 1,
+			base_cost_artifact_factor: 0.25,
+			base_cost_hero_factor: 0.25,
 		},
 		level_cost_cum: true,
 	},

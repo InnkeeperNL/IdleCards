@@ -1134,6 +1134,7 @@ var skills_to_show_icon = {
 	blessed: 	'bless',
 	counter_spell: 'magic_shield',
 	resurrect: 	'resurrect',
+	resurrect_ally: 	'resurrect',
 	regeneration: 'regeneration',
 }
 
@@ -1157,7 +1158,7 @@ function update_passive_effects(unit_id){
 		if(ability_level > 0 && skills_to_show_icon[ability_id] != undefined)
 		{
 			var amount_to_show = ability_level + '';
-			if(ability_id == 'resurrect'){amount_to_show = ability_level + '0%';}
+			if(skills_to_show_icon[ability_id] == 'resurrect'){amount_to_show = ability_level + '0%';}
 			timeout_key ++;
 			all_timeouts[timeout_key] = setTimeout(function(){
 				$('.unit_id_' + unit_id + ' .unit_effects').append('<div class="projectile_' + skills_to_show_icon[ability_id] + '">' + amount_to_show + '</div>');
