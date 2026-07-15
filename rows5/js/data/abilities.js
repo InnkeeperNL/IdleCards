@@ -2089,7 +2089,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.1,
+			base_cost_factor: 	0.15,
+			base_cost_hero_factor: 0.2,
 		},
 	},
 	call_witch:{
@@ -7944,6 +7945,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'summon',
 			base_cost_factor: 	0.15,
+			base_cost_hero_factor: 	0.2,
 		},
 	},
 	guard:{
@@ -15498,7 +15500,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.1,
+			base_cost_factor: 	0.15,
 		},
 	},
 	auto_learn:{
