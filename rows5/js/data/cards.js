@@ -250,7 +250,7 @@ var all_available_cards = {
 		health: 			2,
 		abilities: 			{strike: 1, adrenaline: 10, frenzy: 1},
 		hero_version: 			{
-			theme: 				['subtype_animal'],
+			theme: 				['subtype_animal','empower_ally_ability'],
 			not_theme: 			[],
 			power: 				2,
 			armor: 				0,
@@ -963,7 +963,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, adrenaline: 10},
 		hero_version: 			{
-			theme: 				['subtype_warrior','movement_ability'],
+			theme: 				['subtype_warrior','empower_ally_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
