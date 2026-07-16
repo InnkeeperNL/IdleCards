@@ -4,6 +4,7 @@ var ability_base_costs = {
 	cleanse: 	0.5,
 	curse: 		1,
 	destroy: 	8,
+	discard: 	6,
 	doom: 		0.5,
 	draw: 		4,
 	empower: 	2,
@@ -2256,7 +2257,6 @@ var all_abilities = {
 		proc: 			'enemy_hero_damaged',
 		remove_skill_before_use: 	'chaos_strikes',
 		proc_amount: 	1,
-		hero_tactics: 	['discard_enemy_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -4561,9 +4561,10 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		10,
-		level_cost_hero: 	7,
-		cost_adjustment: 	-2,
+		base_cost:{
+			base_cost_id: 		'discard',
+			base_cost_factor: 	1,
+		},
 	},
 	discard_enemy_on_act:{
 		name: 			'discard enemy',
@@ -4594,15 +4595,16 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		10,
-		level_cost_hero: 	7,
-		cost_adjustment: 	-2,
+		base_cost:{
+			base_cost_id: 		'discard',
+			base_cost_factor: 	1,
+		},
 	},
 	discard_enemy_down:{
-		description: 	'If the enemy has {LEVEL} or more cards in its hand, this discards 1 cards from the enemy\'s hand to the grave.',
+		description: 	'If the enemy has {LEVEL} or more cards in its hand, this discards cards from the enemy\'s hand to the grave until there are less then {LEVEL} cards in their hand.',
 		cannot_proc_while_stunned: true,
 		min_enemy_hand_cards: 'ability_level',
-		hero_tactics: 	['draw_cards_ability'],
+		proc_amount: 10,
 		targets:	{
 			0:{
 				target: 		'card',
@@ -4623,9 +4625,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		-2,
-		level_cost_hero: 	-2,
-		cost_adjustment: 	20
+		base_cost:{
+			base_cost_id: 		'discard',
+			base_cost_factor: 	-0.25,
+		},
+		cost_adjustment: 	15
 	},
 	doom:{
 		description: 	'Applies {LEVEL} doom to a random enemy unit.{DOOM}',
@@ -5616,6 +5620,76 @@ var all_abilities = {
 			base_cost_factor: 5,
 		},
 	},
+	empowered_by_allies:{
+		description: 	'If there are 3 or more ally units, this gains {LEVEL} temporary power for every ally unit over 2.',
+		cannot_proc_while_stunned: true,
+		min_effect:  	1,
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'target_count',
+				targets_to_count:{
+					targets:{
+						0:{
+							target: 		'unit',
+							target_amount: 	100,
+							position: 		'random',
+							min_hp: 		1,
+							side: 			'ally'
+						}
+					},
+					effects:{},
+				},
+				amount_pre_factor_adjustment: -2,
+				amount_factor: 	'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.5,
+		},
+	},
+	empowered_by_enemies:{
+		description: 	'If there are 3 or more enemy units, this gains {LEVEL} temporary power for every enemy unit over 2.',
+		min_enemy_units: 3,
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'enemy_unit_count',
+				amount_pre_factor_adjustment: -2,
+				amount_factor: 	'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.5,
+		},
+	},
 	empowering_fire:{
 		description: 	'Gains {LEVEL} temporary power for each burning unit or hero.',
 		cannot_proc_while_stunned: true,
@@ -5921,9 +5995,10 @@ var all_abilities = {
 		level_cost_structure: 0.75,
 	},
 	enrage:{
-		description: 	'When this unit receives damage, it gains {LEVEL} power.',
+		description: 	'When this unit receives damage, it has a {LEVEL}0% chance to gain 1 power.',
 		proc: 			'receive_damage',
-		proc_amount: 	1,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		proc_while_dead: true,
 		scales: 		true,
@@ -5943,20 +6018,22 @@ var all_abilities = {
 				projectile: 	'power',
 				type: 			'increase_power',
 				subtypes: 		['empower_any','enrage','empower_ally'],
-				amount: 		'ability_level',
+				amount: 		1,
 			},
 		},
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.5,
+			base_cost_factor: 0.05,
 		},
 		cost_factor: 			'health',
+		cost_factor_factor: 	0.5,
 	},
 	enrage_hv:{
 		name: 			'enrage',
-		description: 	'When this unit receives damage, it gains {LEVEL} temporary power.',
+		description: 	'When this unit receives damage, it has a {LEVEL}0% chance to gain 1 temporary power.',
 		proc: 			'receive_damage',
-		proc_amount: 	1,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		proc_while_dead: true,
 		scales: 		true,
@@ -5976,12 +6053,12 @@ var all_abilities = {
 				projectile: 	'power',
 				type: 			'grant_temp_power',
 				subtypes: 		['empower_any','enrage','empower_ally'],
-				amount: 		'ability_level',
+				amount: 		1,
 			},
 		},
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 1,
+			base_cost_factor: 0.1,
 		},
 	},
 	eternal:		{
@@ -9313,6 +9390,7 @@ var all_abilities = {
 			}
 		},
 		level_cost: 	1,
+		cost_factor: 	'full',
 	},
 	mana_bolt:{
 		description: 	'Uses up to {LEVEL} mana to deal magical projectile damage to an enemy unit for every mana used. Will target the enemy hero if there are no enemy units.',
@@ -9989,9 +10067,11 @@ var all_abilities = {
 		cost_factor: 		'health',
 	},
 	plunder:{
-		description: 	'When this deals damage to the enemy hero, destroy {LEVEL} enemy artifact(s).',
+		description: 	'When this deals damage to the enemy hero, this has a {LEVEL}0% chance to destroy 1 enemy artifact.',
 		proc: 			'dealt_damage_to_hero',
 		ability_subtypes:['dealt_damage_proc'],
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		targets:	{
 			1:{
@@ -10012,7 +10092,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'destroy',
-			base_cost_factor: 0.2,
+			base_cost_factor: 0.02,
 		},
 		ability_level_cost_factors:{
 			run_away: 		2,
@@ -11388,10 +11468,10 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'healing',
 			base_cost_factor: 0.05,
-			base_cost_hero_factor: 0.1,
+			//base_cost_hero_factor: 0.1,
 		},
 		//cost_factor: 		'health',
-		//level_cost_cum: true,
+		level_cost_cum: true,
 	},
 	regenerating_deaths:{
 		description: 	'Applies {LEVEL} regeneration to a random damaged ally unit or hero when any ally creature is destroyed.{REGEN}',
@@ -12704,7 +12784,6 @@ var all_abilities = {
 		description: 	'Increases the time left of a random enemy card {LEVEL} time(s).',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
-		hero_tactics: 	['discard_enemy_ability','slow_enemy_ability'],
 		targets:	{
 			0:{
 				target: 			'card',
@@ -12738,7 +12817,6 @@ var all_abilities = {
 		description: 	'Increases the time left of all enemy cards by {LEVEL}.',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
-		hero_tactics: 	['discard_enemy_ability','slow_enemy_ability'],
 		targets:	{
 			0:{
 				target: 			'card',
@@ -12771,7 +12849,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
 		has_used_ability: true,
-		hero_tactics: 	['discard_enemy_ability','slow_enemy_ability'],
 		targets:	{
 			0:{
 				target: 			'card',
@@ -12802,7 +12879,6 @@ var all_abilities = {
 		description: 	'When the enemy draws a card, this increases the time left of that card by {LEVEL}.',
 		proc: 			'enemy_card_drawn',
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['discard_enemy_ability','slow_enemy_ability'],
 		targets:	{
 			0:{
 				target: 			'card',
@@ -14478,8 +14554,14 @@ var all_abilities = {
 				amount: 	'ability_level'
 			}
 		},
-		level_cost: 	1,
-		level_cost_hero: 2,
+		animation: 			'attack',
+		base_cost:{
+			base_cost_id: 	'strike',
+			base_cost_factor: 0.25,
+			base_cost_hero_factor: 0.5,
+		},
+		cost_factor: 	'power',
+		average_hits: 	'ability_level',
 	},
 	trampling_might:{
 		description: 	'A random ally unit that uses power and has the strike ability and an opposing unit, but does not have the trample ability, gains {LEVEL} permanent power and the trample ability.<br/><i>Trample: When this kills a unit with melee damage, the excess damage is dealt to the enemy hero.</i>',

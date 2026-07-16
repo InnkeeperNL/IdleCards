@@ -1352,11 +1352,13 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 
 		if(current_ability['min_enemy_hand_cards'] != undefined)
 		{
-			if(battle_info['combat_units'][unit_id]['side'] == 1 && count_hand_cards(battle_info['deck_2']) < calculate_effect({amount:current_ability['min_enemy_hand_cards']},undefined, origin_id, level))
+			var effective_min_amount = calculate_effect({amount:current_ability['min_enemy_hand_cards']},undefined, origin_id, level);
+			console.log(effective_min_amount);
+			if(battle_info['combat_units'][unit_id]['side'] == 1 && count_hand_cards(battle_info['deck_2']) < effective_min_amount)
 			{
 				ability_can_fire = false;
 			}
-			if(battle_info['combat_units'][unit_id]['side'] == 2 && count_hand_cards(battle_info['deck_1']) < calculate_effect({amount:current_ability['min_enemy_hand_cards']},undefined, origin_id, level))
+			if(battle_info['combat_units'][unit_id]['side'] == 2 && count_hand_cards(battle_info['deck_1']) < effective_min_amount)
 			{
 				ability_can_fire = false;
 			}
@@ -1711,6 +1713,19 @@ function check_ability_can_fire(unit_id, current_ability, level, origin_id){
 		if(current_ability['min_enemy_units'] != undefined && count_enemy_units(battle_info['combat_units'][unit_id]['side']) < current_ability['min_enemy_units'])
 		{
 			ability_can_fire = false;
+		}
+		if(current_ability['min_enemy_hand_cards'] != undefined)
+		{
+			var effective_min_amount = calculate_effect({amount:current_ability['min_enemy_hand_cards']},undefined, origin_id, level);
+			console.log(effective_min_amount);
+			if(battle_info['combat_units'][unit_id]['side'] == 1 && count_hand_cards(battle_info['deck_2']) < effective_min_amount)
+			{
+				ability_can_fire = false;
+			}
+			if(battle_info['combat_units'][unit_id]['side'] == 2 && count_hand_cards(battle_info['deck_1']) < effective_min_amount)
+			{
+				ability_can_fire = false;
+			}
 		}
 		if(current_ability['min_cards_in_deck'] != undefined && count_deck_cards(battle_info['deck_' + battle_info['combat_units'][unit_id]['side']]) < current_ability['min_cards_in_deck'])
 		{
@@ -5421,6 +5436,11 @@ function calculate_effect(effect, target_id, origin_id, level){
 	}
 
 	// *****************************************************************************
+
+	if(effect['amount_pre_factor_adjustment'] != undefined)
+	{
+		calculated_amount += calculate_effect({amount:effect['amount_pre_factor_adjustment']}, target_id, origin_id, level);
+	}
 
 	if(effect['amount_factor'] != undefined)
 	{
