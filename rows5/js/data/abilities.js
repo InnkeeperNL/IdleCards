@@ -6001,7 +6001,6 @@ var all_abilities = {
 		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		proc_while_dead: true,
-		scales: 		true,
 		hero_tactics: 	['heal_hero_ability','bolster_hero_ability'],
 		targets:	{
 			0:{
@@ -6036,7 +6035,6 @@ var all_abilities = {
 		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		proc_while_dead: true,
-		scales: 		true,
 		hero_tactics: 	['heal_hero_ability','bolster_hero_ability'],
 		targets:	{
 			0:{

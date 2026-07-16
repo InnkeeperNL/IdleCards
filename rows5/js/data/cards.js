@@ -2437,6 +2437,7 @@ var all_available_cards = {
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
+		needs_theme: 		['subtype_rat'],
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/rat_king.jpg',
