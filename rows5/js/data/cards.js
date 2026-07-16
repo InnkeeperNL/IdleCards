@@ -281,7 +281,7 @@ var all_available_cards = {
 			health: 			40,
 			abilities: 			{empowered_by_enemies: 2, strike_unit: 1, frenzy: 1},
 		},
-		quote: '\"Like it\'s mommy and daddy, it fears large groups.\"',
+		quote: '\"Like its mommy and daddy, it fears large groups.\"',
 	},
 	bad_omen:{
 		name: 				'bad omen',
@@ -2462,6 +2462,7 @@ var all_available_cards = {
 		subtypes: 			['potion','rat'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['subtype_rat'],
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/rat_potion.jpg',
