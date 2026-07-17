@@ -16,6 +16,45 @@ var all_quests = {
 };
 
 var all_achievements = {
+	alchemist:{
+		name: 			'alchemist',
+		description: 	'Play 10 potion cards in one battle.',
+		card_image: 	'alchemist',
+		objective: 		'potion_card_played_times',
+		min_amount: 	10,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_alchemist',
+				reward_amount: 		1
+			},
+		}
+	},
+	arcane_druid:{
+		name: 			'arcane druid',
+		description: 	'Have allies shoot 30 arcane bolts and cleanse 30 times in a single battle.',
+		objectives: 	['ally_performed_arcane_bolts_total','ally_performed_cleanse_ally_total'],
+		card_image: 	'arcane_druid',
+		min_amount: 	30,
+		amount: 		1,
+		hide_details: 	true,
+		reset_if_incomplete: true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_arcane_druid',
+				reward_amount: 		1
+			},
+		},
+	},
 	bunny_hop:{
 		name: 			'bunny hop',
 		description: 	'Have a bunny kill the enemy hero.',
@@ -53,6 +92,24 @@ var all_achievements = {
 				reward_amount: 		1
 			},
 		}
+	},
+	scarecrow:{
+		name: 			'scarecrow',
+		description: 	'Use fear on a crow.',
+		card_image: 	'cursed_scarecrow',
+		objective: 		'crow_affected_by_fear',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_cursed_scarecrow',
+				reward_amount: 1,
+			},
+		},
 	},
 }
 
@@ -97,7 +154,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'arcane_bolts',
+		card_back: 		'arcane_mage',
 		steps: 			6,
 	},
 	arcane_storm:{
@@ -163,7 +220,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'apprentice',
+		card_back: 		'arcane_tower',
 		steps: 			6,
 	},
 	avoidance:{
@@ -934,7 +991,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'arcane_mage',
+		card_back: 		'apprentice',
 		steps: 			6,
 	},
 	magician:{

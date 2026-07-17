@@ -137,7 +137,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{arcane_bolt_hv: 2, ally_runs_away: 1, evade: 3},
+			abilities: 			{arcane_bolt_hv: 2, ally_runs_away: 1, evade: 2},
 		},
 		quote: '\"She controls the magical energy.\"',
 	},
@@ -678,6 +678,29 @@ var all_available_cards = {
 		abilities: 			{summon_human: 10, long_echo: 1},
 		quote: '\"We need more troops. Anyone will do!\"',
 	},
+	crow:{
+		name: 				'crow',
+		type: 				'creature',
+		subtypes: 			['animal','bird'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/crow.jpg',
+		power: 				1,
+		armor: 				0,
+		health: 			1,
+		abilities: 			{strike: 1, cursed_touch: 1, flying: 4},
+		hero_version: 			{
+			theme: 				['evade_ability','subtype_bird','run_away_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, cursed_touch: 2, flying: 4},
+		},
+		quote: '\"They say it is bad luck to see those.\"',
+	},
 	cursed_scarecrow:{
 		name: 				'cursed scarecrow',
 		type: 				'structure',
@@ -769,7 +792,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			8,
-		abilities: 			{curse_all: 1, destroy_cursed: 5, fortify_self: 2},
+		abilities: 			{curse_all: 1, destroy_cursed: 10, fortify_self: 2},
 		hero_version: 			{
 			theme: 				['curse_ability', 'projectile_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
@@ -831,16 +854,16 @@ var all_available_cards = {
 		time: 				1,
 		image: 				'cards/dark_rogue.jpg',
 		image_position: 	'top',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, cursed_touch: 2, evade: 3, healing_evasion: 10},
+		abilities: 			{strike: 1, cursed_touch: 2, evade: 3, healing_evasion: 4},
 		hero_version: 			{
 			theme: 				['subtype_rogue','curse_ability','evade_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, cursed_touch: 2, evade: 3, healing_evasion: 2},
+			abilities: 			{strike_unit: 1, cursed_touch: 2, evade: 2, healing_evasion: 2},
 		},
 		quote: '\"Her strikes leave a mark.\"',
 	},
@@ -884,13 +907,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{curse_all: 1, destroy_cursed: 4, strike: 1},
+		abilities: 			{curse_all: 1, destroy_cursed: 10, strike: 1},
 		hero_version: 			{
 			theme: 				['curse_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{curse_all_hv: 1, destroy_cursed: 8, strike_unit: 1},
+			abilities: 			{curse_all_hv: 1, destroy_cursed: 10, strike_unit: 1},
 		},
 		quote: '\"You will be consumed by darkness.\"',
 	},
@@ -1270,7 +1293,7 @@ var all_available_cards = {
 		time: 				1,
 		image: 				'cards/flame_rogue.jpg',
 		image_position: 	'top',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
 		health: 			4,
 		abilities: 			{strike: 1, ignites: 1, evade: 3},
@@ -2560,10 +2583,10 @@ var all_available_cards = {
 		time: 				1,
 		image: 				'cards/rogue.jpg',
 		image_position: 	'top',
-		power: 				2,
+		power: 				1,
 		armor: 				0,
 		health: 			4,
-		abilities: 			{strike: 1, evade: 3, healing_evasion: 10},
+		abilities: 			{strike: 1, evade: 3, healing_evasion: 4},
 		hero_version: 			{
 			theme: 				['subtype_rogue','evade_ability'],
 			power: 				3,
@@ -3609,15 +3632,15 @@ var all_available_cards = {
 		image: 				'cards/wall.jpg',
 		power: 				false,
 		armor: 				0,
-		health: 			5,
-		abilities: 			{fortify_all: 1},
+		health: 			7,
+		abilities: 			{fortify_ally: 1},
 		hero_version: 			{
 			theme: 				['subtype_warrior'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{fortify_all: 1},
+			abilities: 			{fortify_arrivals: 3},
 		},
 		quote: '\"Basic defense.\"',
 	},
@@ -3685,7 +3708,7 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			2,
-		abilities: 			{run_away: 1, striking_entry: 1, strike: 1, coward: 1, evade: 3},
+		abilities: 			{run_away: 1, striking_entry: 1, strike: 1, coward: 1},
 		hero_version: 			{
 			theme: 				['subtype_rogue','curse_ability','move_ally_to_hand_ability'],
 			power: 				2,
@@ -3804,13 +3827,13 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{flying: 7, resurrect: 7, undead: 1},
+		abilities: 			{flying: 3, resurrect: 5, undead: 1},
 		hero_version: 			{
 			theme: 				['ally_creature_death_proc_ability','own_death_proc_ability','summon_creature_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{flying: 7, resurrect: 7, undead: 1},
+			abilities: 			{flying: 5, resurrect: 10, undead: 1},
 		},
 		quote: '\"Some spirits just want to be left alone.\"',
 	},
@@ -4383,7 +4406,7 @@ function calculate_card_value(card_id, show_calc){
 		//if(all_available_cards[card_id]['type'] == 'spell' || all_available_cards[card_id]['type'] == 'artifact'){current_card_value += 5;}
 		current_card_value *= all_available_cards[card_id]['raw_time'] * all_available_cards[card_id]['raw_time'];
 		if(current_card_value < all_available_cards[card_id]['raw_time']){current_card_value = all_available_cards[card_id]['raw_time'];}
-		if(show_calc != undefined && show_calc == true){console.log('time: ' + current_card_value);}
+		if(show_calc != undefined && show_calc == true){console.log('time: (' + all_available_cards[card_id]['raw_time'] + ') ' + current_card_value);}
 		var ability_count = count_object(all_available_cards[card_id]['abilities']);
 		/*var ability_count =  0;
 		eachoa(all_available_cards[card_id]['abilities'], function(ability_id, ability_level){
@@ -4391,7 +4414,7 @@ function calculate_card_value(card_id, show_calc){
 		});*/
 		var ability_value_factor = sqr(0.75 + (ability_count /4));
 		current_card_value *= ability_value_factor;
-		if(show_calc != undefined && show_calc == true){console.log('abilities: ' + current_card_value);}
+		if(show_calc != undefined && show_calc == true){console.log('abilities: x' + ability_value_factor + ' = ' + current_card_value);}
 		//current_card_value += all_available_cards[card_id]['power'];
 		//current_card_value += all_available_cards[card_id]['health'] / 4;
 		//current_card_value = current_card_value * (0.5 + (current_card_value / 10));
@@ -4403,7 +4426,7 @@ function calculate_card_value(card_id, show_calc){
 		{
 			current_card_value = current_card_value * (0.5 + (current_card_value / 10));
 		}*/
-		if(show_calc != undefined && show_calc == true){console.log('type: ' + current_card_value);}
+		//if(show_calc != undefined && show_calc == true){console.log('type: ' + current_card_value);}
 		/*current_card_value = current_card_value * current_card_value;
 		current_card_value /= 10;
 		if(show_calc != undefined && show_calc == true){console.log('correction: ' + current_card_value);}*/
@@ -4819,8 +4842,10 @@ function calculate_card_time(card_id, show_calc, hero_version){
 		eachoa(ability['ability_level_cost_factors'], function(ability_cost_factor_id, ability_cost_factor_amount){
 			if(card['abilities'][ability_cost_factor_id] != undefined)
 			{
-				level_cost *= 1 + ((ability_cost_factor_amount - 1) * card['abilities'][ability_cost_factor_id]);
-				if(show_calc!=undefined){console.log(ability_cost_factor_id + ': x' + ability_cost_factor_amount);}
+				var ability_cost_factor_result = ability_cost_factor_amount * card['abilities'][ability_cost_factor_id];
+				//level_cost *= /*1 + */((ability_cost_factor_amount/* - 1*/) * card['abilities'][ability_cost_factor_id]);
+				level_cost *= ability_cost_factor_result;
+				if(show_calc!=undefined){console.log(ability_cost_factor_id + ': x' + ability_cost_factor_result);}
 			}
 		});
 		if(ability['cost_factor'] != undefined && card[ability['cost_factor']] != undefined && ability['cost_factor'] == 'health' && hero_version != undefined && hero_version == true)

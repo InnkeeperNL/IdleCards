@@ -1353,7 +1353,6 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 		if(current_ability['min_enemy_hand_cards'] != undefined)
 		{
 			var effective_min_amount = calculate_effect({amount:current_ability['min_enemy_hand_cards']},undefined, origin_id, level);
-			console.log(effective_min_amount);
 			if(battle_info['combat_units'][unit_id]['side'] == 1 && count_hand_cards(battle_info['deck_2']) < effective_min_amount)
 			{
 				ability_can_fire = false;
@@ -1717,7 +1716,6 @@ function check_ability_can_fire(unit_id, current_ability, level, origin_id){
 		if(current_ability['min_enemy_hand_cards'] != undefined)
 		{
 			var effective_min_amount = calculate_effect({amount:current_ability['min_enemy_hand_cards']},undefined, origin_id, level);
-			console.log(effective_min_amount);
 			if(battle_info['combat_units'][unit_id]['side'] == 1 && count_hand_cards(battle_info['deck_2']) < effective_min_amount)
 			{
 				ability_can_fire = false;
@@ -7638,6 +7636,7 @@ function play_unit_card(side, card_id, origin_id, forced_play, origin_unit){
 			add_battle_stats(all_available_cards[card_id]['type'] + '_card_played');
 			eachoa(all_available_cards[card_id]['subtypes'], function(subtype_key, current_subtype){
 				check_quests(current_subtype + '_card_played');
+				add_battle_stats(current_subtype + '_card_played');
 			});
 		}
 		if(battle_info.combat_units[next_combat_unit_id] != undefined)
@@ -7760,6 +7759,7 @@ function play_action_card(side, card_id, origin_id, forced_play){
 					add_battle_stats(all_available_cards[card_id]['type'] + '_card_played');
 					eachoa(all_available_cards[card_id]['subtypes'], function(subtype_key, current_subtype){
 						check_quests(current_subtype + '_card_played');
+						add_battle_stats(current_subtype + '_card_played');
 					});
 				}
 			}
@@ -7871,6 +7871,7 @@ function play_artifact_card(side, card_id, origin_id, forced_play){
 				add_battle_stats(all_available_cards[card_id]['type'] + '_card_played');
 				eachoa(all_available_cards[card_id]['subtypes'], function(subtype_key, current_subtype){
 					check_quests(current_subtype + '_card_played');
+					add_battle_stats(current_subtype + '_card_played');
 				});
 			}
 			eachoa(battle_info.combat_units[next_combat_unit_id]['abilities'], function(ability_key, ability_level){

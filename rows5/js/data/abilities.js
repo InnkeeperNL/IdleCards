@@ -8,7 +8,7 @@ var ability_base_costs = {
 	doom: 		0.5,
 	draw: 		4,
 	empower: 	2,
-	evade: 		0.1,
+	evade: 		0.5,
 	fear:  		2,
 	fortify: 	2,
 	hasten: 	2,
@@ -6114,12 +6114,12 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'evade',
 			base_cost_factor: 	1,
-			base_cost_hero_factor: 2,
+			//base_cost_hero_factor: 1.5,
 		},
 		level_cost_cum: 	true,
-		//min_cost: 			2,
+		/*min_cost: 			2,
 		cost_factor: 			'health',
-		cost_factor_factor: 	0.5,
+		cost_factor_factor: 	0.25,*/
 	},
 	fated_stuns:{
 		ability_subtypes: ['resurrect','own_death_proc'],
@@ -7218,12 +7218,12 @@ var all_abilities = {
 		},
 		base_cost:{
 			base_cost_id: 		'evade',
-			base_cost_factor: 	0.5,
-			base_cost_hero_factor: 1,
+			base_cost_factor: 	0.8,
 		},
 		level_cost_cum: 	true,
-		cost_factor: 			'health',
-		cost_factor_factor: 	0.5,
+		/*cost_factor: 			'health',
+		cost_factor_factor: 	0.25,
+		min_cost: 			2,*/
 	},
 	flying_arrivals:{
 		ability_subtypes: ['flying'],
@@ -7344,12 +7344,13 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'fortify',
-			base_cost_factor: 0.65,
+			base_cost_factor: 0.7,
 			base_cost_spell_factor: 0.25,
 		}
 	},
 	fortify_arrivals:{
-		description: 	'When any ally unit enters the game, it gains {LEVEL} armor.',
+		name: 			'shield arrivals',
+		description: 	'When any ally unit enters the game, it gains {LEVEL} shield. {SHIELD}',
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
 		origin_not_self: 	true,
@@ -7374,8 +7375,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_artifact: 4,
+		base_cost:{
+			base_cost_id: 'fortify',
+			base_cost_factor: 0.25,
+			base_cost_hero_factor: 1,
+		}
 	},
 	fortify_hero:{
 		name: 			'shield hero',
@@ -8352,12 +8356,12 @@ var all_abilities = {
 		//animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.025,
+			base_cost_factor: 0.01,
 		},
 		ability_level_cost_factors:{
-			evade: 		1.1,
-			flying: 	1.05,
-			hide: 		2,
+			evade: 		2.5,
+			flying: 	2,
+			hide: 		4,
 		},
 	},
 	healing_spells:{
@@ -8832,7 +8836,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'burn',
 			base_cost_factor: 0,
-			base_hit_cost_factor: 0.4,
+			base_hit_cost_factor: 0.5,
 		},
 		level_cost_cum: true,
 	},

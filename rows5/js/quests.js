@@ -423,6 +423,20 @@ function check_achievement_goals(){
 					});
 				}
 			}
+			if(achievement_info['objectives'] != undefined)
+			{
+				eachoa(achievement_info['objectives'], function(objective_id, objective){
+					if(all_achievement_goals[objective] == undefined)
+					{
+						all_achievement_goals[objective] = {};
+					}
+					if(all_achievement_goals[objective]['achievements'] == undefined)
+					{
+						all_achievement_goals[objective]['achievements'] = {};
+					}
+					all_achievement_goals[objective]['achievements'][achievement_id] = true;
+				});
+			}
 		});
 		eachoa(all_quests, function(achievement_id, achievement_info){
 			if(achievement_info['objective'] != undefined)
