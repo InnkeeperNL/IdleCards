@@ -10078,7 +10078,7 @@ var all_abilities = {
 		targets:	{
 			1:{
 				target: 		'artifact',
-				target_amount: 	'ability_level',
+				target_amount: 	1,
 				position: 		'random',
 				side: 			'enemy'
 			},
