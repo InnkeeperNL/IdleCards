@@ -15045,7 +15045,6 @@ var all_abilities = {
 		proc_while_dead: false,
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['summon_creature_ability','own_death_proc_ability','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
