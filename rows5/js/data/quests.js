@@ -1208,7 +1208,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'carpenter',
-		steps: 			5,
+		steps: 			4,
 		step_effect: 	'min_amount',
 		step_amount: 	10,
 		no_quest: 		true,
