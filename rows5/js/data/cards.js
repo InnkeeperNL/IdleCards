@@ -1092,7 +1092,7 @@ var all_available_cards = {
 		abilities: 			{empowered_by_enemies: 1, empowered_by_allies: 1, strike: 1},
 		hero_version: 			{
 			theme: 				['empower_ally_ability','subtype_plant'],
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{empowered_by_enemies: 1, empowered_by_allies: 1, strike_unit: 1},
@@ -3710,7 +3710,7 @@ var all_available_cards = {
 		health: 			2,
 		abilities: 			{run_away: 1, striking_entry: 1, strike: 1, coward: 1},
 		hero_version: 			{
-			theme: 				['subtype_rogue','curse_ability','move_ally_to_hand_ability'],
+			theme: 				['type_creature','move_ally_to_hand_ability','evade_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -5398,7 +5398,7 @@ function check_no_achievement_yet(card_theme, max_shown){
 		});
 	});
 	eachoa(all_available_cards, function(card_id, card_info){
-		if((max_shown == undefined || max_shown > shown) && achievable_cardbacks['card_back_' + card_id] == undefined && (card_theme == undefined || match_array_values(card_theme, card_info['theme'])))
+		if(card_info['type'] != 'cardback' && (max_shown == undefined || max_shown > shown) && achievable_cardbacks['card_back_' + card_id] == undefined && (card_theme == undefined || match_array_values(card_theme, card_info['theme'])))
 		{
 			shown++;
 			console.log(card_id);

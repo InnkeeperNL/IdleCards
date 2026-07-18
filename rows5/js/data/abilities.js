@@ -291,7 +291,7 @@ var all_abilities = {
 				type: 			'move',
 				safe_slot: 		false,
 				placement: 		'random',
-				subtypes: 		['movement','guard','guard_now'],
+				subtypes: 		['movement','guard','guard_now','move_ally'],
 				amount: 		1,
 			}
 		},
@@ -351,7 +351,7 @@ var all_abilities = {
 				projectile: 	'teleport',
 				safe_slot: 		false,
 				placement: 		'random',
-				subtypes: 		['movement','seek'],
+				subtypes: 		['movement','seek','move_ally'],
 				amount: 		1,
 			}
 		},
@@ -2311,7 +2311,6 @@ var all_abilities = {
 	},
 	charge:{
 		ability_subtypes: ['charge','movement','charge','move_ally'],
-		name_color: 	'rgba(255,255,255,0.9)',
 		description: 	'This unit will move to the furthest free slot with an opposing unit and gains {LEVEL} temporary power for each slot moved.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -5172,7 +5171,7 @@ var all_abilities = {
 				side: 			'ally',
 			}
 		},
-		level_cost: 	2,
+		level_cost: 	3,
 		cost_factor: 	'full',
 	},
 	echo_bolt:{
@@ -5659,6 +5658,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'empower',
 			base_cost_factor: 0.5,
+			base_cost_hero_factor: 1.5,
 		},
 	},
 	empowered_by_enemies:{
@@ -8047,7 +8047,7 @@ var all_abilities = {
 				type: 			'move',
 				safe_slot: 		false,
 				placement: 		'random',
-				subtypes: 		['movement','guard','guard_now'],
+				subtypes: 		['movement','guard','guard_now','move_ally'],
 				amount: 		1,
 			}
 		},
@@ -9391,7 +9391,7 @@ var all_abilities = {
 				pause_before: 	2000,
 			}
 		},
-		level_cost: 	1,
+		level_cost: 	1.5,
 		cost_factor: 	'full',
 	},
 	mana_bolt:{

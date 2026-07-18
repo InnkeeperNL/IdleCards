@@ -3809,6 +3809,9 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
     				check_quests('enemy_' + target_unit['type'] + '_damaged');
     			}
     			check_quests('dealt_damage', calculated_amount);
+    			eachoa(subtypes, function(quest_subtype_key, quest_subtype_id){
+    				check_quests('dealt_damage_' + quest_subtype_id, calculated_amount);
+    			});
     		}
 
     		//////////////////////// RESOLVE
@@ -4799,6 +4802,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 							if(all_achievement_goals[possible_quest_string] != undefined){
 								check_quests(possible_quest_string);
 							};
+							add_battle_stats(possible_quest_string);
 						}
 					});
 					eachoa(unit['subtypes'], function(subtype_key, quest_subtype){

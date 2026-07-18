@@ -55,6 +55,44 @@ var all_achievements = {
 			},
 		},
 	},
+	as_the_crow_flies:{
+		name: 			'as the crow flies',
+		description: 	'Move an ally crow to a different slot.',
+		objective: 		'crow_affected_by_move_ally',
+		card_image: 	'crow',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_crow',
+				reward_amount: 		1
+			},
+		},
+	},
+	blue_ooze:{
+		name: 			'blue ooze',
+		description: 	'Have allies apply 30 curse and poison and stun an enemy 30 times in a single battle.',
+		objectives: 	['ally_performed_curse_total','ally_performed_poison_total','ally_performed_stun_total'],
+		card_image: 	'blue_ooze',
+		min_amount: 	30,
+		amount: 		1,
+		hide_details: 	true,
+		reset_if_incomplete: true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_blue_ooze',
+				reward_amount: 		1
+			},
+		},
+	},
 	bunny_hop:{
 		name: 			'bunny hop',
 		description: 	'Have a bunny kill the enemy hero.',
@@ -69,6 +107,43 @@ var all_achievements = {
 			},
 			1:{
 				reward_id: 			'card_back_bunny',
+				reward_amount: 		1
+			},
+		}
+	},
+	deadly_poison:{
+		name: 			'deadly poison',
+		description: 	'Kill 10 enemy creatures by quickening poison in one battle.',
+		card_image: 	'bottle_of_poison',
+		objective: 		'enemy_creature_killed_by_quicken_times',
+		min_amount: 	10,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_bottle_of_poison',
+				reward_amount: 		1
+			},
+		}
+	},
+	kings_gambit:{
+		name: 			'king\'s gambit',
+		description: 	'Have the rat king kill the enemy hero.',
+		card_image: 	'rat_king',
+		objective: 		'enemy_hero_killed_by_named_rat_king',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_rat_king',
 				reward_amount: 		1
 			},
 		}
@@ -93,6 +168,45 @@ var all_achievements = {
 			},
 		}
 	},
+	orange_ooze:{
+		name: 			'orange ooze',
+		description: 	'Have allies apply 30 burn and curse and stun an enemy 30 times in a single battle.',
+		objectives: 	['ally_performed_curse_total','ally_performed_burn_total','ally_performed_stun_total'],
+		card_image: 	'orange_ooze',
+		min_amount: 	30,
+		amount: 		1,
+		hide_details: 	true,
+		reset_if_incomplete: true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_orange_ooze',
+				reward_amount: 		1
+			},
+		},
+	},
+	rat_catcher:{
+		name: 			'rat catcher',
+		description: 	'Play 30 rat cards in one battle.',
+		card_image: 	'rat_catcher',
+		objective: 		'rat_card_played_times',
+		min_amount: 	30,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_rat_catcher',
+				reward_amount: 		1
+			},
+		}
+	},
 	scarecrow:{
 		name: 			'scarecrow',
 		description: 	'Use fear on a crow.',
@@ -111,6 +225,64 @@ var all_achievements = {
 			},
 		},
 	},
+	yellow_ooze:{
+		name: 			'yellow ooze',
+		description: 	'Have allies apply 30 burn and poison and stun an enemy 30 times in a single battle.',
+		objectives: 	['ally_performed_burn_total','ally_performed_poison_total','ally_performed_stun_total'],
+		card_image: 	'yellow_ooze',
+		min_amount: 	30,
+		amount: 		1,
+		hide_details: 	true,
+		reset_if_incomplete: true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_yellow_ooze',
+				reward_amount: 		1
+			},
+		},
+	},
+	walled:{
+		name: 			'walled',
+		description: 	'Play 30 wall cards in one battle.',
+		card_image: 	'wall',
+		objective: 		'wall_card_played_times',
+		min_amount: 	30,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_wall',
+				reward_amount: 		1
+			},
+		}
+	},
+	witchs_circle:{
+		name: 			'witch\'s circle',
+		description: 	'Play 30 witch cards in one battle.',
+		card_image: 	'witchs_circle',
+		objective: 		'witch_card_played_times',
+		min_amount: 	30,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_witchs_circle',
+				reward_amount: 		1
+			},
+		}
+	},
 }
 
 var all_chained_achievements = {
@@ -126,7 +298,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'rock_seer',
-		steps: 			5,
+		steps: 			3,
 		no_quest: 		true,
 	},
 	/*aquatic:{
@@ -155,7 +327,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'arcane_mage',
-		steps: 			6,
+		steps: 			4,
 	},
 	arcane_storm:{
 		name: 			'arcane storm',
@@ -188,7 +360,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'peasant',
-		steps: 			6,
+		steps: 			4,
 	},
 	arson:{
 		name: 			'arson',
@@ -221,7 +393,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'arcane_tower',
-		steps: 			6,
+		steps: 			4,
 	},
 	avoidance:{
 		name: 			'avoidance',
@@ -235,7 +407,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'fire_assassin',
-		steps: 			6,
+		steps: 			4,
 	},
 	/*bless:{
 		name: 			'bless',
@@ -278,7 +450,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'twine',
-		steps: 			6,
+		steps: 			4,
 		step_effect: 	'min_amount',
 		step_amount: 	10,
 		no_quest: 		true,
@@ -310,7 +482,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'torchbearer',
-		steps: 			6,
+		steps: 			4,
 	},
 	/*buy:{
 		name: 			'buy',
@@ -339,7 +511,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'chest',
-		steps: 			6,
+		steps: 			4,
 		no_quest: 		true,
 	},
 	city:{
@@ -354,7 +526,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'house',
-		steps: 			6,
+		steps: 			4,
 	},
 	clergy:{
 		name: 			'clergy',
@@ -368,7 +540,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'death_cleric',
-		steps: 			6,
+		steps: 			4,
 		no_quest: 		true,
 	},
 	close_call:{
@@ -383,7 +555,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'seer',
-		steps: 			5,
+		steps: 			3,
 		no_quest: 		true,
 	},
 	conscription:{
@@ -400,7 +572,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'conscription',
-		steps: 			6,
+		steps: 			4,
 		step_effect: 	'min_amount',
 		step_amount: 	10,
 		no_quest: 		true,
@@ -431,7 +603,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'cursed_talisman',
-		steps: 			6,
+		steps: 			4,
 	},
 	/*dancer:{
 		name: 			'dancer',
@@ -478,7 +650,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'hammer',
-		steps: 			6,
+		steps: 			4,
 	},
 	/*discard:{
 		name: 			'discard',
@@ -554,7 +726,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'messenger',
-		steps: 			6,
+		steps: 			4,
 		no_quest: 		true,
 	},
 	/*duelist:{
@@ -598,7 +770,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'sword',
-		steps: 			6,
+		steps: 			4,
 	},
 	/*eternal:{
 		name: 			'eternal',
@@ -640,7 +812,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'scarecrow',
-		steps: 			6,
+		steps: 			4,
 		no_quest: 		true,
 	},
 	/*fire:{
@@ -671,7 +843,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'ignite',
-		steps: 			6,
+		steps: 			4,
 		step_effect: 	'min_amount',
 		step_amount: 	10,
 		no_quest: 		true,
@@ -716,7 +888,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'shield',
-		steps: 			6,
+		steps: 			4,
 	},
 	/*frost:{
 		name: 			'frost',
@@ -744,7 +916,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'meadow',
-		steps: 			6,
+		steps: 			4,
 	},
 	/*gnomeling:{
 		name: 			'gnomeling',
@@ -802,7 +974,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'scraps_placeholder',
-		steps: 			5,
+		steps: 			4,
 		step_effect: 	'min_amount',
 		no_quest: 		true,
 	},
@@ -832,7 +1004,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'magic_dust',
-		steps: 			6,
+		steps: 			4,
 	},
 	/*hunger:{
 		name: 			'hunger',
@@ -860,7 +1032,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'well',
-		steps: 			6,
+		steps: 			4,
 	},
 	heavy_drinker:{
 		name: 			'heavy drinker',
@@ -874,7 +1046,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'pure_potion',
-		steps: 			6,
+		steps: 			4,
 	},
 	heavy_hitter: {
 		name: 			'heavy hitter',
@@ -891,7 +1063,7 @@ var all_chained_achievements = {
 		card_back: 		'village_defender',
 		steps: 			6,
 		step_effect: 	'min_amount',
-		step_amount: 	5,
+		step_amount: 	4,
 		no_quest: 		true,
 	},
 	/*heist:{
@@ -935,7 +1107,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'high_witch',
-		steps: 			6,
+		steps: 			4,
 	},
 	/*imp_lord:{
 		name: 			'imp lord',
@@ -963,7 +1135,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'poison_fever',
-		steps: 			6,
+		steps: 			4,
 	},
 	loss:{
 		name: 			'loss',
@@ -977,7 +1149,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'spike_trap',
-		steps: 			6,
+		steps: 			4,
 		no_quest: 		true,
 	},
 	mage:{
@@ -992,7 +1164,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'apprentice',
-		steps: 			6,
+		steps: 			4,
 	},
 	magician:{
 		name: 			'magician',
@@ -1006,7 +1178,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'scroll',
-		steps: 			6,
+		steps: 			4,
 	},
 	martyr:{
 		name: 			'martyr',
@@ -1020,7 +1192,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'plague_skeleton',
-		steps: 			6,
+		steps: 			4,
 	},
 	mason:{
 		name: 			'mason',
@@ -1036,7 +1208,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'carpenter',
-		steps: 			6,
+		steps: 			5,
 		step_effect: 	'min_amount',
 		step_amount: 	10,
 		no_quest: 		true,
@@ -1053,7 +1225,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'thief',
-		steps: 			7,
+		steps: 			4,
 	},
 	/*mouldy:{
 		name: 			'mouldy',
@@ -1095,7 +1267,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'thug',
-		steps: 			6,
+		steps: 			4,
 	},
 	museum:{
 		name: 			'museum',
@@ -1109,7 +1281,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'dagger',
-		steps: 			6,
+		steps: 			4,
 	},
 	/*plated:{
 		name: 			'plated',
@@ -1137,7 +1309,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'breaking_ray',
-		steps: 			6,
+		steps: 			4,
 	},
 	poison:{
 		name: 			'poison',
@@ -1151,7 +1323,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'plague_rat',
-		steps: 			6,
+		steps: 			4,
 	},
 	pure:{
 		name: 			'pure',
@@ -1165,7 +1337,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'herbs',
-		steps: 			6,
+		steps: 			4,
 	},
 	quick:{
 		name: 			'quick',
@@ -1180,7 +1352,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'scorpion',
-		steps: 			6,
+		steps: 			5,
 		step_effect: 	'max_amount',
 		step_amount: 	-5,
 		no_quest: 		true,
@@ -1211,7 +1383,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'skeleton',
-		steps: 			6,
+		steps: 			4,
 	},
 	/*ritualist:{
 		name: 			'ritualist',
@@ -1239,7 +1411,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'rogue',
-		steps: 			6,
+		steps: 			4,
 	},
 	runner:{
 		name: 			'runner',
@@ -1253,7 +1425,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'runner',
-		steps: 			6,
+		steps: 			4,
 	},/*
 	saboteur:{
 		name: 			'saboteur',
@@ -1309,7 +1481,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'scribe',
-		steps: 			6,
+		steps: 			4,
 		no_quest: 		true,
 	},
 	shards:{
@@ -1324,7 +1496,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'shard',
-		steps: 			5,
+		steps: 			3,
 		no_quest: 		true,
 	},
 	slaughter:{
@@ -1339,7 +1511,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'dark_night',
-		steps: 			6,
+		steps: 			4,
 	},
 	/*slow:{
 		name: 			'slow',
@@ -1367,7 +1539,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'slimeling',
-		steps: 			6,
+		steps: 			4,
 	},
 	stasher:{
 		name: 			'stasher',
@@ -1381,7 +1553,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'stash',
-		steps: 			6,
+		steps: 			4,
 		no_quest: 		true,
 	},
 	/*stealth:{
@@ -1413,7 +1585,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'toad',
-		steps: 			6,
+		steps: 			4,
 		no_quest: 		true,
 	},
 	striker:{
@@ -1428,7 +1600,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'horse',
-		steps: 			6,
+		steps: 			4,
 	},
 	stun:{
 		name: 			'stun',
@@ -1442,7 +1614,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'trapper',
-		steps: 			6,
+		steps: 			4,
 	},
 	/*summoner:{
 		name: 			'summoner',
@@ -1512,7 +1684,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'hideout',
-		steps: 			4,
+		steps: 			3,
 		no_quest: 		true,
 	},
 	toxic_cloud:{
@@ -1546,7 +1718,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'trove',
-		steps: 			6,
+		steps: 			4,
 		no_quest: 		true,
 	},
 	unholy_rite:{
@@ -1580,7 +1752,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'blossom',
-		steps: 			6,
+		steps: 			4,
 	},
 	/*walled:{
 		name: 			'walled',
@@ -1654,7 +1826,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'swordsman',
-		steps: 			6,
+		steps: 			4,
 	},
 	witch:{
 		name: 			'witch',
@@ -1668,7 +1840,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'witch',
-		steps: 			6,
+		steps: 			4,
 	},
 	/*withering:{
 		name: 			'withering',
@@ -1696,7 +1868,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'skeleton',
-		steps: 			6,
+		steps: 			4,
 	},
 	zoo:{
 		name: 			'zoo',
@@ -1710,7 +1882,7 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'badger',
-		steps: 			6,
+		steps: 			4,
 	},
 }
 
@@ -1720,6 +1892,7 @@ eachoa(all_achievements, function(achievement_id, achievement_info){
 	if(achievement_info['image'] == undefined && achievement_info['card_image'] != undefined && all_available_cards[achievement_info['card_image']] != undefined)
 	{
 		achievement_info['image'] = all_available_cards[achievement_info['card_image']]['image'];
+		achievement_info['image_position'] = all_available_cards[achievement_info['card_image']]['image_position'];
 	}
 });
 
