@@ -55,9 +55,27 @@ var all_achievements = {
 			},
 		},
 	},
+	arrow_in_the_knee:{
+		name: 			'arrow in the knee',
+		description: 	'Shoot a guard with an arrow.',
+		objective: 		'guard_affected_by_arrow',
+		card_image: 	'archer',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_archer',
+				reward_amount: 		1
+			},
+		},
+	},
 	as_the_crow_flies:{
 		name: 			'as the crow flies',
-		description: 	'Move an ally crow to a different slot.',
+		description: 	'Move a crow to a different slot.',
 		objective: 		'crow_affected_by_move_ally',
 		card_image: 	'crow',
 		amount: 		1,
@@ -130,6 +148,25 @@ var all_achievements = {
 			},
 		}
 	},
+	do_a_barrel_roll:{
+		name: 			'do a barrel roll',
+		description: 	'Pick up 20 floating rewards in one battle.',
+		card_image: 	'rock_biter',
+		objective: 		'claimed_pickup_total',
+		min_amount: 	20,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'enchanted_net',
+				reward_amount: 		10
+			},
+			1:{
+				reward_id: 			'card_back_rock_biter',
+				reward_amount: 		1
+			},
+		}
+	},
 	kings_gambit:{
 		name: 			'king\'s gambit',
 		description: 	'Have the rat king kill the enemy hero.',
@@ -164,6 +201,25 @@ var all_achievements = {
 			},
 			1:{
 				reward_id: 			'card_back_grinning_witch',
+				reward_amount: 		1
+			},
+		}
+	},
+	leeroy_jenkins:{
+		name: 			'Leeroy Jenkins',
+		description: 	'Start a battle agains an enemy at 100% power or more with 0 cards in your deck.',
+		card_image: 	'lone_charge',
+		objective: 		'ally_deck_card_count_round_1',
+		max_amount: 	0,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_lone_charge',
 				reward_amount: 		1
 			},
 		}
@@ -222,6 +278,62 @@ var all_achievements = {
 			1:{
 				reward_id: 'card_back_cursed_scarecrow',
 				reward_amount: 1,
+			},
+		},
+	},
+	shieldman:{
+		name: 			'shieldman',
+		description: 	'Win a battle against a 100% power or stronger enemy while your hero has 10 shield or more.',
+		objective: 		'ally_hero_armor_battle_end_won',
+		card_image: 	'shieldman',
+		min_amount: 	10,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_shieldman',
+				reward_amount: 		1
+			},
+		},
+	},
+	skirmisher:{
+		name: 			'skirmisher',
+		description: 	'Have 30 ally units move themselves or an ally unit to your hand in a single battle.',
+		objective: 		'ally_performed_retreat_total',
+		card_image: 	'skirmisher',
+		min_amount: 	30,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_skirmisher',
+				reward_amount: 		1
+			},
+		},
+	},
+	the_cheese_is_a_lie:{
+		name: 			'the cheese is a lie',
+		description: 	'Destroy an enemy cheese.',
+		objective: 		'enemy_cheese_killed',
+		card_image: 	'cheese',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_cheese',
+				reward_amount: 		1
 			},
 		},
 	},
@@ -1454,7 +1566,7 @@ var all_chained_achievements = {
 		},
 		card_back: 		'dark_sacrifice',
 		steps: 			6,
-	},
+	},*/
 	scavanger:{
 		name: 			'scavanger',
 		description: 	'Claim {AMOUNT} floating pickup reward(s).',
@@ -1462,13 +1574,13 @@ var all_chained_achievements = {
 		amount: 		0.5,
 		rewards:{
 			0:{
-				reward_id: 			'stash',
+				reward_id: 			'enchanted_net',
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'scavanger',
-		steps: 			6,
-	},*/
+		card_back: 		'miner',
+		steps: 			4,
+	},
 	sell:{
 		name: 			'sell',
 		description: 	'Sell {AMOUNT} card(s) to a merchant.',

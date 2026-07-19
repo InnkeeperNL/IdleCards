@@ -30,6 +30,8 @@ function start_next_turn(){
 
 	$('.total_turn_counter').html(total_turn_counter);
 
+	check_battle_quests(total_turn_counter, false);
+
 	$('.resign_button').css('display','block');
 
 	reduce_all_ability_delays(active_turn);
@@ -67,6 +69,20 @@ function start_next_turn(){
 		process_next_unit(current_phase, turn_phases[current_phase]);
 	}, total_timeout);
 }
+
+function check_battle_quests(round_number, battle_finished){
+	if(difficulty_setting >= 10)
+	{
+		var ally_deck_card_count = count_deck_cards(battle_info['deck_2']);
+		var ally_hero_armor = battle_info['combat_units'][2]['armor'];
+		check_quests('ally_deck_card_count_round_' + round_number, ally_deck_card_count);
+		if(battle_finished != false)
+		{
+			check_quests('ally_deck_card_count_battle_end_' + battle_finished, ally_deck_card_count);
+			check_quests('ally_hero_armor_battle_end_' + battle_finished, ally_hero_armor);
+		}
+	}
+};
 
 var current_phase = '';
 
@@ -113,6 +129,7 @@ function end_this_turn(){
 		{
 			if(battle_info.combat_units[2]['current_health'] > 0 && battle_info.combat_units[1]['current_health'] < 1)
 			{
+				check_battle_quests(total_turn_counter, 'won');
 				check_quests('battle_won_any');
 				check_quests('battle_won_type_' + current_battle_type);
 				if(get_effective_power_factor(difficulty_setting) >= 1)
@@ -220,6 +237,7 @@ function end_this_turn(){
 				{*/
 					if(battle_info.combat_units[2]['current_health'] < 1 && battle_info.combat_units[1]['current_health'] < 1)
 					{
+						check_battle_quests(total_turn_counter, 'tie');
 						if(endless_waves != true)
 						{
 							gamedata['battles_tied']++;
@@ -228,6 +246,7 @@ function end_this_turn(){
 					}
 					else
 					{
+						check_battle_quests(total_turn_counter, 'loss');
 						if(endless_waves != true)
 						{
 							gamedata['battles_lost']++;
@@ -8801,6 +8820,7 @@ function claim_pickups(counter){
 			pickup_rewards[counter]['card_amount'] = round_by_percent(pickup_rewards[counter]['card_amount'] * loot_factor);
 		}
 		check_quests('claimed_pickup');
+		add_battle_stats('claimed_pickup');
 		if(all_available_cards[pickup_rewards[counter]['card_id']] != undefined)
 		{
 			gain_card(pickup_rewards[counter]['card_id'],pickup_rewards[counter]['card_amount']);

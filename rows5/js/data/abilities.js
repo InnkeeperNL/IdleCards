@@ -1926,25 +1926,18 @@ var all_abilities = {
 		level_cost_cum: true,
 	},
 	burning_entry:{
-		description: 	'Applies {LEVEL} burn to all nearby enemy units when played. {BURN}',
+		description: 	'Applies {LEVEL} burn to all enemy units and the enemy hero when played. {BURN}',
 		proc: 			'on_play',
 		scales: 		true,
 		do_not_pause_between: true,
 		targets:	{
 			0:{
-				target: 		'unit',
-				target_amount: 	3,
-				position: 		'opposing_wide',
-				min_hp: 		1,
-				side: 			'enemy'
-			},
-			/*1:{
-				target: 		'hero',
-				target_amount: 	1,
+				target: 		'unit_or_hero',
+				target_amount: 	6,
 				position: 		'random',
 				min_hp: 		1,
 				side: 			'enemy'
-			},*/
+			},
 		},
 		effects:{
 			0:{
@@ -1957,8 +1950,7 @@ var all_abilities = {
 		},
 		base_cost:{
 			base_cost_id: 'burn',
-			base_cost_factor: 1,
-			base_cost_spell_factor: 0.25,
+			base_cost_factor: 2,
 		},
 		level_cost_cum: true,
 	},
@@ -2147,7 +2139,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'teleport',
 				type: 			'move_to_deck',
-				subtypes: 		['move_ally_to_hand','unsummon'],
+				subtypes: 		['move_ally_to_hand','unsummon','retreat'],
 				new_status: 	'hand',
 				side: 			'ally',
 				on_success:{
@@ -2164,7 +2156,7 @@ var all_abilities = {
 							pause_before: 	-1000,
 							projectile: 	'teleport',
 							type: 			'move_to_deck',
-							subtypes: 		['move_ally_to_hand'],
+							subtypes: 		['move_ally_to_hand','retreat'],
 							new_status: 	'hand',
 							side: 			'ally',
 						}
@@ -3273,7 +3265,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'teleport',
 				type: 			'move_to_deck',
-				subtypes: 		['move_ally_to_hand'],
+				subtypes: 		['move_ally_to_hand','retreat'],
 				new_status: 	'hand',
 				side: 			'ally',
 			}
@@ -3292,7 +3284,7 @@ var all_abilities = {
 				0:{
 					projectile: 	'teleport',
 					type: 			'move_to_deck',
-					subtypes: 		['move_ally_to_hand'],
+					subtypes: 		['move_ally_to_hand','retreat'],
 					new_status: 	'hand',
 					side: 			'ally',
 				}
@@ -7355,7 +7347,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		origin_not_self: 	true,
 		scales: 		true,
-		hero_tactics: 	['active_healing_ability','plated_ability','cleanse_ally_ability','move_ally_to_hand_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -8750,7 +8741,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'teleport',
 				type: 			'move_to_deck',
-				subtypes: 		['move_ally_to_hand'],
+				subtypes: 		['move_ally_to_hand','retreat'],
 				new_status: 	'hand',
 				side: 			'ally',
 			}
@@ -11857,7 +11848,6 @@ var all_abilities = {
 		proc: 			'ally_creature_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['move_ally_to_hand_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -12613,7 +12603,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'arrow',
 				type: 			'damage',
-				subtypes: 		['physical','projectile','ranged'],
+				subtypes: 		['physical','projectile','ranged','arrow'],
 				amount: 		'origin_power'
 			}
 		},
@@ -12645,7 +12635,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'arrow',
 				type: 			'damage',
-				subtypes: 		['physical','projectile','ranged'],
+				subtypes: 		['physical','projectile','ranged','arrow'],
 				amount: 		'origin_power'
 			}
 		},
@@ -12679,7 +12669,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'arrow',
 				type: 			'damage',
-				subtypes: 		['physical','projectile','ranged'],
+				subtypes: 		['physical','projectile','ranged','arrow'],
 				amount: 		'ability_level'
 			}
 		},
@@ -12707,7 +12697,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'arrow',
 				type: 			'damage',
-				subtypes: 		['physical','projectile','ranged'],
+				subtypes: 		['physical','projectile','ranged','arrow'],
 				amount: 		'ability_level'
 			}
 		},
@@ -12742,7 +12732,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'arrow',
 				type: 			'damage',
-				subtypes: 		['physical','projectile','ranged'],
+				subtypes: 		['physical','projectile','ranged','arrow'],
 				amount: 		'ability_level'
 			}
 		},
@@ -12997,7 +12987,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'arrow',
 				type: 			'damage',
-				subtypes: 		['physical','ranged','projectile','snipe'],
+				subtypes: 		['physical','ranged','projectile','snipe','arrow'],
 				amount: 		'origin_power'
 			}
 		},
@@ -13027,7 +13017,7 @@ var all_abilities = {
 			0:{
 				projectile: 'arrow',
 				type: 		'damage',
-				subtypes: 	['physical','ranged','projectile','snipe'],
+				subtypes: 	['physical','ranged','projectile','snipe','arrow'],
 				amount: 	'origin_power'
 			}
 		},
@@ -14896,7 +14886,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'teleport',
 				type: 			'move_to_deck',
-				subtypes: 		['move_ally_to_hand','unsummon'],
+				subtypes: 		['move_ally_to_hand','unsummon','retreat'],
 				new_status: 	'hand',
 				side: 			'ally',
 			}
@@ -14928,7 +14918,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'teleport',
 				type: 			'move_to_deck',
-				subtypes: 		['move_ally_to_hand','unsummon'],
+				subtypes: 		['move_ally_to_hand','unsummon','retreat'],
 				new_status: 	'hand',
 				side: 			'ally',
 			}

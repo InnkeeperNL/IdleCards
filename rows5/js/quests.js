@@ -923,60 +923,71 @@ function set_achievements_page(amount){
 	show_achievements();
 }
 
-function show_achievements_details(achievement_id){
-	$('.achievement_details').html('');
-	var achievement_info = all_achievements[achievement_id];
-	var achievement_progress = gamedata['achievements'][achievement_id];
+var current_achievement_details = false;
 
-	var completed = '';
-	if(gamedata['achievements'][achievement_id] != undefined && gamedata['achievements'][achievement_id]['completed'] == true)
+function show_achievements_details(achievement_id){
+	if(current_achievement_details == false || current_achievement_details != achievement_id)
 	{
-		completed = ' completed';
-	}
-	var claimed = '';
-	if(gamedata['achievements'][achievement_id] != undefined && gamedata['achievements'][achievement_id]['claimed'] == true)
-	{
-		claimed = ' claimed';
-	}
-	var single_parsed_achievement = '';
-	var background_pos = '';
-	if(achievement_info['image_position'] != undefined){background_pos = ';background-position:' + achievement_info['image_position'];}
-	single_parsed_achievement += 	'<div class="achievement_image" style="background-image:url(images/' + achievement_info['image'] + ')' + background_pos + '"></div>';
-	single_parsed_achievement += 	'<div class="achievement_title">' + capitalizeFirstLetter(achievement_info['name']) + '</div>';
-	if(completed == '' && (achievement_info['hide_details'] != undefined || achievement_info['hide_details'] == false))
-	{
-		single_parsed_achievement += '<div class="achievement_description">???</div>';
+		current_achievement_details = achievement_id;
+		$('.achievement_details').html('');
+		var achievement_info = all_achievements[achievement_id];
+		var achievement_progress = gamedata['achievements'][achievement_id];
+
+		var completed = '';
+		if(gamedata['achievements'][achievement_id] != undefined && gamedata['achievements'][achievement_id]['completed'] == true)
+		{
+			completed = ' completed';
+		}
+		var claimed = '';
+		if(gamedata['achievements'][achievement_id] != undefined && gamedata['achievements'][achievement_id]['claimed'] == true)
+		{
+			claimed = ' claimed';
+		}
+		var single_parsed_achievement = '';
+		var background_pos = '';
+		if(achievement_info['image_position'] != undefined){background_pos = ';background-position:' + achievement_info['image_position'];}
+		single_parsed_achievement += 	'<div class="achievement_image" style="background-image:url(images/' + achievement_info['image'] + ')' + background_pos + '"></div>';
+		single_parsed_achievement += 	'<div class="achievement_title">' + capitalizeFirstLetter(achievement_info['name']) + '</div>';
+		if(completed == '' && (achievement_info['hide_details'] != undefined || achievement_info['hide_details'] == false))
+		{
+			single_parsed_achievement += '<div class="achievement_description">???</div>';
+		}
+		else
+		{	
+			var current_progress = 0;
+			if(gamedata['achievements'][achievement_id] != undefined && gamedata['achievements'][achievement_id]['amount'] != undefined)
+			{
+				current_progress = gamedata['achievements'][achievement_id]['amount'];
+			}
+			single_parsed_achievement += '<div class="achievement_description">' + achievement_info['description'] + '<br/><br/>';
+			if(completed == '' && (achievement_info['hide_amount'] == undefined || achievement_info['hide_amount'] == false))
+			{
+				single_parsed_achievement += 'Progress: ' + numberWithCommas(current_progress) + ' / ' + numberWithCommas(achievement_info['amount']) + '<br/>';
+			}	
+			single_parsed_achievement += '</div>';
+		}
+		if(completed != '' && claimed != '')
+		{
+			var completed_date = new Date(gamedata['achievements'][achievement_id]['date_completed']);
+			var date = completed_date.getDate()+'-'+(completed_date.getMonth()+1)+'-'+completed_date.getFullYear();
+			var time = completed_date.getHours() + ":" + completed_date.getMinutes() + ":" + completed_date.getSeconds();
+			var dateTime = date/*+' '+time*/;
+			single_parsed_achievement += '<div class="completed_on">Completed on: ' + dateTime + '</div>';
+		}
+		if(completed != '' && claimed == '')
+		{
+			single_parsed_achievement += 	'<div class="achievement_claim_button" onclick="claim_achievement(\'' + achievement_id + '\')">CLAIM</div>';
+		}
+		
+
+		$('.achievement_details').html(single_parsed_achievement);
+		$('.claim_all_container').hide();
 	}
 	else
-	{	
-		var current_progress = 0;
-		if(gamedata['achievements'][achievement_id] != undefined && gamedata['achievements'][achievement_id]['amount'] != undefined)
-		{
-			current_progress = gamedata['achievements'][achievement_id]['amount'];
-		}
-		single_parsed_achievement += '<div class="achievement_description">' + achievement_info['description'] + '<br/><br/>';
-		if(completed == '' && (achievement_info['hide_amount'] == undefined || achievement_info['hide_amount'] == false))
-		{
-			single_parsed_achievement += 'Progress: ' + numberWithCommas(current_progress) + ' / ' + numberWithCommas(achievement_info['amount']) + '<br/>';
-		}	
-		single_parsed_achievement += '</div>';
-	}
-	if(completed != '' && claimed != '')
 	{
-		var completed_date = new Date(gamedata['achievements'][achievement_id]['date_completed']);
-		var date = completed_date.getDate()+'-'+(completed_date.getMonth()+1)+'-'+completed_date.getFullYear();
-		var time = completed_date.getHours() + ":" + completed_date.getMinutes() + ":" + completed_date.getSeconds();
-		var dateTime = date/*+' '+time*/;
-		single_parsed_achievement += '<div class="completed_on">Completed on: ' + dateTime + '</div>';
+		current_achievement_details = false;
+		show_achievements();
 	}
-	if(completed != '' && claimed == '')
-	{
-		single_parsed_achievement += 	'<div class="achievement_claim_button" onclick="claim_achievement(\'' + achievement_id + '\')">CLAIM</div>';
-	}
-	
-
-	$('.achievement_details').html(single_parsed_achievement);
-	$('.claim_all_container').hide();
 }
 
 function open_achievement(achievement_id){
