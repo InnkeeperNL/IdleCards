@@ -10823,7 +10823,7 @@ var all_abilities = {
 				0:{
 					pause_before: -1000,
 					type: 		'summon_unit',
-					subtypes: 	['summon_ally','summon_creature'],
+					subtypes: 	['summon_ally','summon_creature','raise_dead'],
 					card_id: 	'random',
 					card_type: 	'creature',
 					card_subtype: 'undead',

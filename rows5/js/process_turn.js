@@ -74,11 +74,15 @@ function check_battle_quests(round_number, battle_finished){
 	if(difficulty_setting >= 10)
 	{
 		var ally_deck_card_count = count_deck_cards(battle_info['deck_2']);
+		var ally_hand_card_count = count_hand_cards(battle_info['deck_2']);
+		var ally_grave_card_count = count_grave_cards(battle_info['deck_2']);
 		var ally_hero_armor = battle_info['combat_units'][2]['armor'];
 		check_quests('ally_deck_card_count_round_' + round_number, ally_deck_card_count);
 		if(battle_finished != false)
 		{
 			check_quests('ally_deck_card_count_battle_end_' + battle_finished, ally_deck_card_count);
+			check_quests('ally_hand_card_count_battle_end_' + battle_finished, ally_deck_card_count);
+			check_quests('ally_grave_card_count_battle_end_' + battle_finished, ally_deck_card_count);
 			check_quests('ally_hero_armor_battle_end_' + battle_finished, ally_hero_armor);
 		}
 	}

@@ -5399,7 +5399,7 @@ eachoa(all_available_cards, function(card_id, card_info){
 		}
 	});
 
-	if(no_card_back_yet == true && (card_info['type'] == 'creature' || card_info['type'] == 'spell' || card_info['type'] == 'structure' || card_info['type'] == 'object' || card_info['type'] == 'artifact' || card_info['type'] == 'currency'))
+	if(no_card_back_yet == true && (card_info['type'] == 'creature' || card_info['type'] == 'spell' || card_info['type'] == 'structure' || card_info['type'] == 'object' || card_info['type'] == 'artifact' || card_info['type'] == 'currency' || card_info['type'] == 'treasure'))
 	{
 		all_available_cards['card_back_' + card_id] = {
 			name: 				'card back: ' + card_info['name'],

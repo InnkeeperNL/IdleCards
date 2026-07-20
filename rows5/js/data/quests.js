@@ -129,6 +129,25 @@ var all_achievements = {
 			},
 		}
 	},
+	clear_mind:{
+		name: 			'clear mind',
+		description: 	'Win a battle against an enemy at 100% power or stronger while there are no cards left in your deck.',
+		card_image: 	'scribe',
+		objective: 		'ally_deck_card_count_battle_end_won',
+		max_amount: 	0,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_scribe',
+				reward_amount: 		1
+			},
+		}
+	},
 	deadly_poison:{
 		name: 			'deadly poison',
 		description: 	'Kill 10 enemy creatures by quickening poison in one battle.',
@@ -163,6 +182,45 @@ var all_achievements = {
 			},
 			1:{
 				reward_id: 			'card_back_rock_biter',
+				reward_amount: 		1
+			},
+		}
+	},
+	empty_tomb:{
+		name: 			'empty tomb',
+		description: 	'Win a battle against an enemy at 100% power or stronger with no cards in your grave.',
+		card_image: 	'skeletal_soldier',
+		objective: 		'ally_grave_card_count_battle_end_won',
+		max_amount: 	0,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_skeletal_soldier',
+				reward_amount: 		1
+			},
+		}
+	},
+	happy_ending:{
+		name: 			'happy ending',
+		description: 	'Win a battle against an enemy at 100% power or stronger at round 69.',
+		card_image: 	'wanton_girl',
+		objective: 		'battle_won_any_turn_count',
+		min_amount: 	69,
+		max_amount: 	69,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		10
+			},
+			1:{
+				reward_id: 			'card_back_wanton_girl',
 				reward_amount: 		1
 			},
 		}
@@ -262,6 +320,25 @@ var all_achievements = {
 				reward_amount: 		1
 			},
 		}
+	},
+	risen_army:{
+		name: 			'risen army',
+		description: 	'Raise 15 undead from the grave in one battle.',
+		objective: 		'ally_performed_raise_dead_total',
+		card_image: 	'necromancer',
+		min_amount: 	15,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_necromancer',
+				reward_amount: 		1
+			},
+		},
 	},
 	scarecrow:{
 		name: 			'scarecrow',
@@ -1592,7 +1669,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'scribe',
+		card_back: 		'thieves_cloak',
 		steps: 			4,
 		no_quest: 		true,
 	},
