@@ -319,6 +319,24 @@ var all_achievements = {
 			},
 		}
 	},
+	nothing_to_see:{
+		name: 			'nothing to see here, move along',
+		description: 	'Set the card filters to \'NONE\'.',
+		card_image: 	'warden',
+		objective: 		'set_filters_to_none',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_warden',
+				reward_amount: 		1
+			},
+		}
+	},
 	orange_ooze:{
 		name: 			'orange ooze',
 		description: 	'Have allies apply 30 burn and curse and stun an enemy 30 times in a single battle.',

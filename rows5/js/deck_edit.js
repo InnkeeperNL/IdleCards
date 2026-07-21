@@ -1182,4 +1182,6 @@ function clear_filters(){
 	$('.max_value_filter').val('');
 
 	$('.filter_checkbox').prop('checked', false);
+
+	check_quests('set_filters_to_none',1);
 }
