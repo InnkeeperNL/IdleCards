@@ -111,6 +111,25 @@ var all_achievements = {
 			},
 		},
 	},
+	brew_master:{
+		name: 			'brew master',
+		description: 	'Add an additional use to a potion 20 times in one battle.',
+		objective: 		'ally_performed_add_potion_use_total',
+		card_image: 	'cauldron',
+		min_amount: 	20,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'cup_of_blood',
+				reward_amount: 		10
+			},
+			1:{
+				reward_id: 			'card_back_cauldron',
+				reward_amount: 		1
+			},
+		},
+	},
 	bunny_hop:{
 		name: 			'bunny hop',
 		description: 	'Have a bunny kill the enemy hero.',
@@ -225,6 +244,24 @@ var all_achievements = {
 			},
 		}
 	},
+	king_of_peasants:{
+		name: 			'king of peasants',
+		description: 	'Gain 1000 peasants.',
+		card_image: 	'crown',
+		objective: 		'gained_card_peasant',
+		amount: 		1000,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'crown',
+				reward_amount: 		10
+			},
+			1:{
+				reward_id: 			'card_back_crown',
+				reward_amount: 		1
+			},
+		}
+	},
 	kings_gambit:{
 		name: 			'king\'s gambit',
 		description: 	'Have the rat king kill the enemy hero.',
@@ -321,6 +358,25 @@ var all_achievements = {
 			},
 		}
 	},
+	rat_symphony:{
+		name: 			'rat symphony',
+		description: 	'Defeat an enemy hero at 100% power or stronger with 5 ally rat flutes in play.',
+		objective: 		'ally_card_ids_rat_flute_battle_end_won',
+		card_image: 	'rat_flute',
+		min_amount: 	5,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_rat_flute',
+				reward_amount: 		1
+			},
+		},
+	},
 	risen_army:{
 		name: 			'risen army',
 		description: 	'Raise 15 undead from the grave in one battle.',
@@ -396,6 +452,25 @@ var all_achievements = {
 			},
 		},
 	},
+	slime_arena:{
+		name: 			'slime arena',
+		description: 	'Defeat a slime hero at 100% power or stronger with a slime hero.',
+		objective: 		'total_hero_card_subtypes_slime_battle_end_won',
+		card_image: 	'slime_pit',
+		min_amount: 	2,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_slime_pit',
+				reward_amount: 		1
+			},
+		},
+	},
 	the_cheese_is_a_lie:{
 		name: 			'the cheese is a lie',
 		description: 	'Destroy an enemy cheese.',
@@ -434,6 +509,25 @@ var all_achievements = {
 			},
 		},
 	},
+	walkabout:{
+		name: 			'walkabout',
+		description: 	'Have allies move to a different slot 30 times in one battle.',
+		objective: 		'ally_performed_movement_total',
+		card_image: 	'wanderer',
+		min_amount: 	30,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'cup_of_blood',
+				reward_amount: 		10
+			},
+			1:{
+				reward_id: 			'card_back_wanderer',
+				reward_amount: 		1
+			},
+		},
+	},
 	walled:{
 		name: 			'walled',
 		description: 	'Play 30 wall cards in one battle.',
@@ -452,6 +546,25 @@ var all_achievements = {
 				reward_amount: 		1
 			},
 		}
+	},
+	warrior_duel:{
+		name: 			'warrior duel',
+		description: 	'Defeat a warrior hero at 100% power or stronger with a warrior hero.',
+		objective: 		'total_hero_card_subtypes_warrior_battle_end_won',
+		card_image: 	'war_banner',
+		min_amount: 	2,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_war_banner',
+				reward_amount: 		1
+			},
+		},
 	},
 	witchs_circle:{
 		name: 			'witch\'s circle',

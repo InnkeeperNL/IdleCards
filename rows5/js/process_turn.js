@@ -70,7 +70,55 @@ function start_next_turn(){
 	}, total_timeout);
 }
 
+var battle_quest_groups = [
+	'card_ids',
+	'card_types',
+	'card_subtypes',
+];
+
 function check_battle_quests(round_number, battle_finished){
+	if(battle_finished != false)
+	{
+		var battle_end_achievement_procs = [];
+		var battle_units = {};
+		/*eachoa(battle_quest_groups, function(useless_id, battle_quest_group){
+			battle_units['total_' + battle_quest_group] = {};
+			battle_units['ally_' + battle_quest_group] = {};
+			battle_units['enemy_' + battle_quest_group] = {};
+		});*/
+		eachoa(battle_info['combat_units'], function(battle_unit_id, unit_info){
+			if(unit_info['slot'] != 0)
+			{
+				battle_units = add_battle_quest_units(battle_units, 'card_ids', unit_info['card_type'], unit_info['side']);
+				battle_units = add_battle_quest_units(battle_units, 'card_types', unit_info['type'], unit_info['side']);
+				
+				eachoa(unit_info['subtypes'], function(useless_id, card_subtype){
+					battle_units = add_battle_quest_units(battle_units, 'card_subtypes', card_subtype, unit_info['side']);
+				});
+			}
+			else
+			{
+				battle_units = add_battle_quest_units(battle_units, 'hero_card_ids', unit_info['card_type'], unit_info['side']);
+				battle_units = add_battle_quest_units(battle_units, 'hero_card_types', unit_info['type'], unit_info['side']);
+				
+				eachoa(unit_info['subtypes'], function(useless_id, card_subtype){
+					battle_units = add_battle_quest_units(battle_units, 'hero_card_subtypes', card_subtype, unit_info['side']);
+				});
+			}
+			
+		});
+
+		if(difficulty_setting >= 10)
+		{
+			eachoa(battle_units, function(battle_group_id, battle_group_info){
+				eachoa(battle_group_info, function(battle_group_name, battle_group_amount){
+					var quest_string = battle_group_id + '_' + battle_group_name + '_battle_end_' + battle_finished;
+					//console.log(quest_string + ': ' + battle_group_amount);
+					check_quests(quest_string, battle_group_amount);
+				});
+			});
+		}
+	}
 	if(difficulty_setting >= 10)
 	{
 		var ally_deck_card_count = count_deck_cards(battle_info['deck_2']);
@@ -87,6 +135,26 @@ function check_battle_quests(round_number, battle_finished){
 		}
 	}
 };
+
+function add_battle_quest_units(battle_units, stat, info, side){
+
+	if(battle_units['total_' + stat] == undefined){battle_units['total_' + stat] = {};}
+	if(battle_units['enemy_' + stat] == undefined){battle_units['enemy_' + stat] = {};}
+	if(battle_units['ally_' + stat] == undefined){battle_units['ally_' + stat] = {};}
+	if(battle_units['total_' + stat][info] == undefined){battle_units['total_' + stat][info] = 0;}
+	battle_units['total_' + stat][info]++;
+	if(side == 1)
+	{
+		if(battle_units['enemy_' + stat][info] == undefined){battle_units['enemy_' + stat][info] = 0;}
+		battle_units['enemy_' + stat][info]++;
+	}
+	if(side == 2)
+	{
+		if(battle_units['ally_' + stat][info] == undefined){battle_units['ally_' + stat][info] = 0;}
+		battle_units['ally_' + stat][info]++;
+	}
+	return battle_units;
+}
 
 var current_phase = '';
 
@@ -8727,9 +8795,16 @@ function create_projectile(origin_id, target_id, projectile_id, avoided, target_
 				var side_id = 1;
 				if(side == 'ally' && origin_side == 2){side_id = 2;}
 				if(side == 'enemy' && origin_side == 1){side_id = 2;}
-				var target_unit = battle_info['deck_' + side_id][target_id];
-				var target_slot = 'hand_card hand_slot_' + target_unit['hand_slot'] + '';
-				if(target_unit['status'] != 'hand')
+				if(battle_info['deck_' + side_id][target_id] != undefined)
+				{
+					var target_unit = battle_info['deck_' + side_id][target_id];
+					var target_slot = 'hand_card hand_slot_' + target_unit['hand_slot'] + '';
+					if(target_unit['status'] != 'hand')
+					{
+						target_slot = 'hand_card deck_slot';
+					}
+				}
+				else
 				{
 					target_slot = 'hand_card deck_slot';
 				}

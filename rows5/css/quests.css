@@ -544,3 +544,9 @@
 	bottom: 0px;
 	background-color: rgba(0,0,0,0.8);
 }
+
+.reward_text b
+{
+	color:#fff;
+	font-weight: bold;
+}

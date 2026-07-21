@@ -1234,7 +1234,7 @@ var all_abilities = {
 			0:{
 				projectile: 'mana',
 				type: 		'apply_mana',
-				subtypes: 	['gain_mana'],
+				subtypes: 	['gain_mana','add_potion_use'],
 				amount: 	1,
 			},
 		},
@@ -2278,7 +2278,6 @@ var all_abilities = {
 		proc: 			'dealt_damage_to_hero',
 		reduce_skill_after_use: 'chaos_touch',
 		proc_amount: 	1,
-		hero_tactics: 	['discard_enemy_ability','draw_cards_ability','direct_damage_ability','movement_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -4804,7 +4803,6 @@ var all_abilities = {
 		ability_subtypes: ['receive_damage_proc'],
 		proc_amount: 	1,
 		proc_while_dead: true,
-		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability','doom_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -6085,7 +6083,6 @@ var all_abilities = {
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['movement_ability','evade_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -6185,7 +6182,6 @@ var all_abilities = {
 		ability_subtypes: ['receive_damage_proc'],
 		proc_amount: 	1,
 		proc_while_dead: true,
-		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -6223,7 +6219,6 @@ var all_abilities = {
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -6764,7 +6759,6 @@ var all_abilities = {
 		ability_subtypes: ['receive_damage_proc'],
 		proc_while_dead: true,
 		scales: 		true,
-		hero_tactics: 	['heal_hero_ability','fire_ability','movement_ability','projectile_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -10402,7 +10396,6 @@ var all_abilities = {
 		description: 	'Deals magical projectile damage equal to this units power to a random enemy unit.',
 		proc_amount: 	'ability_level',
 		need_power: 	true,
-		hero_tactics: 	['curse_ability','movement_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -12621,7 +12614,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		need_power: 	true,
-		hero_tactics: 	['curse_ability','movement_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -12654,7 +12646,6 @@ var all_abilities = {
 		proc: 			'enemy_unit_card_played',
 		remove_skill_after_use: 'shoot_arrival',
 		scales: 		true,
-		hero_tactics: 	['curse_ability','movement_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -12682,7 +12673,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc: 			'enemy_unit_card_played',
 		scales: 		true,
-		hero_tactics: 	['curse_ability','movement_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -13422,7 +13412,6 @@ var all_abilities = {
 		subtypes: 		['melee'],
 		proc_while_dead: true,
 		scales: 		true,
-		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability','lightning_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -13935,7 +13924,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
 		proc_amount: 'ability_level',
-		hero_tactics: 	['ally_creature_card_played_proc_ability','movement_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -13994,7 +13982,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
 		proc_amount: 'ability_level',
-		hero_tactics: 	['ally_creature_card_played_proc_ability','movement_ability','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -14021,7 +14008,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
 		proc_amount: 'ability_level',
-		hero_tactics: 	['ally_creature_card_played_proc_ability','movement_ability','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -14189,7 +14175,6 @@ var all_abilities = {
 		max_ally_units: 4,
 		min_unopposed_enemy_units: 1,
 		proc_amount: 'ability_level',
-		hero_tactics: 	['ally_creature_card_played_proc_ability','movement_ability','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -14217,7 +14202,6 @@ var all_abilities = {
 		max_ally_units: 4,
 		reduce_skill_after_use:'summon_peasant',
 		proc_amount: 'ability_level',
-		hero_tactics: 	['ally_creature_card_played_proc_ability','movement_ability','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -14397,7 +14381,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
 		proc_amount: 'ability_level',
-		hero_tactics: 	['ally_creature_card_played_proc_ability','movement_ability','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -14497,7 +14480,6 @@ var all_abilities = {
 		ability_subtypes: ['receive_damage_proc'],
 		proc_while_dead: true,
 		scales: 		true,
-		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -14600,7 +14582,6 @@ var all_abilities = {
 		proc_while_dead: true,
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
-		hero_tactics: 	['heal_hero_ability','movement_ability','projectile_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',

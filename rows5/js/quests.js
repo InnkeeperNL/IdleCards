@@ -605,7 +605,7 @@ function claim_quest(current_quest_id){
 		var current_quest_info = gamedata['quests'][current_quest_id];
 		all_current_rewards = {};
 		current_reward_origin 	= 'quests';
-		current_reward_text 	= 'For completing the quest <b>"' + capitalizeFirstLetter(all_quests[current_quest_info['quest_id']]['name']) + '"</b><br/>You have been rewarded with:<br/>';
+		current_reward_text 	= 'For completing the quest <b>"' + capitalizeFirstLetter(all_quests[current_quest_info['quest_id']]['name']) + '"</b> you have been rewarded with:<br/>';
 		eachoa(current_quest_info['rewards'], function(reward_type, reward_info){
 			//reward_info = (reward_info * get_upgrade_factor('summon_reward', 'any', true));
 			//var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
@@ -642,7 +642,7 @@ function claim_daily_quest(current_quest_id){
 		var current_quest_info = gamedata['daily_quests'][current_quest_id];
 		all_current_rewards = {};
 		current_reward_origin 	= 'daily_quests';
-		current_reward_text 	= 'For completing the daily quest <b>"' + capitalizeFirstLetter(all_quests[current_quest_info['quest_id']]['name']) + '"</b><br/>You have been rewarded with:<br/>';
+		current_reward_text 	= 'For completing the daily quest <b>"' + capitalizeFirstLetter(all_quests[current_quest_info['quest_id']]['name']) + '"</b> you have been rewarded with:<br/>';
 		
 		/*eachoa(all_quests[current_quest_info['quest_id']]['reward_per_amount'], function(reward_type, reward_info){
 			var scrap_amount = Math.ceil(current_quest_info['amount'] * reward_info);
@@ -779,6 +779,7 @@ var current_achievements_page = 1;
 var achievements_per_page = 25;
 
 function show_achievements(){
+	current_achievement_details = false;
 	if(gamedata['shown_achievements'] == undefined)
 	{
 		gamedata['shown_achievements'] = 'all';
@@ -1020,7 +1021,7 @@ function claim_all_achievements(){
 	if(count_object(all_current_rewards) > 0)
 	{
 		current_reward_origin 	= 'achievements';
-		current_reward_text 	= check_plural('For completing ' + claimed_amount + ' achievement(s)<br/>You have been rewarded with:<br/>', claimed_amount);
+		current_reward_text 	= check_plural('For completing ' + claimed_amount + ' achievement(s) you have been rewarded with:<br/>', claimed_amount);
 		saveToLocalStorage();
 		//show_content('current_rewards');
 	}
@@ -1033,9 +1034,9 @@ function claim_achievement(achievement_id){
 	if(progress['completed'] == true && progress['claimed'] == false)
 	{
 		progress['claimed'] = true;
-		all_current_rewards = current_achievement['rewards'];
+		all_current_rewards = true_copyobject(current_achievement['rewards']);
 		current_reward_origin 	= 'achievements';
-		current_reward_text 	= 'For completing the achievement <b>"' + capitalizeFirstLetter(current_achievement['name']) + '"</b><br/>You have been rewarded with:<br/>';
+		current_reward_text 	= 'For completing the achievement <b>"' + capitalizeFirstLetter(current_achievement['name']) + '"</b> you have been rewarded with:<br/>';
 		saveToLocalStorage();
 		show_content('current_rewards');
 	}

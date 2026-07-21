@@ -2,7 +2,7 @@ var current_card_backs_page = 1;
 var card_backs_per_page = 12;
 
 function show_card_backs(){
-	clear_unused_cardbacks();
+	//clear_unused_cardbacks();
 	$('.tinkering_container').html('');
 
 	if(gamedata['show_hand_colors'] == undefined || gamedata['show_hand_colors'] == true)
