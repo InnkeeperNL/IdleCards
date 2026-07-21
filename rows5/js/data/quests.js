@@ -2187,7 +2187,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'skeleton',
+		card_back: 		'skeletal_guard',
 		steps: 			4,
 	},
 	zoo:{
