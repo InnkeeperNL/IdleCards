@@ -537,8 +537,8 @@ var all_achievements = {
 		hide_details: 	true,
 		rewards:{
 			0:{
-				reward_id: 			'cup_of_blood',
-				reward_amount: 		10
+				reward_id: 			'golden_saddle',
+				reward_amount: 		1
 			},
 			1:{
 				reward_id: 			'card_back_wanderer',
