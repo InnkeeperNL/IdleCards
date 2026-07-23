@@ -132,9 +132,12 @@ function show_battle(){
 			battle_info.combat_units[1]['unit_id'] = 1;
 			battle_info.combat_units[1]['card_type'] = enemy_hero;
 			battle_info.combat_units[1]['current_health'] = battle_info.combat_units[1]['health'];
+			
 			var parsed_hero = parse_combat_unit(battle_info.combat_units[1], undefined, undefined, true);
 			enemy_card_back = battle_info.combat_units[1]['image'] + '';
 			$('.battle_container').append(parsed_hero);
+			if(gamedata['current_summon']['health_left'] != undefined){battle_info.combat_units[1]['current_health'] = gamedata['current_summon']['health_left'];check_unit_hp(1);}
+			
 		}
 
 		//SET UP DECKS

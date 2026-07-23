@@ -8,7 +8,8 @@ function show_summon(just_summoned){
 	var just_summoned_class = '';
 	var unowned_class = '';
 	if(just_summoned != undefined && just_summoned == true){just_summoned_class = 'just_summoned';}
-	if(gamedata['current_summon'] != undefined && (gamedata['current_summon']['tries'] == undefined || gamedata['current_summon']['tries'] < 1 || gamedata['current_summon']['level'] == undefined)){delete(gamedata['current_summon']);}
+	if(gamedata['current_summon'] != undefined && gamedata['current_summon']['health_left'] == undefined && (gamedata['current_summon']['tries'] == undefined || gamedata['current_summon']['tries'] < 1 || gamedata['current_summon']['level'] == undefined)){delete(gamedata['current_summon']);}
+	if(gamedata['current_summon'] != undefined && gamedata['current_summon']['health_left'] != undefined && gamedata['current_summon']['health_left'] <= 0){delete(gamedata['current_summon']);}
 	
 	var summon_stats = get_summon_stats();
 	$.each(gamedata['summon_pre_buffs'], function(buff_id, buff_card){
@@ -119,8 +120,9 @@ function show_summon(just_summoned){
 		}
 		if(drop_chance > 100){drop_chance = 100;}
 		parsed_summon += '<div class="summon_hero_container ' + just_summoned_class + '">';
-			var new_card = '';
-			if(gamedata['owned_cards'][gamedata['current_summon']['hero']] == undefined){new_card = '</div><div class="new_card">NEW';}
+			var new_card = '</div><div class="new_card">';
+			if(gamedata['owned_cards'][gamedata['current_summon']['hero']] == undefined){new_card += 'NEW';}
+			if(gamedata['current_summon']['health_left'] != undefined && gamedata['current_summon']['health_left'] > 0){new_card += '<span class="new_card red_text" style="opacity:1">BOSS</span>';}
 			var parsed_summoned_hero = parse_card(gamedata['current_summon']['hero'], new_card, true, undefined);
 			/*if(gamedata['owned_cards'][gamedata['current_summon']['hero']] == undefined){unowned_class = 'unowned_summon';}*/
 			
@@ -136,6 +138,10 @@ function show_summon(just_summoned){
 			if(gamedata['current_summon']['tries'] > 1)
 			{
 				parsed_summon += 	'Tries: ' + (gamedata['current_summon']['tries']);
+			}
+			if(gamedata['current_summon']['health_left'] != undefined && gamedata['current_summon']['health_left'] > 0)
+			{
+				parsed_summon += 	'Health: <span class="red_text">' + (gamedata['current_summon']['health_left']) + '</span>';
 			}
 			parsed_summon += 	'<br/>';
 			parsed_summon += 	'Reward: ' + nFormatter(gamedata['current_summon']['reward_count'],3) + '<br/>';

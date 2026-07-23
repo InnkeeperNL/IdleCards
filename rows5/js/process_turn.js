@@ -262,21 +262,30 @@ function end_this_turn(){
 					}
 					else
 					{
+						//console.log(gamedata['current_summon']);
 						gamedata['battles_won']++;
-						var effeective_power_factor = get_effective_power_factor(difficulty_setting);
-						if(gamedata['highest_summon_won'] < effeective_power_factor){gamedata['highest_summon_won'] = effeective_power_factor;}
-					    all_current_rewards = {};
-					    current_reward_text = 'You won the battle!';
-					    if(gamedata['summon_min_power'] == undefined){gamedata['summon_min_power'] = 1;}
-					    gamedata['summon_min_power'] += 1;
-
-					    var reward_amount = get_reward_count_based_on_power(get_effective_power_factor(difficulty_setting));
-						
-					    var defeated_hero_id = battle_info.combat_units[1]['card_type'];
+						var effective_power_factor = get_effective_power_factor(difficulty_setting);
+						if(gamedata['current_summon']['health_left'] == undefined)
+						{
+							if(gamedata['highest_summon_won'] < effective_power_factor){gamedata['highest_summon_won'] = effective_power_factor;}
+							if(gamedata['summon_min_power'] == undefined){gamedata['summon_min_power'] = 1;}
+					    	gamedata['summon_min_power'] += 1;
+						}
+						var defeated_hero_id = battle_info.combat_units[1]['card_type'];
 					    if(battle_info.combat_units[1]['original_card_type'] != undefined)
 					    {
 					    	defeated_hero_id = battle_info.combat_units[1]['original_card_type'];
 					    }
+					    all_current_rewards = {};
+					    current_reward_text = 'You defeated <b>' + all_available_cards[defeated_hero_id]['name'] + '</b> at ' + Math.floor(difficulty_setting * 10) + '% power!';
+					    if(gamedata['current_summon']['health_left'] != undefined)
+						{
+							current_reward_text = 'You defeated the <b>' + all_available_cards[defeated_hero_id]['name'] + '</b> boss at ' + Math.floor(difficulty_setting * 10) + '% power!';
+						}
+
+					    var reward_amount = get_reward_count_based_on_power(get_effective_power_factor(difficulty_setting));
+						
+					   
 
 						var hero_dropped = add_basic_win_rewards(reward_amount, defeated_hero_id);
 						if(hero_dropped == true){total_timeout += 1000;}else{$('.unit_id_1').addClass('dead');}
@@ -293,6 +302,22 @@ function end_this_turn(){
 						}
 						check_quests('battle_won_summoned_health_left_' + battle_info.combat_units[1]['current_health']);
 						
+						if(gamedata['current_summon']['health_left'] != undefined)
+						{
+							gamedata['current_summon']['tries'] = 0;
+							gamedata['current_summon']['health_left'] = 0;
+						}
+						if(all_available_cards[gamedata['current_summon']['hero']] != undefined && gamedata['current_summon']['level'] >= 10 && Math.random() < (0.01 * get_upgrade_factor('boss_chance', 'any', true)) && gamedata['current_summon']['health_left'] == undefined)
+						{
+							var new_boss_level = gamedata['current_summon']['level'] * (2 * get_upgrade_factor('boss_power', 'any', true));
+							var boss_health = Math.floor(all_available_cards[gamedata['current_summon']['hero']]['hero_version']['health'] * get_effective_power_factor(new_boss_level));
+							gamedata['current_summon']['tries'] = 1;
+							gamedata['current_summon']['level'] = new_boss_level;
+							gamedata['current_summon']['reward_count'] = get_reward_count_based_on_power(get_effective_power_factor(new_boss_level));
+							gamedata['current_summon']['health_left'] = boss_health;
+						}
+						
+
 					}
 					$('.side_1.type_artifact').addClass('dead');
 				}
@@ -323,7 +348,11 @@ function end_this_turn(){
 						{
 							gamedata['battles_lost']++;
 						}
-						gamedata['summon_min_power'] *= 0.75;
+						if(current_battle_type == 'summoned' && gamedata['current_summon']['health_left'] == undefined)
+						{
+							if(gamedata['summon_min_power'] == undefined){gamedata['summon_min_power'] = 1;}
+					    	gamedata['summon_min_power'] *= 0.75;
+						}
 						check_quests('battle_loss_any');
 						check_quests('battle_loss_any_turn_count',total_turn_counter);
 						check_quests('battle_loss_' + current_battle_type + '_turn_count',total_turn_counter);
@@ -348,6 +377,14 @@ function end_this_turn(){
 							clear_all_timeouts();
 							end_combat();
 						},total_timeout + 1000);
+					}
+				}
+				if(current_battle_type == 'summoned' && gamedata['current_summon']['health_left'] != undefined)
+				{
+					gamedata['current_summon']['tries'] = 1;
+					if(gamedata['current_summon']['health_left'] > battle_info.combat_units[1]['current_health'])
+					{
+						gamedata['current_summon']['health_left'] = battle_info.combat_units[1]['current_health'];
 					}
 				}
 			}
