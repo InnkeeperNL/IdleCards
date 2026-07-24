@@ -1776,7 +1776,7 @@ var all_chained_achievements = {
 		steps: 			6,
 	},*/
 	scavanger:{
-		name: 			'scavanger',
+		name: 			'scavenger',
 		description: 	'Claim {AMOUNT} floating pickup reward(s).',
 		objective: 		'claimed_pickup',
 		amount: 		0.5,
