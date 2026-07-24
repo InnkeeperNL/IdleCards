@@ -963,7 +963,7 @@ function show_achievements_details(achievement_id){
 			single_parsed_achievement += '<div class="achievement_description">' + achievement_info['description'] + '<br/><br/>';
 			if(completed == '' && (achievement_info['hide_amount'] == undefined || achievement_info['hide_amount'] == false))
 			{
-				single_parsed_achievement += 'Progress: ' + numberWithCommas(current_progress) + ' / ' + numberWithCommas(achievement_info['amount']) + '<br/>';
+				single_parsed_achievement += 'Progress: ' + numberWithCommas(current_progress) + ' / ' + numberWithCommas(Math.ceil(achievement_info['amount'])) + '<br/>';
 			}	
 			single_parsed_achievement += '</div>';
 		}

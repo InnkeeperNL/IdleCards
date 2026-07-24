@@ -1851,7 +1851,7 @@ var all_chained_achievements = {
 		name: 			'slimy',
 		description: 	'Play or summon {AMOUNT} slime card(s).',
 		objective: 		'slime_card_played',
-		amount: 		0.5,
+		amount: 		0.4,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -2244,18 +2244,18 @@ eachoa(all_chained_achievements, function(achievement_id, achievement_info){
 		if(i == 6){all_achievements[achievement_id + '_' + i]['name'] += ' VI';}*/
 		all_achievements[achievement_id + '_' + i][achievement_info['step_effect']] = amount;
 		var description = all_achievements[achievement_id + '_' + i]['description'] + '';
-		all_achievements[achievement_id + '_' + i]['description'] = check_plural(description.split("{AMOUNT}").join(numberWithCommas(amount)),amount);
+		all_achievements[achievement_id + '_' + i]['description'] = check_plural(description.split("{AMOUNT}").join(numberWithCommas(Math.ceil(amount))),amount);
 		if(all_achievements[achievement_id + '_' + i]['min_amount'] != undefined)
 		{
 			description = all_achievements[achievement_id + '_' + i]['description'] + '';
 			var min_amount = all_achievements[achievement_id + '_' + i]['min_amount'];
-			all_achievements[achievement_id + '_' + i]['description'] = check_plural(description.split("{MIN_AMOUNT}").join(numberWithCommas(min_amount)),min_amount);
+			all_achievements[achievement_id + '_' + i]['description'] = check_plural(description.split("{MIN_AMOUNT}").join(numberWithCommas(Math.ceil(min_amount))),min_amount);
 		}
 		if(all_achievements[achievement_id + '_' + i]['max_amount'] != undefined)
 		{
 			description = all_achievements[achievement_id + '_' + i]['description'] + '';
 			var max_amount = all_achievements[achievement_id + '_' + i]['max_amount'];
-			all_achievements[achievement_id + '_' + i]['description'] = check_plural(description.split("{MAX_AMOUNT}").join(numberWithCommas(max_amount)),max_amount);
+			all_achievements[achievement_id + '_' + i]['description'] = check_plural(description.split("{MAX_AMOUNT}").join(numberWithCommas(Math.ceil(max_amount))),max_amount);
 		}
 		if(all_achievements[achievement_id + '_' + i]['step_amount'] != undefined)
 		{

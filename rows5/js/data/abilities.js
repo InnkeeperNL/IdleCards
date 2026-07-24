@@ -19,7 +19,7 @@ var ability_base_costs = {
 	stealth: 	2,
 	strike: 	2,
 	stun: 		4,
-	summon: 	10,
+	summon: 	16,
 	thorns: 	1,
 }
 
@@ -73,7 +73,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.05,
+			base_cost_factor: 	0.025,
 		},
 	},
 	adrenaline:{
@@ -1513,7 +1513,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.5,
+			base_cost_factor: 	0.25,
 		},
 	},
 	bring_structure:{
@@ -2082,7 +2082,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.15,
+			base_cost_factor: 	0.1,
 			base_cost_hero_factor: 0.2,
 		},
 	},
@@ -2116,8 +2116,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.2,
-			base_cost_spell_factor: 0.05,
+			base_cost_factor: 	0.1,
+			base_cost_spell_factor: 0.025,
 		},
 	},
 	carry_away:{
@@ -6641,7 +6641,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		ability_level_cost_factors:{
-			resurrect: 		2,
+			resurrect: 		0.25,
 		},
 	},
 	final_pay_life:{
@@ -8008,7 +8008,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.15,
+			base_cost_factor: 	0.1,
 			base_cost_hero_factor: 	0.2,
 		},
 	},
@@ -11522,6 +11522,32 @@ var all_abilities = {
 		},
 		level_cost_cum: true,
 	},*/
+	regrows:{
+		description: 	'This has a {LEVEL}0% chance to return to its owner\'s deck when destroyed.',
+		proc: 			'post_own_death',
+		proc_while_dead: true,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 	'any',
+				target_amount: 1,
+				position: 	'self',
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'teleport',
+				type: 		'move_to_deck',
+				subtypes: 	['move_ally_to_deck'],
+				new_status: 'deck',
+				side: 		'ally',
+			}
+		},
+		level_cost: 	0.1,
+		cost_factor: 	'full',
+	},
 	release_bird:{
 		description: 	'Summons {LEVEL} bird creature(s) when destroyed.',
 		proc: 			'own_death',
@@ -11634,7 +11660,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.5,
+			base_cost_factor: 	0.25,
 		},
 	},
 	repair:{
@@ -12882,7 +12908,11 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	2,
+		base_cost:{
+			base_cost_id: 		'slow',
+			base_cost_factor: 	1,
+			base_cost_artifact_factor: 2,
+		},
 	},
 	slow_own:{
 		description: 	'Increases the ready time of a random ally card by {LEVEL}.',
@@ -13308,8 +13338,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.02,
-			base_cost_hero_factor: 0.2,
+			base_cost_factor: 	0.025,
+			base_cost_hero_factor: 0.1,
 		},
 		cost_factor: 	'health',
 	},
@@ -13972,8 +14002,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.15,
-			base_cost_spell_factor: 0.0375,
+			base_cost_factor: 	0.1,
+			base_cost_spell_factor: 0.025,
 		},
 	},
 	summon_frog:{
@@ -14085,8 +14115,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.15,
-			base_cost_spell_factor: 0.0375,
+			base_cost_factor: 	0.1,
+			base_cost_spell_factor: 0.025,
 		},
 	},
 	summon_imp:{
@@ -15554,7 +15584,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.15,
+			base_cost_factor: 	0.1,
 		},
 	},
 	auto_learn:{
