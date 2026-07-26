@@ -73,7 +73,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.025,
+			base_cost_factor: 	0.05,
 		},
 	},
 	adrenaline:{
@@ -6248,12 +6248,11 @@ var all_abilities = {
 		},
 	},
 	feast:{
-		description: 	'When any enemy living creature is killed by this, that creature is detroyed. This then heals itself by {LEVEL}.',
+		description: 	'When any enemy creature unit is killed by this, that creature is detroyed. This then heals itself by {LEVEL}.',
 		proc: 			'prekill_creature',
 		cannot_proc_while_stunned: true,
-		origin_does_not_have_ability: ['undead'],
+		//origin_does_not_have_ability: ['undead'],
 		scales: 		true,
-		hero_tactics: 	['curse_ability','break_ability','stun_ability'],
 		ability_effects:{
 			0:{
 				targets:{
