@@ -4,7 +4,7 @@ var ability_base_costs = {
 	cleanse: 	0.5,
 	curse: 		1,
 	destroy: 	8,
-	discard: 	6,
+	discard: 	8,
 	doom: 		0.5,
 	draw: 		4,
 	empower: 	2,
@@ -4384,9 +4384,11 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	6,
-		level_cost_artifact: 3.5,
-		cost_adjustment: -1,
+		base_cost:{
+			base_cost_id: 'destroy',
+			base_cost_factor: 0.8,
+			base_cost_spell_factor: 0.2,
+		},
 	},
 	destroy_cursed:{
 		hide_amount: true,
@@ -4619,7 +4621,7 @@ var all_abilities = {
 			base_cost_id: 		'discard',
 			base_cost_factor: 	-0.25,
 		},
-		cost_adjustment: 	15
+		cost_adjustment: 	18
 	},
 	doom:{
 		description: 	'Applies {LEVEL} doom to a random enemy unit.{DOOM}',
@@ -5724,6 +5726,50 @@ var all_abilities = {
 			base_cost_structure_factor: 1.5,
 		},
 	},
+	empowering_fire_hv:{
+		name: 			'empowering fire',
+		description: 	'Your hero gains {LEVEL} temporary power for each burning unit or hero.',
+		cannot_proc_while_stunned: true,
+		proc: 			'basic',
+		min_effect:  	1,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','buff_hero','empower_hero'],
+				amount: 		'target_count',
+				targets_to_count:{
+					targets:{
+						0:{
+							target: 		'unit_or_hero',
+							target_amount: 	100,
+							position: 		'random',
+							has_effect: 	{effect_name: 'burning', amount: 1, limit: 'min'},
+							min_hp: 		1,
+							side: 			'any'
+						}
+					},
+					effects:{},
+				},
+				amount_factor: 	'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 1,
+			base_cost_structure_factor: 1.5,
+		},
+	},
 	empowering_shields:{
 		description: 	'When an ally unit or hero gains shield, there is a {LEVEL}0% chance it will gain 1 temporary power.',
 		cannot_proc_while_stunned: true,
@@ -5804,6 +5850,37 @@ var all_abilities = {
 			base_cost_id: 'empower',
 			base_cost_factor: 1,
 			base_cost_structure_factor: 1.5,
+		},
+	},
+	enemy_draws_cards:{
+		description: 	'Has a {LEVEL}0% chance to let the enemy draw a card.',
+		cannot_proc_while_stunned: true,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		min_enemy_cards_in_deck: 	1,
+		max_enemy_hand_cards: 		9,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'deck',
+				type: 				'draw_card',
+				subtypes: 			['draw_cards','deck_control'],
+				amount: 			1,
+				side: 				'enemy'
+			}
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'draw',
+			base_cost_factor: -0.3,
+			base_cost_hero_factor: -0.5,
 		},
 	},
 	experiment:{
@@ -6139,7 +6216,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 	'resurrect',
 			base_cost_factor: 2,
-			//base_cost_hero_factor: 1,
+			base_cost_hero_factor: 4,
 		},
 		level_cost_cum: true,
 	},
@@ -6295,8 +6372,8 @@ var all_abilities = {
 		},
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 1/6,
-			base_cost_hero_factor: 1/3,
+			base_cost_factor: 0.2,
+			base_cost_hero_factor: 0.4,
 		},
 	},
 	fill_potion:{
@@ -8635,6 +8712,40 @@ var all_abilities = {
 		ability_subtypes: ['evade'],
 		description: 	'Grants your hero stealth.',
 		cannot_proc_while_stunned: true,
+		proc_amount: 	1,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				max_abilities: 	{stealth: 0},
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				pause_before: 	500,
+				projectile: 'dodge',
+				type: 		'set_skill',
+				subtypes: 	['grant_stealth','buff_hero'],
+				skill_id: 	'stealth',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 	'stealth',
+			base_cost_factor: 2,
+			base_cost_spell_factor: 0.5,
+		},
+	},
+	hide_hero_on_act:{
+		name: 			'hide hero',
+		ability_subtypes: ['evade'],
+		description: 	'Grants your hero stealth if this used another ability.',
+		cannot_proc_while_stunned: true,
+		has_used_ability: true,
 		proc_amount: 	1,
 		targets:	{
 			0:{
@@ -12784,6 +12895,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 	'resurrect',
 			base_cost_factor: 4,
+			base_cost_hero_factor: 5,
 		},
 		level_cost_cum: true,
 	},

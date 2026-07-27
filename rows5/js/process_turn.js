@@ -8836,7 +8836,8 @@ function create_projectile(origin_id, target_id, projectile_id, avoided, target_
 				{
 					var target_unit = battle_info['deck_' + side_id][target_id];
 					var target_slot = 'hand_card hand_slot_' + target_unit['hand_slot'] + '';
-					if(target_unit['status'] != 'hand')
+					
+					if(target_unit['status'] != 'hand' || target_id < 3)
 					{
 						target_slot = 'hand_card deck_slot';
 					}
