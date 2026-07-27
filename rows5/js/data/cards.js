@@ -1988,7 +1988,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{spell_bolt: 1, healing_spells: 1, cleansing_spells: 1},
 		hero_version: 			{
-			theme: 				['subtype_cleric','subtype_mage','type_creature','echo_ability'],
+			theme: 				['type_spell','echo_ability','any_spell_card_played_proc_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
