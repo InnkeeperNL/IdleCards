@@ -1228,7 +1228,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{burn: 1, burning_aura: 1, resist_fire: 1},
+			abilities: 			{burn_hv: 1, burning_aura: 1, resist_fire: 1},
 		},
 		quote: '\"Come warm yourself.\"',
 	},

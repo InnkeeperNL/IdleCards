@@ -5013,7 +5013,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 					eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
 						if(match_array_values(all_abilities[ability_key]['proc'], ['prekill','prekill_' + unit['type']]) == true)
 						{
-							process_ability(origin_id, all_abilities[ability_key], ability_level, unit_id, undefined, 'prekill');
+							process_ability(origin_id, all_abilities[ability_key], ability_level, unit_id, undefined, 'prekill', false);
 						}
 					});
 				}
@@ -5063,7 +5063,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 			    			{
 				    			if(battle_info.combat_units[origin_id]['ability_delays'][ability_key] == undefined || battle_info.combat_units[origin_id]['ability_delays'][ability_key] < 1)
 				    			{
-									var on_kill_skill_used = process_ability(origin_id, all_abilities[ability_key], ability_level, unit_id, undefined, 'kill');
+									var on_kill_skill_used = process_ability(origin_id, all_abilities[ability_key], ability_level, unit_id, undefined, 'kill', false);
 									if(on_kill_skill_used > 0)
 									{
 										check_ability_delay(origin_id, ability_key);
