@@ -10,9 +10,9 @@ var ability_base_costs = {
 	empower: 	2,
 	evade: 		0.5,
 	fear:  		2,
-	fortify: 	2,
+	fortify: 	3,
 	hasten: 	2,
-	healing: 	3,
+	healing: 	4,
 	poison: 	1.5,
 	resurrect: 	0.2,
 	slow: 		2,
@@ -7380,7 +7380,8 @@ var all_abilities = {
 	},
 	fortify_ally:{
 		name: 			'shield ally',
-		description: 	'The unit or hero with the lowest shield gains {LEVEL} shield. Cannot affect itself. {SHIELD}',
+		//description: 	'The unit or hero with the lowest shield gains {LEVEL} shield. Cannot affect itself. {SHIELD}',
+		description: 	'A random ally unit or hero gains {LEVEL} shield. Cannot affect itself. {SHIELD}',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		hero_tactics: 	['active_healing_ability','plated_ability','cleanse_ally_ability'],
@@ -7391,7 +7392,7 @@ var all_abilities = {
 				position: 		'random',
 				not_self: 		true,
 				min_hp: 		1,
-				lowest_armor: 	true,
+				//lowest_armor: 	true,
 				side: 			'ally'
 			},
 		},
@@ -7406,7 +7407,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'fortify',
-			base_cost_factor: 0.7,
+			base_cost_factor: 0.9,
 			base_cost_spell_factor: 0.25,
 		}
 	},
