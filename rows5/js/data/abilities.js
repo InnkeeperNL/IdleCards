@@ -2918,8 +2918,10 @@ var all_abilities = {
 		},
 		average_hits: 		1,
 		ability_level_cost_factors:{
-			burn: 		2,
-			burn_hv: 	2,
+			burn: 				1,
+			burn_hv: 			1,
+			fire_breathing: 	1,
+			fire_breathing_hv: 	1,
 		},
 	},
 	conflagrate_hv:{
@@ -2956,8 +2958,10 @@ var all_abilities = {
 		},
 		average_hits: 		1,
 		ability_level_cost_factors:{
-			burn: 			2,
-			burn_hv: 		2,
+			burn: 				1,
+			burn_hv: 			1,
+			fire_breathing: 	1,
+			fire_breathing_hv: 	1,
 		},
 	},
 	consume_creature:{
@@ -5725,6 +5729,12 @@ var all_abilities = {
 			base_cost_factor: 1,
 			base_cost_structure_factor: 1.5,
 		},
+		ability_level_cost_factors:{
+			burn: 				0.5,
+			burn_hv: 			0.5,
+			fire_breathing: 	0.5,
+			fire_breathing_hv: 	0.5,
+		},
 	},
 	empowering_fire_hv:{
 		name: 			'empowering fire',
@@ -5768,6 +5778,12 @@ var all_abilities = {
 			base_cost_id: 'empower',
 			base_cost_factor: 1,
 			base_cost_structure_factor: 1.5,
+		},
+		ability_level_cost_factors:{
+			burn: 				0.5,
+			burn_hv: 			0.5,
+			fire_breathing: 	0.5,
+			fire_breathing_hv: 	0.5,
 		},
 	},
 	empowering_shields:{
@@ -7029,6 +7045,73 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 	5,
 		cost_factor: 	'none',
+	},
+	fire_breathing:{
+		description: 	'Applies {LEVEL} burn to the opposing unit. Targets the enemy hero if there is no opposing unit.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'opposing',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+			1:{
+				target: 	'hero',
+				target_amount: 1,
+				min_hp: 	1,
+				side: 		'enemy'
+			}
+		},
+		effects:{
+			0:{
+				projectile: 'burn',
+				type: 		'apply_burn',
+				subtypes: 	['burn'],
+				amount: 	'ability_level',
+				increase_timeout: 500,
+				pause_before: 500,
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 1,
+		},
+		level_cost_cum: true,
+	},
+	fire_breathing_hv:{
+		name: 			'fire breathing',
+		description: 	'Applies {LEVEL} burn to the nearest enemy unit. Will not target the enemy hero.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'nearest',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'burn',
+				type: 		'apply_burn',
+				subtypes: 	['burn'],
+				amount: 	'ability_level',
+				increase_timeout: 500,
+				pause_before: 500,
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'burn',
+			base_cost_factor: 	1,
+		},
+		level_cost_cum: true,
 	},
 	fire_ritual:{
 		description: 	'Deals {LEVEL} magical fire damage to a random enemy unit and 1 magical fire damage to itself. Will target the enemy hero if there are no enemy units.',
@@ -9328,10 +9411,9 @@ var all_abilities = {
 		},
 	},
 	lightning:{
-		description: 	'Deals {LEVEL} magical lightning damage to the enemy unit with the highest current health. Will target the enemy hero if there are no enemy units.',
+		description: 	'Deals {LEVEL} magical damage to the enemy unit with the highest current health. Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['reap_ability','lightning_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -9354,13 +9436,16 @@ var all_abilities = {
 				self_projectile: 	'lightning goes_up',
 				target_projectile: 	'lightning comes_down',
 				type: 				'damage',
-				subtypes: 			['magical','elemental','lightning'],
+				subtypes: 			['magical'],
 				amount: 			'ability_level',
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		5,
-		level_cost_spell: 	1.25,
+		base_cost:{
+			base_cost_id: 'arcane_bolt',
+			base_cost_factor: 1.5,
+			base_cost_spell_factor: 0.375,
+		},
 		average_hits: 		1,
 	},
 	lightning_hv:{
