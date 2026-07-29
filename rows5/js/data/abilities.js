@@ -39,7 +39,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 		'add_card_to_deck',
 				subtypes: 	['summon_ally','summon_spell'],
 				card_id: 	'ignite',
@@ -59,7 +59,7 @@ var all_abilities = {
 			effects:{
 				0:{
 					projectile: 		'book',
-					projectile_target: 	'deck',
+					projectile_target: 	'true_deck',
 					type: 		'add_card_to_deck',
 					subtypes: 	['summon_ally','summon_spell'],
 					card_id: 	'ignite',
@@ -1249,7 +1249,7 @@ var all_abilities = {
 			effects:{
 				0:{
 					projectile: 		'book',
-					projectile_target: 	'deck',
+					projectile_target: 	'true_deck',
 					type: 		'add_card_to_deck',
 					card_id: 	'random',
 					subtypes: 	['summon_ally','brew_potion'],
@@ -1501,7 +1501,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 		'add_card_to_deck',
 				subtypes: 	['summon_ally','summon_rat','summon_creature'],
 				card_id: 	'random',
@@ -1603,6 +1603,37 @@ var all_abilities = {
 			base_cost_id: 'burn',
 			base_cost_factor: 1,
 			base_cost_spell_factor: 0.25,
+		},
+		level_cost_cum: true,
+	},
+	burn_ally:{
+		description: 	'Applies {LEVEL} burn to a random ally unit. Will not target your hero.{BURN}',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'burn',
+				type: 		'apply_burn',
+				subtypes: 	['burn'],
+				amount: 	'ability_level',
+				increase_timeout: 500,
+				pause_before: 500,
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: -0.5,
+			base_cost_spell_factor: -0.125,
 		},
 		level_cost_cum: true,
 	},
@@ -2070,7 +2101,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 		'add_card_to_deck',
 				subtypes: 	['summon_ally','summon_rat','summon_creature'],
 				card_id: 	'rat',
@@ -2103,7 +2134,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 		'add_card_to_deck',
 				subtypes: 	['summon_ally','summon_witch','summon_creature'],
 				card_id: 	'random',
@@ -4946,7 +4977,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'draw_card',
 				subtypes: 			['draw_cards','deck_control'],
 				amount: 			1
@@ -4978,7 +5009,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'draw_card',
 				subtypes: 			['draw_cards','deck_control'],
 				amount: 			1
@@ -5011,7 +5042,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'draw_card',
 				subtypes: 			['draw_cards','deck_control'],
 				amount: 			1
@@ -5044,7 +5075,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'draw_card',
 				subtypes: 			['draw_cards','deck_control'],
 				amount: 			1
@@ -5885,7 +5916,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'draw_card',
 				subtypes: 			['draw_cards','deck_control'],
 				amount: 			1,
@@ -6625,7 +6656,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'draw_card',
 				subtypes: 			['draw_cards','deck_control'],
 				amount: 			1
@@ -8156,7 +8187,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 		'add_card_to_deck',
 				card_id: 	'random',
 				subtypes: 	['summon_ally','summon_plant'],
@@ -10995,7 +11026,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'resurrect',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'remove_card',
 				side: 				'ally',
 			},
@@ -11049,7 +11080,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'resurrect',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'remove_card',
 				side: 				'ally',
 			},
@@ -11224,7 +11255,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'set_status',
 				subtypes: 			['move_ally_to_deck_from_grave','move_ally_to_deck','deck_control','reclaim'],
 				new_status: 		'deck',
@@ -11255,7 +11286,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'set_status',
 				subtypes: 			['move_ally_to_deck_from_grave','move_ally_to_deck','deck_control','reclaim'],
 				new_status: 		'deck',
@@ -11284,7 +11315,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'set_status',
 				subtypes: 			['move_ally_to_deck_from_grave','move_ally_to_deck','deck_control','reclaim'],
 				new_status: 		'deck',
@@ -11312,7 +11343,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'set_status',
 				subtypes: 			['move_ally_to_deck_from_grave','move_ally_to_deck','deck_control','reclaim'],
 				new_status: 		'deck',
@@ -11341,7 +11372,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'set_status',
 				subtypes: 			['move_ally_to_deck_from_grave','move_ally_to_deck','deck_control','reclaim'],
 				new_status: 		'deck',
@@ -11369,7 +11400,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'set_status',
 				subtypes: 			['move_ally_to_deck_from_grave','move_ally_to_deck','deck_control','reclaim'],
 				new_status: 		'deck',
@@ -11402,7 +11433,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'set_status',
 				subtypes: 			['move_ally_to_deck_from_grave','move_ally_to_deck','deck_control','reclaim'],
 				new_status: 		'deck',
@@ -11430,7 +11461,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'set_status',
 				subtypes: 			['move_ally_to_deck_from_grave','move_ally_to_deck','deck_control','reclaim_structure','reclaim'],
 				new_status: 		'deck',
@@ -11458,7 +11489,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'set_status',
 				subtypes: 			['move_ally_to_deck_from_grave','move_ally_to_deck','deck_control','reclaim_structure','reclaim'],
 				new_status: 		'deck',
@@ -11487,7 +11518,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'set_status',
 				subtypes: 			['move_ally_to_hand_from_grave','move_ally_to_hand','deck_control','reclaim'],
 				new_status: 		'hand',
@@ -11517,7 +11548,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 				'set_status',
 				subtypes: 			['move_ally_to_hand_from_grave','move_ally_to_hand','deck_control','reclaim'],
 				new_status: 		'hand',
@@ -11844,7 +11875,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 		'add_card_to_deck',
 				subtypes: 	['summon_ally','summon_rat','summon_creature'],
 				card_id: 	'rat',
@@ -13153,7 +13184,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'book',
-				projectile_target: 'deck',
+				projectile_target: 'true_deck',
 				type: 			'draw_card',
 				subtypes: 		['draw_cards','deck_control'],
 				amount: 		1,
@@ -14187,7 +14218,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 		'add_card_to_deck',
 				subtypes: 	['summon_ally','summon_human','summon_creature'],
 				card_id: 	'random',
@@ -14299,7 +14330,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 		'add_card_to_deck',
 				subtypes: 	['summon_ally','summon_human','summon_creature'],
 				card_id: 	'random',
@@ -14626,6 +14657,50 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 		12,
 		level_cost_spell: 	3,
+	},
+	surprise_attack:{
+		description: 	'A random ally creature with power gains {LEVEL} temporary power and performs a melee strike.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'max'},
+				not_types: 		['object','structure'],
+				not_self: 		true,
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','enrage','empower_ally'],
+				amount: 		'ability_level',
+			},
+			1:{
+				type: 			'random_ability',
+				subtypes: 		[],
+				ability_options: ['strike'],
+				amount: 		1,
+			}
+			/*1:{
+				type: 			'go_again',
+				go_now:  		true,
+				subtypes: 		['victory_rush'],
+				amount: 		1
+			},*/
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 			'empower',
+			base_cost_factor: 		1,
+			base_cost_spell_factor: 	0.25,
+		},
+		cost_adjustment: 3,
 	},
 	thieves_trap:{
 		name: 		'thieves\' trap',
@@ -15769,7 +15844,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 		'book',
-				projectile_target: 	'deck',
+				projectile_target: 	'true_deck',
 				type: 		'add_card_to_deck',
 				subtypes: 	['summon_ally','summon_rat','summon_creature'],
 				card_id: 	'random',

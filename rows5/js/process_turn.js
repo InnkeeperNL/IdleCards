@@ -2258,7 +2258,7 @@ function process_effect(target_id, origin_id, effect, level){
 					
 					if(effect['type'] == 'go_again')
 					{
-						go_again(target_id, origin_id, calculated_amount, effect['subtypes']);
+						go_again(target_id, origin_id, calculated_amount, effect['subtypes'], effect['go_now']);
 					}
 
 					if(effect['type'] == 'set_power')
@@ -4200,12 +4200,15 @@ function enable_to_act(target_id, origin_id, calculated_amount,subtypes){
     battle_info.combat_units[target_id]['acted_this_turn'] = 0;
 }
 
-function go_again(target_id, origin_id, calculated_amount,subtypes){
+function go_again(target_id, origin_id, calculated_amount,subtypes, go_now){
 	var target_unit = battle_info.combat_units[target_id];
-	if(target_unit['acted_this_turn'] > 1){target_unit['acted_this_turn'] = 1;}
-	target_unit['acted_this_turn'] -= calculated_amount;
-	delete target_unit['failed_to_act_this_phase'];
-	target_unit['failed_to_act_this_phase'] = false;
+	if(go_now == undefined || go_now == false)
+	{
+		if(target_unit['acted_this_turn'] > 1){target_unit['acted_this_turn'] = 1;}
+		target_unit['acted_this_turn'] -= calculated_amount;
+		delete target_unit['failed_to_act_this_phase'];
+		target_unit['failed_to_act_this_phase'] = false;
+	}
     //battle_info.combat_units[target_id]['used_ability'] = false;
 
 
@@ -4235,6 +4238,12 @@ function go_again(target_id, origin_id, calculated_amount,subtypes){
 	total_timeout += 500 * battle_speed;
 	//process_single_unit(target_id, undefined, false, 'basic');
 	//total_timeout += 250 * battle_speed;
+
+	if(go_now != undefined && go_now == true)
+	{
+		process_single_unit(target_id);
+		if(target_unit['acted_this_turn'] < 1){target_unit['acted_this_turn'] = 1;}
+	}
 
 	if(target_unit['type'] == 'spell')
     {
@@ -8827,7 +8836,7 @@ function create_projectile(origin_id, target_id, projectile_id, avoided, target_
 		}
 		else
 		{
-			if(target_type == 'deck' && side != undefined)
+			if((target_type == 'deck' || target_type == 'true_deck') && side != undefined)
 			{
 				var side_id = 1;
 				if(side == 'ally' && origin_side == 2){side_id = 2;}
@@ -8837,7 +8846,7 @@ function create_projectile(origin_id, target_id, projectile_id, avoided, target_
 					var target_unit = battle_info['deck_' + side_id][target_id];
 					var target_slot = 'hand_card hand_slot_' + target_unit['hand_slot'] + '';
 					
-					if(target_unit['status'] != 'hand' || target_id < 3)
+					if(target_unit['status'] != 'hand' || target_type == 'true_deck')
 					{
 						target_slot = 'hand_card deck_slot';
 					}
@@ -8848,7 +8857,7 @@ function create_projectile(origin_id, target_id, projectile_id, avoided, target_
 				}
 				var target_side = side_id + '';
 			}
-			if(target_type == 'deck' && side == undefined)
+			if((target_type == 'deck' || target_type == 'true_deck') && side == undefined)
 			{
 				var target_slot = target_slot = 'hand_card deck_slot';
 				var target_side = origin_side + '';
