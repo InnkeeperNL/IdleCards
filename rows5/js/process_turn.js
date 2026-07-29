@@ -3867,8 +3867,8 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 	    	    if(target_unit['effects']['cursed'] < 1)
 	    	    {
 	    	    	delete target_unit['effects']['cursed'];
-	    	    	update_passive_effects(target_id);
 	    	    }
+	    	    update_passive_effects(target_id);
 	    	    //delete target_unit['effects']['cursed'];
 	    	   	//update_passive_effects(target_id);
 	    	}
