@@ -2736,7 +2736,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{burn_hv: 1, conflagrate: 1, go_again: 5},
+		abilities: 			{burn_hv: 1, conflagrate_hv: 1, go_again: 5},
 		quote: '\"Let it spread!\"',
 		max_in_deck: 		2,
 	},
