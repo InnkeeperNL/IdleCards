@@ -1,13 +1,16 @@
 var ability_base_costs = {
 	arcane_bolt: 3,
 	burn: 		2,
+	bolster: 	5,
 	cleanse: 	0.5,
 	curse: 		2,
+	damage_all: 6,
 	destroy: 	8,
 	discard: 	8,
 	doom: 		0.5,
 	draw: 		4,
 	empower: 	2,
+	empower_fortify: 5,
 	evade: 		0.5,
 	fear:  		2,
 	fortify: 	3,
@@ -974,11 +977,9 @@ var all_abilities = {
 		level_cost_cum: 	true,
 	},
 	bolster_hero:{
-		description: 	'Your hero gains {LEVEL} temporary health.',
-		proc: 			'basic',
+		description: 	'Your hero gains {LEVEL} maximum health.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -991,15 +992,18 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'bolster',
-				type: 			'grant_temp_health',
+				type: 			'increase_health',
 				subtypes: 		['bolster','bolster_hero','buff_hero'],
 				amount: 		'ability_level'
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1.5,
-		level_cost_spell: 	0.375,
-		level_cost_cum: 	true,
+		base_cost:{
+			base_cost_id: 'bolster',
+			base_cost_factor: 		1,
+			base_cost_spell_factor: 0.25,
+			base_cost_hero_factor: 	1.5,
+		},
 	},
 	bolster_structure:{
 		description: 	'A random ally structure unit gains {LEVEL} temporary health.',
@@ -1091,7 +1095,63 @@ var all_abilities = {
 		level_cost_artifact: 3,
 		level_cost_cum: 	true,
 	},
-	boost_ally:		{
+	bolstering_entry:{
+		description: 	'When played, your hero gains {LEVEL} maximum health.',
+		proc: 			'on_play',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bolster',
+				type: 			'increase_health',
+				subtypes: 		['bolster','bolster_hero','buff_hero'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'bolster',
+			base_cost_factor: 		0.25,
+		},
+	},
+	bolstering_kills:{
+		description: 	'When this destroys something, your hero gains {LEVEL} maximum health.',
+		proc: 			'kill',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bolster',
+				type: 			'increase_health',
+				subtypes: 		['bolster','bolster_hero','buff_hero'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'bolster',
+			base_cost_factor: 		0.25,
+		},
+	},
+	boost_ally:{
 		description: 	'Grant a random ally {LEVEL} temporary power and health. Cannot target your hero and will only target units that have power.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
@@ -1155,6 +1215,44 @@ var all_abilities = {
 		},
 		animation: 	'combat_zoom',
 		level_cost: 	4,
+	},
+	brace_ally:{
+		description: 	'Grants a random ally 1 power and {LEVEL} shield. Cannot target your hero or itself and will only target units that have power.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				min_hp: 	1,
+				min_power: 	0,
+				not_self: 	true,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower_ally'],
+				amount: 		1
+			},
+			1:{
+				projectile: 	'armor',
+				type: 			'increase_armor',
+				subtypes: 		['fortify'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'fortify',
+			base_cost_factor: 		1,
+			base_cost_spell_factor: 0.25,
+		},
+		cost_adjustment: 			6,
+		cost_adjustment_spell: 		1.5,
 	},
 	break:{
 		name: 			'break artifact',
@@ -6114,7 +6212,6 @@ var all_abilities = {
 		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		proc_while_dead: true,
-		hero_tactics: 	['heal_hero_ability','bolster_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -8138,6 +8235,36 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	4,
+	},
+	ground_shake:{
+		description: 	'Deals {LEVEL} physical damage to all non-flying units.',
+		cannot_proc_while_stunned: true,
+		scales: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	10,
+				position: 		'random',
+				max_abilities: 	{flying: 0},
+				min_hp: 		1,
+				side: 			'any'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'stone',
+				type: 			'damage',
+				subtypes: 		['physical'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'damage_all',
+			base_cost_factor: 	0.75,
+			base_cost_spell_factor: 0.75/4,
+		},
+		average_hits: 		3,
 	},
 	grow:{
 		description: 	'This gains {LEVEL} power and health permanently.',
@@ -10648,6 +10775,35 @@ var all_abilities = {
 	precision:{
 		description: 	'This ignores evade and stealth.',
 		level_cost: 	2,
+	},
+	precede_earthquake:{
+		description: 	'Has a {LEVEL}0% chance to add an earthquake card to your deck.',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'true_deck',
+				type: 		'add_card_to_deck',
+				card_id: 	'earthquake',
+				card_status: 	'deck',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.1,
+			base_cost_spell_factor: 0.05,
+		},
 	},
 	prime_target:{
 		description: 	'If any ability can target only prime targets, it will target only prime targets.',

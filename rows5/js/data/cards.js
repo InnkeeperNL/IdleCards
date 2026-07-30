@@ -324,6 +324,23 @@ var all_available_cards = {
 		},
 		quote: '\"Strong and very aggressive.\"',
 	},
+	battle_preparations:{
+		name: 				'battle preparations',
+		type: 				'spell',
+		subtypes: 			['tactic'],
+		color: 				['colorless'],
+		theme: 				['subtype_warrior'],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/battle_preparations.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{brace_ally: 3, draw_on_act: 1},
+		quote: '\"Get ready for a fight!\"',
+	},
 	blacksmith:{
 		name: 				'blacksmith',
 		type: 				'creature',
@@ -337,13 +354,13 @@ var all_available_cards = {
 		power: 				1,
 		armor: 				0,
 		health: 			5,
-		abilities: 			{strike: 1, fortify_ally: 1, empower_ally: 5},
+		abilities: 			{strike: 1, empower_ally: 5, fortify_ally: 1},
 		hero_version: 			{
 			theme: 				['melee_ability','type_creature'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, fortify_ally: 1, empower_ally: 5},
+			abilities: 			{strike_unit: 1, empower_ally: 5, fortify_ally: 1},
 		},
 		quote: '\"He can forge great weapons and armor.\"',
 	},
@@ -1087,6 +1104,24 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, adrenaline_hv: 2},
 		},
 		quote: '\"I will show you I can fight!\"',
+	},
+	earthquake:{
+		name: 				'earthquake',
+		type: 				'spell',
+		subtypes: 			['tactic'],
+		color: 				['colorless'],
+		theme: 				['aoe'],
+		needs_theme: 		[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/earthquake.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{ground_shake: 6, minimum_enemies: 3, maximum_allies: 3},
+		quote: '\"When the very ground one stands upon is moving,<br/>Uncertainty prevails with constant dread.\" - Hugh Wyles',
 	},
 	elephant:{
 		name: 				'elephant',
@@ -2213,6 +2248,23 @@ var all_available_cards = {
 		},
 		quote: '\"Look at all the pretty flowers!\"',
 	},
+	meditation:{
+		name: 				'meditation',
+		type: 				'spell',
+		subtypes: 			['ritual'],
+		color: 				['colorless'],
+		theme: 				['buff_hero_ability'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/meditation.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{bolster_hero: 10},
+		quote: '\"Let\'s all calm down and think about it for a while.\"',
+		max_in_deck: 		2,
+	},
 	messenger:{
 		name: 				'messenger',
 		type: 				'creature',
@@ -2259,6 +2311,30 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, demolish: 1, scavange_hv: 1},
 		},
 		quote: '\"Do not let them get near the wall.\"',
+	},
+	monk:{
+		name: 				'monk',
+		type: 				'creature',
+		subtypes: 			['human','cleric'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/monk.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, bolstering_entry: 2},
+		hero_version: 			{
+			theme: 				['boost_hero_ability','heal_hero_ability','subtype_cleric'],
+			power: 				1,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, bolster_hero: 1},
+		},
+		quote: '\"Through meditation, we will endure.\"',
 	},
 	murder:{
 		name: 				'murder',
@@ -3731,6 +3807,24 @@ var all_available_cards = {
 		},
 		quote: '\"Ha ha! I got you!\"',
 	},
+	tremor:{
+		name: 				'tremor',
+		type: 				'spell',
+		subtypes: 			['tactic'],
+		color: 				['colorless'],
+		theme: 				['aoe'],
+		needs_theme: 		['flying_ability'],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/tremor.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{ground_shake: 1, precede_earthquake: 1, long_echo: 1},
+		quote: '\"This might be foreboding.\"',
+	},
 	twine:{
 		name: 				'twine',
 		type: 				'artifact',
@@ -4088,6 +4182,30 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, heal: 1, cleanse: 1},
 		},
 		quote: '\"Some warrior received their training from the druids.\"',
+	},
+	warrior_monk:{
+		name: 				'warrior monk',
+		type: 				'creature',
+		subtypes: 			['human','cleric','warrior'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/warrior_monk.jpg',
+		image_position: 	'top',
+		power: 				3,
+		armor: 				0,
+		health: 			6,
+		abilities: 			{strike: 1, bolstering_kills: 2},
+		hero_version: 			{
+			theme: 				['boost_hero_ability','heal_hero_ability','subtype_warrior'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, bolstering_kills: 2},
+		},
+		quote: '\"Through meditation and combat, we will endure.\"',
 	},
 	water_carrier:{
 		name: 				'water carrier',
@@ -5347,10 +5465,18 @@ function calculate_card_time(card_id, show_calc, hero_version){
 				if(show_calc!=undefined){console.log(ability_id + ' total: ' + (total_skill_cost) + ' points (on top)');}
 			}
 		}
-		if(ability['cost_adjustment'] != undefined)
+		if(card['type'] == 'spell' && ability['cost_adjustment_spell'] != undefined)
 		{
-			calculated_time += ability['cost_adjustment'];
-			if(show_calc!=undefined){console.log('adjustment: ' + ability['cost_adjustment']);}
+			calculated_time += ability['cost_adjustment_spell'];
+			if(show_calc!=undefined){console.log('adjustment spell: ' + ability['cost_adjustment_spell']);}
+		}
+		else
+		{
+			if(ability['cost_adjustment'] != undefined)
+			{
+				calculated_time += ability['cost_adjustment'];
+				if(show_calc!=undefined){console.log('adjustment: ' + ability['cost_adjustment']);}
+			}
 		}
 		if(ability['additional_levels_cost'] != undefined && ability_level > 1)
 		{
