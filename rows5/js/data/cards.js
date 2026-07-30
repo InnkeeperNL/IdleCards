@@ -1280,7 +1280,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{burn_hv: 1, conflagrate_hv: 2, resist_fire: 1},
+			abilities: 			{burn_hv: 1, conflagrate_hv: 1, resist_fire: 1},
 		},
 		quote: '\"She can control the fire.\"',
 	},
@@ -2720,6 +2720,25 @@ var all_available_cards = {
 			abilities: 			{fire_breathing_hv: 1, empowering_fire: 1, strike_unit: 1},
 		},
 		quote: '\"It likes its meat well done.\"',
+	},
+	pyrotechnics:{
+		name: 				'pyrotechnics',
+		type: 				'spell',
+		subtypes: 			['ritual'],
+		color: 				['colorless'],
+		theme: 				['aoe'],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/pyrotechnics.jpg',
+		image_position: 	'top',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{burn_hv: 1, conflagrate: 1, go_again: 5},
+		quote: '\"Let it spread!\"',
+		max_in_deck: 		2,
 	},
 	raging_bear:{
 		name: 				'raging bear',
@@ -5428,7 +5447,7 @@ function calculate_card_time(card_id, show_calc, hero_version){
 		eachoa(ability['ability_level_cost_factors'], function(ability_cost_factor_id, ability_cost_factor_amount){
 			if(card['abilities'][ability_cost_factor_id] != undefined)
 			{
-				var ability_cost_factor_result = ability_cost_factor_amount * card['abilities'][ability_cost_factor_id];
+				var ability_cost_factor_result = ability_cost_factor_amount /** card['abilities'][ability_cost_factor_id]*/;
 				//level_cost *= /*1 + */((ability_cost_factor_amount/* - 1*/) * card['abilities'][ability_cost_factor_id]);
 				level_cost *= ability_cost_factor_result;
 				if(show_calc!=undefined){console.log(ability_cost_factor_id + ': x' + ability_cost_factor_result);}

@@ -1737,7 +1737,6 @@ var all_abilities = {
 		proc: 			'enemy_unit_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['burn_ability','conflagrate_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -1771,7 +1770,6 @@ var all_abilities = {
 		show_amount: 	true,
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['burn_ability','conflagrate_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -1804,7 +1802,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		do_not_pause_between: true,
-		hero_tactics: 	['burn_ability','conflagrate_ability'],
 		targets:	{
 			0:{
 				target: 	'unit_or_hero',
@@ -1838,7 +1835,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		do_not_pause_between: true,
-		hero_tactics: 	['burn_ability','conflagrate_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -1872,7 +1868,6 @@ var all_abilities = {
 		subtypes: 		['melee'],
 		scales: 		true,
 		proc_while_dead: true,
-		hero_tactics: 	['burn_ability','conflagrate_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -1984,7 +1979,6 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['burn_ability','conflagrate_ability','own_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2024,7 +2018,6 @@ var all_abilities = {
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['burn_ability','conflagrate_ability','own_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2088,7 +2081,6 @@ var all_abilities = {
 		//proc_chance: 	50,
 		scales: 		true,
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['burn_ability','conflagrate_ability','own_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -3044,10 +3036,10 @@ var all_abilities = {
 		},
 		average_hits: 		1,
 		ability_level_cost_factors:{
-			burn: 				1,
-			burn_hv: 			1,
-			fire_breathing: 	1,
-			fire_breathing_hv: 	1,
+			burn: 				2,
+			burn_hv: 			2,
+			fire_breathing: 	2,
+			fire_breathing_hv: 	2,
 		},
 	},
 	conflagrate_hv:{
@@ -3084,10 +3076,10 @@ var all_abilities = {
 		},
 		average_hits: 		1,
 		ability_level_cost_factors:{
-			burn: 				1,
-			burn_hv: 			1,
-			fire_breathing: 	1,
-			fire_breathing_hv: 	1,
+			burn: 				2,
+			burn_hv: 			2,
+			fire_breathing: 	2,
+			fire_breathing_hv: 	2,
 		},
 	},
 	consume_creature:{
@@ -5177,6 +5169,7 @@ var all_abilities = {
 		},
 		ability_level_cost_factors:{
 			homebound: 		1.5,
+			coward: 		1.5,
 		},
 	},
 	earth_blast:{
@@ -5850,10 +5843,10 @@ var all_abilities = {
 			base_cost_structure_factor: 1.5,
 		},
 		ability_level_cost_factors:{
-			burn: 				0.5,
-			burn_hv: 			0.5,
-			fire_breathing: 	0.5,
-			fire_breathing_hv: 	0.5,
+			burn: 				2,
+			burn_hv: 			2,
+			fire_breathing: 	2,
+			fire_breathing_hv: 	2,
 		},
 	},
 	empowering_fire_hv:{
@@ -5900,10 +5893,10 @@ var all_abilities = {
 			base_cost_structure_factor: 1.5,
 		},
 		ability_level_cost_factors:{
-			burn: 				0.5,
-			burn_hv: 			0.5,
-			fire_breathing: 	0.5,
-			fire_breathing_hv: 	0.5,
+			burn: 				2,
+			burn_hv: 			2,
+			fire_breathing: 	2,
+			fire_breathing_hv: 	2,
 		},
 	},
 	empowering_shields:{
@@ -6852,7 +6845,7 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		ability_level_cost_factors:{
-			resurrect: 		0.25,
+			resurrect: 		2,
 		},
 	},
 	final_pay_life:{
@@ -8006,11 +7999,11 @@ var all_abilities = {
 		level_cost: 		2,
 	},
 	go_again:{
-		description: 	'Has a 50% chance to get another turn.',
-		proc_chance: 	50,
+		description: 	'Has a {LEVEL}0% chance to get another turn.',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		has_used_ability: true,
-		proc_amount: 	'ability_level',
 		targets:	{
 			0:{
 				target: 	'any',
@@ -8027,7 +8020,7 @@ var all_abilities = {
 				increase_timeout: -250,
 			},
 		},
-		level_cost: 	0.5,
+		level_cost: 	1,
 		cost_factor: 	'full',
 	},
 	grant_counter_spell:{
@@ -8653,8 +8646,8 @@ var all_abilities = {
 			base_cost_factor: 0.01,
 		},
 		ability_level_cost_factors:{
-			evade: 		2.5,
-			flying: 	2,
+			evade: 		1.5,
+			flying: 	1.5,
 			hide: 		4,
 		},
 	},
@@ -9140,7 +9133,6 @@ var all_abilities = {
 		ability_subtypes:['dealt_damage_proc'],
 		proc_while_dead: true,
 		scales: 		true,
-		hero_tactics: 	['burn_ability','conflagrate_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -11122,7 +11114,7 @@ var all_abilities = {
 		},
 		level_cost: 		2,
 		ability_level_cost_factors:{
-			resurrect: 		1.25,
+			resurrect: 		1.5,
 		},
 		level_cost_structure: 1.5,
 	},
@@ -15097,7 +15089,6 @@ var all_abilities = {
 		//proc_chance: 	50,
 		scales: 		true,
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['burn_ability','conflagrate_ability','own_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
