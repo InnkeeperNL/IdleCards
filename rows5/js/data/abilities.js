@@ -7,7 +7,7 @@ var ability_base_costs = {
 	damage_all: 6,
 	destroy: 	8,
 	discard: 	8,
-	doom: 		0.5,
+	doom: 		1,
 	draw: 		4,
 	empower: 	2,
 	empower_fortify: 5,
@@ -1066,11 +1066,10 @@ var all_abilities = {
 		level_cost_cum: 	true,
 	},
 	bolstering_deaths:{
-		description: 	'When any ally creature is destroyed, your hero gains {LEVEL} temporary health.',
+		description: 	'When any ally creature is destroyed, your hero gains {LEVEL} health.',
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['heal_hero_ability','own_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -1083,20 +1082,19 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'bolster',
-				type: 			'grant_temp_health',
+				type: 			'increase_health',
 				subtypes: 		['bolster','bolster_hero','buff_hero'],
 				amount: 		'ability_level'
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1.5,
-		level_cost_structure: 1,
-		level_cost_spell: 	0.5,
-		level_cost_artifact: 3,
-		level_cost_cum: 	true,
+		base_cost:{
+			base_cost_id: 'bolster',
+			base_cost_factor: 		1,
+		},
 	},
 	bolstering_entry:{
-		description: 	'When played, your hero gains {LEVEL} maximum health.',
+		description: 	'When played, your hero gains {LEVEL} health.',
 		proc: 			'on_play',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -1124,7 +1122,7 @@ var all_abilities = {
 		},
 	},
 	bolstering_kills:{
-		description: 	'When this destroys something, your hero gains {LEVEL} maximum health.',
+		description: 	'When this destroys something, your hero gains {LEVEL} health.',
 		proc: 			'kill',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -4758,7 +4756,6 @@ var all_abilities = {
 	doom:{
 		description: 	'Applies {LEVEL} doom to a random enemy unit.{DOOM}',
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['doom_ability','subtype_wall','heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -4846,7 +4843,6 @@ var all_abilities = {
 		description: 	'Applies {LEVEL} doom to any enemy unit that enters the game. {DOOM}',
 		proc: 			'enemy_unit_card_played',
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['doom_ability','subtype_wall','heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -4902,7 +4898,6 @@ var all_abilities = {
 		description: 	'When any enemy unit becomes stunned, this applies {LEVEL} doom to it.{DOOM}',
 		cannot_proc_while_stunned: true,
 		proc: 			'enemy_got_stunned',
-		hero_tactics: 	['doom_ability','subtype_wall','heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -4934,7 +4929,6 @@ var all_abilities = {
 		description: 	'When this receives melee damage from an enemy unit, this applies {LEVEL} doom to it. {DOOM}.',
 		proc: 			'receive_damage',
 		subtypes: 		['melee'],
-		ability_subtypes: ['receive_damage_proc'],
 		proc_amount: 	1,
 		proc_while_dead: true,
 		targets:	{
@@ -4965,9 +4959,7 @@ var all_abilities = {
 	dooming_deaths:{
 		description: 	'Applies {LEVEL} doom to a random enemy unit when any ally creature is destroyed. {DOOM}',
 		proc: 			'ally_creature_death',
-		ability_subtypes:['on_death_proc'],
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['doom_ability','heal_hero_ability','own_death_proc_ability','type_creature','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -9259,6 +9251,35 @@ var all_abilities = {
 		level_cost: 		2,
 		//level_cost_hero: 	3,
 	},
+	initiate_earthquake:{
+		description: 	'Has a {LEVEL}0% chance to add an earthquake card to your deck.',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'true_deck',
+				type: 		'add_card_to_deck',
+				card_id: 	'earthquake',
+				card_status: 	'deck',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.1,
+			base_cost_spell_factor: 0.05,
+		},
+	},
 	jolt:{
 		description: 	'A random ally creature unit that has power either gains or looses {LEVEL} temporary power.',
 		cannot_proc_while_stunned: true,
@@ -10775,35 +10796,6 @@ var all_abilities = {
 	precision:{
 		description: 	'This ignores evade and stealth.',
 		level_cost: 	2,
-	},
-	precede_earthquake:{
-		description: 	'Has a {LEVEL}0% chance to add an earthquake card to your deck.',
-		proc_chance: 	10,
-		proc_factor: 	'ability_level',
-		cannot_proc_while_stunned: true,
-		targets:	{
-			0:{
-				target: 		'hero',
-				target_amount: 	1,
-				side: 			'ally'
-			},
-		},
-		effects:{
-			0:{
-				projectile: 		'book',
-				projectile_target: 	'true_deck',
-				type: 		'add_card_to_deck',
-				card_id: 	'earthquake',
-				card_status: 	'deck',
-				amount: 	1
-			}
-		},
-		animation: 			'combat_zoom',
-		base_cost:{
-			base_cost_id: 		'summon',
-			base_cost_factor: 	0.1,
-			base_cost_spell_factor: 0.05,
-		},
 	},
 	prime_target:{
 		description: 	'If any ability can target only prime targets, it will target only prime targets.',
