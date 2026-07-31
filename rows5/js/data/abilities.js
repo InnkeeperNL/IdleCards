@@ -6230,7 +6230,6 @@ var all_abilities = {
 		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		proc_while_dead: true,
-		hero_tactics: 	['heal_hero_ability','bolster_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -16105,7 +16104,7 @@ $.each(all_abilities, function(ability_id, ability_info){
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{BURN}").join('<br/><i>Burn: Suffers fire damage equal to the burn it suffers at the end of each turn. The amount of burn is halved each time it deals damage.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{POISON}").join('<br/><i>Poison: Suffers piercing poison damage at the end of each turn equal to the amount of poison. The amount of poison is halved each time it deals damage.</i>');
 	//all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received. Curse is removed whenever it takes effect.</i>');
-	all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received by 20%, rounded up. Curse is reduced by 1 whenever it takes effect.</i>');
+	all_abilities[ability_id]['description'] = ability_info['description'].split("{CURSE}").join('<br/><i>Curse: Increases damage received by 20%, rounded up.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{BLESSED}").join('<br/><i>Blessed: There is a 10% chance per blessing that this will return to your deck when destroyed.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{DOOM}").join('<br/><i>Doom: There is a 10% chance per doom that this will be destroyed at the end of its turn. If a unit has 10 or more doom on it, it is destroyed immediately.</i>');
 	all_abilities[ability_id]['description'] = ability_info['description'].split("{SHIELD}").join('<br/><i>Shield: Absorbs the first incoming damage and gives a 10% chance per shield to deflect projectiles. Deflecting a projectile reduces the shield by 1.</i>');
