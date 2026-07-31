@@ -17,7 +17,7 @@ var ability_base_costs = {
 	hasten: 	2,
 	healing: 	4,
 	poison: 	1.5,
-	resurrect: 	0.2,
+	resurrect: 	3,
 	slow: 		2,
 	stealth: 	2,
 	strike: 	2,
@@ -12316,13 +12316,14 @@ var all_abilities = {
 	},
 	resurrect:{
 		hide_amount: 	true,
-		description: 	'When its health reaches 0, this has a {LEVEL}0% chance to come back to life with 1 health. The chance to resurrect is reduced by 20% every time it does.',
+		//description: 	'When its health reaches 0, this has a {LEVEL}0% chance to come back to life with 1 health. The chance to resurrect is reduced by 20% every time it does.',
+		description: 	'When its health reaches 0, this comes back to life with 1 health. Can be used {LEVEL} time(s).',
 		proc: 			'own_death',
-		proc_chance: 	10,
-		proc_factor: 	'ability_level',
+		//proc_chance: 	10,
+		//proc_factor: 	'ability_level',
 		proc_while_dead: true,
 		reduce_skill_after_use: 'resurrect',
-		reduce_skill_after_use_amount: 2,
+		//reduce_skill_after_use_amount: 2,
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -12348,7 +12349,7 @@ var all_abilities = {
 			base_cost_factor: 1,
 			base_cost_hero_factor: 0.1,
 		},
-		level_cost_cum: true,
+		//level_cost_cum: true,
 	},
 	resurrect_ally:{
 		description: 	'When an ally creature\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 1 health. The chance to resurrect is reduced by 20% every time it does.',
@@ -12396,6 +12397,36 @@ var all_abilities = {
 			base_cost_hero_factor: 0.25,
 		},
 		level_cost_cum: true,
+	},
+	resurrect_on_kill:{
+		description: 	'When this destroys something, it has a {LEVEL}0% chance to gain a resurrect charge.<br/><i>Resurrect: When its health reaches 0, this comes back to life with 1 health.</i>',
+		proc: 			'kill',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'resurrect',
+				type: 			'grant_skill',
+				skill_id: 		'resurrect',
+				subtypes: 		[],
+				amount: 		1,
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 	'resurrect',
+			base_cost_factor: 0.025,
+			base_cost_hero_factor: 0.1,
+		},
 	},
 	resurrect_hero:{
 		description: 	'When your hero\'s health reaches 0, there is a {LEVEL}0% chance this will bring it back to life with 1 health.',
