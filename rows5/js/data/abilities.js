@@ -1466,9 +1466,8 @@ var all_abilities = {
 				projectile: 	'teleport',
 				type: 			'summon_unit',
 				remove_skills: 	'bring_clone',
-				subtypes: 		['magical','clone_unit','summon_ally','summon_creature'],
+				subtypes: 		['magical','clone_unit','summon_ally'],
 				card_id: 		'self',
-				card_type: 		'creature',
 				amount: 		1,
 			}
 		},
@@ -9951,8 +9950,9 @@ var all_abilities = {
 		remove_skill: 	'maximum_allies',
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
+		level_cost_structure: 0.5,
 		cost_adjustment: 	-1,
-		cost_on_top: true,
+		//cost_on_top: true,
 		hide_amount: 	false,
 	},
 	maximum_enemies:{
@@ -9964,7 +9964,7 @@ var all_abilities = {
 		show_amount_adjustment: 0,
 		level_cost: 	0.25,
 		cost_adjustment: -1,
-		cost_on_top: 	true,
+		//cost_on_top: 	true,
 		hide_amount: 	false,
 	},
 	minimum_allies:{
@@ -13060,8 +13060,10 @@ var all_abilities = {
 		average_hits: 	0.25,
 	},
 	shoot_arrivals:{
-		description: 	'When an enemy unit enters the game, this deals {LEVEL} physical projectile damage to it.',
+		description: 	'When an enemy unit enters the game, this has a {LEVEL}0% chance to deal 1 physical projectile damage to it.',
 		cannot_proc_while_stunned: true,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		proc: 			'enemy_unit_card_played',
 		scales: 		true,
 		targets:	{
@@ -13079,12 +13081,15 @@ var all_abilities = {
 				projectile: 	'arrow',
 				type: 			'damage',
 				subtypes: 		['physical','projectile','ranged','arrow'],
-				amount: 		'ability_level'
+				amount: 		1
 			}
 		},
 		animation: 		'attack',
-		level_cost: 	4,
-		level_cost_artifact: 8,
+		base_cost:{
+			base_cost_id: 		'arcane_bolt',
+			base_cost_factor: 	0.2,
+			base_cost_artifact_factor: 0.4,
+		},
 		average_hits: 	1,
 	},
 	shooting_entry:{
