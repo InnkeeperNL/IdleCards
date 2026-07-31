@@ -4232,7 +4232,7 @@ var all_available_cards = {
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{arcane_bolt_hv: 1, ignites: 1, burn: 1},
+			abilities: 			{arcane_bolt_hv: 1, ignites: 1, burn_hv: 1},
 		},
 		quote: '\"Spread fire, not war.\"',
 	},
