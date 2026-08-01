@@ -11,6 +11,7 @@ var ability_base_costs = {
 	draw: 		4,
 	empower: 	2,
 	empower_fortify: 5,
+	enlarge:  	13,
 	evade: 		0.5,
 	fear:  		2,
 	fortify: 	3,
@@ -1524,6 +1525,33 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		3,
+	},
+	bring_ghost:{
+		description: 	'When played, summons {LEVEL} ghost(s).',
+		proc: 			'on_play',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'ghost',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.2,
+		},
 	},
 	bring_golem:{
 		description: 	'Summons a golem structure unit. Can be used {LEVEL} time(s).',
@@ -6009,6 +6037,41 @@ var all_abilities = {
 			base_cost_id: 'draw',
 			base_cost_factor: -0.3,
 			base_cost_hero_factor: -0.5,
+		},
+	},
+	enlarge_creature:{
+		description: 	'A random ally creature gains {LEVEL} power and health. If this targets a creature with no power, it only gains health.',
+		cannot_proc_while_stunned: true,
+		scales: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure'],
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'ability_level'
+			},
+			1:{
+				pause_before: 	-1000,
+				type: 			'increase_health',
+				subtypes: 		['bolster','bolster_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'enlarge',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
 		},
 	},
 	experiment:{
@@ -11295,7 +11358,6 @@ var all_abilities = {
 		description: 	'Destroys an enemy creature with {LEVEL} or less health.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['break_ability','wither_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -11316,15 +11378,16 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		3,
-		level_cost_hero: 	3,
-		level_cost_spell: 	2,
+		base_cost:{
+			base_cost_id: 'destroy',
+			base_cost_factor: 0.5,
+			base_cost_spell_factor: 0.125,
+		},
 	},
 	reap_all:{
 		description: 	'Destroys all enemy creatures with {LEVEL} or less health.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['break_ability','wither_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -11345,9 +11408,11 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		8,
-		level_cost_hero: 	8,
-		level_cost_spell: 	2,
+		base_cost:{
+			base_cost_id: 'destroy',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
 	},
 	reaping_touch:{
 		description: 	'After this deals damage to an enemy creature unit, destroys it if it has {LEVEL} or less health.',
@@ -12919,6 +12984,7 @@ var all_abilities = {
 				amount: 		1,
 			}
 		},
+		cost: 0.5,
 	},
 	seek_structure:{
 		description: 	'This unit will move to a free slot with an opposing structure if it is not facing a structure.',
@@ -14456,9 +14522,41 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		8,
-		level_cost_spell: 	2,
-		level_cost_hero: 	4,
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.8,
+			base_cost_spell_factor: 0.2,
+		},
+	},
+	summon_ghost_hv:{
+		name: 			'summon ghost',
+		description: 	'This has a {LEVEL}0% to summons a ghost.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'ghost',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.08,
+			base_cost_spell_factor: 0.02,
+		},
 	},
 	summon_golem:{
 		description: 	'Summons {LEVEL} golem unit(s).',
@@ -15174,12 +15272,11 @@ var all_abilities = {
 		},
 	},
 	trophy_kill:{
-		description: 	'Restores {LEVEL} health to your hero whenever it destroys an enemy unit.',
+		description: 	'Restores {LEVEL} health to your hero whenever this destroys an enemy unit.',
 		proc: 			'kill',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
-		hero_tactics: 	['curse_ability','hex_ability','stun_ability','reveal_ability'],
 		targets:	{
 			0:{
 				target: 	'hero',
@@ -15194,13 +15291,16 @@ var all_abilities = {
 			0:{
 				projectile: 'healing',
 				type: 		'healing',
-				subtypes: 	['healing','trophy_kill'],
+				subtypes: 	['healing','trophy_kill','heal_hero'],
 				amount: 	'ability_level'
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	1,
-		level_cost_hero: 	2,
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.2,
+			base_cost_hero_factor: 0.4,
+		},
 	},
 	turncoat:{
 		description: 	'If there are no more then 4 enemy units, this unit changes sides.',
@@ -15326,7 +15426,6 @@ var all_abilities = {
 	unsummon_ally:{
 		description: 	'Returns {LEVEL} damaged ally creature unit(s) to your hand. Will not unsummon summoned units.',
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['ally_creature_card_played_proc_ability','hasten_ability','heal_hero_ability','on_play_proc_ability','type_creature'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -15347,9 +15446,11 @@ var all_abilities = {
 				side: 			'ally',
 			}
 		},
-		level_cost: 		4,
-		level_cost_hero: 	2,
-		level_cost_spell: 	1,
+		base_cost:{
+			base_cost_id: 		'draw',
+			base_cost_factor: 	1,
+			base_cost_spell_factor: 0.5,
+		},
 	},
 	unsummon_dead:{
 		description: 	'When any ally creature unit dies, there is a {LEVEL}0% chance it returns to your hand. Will not unsummon summoned units.',

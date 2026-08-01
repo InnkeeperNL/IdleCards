@@ -490,10 +490,10 @@ function construct_random_deck(size, hero, randomized){
 	for(var t = 0;t < size; t++){
 		var card_weight = 1;
 		//if(all_available_cards[card_id]['pick_chance'] != undefined){card_weight = all_available_cards[card_id]['pick_chance'];}
-		if(card_weight > 0)
+		/*if(card_weight > 0)
 		{
 			this_card_counter += 1 / card_weight;
-		}
+		}*/
 		/*if(this_card_counter > 4)
 		{
 			var allready_not_these = false;
@@ -548,7 +548,7 @@ function construct_random_deck(size, hero, randomized){
 		eachoa(random_deck, function(useless_key, count_card_info){
 			if(count_card_info['card_id'] == card_id)
 			{
-				this_card_counter += 1 / card_weight; 
+				this_card_counter += 1 /*/ card_weight*/; 
 			}
 		});
 		if(this_card_counter > 4 || (all_available_cards[card_id] != undefined && all_available_cards[card_id]['max_in_deck'] != undefined && this_card_counter >= all_available_cards[card_id]['max_in_deck']))
@@ -564,12 +564,12 @@ function construct_random_deck(size, hero, randomized){
 				//console.log(not_these);
 			}
 		}
-		if(this_card_counter > 4 || (randomized != undefined && randomized == true))
+		if(this_card_counter > 4 || match_array_values(not_these, card_id) == true || (randomized != undefined && randomized == true))
 		{
-			card_id = get_random_card('any', max_time, deck_color, second_color, min_time, deck_theme, not_these, not_types, not_theme);
+			card_id = get_random_card('any', max_time, deck_color, second_color, min_time, deck_theme, not_these, not_types, not_theme, undefined);
 			if(all_available_cards[card_id] != undefined && ((all_available_cards[card_id]['type'] == 'artifact' && artifact_count > 4 && (all_available_cards[card_id]['selfdestructs'] == undefined || all_available_cards[card_id]['selfdestructs'] == false)) || (all_available_cards[card_id]['type'] == 'spell' && spell_count > 10)))
 			{
-				card_id = get_random_card('any', max_time, deck_color, second_color, min_time, deck_theme, not_these, not_types, not_theme);
+				card_id = get_random_card('any', max_time, deck_color, second_color, min_time, deck_theme, not_these, not_types, not_theme, undefined);
 			}
 			if(all_available_cards[card_id] != undefined && all_available_cards[card_id]['type'] == 'artifact' && (all_available_cards[card_id]['selfdestructs'] == undefined || all_available_cards[card_id]['selfdestructs'] == false))
 			{
@@ -624,9 +624,13 @@ function construct_random_deck(size, hero, randomized){
 	}*/
 	if(artifact_count == 0)
 	{
-		var chosen_artifact = get_random_card('artifact', undefined, undefined, undefined, undefined, deck_theme, not_these, undefined, not_theme);
+		var chosen_artifact = get_random_card('artifact', undefined, undefined, undefined, undefined, deck_theme, not_these, undefined, not_theme, undefined);
 		if(all_available_cards[chosen_artifact] != undefined)
 		{
+			if(show_deck_construction == true)
+			{
+				console.log('added artifact: ' + chosen_artifact);
+			}
 			random_deck[0] = {
 				card_id: 	chosen_artifact,
 				status: 	'deck',
@@ -635,7 +639,7 @@ function construct_random_deck(size, hero, randomized){
 		}
 	}
 
-	random_deck = check_deck_min_enemy_targets(random_deck, deck_theme, not_these);
+	random_deck = check_deck_min_enemy_targets(random_deck, deck_theme, not_these, not_theme);
 
 	if(show_deck_construction == true)
 	{
@@ -661,13 +665,14 @@ function construct_random_deck(size, hero, randomized){
 		console.log(deck_time_theme);
 		console.log(deck_times);
 		console.log('artifact count: ' + artifact_count);
+		console.log('spell count: ' + spell_count);
 		console.log('average card time: ' + (average_card_time / 30));
 	}
 
 	return random_deck;
 }
 
-function check_deck_min_enemy_targets(random_deck, deck_theme, not_these){
+function check_deck_min_enemy_targets(random_deck, deck_theme, not_these, not_theme){
 	var deck_size = count_object(random_deck);
 	var theme_to_check = 'aoe';
 	var min_enemies_ability_count = 0;
@@ -692,17 +697,30 @@ function check_deck_min_enemy_targets(random_deck, deck_theme, not_these){
 	{
 		var chosen_card_to_replace = get_random_key_from_object(non_min_enemy_cards);
 		var temp_deck_theme = true_copyobject(deck_theme);
-		for (var i = 3; i >= 0; i--) {
+		/*for (var i = 3; i >= 0; i--) {
 			temp_deck_theme[get_highest_key_in_object(temp_deck_theme) + 1] = theme_to_check;
-		}
-		var new_card = get_random_card('any', non_min_enemy_cards[chosen_card_to_replace] + 2, undefined, undefined, non_min_enemy_cards[chosen_card_to_replace] - 2, temp_deck_theme, not_these, undefined);
-		if(new_card == false)
+		}*/
+		//var new_card = get_random_card('any', non_min_enemy_cards[chosen_card_to_replace] + 2, undefined, undefined, non_min_enemy_cards[chosen_card_to_replace] - 2, temp_deck_theme, not_these, undefined, not_theme, theme_to_check);
+		var new_card = get_random_card('any', undefined, undefined, undefined, undefined, temp_deck_theme, not_these, undefined, not_theme, theme_to_check);
+		/*if(new_card == false)
 		{
-			new_card = get_random_card('any', non_min_enemy_cards[chosen_card_to_replace] + 2, undefined, undefined, non_min_enemy_cards[chosen_card_to_replace] - 2, [theme_to_check], not_these, undefined);
+			new_card = get_random_card('any', non_min_enemy_cards[chosen_card_to_replace] + 2, undefined, undefined, non_min_enemy_cards[chosen_card_to_replace] - 2, [theme_to_check], not_these, undefined, not_theme);
+		}*/
+		if(match_array_values(all_available_cards[new_card]['theme'], theme_to_check) == false)
+		{
+			console.log('picked wrong card: ' + new_card);
+			new_card = false;
 		}
 		if(show_deck_construction == true)
 		{
-			console.log('replacing ' + random_deck[chosen_card_to_replace]['card_id'] + '(' + random_deck[chosen_card_to_replace]['time_left'] + ') with ' + new_card + '(' + all_available_cards[new_card]['time'] + ')');
+			if(new_card == false)
+			{
+				console.log('could not replace ' + random_deck[chosen_card_to_replace]['card_id'] + '(' + random_deck[chosen_card_to_replace]['time_left'] + ') with aoe');
+			}
+			else
+			{
+				console.log('replacing ' + random_deck[chosen_card_to_replace]['card_id'] + '(' + random_deck[chosen_card_to_replace]['time_left'] + ') with ' + new_card + '(' + all_available_cards[new_card]['time'] + ')');
+			}
 		}
 		if(new_card != false)
 		{
@@ -867,7 +885,7 @@ function get_random_hero(on_value, min_rarity, max_rarity, common_reduction){
 	return picked_hero;
 }
 
-function get_random_card(type, max_time, color_restriction, second_color_restriction, min_time, theme, not_these, not_types, not_theme){
+function get_random_card(type, max_time, color_restriction, second_color_restriction, min_time, theme, not_these, not_types, not_theme, needed_theme){
 	var total_card_count = 0;
 	var picked_card = false;
 	var month = new Date().getMonth() + 1;	
@@ -888,6 +906,10 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 						can_pick = false;
 					}
 				});
+			}
+			if(needed_theme != undefined && match_array_values(card_info['theme'], needed_theme) == false)
+			{
+				can_pick = false;
 			}
 			if(card_info['needs_theme'] != undefined && match_array_values(card_info['needs_theme'], theme) == false)
 			{
@@ -949,6 +971,10 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 					}
 				});
 			}
+			if(needed_theme != undefined && match_array_values(card_info['theme'], needed_theme) == false)
+			{
+				can_pick = false;
+			}
 			if(card_info['needs_theme'] != undefined && match_array_values(card_info['needs_theme'], theme) == false)
 			{
 				can_pick = false;
@@ -993,7 +1019,7 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 		}
 	});
 	if(picked_card == false){
-		picked_card = get_random_card(type, max_time, color_restriction, second_color_restriction, 0, undefined, undefined, not_types, not_theme);
+		picked_card = get_random_card(type, max_time, color_restriction, second_color_restriction, 0, undefined, not_these, not_types, not_theme, needed_theme);
 	}
 	return picked_card;
 }
