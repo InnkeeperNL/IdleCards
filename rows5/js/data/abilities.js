@@ -7757,8 +7757,10 @@ var all_abilities = {
 		}
 	},
 	fragile:{
-		description: 	'When your hero receives damage, this is destroyed.',
+		description: 	'When your hero receives damage, this has a {LEVEL}% chance to be destroyed.',
 		proc: 'ally_hero_damaged',
+		proc_chance: 	1,
+		proc_factor: 	'ability_level',
 		targets:	{
 			0:{
 				target: 	'any',
@@ -7776,8 +7778,8 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	-0.5,
-		level_cost_artifact: 	-4,
+		level_cost: 	-0.005,
+		level_cost_artifact: 	-0.04,
 		cost_factor: 	'full',
 	},
 	fragile_if_empty:{
@@ -8281,6 +8283,36 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	4,
+	},
+	grave_power:{
+		description: 	'This gains 1 temporary power for every {LEVEL} creature card(s) in your grave, rounded down.',
+		cannot_proc_while_stunned: true,
+		min_ally_creature_cards_in_grave: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'ally_grave_creature_card_count',
+				amount_division: 'ability_level', 	
+				amount_rounding: 'down',
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: -0.3,
+		},
+		cost_adjustment: 8,
 	},
 	ground_shake:{
 		description: 	'Deals {LEVEL} physical damage to all non-flying units.',
@@ -10253,6 +10285,31 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		1,
 		level_cost_spell: 	0.25,
+	},
+	once_per_enemy:{
+		description: 	'This spell fires an additional time for every enemy unit in play when played.',
+		cannot_proc_while_stunned: true,
+		remove_skill_before_use: 	'once_per_enemy',
+		proc_amount: 	'enemy_unit_count',
+		targets:	{
+			0:{
+				target: 	'any',
+				target_amount: 1,
+				position: 	'self',
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'go_again',
+				type: 		'go_again',
+				no_animation: true,
+				amount: 	1,
+				//increase_timeout: -250,
+			},
+		},
+		level_cost: 	3,
+		cost_factor: 	'full',
 	},
 	painful_discards:{
 		description: 	'When the enemy discards a card, this deals {LEVEL} damage to the enemy hero.',
@@ -12685,6 +12742,43 @@ var all_abilities = {
 		description: 	'This card will be placed on the far side of your hand when drawn.',
 		cost_on_top: 	true,
 	},
+	rock_barrage:{
+		description: 	'Deals 1 physical projectile damage to a random enemy unit {LEVEL} time(s). Will target the enemy hero if there are no enemy units.',
+		proc_amount: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		scales: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'stone',
+				type: 			'damage',
+				subtypes: 		['physical','projectile'],
+				amount: 		1,
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'arcane_bolt',
+			base_cost_factor: 1,
+			base_cost_spell_factor: 0.25,
+		},
+		average_hits: 		'ability_level',
+	},
 	run_away:{
 		description: 	'If there is an opposing unit, this unit will move to a slot with no opposing unit when played, any enemy unit enters the game, an enemy moved or on its turn. Can be used once each round.',
 		proc: 			['on_play','enemy_unit_card_played','enemy_moved','basic'],
@@ -13514,6 +13608,72 @@ var all_abilities = {
 		cost_adjustment: 1,
 		cost_factor: 	'power',
 		average_hits: 	1,
+	},
+	soul_link:{
+		description: 	'When your hero destroys something, it has a {LEVEL}0% chance to gain a resurrect charge.<br/><i>Resurrect: When its health reaches 0, this comes back to life with 1 health.</i>',
+		proc: 			'ally_hero_kill',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'resurrect',
+				type: 			'grant_skill',
+				skill_id: 		'resurrect',
+				subtypes: 		['buff_hero'],
+				amount: 		1,
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 	'resurrect',
+			base_cost_factor: 0.2,
+			base_cost_hero_factor: 0.1,
+		},
+	},
+	soul_power:{
+		description: 	'A random ally creature unit with power gains {LEVEL} power and a 50% chance to gain a resurrect charge on kill.<br/><i>Resurrect: When its health reaches 0, this comes back to life with 1 health.</i>',
+		targets:{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure'],
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'ability_level'
+			},
+			1:{
+				type: 			'grant_skill',
+				skill_id: 		'resurrect_on_kill',
+				subtypes: 		[],
+				amount: 		5,
+				skill_at_front: true,
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 	'empower',
+			base_cost_factor: 4,
+			base_cost_spell_factor: 1
+		},
+		cost_adjustment: 1.5,
 	},
 	spawn_sporeling:{
 		description: 	'Has a 25% chance to summon {LEVEL} sporeling(s).',
@@ -14390,11 +14550,11 @@ var all_abilities = {
 		cost_factor: 		'health',
 	},
 	summon_artifact:{
-		description: 	'Summons {LEVEL} artifact(s).',
-		proc: 			'basic',
+		description: 	'Has a {LEVEL}% chance to summon 1 artifact.',
+		proc_chance: 	1,
+		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		max_ally_artifacts: 4,
-		proc_amount: 'ability_level',
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -14412,9 +14572,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		24,
-		level_cost_hero: 	6,
-		level_cost_spell: 	6
+		base_cost:{
+			base_cost_id: 	'summon',
+			base_cost_factor: 0.01,
+			base_cost_hero_factor: 0.02,
+		},
 	},
 	summon_conscript:{
 		description: 	'Summons {LEVEL} conscript(s).',

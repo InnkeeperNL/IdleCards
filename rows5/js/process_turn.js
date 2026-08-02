@@ -1473,7 +1473,7 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 			ability_can_fire = false;
 		}
 
-		if(current_ability['min_ally_creature_cards_in_grave'] != undefined && count_grave_cards(battle_info['deck_' + battle_info['combat_units'][unit_id]['side']], 'creature') < current_ability['min_ally_creature_cards_in_grave'])
+		if(current_ability['min_ally_creature_cards_in_grave'] != undefined && count_grave_cards(battle_info['deck_' + battle_info['combat_units'][unit_id]['side']], 'creature') < calculate_effect({amount:current_ability['min_ally_creature_cards_in_grave']},undefined, origin_id, level))
 		{
 			ability_can_fire = false;
 		}
@@ -1522,7 +1522,7 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 		{
 			if(ability_can_fire == true)
 			{
-				if(current_ability['remove_skill_before_use'] != undefined && battle_info['combat_units'][unit_id] != undefined && battle_info['combat_units'][unit_id]['type'] != 'spell')
+				if(current_ability['remove_skill_before_use'] != undefined && battle_info['combat_units'][unit_id] != undefined /*&& battle_info['combat_units'][unit_id]['type'] != 'spell'*/)
 				{
 					set_skill(unit_id, unit_id, 0, current_ability['remove_skill_before_use'], false);
 					check_visible_skills(unit_id);
@@ -2258,7 +2258,7 @@ function process_effect(target_id, origin_id, effect, level){
 					
 					if(effect['type'] == 'go_again')
 					{
-						go_again(target_id, origin_id, calculated_amount, effect['subtypes'], effect['go_now']);
+						go_again(target_id, origin_id, calculated_amount, effect['subtypes'], effect['go_now'], effect['no_animation']);
 					}
 
 					if(effect['type'] == 'set_power')
@@ -4202,7 +4202,7 @@ function enable_to_act(target_id, origin_id, calculated_amount,subtypes){
     battle_info.combat_units[target_id]['acted_this_turn'] = 0;
 }
 
-function go_again(target_id, origin_id, calculated_amount,subtypes, go_now){
+function go_again(target_id, origin_id, calculated_amount,subtypes, go_now, no_animation){
 	var target_unit = battle_info.combat_units[target_id];
 	if(go_now == undefined || go_now == false)
 	{
@@ -4227,17 +4227,20 @@ function go_again(target_id, origin_id, calculated_amount,subtypes, go_now){
 			}
 		}
 	});*/
-	timeout_key ++;
-	all_timeouts[timeout_key] = setTimeout(function(){
-		$('.battle_container .unit_id_' + target_id + ' .card_image').addClass('orange_glow');
-		$('.battle_container .unit_id_' + target_id).removeClass('attack');
-		$('.battle_container .unit_id_' + target_id).removeClass('combat_zoom');
-	},total_timeout);
-	timeout_key ++;
-	all_timeouts[timeout_key] = setTimeout(function(){
-		$('.battle_container .unit_id_' + target_id + ' .card_image').removeClass('orange_glow');
-	},total_timeout+ 500 * battle_speed);
-	total_timeout += 500 * battle_speed;
+	if(no_animation == undefined || no_animation == false)
+	{
+		timeout_key ++;
+		all_timeouts[timeout_key] = setTimeout(function(){
+			$('.battle_container .unit_id_' + target_id + ' .card_image').addClass('orange_glow');
+			$('.battle_container .unit_id_' + target_id).removeClass('attack');
+			$('.battle_container .unit_id_' + target_id).removeClass('combat_zoom');
+		},total_timeout);
+		timeout_key ++;
+		all_timeouts[timeout_key] = setTimeout(function(){
+			$('.battle_container .unit_id_' + target_id + ' .card_image').removeClass('orange_glow');
+		},total_timeout+ 500 * battle_speed);
+		total_timeout += 500 * battle_speed;
+	}
 	//process_single_unit(target_id, undefined, false, 'basic');
 	//total_timeout += 250 * battle_speed;
 
@@ -5087,6 +5090,10 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 				if(battle_info.combat_units[origin_id] != undefined)
 				{
 					check_ability_procs(unit['side'], temp_unit_type + '_killed', origin_id);
+					if(origin_id < 3)
+					{
+						check_ability_procs(battle_info.combat_units[origin_id]['side'], 'hero_kill', origin_id);
+					}
 				}
 				
 			}
@@ -5592,6 +5599,19 @@ function calculate_effect(effect, target_id, origin_id, level){
 		else
 		{
 			calculated_amount  = /*round_by_percent*/(calculated_amount * effect['amount_factor']);
+		}
+		
+	}
+
+	if(effect['amount_division'] != undefined)
+	{
+		if(effect['amount_division'] == 'ability_level')
+		{
+			calculated_amount  = /*round_by_percent*/(calculated_amount / level);
+		}
+		else
+		{
+			calculated_amount  = /*round_by_percent*/(calculated_amount / effect['amount_division']);
 		}
 		
 	}
