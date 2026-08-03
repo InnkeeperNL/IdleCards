@@ -4558,7 +4558,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{burning_aura: 2, bring_clone: 4, maximum_allies: 2},
+		abilities: 			{burning_aura: 2, resurrect: 2},
 		hero_version: 			{
 			theme: 				['burn_ability','type_structure'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
