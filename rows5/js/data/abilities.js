@@ -1760,10 +1760,11 @@ var all_abilities = {
 		level_cost_cum: true,
 	},
 	burn_arrivals:{
-		description: 	'Applies {LEVEL} burn to a any enemy unit that enters the game.',
+		description: 	'Has a {LEVEL}0% chance to apply 1 burn to any enemy unit that enters the game.',
 		proc: 			'enemy_unit_card_played',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
-		scales: 		true,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -1786,10 +1787,9 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'burn',
-			base_cost_factor: 1,
-			base_cost_spell_factor: 0.25,
+			base_cost_factor: 0.1,
+			base_cost_artifact_factor: 0.2,
 		},
-		level_cost_cum: true,
 	},
 	burn_hv:		{
 		name: 			'burn',
@@ -1851,8 +1851,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'burn',
-			base_cost_factor: 3,
-			base_cost_spell_factor: 0.75,
+			base_cost_factor: 4,
+			base_cost_spell_factor: 1,
 		},
 		level_cost_cum: true,
 	},
@@ -3568,7 +3568,6 @@ var all_abilities = {
 		proc: 			'enemy_unit_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['projectile_ability','blast_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -3592,7 +3591,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'curse',
 			base_cost_factor: 1,
-			base_cost_artifact_factor: 2,
+			base_cost_artifact_factor: 1.5,
 		}
 	},
 	curse_hv:{
@@ -4886,7 +4885,8 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'doom',
 			base_cost_factor: 1,
-			level_cost_spell: 0.25,
+			base_cost_spell_factor: 0.25,
+			base_cost_artifact_factor: 2,
 		},
 	},
 	doom_self:{
@@ -5503,6 +5503,7 @@ var all_abilities = {
 		description: 	'The first ally creature unit that has power that enters the game gains {LEVEL} power.',
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
+		origin_not_self: 	true,
 		scales: 		true,
 		remove_skill_after_use: 'empower_arrival',
 		hero_tactics: 	['melee_ability'],
@@ -5534,10 +5535,12 @@ var all_abilities = {
 		},
 	},
 	empower_arrivals:{
-		description: 	'When any ally creature unit that has power enters the game, it gains {LEVEL} temporary power.',
+		description: 	'When any ally creature unit that has power enters the game, it has a {LEVEL}0% chance to gain 1 power.',
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
-		scales: 		true,
+		origin_not_self: 	true,
+		proc_chance:  	10,
+		proc_factor: 	'ability_level',
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -5556,16 +5559,15 @@ var all_abilities = {
 				projectile: 	'power',
 				type: 			'grant_temp_power',
 				subtypes: 		['empower_any','empower_ally'],
-				amount: 		'ability_level'
+				amount: 		1
 			},
 		},
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.5,
-			base_cost_hero_factor: 1,
-			base_cost_structure_factor: 0.25,
-			base_cost_artifact_factor: 1,
+			base_cost_factor: 0.4,
+			base_cost_hero_factor: 0.8,
+			base_cost_artifact_factor: 0.8,
 		},
 	},
 	empower_hero:{
@@ -7695,8 +7697,9 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'fortify',
-			base_cost_factor: 0.25,
+			base_cost_factor: 0.5,
 			base_cost_hero_factor: 1,
+			base_cost_artifact_factor: 1,
 		}
 	},
 	fortify_hero:{
@@ -10700,7 +10703,8 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'poison',
-			base_cost_factor: 2,
+			base_cost_factor: 1,
+			base_cost_artifact_factor: 2,
 		},
 		level_cost_cum: true,
 	},
@@ -11946,6 +11950,41 @@ var all_abilities = {
 		//cost_factor: 		'health',
 		level_cost_cum: true,
 	},
+	regenerating_arrivals:{
+		hide_amount: true,
+		description: 	'Gives any ally unit that enters the game a {LEVEL}0% chance to grant itself regeneration when it receives damage.{REGEN}',
+		proc: 			'ally_unit_card_played',
+		cannot_proc_while_stunned: true,
+		origin_not_self: 	true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy',
+				origin_unit: 	true,
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'regeneration',
+				type: 			'grant_skill',
+				skill_id: 		'regenerates_hv',
+				subtypes: 		[],
+				amount: 		'ability_level',
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.1,
+			base_cost_artifact_factor: 0.2,
+			base_cost_hero_factor: 0.2,
+		},
+		level_cost_cum: true,
+	},
 	regenerating_deaths:{
 		description: 	'Applies {LEVEL} regeneration to a random damaged ally unit or hero when any ally creature is destroyed.{REGEN}',
 		proc: 			'ally_creature_death',
@@ -12604,7 +12643,7 @@ var all_abilities = {
 		cost_factor: 	'health',
 	},
 	retreat_on_kill:{
-		description: 	'Return to your hand when it destroys an enemy.',
+		description: 	'Returns to your hand when it destroys an enemy.',
 		proc: 			'kill',
 		cannot_proc_while_stunned: true,
 		targets:	{
@@ -12625,7 +12664,7 @@ var all_abilities = {
 				side: 			'ally',
 			}
 		},
-		level_cost: 	1,
+		level_cost: 	0.5,
 	},
 	retreat_on_spell_cast:{
 		description: 	'If damaged, returns to your hand after any spell card is played.',
@@ -14276,11 +14315,12 @@ var all_abilities = {
 		average_hits: 	'ability_level',
 		additional_levels_cost: 2,
 	},
-	strike_arrivals:{
-		description: 	'When an enemy unit enters the game, this deals {LEVEL} physical melee damage to it.',
+	strike_arrival:{
+		description: 	'The first time an enemy unit enters the game, this deals {LEVEL} physical melee damage to it.',
 		cannot_proc_while_stunned: true,
 		proc: 			'enemy_unit_card_played',
 		scales: 		true,
+		remove_skill_after_use: 'strike_arrival',
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -14300,8 +14340,43 @@ var all_abilities = {
 			}
 		},
 		animation: 		'attack',
-		level_cost: 	3,
-		level_cost_artifact: 6,
+		base_cost:{
+			base_cost_id: 	'strike',
+			base_cost_factor: 0.25,
+		},
+		average_hits: 	1,
+	},
+	strike_arrivals:{
+		description: 	'When an enemy unit enters the game, this has a {LEVEL}0% chance to deal 1 physical melee damage to it.',
+		cannot_proc_while_stunned: true,
+		proc: 			'enemy_unit_card_played',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'strike',
+				type: 			'damage',
+				subtypes: 		['physical','melee'],
+				amount: 		1
+			}
+		},
+		animation: 		'attack',
+		base_cost:{
+			base_cost_id: 		'strike',
+			base_cost_factor: 	0.2,
+			base_cost_artifact_factor: 0.4,
+		},
 		average_hits: 	1,
 	},
 	strike_hero:{
@@ -14328,6 +14403,36 @@ var all_abilities = {
 		level_cost: 		8,
 		level_cost_spell: 	2,
 		average_hits: 		1,
+	},
+	strike_moving:{
+		description: 	'Deal {LEVEL} physical melee damage to any enemy unit that moves to a different slot.',
+		proc: 			'enemy_moved',
+		scales: 		true,
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'strike',
+				type: 			'damage',
+				subtypes: 		['physical','melee'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'strike',
+			base_cost_factor: 	0.5,
+		},
+		average_hits: 	1,
 	},
 	strike_unit:{
 		description: 	'Deals physical melee damage equal to its power to the nearest enemy unit {LEVEL} time(s).',
