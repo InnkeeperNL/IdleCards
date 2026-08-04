@@ -224,6 +224,25 @@ var all_achievements = {
 			},
 		}
 	},
+	falconer:{
+		name: 			'falconer',
+		description: 	'Kill an anemy bunny with a falcon.',
+		card_image: 	'falcon',
+		objective: 		'enemy_bunny_killed_by_falcon',
+		max_amount: 	0,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_falcon',
+				reward_amount: 		1
+			},
+		}
+	},
 	happy_ending:{
 		name: 			'happy ending',
 		description: 	'Win a battle against an enemy at 100% power or stronger at round 69.',
@@ -236,7 +255,7 @@ var all_achievements = {
 		rewards:{
 			0:{
 				reward_id: 			'chest',
-				reward_amount: 		10
+				reward_amount: 		1
 			},
 			1:{
 				reward_id: 			'card_back_wanton_girl',
@@ -581,6 +600,24 @@ var all_achievements = {
 			1:{
 				reward_id: 			'card_back_war_banner',
 				reward_amount: 		1
+			},
+		},
+	},
+	when_pigs_fly:{
+		name: 			'when pigs fly',
+		description: 	'Make a boar fly.',
+		card_image: 	'boar',
+		objective: 		'boar_affected_by_grant_flying',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_boar',
+				reward_amount: 1,
 			},
 		},
 	},

@@ -129,8 +129,8 @@ function check_battle_quests(round_number, battle_finished){
 		if(battle_finished != false)
 		{
 			check_quests('ally_deck_card_count_battle_end_' + battle_finished, ally_deck_card_count);
-			check_quests('ally_hand_card_count_battle_end_' + battle_finished, ally_deck_card_count);
-			check_quests('ally_grave_card_count_battle_end_' + battle_finished, ally_deck_card_count);
+			check_quests('ally_hand_card_count_battle_end_' + battle_finished, ally_hand_card_count);
+			check_quests('ally_grave_card_count_battle_end_' + battle_finished, ally_grave_card_count);
 			check_quests('ally_hero_armor_battle_end_' + battle_finished, ally_hero_armor);
 		}
 	}
@@ -4926,6 +4926,10 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 					if(all_achievement_goals[possible_quest_string] != undefined){
 						check_quests(possible_quest_string);
 					};
+					var possible_quest_string = 'enemy_' + unit['card_type'] + '_killed_by_' + battle_info.combat_units[origin_id]['card_type'];
+						if(all_achievement_goals[possible_quest_string] != undefined){
+							check_quests(possible_quest_string);
+						};
 					eachoa(subtypes, function(subtype_key2, killed_by_subtype){
 						var possible_quest_string = 'enemy_' + unit['card_type'] + '_killed_by_' + killed_by_subtype;
 						if(all_achievement_goals[possible_quest_string] != undefined){

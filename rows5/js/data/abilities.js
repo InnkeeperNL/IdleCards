@@ -7538,7 +7538,7 @@ var all_abilities = {
 		},
 		base_cost:{
 			base_cost_id: 		'evade',
-			base_cost_factor: 	0.8,
+			base_cost_factor: 	0.75,
 		},
 		level_cost_cum: 	true,
 		/*cost_factor: 			'health',
@@ -8318,13 +8318,13 @@ var all_abilities = {
 		cost_adjustment: 8,
 	},
 	ground_shake:{
-		description: 	'Deals {LEVEL} physical damage to all non-flying units.',
+		description: 	'Deals {LEVEL} physical damage to all non-flying units and heroes.',
 		cannot_proc_while_stunned: true,
 		scales: true,
 		targets:	{
 			0:{
-				target: 		'unit',
-				target_amount: 	10,
+				target: 		'unit_or_hero',
+				target_amount: 	12,
 				position: 		'random',
 				max_abilities: 	{flying: 0},
 				min_hp: 		1,
@@ -9623,7 +9623,7 @@ var all_abilities = {
 	levitate:{
 		name: 			'levitate',
 		ability_subtypes: ['flying'],
-		description: 	'Grants the flying ability to {LEVEL} random non-submerged ally unit(s). Cannot target your hero.',
+		description: 	'Grants {LEVEL}0% flying to a random non-flying ally unit. Cannot target your hero.<br/><i>Flying: Gives this unit a {LEVEL}0% chance to avoid any incoming melee effect, unless the effect comes from a unit that also has the flying ability.</i>',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		targets:	{
@@ -9642,12 +9642,15 @@ var all_abilities = {
 				type: 			'grant_skill',
 				subtypes: 		['magical','grant_flying'],
 				skill_id: 		'flying',
-				amount: 		1
+				amount: 		'ability_level',
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		6,
-		level_cost_spell: 	1.5,
+		base_cost:{
+			base_cost_id: 		'evade',
+			base_cost_factor: 	0.8,
+		},
+		level_cost_cum: true,
 	},
 	life_cost:{
 		description: 	'When played, permanently reduces the health of your hero by {LEVEL}.',
@@ -14136,7 +14139,6 @@ var all_abilities = {
 		proc_amount: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		need_power: 	true,
-		hero_tactics: 	['empower_hero_ability','lightning_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
