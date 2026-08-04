@@ -730,9 +730,10 @@ function add_basic_win_rewards(basic_to_pick, chance_card_id, show_drops){
 	if(/*hero_dropped == false && */chance_card_id != undefined && all_available_cards[chance_card_id] != undefined)
 	{
 		var hero_value = all_available_cards[chance_card_id]['value'];
+		var max_summon_value = get_upgrade_factor('summon_max_rarity', 'any', true);
 		var possible_extra_drops = {};
 		eachoa(all_available_cards, function(drop_card_id, drop_card_info){
-			if(drop_card_info['value'] <= hero_value /*&& (gamedata['known_recipes'] == undefined || gamedata['known_recipes'][drop_card_id] == undefined || drop_card_info['recipe'] == undefined)*/ /*&& drop_card_info['value'] >= hero_value / 4*/ && drop_card_info['pick_chance'] > 0 && (drop_card_info['type'] == 'spell' || drop_card_info['type'] == 'artifact' || ((drop_card_info['type'] == 'structure' || drop_card_info['type'] == 'creature') && drop_card_info['pick_chance'] > 0 && drop_card_info['hero_version'] == undefined)))
+			if((drop_card_info['value'] <= hero_value || drop_card_info['value'] <= max_summon_value) /*&& (gamedata['known_recipes'] == undefined || gamedata['known_recipes'][drop_card_id] == undefined || drop_card_info['recipe'] == undefined)*/ /*&& drop_card_info['value'] >= hero_value / 4*/ && drop_card_info['pick_chance'] > 0 && (drop_card_info['type'] == 'spell' || drop_card_info['type'] == 'artifact' || ((drop_card_info['type'] == 'structure' || drop_card_info['type'] == 'creature') && drop_card_info['pick_chance'] > 0 && drop_card_info['hero_version'] == undefined)))
 			{
 				if(true /*drop_card_info['recipe'] != undefined && (gamedata['known_recipes'] == undefined || gamedata['known_recipes'][drop_card_id] == undefined)*/)
 				{

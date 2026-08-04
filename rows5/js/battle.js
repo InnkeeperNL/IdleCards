@@ -571,9 +571,17 @@ function construct_random_deck(size, hero, randomized){
 			{
 				card_id = get_random_card('any', max_time, deck_color, second_color, min_time, deck_theme, not_these, not_types, not_theme, undefined);
 			}
-			if(all_available_cards[card_id] != undefined && all_available_cards[card_id]['type'] == 'artifact' && (all_available_cards[card_id]['selfdestructs'] == undefined || all_available_cards[card_id]['selfdestructs'] == false))
+			if(all_available_cards[card_id] != undefined && all_available_cards[card_id]['type'] == 'artifact' /*&& (all_available_cards[card_id]['selfdestructs'] == undefined || all_available_cards[card_id]['selfdestructs'] == false)*/)
 			{
-				artifact_count++;
+				if(match_array_values('fragile_ability',all_available_cards[card_id]['theme']) == false)
+				{
+					artifact_count += 1;
+				}
+				else
+				{
+					artifact_count += 0.1;
+				}
+				
 				if(artifact_count > 4 && match_array_values(not_types, ['artifact']) == false)
 				{
 					not_types[count_object(not_types)] = 'artifact';
