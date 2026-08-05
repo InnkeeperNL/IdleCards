@@ -1612,11 +1612,9 @@ var all_abilities = {
 		level_cost: 		6,
 	},
 	bring_human:{
-		description: 	'Summons a human creature unit. Can be used {LEVEL} time(s).',
-		proc: 			'basic',
+		description: 	'When played, this adds {LEVEL} random human creature card(s) to your hand. If your hand is full, it will add them to your deck instead.',
+		proc: 			'on_play',
 		cannot_proc_while_stunned: true,
-		max_ally_units: 4,
-		reduce_skill_after_use:'bring_human',
 		proc_amount: 'ability_level',
 		targets:	{
 			0:{
@@ -1627,16 +1625,22 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				type: 		'summon_unit',
-				subtypes: 	['summon_ally','summon_creature'],
+				projectile: 		'book',
+				projectile_target: 	'true_deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_human','summon_creature','add_creature_card_to_deck'],
 				card_id: 	'random',
 				card_type: 	'creature',
-				card_subtype: 'human',
+				card_subtype: 	'human',
+				card_status: 	'hand',
 				amount: 	1
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 		6,
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.25,
+		},
 	},
 	bring_spell:{
 		hide_amount: 	true,
@@ -14880,7 +14884,7 @@ var all_abilities = {
 				projectile: 		'book',
 				projectile_target: 	'true_deck',
 				type: 		'add_card_to_deck',
-				subtypes: 	['summon_ally','summon_human','summon_creature','add_creature_card_to_deck'],
+				subtypes: 	['summon_ally','summon_creature','add_creature_card_to_deck'],
 				card_id: 	'random',
 				card_type: 	'creature',
 				card_status: 	'hand',
