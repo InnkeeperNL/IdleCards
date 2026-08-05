@@ -779,6 +779,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, bring_food: 1},
 		hero_version: 			{
 			theme: 				['subtype_human'],
+			not_theme: 			['type_artifact'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
