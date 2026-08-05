@@ -978,7 +978,7 @@ var all_abilities = {
 		level_cost_cum: 	true,
 	},
 	bolster_hero:{
-		description: 	'Your hero gains {LEVEL} maximum health.',
+		description: 	'Your hero gains {LEVEL} health.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		targets:	{
@@ -1525,6 +1525,37 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		3,
+	},
+	bring_food:{
+		hide_amount: 	true,
+		description: 	'When played, this adds {LEVEL} random food card(s) to your hand. If your hand is full, it will add it to your deck instead.',
+		proc: 			'on_play',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'true_deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_food','summon_artifact','add_artifact_card_to_deck'],
+				card_id: 	'random',
+				card_subtype: 	'food',
+				card_status: 	'hand',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.25,
+			base_cost_hero_factor: 0.25,
+		},
 	},
 	bring_ghost:{
 		description: 	'When played, summons {LEVEL} ghost(s).',
@@ -5535,7 +5566,7 @@ var all_abilities = {
 		},
 	},
 	empower_arrivals:{
-		description: 	'When any ally creature unit that has power enters the game, it has a {LEVEL}0% chance to gain 1 power.',
+		description: 	'When any ally creature unit that has power enters the game, it has a {LEVEL}0% chance to gain 1 temporary power.',
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
 		origin_not_self: 	true,
@@ -5565,9 +5596,9 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.4,
-			base_cost_hero_factor: 0.8,
-			base_cost_artifact_factor: 0.8,
+			base_cost_factor: 0.1,
+			base_cost_hero_factor: 0.2,
+			base_cost_artifact_factor: 0.2,
 		},
 	},
 	empower_hero:{
@@ -8620,7 +8651,7 @@ var all_abilities = {
 			base_cost_spell_factor: 0.25,
 		},
 	},
-	hatch_chicken:{
+	hatch:{
 		description: 	'Has a 50% chance to turn into a chicken when destroyed by damage.',
 		proc: 			'own_death',
 		proc_chance: 	50,
@@ -10850,6 +10881,32 @@ var all_abilities = {
 		},
 		level_cost_cum: true,
 	},
+	popped_by_fire:{
+		description: 	'When your hero receives fire damage, this pops.',
+		proc: 			'ally_hero_damaged',
+		subtypes: 		['fire'],
+		ability_subtypes: ['receive_damage_proc'],
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				side: 			'any',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'fire',
+				type: 		'turn_into',
+				subtypes: 	['turn_ally_into'],
+				card_id: 	'popcorn',
+				amount: 	1
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		0.5,
+	},
 	power_bolt:{
 		description: 	'Deals magical projectile damage equal to this units power to a random enemy unit. Will only target the enemy hero if there are no enemy units.',
 		proc_amount: 	'ability_level',
@@ -10915,6 +10972,40 @@ var all_abilities = {
 	precision:{
 		description: 	'This ignores evade and stealth.',
 		level_cost: 	2,
+	},
+	prepare_food:{
+		hide_amount: 	true,
+		description: 	'Has a {LEVEL}0% chance to add a random food card to your hand. If your hand is full, it will add it to your deck instead.',
+		proc: 			'basic',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'true_deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_food','summon_artifact','add_artifact_card_to_deck'],
+				card_id: 	'random',
+				card_subtype: 	'food',
+				card_status: 	'hand',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.1,
+			base_cost_spell_factor: 0.025,
+			base_cost_hero_factor: 0.2,
+		},
 	},
 	prime_target:{
 		description: 	'If any ability can target only prime targets, it will target only prime targets.',
@@ -12338,6 +12429,36 @@ var all_abilities = {
 			base_cost_factor: 0.75,
 		},
 	},
+	restore_chance:{
+		name: 			'restore',
+		description: 	'Has a {LEVEL}% chance to heal your hero by 1.',
+		cannot_proc_while_stunned: true,
+		proc_chance: 	1,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				damaged: 		true,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'healing',
+				type: 			'healing',
+				subtypes: 		['healing','active_healing','heal_hero','buff_hero'],
+				amount: 		1
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.0075,
+		},
+	},
 	restore_enemy:{
 		description: 	'Heals the enemy hero by {LEVEL}.',
 		cannot_proc_while_stunned: true,
@@ -13264,6 +13385,35 @@ var all_abilities = {
 		},
 		cost_factor: 	'power',
 		average_hits: 	'ability_level',
+	},
+	shoot_unit_av:{
+		name: 			'shoot unit',
+		description: 	'Deals {LEVEL} physical projectile damage to a random enemy unit.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'arrow',
+				type: 			'damage',
+				subtypes: 		['physical','projectile','ranged','arrow'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 		'attack',
+		base_cost:{
+			base_cost_id: 		'arcane_bolt',
+			base_cost_factor: 	1,
+			base_cost_spell_factor: 0.25,
+		},
+		average_hits: 	1,
 	},
 	shoot_arrival:{
 		description: 	'When an enemy unit enters the game, this deals {LEVEL} physical projectile damage to it. Can be used once.',
