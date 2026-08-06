@@ -2136,7 +2136,7 @@ var all_abilities = {
 		level_cost_cum: true,
 	},
 	burning_hero:{
-		description: 	'When an enemy unit deals melee damage to your hero, this applies {LEVEL} burn to it.',
+		description: 	'When an enemy unit deals melee damage to your hero, this applies {LEVEL} burn to that unit.{BURN}',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
@@ -2145,7 +2145,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
-				target: 		'unit_or_hero',
+				target: 		'unit',
 				target_amount: 	1,
 				position: 		'random',
 				origin_unit: 	true,
@@ -2163,11 +2163,12 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		base_cost:{
-			base_cost_id: 'burn',
-			base_cost_factor: 1,
-			base_cost_spell_factor: 0.25,
+			base_cost_id: 		'burn',
+			base_cost_factor: 	0.75,
+			base_cost_artifact_factor: 1.5,
+			base_cost_hero_factor: 1.5,
 		},
-		level_cost_cum: true,
+		level_cost_cum: 	true,
 	},
 	burning_stuns:{
 		description: 	'When an enemy becomes stunned, this applies {LEVEL} burn to it. {BURN}',
@@ -3819,8 +3820,9 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'curse',
-			base_cost_factor: 1,
-			base_cost_hero_factor: 2,
+			base_cost_factor: 0.75,
+			base_cost_hero_factor: 1.5,
+			base_cost_artifact_factor: 1.5,
 		}
 	},
 	cursed_stuns:{
@@ -4977,6 +4979,71 @@ var all_abilities = {
 			base_cost_id: 'doom',
 			base_cost_factor: 1,
 			level_cost_spell: 0.25,
+		},
+	},
+	doomed_healing:{
+		description: 	'When an enemy creature unit receives healing, this applies {LEVEL} doom to that unit.{DOOM}',
+		proc: 			'enemy_creature_received_healing',
+		subtypes: 		['active_healing'],
+		scales: 		true,
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'doom',
+				type: 		'apply_doom',
+				subtypes: 	['magical','doom'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'doom',
+			base_cost_factor: 	0.75,
+			base_cost_artifact_factor: 1,
+			base_cost_hero_factor: 1,
+		},
+	},
+	doomed_hero:{
+		description: 	'When an enemy unit deals melee damage to your hero, this applies {LEVEL} doom to that unit.{DOOM}',
+		proc: 			'ally_hero_damaged',
+		subtypes: 		['melee'],
+		ability_subtypes: ['receive_damage_proc'],
+		//proc_chance: 	50,
+		scales: 		true,
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'doom',
+				type: 		'apply_doom',
+				subtypes: 	['magical','doom','buff_hero'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'doom',
+			base_cost_factor: 	0.75,
+			base_cost_artifact_factor: 1.5,
+			base_cost_hero_factor: 1.5,
 		},
 	},
 	dooming_aura:{
@@ -6991,7 +7058,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'healing',
 				type: 			'healing',
-				subtypes: 		['healing','active_healing','heal_hero','buff_hero'],
+				subtypes: 		['healing','active_healing','heal_ally','heal_hero','buff_hero'],
 				amount: 		'ability_level'
 			},
 		},
@@ -7473,7 +7540,7 @@ var all_abilities = {
 			0:{
 				projectile:		'healing',
 				type: 			'healing',
-				subtypes: 		['healing','active_healing'],
+				subtypes: 		['healing','active_healing','heal_ally'],
 				amount: 		'ability_level'
 			}
 		},
@@ -8702,7 +8769,7 @@ var all_abilities = {
 			0:{
 				projectile:		'healing',
 				type: 			'healing',
-				subtypes: 		['healing','active_healing'],
+				subtypes: 		['healing','active_healing','heal_ally'],
 				amount: 		1
 			}
 		},
@@ -8735,7 +8802,7 @@ var all_abilities = {
 			0:{
 				projectile:		'healing',
 				type: 			'healing',
-				subtypes: 		['healing','active_healing'],
+				subtypes: 		['healing','active_healing','heal_ally'],
 				amount: 		'ability_level'
 			}
 		},
@@ -8745,6 +8812,39 @@ var all_abilities = {
 			base_cost_factor: 3,
 			base_cost_structure_factor: 1.5,
 			base_cost_spell_factor: 0.75,
+		},
+	},
+	heal_enemy:{
+		description: 	'Heals a random damaged enemy creature unit {LEVEL} time(s).',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				not_types: 		['object','structure'],
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy',
+				damaged: 		true,
+			},
+		},
+		effects:{
+			0:{
+				projectile:		'healing',
+				type: 			'healing',
+				subtypes: 		['healing','active_healing','heal_enemy'],
+				amount: 		1
+			}
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: -0.5,
+			base_cost_artifact_factor: -0.25,
+			base_cost_structure_factor: -0.25,
+			base_cost_spell_factor: -0.125,
 		},
 	},
 	healing_evasion:{
@@ -8767,7 +8867,7 @@ var all_abilities = {
 			0:{
 				self_projectile: 'healing',
 				type: 			'healing',
-				subtypes: 		['healing','active_healing'],
+				subtypes: 		['healing','active_healing','heal_ally'],
 				amount: 		1
 			}
 		},
@@ -8803,7 +8903,7 @@ var all_abilities = {
 			0:{
 				projectile:		'healing',
 				type: 			'healing',
-				subtypes: 		['healing','active_healing'],
+				subtypes: 		['healing','active_healing','heal_ally'],
 				amount: 		1
 			}
 		},
@@ -8839,7 +8939,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'healing',
 				type: 			'healing',
-				subtypes: 		['healing','active_healing','heal_hero','buff_hero'],
+				subtypes: 		['healing','active_healing','heal_ally','heal_hero','buff_hero'],
 				amount: 		'ability_level'
 			},
 		},
@@ -10715,7 +10815,7 @@ var all_abilities = {
 		level_cost_cum: true,
 	},
 	poison_arrivals:{
-		description: 	'Applies {LEVEL} poison to any non-undead enemy creature unit that enters the game.',
+		description: 	'Applies {LEVEL} poison to any non-undead enemy creature unit that enters the game.{POISON}',
 		proc: 			'enemy_unit_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -10813,7 +10913,7 @@ var all_abilities = {
 		level_cost_cum: true,
 	},
 	poisonous_deaths:{
-		description: 	'Applies {LEVEL} poison to a random enemy non-undead creature unit or hero when any ally creature is destroyed.',
+		description: 	'Applies {LEVEL} poison to a random enemy non-undead creature unit or hero when any ally creature is destroyed.{POISON}',
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -10854,7 +10954,7 @@ var all_abilities = {
 	},
 	poisonous_deaths_hv:{
 		name: 			'poisonous deaths',
-		description: 	'Applies {LEVEL} poison to a random enemy non-undead creature unit when any ally creature is destroyed.',
+		description: 	'Applies {LEVEL} poison to a random enemy non-undead creature unit when any ally creature is destroyed.{POISON}',
 		proc: 			'ally_creature_death',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -10884,6 +10984,41 @@ var all_abilities = {
 			base_cost_structure_factor: 0.75,
 		},
 		level_cost_cum: true,
+	},
+	poisonous_hero:{
+		description: 	'When an enemy unit deals melee damage to your hero, this applies {LEVEL} poison to that unit.{POISON}',
+		proc: 			'ally_hero_damaged',
+		subtypes: 		['melee'],
+		ability_subtypes: ['receive_damage_proc'],
+		//proc_chance: 	50,
+		scales: 		true,
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'burn',
+				type: 		'apply_burn',
+				subtypes: 	['burn','buff_hero'],
+				amount: 	'ability_level',
+			}
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'poison',
+			base_cost_factor: 	0.75,
+			base_cost_artifact_factor: 1.5,
+			base_cost_hero_factor: 1.5,
+		},
+		level_cost_cum: 	true,
 	},
 	popped_by_fire:{
 		description: 	'When your hero receives fire damage, this pops.',
@@ -12423,7 +12558,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'healing',
 				type: 			'healing',
-				subtypes: 		['healing','active_healing','heal_hero','buff_hero'],
+				subtypes: 		['healing','active_healing','heal_ally','heal_hero','buff_hero'],
 				amount: 		'ability_level'
 			},
 		},
@@ -12453,7 +12588,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'healing',
 				type: 			'healing',
-				subtypes: 		['healing','active_healing','heal_hero','buff_hero'],
+				subtypes: 		['healing','active_healing','heal_ally','heal_hero','buff_hero'],
 				amount: 		1
 			},
 		},
@@ -12481,7 +12616,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'healing',
 				type: 			'healing',
-				subtypes: 		['healing','active_healing','heal_hero','buff_hero'],
+				subtypes: 		['healing','active_healing','heal_ally','heal_hero','buff_hero'],
 				amount: 		'ability_level'
 			},
 		},
@@ -12508,7 +12643,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'healing',
 				type: 			'healing',
-				subtypes: 		['healing','active_healing','heal_hero','buff_hero'],
+				subtypes: 		['healing','active_healing','heal_ally','heal_hero','buff_hero'],
 				amount: 		'ability_level'
 			},
 		},
@@ -12536,7 +12671,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'healing',
 				type: 			'healing',
-				subtypes: 		['healing','active_healing','heal_hero','buff_hero'],
+				subtypes: 		['healing','active_healing','heal_ally','heal_hero','buff_hero'],
 				amount: 		'ability_level'
 			},
 		},
@@ -12565,7 +12700,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'healing',
 				type: 			'healing',
-				subtypes: 		['healing','active_healing','heal_hero','buff_hero'],
+				subtypes: 		['healing','active_healing','heal_ally','heal_hero','buff_hero'],
 				amount: 		'ability_level'
 			},
 		},
@@ -12595,7 +12730,7 @@ var all_abilities = {
 			0:{
 				projectile:		'healing',
 				type: 			'healing',
-				subtypes: 		['healing','active_healing','heal_hero','buff_hero'],
+				subtypes: 		['healing','active_healing','heal_ally','heal_hero','buff_hero'],
 				amount: 		'ability_level'
 			}
 		},
@@ -15637,34 +15772,6 @@ var all_abilities = {
 			base_cost_factor: 0.1,
 		},
 		cost_factor: 	'none',
-	},
-	burning_hero:{
-		description: 	'When an enemy unit deals melee damage to your hero, this applies {LEVEL} burn to it.',
-		proc: 			'ally_hero_damaged',
-		subtypes: 		['melee'],
-		ability_subtypes: ['receive_damage_proc'],
-		//proc_chance: 	50,
-		scales: 		true,
-		cannot_proc_while_stunned: true,
-		targets:	{
-			0:{
-				target: 		'unit_or_hero',
-				target_amount: 	1,
-				position: 		'random',
-				origin_unit: 	true,
-				min_hp: 		1,
-				side: 			'any'
-			},
-		},
-		effects:{
-			0:{
-				projectile: 'burn',
-				type: 		'apply_burn',
-				subtypes: 	['burn','buff_hero'],
-				amount: 	'ability_level',
-			}
-		},
-		animation: 			'combat_zoom',
 	},
 	triumphant_haste:{
 		description: 	'When this deals damage to the enemy hero, it reduces the time left of a card in your hand by {LEVEL}.',

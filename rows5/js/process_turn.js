@@ -1250,7 +1250,7 @@ function process_passive_effect(unit_id, effect, amount){
 		passive_effect_count++;
 		var temp_passive_effect_count = passive_effect_count + 0;
 		create_projectile(unit_id, unit_id, 'regeneration', false, undefined, battle_info.combat_units[unit_id]['side'], undefined, undefined, undefined, true);
-		receive_healing(unit_id, undefined, amount, ['regeneration']);
+		receive_healing(unit_id, undefined, amount, ['regeneration','active_healing']);
 		battle_info.combat_units[unit_id]['effects']['regeneration'] = Math.floor(battle_info.combat_units[unit_id]['effects']['regeneration']/ 2);
 		update_passive_effects(unit_id);
 		total_timeout += 500 * battle_speed;
@@ -4151,9 +4151,11 @@ function receive_healing(target_id, origin_id, calculated_amount,subtypes){
 			//$('.battle_container .unit_id_' + target_id).append(combat_text);
 			$('.battle_container .slot_container' + temp_fct_class).append(combat_text);
 		},total_timeout );
-
-		//total_timeout += 500 * battle_speed;
 		check_unit_hp(target_id);
+
+		check_ability_procs(target_unit['side'], target_unit['type'] + '_received_healing', target_id,subtypes);
+		check_ability_procs(target_unit['side'], 'received_healing', target_id,subtypes);	
+		//total_timeout += 500 * battle_speed;
 	}
 	return calculated_amount;
 }

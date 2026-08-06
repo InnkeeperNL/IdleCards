@@ -1380,7 +1380,7 @@ var all_chained_achievements = {
 	healing:{
 		name: 			'healing',
 		description: 	'Have allies heal themselves or allies {AMOUNT} time(s).',
-		objective: 		'ally_performed_healing',
+		objective: 		'ally_performed_heal_ally',
 		amount: 		1,
 		rewards:{
 			0:{
