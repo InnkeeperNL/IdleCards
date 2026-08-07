@@ -1250,7 +1250,7 @@ function process_passive_effect(unit_id, effect, amount){
 		passive_effect_count++;
 		var temp_passive_effect_count = passive_effect_count + 0;
 		create_projectile(unit_id, unit_id, 'regeneration', false, undefined, battle_info.combat_units[unit_id]['side'], undefined, undefined, undefined, true);
-		receive_healing(unit_id, undefined, amount, ['regeneration','active_healing','heal_ally']);
+		receive_healing(unit_id, unit_id, amount, ['regeneration','active_healing','heal_ally']);
 		battle_info.combat_units[unit_id]['effects']['regeneration'] = Math.floor(battle_info.combat_units[unit_id]['effects']['regeneration']/ 2);
 		update_passive_effects(unit_id);
 		total_timeout += 500 * battle_speed;
