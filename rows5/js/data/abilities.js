@@ -2181,7 +2181,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				origin_unit: 	true,
-				min_hp: 		1,
+				min_hp: 		0,
 				side: 			'enemy'
 			},
 		},
@@ -2213,7 +2213,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				origin_unit: 	true,
-				min_hp: 		1,
+				min_hp: 		0,
 				side: 			'enemy'
 			},
 		},
@@ -3837,7 +3837,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				origin_unit: 	true,
-				min_hp: 		1,
+				min_hp: 		0,
 				side: 			'enemy'
 			},
 		},
@@ -3869,7 +3869,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				origin_unit: 	true,
-				min_hp: 		1,
+				min_hp: 		0,
 				side: 			'enemy'
 			},
 		},
@@ -6492,7 +6492,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				not_types: 		['structure','object'],
-				min_hp: 		1,
+				min_hp: 		0,
 				side: 			'ally'
 			},
 		},
@@ -7883,8 +7883,8 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	-0.005,
-		level_cost_artifact: 	-0.04,
+		level_cost: 	-0.01,
+		level_cost_artifact: 	-0.08,
 		cost_factor: 	'full',
 	},
 	fragile_if_empty:{
@@ -12186,18 +12186,17 @@ var all_abilities = {
 	},
 	regenerating_arrivals:{
 		hide_amount: true,
-		description: 	'Gives any ally unit that enters the game a {LEVEL}0% chance to grant itself regeneration when it receives damage.{REGEN}',
+		description: 	'Any ally unit that enters the game gains {LEVEL}0% chance to grant itself regeneration when it receives damage.{REGEN}',
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
 		origin_not_self: 	true,
-		scales: 		true,
 		targets:	{
 			0:{
 				target: 		'unit',
 				target_amount: 	1,
 				position: 		'random',
 				min_hp: 		1,
-				side: 			'enemy',
+				side: 			'ally',
 				origin_unit: 	true,
 			},
 		},
