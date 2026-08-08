@@ -1815,7 +1815,7 @@ var all_abilities = {
 				projectile: 	'burn',
 				type: 			'apply_burn',
 				subtypes: 		['burn'],
-				amount: 		'ability_level',
+				amount: 		1,
 				increase_timeout: 500,
 			}
 		},
