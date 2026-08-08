@@ -20,6 +20,7 @@ var next_random_hero = '';
 var map_hero = '';
 var battle_stats = {};
 var endless_wave_count = 1;
+var battle_ability_procs = {};
 
 
 function show_random_battle(){
@@ -63,6 +64,7 @@ function show_battle(){
 		battle_info.combat_units = {};
 		battle_info['enemy_combat_boosts'] = {};
 		battle_stats = {};
+		battle_ability_procs = {};
 		$('.battle_container').html('');
 		$('.projectile').remove();
 		$('.battle_container').append('<div class="total_turn_counter_container">TURN: <span class="total_turn_counter"></span></div>');
@@ -83,6 +85,7 @@ function show_battle(){
 		//SET UP HEROES
 		if(gamedata.decks[gamedata.current_deck].hero != undefined)
 		{
+			add_battle_procs(all_available_cards[gamedata.decks[gamedata.current_deck].hero]['hero_version']['abilities']);
 			battle_info.combat_units[2] = create_hero(gamedata.decks[gamedata.current_deck].hero, 2);
 			battle_info.combat_units[2]['color'] = ['green'];
 			battle_info.combat_units[2]['slot'] = 0;
@@ -96,6 +99,7 @@ function show_battle(){
 		}
 		if(current_battle_type == 'test_deck')
 		{
+			add_battle_procs(all_available_cards[gamedata.decks[gamedata.current_test_deck].hero]['hero_version']['abilities']);
 			battle_info.combat_units[1] = create_hero(gamedata.decks[current_test_deck].hero);
 			battle_info.combat_units[1]['slot'] = 0;
 			battle_info.combat_units[1]['side'] = 1;
@@ -124,6 +128,7 @@ function show_battle(){
 				//console.log(enemy_hero);
 				difficulty_setting = ((endless_wave_count - 1) / get_upgrade_factor('wave_power_increase', 'any', true)) + get_upgrade_factor('wave_min_power', 'any', true);
 			}
+			add_battle_procs(all_available_cards[enemy_hero]['hero_version']['abilities']);
 			battle_info.combat_units[1] = create_hero(enemy_hero, 1);
 			battle_info.combat_units[1]['color'] = ['red'];
 			battle_info.combat_units[1]['slot'] = 0;
@@ -1679,4 +1684,25 @@ function check_if_ability_can_be_added(ability_id, unit){
 	}*/
 
 	return can_be_added;
+}
+
+function add_battle_procs(abilities){
+	if(abilities != undefined)
+	{
+		eachoa(abilities, function(ability_id, ability_level){
+			if(all_abilities[ability_id] != undefined)
+			{
+				if(typeof(all_abilities[ability_id]['proc']) == 'string')
+				{
+					battle_ability_procs[all_abilities[ability_id]['proc']] = true;
+				}
+				else
+				{
+					eachoa(all_abilities[ability_id]['proc'], function(proc_id, ability_proc){
+						battle_ability_procs[ability_proc] = true;
+					});
+				}
+			}
+		});
+	}
 }

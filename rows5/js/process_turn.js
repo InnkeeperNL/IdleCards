@@ -5174,7 +5174,7 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 }
 
 function check_ability_procs(side, string, origin_id, subtypes, slot_id, check_death){
-	if(all_ability_procs[string] != undefined || all_ability_procs['ally_' + string] != undefined || all_ability_procs['enemy_' + string] != undefined || all_ability_procs['any_' + string] != undefined)
+	if((battle_ability_procs[string] != undefined || battle_ability_procs['ally_' + string] != undefined || battle_ability_procs['enemy_' + string] != undefined || battle_ability_procs['any_' + string] != undefined) && (all_ability_procs[string] != undefined || all_ability_procs['ally_' + string] != undefined || all_ability_procs['enemy_' + string] != undefined || all_ability_procs['any_' + string] != undefined))
 	{
 		if(slot_id == undefined){slot_id = -10;}
 		/*for(temp_i = -10;temp_i<=5;temp_i++){*/
@@ -7712,6 +7712,7 @@ function play_unit_card(side, card_id, origin_id, forced_play, origin_unit){
 
 	if(free_slot != false && combat_alive == true)
 	{
+		add_battle_procs(all_available_cards[card_id]['abilities']);
 		highest_unit_id++;
 		var next_combat_unit_id = highest_unit_id;
 		battle_info.combat_units[next_combat_unit_id] = create_combat_unit(all_available_cards[card_id], side);
@@ -7838,6 +7839,7 @@ function play_action_card(side, card_id, origin_id, forced_play){
 
 	if(free_slot != false && combat_alive == true)
 	{
+		add_battle_procs(all_available_cards[card_id]['abilities']);
 		highest_unit_id++;
 		var next_combat_unit_id = highest_unit_id;
 		battle_info.combat_units[next_combat_unit_id] = create_combat_unit(all_available_cards[card_id], side);
@@ -7959,6 +7961,7 @@ function play_artifact_card(side, card_id, origin_id, forced_play){
 
 	if(free_slot != false && combat_alive == true)
 	{
+		add_battle_procs(all_available_cards[card_id]['abilities']);
 		highest_unit_id++;
 		var next_combat_unit_id = highest_unit_id;
 		battle_info.combat_units[next_combat_unit_id] = create_combat_unit(all_available_cards[card_id], side);

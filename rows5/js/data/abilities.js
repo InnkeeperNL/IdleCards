@@ -2157,7 +2157,7 @@ var all_abilities = {
 			0:{
 				projectile: 'burn',
 				type: 		'apply_burn',
-				subtypes: 	['burn','buff_hero'],
+				subtypes: 	['burn'],
 				amount: 	'ability_level',
 			}
 		},
@@ -3813,7 +3813,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'curse',
 				type: 			'apply_curse',
-				subtypes: 		['magical','curse','buff_hero'],
+				subtypes: 		['magical','curse'],
 				amount: 		'ability_level',
 			}
 		},
@@ -3938,7 +3938,7 @@ var all_abilities = {
 				//self_projectile: 	'curse',
 				//target_projectile: 	'curse',
 				type: 			'apply_curse',
-				subtypes: 		['magical','curse','buff_hero','ally_hero_deals_damage'],
+				subtypes: 		['magical','curse','ally_hero_deals_damage'],
 				amount: 		'ability_level',
 			}
 		},
@@ -5034,7 +5034,7 @@ var all_abilities = {
 			0:{
 				projectile: 'doom',
 				type: 		'apply_doom',
-				subtypes: 	['magical','doom','buff_hero'],
+				subtypes: 	['magical','doom'],
 				amount: 	'ability_level',
 			}
 		},
@@ -10998,6 +10998,7 @@ var all_abilities = {
 				target: 		'unit',
 				target_amount: 	1,
 				position: 		'random',
+				not_types: 		['object','structure'],
 				origin_unit: 	true,
 				min_hp: 		1,
 				side: 			'enemy'
@@ -11005,10 +11006,10 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				projectile: 'burn',
-				type: 		'apply_burn',
-				subtypes: 	['burn','buff_hero'],
-				amount: 	'ability_level',
+				type: 			'apply_poison',
+				projectile: 	'poison',
+				subtypes: 		['poison'],
+				amount: 		'ability_level'
 			}
 		},
 		animation: 		'combat_zoom',
@@ -16677,7 +16678,7 @@ var all_abilities = {
 var not_craft_themes = ['physical','melee','magical','type_resist'];
 var all_ability_procs = {};
 
-$.each(all_abilities, function(ability_id, ability_info){
+eachoa(all_abilities, function(ability_id, ability_info){
 	if(all_abilities[ability_id]['name'] == undefined){all_abilities[ability_id]['name'] = ability_id.replaceAll('_',' ');};
 	if(all_abilities[ability_id]['proc_amount'] == undefined){all_abilities[ability_id]['proc_amount'] = 1;};
 	if(all_abilities[ability_id]['proc'] == undefined){all_abilities[ability_id]['proc'] = 'basic';};
@@ -16728,7 +16729,7 @@ $.each(all_abilities, function(ability_id, ability_info){
 	var ability_subtype_id = get_highest_key_in_object(all_abilities[ability_id]['ability_subtypes']);
 	if(all_abilities[ability_id]['effects'] != undefined)
 	{	
-		$.each(all_abilities[ability_id]['effects'], function(effect_id, ability_effect){
+		eachoa(all_abilities[ability_id]['effects'], function(effect_id, ability_effect){
 			if(ability_effect['amount'] == 'origin_power')
 			{
 				all_abilities[ability_id]['uses_power'] = true;
@@ -16736,7 +16737,7 @@ $.each(all_abilities, function(ability_id, ability_info){
 			ability_subtype_id++;
 			all_abilities[ability_id]['ability_subtypes'][ability_subtype_id] = 'type_' + ability_effect['type'];
 			var found_craft_effect_type = false;
-			$.each(ability_effect['subtypes'], function(subtype_id, subtype_name){
+			eachoa(ability_effect['subtypes'], function(subtype_id, subtype_name){
 				
 				if(all_abilities[ability_id]['not_ability_subtypes'] == undefined || match_array_values(all_abilities[ability_id]['not_ability_subtypes'], subtype_name) == false)
 				{
@@ -16760,7 +16761,7 @@ $.each(all_abilities, function(ability_id, ability_info){
 	}
 	else
 	{
-		$.each(all_abilities[ability_id]['proc'], function(proc_id, ability_proc){
+		eachoa(all_abilities[ability_id]['proc'], function(proc_id, ability_proc){
 			ability_subtype_id++;
 			all_abilities[ability_id]['ability_subtypes'][ability_subtype_id] = ability_proc + '_proc';
 			all_ability_procs[ability_proc] = true;
