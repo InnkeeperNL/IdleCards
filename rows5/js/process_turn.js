@@ -4641,6 +4641,10 @@ function grant_skill(target_id, origin_id, calculated_amount, skill_id, visible_
 		skill_id = get_random_key_from_object(battle_info.combat_units[target_id]['abilities']);
 	}
 
+	var fake_skill = {};
+	fake_skill[skill_id] = 1;
+	add_battle_procs(fake_skill);
+
 	var target_unit = battle_info.combat_units[target_id];
 
 	if(target_unit['abilities'][skill_id] == undefined)
