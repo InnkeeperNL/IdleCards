@@ -2458,6 +2458,11 @@ function process_effect(target_id, origin_id, effect, level){
 					{
 						absorb(target_id, origin_id, effect['absorb_specs']);
 					}
+
+					if(effect['type'] == 'pull_to_self')
+					{
+						move_unit(target_id, effect, origin_id, battle_info['combat_units'][origin_id]['slot']);
+					}
 				}
 
 				if(effect['type'] == 'set_status')
@@ -3368,16 +3373,23 @@ function set_unit_type(target_id, effect, origin_id){
 	}
 }
 
-function move_unit(target_id, effect, origin_id){
+function move_unit(target_id, effect, origin_id, specific_slot){
 	var current_unit = battle_info.combat_units[target_id];
 	var free_slot = find_free_slot(current_unit['side'], current_unit['card_type'], effect['safe_slot'], effect['placement'], effect['opposing_type'], origin_id, effect['slot_filters']);
-	if(effect['placement'] != undefined && effect['placement'] == 'right' && free_slot < current_unit['slot'])
+	if(specific_slot != undefined)
 	{
-		free_slot = false;
+		free_slot = specific_slot;
 	}
-	if(effect['placement'] != undefined && effect['placement'] == 'left' && free_slot > current_unit['slot'])
+	else
 	{
-		free_slot = false;
+		if(effect['placement'] != undefined && effect['placement'] == 'right' && free_slot < current_unit['slot'])
+		{
+			free_slot = false;
+		}
+		if(effect['placement'] != undefined && effect['placement'] == 'left' && free_slot > current_unit['slot'])
+		{
+			free_slot = false;
+		}
 	}
 	if(free_slot != false)
 	{
@@ -7549,6 +7561,10 @@ function turn_into(target_id, effect, origin_id, level){
 		}
 		var original_card_type = battle_info.combat_units[target_id]['card_type'];
 		var turns_into_id = effect['card_id'] + '';
+		if(effect['card_ids'] != undefined)
+		{
+			turns_into_id = get_random_key_from_object(effect['card_ids']) + '';
+		}
 		var card_subtypes = effect['card_subtypes'];
 		if(effect['card_subtypes'] == 'target_subtypes')
 		{

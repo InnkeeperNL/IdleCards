@@ -7677,6 +7677,101 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		3,
 	},
+	foozion:{
+		description: 	'Consumes a slimeling to turn into an ooze.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_self: 		true,
+				min_hp: 		1,
+				card_ids: 		['slimeling'],
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'pull_to_self',
+				amount: 		1,
+			},
+			1:{
+				type: 			'disappear',
+				amount: 		1,
+				on_success:{
+					targets:{
+						0:{
+							target: 		'unit',
+							target_amount: 	1,
+							position: 		'self',
+							min_hp: 		1,
+							side: 			'ally',
+						},
+					},
+					effects:{
+						0:{
+							type: 			'turn_into',
+							subtypes: 		['foozion'],
+							card_id: 		'from_list',
+							card_ids: 		{red_ooze: true,green_ooze: true,purple_ooze: true},
+							amount: 		1
+						},
+					},
+				}
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	2,
+	},
+	foozion_2:{
+		name: 			'foozion',
+		description: 	'Consumes a lesser ooze to turn into a greater ooze.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_self: 		true,
+				min_hp: 		1,
+				card_ids: 		['red_ooze','green_ooze','purple_ooze'],
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'pull_to_self',
+				amount: 		1,
+			},
+			1:{
+				type: 			'disappear',
+				amount: 		1,
+				on_success:{
+					targets:{
+						0:{
+							target: 		'unit',
+							target_amount: 	1,
+							position: 		'self',
+							min_hp: 		1,
+							side: 			'ally',
+						},
+					},
+					effects:{
+						0:{
+							type: 			'turn_into',
+							subtypes: 		['foozion'],
+							card_id: 		'from_list',
+							card_ids: 		{yellow_ooze: true,orange_ooze: true,blue_ooze: true},
+							amount: 		1
+						},
+					},
+				}
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	2,
+	},
 	fortify:{
 		name: 			'shield ally',
 		description: 	'Grants a random ally unit {LEVEL} shield. Cannot affect heroes. {SHIELD}',
@@ -14279,6 +14374,7 @@ var all_abilities = {
 		max_ally_units: 4,
 		proc_chance: 'ability_level',
 		proc_factor: 10,
+		proc_while_dead: true,
 		targets:	{
 			0:{
 				target: 		'any',
