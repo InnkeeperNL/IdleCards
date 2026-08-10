@@ -1,7 +1,7 @@
 var ability_base_costs = {
 	arcane_bolt: 3,
 	burn: 		2,
-	bolster: 	5,
+	bolster: 	6,
 	cleanse: 	0.5,
 	curse: 		2,
 	damage_all: 6,
@@ -860,14 +860,13 @@ var all_abilities = {
 		level_cost_artifact: 	3,
 	},
 	bolster:{
-		description: 	'A random ally unit gains {LEVEL} temporary health.',
+		description: 	'A random ally gains {LEVEL} health.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['bolster_ally_ability','active_healing_ability'],
 		targets:	{
 			0:{
-				target: 		'unit',
+				target: 		'unit_or_hero',
 				target_amount: 	1,
 				position: 		'random',
 				min_hp: 		1,
@@ -877,23 +876,24 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'bolster',
-				type: 			'grant_temp_health',
+				type: 			'increase_health',
 				subtypes: 		['bolster','bolster_ally'],
 				amount: 		'ability_level'
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1.5,
-		level_cost_hero: 	2,
-		level_cost_spell: 	0.375,
-		level_cost_cum: 	true,
+		base_cost:{
+			base_cost_id: 'bolster',
+			base_cost_factor: 		1,
+			base_cost_spell_factor: 0.25,
+		},
 	},
 	bolster_all:{
-		description: 	'All ally units gains {LEVEL} temporary health.',
+		description: 	'All ally units and your hero gain {LEVEL} health.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['bolster_ally_ability','active_healing_ability'],
+		do_not_pause_between: true,
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -906,15 +906,17 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'bolster',
-				type: 			'grant_temp_health',
+				type: 			'increase_health',
 				subtypes: 		['bolster','bolster_ally'],
 				amount: 		'ability_level'
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4.5,
-		level_cost_spell: 	1.125,
-		level_cost_cum: 	true,
+		base_cost:{
+			base_cost_id: 'bolster',
+			base_cost_factor: 		3,
+			base_cost_spell_factor: 0.75,
+		},
 	},
 	bolster_arrivals:{
 		description: 	'When any ally unit enters the game, it gains {LEVEL} temporary health.',
@@ -1003,7 +1005,34 @@ var all_abilities = {
 			base_cost_id: 'bolster',
 			base_cost_factor: 		1,
 			base_cost_spell_factor: 0.25,
-			base_cost_hero_factor: 	1.5,
+		},
+	},
+	bolster_self:{
+		description: 	'This gains {LEVEL} health.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bolster',
+				type: 			'increase_health',
+				subtypes: 		['bolster','bolster_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'bolster',
+			base_cost_factor: 		1,
 		},
 	},
 	bolster_structure:{
@@ -5568,6 +5597,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'empower',
 			base_cost_factor: 0.3,
+			base_cost_artifact_factor: 0.6,
 		},
 	},
 	empower_all:{
@@ -6028,6 +6058,35 @@ var all_abilities = {
 			burn_hv: 			2,
 			fire_breathing: 	2,
 			fire_breathing_hv: 	2,
+		},
+	},
+	empowering_food:{
+		description: 	'When any food card is played, this gains {LEVEL} power.',
+		cannot_proc_while_stunned: true,
+		proc: 			'card_played',
+		subtypes: 		['food'],
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 1,
 		},
 	},
 	empowering_shields:{
