@@ -4,7 +4,7 @@ var ability_base_costs = {
 	bolster: 	6,
 	cleanse: 	0.5,
 	curse: 		2,
-	damage_all: 6,
+	damage_all: 8,
 	destroy: 	8,
 	discard: 	8,
 	doom: 		1,
@@ -4472,7 +4472,10 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	6,
+		base_cost:{
+			base_cost_id: 'destroy',
+			base_cost_factor: 1,
+		},
 	},
 	destroy_all:{
 		description: 	'Destroys all current enemy units.',
@@ -4495,7 +4498,10 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	18,
+		base_cost:{
+			base_cost_id: 'destroy',
+			base_cost_factor: 3,
+		},
 	},
 	destroy_ally:{
 		description: 	'Destroys {LEVEL} random ally unit(s).',
@@ -4546,8 +4552,11 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	6,
-		level_cost_artifact: 3,
+		base_cost:{
+			base_cost_id: 'destroy',
+			base_cost_factor: 0.8,
+			base_cost_artifact_factor: 0.4,
+		},
 	},
 	destroy_artifact:{
 		description: 	'Destroys up to {LEVEL} random enemy artifact(s).',
@@ -4601,7 +4610,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'destroy',
 			base_cost_factor: 0.8,
-			base_cost_spell_factor: 0.2,
 		},
 	},
 	destroy_cursed:{
@@ -4629,6 +4637,33 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		level_cost: 	-0.9,
 		cost_adjustment: 10,
+	},
+	destroy_on_play:{
+		description: 	'When played, this destroys {LEVEL} random enemy unit(s).',
+		proc: 			'on_play',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				side: 		'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['destroy'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'destroy',
+			base_cost_factor: 1,
+		},
 	},
 	destroy_structure:{
 		description: 	'Destroys {LEVEL} random enemy structure unit(s).',
@@ -7263,6 +7298,36 @@ var all_abilities = {
 		cost_factor: 	'none',
 	},
 	fire_blast:{
+		description: 	'Deals {LEVEL} magical fire damage to all enemy units and the enemy hero.',
+		cannot_proc_while_stunned: true,
+		hero_tactics: 	['curse_ability'],
+		scales: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	6,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'fire',
+				type: 			'damage',
+				subtypes: 		['magical','fire','blast'],
+				amount: 		'ability_level',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'damage_all',
+			base_cost_factor: 	1.5,
+			base_cost_spell_factor: 0.375,
+		},
+		average_hits: 		3,
+	},
+	fire_blast_hv:{
 		description: 	'Deals {LEVEL} magical fire damage to all enemy units.',
 		cannot_proc_while_stunned: true,
 		hero_tactics: 	['curse_ability'],
@@ -7285,9 +7350,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		12,
-		level_cost_spell: 	3,
-		level_cost_hero: 	10,
+		base_cost:{
+			base_cost_id: 		'damage_all',
+			base_cost_factor: 	1,
+			base_cost_spell_factor: 0.25,
+		},
 		average_hits: 		3,
 	},
 	fire_bolt:{
