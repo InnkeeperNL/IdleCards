@@ -13,6 +13,7 @@ var hand_slot_id = 0;
 var highest_unit_id = 3;
 var passive_effect_count = 0;
 var pickup_rewards = {};
+var armor_projectile_reflection = 1;
 
 var next_action_timeout;
 
@@ -2045,7 +2046,7 @@ function process_effect(target_id, origin_id, effect, level){
 			var origin_side = battle_info.combat_units[origin_id]['side'] + 0;
 			if(battle_info.combat_units[target_id] != undefined)
 			{
-				if(match_array_values(effect['subtypes'], 'projectile') && battle_info.combat_units[target_id]['armor'] != undefined && battle_info.combat_units[target_id]['armor'] > 0 && Math.random() < battle_info.combat_units[target_id]['armor'] / 10)
+				if(match_array_values(effect['subtypes'], 'projectile') && battle_info.combat_units[target_id]['armor'] != undefined && battle_info.combat_units[target_id]['armor'] > 0 && Math.random() < battle_info.combat_units[target_id]['armor'] / armor_projectile_reflection)
 				{
 					effect_avoided = true;
 					show_avoided = false;

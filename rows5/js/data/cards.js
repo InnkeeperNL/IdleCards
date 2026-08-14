@@ -1889,7 +1889,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{fearful_aura: 1},
+		abilities: 			{fearful_aura: 1, undead: 1},
 		quote: '\"Boo!\"',
 	},
 	ghost_caller:{
