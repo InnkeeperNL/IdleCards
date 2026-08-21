@@ -3921,7 +3921,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
     		}
     	});
     
-    	if(calculated_amount > 0)
+    	if(calculated_amount >= 0)
     	{
     		
     		var overkill = 0;
@@ -4018,7 +4018,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
 
     		latest_result = temp_damage_dealt;
 
-    		if(battle_info.combat_units[origin_id] != undefined && (temp_damage_dealt > 0 /*|| armor_reduced > 0*/))
+    		if(battle_info.combat_units[origin_id] != undefined && (temp_damage_dealt >= 0 /*|| armor_reduced > 0*/))
     		{
     			eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
     				if(match_array_values(all_abilities[ability_key]['proc'], 'dealt_damage') == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], subtypes) == true) && (all_abilities[ability_key]['not_subtypes'] == undefined || match_array_values(all_abilities[ability_key]['not_subtypes'], subtypes) == false))
@@ -4028,7 +4028,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
     				latest_result = temp_damage_dealt;
     			});
     		}
-    		if(battle_info.combat_units[origin_id] != undefined && (temp_damage_dealt > 0 /*|| armor_reduced > 0*/) && target_id < 3 && battle_info.combat_units[origin_id]['side'] != battle_info.combat_units[target_id]['side'])
+    		if(battle_info.combat_units[origin_id] != undefined && (temp_damage_dealt >= 0 /*|| armor_reduced > 0*/) && target_id < 3 && battle_info.combat_units[origin_id]['side'] != battle_info.combat_units[target_id]['side'])
     		{
     			eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
     				if(match_array_values(all_abilities[ability_key]['proc'], 'dealt_damage_to_hero') == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], subtypes) == true) && (all_abilities[ability_key]['not_subtypes'] == undefined || match_array_values(all_abilities[ability_key]['not_subtypes'], subtypes) == false))
@@ -4040,7 +4040,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
     		}
     		
 
-    		if(battle_info.combat_units[target_id] != undefined && (temp_damage_dealt > 0 || armor_reduced > 0))
+    		if(battle_info.combat_units[target_id] != undefined && (temp_damage_dealt >= 0 || armor_reduced > 0))
     		{
     			eachoa(target_unit['abilities'], function(ability_key, ability_level){
     				
