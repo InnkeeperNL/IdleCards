@@ -1,0 +1,113 @@
+.inventory_content
+{
+	/*position: absolute;
+    left: 40px;
+    top: 80px;
+    right: 0px;
+    bottom: 80px;*/
+    position: absolute;
+    top: 70px;
+    bottom: 70px;
+    left: 0px;
+    right: 0px;
+    margin: 0px;
+    text-align: center;
+}
+
+.inventory_content .card
+{
+    display: inline-block;
+    float: none;
+    width: 15%;
+    height: 25%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}
+
+.portrait .inventory_content .card
+{
+    display: inline-block;
+    float: none;
+    width: 30%;
+    height: 23%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}
+
+.landscape .inventory_content .card_time,
+.landscape .inventory_content .card_abilities,
+.landscape .inventory_content .card_health,
+.landscape .inventory_content .card_power,
+.landscape .inventory_content .card_armor
+{
+    display:none;
+}
+
+.landscape .inventory_content .card_name
+{
+    width: auto;
+    left: 15px;
+}
+
+.portrait .inventory_content .card_time,
+.portrait .inventory_content .card_abilities,
+.portrait .inventory_content .card_name,
+.portrait .inventory_content .card_health,
+.portrait .inventory_content .card_power,
+.portrait .inventory_content .card_armor
+{
+    display:none;
+}
+
+.landscape .inventory_content .card .owned_amount,
+.portrait .inventory_content .card .owned_amount
+{
+    top:auto;
+    bottom: 5px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    font-size: 10vw;
+    height: auto;
+    opacity: 1;
+}
+
+.landscape .card .new_card,
+.portrait .card .new_card
+{
+    font-family: 'Caveat Brush', cursive;
+    font-size:50px;
+    position: absolute;
+    top: auto;
+    bottom: 30px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    height: auto;
+    color: rgba(248, 252, 73, 1);
+    text-shadow: 1px 1px 5px rgba(0,0,0,1), 1px -1px 5px rgba(0,0,0,1), -1px 1px 5px rgba(0,0,0,1), -1px -1px 5px rgba(0,0,0,1);
+    transform-origin: center;
+    transform: rotate(-5deg);
+    opacity: 0.7;
+}
+
+.landscape .inventory_content .card .owned_amount
+{
+    font-size: 6vw;
+}
+
+@media only screen and (min-width:1000px) {
+    .landscape .inventory_content .card .owned_amount,
+    .portrait .inventory_content .card .owned_amount
+    {
+        font-size: 60px;
+    }
+}
+@media only screen and (max-width:800px) {
+    .landscape .single_current_reward .card .new_card,
+    .portrait .single_current_reward .card .new_card
+    {
+        top:20px;
+        bottom: auto;
+    }
+}
