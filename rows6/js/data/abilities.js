@@ -2237,6 +2237,38 @@ var all_abilities = {
 		},
 		level_cost_cum: true,
 	},
+	butcher_animals:{
+		description: 	'When any animal creature dies, a random non-undead ally creature gains {LEVEL} health.',
+		proc: 			'any_creature_death',
+		origin_subtypes: ['animal'],
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure','object'],
+				max_abilities: 	{undead: 0},
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bolster',
+				type: 			'increase_health',
+				subtypes: 		['bolster','bolster_creature','bolster_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'bolster',
+			base_cost_factor: 		0.5,
+			base_cost_hero_factor: 	0.75,
+		},
+	},
 	call_rat:{
 		hide_amount: 	true,
 		description: 	'If you hand is not full, this has a {LEVEL}0% chance to add a basic rat card to your hand.',
@@ -5711,6 +5743,36 @@ var all_abilities = {
 			base_cost_artifact_factor: 0.2,
 		},
 	},
+	empower_creature:{
+		description: 	'Has a {LEVEL}0% chance to increase the power of a random ally creature unit by 1.',
+		cannot_proc_while_stunned: true,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		1
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.4,
+		},
+	},
 	empower_hero:{
 		description: 	'Your hero gains {LEVEL} temporary power.',
 		cannot_proc_while_stunned: true,
@@ -6239,6 +6301,36 @@ var all_abilities = {
 			base_cost_id: 'empower',
 			base_cost_factor: 1,
 			base_cost_structure_factor: 1.5,
+		},
+	},
+	encourage_creature:{
+		description: 	'This grants a random ally creature {LEVEL} temporary power. Cannot target itself.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				min_hp: 		1,
+				min_power: 		0,
+				not_self: 		true,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 1,
+			base_cost_hero_factor: 0.75,
 		},
 	},
 	enemy_draws_cards:{
@@ -10784,7 +10876,6 @@ var all_abilities = {
 		negated_by: 	['ignores_armor'],
 		amount: 		'ability_level',
 		scales: 		true,
-		hero_tactics: 	['heal_hero_ability','resist_magic_ability','cleanse_ally_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -10801,8 +10892,7 @@ var all_abilities = {
 				increase_timeout: 	-1500,
 			}
 		},
-		level_cost: 		0.5,
-		min_cost: 			2,
+		level_cost: 		1,
 		cost_factor: 		'health',
 	},
 	plunder:{
@@ -16281,7 +16371,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'poison',
 			base_cost_factor: 0,
-			base_hit_cost_factor: 0.5,
+			base_hit_cost_factor: 0.75,
 		},
 		level_cost_cum: true,
 	},

@@ -51,6 +51,20 @@ var all_chained_achievements = {
 		card_back: 		'peasant',
 		steps: 			4,
 	},
+	avoidance:{
+		name: 			'avoidance',
+		description: 	'Have allies avoid an enemy ability in any way {AMOUNT} time(s).',
+		objective: 		'ally_performed_evade',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'assassin',
+		steps: 			4,
+	},
 	bolster:{
 		name: 			'bolster',
 		description: 	'Have allies increase the health of an ally {AMOUNT} time(s).',
@@ -80,6 +94,25 @@ var all_chained_achievements = {
 		steps: 			4,
 		no_quest: 		true,
 	},
+	conscription:{
+		name: 			'conscription',
+		description: 	'Play or summon {AMOUNT} creature card(s) in a single battle.',
+		objective: 		'creature_card_played_times',
+		min_amount: 	10,
+		amount: 		1,
+		hide_amount: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'conscription',
+		steps: 			4,
+		step_effect: 	'min_amount',
+		step_amount: 	10,
+		no_quest: 		true,
+	},
 	doom:{
 		name: 			'doom',
 		description: 	'Have allies apply doom {AMOUNT} time(s).',
@@ -92,6 +125,20 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'astrologer',
+		steps: 			4,
+	},
+	empower:{
+		name: 			'empower',
+		description: 	'Have allies empower an ally {AMOUNT} time(s).',
+		objective: 		'ally_performed_empower_any',
+		amount: 	1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'brewer',
 		steps: 			4,
 	},
 	fortify:{
@@ -151,7 +198,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'assassin',
+		card_back: 		'adder',
 		steps: 			4,
 	},
 	pure:{
