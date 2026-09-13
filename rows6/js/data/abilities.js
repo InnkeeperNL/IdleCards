@@ -6306,6 +6306,7 @@ var all_abilities = {
 	encourage_creature:{
 		description: 	'This grants a random ally creature {LEVEL} temporary power. Cannot target itself.',
 		cannot_proc_while_stunned: true,
+		scales: 		true,
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -10459,13 +10460,11 @@ var all_abilities = {
 	},
 	mob_mentality_hv:{
 		name: 			'mob mentality',
-		description: 	'When any ally human enters the game, this has a {LEVEL}0% chance to gain 1 temporary power.',
+		description: 	'When any ally human enters the game, this gains {LEVEL} temporary power.',
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
 		origin_not_self: 	true,
 		origin_subtypes:  	['human'],
-		proc_chance:  	10,
-		proc_factor: 	'ability_level',
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -10480,13 +10479,14 @@ var all_abilities = {
 				projectile: 	'power',
 				type: 			'grant_temp_power',
 				subtypes: 		['empower_any','empower_ally'],
-				amount: 		1
+				amount: 		'ability_level',
 			},
 		},
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.1,
+			base_cost_factor: 1,
+			base_cost_hero_factor: 0.75,
 		},
 	},
 	morph_ally:{

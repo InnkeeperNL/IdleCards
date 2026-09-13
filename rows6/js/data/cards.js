@@ -306,10 +306,10 @@ var all_available_cards = {
 		abilities: 			{strike: 1, mob_mentality: 5},
 		hero_version: 			{
 			theme: 				['subtype_human','move_ally_to_hand_ability','on_play_proc_ability'],
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, mob_mentality_hv: 1},
+			abilities: 			{strike_unit: 1, mob_mentality_hv: 2},
 		},
 		quote: '\"A lone peasant is not a threat, but let them gather and you have a problem on your hands.\" - Theodull, the ancient king',
 	},
