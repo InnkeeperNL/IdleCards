@@ -147,6 +147,7 @@ function show_battle(){
 		}
 
 		//SET UP DECKS
+		battle_info.deck_1 = {};
 		battle_info.deck_2 = {};
 		if(build_deck_while_playing == false)
 		{
@@ -163,31 +164,32 @@ function show_battle(){
 					};
 				}
 			});
-		}
+		
 
-		if(current_battle_type == 'summoned')
-		{
-			if(endless_waves == true || gamedata['current_summon']['deck'] == undefined)
+			if(current_battle_type == 'summoned')
 			{
-				var enemy_deck_size = 30 * get_effective_power_factor();
-				if(enemy_deck_size > 30){enemy_deck_size = 30;}
-				if(enemy_deck_size < 1){enemy_deck_size = 1;}
-			    /*if(Math.random() > 1.5)
-			    {
-				    battle_info.deck_1 = construct_random_deck(enemy_deck_size, enemy_hero);
-			    }
-			    else
-			    {*/
-			        battle_info.deck_1 = construct_random_deck(enemy_deck_size, enemy_hero, true);
-			    /*}*/
-			    if(endless_waves == false)
-			    {
-			    	gamedata['current_summon']['deck'] = true_copyobject(battle_info.deck_1);
-			    }
-			}
-			else
-			{
-				battle_info.deck_1 = true_copyobject(gamedata['current_summon']['deck']);
+				if(endless_waves == true || gamedata['current_summon']['deck'] == undefined)
+				{
+					var enemy_deck_size = 30 * get_effective_power_factor();
+					if(enemy_deck_size > 30){enemy_deck_size = 30;}
+					if(enemy_deck_size < 1){enemy_deck_size = 1;}
+				    /*if(Math.random() > 1.5)
+				    {
+					    battle_info.deck_1 = construct_random_deck(enemy_deck_size, enemy_hero);
+				    }
+				    else
+				    {*/
+				        battle_info.deck_1 = construct_random_deck(enemy_deck_size, enemy_hero, true);
+				    /*}*/
+				    if(endless_waves == false)
+				    {
+				    	gamedata['current_summon']['deck'] = true_copyobject(battle_info.deck_1);
+				    }
+				}
+				else
+				{
+					battle_info.deck_1 = true_copyobject(gamedata['current_summon']['deck']);
+				}
 			}
 		}
 

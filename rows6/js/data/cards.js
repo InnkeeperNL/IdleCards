@@ -253,7 +253,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{summon_human: 10, long_echo: 1},
+		abilities: 			{summon_human: 10, hasten_all_on_act: 1},
 		quote: '\"We need more troops. Anyone will do!\"',
 	},
 	meteor_shower:{
@@ -361,7 +361,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{earth_blast: 1, long_echo: 1, minimum_enemies: 3},
+		abilities: 			{earth_blast: 1, echo: 1},
 		quote: '\"Sometimes, all you can do is hold out and wait.\"',
 		max_in_deck: 		2,
 	},

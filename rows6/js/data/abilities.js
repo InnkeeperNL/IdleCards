@@ -8910,6 +8910,39 @@ var all_abilities = {
 			base_cost_spell_factor: 1,
 		},
 	},
+	hasten_all_on_act:{
+		name: 			'hasten all',
+		description: 	'If this used another ability, this reduces the time left of all cards in your hand by {LEVEL}.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		do_not_pause_between: 	true,
+		proc_amount: 	1,
+		hero_tactics: 	['draw_cards_ability','move_ally_to_deck_ability'],
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	10,
+				status: 		'hand',
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'hasten',
+				projectile_target: 'deck',
+				type: 			'reduce_ready_time',
+				subtypes: 		['hasten','deck_control'],
+				amount: 		'ability_level',
+				side: 			'ally',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'hasten',
+			base_cost_factor: 4,
+			base_cost_spell_factor: 1,
+		},
+	},
 	hasten_on_act:{
 		name: 			'hasten',
 		description: 	'If this used another ability, this reduces the time left of a card in your hand by {LEVEL}.',

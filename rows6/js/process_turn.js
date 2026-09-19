@@ -422,7 +422,7 @@ function process_next_unit(proc, do_not_process_effects){
 			{
 				reduce_all_hand_times(active_turn);
 				check_all_ready_cards();
-				if(build_deck_while_playing == false || active_turn == 1)
+				if(build_deck_while_playing == false)
 				{
 					draw_card(active_turn, undefined, undefined, undefined);
 					current_phase = find_next_phase();
@@ -433,10 +433,28 @@ function process_next_unit(proc, do_not_process_effects){
 				}
 				else
 				{
-					next_action_timeout = setTimeout(function(){
-						show_pick_new_deck_card();
-					}, total_timeout + 500);
-					total_timeout = 0;					
+					if(active_turn == 1)
+					{
+						var enemy_hero = battle_info['combat_units'][1]['card_type'];
+						var not_types = ['cardback'];
+						var not_theme = all_available_cards[enemy_hero]['hero_version']['not_theme'];
+						var deck_theme = false;
+						if(all_available_cards[enemy_hero]['hero_version']['theme'] != undefined)
+						{
+							deck_theme = all_available_cards[enemy_hero]['hero_version']['theme'];
+						}
+						var enemy_card_id = get_random_card('any', undefined, undefined, undefined, 0, deck_theme, undefined, not_types, not_theme);
+						add_card_to_combat_deck(1, enemy_card_id, 'deck');
+						draw_card(1);
+						process_next_unit('combat_start',true);
+					}
+					if(active_turn == 2)
+					{
+						next_action_timeout = setTimeout(function(){
+							show_pick_new_deck_card();
+						}, total_timeout + 500);
+						total_timeout = 0;		
+					}			
 				}
 			}
 			else
