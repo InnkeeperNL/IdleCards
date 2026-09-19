@@ -21,6 +21,7 @@ var map_hero = '';
 var battle_stats = {};
 var endless_wave_count = 1;
 var battle_ability_procs = {};
+var build_deck_while_playing = true;
 
 
 function show_random_battle(){
@@ -147,19 +148,22 @@ function show_battle(){
 
 		//SET UP DECKS
 		battle_info.deck_2 = {};
-		var deck_card_counter = 0;
-		eachoa(gamedata.decks[gamedata.current_deck], function(card_id, amount){
-			if(card_id != 'hero'){
-				for(var t = 0;t < amount; t++){
-					battle_info.deck_2[deck_card_counter] = {
-						card_id: 	card_id,
-						status: 	'deck',
-						time_left: 	all_available_cards[card_id]['time']
-					}
-					deck_card_counter++;
-				};
-			}
-		});
+		if(build_deck_while_playing == false)
+		{
+			var deck_card_counter = 0;
+			eachoa(gamedata.decks[gamedata.current_deck], function(card_id, amount){
+				if(card_id != 'hero'){
+					for(var t = 0;t < amount; t++){
+						battle_info.deck_2[deck_card_counter] = {
+							card_id: 	card_id,
+							status: 	'deck',
+							time_left: 	all_available_cards[card_id]['time']
+						}
+						deck_card_counter++;
+					};
+				}
+			});
+		}
 
 		if(current_battle_type == 'summoned')
 		{

@@ -1996,3 +1996,23 @@
 {
 
 }
+
+.new_deck_card_container
+{
+	animation-name: fade_in;
+    animation-duration: 0.5s;
+	position: fixed;
+	top:0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	background-color: rgba(0, 0, 0, 0.8);
+	z-index: 10000;
+	text-align: center;
+	padding-top:100px;
+}
+
+/*.pickable_deck_card
+{
+	display: inline-block;
+}*/

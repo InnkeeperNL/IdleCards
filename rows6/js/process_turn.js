@@ -422,14 +422,30 @@ function process_next_unit(proc, do_not_process_effects){
 			{
 				reduce_all_hand_times(active_turn);
 				check_all_ready_cards();
-				draw_card(active_turn, undefined, undefined, undefined);
-				current_phase = find_next_phase();
+				if(build_deck_while_playing == false || active_turn == 1)
+				{
+					draw_card(active_turn, undefined, undefined, undefined);
+					current_phase = find_next_phase();
+					next_action_timeout = setTimeout(function(){
+						process_next_unit(current_phase, turn_phases[current_phase]);
+					}, total_timeout);
+					total_timeout = 0;
+				}
+				else
+				{
+					next_action_timeout = setTimeout(function(){
+						show_pick_new_deck_card();
+					}, total_timeout + 500);
+					total_timeout = 0;					
+				}
 			}
-			
-			next_action_timeout = setTimeout(function(){
-				process_next_unit(current_phase, turn_phases[current_phase]);
-			}, total_timeout);
-			total_timeout = 0;
+			else
+			{
+				next_action_timeout = setTimeout(function(){
+					process_next_unit(current_phase, turn_phases[current_phase]);
+				}, total_timeout);
+				total_timeout = 0;
+			}
 		}
 		else
 		{
@@ -456,6 +472,36 @@ function process_next_unit(proc, do_not_process_effects){
 		//console.log(process_time);
 	}
 	total_timeout += process_time;
+}
+
+
+
+function show_pick_new_deck_card(){
+	var pickable_deck_cards = {};
+	eachoa(gamedata['owned_cards'], function(card_id, owned_amount){
+		if(all_available_cards[card_id]['type'] == 'creature' || all_available_cards[card_id]['type'] == 'structure' || all_available_cards[card_id]['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'spell')
+		{
+			pickable_deck_cards[card_id] = true;
+		}
+	});
+	var new_deck_card_options = [];
+	var parsed_new_deck_cards = '<div class="new_deck_card_container">';
+	for (var deck_card_option_counter = 0; deck_card_option_counter <3; deck_card_option_counter++) {
+		//var chosen_deck_card_option = get_random_card('any', undefined, undefined, undefined, undefined, undefined, new_deck_card_options, undefined, undefined, undefined);
+		var chosen_deck_card_option = get_random_key_from_object(pickable_deck_cards);
+		new_deck_card_options[count_object[new_deck_card_options]] = chosen_deck_card_option;
+		parsed_new_deck_cards += '<div class="pickable_deck_card single_current_reward"><span onclick="show_card_details(\'' + chosen_deck_card_option + '\')">' + parse_card(chosen_deck_card_option) + '</span><div class="menu_button slim pick_reward_button" onclick="choose_pickable_deck_card(\'' + chosen_deck_card_option + '\')">PICK</div></div>';
+	}
+
+	parsed_new_deck_cards	+= '</div>';
+	$('.battle_container').append(parsed_new_deck_cards);
+}
+
+function choose_pickable_deck_card(card_id){
+	$('.new_deck_card_container').remove();
+	add_card_to_combat_deck(2, card_id, 'deck');
+	draw_card(2);
+	process_next_unit('combat_start',true);
 }
 
 function find_next_phase(){
