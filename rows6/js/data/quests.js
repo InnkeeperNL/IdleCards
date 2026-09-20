@@ -79,6 +79,20 @@ var all_chained_achievements = {
 		card_back: 		'baker',
 		steps: 			4,
 	},
+	burn:{
+		name: 			'burn',
+		description: 	'Have allies apply burn {AMOUNT} time(s).',
+		objective: 		'ally_performed_burn',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'flame_archer',
+		steps: 			4,
+	},
 	chester:{
 		name: 			'chester',
 		description: 	'Open {AMOUNT} chest(s).',
@@ -213,6 +227,20 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'barber',
+		steps: 			4,
+	},
+	rogue:{
+		name: 			'rogue',
+		description: 	'Play or summon {AMOUNT} rogue card(s).',
+		objective: 		'rogue_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'rogue',
 		steps: 			4,
 	},
 	shards:{

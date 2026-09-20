@@ -2265,8 +2265,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'bolster',
-			base_cost_factor: 		0.5,
-			base_cost_hero_factor: 	0.75,
+			base_cost_factor: 		0.25,
+			base_cost_hero_factor: 	0.5,
 		},
 	},
 	call_rat:{
@@ -3347,7 +3347,7 @@ var all_abilities = {
 		average_hits: 		'ability_level',
 	},
 	counter_spell:{
-		description: 	'Destroys up to {LEVEL} enemy spell(s).',
+		description: 	'Destroys up to {LEVEL} enemy spell(s) as that spell is played.',
 		proc: 			'spell_about_to_use_ability',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
@@ -3372,9 +3372,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
-		level_cost_hero: 	2,
-		level_cost_artifact: 1,
+		base_cost:{
+			base_cost_id: 		'destroy',
+			base_cost_factor: 	0.25,
+			base_cost_hero_factor: 0.125,
+		},
 	},
 	counter_spells:{
 		description: 	'Has a {LEVEL}0% chance to destroy any enemy spell as that spell is played.',
@@ -5372,13 +5374,13 @@ var all_abilities = {
 		},
 	},
 	earth_blast:{
-		description: 	'Deals {LEVEL} physical damage to all enemy units.',
+		description: 	'Deals {LEVEL} physical damage to all enemy units and the enemy hero.',
 		cannot_proc_while_stunned: true,
 		scales: true,
 		targets:	{
 			0:{
-				target: 		'unit',
-				target_amount: 	5,
+				target: 		'unit_or_hero',
+				target_amount: 	6,
 				position: 		'random',
 				min_hp: 		1,
 				side: 			'enemy'
@@ -5393,8 +5395,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		12,
-		level_cost_spell: 	3,
+		base_cost:{
+			base_cost_id: 		'damage_all',
+			base_cost_factor: 	1.5,
+			base_cost_spell_factor: 0.375,
+		},
 		average_hits: 		3,
 	},
 	earth_bolt:{
@@ -5457,10 +5462,10 @@ var all_abilities = {
 		average_hits: 	1,
 	},
 	echo:{
-		description: 	'Has a 75% chance to return to its owner\'s hand if this used an ability. If your hand is full, this will return to your deck.',
+		description: 	'Returns to its owner\'s hand if this used an ability. If your hand is full, this will return to your deck.',
 		cannot_proc_while_stunned: true,
 		has_used_ability: true,
-		proc_chance: 	75,
+		//proc_chance: 	75,
 		targets:	{
 			0:{
 				target: 		'any',
@@ -13685,13 +13690,20 @@ var all_abilities = {
 		average_hits: 	'ability_level',
 	},
 	shoot_unit:{
-		description: 	'Deals physical projectile damage equal to its power to a random enemy unit {LEVEL} time(s).',
+		description: 	'Deals physical projectile damage equal to its power to a random enemy unit {LEVEL} time(s). Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		need_power: 	true,
 		targets:	{
 			0:{
 				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+			1:{
+				target: 		'unit_or_hero',
 				target_amount: 	1,
 				position: 		'random',
 				min_hp: 		1,
@@ -15934,6 +15946,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 	'stun',
 			base_cost_factor: 0.1,
+			base_cost_hero_factor: 0.2,
 		},
 		cost_factor: 	'none',
 	},

@@ -11,7 +11,7 @@ var all_upgrades = {
 		level_cost_scale: 	2.5,
 		cost: 			{shard:5,},
 	},
-	aab_summon_rarity:{
+	/*aab_summon_rarity:{
 		name: 			'Summon rarity',
 		description: 	'Increases the maximum rarity of summoned enemies.',
 		needed_upgrades:{
@@ -24,14 +24,14 @@ var all_upgrades = {
 		level_cost_scale: 	5,
 		amount_fixed: 	true,
 		cost: 			{scraps:2,},
-	},
+	},*/
 	aac_summon_drop_chance:{
 		name: 			'Drop chance',
 		description: 	'Increases the drop chance of heroes and loot by 10% per level.',
 		needed_upgrades:{
 			game_speed: 		1,
 		},
-		card_image: 	'breaking_ray',
+		card_image: 	'apothecary',
 		type: 			'summon_loot_rarity',
 		subtypes:  		['any'],
 		amount: 		0.1,
@@ -152,7 +152,7 @@ var all_upgrades = {
 			game_speed: 		5,
 			//aab_summon_rarity: 	10,
 		},
-		card_image: 	'arcane_bolts',
+		card_image: 	'meteor_shower',
 		type: 			'floating_chance',
 		subtypes:  		['any'],
 		amount: 		0.05,
@@ -180,7 +180,7 @@ var all_upgrades = {
 		needed_upgrades:{
 			//aab_summon_rarity: 	2,
 		},
-		card_image: 	'messenger',
+		card_image: 	'recall_stone',
 		type: 			'max_game_speed',
 		subtypes:  		['any'],
 		amount: 		0.2,
@@ -284,7 +284,7 @@ var all_upgrades = {
 		needed_upgrades:{
 			z_a_town_access: 1,
 		},
-		card_image: 	'thief',
+		card_image: 	'assassin',
 		type: 			'merchant_buy',
 		subtypes:  		['any'],
 		amount: 		0.25,
@@ -313,7 +313,7 @@ var all_upgrades = {
 		needed_upgrades:{
 			merchant_sales_count: 1,
 		},
-		card_image: 	'runner',
+		card_image: 	'butcher',
 		type: 			'decline_merchants',
 		subtypes:  		['any'],
 		amount: 		0.25,
@@ -327,7 +327,7 @@ var all_upgrades = {
 		needed_upgrades:{
 			merchant_sales_decline: 1,
 		},
-		card_image: 	'skirmisher',
+		card_image: 	'sandstorm',
 		type: 			'offer_decline_time',
 		subtypes:  		['any'],
 		amount: 		0.25,
@@ -356,7 +356,7 @@ var all_upgrades = {
 			game_speed: 		10,
 			peasants_gained: 	10,
 		},
-		card_image: 	'lone_charge',
+		card_image: 	'plasma_strike',
 		type: 			'max_game_speed',
 		subtypes:  		['any'],
 		amount: 		0.2,
@@ -370,7 +370,7 @@ var all_upgrades = {
 		needed_upgrades:{
 			aaa_rewards: 3,
 		},
-		card_image: 	'scroll',
+		card_image: 	'enchanted_net',
 		type: 			'quest_amount',
 		subtypes:  		['any'],
 		amount: 		1,
@@ -384,7 +384,7 @@ var all_upgrades = {
 		needed_upgrades:{
 			quest_amount: 10,
 		},
-		card_image: 	'rat_flute',
+		card_image: 	'endless_pouch',
 		type: 			'quest_reward',
 		subtypes:  		['any'],
 		amount: 		0.05,
@@ -444,7 +444,7 @@ var all_upgrades = {
 			floating_chance:  	1,
 			//aab_summon_rarity: 	20,
 		},
-		card_image: 	'house',
+		card_image: 	'armorer',
 		type: 			'show_town',
 		subtypes:  		['any'],
 		amount: 		100,
