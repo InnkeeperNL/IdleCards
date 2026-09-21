@@ -201,6 +201,20 @@ var all_chained_achievements = {
 		card_back: 		'recall_stone',
 		steps: 			4,
 	},
+	humane:{
+		name: 			'humane',
+		description: 	'Play or summon {AMOUNT} human card(s).',
+		objective: 		'human_card_played',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'beggar',
+		steps: 			4,
+	},
 	poison:{
 		name: 			'poison',
 		description: 	'Have allies apply poison {AMOUNT} time(s).',
@@ -287,6 +301,20 @@ var all_chained_achievements = {
 		card_back: 		'trove',
 		steps: 			4,
 		no_quest: 		true,
+	},
+	zoo:{
+		name: 			'zoo',
+		description: 	'Play or summon {AMOUNT} animal card(s).',
+		objective: 		'animal_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'scorpion',
+		steps: 			4,
 	},
 }
 
