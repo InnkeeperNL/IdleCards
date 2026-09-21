@@ -600,7 +600,7 @@ var all_available_cards = {
 		health: 			8,
 		abilities: 			{burning_entry: 1, conflagrate: 1, strike: 1},
 		hero_version: 			{
-			theme: 				['type_creature','poison_ability'],
+			theme: 				['type_creature','burn_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
