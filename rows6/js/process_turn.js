@@ -506,9 +506,13 @@ function show_pick_new_deck_card(){
 	var parsed_new_deck_cards = '<div class="new_deck_card_container">';
 	for (var deck_card_option_counter = 0; deck_card_option_counter <3; deck_card_option_counter++) {
 		//var chosen_deck_card_option = get_random_card('any', undefined, undefined, undefined, undefined, undefined, new_deck_card_options, undefined, undefined, undefined);
-		var chosen_deck_card_option = get_random_key_from_object(pickable_deck_cards);
-		new_deck_card_options[count_object[new_deck_card_options]] = chosen_deck_card_option;
-		parsed_new_deck_cards += '<div class="pickable_deck_card single_current_reward"><span onclick="show_card_details(\'' + chosen_deck_card_option + '\')">' + parse_card(chosen_deck_card_option) + '</span><div class="menu_button slim pick_reward_button" onclick="choose_pickable_deck_card(\'' + chosen_deck_card_option + '\')">PICK</div></div>';
+		if(count_object(pickable_deck_cards) > 0)
+		{
+			var chosen_deck_card_option = get_random_key_from_object(pickable_deck_cards);
+			delete pickable_deck_cards[chosen_deck_card_option];
+			new_deck_card_options[count_object[new_deck_card_options]] = chosen_deck_card_option;
+			parsed_new_deck_cards += '<div class="pickable_deck_card single_current_reward"><span onclick="show_card_details(\'' + chosen_deck_card_option + '\')">' + parse_card(chosen_deck_card_option) + '</span><div class="menu_button slim pick_reward_button" onclick="choose_pickable_deck_card(\'' + chosen_deck_card_option + '\')">PICK</div></div>';
+		}
 	}
 
 	parsed_new_deck_cards	+= '</div>';
