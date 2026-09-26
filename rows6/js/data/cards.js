@@ -86,7 +86,7 @@ var all_available_cards = {
 		power: 				3,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{strike_unit: 1, flaming_stikes: 1},
+		abilities: 			{strike: 1, flaming_stikes: 1},
 		hero_version: 			{
 			theme: 				['fire_ability','subtype_warrior'],
 			power: 				2,
