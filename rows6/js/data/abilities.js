@@ -2701,6 +2701,38 @@ var all_abilities = {
 			base_cost_spell_factor: 0.25,
 		},
 	},
+	cleanse_poison:{
+		description: 	'Removes 1 poison from a random ally {LEVEL} time(s).',
+		cannot_proc_while_stunned: true,
+		//do_not_pause_between: true,
+		proc_amount: 	'ability_level',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				has_effect: 	{effect_name: 'poisoned', amount: 1, limit: 'min'},
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'cleanse',
+				type: 			'apply_effect',
+				effect_id:  	'poisoned',
+				subtypes: 		['cleansing','cleanse_ally'],
+				amount: 		-1,
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'cleanse',
+			base_cost_factor: 0.25,
+			base_cost_spell_factor: 0.065,
+		},
+	},
 	cleanse_all:{
 		description: 	'Removes {LEVEL} negative effect(s) from all ally units and your hero.',
 		cannot_proc_while_stunned: true,
@@ -7770,8 +7802,13 @@ var all_abilities = {
 			}
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	3,
-		level_cost_structure: 2.25,
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.8,
+			base_cost_artifact_factor: 0.4,
+			base_cost_structure_factor: 0.4,
+			base_cost_spell_factor: 0.2,
+		},
 	},
 	flame_strike:{
 		description: 	'Deals melee magical fire damage equal to its power to the opposing unit {LEVEL} time(s). Will target the enemy hero if there is no opposing unit.',
@@ -7836,6 +7873,37 @@ var all_abilities = {
 		cost_factor: 	'power',
 		average_hits: 	1,
 		additional_levels_cost: 1,
+	},
+	flaming_stikes:{
+		description: 	'When this deals melee damage, this applies {LEVEL} burn to all nearby enemies.{BURN}',
+		proc: 			'dealt_damage',
+		subtypes: 		['melee'],
+		proc_while_dead: true,
+		scales: 		true,
+		do_not_pause_between: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	3,
+				position: 		'opposing_wide',
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'burn',
+				type: 			'apply_burn',
+				subtypes: 		['burn'],
+				amount: 		'ability_level',
+				pause_before: 	-250,
+			}
+		},
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 0,
+			base_hit_cost_factor: 1.5,
+		},
+		level_cost_cum: true,
 	},
 	flying:{
 		hide_amount: 	true,
@@ -9658,7 +9726,6 @@ var all_abilities = {
 	ignites:{
 		description: 	'Applies {LEVEL} burn to any unit or hero it deals damage to.{BURN}',
 		proc: 			'dealt_damage',
-		ability_subtypes:['dealt_damage_proc'],
 		proc_while_dead: true,
 		scales: 		true,
 		targets:	{

@@ -3076,7 +3076,7 @@ function apply_burn(target_id, calculated_amount, origin_id){
 };
 
 function apply_effect(target_id, calculated_amount, origin_id, effect_id){
-	if(calculated_amount > 0 && battle_info.combat_units[target_id] != undefined && effect_id != undefined)
+	if(calculated_amount != 0 && battle_info.combat_units[target_id] != undefined && effect_id != undefined)
 	{
 		var current_unit = battle_info.combat_units[target_id];
 		if(current_unit['effects'] == undefined)
