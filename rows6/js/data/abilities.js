@@ -1730,7 +1730,7 @@ var all_abilities = {
 		level_cost: 		2,
 	},
 	build_wall:{
-		description: 	'Summons up to {LEVEL} basic wall(s).',
+		description: 	'Summons up to {LEVEL} stone wall(s).',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
@@ -1747,7 +1747,7 @@ var all_abilities = {
 			0:{
 				type: 		'summon_unit',
 				subtypes: 	['summon_ally','summon_structure'],
-				card_id: 	'wall',
+				card_id: 	'stone_wall',
 				amount: 	1
 			}
 		},

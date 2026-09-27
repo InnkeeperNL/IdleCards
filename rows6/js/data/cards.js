@@ -812,7 +812,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{fortify_self: 1},
+		abilities: 			{house_archer: 1, fortify_self: 1},
 		hero_version: 			{
 			theme: 				['cleanse_ally_ability','bolster_ally_ability','projectile_ability'],
 			power: 				false,
