@@ -1729,6 +1729,33 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 		2,
 	},
+	build_wall:{
+		description: 	'Summons up to {LEVEL} basic wall(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		reduce_skill_after_use:'build_wall',
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_structure'],
+				card_id: 	'wall',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		level_cost: 6,
+		level_cost_spell: 5,
+		level_cost_hero: 2,
+	},
 	burn:{
 		description: 	'Applies {LEVEL} burn to a random enemy unit. Will target the enemy hero if there are no enemy units.{BURN}',
 		cannot_proc_while_stunned: true,
@@ -6129,6 +6156,36 @@ var all_abilities = {
 			base_cost_factor: 0.1,
 		},
 	},
+	empowering_deaths:{
+		description: 	'When any ally creature is destroyed, this has a {LEVEL}0% chance to gain 1 power.',
+		proc: 			'ally_creature_death',
+		cannot_proc_while_stunned: true,
+		origin_not_self: 	true,
+		proc_chance:  	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'self',
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		1
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.2,
+		},
+	},
 	empowering_fire:{
 		description: 	'Gains {LEVEL} temporary power for each burning unit or hero.',
 		cannot_proc_while_stunned: true,
@@ -6921,6 +6978,36 @@ var all_abilities = {
 			base_cost_id: 'healing',
 			base_cost_factor: 0.2,
 			base_cost_hero_factor: 0.4,
+		},
+	},
+	final_bolster_creature:{
+		description: 	'When destroyed, a random non-undead ally creature gains {LEVEL} health.',
+		proc: 			'own_death',
+		proc_while_dead: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure','object'],
+				max_abilities: 	{undead: 0},
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'bolster',
+				type: 			'increase_health',
+				subtypes: 		['bolster','bolster_creature','bolster_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'bolster',
+			base_cost_factor: 		0.25,
 		},
 	},
 	final_bolster_hero:{
@@ -7873,6 +7960,36 @@ var all_abilities = {
 		cost_factor: 	'power',
 		average_hits: 	1,
 		additional_levels_cost: 1,
+	},
+	flaming_kills:{
+		description: 	'When this destroys an enemy, this applies {LEVEL} burn to all nearby enemies.{BURN}',
+		proc: 			'kill',
+		proc_while_dead: true,
+		scales: 		true,
+		do_not_pause_between: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	3,
+				position: 		'opposing_wide',
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'burn',
+				type: 			'apply_burn',
+				subtypes: 		['burn'],
+				amount: 		'ability_level',
+			}
+		},
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 0,
+			base_hit_cost_factor: 0.5,
+		},
+		animation: 			'combat_zoom',
+		level_cost_cum: true,
 	},
 	flaming_stikes:{
 		description: 	'When this deals melee damage, this applies {LEVEL} burn to all nearby enemies.{BURN}',
@@ -9674,6 +9791,58 @@ var all_abilities = {
 		},
 		level_cost: 	2,
 		level_cost_artifact: 1,
+	},
+	house_archer:{
+		description: 	'Consumes an archer to turn into an archer tower.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_self: 		true,
+				min_hp: 		1,
+				card_ids: 		['archer'],
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'pull_to_self',
+				amount: 		1,
+			},
+			1:{
+				type: 			'disappear',
+				amount: 		1,
+				on_success:{
+					targets:{
+						0:{
+							target: 		'unit',
+							target_amount: 	1,
+							position: 		'self',
+							min_hp: 		1,
+							side: 			'ally',
+						},
+					},
+					effects:{
+						0:{
+							type: 			'turn_into',
+							subtypes: 		['fusion'],
+							card_id: 		'from_list',
+							card_ids: 		{archer_tower: true},
+							amount: 		1
+						},
+						1:{
+							type: 				'go_again',
+							subtypes: 			['go_again'],
+							amount: 			1,
+						}
+					},
+				}
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
 	},
 	ice_blast:{
 		description: 	'Deals {LEVEL} physical cold damage to all enemy units. Has a 25% chance to stun any unit or hero it hits.',
