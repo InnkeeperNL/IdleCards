@@ -1,8 +1,8 @@
 var ability_base_costs = {
 	arcane_bolt: 3,
 	burn: 		2,
-	bolster: 	2,
-	cleanse: 	1,
+	bolster: 	4,
+	cleanse: 	2,
 	curse: 		2,
 	damage_all: 8,
 	destroy: 	8,
@@ -5701,8 +5701,9 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.3,
+			base_cost_factor: 0.4,
 			base_cost_artifact_factor: 0.6,
+			base_cost_spell_factor: 0.1,
 		},
 	},
 	empower_all:{
@@ -6183,7 +6184,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.2,
+			base_cost_factor: 0.4,
 		},
 	},
 	empowering_fire:{
@@ -6699,10 +6700,10 @@ var all_abilities = {
 		},
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.05,
+			base_cost_factor: 0.4,
 		},
-		cost_factor: 			'health',
-		cost_factor_factor: 	0.5,
+		/*cost_factor: 			'health',
+		cost_factor_factor: 	0.5,*/
 	},
 	enrage_hv:{
 		name: 			'enrage',

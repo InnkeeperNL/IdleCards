@@ -183,7 +183,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, doom: 1, hasten: 1},
 		hero_version: 			{
-			theme: 				['doom_ability','draw_cards_ability'],
+			theme: 				['type_creature','doom_ability','draw_cards_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -207,8 +207,8 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, bolster_creature: 1},
 		hero_version: 			{
-			theme: 				['type_creature','cleanse_ally_ability','active_healing_ability'],
-			power: 				2,
+			theme: 				['type_creature','cleanse_ally_ability','active_healing_ability','bolster_ally_ability','fortify_ability'],
+			power: 				1,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, bolster_creature: 1},
@@ -232,7 +232,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, cleanse: 1},
 		hero_version: 			{
 			theme: 				['type_creature'],
-			power: 				3,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{strike_unit: 1, cleanse: 1},
@@ -302,7 +302,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, empower_creature: 5},
 		hero_version: 			{
-			theme: 				['cleanse_ally_ability','active_healing_ability','empower_ally_ability'],
+			theme: 				['type_creature','cleanse_ally_ability','active_healing_ability','empower_ally_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -326,7 +326,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, fortify: 1, empower_creature: 2},
 		hero_version: 			{
-			theme: 				['cleanse_ally_ability','active_healing_ability','empower_ally_ability'],
+			theme: 				['type_creature','cleanse_ally_ability','active_healing_ability','empower_ally_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -386,7 +386,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, encourage_creature: 2},
 		hero_version: 			{
-			theme: 				['cleanse_ally_ability','active_healing_ability','empower_ally_ability','fortify_ability'],
+			theme: 				['type_creature','cleanse_ally_ability','active_healing_ability','empower_ally_ability','fortify_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -407,7 +407,7 @@ var all_available_cards = {
 		power: 				2,
 		armor: 				0,
 		health: 			6,
-		abilities: 			{charge: 1, strike: 1, empowering_deaths: 8},
+		abilities: 			{charge: 1, strike: 1, empowering_deaths: 4},
 		hero_version: 			{
 			theme: 				['type_creature','empower_ally_ability'],
 			power: 				2,
@@ -473,7 +473,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, final_bolster_creature: 3},
 		hero_version: 			{
-			theme: 				['type_creature','poison_ability'],
+			theme: 				['type_creature','subtype_animal'],
 			power: 				3,
 			armor: 				0,
 			health: 			40,
@@ -602,7 +602,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{hasten_all: 1, echo: 1},
+		abilities: 			{empower_ally: 10, echo: 1},
 		quote: '\"A sprinkle of magic.\"',
 		max_in_deck: 		1,
 	},
@@ -645,7 +645,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, first_aid: 1},
 		hero_version: 			{
-			theme: 				['cleanse_ally_ability','active_healing_ability','bolster_ally_ability'],
+			theme: 				['type_creature','cleanse_ally_ability','active_healing_ability','bolster_ally_ability','fortify_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
