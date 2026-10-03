@@ -1612,7 +1612,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{igniting_hero: 4},
+		abilities: 			{igniting_hero: 5},
 		quote: '\"It can be used to light a fire or stab a foe.\"',
 	},
 	flame_rogue:{
@@ -2243,7 +2243,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			1,
-		abilities: 			{hasten: 1, regenerate_ally: 1, regrows: 10},
+		abilities: 			{draw: 1, regenerate_ally: 1, regrows: 10},
 		hero_version: 			{
 			theme: 				['add_creature_card_to_deck_ability','grant_regeneration_ability','hasten_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
@@ -2447,7 +2447,7 @@ var all_available_cards = {
 		type: 				'creature',
 		subtypes: 			['human'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['any'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -3176,7 +3176,7 @@ var all_available_cards = {
 		type: 				'structure',
 		subtypes: 			['wall'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['any'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -6499,14 +6499,30 @@ function get_base_material_needs_recipes(base_material_value, base_material_valu
 }
 
 function check_all_pickable_deck_cards(min_amount){
+	var all_chosen_cards = {};
 	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['hero_version'] != undefined)
 		{
 			var possible_picks = get_pickable_deck_cards(1, card_id);
+			eachoa(possible_picks, function(card_id, card_pickable){
+				if(all_chosen_cards[card_id] == undefined){all_chosen_cards[card_id] = 0;}
+				all_chosen_cards[card_id]++;
+			});
 			var pick_count = count_object(possible_picks);
 			if(pick_count < min_amount)
 			{
 				console.log(card_id + ': ' + pick_count);
+			}
+		}
+	});
+	console.log('picked totals');
+	console.log(all_chosen_cards);
+	eachoa(all_available_cards, function(card_id, owned_amount){
+		if(all_available_cards[card_id]['type'] == 'creature' || all_available_cards[card_id]['type'] == 'structure' || all_available_cards[card_id]['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'spell')
+		{
+			if(all_chosen_cards[card_id] == undefined)
+			{
+				console.log('unpicked: ' + card_id);
 			}
 		}
 	});
