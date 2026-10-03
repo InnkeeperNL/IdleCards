@@ -3996,7 +3996,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
     		}
     	});
     
-    	if(calculated_amount >= 0)
+    	if(calculated_amount > 0)
     	{
     		
     		var overkill = 0;

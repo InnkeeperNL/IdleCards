@@ -9,7 +9,7 @@ var ability_base_costs = {
 	discard: 	10,
 	doom: 		1,
 	draw: 		4,
-	empower: 	2,
+	empower: 	4,
 	empower_fortify: 5,
 	enlarge:  	6,
 	evade: 		1,
@@ -107,7 +107,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.025,
+			base_cost_factor: 1/4/10,
 		},
 	},
 	adrenaline_hv:{
@@ -136,7 +136,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.5,
+			base_cost_factor: 0.5/4,
 		},
 	},
 	air_blast:{
@@ -1276,8 +1276,8 @@ var all_abilities = {
 			base_cost_factor: 		1,
 			base_cost_spell_factor: 0.25,
 		},
-		cost_adjustment: 			6,
-		cost_adjustment_spell: 		1.5,
+		cost_adjustment: 			2,
+		cost_adjustment_spell: 		0.5,
 	},
 	break:{
 		name: 			'break artifact',
@@ -1854,7 +1854,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'burn',
 			base_cost_factor: 0.1,
-			base_cost_artifact_factor: 0.2,
 		},
 	},
 	burn_hv:		{
@@ -2019,7 +2018,6 @@ var all_abilities = {
 			base_cost_id: 'burn',
 			base_cost_factor: 0.2,
 			base_cost_spell_factor: 0.2,
-			base_cost_artifact_factor: 0.2,
 		},
 		ability_level_cost_factors:{
 			curse: 			2,
@@ -2059,7 +2057,6 @@ var all_abilities = {
 			base_cost_id: 'burn',
 			base_cost_factor: 0.2,
 			base_cost_spell_factor: 0.2,
-			base_cost_artifact_factor: 0.2,
 		},
 		ability_level_cost_factors:{
 			curse: 			2,
@@ -2196,7 +2193,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'burn',
 			base_cost_factor: 	0.75,
-			base_cost_artifact_factor: 1.5,
 			base_cost_hero_factor: 1.5,
 		},
 		level_cost_cum: 	true,
@@ -3724,7 +3720,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'curse',
 			base_cost_factor: 1,
-			base_cost_artifact_factor: 1.5,
 		}
 	},
 	curse_hv:{
@@ -3857,7 +3852,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'curse',
 			base_cost_factor: 1,
-			base_cost_artifact_factor: 2,
 		}
 	},
 	cursed_entry:{
@@ -3919,7 +3913,6 @@ var all_abilities = {
 			base_cost_id: 'curse',
 			base_cost_factor: 0.75,
 			base_cost_hero_factor: 1.5,
-			base_cost_artifact_factor: 1.5,
 		}
 	},
 	cursed_stuns:{
@@ -4043,7 +4036,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'curse',
 			base_cost_factor: 0.5,
-			base_cost_artifact_factor: 1,
 		}
 	},
 	damage_hero:{
@@ -4458,7 +4450,7 @@ var all_abilities = {
 		},
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.5,
+			base_cost_factor: 1,
 		},
 	},
 	desperate_wither:{
@@ -4623,7 +4615,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'destroy',
 			base_cost_factor: 0.8,
-			base_cost_artifact_factor: 0.4,
 		},
 	},
 	destroy_artifact:{
@@ -5055,7 +5046,6 @@ var all_abilities = {
 			base_cost_id: 'doom',
 			base_cost_factor: 1,
 			base_cost_spell_factor: 0.25,
-			base_cost_artifact_factor: 2,
 		},
 	},
 	doom_self:{
@@ -5140,7 +5130,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'doom',
 			base_cost_factor: 	0.75,
-			base_cost_artifact_factor: 1,
 			base_cost_hero_factor: 1,
 		},
 	},
@@ -5174,7 +5163,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'doom',
 			base_cost_factor: 	0.75,
-			base_cost_artifact_factor: 1.5,
 			base_cost_hero_factor: 1.5,
 		},
 	},
@@ -5701,9 +5689,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.4,
-			base_cost_artifact_factor: 0.6,
-			base_cost_spell_factor: 0.1,
+			base_cost_factor: 0.75/10,
+			base_cost_spell_factor: 1/4/10,
 		},
 	},
 	empower_all:{
@@ -5734,7 +5721,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 9,
+			base_cost_factor: 2,
+			base_cost_spell_factor: 3
 		},
 	},
 	empower_arrival:{
@@ -5769,7 +5757,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.5,
+			base_cost_factor: 1/4,
 		},
 	},
 	empower_arrivals:{
@@ -5803,9 +5791,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.1,
-			base_cost_hero_factor: 0.2,
-			base_cost_artifact_factor: 0.2,
+			base_cost_factor: 0.5/10,
+			base_cost_hero_factor: 1/10,
 		},
 	},
 	empower_creature:{
@@ -5835,7 +5822,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.4,
+			base_cost_factor: 1/10,
 		},
 	},
 	empower_hero:{
@@ -5863,8 +5850,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 1,
-			base_cost_spell_factor: 0.25,
+			base_cost_factor: 0.5,
+			base_cost_spell_factor: 0.5/4,
 		},
 	},
 	empower_imp:{
@@ -5991,7 +5978,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 2,
+			base_cost_factor: 0.75,
 		},
 	},
 	empower_rats:{
@@ -6022,7 +6009,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 5,
+			base_cost_factor: 0.75*2,
+			base_cost_spell_factor: 0.75*3,
 		},
 	},
 	empowered_by_allies:{
@@ -6063,8 +6051,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.5,
-			base_cost_hero_factor: 1.5,
+			base_cost_factor: 1,
+			base_cost_hero_factor: 1,
 		},
 	},
 	empowered_by_enemies:{
@@ -6093,7 +6081,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.5,
+			base_cost_factor: 1,
 		},
 	},
 	empowering_arrivals:{
@@ -6123,7 +6111,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.2,
+			base_cost_factor: 1/10,
 		},
 	},
 	empowering_arrivals_hv:{
@@ -6154,7 +6142,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.1,
+			base_cost_factor: 0.5/10,
 		},
 	},
 	empowering_deaths:{
@@ -6184,7 +6172,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.4,
+			base_cost_factor: 1/10,
 		},
 	},
 	empowering_fire:{
@@ -6228,7 +6216,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'empower',
 			base_cost_factor: 1,
-			base_cost_structure_factor: 1.5,
 		},
 		ability_level_cost_factors:{
 			burn: 				2,
@@ -6278,7 +6265,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'empower',
 			base_cost_factor: 1,
-			base_cost_structure_factor: 1.5,
 		},
 		ability_level_cost_factors:{
 			burn: 				2,
@@ -6345,9 +6331,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.4,
-			base_cost_spell_factor: 0.4,
-			base_cost_artifact_factor: 0.4,
+			base_cost_factor: 0.5,
 		},
 		ability_level_cost_factors:{
 			fortify: 		2,
@@ -6395,7 +6379,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'empower',
 			base_cost_factor: 1,
-			base_cost_structure_factor: 1.5,
+			base_cost_structure_factor: 2,
 		},
 	},
 	encourage_creature:{
@@ -6425,8 +6409,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 1,
-			base_cost_hero_factor: 0.75,
+			base_cost_factor: 0.5,
+			base_cost_hero_factor: 0.4,
 		},
 	},
 	enemy_draws_cards:{
@@ -6700,7 +6684,7 @@ var all_abilities = {
 		},
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.4,
+			base_cost_factor: 1/10,
 		},
 		/*cost_factor: 			'health',
 		cost_factor_factor: 	0.5,*/
@@ -6733,7 +6717,7 @@ var all_abilities = {
 		},
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.1,
+			base_cost_factor: 0.5/10,
 		},
 	},
 	eternal:		{
@@ -7863,7 +7847,7 @@ var all_abilities = {
 		max_level: 			1,
 	},
 	first_aid:{
-		description: 	'When an ally creature unit receives damages, this heals that ally by {LEVEL}. Can be used once each round.',
+		description: 	'When an ally creature receives damages, this heals that ally by {LEVEL}. Can be used once each round.',
 		proc: 			'ally_takes_damage',
 		cannot_proc_while_stunned: true,
 		delay: 			1,
@@ -7871,7 +7855,7 @@ var all_abilities = {
 		hero_tactics: 	['type_creature','plated_ability','fortify_ability'],
 		targets:	{
 			0:{
-				target: 		'unit',
+				target: 		'unit_or_hero',
 				target_amount: 	1,
 				not_types: 		['object','structure'],
 				position: 		'random',
@@ -7892,8 +7876,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.8,
-			base_cost_artifact_factor: 0.4,
+			base_cost_factor: 0.9,
 			base_cost_structure_factor: 0.4,
 			base_cost_spell_factor: 0.2,
 		},
@@ -8300,9 +8283,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'fortify',
-			base_cost_factor: 0.5,
+			base_cost_factor: 1,
 			base_cost_hero_factor: 1,
-			base_cost_artifact_factor: 1,
 		}
 	},
 	fortify_hero:{
@@ -8916,7 +8898,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: -0.3,
+			base_cost_factor: -0.15,
 		},
 		cost_adjustment: 8,
 	},
@@ -9311,7 +9293,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'healing',
 			base_cost_factor: 1,
-			base_cost_artifact_factor: 0.5,
 			base_cost_structure_factor: 0.5,
 			base_cost_spell_factor: 0.25,
 		},
@@ -10730,7 +10711,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.2,
+			base_cost_factor: 1/10,
 		},
 	},
 	mob_mentality_hv:{
@@ -10760,8 +10741,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 1,
-			base_cost_hero_factor: 0.75,
+			base_cost_factor: 0.5,
+			base_cost_hero_factor: 0.4,
 		},
 	},
 	morph_ally:{
@@ -11506,7 +11487,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'poison',
 			base_cost_factor: 	0.75,
-			base_cost_artifact_factor: 1.5,
 			base_cost_hero_factor: 1.5,
 		},
 		level_cost_cum: 	true,
@@ -12080,7 +12060,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 1,
+			base_cost_factor: 0.5,
 		},
 	},
 	reap:{
@@ -12857,7 +12837,7 @@ var all_abilities = {
 		},
 	},
 	repair:{
-		description: 	'Repairs a random non-plant damaged ally structure {LEVEL} time(s).',
+		description: 	'Repairs a random damaged ally structure {LEVEL} time(s).',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		hero_tactics: 	['type_structure'],
@@ -12867,7 +12847,7 @@ var all_abilities = {
 				target: 		'unit_or_hero',
 				target_amount: 	1,
 				not_types: 		['object','creature'],
-				not_subtypes: 	['plant'],
+				//not_subtypes: 	['plant'],
 				position: 		'random',
 				min_hp: 		1,
 				side: 			'ally',
@@ -13733,7 +13713,7 @@ var all_abilities = {
 		},
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.05,
+			base_cost_factor: 0.5/10,
 		},
 	},
 	scavange_hv:{
@@ -13764,7 +13744,7 @@ var all_abilities = {
 		},
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.5,
+			base_cost_factor: 0.25,
 		},
 	},
 	seek_creature:{
@@ -14050,7 +14030,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'arcane_bolt',
 			base_cost_factor: 	0.2,
-			base_cost_artifact_factor: 0.4,
 		},
 		average_hits: 	1,
 	},
@@ -14440,8 +14419,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 	'empower',
-			base_cost_factor: 4,
-			base_cost_spell_factor: 1
+			base_cost_factor: 1,
+			base_cost_spell_factor: 1/2,
 		},
 		cost_adjustment: 1.5,
 	},
@@ -15106,7 +15085,6 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'strike',
 			base_cost_factor: 	0.2,
-			base_cost_artifact_factor: 0.4,
 		},
 		average_hits: 	1,
 	},
@@ -15974,8 +15952,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 			'empower',
-			base_cost_factor: 		1,
-			base_cost_spell_factor: 	0.25,
+			base_cost_factor: 		0.5,
+			base_cost_spell_factor: 	0.5/4,
 		},
 		cost_adjustment: 3,
 	},
