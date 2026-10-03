@@ -35,7 +35,8 @@ var edit_mode = 'view';
 
 function show_deck_edit(){
 	show_available_cards(showing_heroes);
-	show_current_deck();
+	//show_current_deck();
+	show_current_deck_2();
 	$('.card_count').hide();
 	update_edit_view_slider();
 };
@@ -333,6 +334,47 @@ function show_current_deck(){
 				$('#content_deck_edit .current_deck').append('<div onclick="remove_card_from_deck(\'' + card_id + '\')" class="filtered_' + card_filtered + '">' + parsed_card + '</div>');
 			}
 		}*/
+	});
+	/*var deck_card_count = count_current_deck_cards(current_deck);
+	var deck_fill = (deck_card_count / max_deck_size) * 100;
+	if(deck_card_count < max_deck_size)
+	{
+		$('.card_count').html('<div class="fill_bar" style="height:' + deck_fill + '%;"></div><span><br/>' + deck_card_count + '<br/><span style="color:#555">' + max_deck_size + '</span></span>');
+	}
+	else
+	{
+		$('.card_count').html('<div class="fill_bar" style="height:' + deck_fill + '%;"></div><span style="color:#555"><br/>' + deck_card_count + '<br/>' + max_deck_size + '</span>');
+	}*/
+}
+
+function show_current_deck_2(){
+	if(gamedata['decks'][gamedata['current_deck']] == undefined){gamedata['current_deck'] = 0;}
+	var current_deck = true_copyobject(gamedata['decks'][gamedata['current_deck']]);
+	var available_cards_to_pick = get_pickable_deck_cards(1, gamedata['decks'][gamedata['current_deck']]['hero']);
+	$.each(available_cards_to_pick, function(card_to_pick_id, got_card){
+		current_deck[card_to_pick_id] = 1;
+	});
+	current_deck = sortObj(current_deck);
+
+	$('#content_deck_edit .current_deck').html('');
+	$('#content_deck_edit .current_hero').html('');
+
+	var deck_color = 'colorless';
+
+	eachoa(current_deck, function(card_id, amount){
+		if(card_id == 'hero')
+		{
+			var parsed_card = parse_card(amount, undefined, true);
+			$('#content_deck_edit .current_hero').append('<div>' + parsed_card + '</div>');
+		}
+		if(card_id != 'hero'){
+
+				var parsed_card = parse_card(card_id, undefined);
+				var card_filtered = false;
+				if(gamedata['owned_cards'][card_id] == undefined){card_filtered = true;}
+				$('#content_deck_edit .current_deck').append('<div onclick="remove_card_from_deck(\'' + card_id + '\')" class="filtered_' + card_filtered + '">' + parsed_card + '</div>');
+			
+		}
 	});
 	/*var deck_card_count = count_current_deck_cards(current_deck);
 	var deck_fill = (deck_card_count / max_deck_size) * 100;

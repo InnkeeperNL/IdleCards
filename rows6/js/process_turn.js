@@ -443,7 +443,8 @@ function process_next_unit(proc, do_not_process_effects){
 						{
 							deck_theme = all_available_cards[enemy_hero]['hero_version']['theme'];
 						}
-						var enemy_card_id = get_random_card('any', undefined, undefined, undefined, 0, deck_theme, undefined, not_types, not_theme);
+						//var enemy_card_id = get_random_card('any', undefined, undefined, undefined, 0, deck_theme, undefined, not_types, not_theme);
+						var enemy_card_id = get_random_key_from_object(get_pickable_deck_cards(1));
 						add_card_to_combat_deck(1, enemy_card_id, 'deck');
 						draw_card(1);
 						process_next_unit('combat_start',true);
@@ -492,16 +493,9 @@ function process_next_unit(proc, do_not_process_effects){
 	total_timeout += process_time;
 }
 
-
-
-function show_pick_new_deck_card(){
-	var pickable_deck_cards = {};
-	eachoa(gamedata['owned_cards'], function(card_id, owned_amount){
-		if(all_available_cards[card_id]['type'] == 'creature' || all_available_cards[card_id]['type'] == 'structure' || all_available_cards[card_id]['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'spell')
-		{
-			pickable_deck_cards[card_id] = true;
-		}
-	});
+function show_pick_new_deck_card(hero_side){
+	if(hero_side == undefined){hero_side = 2;}
+	var pickable_deck_cards = get_pickable_deck_cards(hero_side);
 	var new_deck_card_options = [];
 	var parsed_new_deck_cards = '<div class="new_deck_card_container">';
 	for (var deck_card_option_counter = 0; deck_card_option_counter <3; deck_card_option_counter++) {
@@ -517,6 +511,46 @@ function show_pick_new_deck_card(){
 
 	parsed_new_deck_cards	+= '</div>';
 	$('.battle_container').append(parsed_new_deck_cards);
+}
+
+function get_pickable_deck_cards(hero_side, fixed_hero){
+	if(hero_side == undefined){hero_side = 2;}
+	if(fixed_hero == undefined)
+	{
+		fixed_hero = battle_info['combat_units'][hero_side]['card_type'];
+	}
+	var current_hero = fixed_hero;
+	var current_theme = all_available_cards[current_hero]['hero_version']['theme'];
+	var current_not_theme = all_available_cards[current_hero]['hero_version']['not_theme'];
+	
+	var pickable_deck_cards = {};
+	if(hero_side == 2)
+	{
+		eachoa(gamedata['owned_cards'], function(card_id, owned_amount){
+			if(all_available_cards[card_id]['type'] == 'creature' || all_available_cards[card_id]['type'] == 'structure' || all_available_cards[card_id]['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'spell')
+			{
+				var current_needs_theme = all_available_cards[card_id]['needs_theme'];
+				if(match_array_values(all_available_cards[card_id]['theme'], current_theme) && (current_not_theme == undefined || match_array_values(all_available_cards[card_id]['not_theme'], current_not_theme) == false) && (current_needs_theme == undefined || match_array_values(current_theme, current_needs_theme) == true))
+				{
+					pickable_deck_cards[card_id] = 1;
+				}
+			}
+		});
+	}
+	else
+	{
+		eachoa(all_available_cards, function(card_id, owned_amount){
+			if(all_available_cards[card_id]['type'] == 'creature' || all_available_cards[card_id]['type'] == 'structure' || all_available_cards[card_id]['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'spell')
+			{
+				var current_needs_theme = all_available_cards[card_id]['needs_theme'];
+				if(match_array_values(all_available_cards[card_id]['theme'], current_theme) && (current_not_theme == undefined || match_array_values(all_available_cards[card_id]['not_theme'], current_not_theme) == false) && (current_needs_theme == undefined || match_array_values(current_theme, current_needs_theme) == true))
+				{
+					pickable_deck_cards[card_id] = true;
+				}
+			}
+		});
+	}
+	return pickable_deck_cards;
 }
 
 function choose_pickable_deck_card(card_id){

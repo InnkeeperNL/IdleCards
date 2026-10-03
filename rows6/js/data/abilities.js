@@ -9774,8 +9774,8 @@ var all_abilities = {
 		level_cost: 	2,
 		level_cost_artifact: 1,
 	},
-	house_archer:{
-		description: 	'Consumes an archer to turn into an archer tower.',
+	form_tower:{
+		description: 	'Consumes a random archer, mage or witch to turn into an archer, arcane or dark tower.',
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
@@ -9784,7 +9784,7 @@ var all_abilities = {
 				position: 		'random',
 				not_self: 		true,
 				min_hp: 		1,
-				card_ids: 		['archer'],
+				subtypes: 		['archer'],
 				side: 			'ally'
 			},
 		},
@@ -9812,6 +9812,154 @@ var all_abilities = {
 							subtypes: 		['fusion'],
 							card_id: 		'from_list',
 							card_ids: 		{archer_tower: true},
+							amount: 		1
+						},
+						1:{
+							type: 				'go_again',
+							subtypes: 			['go_again'],
+							amount: 			1,
+						}
+					},
+				}
+			},
+		},
+		on_failure:{
+			targets:	{
+				0:{
+					target: 		'unit',
+					target_amount: 	1,
+					position: 		'random',
+					not_self: 		true,
+					min_hp: 		1,
+					subtypes: 		['mage'],
+					side: 			'ally'
+				},
+			},
+			effects:{
+				0:{
+					type: 			'pull_to_self',
+					amount: 		1,
+				},
+				1:{
+					type: 			'disappear',
+					amount: 		1,
+					on_success:{
+						targets:{
+							0:{
+								target: 		'unit',
+								target_amount: 	1,
+								position: 		'self',
+								min_hp: 		1,
+								side: 			'ally',
+							},
+						},
+						effects:{
+							0:{
+								type: 			'turn_into',
+								subtypes: 		['fusion'],
+								card_id: 		'from_list',
+								card_ids: 		{arcane_tower: true},
+								amount: 		1
+							},
+							1:{
+								type: 				'go_again',
+								subtypes: 			['go_again'],
+								amount: 			1,
+							}
+						},
+					}
+				},
+			},
+			on_failure:{
+				targets:	{
+					0:{
+						target: 		'unit',
+						target_amount: 	1,
+						position: 		'random',
+						not_self: 		true,
+						min_hp: 		1,
+						subtypes: 		['witch'],
+						side: 			'ally'
+					},
+				},
+				effects:{
+					0:{
+						type: 			'pull_to_self',
+						amount: 		1,
+					},
+					1:{
+						type: 			'disappear',
+						amount: 		1,
+						on_success:{
+							targets:{
+								0:{
+									target: 		'unit',
+									target_amount: 	1,
+									position: 		'self',
+									min_hp: 		1,
+									side: 			'ally',
+								},
+							},
+							effects:{
+								0:{
+									type: 			'turn_into',
+									subtypes: 		['fusion'],
+									card_id: 		'from_list',
+									card_ids: 		{dark_tower: true},
+									amount: 		1
+								},
+								1:{
+									type: 				'go_again',
+									subtypes: 			['go_again'],
+									amount: 			1,
+								}
+							},
+						}
+					},
+				},
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
+	},
+	house_mage:{
+		description: 	'Consumes a random mage to turn into an arcane tower.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_self: 		true,
+				min_hp: 		1,
+				subtypes: 		['mage'],
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'pull_to_self',
+				amount: 		1,
+			},
+			1:{
+				type: 			'disappear',
+				amount: 		1,
+				on_success:{
+					targets:{
+						0:{
+							target: 		'unit',
+							target_amount: 	1,
+							position: 		'self',
+							min_hp: 		1,
+							side: 			'ally',
+						},
+					},
+					effects:{
+						0:{
+							type: 			'turn_into',
+							subtypes: 		['fusion'],
+							card_id: 		'from_list',
+							card_ids: 		{arcane_tower: true},
 							amount: 		1
 						},
 						1:{
@@ -10018,6 +10166,58 @@ var all_abilities = {
 			base_cost_factor: 	0.1,
 			base_cost_spell_factor: 0.05,
 		},
+	},
+	join_walls:{
+		description: 	'Consumes aanother stone wall to turn into a stone fort.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_self: 		true,
+				min_hp: 		1,
+				card_ids: 		['stone_wall'],
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'pull_to_self',
+				amount: 		1,
+			},
+			1:{
+				type: 			'disappear',
+				amount: 		1,
+				on_success:{
+					targets:{
+						0:{
+							target: 		'unit',
+							target_amount: 	1,
+							position: 		'self',
+							min_hp: 		1,
+							side: 			'ally',
+						},
+					},
+					effects:{
+						0:{
+							type: 			'turn_into',
+							subtypes: 		['fusion'],
+							card_id: 		'from_list',
+							card_ids: 		{stone_fort: true},
+							amount: 		1
+						},
+						1:{
+							type: 				'go_again',
+							subtypes: 			['go_again'],
+							amount: 			1,
+						}
+					},
+				}
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
 	},
 	jolt:{
 		description: 	'A random ally creature unit that has power either gains or looses {LEVEL} temporary power.',
