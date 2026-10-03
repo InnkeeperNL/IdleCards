@@ -9775,7 +9775,7 @@ var all_abilities = {
 		level_cost_artifact: 1,
 	},
 	form_tower:{
-		description: 	'Consumes a random archer, mage or witch to turn into an archer, arcane or dark tower.',
+		description: 	'Consumes a random archer, mage or witch creature unit to turn into an archer, arcane or dark tower.',
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
@@ -9784,6 +9784,7 @@ var all_abilities = {
 				position: 		'random',
 				not_self: 		true,
 				min_hp: 		1,
+				not_types: 		['object','structure'],
 				subtypes: 		['archer'],
 				side: 			'ally'
 			},
@@ -9831,6 +9832,7 @@ var all_abilities = {
 					position: 		'random',
 					not_self: 		true,
 					min_hp: 		1,
+					not_types: 		['object','structure'],
 					subtypes: 		['mage'],
 					side: 			'ally'
 				},
@@ -9878,6 +9880,7 @@ var all_abilities = {
 						position: 		'random',
 						not_self: 		true,
 						min_hp: 		1,
+						not_types: 		['object','structure'],
 						subtypes: 		['witch'],
 						side: 			'ally'
 					},
