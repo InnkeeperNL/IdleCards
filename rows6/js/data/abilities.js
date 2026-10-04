@@ -15671,11 +15671,11 @@ var all_abilities = {
 		cost_factor: 		'health',
 	},
 	summon_artifact:{
-		description: 	'Has a {LEVEL}% chance to summon 1 artifact.',
+		description: 	'Has a {LEVEL}% chance to add an artifact card to your hand. If your hand is full, it will add it to your deck instead.',
 		proc_chance: 	1,
 		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
-		max_ally_artifacts: 4,
+		//max_ally_artifacts: 4,
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -15685,10 +15685,13 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
-				type: 		'summon_unit',
-				subtypes: 	['summon_ally','summon_artifact'],
+				projectile: 		'book',
+				projectile_target: 	'true_deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_artifact','add_artifact_card_to_deck'],
 				card_id: 	'random',
 				card_type: 	'artifact',
+				card_status: 	'hand',
 				amount: 	1
 			}
 		},

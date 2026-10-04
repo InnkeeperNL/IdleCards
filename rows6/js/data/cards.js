@@ -243,7 +243,7 @@ var all_available_cards = {
 		subtypes: 			['wall','mage'],
 		color: 				['colorless'],
 		theme: 				[],
-		needs_theme: 		['gain_mana_ability'],
+		needs_theme: 		[],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -482,7 +482,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, doom: 1, hasten: 1},
 		hero_version: 			{
-			theme: 				['subtype_clerk','doom_ability','add_creature_card_to_deck_ability'],
+			theme: 				['subtype_clerk','doom_ability','summon_ally_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1874,7 +1874,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{grave_power: 7, strike: 1, summon_artifact: 10},
 		hero_version: 			{
-			theme: 				['add_creature_card_to_deck_ability','add_creature_card_to_deck_ability','heal_hero_ability','ally_creature_death_proc_ability'],
+			theme: 				['summon_ally_ability','summon_ally_ability','heal_hero_ability','ally_creature_death_proc_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -2220,8 +2220,8 @@ var all_available_cards = {
 		type: 				'creature',
 		subtypes: 			['animal','insect'],
 		color: 				['colorless'],
-		theme: 				['type_spell'],
-		needs_theme: 		['type_spell'],
+		theme: 				['echo_ability'],
+		needs_theme: 		['echo_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -2231,7 +2231,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{strike: 1, spellrush: 1, final_hasten: 4},
 		hero_version: 			{
-			theme: 				['summon_ally_ability','subtype_insect','echo_ability','any_spell_card_played_proc_ability','draw_cards_ability'],
+			theme: 				['summon_ally_ability','subtype_insect','echo_ability','any_spell_card_played_proc_ability','draw_cards_ability','hasten_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -2256,7 +2256,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{spell_bolt: 1, healing_spells: 1, cleansing_spells: 2},
 		hero_version: 			{
-			theme: 				['type_spell','echo_ability','any_spell_card_played_proc_ability'],
+			theme: 				['type_spell','echo_ability','any_spell_card_played_proc_ability','hasten_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -2279,7 +2279,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{draw: 1, regenerate_ally: 1, regrows: 10},
 		hero_version: 			{
-			theme: 				['add_creature_card_to_deck_ability','grant_regeneration_ability','hasten_ability'],
+			theme: 				['summon_ally_ability','grant_regeneration_ability','hasten_ability'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -2322,7 +2322,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{cleansing_spells: 1, spellrush: 1},
 		hero_version: 			{
-			theme: 				['summon_ally_ability','echo_ability','any_spell_card_played_proc_ability','draw_cards_ability'],
+			theme: 				['summon_ally_ability','echo_ability','any_spell_card_played_proc_ability','draw_cards_ability','hasten_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -2427,7 +2427,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, demolish: 1, scavange: 5},
 		hero_version: 			{
-			theme: 				['subtype_villager','type_structure','demolish_ability'],
+			theme: 				['subtype_villager','type_structure','demolish_ability','fragile_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2513,7 +2513,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{summon_artifact: 10},
+		abilities: 			{summon_artifact: 25, fragile: 10},
 		quote: '\"Time to get scavenging!\"',
 	},
 	plasma_strike:{
@@ -6600,16 +6600,21 @@ function get_base_material_needs_recipes(base_material_value, base_material_valu
 	}
 }
 
-function check_all_pickable_deck_cards(min_amount){
+function check_all_pickable_deck_cards(min_amount, look_for_card){
 	var all_chosen_cards = {};
 	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['hero_version'] != undefined)
 		{
 			var possible_picks = get_pickable_deck_cards(1, card_id);
-			eachoa(possible_picks, function(card_id, card_pickable){
-				if(all_chosen_cards[card_id] == undefined){all_chosen_cards[card_id] = 0;}
-				all_chosen_cards[card_id]++;
+			eachoa(possible_picks, function(card_id_2, card_pickable){
+				if(all_chosen_cards[card_id_2] == undefined){all_chosen_cards[card_id_2] = 0;}
+				all_chosen_cards[card_id_2]++;
+				if(look_for_card != undefined && look_for_card == card_id_2)
+				{
+					console.log(card_id + ' uses ' + card_id_2);
+				}
 			});
+
 			var pick_count = count_object(possible_picks);
 			if(pick_count < min_amount)
 			{

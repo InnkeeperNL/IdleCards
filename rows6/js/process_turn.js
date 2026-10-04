@@ -531,7 +531,7 @@ function get_pickable_deck_cards(hero_side, fixed_hero, show_picking){
 				if(all_available_cards[card_id]['type'] == 'creature' || all_available_cards[card_id]['type'] == 'structure' || all_available_cards[card_id]['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'spell')
 				{
 					var current_needs_theme = all_available_cards[card_id]['needs_theme'];
-					if(match_array_values(all_available_cards[card_id]['theme'], 'any') || (match_array_values(all_available_cards[card_id]['theme'], current_theme) > 0 && (current_not_theme == undefined || match_array_values(all_available_cards[card_id]['theme'], current_not_theme) == false) && (count_object(current_needs_theme) > 0 || match_array_values(current_theme, current_needs_theme) == 0)))
+					if(match_array_values(all_available_cards[card_id]['theme'], 'any') || (match_array_values(all_available_cards[card_id]['theme'], current_theme) > 0 && (current_not_theme == undefined || match_array_values(all_available_cards[card_id]['theme'], current_not_theme) == false) && (count_object(current_needs_theme) == 0 || match_array_values(current_theme, current_needs_theme) > 0)))
 					{
 						pickable_deck_cards[card_id] = 1;
 					}
@@ -546,9 +546,10 @@ function get_pickable_deck_cards(hero_side, fixed_hero, show_picking){
 			{
 				if(all_available_cards[card_id]['type'] == 'creature' || all_available_cards[card_id]['type'] == 'structure' || all_available_cards[card_id]['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'spell')
 				{
+					var current_needs_theme = all_available_cards[card_id]['needs_theme'];
 					if(show_picking != undefined && show_picking == card_id)
 					{
-						var current_needs_theme = all_available_cards[card_id]['needs_theme'];
+						
 						console.log(card_id);
 						console.log('theme: ' + match_array_values(all_available_cards[card_id]['theme'], current_theme));
 						console.log('not theme: ' + match_array_values(all_available_cards[card_id]['theme'], current_not_theme));
@@ -560,7 +561,7 @@ function get_pickable_deck_cards(hero_side, fixed_hero, show_picking){
 						
 					}
 					
-					if(match_array_values(all_available_cards[card_id]['theme'], 'any') || (match_array_values(all_available_cards[card_id]['theme'], current_theme) > 0 && (current_not_theme == undefined || match_array_values(all_available_cards[card_id]['theme'], current_not_theme) == false) && (count_object(current_needs_theme) > 0 || match_array_values(current_theme, current_needs_theme) == 0)))
+					if(match_array_values(all_available_cards[card_id]['theme'], 'any') || (match_array_values(all_available_cards[card_id]['theme'], current_theme) > 0 && (current_not_theme == undefined || match_array_values(all_available_cards[card_id]['theme'], current_not_theme) == false) && (count_object(current_needs_theme) == 0 || match_array_values(current_theme, current_needs_theme) > 0)))
 					{
 						pickable_deck_cards[card_id] = true;
 					}
