@@ -7491,7 +7491,7 @@ var all_abilities = {
 		proc: 			'own_death',
 		proc_while_dead: true,
 		scales: 		true,
-		do_not_pause_between: true,
+		//do_not_pause_between: true,
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
