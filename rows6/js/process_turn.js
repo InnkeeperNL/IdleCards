@@ -494,23 +494,26 @@ function process_next_unit(proc, do_not_process_effects){
 }
 
 function show_pick_new_deck_card(hero_side){
-	if(hero_side == undefined){hero_side = 2;}
-	var pickable_deck_cards = get_pickable_deck_cards(hero_side);
-	var new_deck_card_options = [];
-	var parsed_new_deck_cards = '<div class="new_deck_card_container">';
-	for (var deck_card_option_counter = 0; deck_card_option_counter <3; deck_card_option_counter++) {
-		//var chosen_deck_card_option = get_random_card('any', undefined, undefined, undefined, undefined, undefined, new_deck_card_options, undefined, undefined, undefined);
-		if(count_object(pickable_deck_cards) > 0)
-		{
-			var chosen_deck_card_option = get_random_key_from_object(pickable_deck_cards);
-			delete pickable_deck_cards[chosen_deck_card_option];
-			new_deck_card_options[count_object[new_deck_card_options]] = chosen_deck_card_option;
-			parsed_new_deck_cards += '<div class="pickable_deck_card single_current_reward"><span onclick="show_card_details(\'' + chosen_deck_card_option + '\')">' + parse_card(chosen_deck_card_option) + '</span><div class="menu_button slim pick_reward_button" onclick="choose_pickable_deck_card(\'' + chosen_deck_card_option + '\')">PICK</div></div>';
+	if(battle_info['combat_units'][1]['current_health'] > 0)
+	{
+		if(hero_side == undefined){hero_side = 2;}
+		var pickable_deck_cards = get_pickable_deck_cards(hero_side);
+		var new_deck_card_options = [];
+		var parsed_new_deck_cards = '<div class="new_deck_card_container">';
+		for (var deck_card_option_counter = 0; deck_card_option_counter <3; deck_card_option_counter++) {
+			//var chosen_deck_card_option = get_random_card('any', undefined, undefined, undefined, undefined, undefined, new_deck_card_options, undefined, undefined, undefined);
+			if(count_object(pickable_deck_cards) > 0)
+			{
+				var chosen_deck_card_option = get_random_key_from_object(pickable_deck_cards);
+				delete pickable_deck_cards[chosen_deck_card_option];
+				new_deck_card_options[count_object[new_deck_card_options]] = chosen_deck_card_option;
+				parsed_new_deck_cards += '<div class="pickable_deck_card single_current_reward"><span onclick="show_card_details(\'' + chosen_deck_card_option + '\')">' + parse_card(chosen_deck_card_option) + '</span><div class="menu_button slim pick_reward_button" onclick="choose_pickable_deck_card(\'' + chosen_deck_card_option + '\')">PICK</div></div>';
+			}
 		}
-	}
 
-	parsed_new_deck_cards	+= '</div>';
-	$('.battle_container').append(parsed_new_deck_cards);
+		parsed_new_deck_cards	+= '</div>';
+		$('.battle_container').append(parsed_new_deck_cards);
+	}
 }
 
 function get_pickable_deck_cards(hero_side, fixed_hero, show_picking){
