@@ -514,6 +514,10 @@ function show_pick_new_deck_card(hero_side){
 		parsed_new_deck_cards	+= '</div>';
 		$('.battle_container').append(parsed_new_deck_cards);
 	}
+	else
+	{
+		process_next_unit('combat_start',true);
+	}
 }
 
 function get_pickable_deck_cards(hero_side, fixed_hero, show_picking){
