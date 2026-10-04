@@ -1854,6 +1854,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'burn',
 			base_cost_factor: 0.1,
+			base_cost_artifact_factor: 0.2,
 		},
 	},
 	burn_hv:		{
@@ -7057,14 +7058,15 @@ var all_abilities = {
 		level_cost_spell: 	0.5,
 	},
 	final_burn_all:{
-		description: 	'When destroyed, applies {LEVEL} burn to all enemy units.{BURN}',
+		description: 	'When destroyed, applies {LEVEL} burn to all enemies.{BURN}',
 		proc: 			'own_death',
 		proc_while_dead: true,
 		scales: 		true,
+		do_not_pause_between: true,
 		targets:	{
 			0:{
-				target: 	'unit',
-				target_amount: 5,
+				target: 	'unit_or_hero',
+				target_amount: 6,
 				position: 	'random',
 				min_hp: 	1,
 				side: 		'enemy'
@@ -7081,8 +7083,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
-		level_cost_spell: 	1.5,
+		base_cost:{
+			base_cost_id: 'burn',
+			base_cost_factor: 4/4,
+		},
+		level_cost_cum: true,
 	},
 	final_curse:{
 		description: 	'When destroyed, applies {LEVEL} curse to a random enemy unit or hero.{CURSE}',
@@ -7117,6 +7122,38 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'curse',
 			base_cost_factor: 0.5,
+		},
+		ability_level_cost_factors:{
+			resurrect: 		2,
+		},
+	},
+	final_curse_all:{
+		description: 	'When destroyed, applies {LEVEL} curse to all enemies.{CURSE}',
+		proc: 			'own_death',
+		proc_while_dead: true,
+		do_not_pause_between: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	6,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'curse',
+				type: 			'apply_curse',
+				subtypes: 		['magical','curse'],
+				amount: 		'ability_level',
+				increase_timeout: 500,
+			}
+		},
+		animation: 	'combat_zoom',
+		base_cost:{
+			base_cost_id: 'curse',
+			base_cost_factor: 3/4,
 		},
 		ability_level_cost_factors:{
 			resurrect: 		2,
@@ -7336,6 +7373,37 @@ var all_abilities = {
 			resurrect: 		2,
 		},
 	},
+	final_poison_all:{
+		description: 	'When destroyed, applies {LEVEL} poison to all enemies.{POISON}',
+		proc: 			'own_death',
+		proc_while_dead: true,
+		scales: 		true,
+		do_not_pause_between: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	6,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'apply_poison',
+				projectile: 	'poison',
+				subtypes: 		['poison'],
+				amount: 		'ability_level'
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'poison',
+			base_cost_factor: 3/4,
+		},
+		level_cost_cum: true,
+	},
 	final_restore:{
 		description: 	'When destroyed, heals your hero by {LEVEL}.',
 		proc: 			'own_death',
@@ -7417,6 +7485,36 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	1,
+	},
+	final_stun_all:{
+		description: 	'When destroyed, stuns all enemies.',
+		proc: 			'own_death',
+		proc_while_dead: true,
+		scales: 		true,
+		do_not_pause_between: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	6,
+				position: 		'random',
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'max'},
+				min_hp: 		1,
+				side: 			'enemy'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'stun',
+				type: 		'apply_stun',
+				subtypes: 	['stun'],
+				amount: 	1	
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 	'stun',
+			base_cost_factor: 3,
+		},
 	},
 	fire_aura:{
 		description: 	'Deals {LEVEL} magical fire damage to any enemy unit or hero that deals melee damage to it.',
@@ -8367,7 +8465,7 @@ var all_abilities = {
 		},
 		animation: 		'combat_zoom',
 		level_cost: 	-0.01,
-		level_cost_artifact: 	-0.08,
+		level_cost_artifact: 	-0.05,
 		cost_factor: 	'full',
 	},
 	fragile_if_empty:{
@@ -12498,7 +12596,7 @@ var all_abilities = {
 		level_cost: 		0.8,
 	},
 	reclaim_spell:{
-		description: 	'Returns up to {LEVEL} spell card(s) in your grave to your deck.',
+		description: 	'Returns up to {LEVEL} spell card(s) in your grave to your hand. Will move it to your deck if you hand is full.',
 		cannot_proc_while_stunned: true,
 		reduce_skill_after_use: 	'reclaim_spell',
 		proc_amount: 	'ability_level',
@@ -12517,17 +12615,16 @@ var all_abilities = {
 				projectile: 		'book',
 				projectile_target: 	'true_deck',
 				type: 				'set_status',
-				subtypes: 			['move_ally_to_deck_from_grave','move_ally_to_deck','deck_control','reclaim'],
-				new_status: 		'deck',
+				subtypes: 			['move_ally_to_hand_from_grave','move_ally_to_hand','deck_control','reclaim'],
+				new_status: 		'hand',
 				side: 				'ally',
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		2,
-		level_cost_spell: 	0.5,
-		level_cost_artifact: 1,
-		ability_level_cost_factors:{
-			echo: 		2,
+		base_cost:{
+			base_cost_id: 		'draw',
+			base_cost_factor: 	1,
+			base_cost_artifact_factor: 0.5,
 		},
 	},
 	reclaim_spells:{

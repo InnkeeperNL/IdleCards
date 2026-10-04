@@ -526,12 +526,15 @@ function get_pickable_deck_cards(hero_side, fixed_hero, show_picking){
 	if(hero_side == 2)
 	{
 		eachoa(gamedata['owned_cards'], function(card_id, owned_amount){
-			if(all_available_cards[card_id]['type'] == 'creature' || all_available_cards[card_id]['type'] == 'structure' || all_available_cards[card_id]['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'spell')
+			if(all_available_cards[card_id]['pick_chance'] > 0)
 			{
-				var current_needs_theme = all_available_cards[card_id]['needs_theme'];
-				if(match_array_values(all_available_cards[card_id]['theme'], 'any') || (match_array_values(all_available_cards[card_id]['theme'], current_theme) > 0 && (current_not_theme == undefined || match_array_values(all_available_cards[card_id]['theme'], current_not_theme) == false) && (count_object(current_needs_theme) > 0 || match_array_values(current_theme, current_needs_theme) == 0)))
+				if(all_available_cards[card_id]['type'] == 'creature' || all_available_cards[card_id]['type'] == 'structure' || all_available_cards[card_id]['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'spell')
 				{
-					pickable_deck_cards[card_id] = 1;
+					var current_needs_theme = all_available_cards[card_id]['needs_theme'];
+					if(match_array_values(all_available_cards[card_id]['theme'], 'any') || (match_array_values(all_available_cards[card_id]['theme'], current_theme) > 0 && (current_not_theme == undefined || match_array_values(all_available_cards[card_id]['theme'], current_not_theme) == false) && (count_object(current_needs_theme) > 0 || match_array_values(current_theme, current_needs_theme) == 0)))
+					{
+						pickable_deck_cards[card_id] = 1;
+					}
 				}
 			}
 		});
@@ -539,25 +542,28 @@ function get_pickable_deck_cards(hero_side, fixed_hero, show_picking){
 	else
 	{
 		eachoa(all_available_cards, function(card_id, owned_amount){
-			if(all_available_cards[card_id]['type'] == 'creature' || all_available_cards[card_id]['type'] == 'structure' || all_available_cards[card_id]['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'spell')
+			if(all_available_cards[card_id]['pick_chance'] > 0)
 			{
-				if(show_picking != undefined && show_picking == card_id)
+				if(all_available_cards[card_id]['type'] == 'creature' || all_available_cards[card_id]['type'] == 'structure' || all_available_cards[card_id]['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'spell')
 				{
-					var current_needs_theme = all_available_cards[card_id]['needs_theme'];
-					console.log(card_id);
-					console.log('theme: ' + match_array_values(all_available_cards[card_id]['theme'], current_theme));
-					console.log('not theme: ' + match_array_values(all_available_cards[card_id]['theme'], current_not_theme));
-					if(count_object(current_needs_theme) > 0)
+					if(show_picking != undefined && show_picking == card_id)
 					{
-						console.log(current_needs_theme);
-						console.log('needs theme: ' + match_array_values(current_theme, current_needs_theme));
+						var current_needs_theme = all_available_cards[card_id]['needs_theme'];
+						console.log(card_id);
+						console.log('theme: ' + match_array_values(all_available_cards[card_id]['theme'], current_theme));
+						console.log('not theme: ' + match_array_values(all_available_cards[card_id]['theme'], current_not_theme));
+						if(count_object(current_needs_theme) > 0)
+						{
+							console.log(current_needs_theme);
+							console.log('needs theme: ' + match_array_values(current_theme, current_needs_theme));
+						}
+						
 					}
 					
-				}
-				
-				if(match_array_values(all_available_cards[card_id]['theme'], 'any') || (match_array_values(all_available_cards[card_id]['theme'], current_theme) > 0 && (current_not_theme == undefined || match_array_values(all_available_cards[card_id]['theme'], current_not_theme) == false) && (count_object(current_needs_theme) > 0 || match_array_values(current_theme, current_needs_theme) == 0)))
-				{
-					pickable_deck_cards[card_id] = true;
+					if(match_array_values(all_available_cards[card_id]['theme'], 'any') || (match_array_values(all_available_cards[card_id]['theme'], current_theme) > 0 && (current_not_theme == undefined || match_array_values(all_available_cards[card_id]['theme'], current_not_theme) == false) && (count_object(current_needs_theme) > 0 || match_array_values(current_theme, current_needs_theme) == 0)))
+					{
+						pickable_deck_cards[card_id] = true;
+					}
 				}
 			}
 		});

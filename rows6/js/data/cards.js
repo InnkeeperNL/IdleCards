@@ -27,7 +27,7 @@ var all_available_cards = {
 	adder:{
 		name: 				'adder',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','serpent'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -40,7 +40,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{strike: 1, venom: 2, evade: 3},
 		hero_version: 			{
-			theme: 				['subtype_animal','poison_ability'],
+			theme: 				['subtype_serpent','poison_ability','evade_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -99,7 +99,7 @@ var all_available_cards = {
 	apothecary:{
 		name: 				'apothecary',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','villager'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -380,7 +380,7 @@ var all_available_cards = {
 	armorer:{
 		name: 				'armorer',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','villager'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -469,7 +469,7 @@ var all_available_cards = {
 	astrologer:{
 		name: 				'astrologer',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','clerk'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -482,7 +482,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, doom: 1, hasten: 1},
 		hero_version: 			{
-			theme: 				['subtype_human','doom_ability','add_creature_card_to_deck_ability'],
+			theme: 				['subtype_clerk','doom_ability','add_creature_card_to_deck_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -585,7 +585,7 @@ var all_available_cards = {
 	baker:{
 		name: 				'baker',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','villager'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -598,7 +598,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, bolster_creature: 1},
 		hero_version: 			{
-			theme: 				['subtype_human','cleanse_ally_ability','active_healing_ability','bolster_ally_ability','fortify_ability'],
+			theme: 				['subtype_villager','cleanse_ally_ability','active_healing_ability','bolster_ally_ability','fortify_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -609,7 +609,7 @@ var all_available_cards = {
 	barber:{
 		name: 				'barber',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','villager'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -622,7 +622,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, cleanse: 1},
 		hero_version: 			{
-			theme: 				['subtype_human','cleanse_ally_ability','active_healing_ability','bolster_ally_ability','fortify_ability'],
+			theme: 				['subtype_villager','cleanse_ally_ability','active_healing_ability','bolster_ally_ability','fortify_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -646,7 +646,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, counter_spell: 1},
 		hero_version: 			{
-			theme: 				['type_spell','subtype_mage'],
+			theme: 				['type_spell','subtype_mage','subtype_clerk'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -675,7 +675,7 @@ var all_available_cards = {
 	beggar:{
 		name: 				'beggar',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','villager'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -698,7 +698,7 @@ var all_available_cards = {
 	bladesmith:{
 		name: 				'bladesmith',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','villager'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -722,7 +722,7 @@ var all_available_cards = {
 	blacksmith:{
 		name: 				'blacksmith',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','villager'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -825,7 +825,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
-		theme: 				['aoe'],
+		theme: 				['aoe','subtype_witch'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -842,7 +842,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
-		theme: 				['subtype_rogue'],
+		theme: 				['subtype_rogue','any'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -856,7 +856,7 @@ var all_available_cards = {
 	brewer:{
 		name: 				'brewer',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','villager'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -928,7 +928,7 @@ var all_available_cards = {
 	bull:{
 		name: 				'bull',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','hoofed'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -951,7 +951,7 @@ var all_available_cards = {
 	butcher:{
 		name: 				'butcher',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','villager'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -1027,7 +1027,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['food'],
 		color: 				['colorless'],
-		theme: 				['subtype_rat'],
+		theme: 				[],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -1044,7 +1044,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['tactic'],
 		color: 				['colorless'],
-		theme: 				['subtype_human','aoe','type_creature'],
+		theme: 				['aoe','type_creature'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -1059,7 +1059,7 @@ var all_available_cards = {
 	cow:{
 		name: 				'cow',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','hoofed'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -1137,6 +1137,23 @@ var all_available_cards = {
 		abilities: 			{empowering_fire_hv: 1},
 		quote: '\"Kings of the flame realm wear that.\"',
 		max_in_deck: 		1,
+	},
+	cursed_rune:{
+		name: 				'cursed rune',
+		type: 				'artifact',
+		subtypes: 			['rune'],
+		color: 				['colorless'],
+		theme: 				['subtype_witch'],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/cursed_rune.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{cursed_hero: 1, final_curse_all: 1, fragile: 10},
+		quote: '\"Are you sure you want to touch me?\"',
 	},
 	dance_of_the_dead:{
 		name: 				'dance of the dead',
@@ -1527,10 +1544,27 @@ var all_available_cards = {
 		},
 		quote: '\"Come warm yourself.\"',
 	},
+	fire_rune:{
+		name: 				'fire rune',
+		type: 				'artifact',
+		subtypes: 			['rune'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/fire_rune.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{final_burn_all: 2, fragile: 100},
+		quote: '\"Come and join the fire!\"',
+	},
 	fire_smith:{
 		name: 				'fire smith',
 		type: 				'creature',
-		subtypes: 			['human','mage'],
+		subtypes: 			['human','mage','villager'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -1727,7 +1761,7 @@ var all_available_cards = {
 		type: 				'spell',
 		subtypes: 			['tactic'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -1918,7 +1952,7 @@ var all_available_cards = {
 		type: 				'artifact',
 		subtypes: 			['plant'],
 		color: 				['colorless'],
-		theme: 				[],
+		theme: 				['any'],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -2013,7 +2047,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{heal: 1, cleanse: 1, fortify_ally: 1},
 		hero_version: 			{
-			theme: 				['subtype_human','heal_ally_ability','cleanse_ally_ability','fortify_ability'],
+			theme: 				['subtype_villager','heal_ally_ability','cleanse_ally_ability','fortify_ability'],
 			not_theme: 			['empower_hero_ability','type_structure','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -2299,7 +2333,7 @@ var all_available_cards = {
 	mason:{
 		name: 				'mason',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','villager'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -2393,7 +2427,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, demolish: 1, scavange: 5},
 		hero_version: 			{
-			theme: 				['subtype_human','type_structure','demolish_ability'],
+			theme: 				['subtype_villager','type_structure','demolish_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2445,9 +2479,9 @@ var all_available_cards = {
 	peasant:{
 		name: 				'peasant',
 		type: 				'creature',
-		subtypes: 			['human'],
+		subtypes: 			['human','villager'],
 		color: 				['colorless'],
-		theme: 				['any'],
+		theme: 				[],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -2457,7 +2491,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, mob_mentality: 5},
 		hero_version: 			{
-			theme: 				['subtype_human','move_ally_to_hand_ability','on_play_proc_ability'],
+			theme: 				['subtype_villager','move_ally_to_hand_ability','on_play_proc_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2831,6 +2865,40 @@ var all_available_cards = {
 		},
 		quote: '\"Deep in the jungle there are horrors you wish you had never seen.\"',
 	},
+	rune_of_power:{
+		name: 				'rune of power',
+		type: 				'artifact',
+		subtypes: 			['rune'],
+		color: 				['colorless'],
+		theme: 				['subtype_warrior'],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/rune_of_power.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{empower_arrival: 3},
+		quote: '\"It holds powerful energy.\"',
+	},
+	rune_of_vines:{
+		name: 				'rune of vines',
+		type: 				'artifact',
+		subtypes: 			['rune','plant'],
+		color: 				['colorless'],
+		theme: 				[],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/rune_of_vines.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{final_poison_all: 2, final_stun_all: 1, fragile: 100},
+		quote: '\"A dangerous rune indeed.\"',
+	},
 	runner:{
 		name: 				'runner',
 		type: 				'creature',
@@ -2917,7 +2985,7 @@ var all_available_cards = {
 	scorpion:{
 		name: 				'scorpion',
 		type: 				'creature',
-		subtypes: 			['animal'],
+		subtypes: 			['animal','arachnid'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -3147,10 +3215,27 @@ var all_available_cards = {
 		quote: '\"It is time to harvest!\"',
 		max_in_deck: 		1,
 	},
+	spell_blade:{
+		name: 				'spell blade',
+		type: 				'artifact',
+		subtypes: 			['rune','weapon'],
+		color: 				['colorless'],
+		theme: 				['subtype_mage','subtype_warrior'],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/spell_rune.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{empower_arrival: 2, reclaim_spell: 1},
+		quote: '\"A weapon that holds a spell.\"',
+	},
 	stone_fort:{
 		name: 				'stone fort',
 		type: 				'structure',
-		subtypes: 			['wall'],
+		subtypes: 			['wall','fortress'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
@@ -3174,7 +3259,7 @@ var all_available_cards = {
 	stone_wall:{
 		name: 				'stone wall',
 		type: 				'structure',
-		subtypes: 			['wall'],
+		subtypes: 			['wall','fortress'],
 		color: 				['colorless'],
 		theme: 				['any'],
 		craft_theme: 		[],
@@ -3589,7 +3674,7 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{thorns: 1},
 		hero_version: 			{
-			theme: 				['grant_regeneration_ability','stun_ability','run_away_ability','damaging_hero'],
+			theme: 				['run_away_ability','damaging_hero','subtype_plant','ally_hero_damaged_proc_ability'],
 			not_theme: 			['empower_hero_ability'],
 			power: 				false,
 			armor: 				0,
@@ -3614,7 +3699,7 @@ var all_available_cards = {
 		health: 			7,
 		abilities: 			{trap: 5, regenerates_hv: 6},
 		hero_version: 			{
-			theme: 				['grant_regeneration_ability','stun_ability','run_away_ability'],
+			theme: 				['grant_regeneration_ability','stun_ability','run_away_ability','subtype_plant'],
 			not_theme: 			['empower_hero_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
@@ -3670,6 +3755,23 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, ally_guards: 1},
 		},
 		quote: '\"Trained to defend their hero.\"',
+	},
+	warding_rune:{
+		name: 				'warding rune',
+		type: 				'artifact',
+		subtypes: 			['rune'],
+		color: 				['colorless'],
+		theme: 				['any'],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/warding_rune.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{counter_spell: 1},
+		quote: '\"It absorbs magical energy.\"',
 	},
 	warrior_druid:{
 		name: 				'warrior druid',
@@ -3735,7 +3837,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, cleanse: 2},
 		hero_version: 			{
-			theme: 				['subtype_human','cleanse_ally_ability'],
+			theme: 				['subtype_villager','cleanse_ally_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -3758,7 +3860,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{cleanse: 2, heal: 1},
 		hero_version: 			{
-			theme: 				['subtype_human'],
+			theme: 				['subtype_villager'],
 			not_theme: 			['empower_hero_ability','damaging_hero','type_structure'],
 			power: 				false,
 			armor: 				0,
@@ -6518,11 +6620,14 @@ function check_all_pickable_deck_cards(min_amount){
 	console.log('picked totals');
 	console.log(all_chosen_cards);
 	eachoa(all_available_cards, function(card_id, owned_amount){
-		if(all_available_cards[card_id]['type'] == 'creature' || all_available_cards[card_id]['type'] == 'structure' || all_available_cards[card_id]['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'spell')
+		if(all_available_cards[card_id]['pick_chance'] > 0)
 		{
-			if(all_chosen_cards[card_id] == undefined)
+			if(all_available_cards[card_id]['type'] == 'creature' || all_available_cards[card_id]['type'] == 'structure' || all_available_cards[card_id]['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'spell')
 			{
-				console.log('unpicked: ' + card_id);
+				if(all_chosen_cards[card_id] == undefined)
+				{
+					console.log('unpicked: ' + card_id);
+				}
 			}
 		}
 	});
