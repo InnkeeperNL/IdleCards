@@ -2069,7 +2069,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{burn: 1, draw_on_act: 1},
+		abilities: 			{burn: 1, echo: 1},
 		quote: '\"Lets light the fire.\"',
 		max_in_deck: 		2,
 	},
