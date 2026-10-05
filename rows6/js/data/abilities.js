@@ -11,7 +11,7 @@ var ability_base_costs = {
 	draw: 		4,
 	empower: 	4,
 	empower_fortify: 5,
-	enlarge:  	6,
+	enlarge:  	8,
 	evade: 		1,
 	fear:  		2,
 	fortify: 	2,
@@ -6446,7 +6446,7 @@ var all_abilities = {
 		},
 	},
 	enlarge_creature:{
-		description: 	'A random ally creature gains {LEVEL} power and health. If this targets a creature with no power, it only gains health.',
+		description: 	'A random ally creature unit with power gains {LEVEL} power and health.',
 		cannot_proc_while_stunned: true,
 		scales: true,
 		targets:	{
@@ -6455,6 +6455,7 @@ var all_abilities = {
 				target_amount: 	1,
 				position: 		'random',
 				not_types: 		['structure'],
+				min_power: 		0,
 				min_hp: 		1,
 				side: 			'ally'
 			},
