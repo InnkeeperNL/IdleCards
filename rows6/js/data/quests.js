@@ -37,6 +37,54 @@ var all_achievements = {
 }
 
 var all_chained_achievements = {
+	almost:{
+		name: 			'almost',
+		description: 	'Loose a battle while the enemy hero has 1 health left {AMOUNT} time(s).',
+		objective: 		'battle_loss_any_health_left_1',
+		amount: 		0.1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'seer',
+		steps: 			3,
+		no_quest: 		true,
+	},
+	arcane:{
+		name: 			'arcane',
+		description: 	'Have allies shoot {AMOUNT} arcane bolt(s).',
+		objective: 		'ally_performed_arcane_bolts',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'arcane_mage',
+		steps: 			4,
+	},
+	arcane_storm:{
+		name: 			'arcane storm',
+		description: 	'Have allies fire {MIN_AMOUNT} arcane bolt(s) in a single battle.',
+		objective: 		'ally_performed_arcane_bolts_total',
+		min_amount: 	30,
+		amount: 		1,
+		hide_amount: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'arcane_bolts',
+		steps: 			5,
+		step_effect: 	'min_amount',
+		step_amount: 	30,
+		no_quest: 		true,
+	},
 	army:{
 		name: 			'army',
 		description: 	'Play {AMOUNT} creature card(s).',
@@ -49,6 +97,39 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'peasant',
+		steps: 			4,
+	},
+	arson:{
+		name: 			'arson',
+		description: 	'Have allies apply {MIN_AMOUNT} burn in a single battle.',
+		objective: 		'ally_performed_burn_total',
+		min_amount: 	30,
+		amount: 		1,
+		hide_amount: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'eruption',
+		steps: 			5,
+		step_effect: 	'min_amount',
+		step_amount: 	30,
+		no_quest: 		true,
+	},
+	attunement:{
+		name: 			'attunement',
+		description: 	'Have allies perform a magical ability {AMOUNT} time(s).',
+		objective: 		'ally_performed_magical',
+		amount: 		2,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'arcane_tower',
 		steps: 			4,
 	},
 	avoidance:{
@@ -93,6 +174,39 @@ var all_chained_achievements = {
 		card_back: 		'flame_archer',
 		steps: 			4,
 	},
+	bored:{
+		name: 			'bored',
+		description: 	'Defeat an enemy at 100% power or more no sooner then turn {MIN_AMOUNT}.',
+		objective: 		'battle_won_any_turn_count',
+		min_amount: 	80,
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'trove',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'cow',
+		steps: 			4,
+		step_effect: 	'min_amount',
+		step_amount: 	10,
+		no_quest: 		true,
+	},
+	bureaucrat:{
+		name: 			'bureaucrat',
+		description: 	'Play or summon {AMOUNT} clerk card(s).',
+		objective: 		'clerk_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'scribe',
+		steps: 			6,
+		no_quest: 		true,
+	},
 	chester:{
 		name: 			'chester',
 		description: 	'Open {AMOUNT} chest(s).',
@@ -106,6 +220,50 @@ var all_chained_achievements = {
 		},
 		card_back: 		'chest',
 		steps: 			4,
+		no_quest: 		true,
+	},
+	city:{
+		name: 			'city',
+		description: 	'Play {AMOUNT} structure card(s).',
+		objective: 		'structure_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'house',
+		steps: 			4,
+	},
+	clergy:{
+		name: 			'clergy',
+		description: 	'Play or summon {AMOUNT} cleric card(s).',
+		objective: 		'cleric_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'abbot',
+		steps: 			4,
+		no_quest: 		true,
+	},
+	close_call:{
+		name: 			'close call',
+		description: 	'Win a battle while your hero has 1 health left {AMOUNT} time(s).',
+		objective: 		'battle_won_any_health_left_1',
+		amount: 		0.1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'hideout',
+		steps: 			3,
 		no_quest: 		true,
 	},
 	conscription:{
@@ -127,6 +285,53 @@ var all_chained_achievements = {
 		step_amount: 	10,
 		no_quest: 		true,
 	},
+	curse:{
+		name: 			'curse',
+		description: 	'Have allies apply a curse {AMOUNT} time(s).',
+		objective: 		'ally_performed_curse',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'dark_night',
+		steps: 			4,
+	},
+	dancer:{
+		name: 			'dancer',
+		description: 	'Have allies move to a different slot {AMOUNT} time(s).',
+		objective: 		'ally_performed_movement',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'volcano_dancer',
+		steps: 			4,
+	},
+	dark_fate:{
+		name: 			'dark fate',
+		description: 	'Have allies apply {MIN_AMOUNT} doom in a single battle.',
+		objective: 		'ally_performed_doom_total',
+		min_amount: 	30,
+		amount: 		1,
+		hide_amount: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'bad_omen',
+		steps: 			5,
+		step_effect: 	'min_amount',
+		step_amount: 	30,
+		no_quest: 		true,
+	},
 	doom:{
 		name: 			'doom',
 		description: 	'Have allies apply doom {AMOUNT} time(s).',
@@ -139,6 +344,20 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'astrologer',
+		steps: 			4,
+	},
+	demolisher:{
+		name: 			'demolisher',
+		description: 	'Destroy {AMOUNT} enemy structure(s).',
+		objective: 		'enemy_structure_killed',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'miner',
 		steps: 			4,
 	},
 	empower:{
@@ -154,6 +373,40 @@ var all_chained_achievements = {
 		},
 		card_back: 		'brewer',
 		steps: 			4,
+	},
+	fear:{
+		name: 			'fear',
+		description: 	'Have allies return an enemy to their hand {AMOUNT} time(s).',
+		objective: 		'ally_performed_move_enemy_to_hand',
+		amount: 	0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'creepy_mask',
+		steps: 			4,
+		no_quest: 		true,
+	},
+	flare:{
+		name: 			'flare',
+		description: 	'Play {AMOUNT} spell card(s) in a single battle.',
+		objective: 		'spell_card_played_times',
+		min_amount: 	10,
+		amount: 		1,
+		hide_amount: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'ignite',
+		steps: 			4,
+		step_effect: 	'min_amount',
+		step_amount: 	10,
+		no_quest: 		true,
 	},
 	fortify:{
 		name: 			'fortify',
@@ -187,6 +440,38 @@ var all_chained_achievements = {
 		step_effect: 	'min_amount',
 		no_quest: 		true,
 	},
+	hasten:{
+		name: 			'hasten',
+		description: 	'Have allies hasten a card {AMOUNT} time(s).',
+		objective: 		'ally_performed_hasten',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'mana_beetle',
+		steps: 			4,
+	},
+	heavy_hitter: {
+		name: 			'heavy hitter',
+		description: 	'Deal {MIN_AMOUNT} or more damage to an enemy in one hit.',
+		objective: 		'dealt_damage',
+		min_amount: 	10,
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'wombat',
+		steps: 			6,
+		step_effect: 	'min_amount',
+		step_amount: 	4,
+		no_quest: 		true,
+	},
 	homebound:{
 		name: 			'homebound',
 		description: 	'Have {AMOUNT} card(s) return to your hand from play.',
@@ -215,6 +500,123 @@ var all_chained_achievements = {
 		card_back: 		'beggar',
 		steps: 			4,
 	},
+	killer:{
+		name: 			'killer',
+		description: 	'Kill {AMOUNT} enemy creature(s).',
+		objective: 		'enemy_creature_killed',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'swordsman',
+		steps: 			4,
+	},
+	mage:{
+		name: 			'mage',
+		description: 	'Play or summon {AMOUNT} mage card(s).',
+		objective: 		'mage_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'apprentice',
+		steps: 			4,
+	},
+	magician:{
+		name: 			'magician',
+		description: 	'Play {AMOUNT} spell card(s).',
+		objective: 		'spell_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'magic_dust',
+		steps: 			4,
+	},
+	martyr:{
+		name: 			'martyr',
+		description: 	'Have {AMOUNT} ally creature(s) die.',
+		objective: 		'ally_creature_killed',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'eager_cadet',
+		steps: 			4,
+	},
+	mason:{
+		name: 			'mason',
+		description: 	'Play or summon {AMOUNT} structure card(s) in a single battle.',
+		objective: 		'structure_card_played_times',
+		min_amount: 	10,
+		amount: 		1,
+		hide_amount: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'carpenter',
+		steps: 			4,
+		step_effect: 	'min_amount',
+		step_amount: 	10,
+		no_quest: 		true,
+	},
+	merchant:{
+		name: 			'merchant',
+		description: 	'Earn {AMOUNT} scrap(s).',
+		objective: 		'gained_scraps',
+		amount: 		10,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'thief',
+		steps: 			4,
+	},
+	mundane:{
+		name: 			'mundane',
+		description: 	'Have allies perform a physical ability {AMOUNT} time(s).',
+		objective: 		'ally_performed_physical',
+		amount: 		2,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'thug',
+		steps: 			4,
+	},
+	museum:{
+		name: 			'museum',
+		description: 	'Play or summon {AMOUNT} artifact card(s).',
+		objective: 		'artifact_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'pile_of_junk',
+		steps: 			4,
+	},
 	poison:{
 		name: 			'poison',
 		description: 	'Have allies apply poison {AMOUNT} time(s).',
@@ -227,6 +629,20 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'adder',
+		steps: 			4,
+	},
+	plunder:{
+		name: 			'plunder',
+		description: 	'Have allies destroy an artifact or demolish a structure {AMOUNT} time(s).',
+		objective: 		'ally_performed_break',
+		amount: 		0.2,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'breaking_ray',
 		steps: 			4,
 	},
 	pure:{
