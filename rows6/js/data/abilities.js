@@ -10157,7 +10157,7 @@ var all_abilities = {
 		level_cost_cum: true,
 	},
 	igniting_hero:{
-		description: 	'When your hero deals damage to an enemy unit, this has a {LEVEL}0% chance to apply 1 burn to that unit.{BURN}',
+		description: 	'When your hero deals damage to an enemy, this has a {LEVEL}0% chance to apply 1 burn to that enemy.{BURN}',
 		proc: 			'enemy_damaged_by_hero',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
@@ -10166,7 +10166,7 @@ var all_abilities = {
 		hide_amount: true,
 		targets:	{
 			0:{
-				target: 		'unit',
+				target: 		'unit_or_hero',
 				target_amount: 	1,
 				position: 		'random',
 				origin_unit: 	true,
@@ -10183,7 +10183,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'burn',
-			base_cost_factor: 0.2,
+			base_cost_factor: 0.3,
 		},
 	},
 	incinerate:{

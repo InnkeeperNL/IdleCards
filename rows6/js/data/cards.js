@@ -2724,7 +2724,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{shoot_arrivals: 2},
+		abilities: 			{shoot_arrivals: 3},
 		quote: '\"Plenty of arrows left.\"',
 	},
 	raging_bear:{
