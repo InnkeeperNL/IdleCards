@@ -4958,7 +4958,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'doom',
 			base_cost_factor: 1,
-			level_cost_spell: 0.25,
+			base_cost_spell_factor: 0.25,
 		},
 	},
 	doom_all:{
