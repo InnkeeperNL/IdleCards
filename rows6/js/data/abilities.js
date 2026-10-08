@@ -3626,6 +3626,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'curse',
 			base_cost_factor: 1,
+			base_cost_hero_factor: 1.25,
 			base_cost_spell_factor: 0.25,
 		}
 	},
@@ -3657,6 +3658,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'curse',
 			base_cost_factor: 3,
+			base_cost_hero_factor: 3.25,
 			base_cost_spell_factor: 0.75,
 		}
 	},
@@ -7789,12 +7791,19 @@ var all_abilities = {
 	},
 	fire_breathing_hv:{
 		name: 			'fire breathing',
-		description: 	'Applies {LEVEL} burn to the nearest enemy unit. Will not target the enemy hero.',
+		description: 	'Applies {LEVEL} burn to the nearest enemy unit. Targets the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
 		targets:	{
 			0:{
 				target: 	'unit',
+				target_amount: 1,
+				position: 	'nearest',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+			1:{
+				target: 	'unit_or_hero',
 				target_amount: 1,
 				position: 	'nearest',
 				min_hp: 	1,
