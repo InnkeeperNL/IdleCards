@@ -918,7 +918,7 @@ var all_available_cards = {
 		health: 			1,
 		abilities: 			{strike: 1, stealth: 1, run_away: 1, coward: 1},
 		hero_version: 			{
-			theme: 				['evade_ability','subtype_hare','run_away_ability'],
+			theme: 				['evade_ability','subtype_hare','active_healing_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
