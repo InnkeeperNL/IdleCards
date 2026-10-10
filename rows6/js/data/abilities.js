@@ -238,13 +238,43 @@ var all_abilities = {
 		level_cost_spell: 	1,
 		average_hits: 		1,
 	},
+	allies_guard:{
+		description: 	'When any unit enters the game or is destroyed, this moves {LEVEL} ally creature unit(s) without an opposing unit to a free slot with an opposing unit.',
+		cannot_proc_while_stunned: true,
+		min_unopposed_enemy_units: 1,
+		//delay: 			1,
+		proc: 			['enemy_unit_card_played','post_any_death','ally_unit_card_played'],
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['structure','object'],
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'max'},
+				has_opposing: 	false,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			1:{
+				projectile: 	'dodge',
+				type: 			'move',
+				safe_slot: 		false,
+				placement: 		'random',
+				subtypes: 		['movement','guard','guard_now','move_ally'],
+				amount: 		1,
+			}
+		},
+		level_cost: 2,
+	},
 	ally_charges:{
 		description: 	'Makes an ally creature unit with power charge. If used by a creature, it cannot target itself.<br/><i>Charge: This unit will move to the furthest free slot with an opposing unit and gains {LEVEL} temporary power for each slot moved.</i>',
 		max_ally_units: 4,
-		ability_subtypes: ['charge','movement'],
+		ability_subtypes: ['charge','empower_any','empower_ally','movement','move_ally'],
 		min_unopposed_enemy_units: 1,
 		scales: 		true,
-		hero_tactics: 	['melee_ability','run_away_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -895,8 +925,8 @@ var all_abilities = {
 		do_not_pause_between: true,
 		targets:	{
 			0:{
-				target: 		'unit',
-				target_amount: 	5,
+				target: 		'unit_or_hero',
+				target_amount: 	6,
 				position: 		'random',
 				min_hp: 		1,
 				side: 			'ally'
@@ -913,8 +943,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'bolster',
-			base_cost_factor: 		3,
-			base_cost_spell_factor: 0.75,
+			base_cost_factor: 		4,
+			base_cost_spell_factor: 1,
 		},
 	},
 	bolster_arrivals:{
@@ -2542,7 +2572,7 @@ var all_abilities = {
 		level_cost: 		6,
 	},
 	charge:{
-		ability_subtypes: ['charge','movement','charge','move_ally'],
+		ability_subtypes: ['charge','empower_any','empower_ally','movement','move_ally'],
 		description: 	'This unit will move to the furthest free slot with an opposing unit and gains {LEVEL} temporary power for each slot moved.',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -2558,7 +2588,7 @@ var all_abilities = {
 					},
 				},
 				effects:{
-					1:{
+					0:{
 						type: 		'move',
 						safe_slot: false,
 						placement: 'furthest',
@@ -6381,7 +6411,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 1,
+			base_cost_factor: 0.5,
 			base_cost_structure_factor: 2,
 		},
 	},
@@ -8054,7 +8084,7 @@ var all_abilities = {
 		additional_levels_cost: 1,
 	},
 	flaming_kills:{
-		description: 	'When this destroys an enemy, this applies {LEVEL} burn to all nearby enemies.{BURN}',
+		description: 	'When this destroys an enemy, this applies {LEVEL} burn to all enemies.{BURN}',
 		proc: 			'kill',
 		proc_while_dead: true,
 		scales: 		true,
@@ -8062,8 +8092,8 @@ var all_abilities = {
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
-				target_amount: 	3,
-				position: 		'opposing_wide',
+				target_amount: 	6,
+				position: 		'random',
 				side: 			'enemy'
 			},
 		},
@@ -8078,7 +8108,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'burn',
 			base_cost_factor: 0,
-			base_hit_cost_factor: 0.5,
+			base_hit_cost_factor: 1,
 		},
 		animation: 			'combat_zoom',
 		level_cost_cum: true,
@@ -15454,7 +15484,7 @@ var all_abilities = {
 		average_hits: 	1,
 	},
 	strike_unit:{
-		description: 	'Deals physical melee damage equal to its power to the nearest enemy unit {LEVEL} time(s). Will target the enemey hero if there are no enemy units.',
+		description: 	'Deals physical melee damage equal to its power to the nearest enemy unit {LEVEL} time(s). Will target the enemy hero if there are no enemy units.',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		need_power: 	true,
