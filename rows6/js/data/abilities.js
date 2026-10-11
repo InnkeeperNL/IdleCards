@@ -2005,7 +2005,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'burn',
 				type: 			'apply_burn',
-				subtypes: 		['burn'],
+				subtypes: 		['burn','burning_aura'],
 				amount: 		'ability_level',
 			}
 		},
@@ -3470,7 +3470,6 @@ var all_abilities = {
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['counter_spell_ability'],
 		targets:	{
 			0:{
 				target: 		'any',
@@ -3490,7 +3489,10 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		0.5,
+		base_cost:{
+			base_cost_id: 		'destroy',
+			base_cost_factor: 	0.1,
+		},
 	},
 	corpse_feast:{
 		description: 	'If damaged, this removes a creature card in your grave from the game. If it does, it heals itself by {LEVEL}.',
@@ -8172,7 +8174,7 @@ var all_abilities = {
 		},
 		base_cost:{
 			base_cost_id: 		'evade',
-			base_cost_factor: 	0.75,
+			base_cost_factor: 	0.65,
 		},
 	},
 	flying_arrivals:{
@@ -8472,7 +8474,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'armor',
 				type: 			'increase_armor',
-				subtypes: 		['fortify'],
+				subtypes: 		['fortify','fortify_self'],
 				amount: 		'ability_level'
 			},
 		},
@@ -10180,7 +10182,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				type: 			'apply_burn',
-				subtypes: 		['burn'],
+				subtypes: 		['burn','ignite'],
 				amount: 		'ability_level',
 				pause_before: 	-250,
 			}
