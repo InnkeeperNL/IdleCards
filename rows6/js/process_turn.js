@@ -2654,7 +2654,7 @@ function process_effect(target_id, origin_id, effect, level){
 	    					var card_subtype_to_summon = undefined;
 	    					if(effect['card_subtype'] != undefined && typeof(effect['card_subtype']) != 'string'){card_subtype_to_summon = effect['card_subtype'];}
 	    					if(effect['card_subtype'] != undefined && typeof(effect['card_subtype']) == 'string'){card_subtype_to_summon = calculate_effect({amount:effect['card_subtype']}, target_id, origin_id, level);}
-	    					card_to_summon = get_random_card_based_on_time(card_type_to_summon, card_time_to_summon, card_color_to_summon, card_color_to_summon, card_subtype_to_summon, card_time_min_to_summon, undefined, effect['not_subtypes']);
+	    					card_to_summon = get_random_card_based_on_time(card_type_to_summon, card_time_to_summon, card_color_to_summon, card_color_to_summon, card_subtype_to_summon, card_time_min_to_summon, undefined, effect['not_subtypes'], effect['has_abilities']);
 						}
 						add_card_to_combat_deck(battle_info.combat_units[target_id]['side'], card_to_summon, effect['card_status']);
 					};	

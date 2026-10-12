@@ -1049,7 +1049,7 @@ function get_random_card(type, max_time, color_restriction, second_color_restric
 
 var highest_card_cost = 0;
 
-function get_random_card_based_on_time(type, max_time, color_restriction, second_color_restriction, card_subtype, min_time, not_these, not_subtypes){
+function get_random_card_based_on_time(type, max_time, color_restriction, second_color_restriction, card_subtype, min_time, not_these, not_subtypes, has_abilities){
 	if(card_subtype != undefined && typeof(card_subtype) == 'string')
 	{
 		card_subtype = [card_subtype];
@@ -1078,6 +1078,15 @@ function get_random_card_based_on_time(type, max_time, color_restriction, second
 			if(not_these != undefined && match_array_values(not_these, card_id) == true)
 			{
 				can_pick = false;
+			}
+			if(has_abilities != undefined)
+			{
+				eachoa(has_abilities, function(useless_key, needed_ability){
+					if(card_info['abilities'] == undefined || card_info['abilities'][needed_ability] == undefined)
+					{
+						can_pick = false;
+					}
+				});
 			}
 			if(can_pick == true)
 			{
@@ -1109,6 +1118,15 @@ function get_random_card_based_on_time(type, max_time, color_restriction, second
 			if(not_these != undefined && match_array_values(not_these, card_id) == true)
 			{
 				can_pick = false;
+			}
+			if(has_abilities != undefined)
+			{
+				eachoa(has_abilities, function(useless_key, needed_ability){
+					if(card_info['abilities'] == undefined || card_info['abilities'][needed_ability] == undefined)
+					{
+						can_pick = false;
+					}
+				});
 			}
 			if(can_pick == true)
 			{

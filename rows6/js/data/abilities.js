@@ -100,7 +100,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'power',
 				type: 			'increase_power',
-				subtypes: 		['empower_any','empower_ally'],
+				subtypes: 		['empower_any','empower_ally','adrenaline'],
 				amount: 		1,
 			},
 		},
@@ -129,7 +129,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'power',
 				type: 			'grant_temp_power',
-				subtypes: 		['empower_any','empower_ally'],
+				subtypes: 		['empower_any','empower_ally','adrenaline'],
 				amount: 		'ability_level',
 			},
 		},
@@ -1782,9 +1782,43 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 6,
-		level_cost_spell: 5,
-		level_cost_hero: 2,
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.5,
+			base_cost_spell_factor: 0.33,
+			base_cost_hero_factor: 0.2,
+		},
+	},
+	build_walls:{
+		description: 	'Has a {LEVEL}0% chance to summon a stone wall.',
+		proc: 			'basic',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		reduce_skill_after_use:'build_wall',
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_structure'],
+				card_id: 	'stone_wall',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.1,
+			base_cost_hero_factor: 0.2,
+		},
 	},
 	burn:{
 		description: 	'Applies {LEVEL} burn to a random enemy unit. Will target the enemy hero if there are no enemy units.{BURN}',
@@ -8016,7 +8050,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.9,
+			base_cost_factor: 0.8,
 			base_cost_structure_factor: 0.4,
 			base_cost_spell_factor: 0.2,
 		},
@@ -11513,7 +11547,7 @@ var all_abilities = {
 			0:{
 				projectile: 'broken',
 				type: 		'destroy',
-				subtypes: 	['break'],
+				subtypes: 	['break','plunder'],
 				amount: 	1,
 			}
 		},
@@ -15800,6 +15834,39 @@ var all_abilities = {
 			base_cost_id: 		'summon',
 			base_cost_factor: 	0.1,
 			base_cost_spell_factor: 0.025,
+		},
+	},
+	summon_fragile_artifact:{
+		description: 	'Has a {LEVEL}0% chance to add an artifact card to your hand. If your hand is full, it will add it to your deck instead.',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		//max_ally_artifacts: 4,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'true_deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_artifact','add_artifact_card_to_deck'],
+				card_id: 	'random',
+				card_type: 	'artifact',
+				has_abilities: ['fragile'],
+				card_status: 	'hand',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 	'summon',
+			base_cost_factor: 0.1,
+			base_cost_hero_factor: 0.2,
 		},
 	},
 	summon_frog:{
