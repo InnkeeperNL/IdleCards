@@ -6728,7 +6728,7 @@ var all_abilities = {
 		level_cost_structure: 0.75,
 	},
 	enrage:{
-		description: 	'When this unit receives damage, it has a {LEVEL}0% chance to gain 1 power.',
+		description: 	'When this receives damage, it has a {LEVEL}0% chance to gain 1 power.',
 		proc: 			'receive_damage',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
@@ -6761,7 +6761,7 @@ var all_abilities = {
 	},
 	enrage_hv:{
 		name: 			'enrage',
-		description: 	'When this unit receives damage, it has a {LEVEL}0% chance to gain 1 temporary power.',
+		description: 	'When this receives damage, it has a {LEVEL}0% chance to gain 1 temporary power.',
 		proc: 			'receive_damage',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
@@ -12900,6 +12900,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'healing',
 			base_cost_factor: 0.75,
+			base_cost_spell_factor: 0.2,
 		},
 		level_cost_cum: true,
 	},
