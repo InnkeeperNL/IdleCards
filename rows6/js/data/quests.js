@@ -16,6 +16,118 @@ var all_quests = {
 };
 
 var all_achievements = {
+	arcane_druid:{
+		name: 			'arcane druid',
+		description: 	'Have allies shoot 30 arcane bolts and cleanse 30 times in a single battle.',
+		objectives: 	['ally_performed_arcane_bolts_total','ally_performed_cleanse_ally_total'],
+		card_image: 	'arcane_druid',
+		min_amount: 	30,
+		amount: 		1,
+		hide_details: 	true,
+		reset_if_incomplete: true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_arcane_druid',
+				reward_amount: 		1
+			},
+		},
+	},
+	arrow_in_the_knee:{
+		name: 			'arrow in the knee',
+		description: 	'Shoot a guard with an arrow.',
+		objective: 		'guard_affected_by_arrow',
+		card_image: 	'archer_tower',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_archer_tower',
+				reward_amount: 		1
+			},
+		},
+	},
+	as_the_crow_flies:{
+		name: 			'as the crow flies',
+		description: 	'Move a crow to a different slot.',
+		objective: 		'crow_affected_by_move_ally',
+		card_image: 	'crow',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_crow',
+				reward_amount: 		1
+			},
+		},
+	},
+	bunny_hop:{
+		name: 			'bunny hop',
+		description: 	'Have a bunny kill the enemy hero.',
+		card_image: 	'bunny',
+		objective: 		'enemy_hero_killed_by_named_bunny',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_bunny',
+				reward_amount: 		1
+			},
+		}
+	},
+	do_a_barrel_roll:{
+		name: 			'do a barrel roll',
+		description: 	'Pick up 20 floating rewards in one battle.',
+		card_image: 	'brewer',
+		objective: 		'claimed_pickup_total',
+		min_amount: 	20,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'enchanted_net',
+				reward_amount: 		10
+			},
+			1:{
+				reward_id: 			'card_back_brewer',
+				reward_amount: 		1
+			},
+		}
+	},
+	falconer:{
+		name: 			'falconer',
+		description: 	'Kill an anemy bunny with a falcon.',
+		card_image: 	'falcon',
+		objective: 		'enemy_bunny_killed_by_falcon',
+		max_amount: 	0,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_falcon',
+				reward_amount: 		1
+			},
+		}
+	},
 	king_of_peasants:{
 		name: 			'king of peasants',
 		description: 	'Gain 1000 peasants.',
@@ -30,6 +142,212 @@ var all_achievements = {
 			},
 			1:{
 				reward_id: 			'card_back_crown',
+				reward_amount: 		1
+			},
+		}
+	},
+	leet:{
+		name: 			'leet',
+		description: 	'Own exactly 1337 scraps.',
+		card_image: 	'blaze',
+		objective: 		'scraps_owned',
+		min_amount: 	1337,
+		max_amount: 	1337,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'scraps',
+				reward_amount: 		1337
+			},
+			1:{
+				reward_id: 			'card_back_blaze',
+				reward_amount: 		1
+			},
+		}
+	},
+	nothing_to_see:{
+		name: 			'nothing to see here, move along',
+		description: 	'Set the card filters to \'NONE\'.',
+		card_image: 	'warden',
+		objective: 		'set_filters_to_none',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_warden',
+				reward_amount: 		1
+			},
+		}
+	},
+	scarecrow:{
+		name: 			'scarecrow',
+		description: 	'Use fear on a crow.',
+		card_image: 	'cursed_scarecrow',
+		objective: 		'crow_affected_by_fear',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_cursed_scarecrow',
+				reward_amount: 1,
+			},
+		},
+	},
+	shieldman:{
+		name: 			'shieldman',
+		description: 	'Win a battle against a 100% power or stronger enemy while your hero has 25 shield or more.',
+		objective: 		'ally_hero_armor_battle_end_won',
+		card_image: 	'shieldman',
+		min_amount: 	25,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_shieldman',
+				reward_amount: 		1
+			},
+		},
+	},
+	skirmisher:{
+		name: 			'skirmisher',
+		description: 	'Have 30 ally units move themselves or an ally unit to your hand in a single battle.',
+		objective: 		'ally_performed_retreat_total',
+		card_image: 	'skirmisher',
+		min_amount: 	30,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_skirmisher',
+				reward_amount: 		1
+			},
+		},
+	},
+	the_cheese_is_a_lie:{
+		name: 			'the cheese is a lie',
+		description: 	'Destroy an enemy cheese.',
+		objective: 		'enemy_cheese_killed',
+		card_image: 	'cheese',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_cheese',
+				reward_amount: 		1
+			},
+		},
+	},
+	walkabout:{
+		name: 			'walkabout',
+		description: 	'Have allies move to a different slot 30 times in one battle.',
+		objective: 		'ally_performed_movement_total',
+		card_image: 	'wanderer',
+		min_amount: 	30,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'golden_saddle',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_wanderer',
+				reward_amount: 		1
+			},
+		},
+	},
+	walled:{
+		name: 			'walled',
+		description: 	'Play 30 wall cards in one battle.',
+		card_image: 	'stone_wall',
+		objective: 		'wall_card_played_times',
+		min_amount: 	30,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_stone_wall',
+				reward_amount: 		1
+			},
+		}
+	},
+	warrior_duel:{
+		name: 			'warrior duel',
+		description: 	'Defeat a warrior hero at 100% power or stronger with a warrior hero.',
+		objective: 		'total_hero_card_subtypes_warrior_battle_end_won',
+		card_image: 	'dark_knight',
+		min_amount: 	2,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_dark_knight',
+				reward_amount: 		1
+			},
+		},
+	},
+	when_pigs_fly:{
+		name: 			'when pigs fly',
+		description: 	'Make a boar fly.',
+		card_image: 	'wild_boar',
+		objective: 		'wild_boar_affected_by_grant_flying',
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 'chest',
+				reward_amount: 1,
+			},
+			1:{
+				reward_id: 'card_back_wild_boar',
+				reward_amount: 1,
+			},
+		},
+	},
+	witchs_circle:{
+		name: 			'witch\'s circle',
+		description: 	'Play 30 witch cards in one battle.',
+		card_image: 	'witchs_circle',
+		objective: 		'witch_card_played_times',
+		min_amount: 	30,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_witchs_circle',
 				reward_amount: 		1
 			},
 		}
@@ -159,6 +477,21 @@ var all_chained_achievements = {
 		},
 		card_back: 		'baker',
 		steps: 			4,
+	},
+	bureaucrat:{
+		name: 			'bureaucrat',
+		description: 	'Play or summon {AMOUNT} clerk card(s).',
+		objective: 		'clerk_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'scribe',
+		steps: 			4,
+		no_quest: 		true,
 	},
 	burn:{
 		name: 			'burn',
@@ -371,7 +704,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'brewer',
+		card_back: 		'forge_tools',
 		steps: 			4,
 	},
 	fear:{
@@ -511,7 +844,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'swordsman',
+		card_back: 		'rampaging_giant',
 		steps: 			4,
 	},
 	mage:{
@@ -659,6 +992,24 @@ var all_chained_achievements = {
 		card_back: 		'barber',
 		steps: 			4,
 	},
+	quick:{
+		name: 			'quick',
+		description: 	'Defeat an enemy at 100% power or more no later then turn {MAX_AMOUNT}.',
+		objective: 		'battle_won_any_turn_count',
+		max_amount: 	30,
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'trove',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'scorpion',
+		steps: 			5,
+		step_effect: 	'max_amount',
+		step_amount: 	-5,
+		no_quest: 		true,
+	},
 	rogue:{
 		name: 			'rogue',
 		description: 	'Play or summon {AMOUNT} rogue card(s).',
@@ -672,6 +1023,63 @@ var all_chained_achievements = {
 		},
 		card_back: 		'rogue',
 		steps: 			4,
+	},
+	ritualist:{
+		name: 			'ritualist',
+		description: 	'Play {AMOUNT} ritual card(s).',
+		objective: 		'ritual_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'soul_harvest',
+		steps: 			4,
+	},
+	saboteur:{
+		name: 			'saboteur',
+		description: 	'Destroy {AMOUNT} enemy structure(s) with your hero.',
+		objective: 		'enemy_structure_killed_by_hero',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 'rock_biter',
+		steps: 		4,
+	},
+	scavanger:{
+		name: 			'scavenger',
+		description: 	'Claim {AMOUNT} floating pickup reward(s).',
+		objective: 		'claimed_pickup',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'enchanted_net',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'enchanted_net',
+		steps: 			4,
+	},
+	sell:{
+		name: 			'sell',
+		description: 	'Sell {AMOUNT} card(s) to a merchant.',
+		objective: 		'sell_card_in_town',
+		amount: 		0.1,
+		rewards:{
+			0:{
+				reward_id: 			'thieves_cloak',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'thieves_cloak',
+		steps: 			4,
+		no_quest: 		true,
 	},
 	shards:{
 		name: 			'shards',
@@ -688,6 +1096,20 @@ var all_chained_achievements = {
 		steps: 			3,
 		no_quest: 		true,
 	},
+	slaughter:{
+		name: 			'slaughter',
+		description: 	'Kill {AMOUNT} enemy creature(s) with your hero.',
+		objective: 		'enemy_creature_killed_by_hero',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'attack_dog',
+		steps: 			4,
+	},
 	stasher:{
 		name: 			'stasher',
 		description: 	'Open {AMOUNT} stashes.',
@@ -701,6 +1123,127 @@ var all_chained_achievements = {
 		},
 		card_back: 		'stash',
 		steps: 			4,
+		no_quest: 		true,
+	},
+	stinger:{
+		name: 			'stinger',
+		description: 	'Have allies deal exactly 1 damage to the enemy hero {AMOUNT} time(s).',
+		objective: 		'enemy_hero_damaged',
+		min_amount: 	1,
+		max_amount: 	1,
+		amount: 		10,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'toad',
+		steps: 			4,
+		no_quest: 		true,
+	},
+	striker:{
+		name: 			'striker',
+		description: 	'Have allies perform a melee ability {AMOUNT} time(s).',
+		objective: 		'ally_performed_melee',
+		amount: 		2,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'swordsman',
+		steps: 			4,
+	},
+	stun:{
+		name: 			'stun',
+		description: 	'Have allies stun an enemy {AMOUNT} time(s).',
+		objective: 		'ally_performed_stun',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'beggar',
+		steps: 			4,
+	},
+	tactician:{
+		name: 			'tactician',
+		description: 	'Play {AMOUNT} tactic card(s).',
+		objective: 		'tactic_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'surprise_attack',
+		steps: 			4,
+	},
+	take_aim:{
+		name: 			'take aim',
+		description: 	'Have allies fire {AMOUNT} projectile(s).',
+		objective: 		'ally_performed_projectile',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'archer',
+		steps: 			4,
+	},
+	thorny:{
+		name: 			'thorny',
+		description: 	'Have allies deal damage with thorns {AMOUNT} time(s).',
+		objective: 		'ally_performed_thorns',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'wall_of_thorns',
+		steps: 			4,
+	},
+	tie:{
+		name: 			'tie',
+		description: 	'Have a battle end with both heroes at 0 health {AMOUNT} time(s).',
+		objective: 		'battle_tie_any',
+		amount: 		0.1,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'hideout',
+		steps: 			3,
+		no_quest: 		true,
+	},
+	toxic_cloud:{
+		name: 			'toxic cloud',
+		description: 	'Have allies apply {MIN_AMOUNT} poison in a single battle.',
+		objective: 		'ally_performed_poison_total',
+		min_amount: 	30,
+		amount: 		1,
+		hide_amount: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'poison_gas',
+		steps: 			5,
+		step_effect: 	'min_amount',
+		step_amount: 	30,
 		no_quest: 		true,
 	},
 	trover:{
@@ -718,6 +1261,81 @@ var all_chained_achievements = {
 		steps: 			4,
 		no_quest: 		true,
 	},
+	unholy_rite:{
+		name: 			'unholy rite',
+		description: 	'Have allies apply {MIN_AMOUNT} curse in a single battle.',
+		objective: 		'ally_performed_curse_total',
+		min_amount: 	30,
+		amount: 		1,
+		hide_amount: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'dark_tower',
+		steps: 			5,
+		step_effect: 	'min_amount',
+		step_amount: 	30,
+		no_quest: 		true,
+	},
+	victory:{
+		name: 			'victory',
+		description: 	'Win {AMOUNT} battle(s).',
+		objective: 		'battle_won_any',
+		amount: 		0.2,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'blossom',
+		steps: 			4,
+	},
+	warder:{
+		name: 			'warder',
+		description: 	'Have allies counter a spell {AMOUNT} time(s).',
+		objective: 		'ally_performed_counter_spell',
+		amount: 		0.1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'barrister',
+		steps: 			4,
+	},
+	warrior:{
+		name: 			'warrior',
+		description: 	'Play or summon {AMOUNT} warrior card(s).',
+		objective: 		'warrior_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'sentinel',
+		steps: 			4,
+	},
+	witch:{
+		name: 			'witch',
+		description: 	'Play or summon {AMOUNT} witch card(s).',
+		objective: 		'witch_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'witch',
+		steps: 			4,
+	},
 	zoo:{
 		name: 			'zoo',
 		description: 	'Play or summon {AMOUNT} animal card(s).',
@@ -729,7 +1347,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'scorpion',
+		card_back: 		'badger',
 		steps: 			4,
 	},
 }

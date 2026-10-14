@@ -8,7 +8,7 @@ var ability_base_costs = {
 	destroy: 	8,
 	discard: 	10,
 	doom: 		1,
-	draw: 		4,
+	draw: 		1,
 	empower: 	4,
 	empower_fortify: 5,
 	enlarge:  	8,
@@ -685,7 +685,6 @@ var all_abilities = {
 	},
 	bless:{
 		description: 	'A random ally unit gains {LEVEL} blessing(s). Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
-		hero_tactics: 	['draw_cards_ability'],
 		targets:{
 			0:{
 				target: 		'unit',
@@ -715,7 +714,6 @@ var all_abilities = {
 	bless_all:{
 		description:'All ally units gains {LEVEL} blessing(s). Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
 		do_not_pause_between: true,
-		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -745,7 +743,6 @@ var all_abilities = {
 		description: 	'Any ally unit that enters the game gains {LEVEL} blessing(s). Will not target summoned units or units that have 10 or more blessings. {BLESSED}',
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -2503,7 +2500,6 @@ var all_abilities = {
 		description: 	'Reduces the time left of the card in your hand with the highest time left by {LEVEL}. If it does, this deals 1 damage to itself.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['heal_hero_ability','draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -4879,7 +4875,6 @@ var all_abilities = {
 		reduce_skill_after_use:'discard',
 		negative_ability: true,
 		min_enemy_hand_cards: 1,
-		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -4909,7 +4904,6 @@ var all_abilities = {
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use:'discard_enemy',
 		min_enemy_hand_cards: 1,
-		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -4943,7 +4937,6 @@ var all_abilities = {
 		reduce_skill_after_use:'discard_enemy',
 		min_enemy_hand_cards: 1,
 		has_used_ability: 	true,
-		hero_tactics: 	['draw_cards_ability'],
 		targets:	{
 			0:{
 				target: 		'card',
@@ -5262,7 +5255,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'doom',
 			base_cost_factor: 0.2,
-			base_cost_hero_factor: 0.75,
+			base_cost_hero_factor: 0.5,
 		},
 		cost_factor: 		'health',
 	},
@@ -5417,8 +5410,8 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'draw',
-			base_cost_factor: 0.4,
-			base_cost_hero_factor: 1,
+			base_cost_factor: 0.1,
+			base_cost_hero_factor: 0.2,
 		},
 	},
 	draw_on_act:{
