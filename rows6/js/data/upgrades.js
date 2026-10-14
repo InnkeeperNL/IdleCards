@@ -117,7 +117,7 @@ var all_upgrades = {
 		cost: 			{scraps: 250},
 		max_level: 		10,
 	},
-	boss_chance:{
+	/*boss_chance:{
 		name: 			'Boss chance',
 		description: 	'Increases the chance a boss appears after defeating a 100% power or stronger enemy by 1%. Base chance is 1%.',
 		needed_upgrades:{
@@ -131,7 +131,7 @@ var all_upgrades = {
 		level_cost_scale: 	1,
 		cost: 			{scraps: 100},
 		max_level: 		9,
-	},
+	},*/
 	/*boss_power:{
 		name: 			'Boss power',
 		description: 	'Increases the power of bosses by 20%. Base power of bosses is 200%.',

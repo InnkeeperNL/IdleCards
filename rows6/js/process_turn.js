@@ -308,7 +308,7 @@ function end_this_turn(){
 							gamedata['current_summon']['tries'] = 0;
 							gamedata['current_summon']['health_left'] = 0;
 						}
-						if(all_available_cards[gamedata['current_summon']['hero']] != undefined && gamedata['current_summon']['level'] >= 10 && Math.random() < (0.01 * get_upgrade_factor('boss_chance', 'any', true)) && gamedata['current_summon']['health_left'] == undefined)
+						/*if(all_available_cards[gamedata['current_summon']['hero']] != undefined && gamedata['current_summon']['level'] >= 10 && Math.random() < (0.01 * get_upgrade_factor('boss_chance', 'any', true)) && gamedata['current_summon']['health_left'] == undefined)
 						{
 							var new_boss_level = gamedata['current_summon']['level'] * (2 * get_upgrade_factor('boss_power', 'any', true));
 							var boss_health = Math.floor(all_available_cards[gamedata['current_summon']['hero']]['hero_version']['health'] * get_effective_power_factor(new_boss_level));
@@ -316,7 +316,7 @@ function end_this_turn(){
 							gamedata['current_summon']['level'] = new_boss_level;
 							gamedata['current_summon']['reward_count'] = get_reward_count_based_on_power(get_effective_power_factor(new_boss_level));
 							gamedata['current_summon']['health_left'] = boss_health;
-						}
+						}*/
 						
 
 					}
