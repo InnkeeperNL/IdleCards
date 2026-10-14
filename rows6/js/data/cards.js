@@ -2612,7 +2612,7 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, mob_mentality: 5},
 		hero_version: 			{
-			theme: 				['retreat_ability','on_play_proc_ability'],
+			theme: 				['retreat_ability','on_play_proc_ability','ally_unit_card_played_proc_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
