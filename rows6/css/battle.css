@@ -2016,3 +2016,38 @@
 {
 	display: inline-block;
 }*/
+
+.hide_pickable_deck_cards_button,
+.show_pickable_deck_cards_button
+{
+	animation-name: fade_in;
+    animation-duration: 0.5s;
+	position: fixed;
+	z-index: 10001;
+	top:20px;
+	right:20px;
+	width:35px;
+	height:35px;
+	padding:10px;
+	border:2px solid rgba(0,0,0,0.8);
+	border-radius: 10px;
+	background-color: rgba(0,0,0,0.5);
+	color: white;
+	font-weight: bold;
+	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+	cursor: pointer;
+	background-size:80%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.hide_pickable_deck_cards_button
+{
+	background-image: url(../images/sight-disabled.svg);
+}
+
+.show_pickable_deck_cards_button
+{
+	display: none;
+	background-image: url(../images/card-pick.svg);
+}

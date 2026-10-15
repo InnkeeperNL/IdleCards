@@ -93,7 +93,7 @@ var all_achievements = {
 	do_a_barrel_roll:{
 		name: 			'do a barrel roll',
 		description: 	'Pick up 20 floating rewards in one battle.',
-		card_image: 	'brewer',
+		card_image: 	'scavenger',
 		objective: 		'claimed_pickup_total',
 		min_amount: 	20,
 		amount: 		1,
@@ -104,7 +104,7 @@ var all_achievements = {
 				reward_amount: 		10
 			},
 			1:{
-				reward_id: 			'card_back_brewer',
+				reward_id: 			'card_back_scavenger',
 				reward_amount: 		1
 			},
 		}

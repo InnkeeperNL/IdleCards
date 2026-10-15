@@ -498,26 +498,55 @@ function show_pick_new_deck_card(hero_side){
 	{
 		if(hero_side == undefined){hero_side = 2;}
 		var pickable_deck_cards = get_pickable_deck_cards(hero_side);
-		var new_deck_card_options = [];
-		var parsed_new_deck_cards = '<div class="new_deck_card_container">';
-		for (var deck_card_option_counter = 0; deck_card_option_counter <3; deck_card_option_counter++) {
-			//var chosen_deck_card_option = get_random_card('any', undefined, undefined, undefined, undefined, undefined, new_deck_card_options, undefined, undefined, undefined);
-			if(count_object(pickable_deck_cards) > 0)
+		var pickable_deck_cards_amount = count_object(pickable_deck_cards);
+		if(pickable_deck_cards_amount > 1)
+		{
+			var new_deck_card_options = [];
+			var parsed_new_deck_cards = '<div class="new_deck_card_container">';
+			for (var deck_card_option_counter = 0; deck_card_option_counter <3; deck_card_option_counter++) {
+				//var chosen_deck_card_option = get_random_card('any', undefined, undefined, undefined, undefined, undefined, new_deck_card_options, undefined, undefined, undefined);
+				if(count_object(pickable_deck_cards) > 0)
+				{
+					var chosen_deck_card_option = get_random_key_from_object(pickable_deck_cards);
+					delete pickable_deck_cards[chosen_deck_card_option];
+					new_deck_card_options[count_object[new_deck_card_options]] = chosen_deck_card_option;
+					parsed_new_deck_cards += '<div class="pickable_deck_card single_current_reward"><span onclick="show_card_details(\'' + chosen_deck_card_option + '\')">' + parse_card(chosen_deck_card_option) + '</span><div class="menu_button slim pick_reward_button" onclick="choose_pickable_deck_card(\'' + chosen_deck_card_option + '\')">PICK</div></div>';
+				}
+			}
+
+			parsed_new_deck_cards	+= '</div>';
+			parsed_new_deck_cards	+= '<div class="hide_pickable_deck_cards_button" onclick="hide_pickable_deck_cards()"></div><div class="show_pickable_deck_cards_button" onclick="show_pickable_deck_cards()"></div>';
+			$('.battle_container').append(parsed_new_deck_cards);
+		}
+		else
+		{
+			if(pickable_deck_cards_amount == 1)
 			{
 				var chosen_deck_card_option = get_random_key_from_object(pickable_deck_cards);
-				delete pickable_deck_cards[chosen_deck_card_option];
-				new_deck_card_options[count_object[new_deck_card_options]] = chosen_deck_card_option;
-				parsed_new_deck_cards += '<div class="pickable_deck_card single_current_reward"><span onclick="show_card_details(\'' + chosen_deck_card_option + '\')">' + parse_card(chosen_deck_card_option) + '</span><div class="menu_button slim pick_reward_button" onclick="choose_pickable_deck_card(\'' + chosen_deck_card_option + '\')">PICK</div></div>';
+				choose_pickable_deck_card(chosen_deck_card_option);
+			}
+			if(pickable_deck_cards_amount == 0)
+			{
+				process_next_unit('combat_start',true);
 			}
 		}
-
-		parsed_new_deck_cards	+= '</div>';
-		$('.battle_container').append(parsed_new_deck_cards);
 	}
 	else
 	{
 		process_next_unit('combat_start',true);
 	}
+}
+
+function hide_pickable_deck_cards(){
+	$('.new_deck_card_container').hide();
+	$('.hide_pickable_deck_cards_button').hide();
+	$('.show_pickable_deck_cards_button').show();
+}
+
+function show_pickable_deck_cards(){
+	$('.new_deck_card_container').show();
+	$('.hide_pickable_deck_cards_button').show();
+	$('.show_pickable_deck_cards_button').hide();
 }
 
 function get_pickable_deck_cards(hero_side, fixed_hero, show_picking){
@@ -581,6 +610,8 @@ function get_pickable_deck_cards(hero_side, fixed_hero, show_picking){
 
 function choose_pickable_deck_card(card_id){
 	$('.new_deck_card_container').remove();
+	$('.hide_pickable_deck_cards_button').remove();
+	$('.show_pickable_deck_cards_button').remove();
 	add_card_to_combat_deck(2, card_id, 'deck');
 	draw_card(2);
 	process_next_unit('combat_start',true);

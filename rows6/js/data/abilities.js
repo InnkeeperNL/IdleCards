@@ -6506,6 +6506,34 @@ var all_abilities = {
 			base_cost_hero_factor: -0.5,
 		},
 	},
+	enchant_artifact:{
+		description: 	'Enchants a random artifact. When that artifact is destroyed, it will increase the health of your hero by {LEVEL}.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'artifact',
+				target_amount: 	1,
+				position: 		'random',
+				//has_ability: 	'fragile',
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'fluffyswirl',
+				type: 			'grant_skill',
+				subtypes: 		['enchant_artifact','magical'],
+				skill_id: 		'final_bolster_hero',
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'bolster',
+			base_cost_factor: 0.2,
+		},
+	},
 	enlarge_creature:{
 		description: 	'A random ally creature unit with power gains {LEVEL} power and health.',
 		cannot_proc_while_stunned: true,
@@ -7059,7 +7087,7 @@ var all_abilities = {
 		},
 	},
 	final_bolster_hero:{
-		description: 	'When destroyed, your hero gains {LEVEL} temporary health.',
+		description: 	'When destroyed, your hero gains {LEVEL} health.',
 		proc: 			'own_death',
 		proc_while_dead: true,
 		scales: 		true,
@@ -7075,14 +7103,16 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'bolster',
-				type: 			'grant_temp_health',
+				type: 			'increase_health',
 				subtypes: 		['bolster','bolster_hero','buff_hero'],
 				amount: 		'ability_level'
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1,
-		level_cost_artifact: 0.5,
+		base_cost:{
+			base_cost_id: 'bolster',
+			base_cost_factor: 		0.25,
+		},
 	},
 	final_burn:{
 		description: 	'When destroyed, applies {LEVEL} burn to a random enemy unit. Will target the enemy hero if there are no enemy units.{BURN}',
@@ -12691,9 +12721,9 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		base_cost:{
-			base_cost_id: 		'draw',
-			base_cost_factor: 	1,
-			base_cost_artifact_factor: 0.5,
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.4,
+			base_cost_artifact_factor: 0.2,
 		},
 	},
 	reclaim_spells:{
@@ -14056,7 +14086,7 @@ var all_abilities = {
 		level_cost_spell: -5,
 		average_hits: 	'ability_level',
 	},
-	scavange:{
+	scavenge:{
 		description: 	'When any structure or artifact is destroyed, this has a {LEVEL}0% chance to gain 1 power.',
 		proc: 			['artifact_death','structure_death'],
 		proc_chance: 	10,
@@ -14086,8 +14116,8 @@ var all_abilities = {
 			base_cost_factor: 0.5/10,
 		},
 	},
-	scavange_hv:{
-		name: 			'scavange',
+	scavenge_hv:{
+		name: 			'scavenge',
 		description: 	'When any structure or artifact is destroyed, this gains {LEVEL} temporary power.',
 		proc: 			['artifact_death','structure_death'],
 		proc_amount: 	1,
@@ -16810,7 +16840,7 @@ var all_abilities = {
 		},
 		base_cost:{
 			base_cost_id: 		'draw',
-			base_cost_factor: 	0.5,
+			base_cost_factor: 	1,
 		},
 	},
 	unsummon_dead:{
