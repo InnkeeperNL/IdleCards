@@ -550,15 +550,27 @@ function show_pickable_deck_cards(){
 }
 
 function get_pickable_deck_cards(hero_side, fixed_hero, show_picking){
+	var check_artifacts = false;
+	var current_artifact_count = 0;
 	if(hero_side == undefined){hero_side = 2;}
 	if(fixed_hero == undefined)
 	{
+		check_artifacts = true;
 		fixed_hero = battle_info['combat_units'][hero_side]['card_type'];
 	}
 	var current_hero = fixed_hero;
 	var current_theme = all_available_cards[current_hero]['hero_version']['theme'];
 	var current_not_theme = all_available_cards[current_hero]['hero_version']['not_theme'];
 	var pickable_deck_cards = {};
+	if(check_artifacts == true && hero_side == 1)
+	{
+		eachoa(battle_info['deck_1'], function(card_key, card_info){
+			if(all_available_cards[card_info['card_id']]['type'] == 'artifact' && card_info['status'] != 'grave')
+			{
+				current_artifact_count++;
+			}
+		});
+	}
 	if(hero_side == 2)
 	{
 		eachoa(gamedata['owned_cards'], function(card_id, owned_amount){
@@ -596,10 +608,12 @@ function get_pickable_deck_cards(hero_side, fixed_hero, show_picking){
 						}
 						
 					}
-					
-					if(match_array_values(all_available_cards[card_id]['theme'], 'any') || (match_array_values(all_available_cards[card_id]['theme'], current_theme) > 0 && (current_not_theme == undefined || match_array_values(all_available_cards[card_id]['theme'], current_not_theme) == false) && (count_object(current_needs_theme) == 0 || match_array_values(current_theme, current_needs_theme) > 0)))
+					if(all_available_cards[card_id]['type'] != 'artifact' || current_artifact_count < 5)
 					{
-						pickable_deck_cards[card_id] = true;
+						if(match_array_values(all_available_cards[card_id]['theme'], 'any') || (match_array_values(all_available_cards[card_id]['theme'], current_theme) > 0 && (current_not_theme == undefined || match_array_values(all_available_cards[card_id]['theme'], current_not_theme) == false) && (count_object(current_needs_theme) == 0 || match_array_values(current_theme, current_needs_theme) > 0)))
+						{
+							pickable_deck_cards[card_id] = true;
+						}
 					}
 				}
 			}
@@ -1921,9 +1935,26 @@ function process_ability(unit_id, current_ability, level, origin_id, any_effect_
 			check_visible_skills(unit_id);
 		}
 
-		if(battle_info['combat_units'][unit_id] != undefined && battle_info['combat_units'][unit_id]['type'] == 'artifact' && (count_object(battle_info['combat_units'][unit_id]['abilities']) < 1 || (count_object(battle_info['combat_units'][unit_id]['abilities']) == 1 && (battle_info['combat_units'][unit_id]['abilities']['delay'] != undefined || battle_info['combat_units'][unit_id]['abilities']['eternal'] != undefined || battle_info['combat_units'][unit_id]['abilities']['restless'] != undefined)))){
+/*		if(battle_info['combat_units'][unit_id] != undefined && battle_info['combat_units'][unit_id]['type'] == 'artifact' && (count_object(battle_info['combat_units'][unit_id]['abilities']) < 1 || (count_object(battle_info['combat_units'][unit_id]['abilities']) == 1 && (battle_info['combat_units'][unit_id]['abilities']['delay'] != undefined || battle_info['combat_units'][unit_id]['abilities']['eternal'] != undefined || battle_info['combat_units'][unit_id]['abilities']['restless'] != undefined)))){
 	        check_unit_alive(unit_id, undefined, true);
-	    };
+	    };*/
+
+	    if(battle_info['combat_units'][unit_id] != undefined && battle_info['combat_units'][unit_id]['type'] == 'artifact')
+	    {
+	    	var artifact_viable_skills_count = 0;
+	    	eachoa(battle_info['combat_units'][unit_id]['abilities'], function(artifact_ability_id, artifact_ability_level){
+	    		var viable_artifact_kill = true;
+	    		if(all_abilities[artifact_ability_id]['proc'] == 'own_death'){viable_artifact_kill = false;}
+	    		if(all_abilities[artifact_ability_id]['proc'] == 'post_own_death'){viable_artifact_kill = false;}
+	    		if(artifact_ability_id == 'fragile'){viable_artifact_kill = false;}
+	    		if(artifact_ability_id == 'delay'){viable_artifact_kill = false;}
+	    		if(viable_artifact_kill == true){artifact_viable_skills_count++;}
+	    	});
+	    	if(artifact_viable_skills_count == 0)
+	    	{
+	    		check_unit_alive(unit_id, undefined, true);
+	    	}
+	    }
 
 	    if(any_effect_fired == false && current_ability['on_failure'] != undefined && battle_info['combat_units'][unit_id] != undefined)
 	    {

@@ -2244,6 +2244,7 @@ var all_available_cards = {
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/levitate.jpg',
+		image_position: 	'top',
 		power: 				false,
 		armor: 				0,
 		health: 			false,
@@ -2351,7 +2352,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, healing_spells: 1, final_hasten: 1},
 		hero_version: 			{
 			theme: 				['subtype_insect','echo_ability','any_spell_card_played_proc_ability','type_add_card_to_deck_ability'],
-			not_theme: 			['subtype_witch','subtype_warrior'],
+			not_theme: 			['subtype_witch','subtype_warrior','empower_ally_ability','grant_stealth_ability','retreat_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -3924,8 +3925,8 @@ var all_available_cards = {
 		health: 			6,
 		abilities: 			{thorns: 1},
 		hero_version: 			{
-			theme: 				['damaging_hero','subtype_plant','ally_hero_damaged_proc_ability','buff_hero_ability'],
-			not_theme: 			['empower_hero_ability','fear_ability','grant_stealth_ability'],
+			theme: 				['subtype_plant','ally_hero_damaged_proc_ability','buff_hero_ability'],
+			not_theme: 			['empower_hero_ability','fear_ability','grant_stealth_ability','fortify_ability','damaging_hero'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,

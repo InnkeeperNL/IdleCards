@@ -5571,10 +5571,10 @@ var all_abilities = {
 		average_hits: 	1,
 	},
 	echo:{
-		description: 	'Returns to its owner\'s hand if this used an ability. If your hand is full, this will return to your deck.',
+		description: 	'Has a 75% chance to return to its owner\'s hand if this used an ability. If your hand is full, this will return to your deck.',
 		cannot_proc_while_stunned: true,
 		has_used_ability: true,
-		//proc_chance: 	75,
+		proc_chance: 	75,
 		targets:	{
 			0:{
 				target: 		'any',
@@ -7605,7 +7605,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 	'stun',
-			base_cost_factor: 3,
+			base_cost_factor: 4,
 		},
 	},
 	fire_aura:{
@@ -10624,7 +10624,7 @@ var all_abilities = {
 		ability_subtypes: ['flying'],
 		description: 	'Grants {LEVEL}0% flying to a random non-flying ally unit. Cannot target your hero.<br/><i>Flying: Gives this unit a {LEVEL}0% chance to avoid any incoming melee effect, unless the effect comes from a unit that also has the flying ability.</i>',
 		cannot_proc_while_stunned: true,
-		proc_amount: 	'ability_level',
+		//proc_amount: 	'ability_level',
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -10647,7 +10647,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'evade',
-			base_cost_factor: 	0.8,
+			base_cost_factor: 	0.65,
 		},
 	},
 	life_cost:{
