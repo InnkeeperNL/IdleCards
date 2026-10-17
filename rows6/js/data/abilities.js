@@ -18,7 +18,7 @@ var ability_base_costs = {
 	hasten: 	2,
 	healing: 	3,
 	poison: 	1.5,
-	resurrect: 	3,
+	resurrect: 	4,
 	slow: 		2,
 	stealth: 	2,
 	strike: 	2,
@@ -8846,6 +8846,35 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		2,
 	},
+	gain_resurrect_charge:{
+		description: 	'This has a {LEVEL}0% chance to gain a resurrect charge.<br/><i>Resurrect: When its health reaches 0, this comes back to life with 1 health.</i>',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'any',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'resurrect',
+				type: 			'grant_skill',
+				skill_id: 		'resurrect',
+				subtypes: 		[],
+				amount: 		1,
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 	'resurrect',
+			base_cost_factor: 0.2,
+			base_cost_hero_factor: 0.5,
+		},
+	},
 	go_again:{
 		description: 	'Has a {LEVEL}0% chance to get another turn.',
 		proc_chance: 	10,
@@ -12993,7 +13022,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'healing',
 			base_cost_factor: 0.05,
-			//base_cost_hero_factor: 0.1,
+			base_cost_hero_factor: 0.1,
 		},
 		//cost_factor: 		'health',
 		level_cost_cum: true,
@@ -13060,6 +13089,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'healing',
 			base_cost_factor: 0.75,
+			base_cost_hero_factor: 1,
 		},
 		level_cost_cum: true,
 	},
@@ -14831,7 +14861,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
 		proc_amount: 'ability_level',
-		hero_tactics: 	['summon_creature_ability','consume_ability','ally_creature_death_proc_ability','ally_unit_card_played_proc_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
