@@ -2881,6 +2881,37 @@ var all_abilities = {
 			base_cost_spell_factor: 0.25,
 		},
 	},
+	cleanse_hero:{
+		description: 	'Removes {LEVEL} negative effect(s) from your hero.',
+		cannot_proc_while_stunned: true,
+		//do_not_pause_between: true,
+		proc_amount: 	'ability_level',
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				has_negative_effect: true,
+				min_hp: 		1,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'cleanse',
+				type: 			'reduce_negative_effects',
+				subtypes: 		['cleansing','cleanse_ally'],
+				amount: 		1,
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'cleanse',
+			base_cost_factor: 0.75,
+			base_cost_spell_factor: 0.2,
+		},
+	},
 	cleansing_spells:{
 		description: 	'After any spell card is played, this removes {LEVEL} negative effect(s) from a random ally unit or your hero.',
 		proc: 			'any_spell_card_played',
@@ -10842,6 +10873,31 @@ var all_abilities = {
 		level_cost_spell: 	1.25,
 		average_hits: 		'ability_level',
 	},
+	limited_uses:{
+		description: 	'If this has used an ability, this has a {LEVEL}0% chance to be destroyed.',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		has_used_ability: true,
+		targets:	{
+			0:{
+				target: 	'any',
+				target_amount: 1,
+				position: 	'self',
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['destroy','fragile'],
+				amount: 	1,
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	-0.25,
+		cost_factor: 	'full',
+	},
 	long_echo:{
 		description: 	'This card has a 75% chance to return to its owners deck.',
 		proc: 			'basic',
@@ -12932,6 +12988,37 @@ var all_abilities = {
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				damaged: 		true,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'regeneration',
+				type: 			'apply_effect',
+				effect_id:  	'regeneration',
+				subtypes: 		['magical','grant_regeneration'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.75,
+			base_cost_spell_factor: 0.2,
+		},
+		level_cost_cum: true,
+	},
+	regenerate_hero:{
+		description: 	'If your hero is damaged, this applies {LEVEL} regeneration to it.{REGEN}',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'hero',
 				target_amount: 	1,
 				position: 		'random',
 				damaged: 		true,
@@ -15890,7 +15977,7 @@ var all_abilities = {
 		},
 	},
 	summon_fragile_artifact:{
-		description: 	'Has a {LEVEL}0% chance to add an artifact card to your hand. If your hand is full, it will add it to your deck instead.',
+		description: 	'Has a {LEVEL}0% chance to add a fragile artifact card to your hand. If your hand is full, it will add it to your deck instead.',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
