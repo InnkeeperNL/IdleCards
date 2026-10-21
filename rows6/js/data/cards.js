@@ -2049,7 +2049,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{restore: 3, limited_uses: 2},
+		abilities: 			{restore: 3, limited_uses: 3},
 		quote: '\"Hold on to it. It will save your life!\"',
 	},
 	graverobber:{
@@ -2183,7 +2183,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{restore: 1, limited_uses: 2},
+		abilities: 			{restore: 1, limited_uses: 1},
 		quote: '\"Drink when in need.\"',
 	},
 	herbs:{

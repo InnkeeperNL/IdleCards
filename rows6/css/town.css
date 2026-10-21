@@ -863,6 +863,17 @@ span.done_expeditions
         display: none;
     }
 
+    .pickable_deck_card.single_current_reward .card .card_abilities,
+    .pickable_deck_card.single_current_reward .card .card_armor,
+    .pickable_deck_card.single_current_reward .card .card_power,
+    .pickable_deck_card.single_current_reward .card .card_health,
+    .pickable_deck_card.single_current_reward .card .card_name,
+    .pickable_deck_card.single_current_reward .card .unit_effects,
+    .pickable_deck_card.single_current_reward .card .card_time
+    {
+        display: block;
+    }
+
     .single_current_reward .card .card_name
     {
         left: 15px;

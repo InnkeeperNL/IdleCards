@@ -10895,7 +10895,7 @@ var all_abilities = {
 			},
 		},
 		animation: 		'combat_zoom',
-		level_cost: 	-0.25,
+		level_cost: 	-0.5,
 		cost_factor: 	'full',
 	},
 	long_echo:{

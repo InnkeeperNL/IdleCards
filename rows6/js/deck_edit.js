@@ -438,7 +438,7 @@ function parse_card(card_id, show_owned, hero_version, alt_name){
 					all_parsed_abilities += '<span style="color:' + current_ability['name_color'] + '">';
 					all_parsed_abilities +=		current_ability['name'];
 					/*if(current_ability['show_amount'] == true)*/
-					if(temp_amount > 1 || current_ability['show_amount_adjustment'] != undefined || amount['level_2'] != undefined)	
+					/*if(temp_amount > 1 || current_ability['show_amount_adjustment'] != undefined || amount['level_2'] != undefined)	
 						{
 							if(current_ability['show_amount_adjustment'] != undefined)
 							{
@@ -461,7 +461,7 @@ function parse_card(card_id, show_owned, hero_version, alt_name){
 					if(amount['delay'] != undefined && amount['delay'] > 0)
 					{
 						all_parsed_abilities +=		' (' + (amount['delay'] -0) + ')';
-					}
+					}*/
 					
 					//all_parsed_abilities += '</span>';
 				}

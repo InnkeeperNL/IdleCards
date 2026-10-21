@@ -846,6 +846,12 @@
 	-o-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out;
 	display: none;
+	line-height: 1.3;
+}
+
+.pickable_deck_card.single_current_reward .card .card_abilities
+{
+	display: block;
 }
 
 .card_type_cardback .card_abilities,
