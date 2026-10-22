@@ -374,7 +374,7 @@ var all_chained_achievements = {
 		name: 			'arcane',
 		description: 	'Have allies shoot {AMOUNT} arcane bolt(s).',
 		objective: 		'ally_performed_arcane_bolts',
-		amount: 		1,
+		amount: 		1.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -454,7 +454,7 @@ var all_chained_achievements = {
 		name: 			'avoidance',
 		description: 	'Have allies avoid an enemy ability in any way {AMOUNT} time(s).',
 		objective: 		'ally_performed_evade',
-		amount: 		1,
+		amount: 		0.75,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -468,7 +468,7 @@ var all_chained_achievements = {
 		name: 			'bolster',
 		description: 	'Have allies increase the health of an ally {AMOUNT} time(s).',
 		objective: 		'ally_performed_bolster',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -491,13 +491,12 @@ var all_chained_achievements = {
 		},
 		card_back: 		'scribe',
 		steps: 			4,
-		no_quest: 		true,
 	},
 	burn:{
 		name: 			'burn',
 		description: 	'Have allies apply burn {AMOUNT} time(s).',
 		objective: 		'ally_performed_burn',
-		amount: 		1,
+		amount: 		1.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -525,21 +524,6 @@ var all_chained_achievements = {
 		step_amount: 	10,
 		no_quest: 		true,
 	},
-	bureaucrat:{
-		name: 			'bureaucrat',
-		description: 	'Play or summon {AMOUNT} clerk card(s).',
-		objective: 		'clerk_card_played',
-		amount: 		0.5,
-		rewards:{
-			0:{
-				reward_id: 			'stash',
-				reward_amount: 		1
-			},
-		},
-		card_back: 		'scribe',
-		steps: 			6,
-		no_quest: 		true,
-	},
 	chester:{
 		name: 			'chester',
 		description: 	'Open {AMOUNT} chest(s).',
@@ -559,7 +543,7 @@ var all_chained_achievements = {
 		name: 			'city',
 		description: 	'Play {AMOUNT} structure card(s).',
 		objective: 		'structure_card_played',
-		amount: 		0.5,
+		amount: 		0.75,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -582,7 +566,6 @@ var all_chained_achievements = {
 		},
 		card_back: 		'abbot',
 		steps: 			4,
-		no_quest: 		true,
 	},
 	close_call:{
 		name: 			'close call',
@@ -622,7 +605,7 @@ var all_chained_achievements = {
 		name: 			'curse',
 		description: 	'Have allies apply a curse {AMOUNT} time(s).',
 		objective: 		'ally_performed_curse',
-		amount: 		1,
+		amount: 		1.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -683,7 +666,7 @@ var all_chained_achievements = {
 		name: 			'demolisher',
 		description: 	'Destroy {AMOUNT} enemy structure(s).',
 		objective: 		'enemy_structure_killed',
-		amount: 		1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -697,7 +680,7 @@ var all_chained_achievements = {
 		name: 			'empower',
 		description: 	'Have allies empower an ally {AMOUNT} time(s).',
 		objective: 		'ally_performed_empower_any',
-		amount: 	1,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -711,7 +694,7 @@ var all_chained_achievements = {
 		name: 			'fear',
 		description: 	'Have allies return an enemy to their hand {AMOUNT} time(s).',
 		objective: 		'ally_performed_move_enemy_to_hand',
-		amount: 	0.5,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -745,7 +728,7 @@ var all_chained_achievements = {
 		name: 			'fortify',
 		description: 	'Have allies shield an ally {AMOUNT} time(s).',
 		objective: 		'ally_performed_fortify',
-		amount: 		1,
+		amount: 		1.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -777,7 +760,7 @@ var all_chained_achievements = {
 		name: 			'hasten',
 		description: 	'Have allies hasten a card {AMOUNT} time(s).',
 		objective: 		'ally_performed_hasten',
-		amount: 		1,
+		amount: 		1.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -837,7 +820,7 @@ var all_chained_achievements = {
 		name: 			'killer',
 		description: 	'Kill {AMOUNT} enemy creature(s).',
 		objective: 		'enemy_creature_killed',
-		amount: 		1,
+		amount: 		0.75,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -865,7 +848,7 @@ var all_chained_achievements = {
 		name: 			'magician',
 		description: 	'Play {AMOUNT} spell card(s).',
 		objective: 		'spell_card_played',
-		amount: 		0.5,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -954,7 +937,7 @@ var all_chained_achievements = {
 		name: 			'poison',
 		description: 	'Have allies apply poison {AMOUNT} time(s).',
 		objective: 		'ally_performed_poison',
-		amount: 		1,
+		amount: 		1.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -968,7 +951,7 @@ var all_chained_achievements = {
 		name: 			'plunder',
 		description: 	'Have allies destroy an artifact or demolish a structure {AMOUNT} time(s).',
 		objective: 		'ally_performed_break',
-		amount: 		0.2,
+		amount: 		0.1,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -1028,7 +1011,7 @@ var all_chained_achievements = {
 		name: 			'ritualist',
 		description: 	'Play {AMOUNT} ritual card(s).',
 		objective: 		'ritual_card_played',
-		amount: 		0.5,
+		amount: 		0.75,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -1042,7 +1025,7 @@ var all_chained_achievements = {
 		name: 			'saboteur',
 		description: 	'Destroy {AMOUNT} enemy structure(s) with your hero.',
 		objective: 		'enemy_structure_killed_by_hero',
-		amount: 		0.5,
+		amount: 		0.25,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -1056,7 +1039,7 @@ var all_chained_achievements = {
 		name: 			'scavenger',
 		description: 	'Claim {AMOUNT} floating pickup reward(s).',
 		objective: 		'claimed_pickup',
-		amount: 		0.5,
+		amount: 		1,
 		rewards:{
 			0:{
 				reward_id: 			'enchanted_net',
@@ -1100,7 +1083,7 @@ var all_chained_achievements = {
 		name: 			'slaughter',
 		description: 	'Kill {AMOUNT} enemy creature(s) with your hero.',
 		objective: 		'enemy_creature_killed_by_hero',
-		amount: 		1,
+		amount: 		0.5,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -1174,7 +1157,7 @@ var all_chained_achievements = {
 		name: 			'tactician',
 		description: 	'Play {AMOUNT} tactic card(s).',
 		objective: 		'tactic_card_played',
-		amount: 		0.5,
+		amount: 		0.75,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -1188,7 +1171,7 @@ var all_chained_achievements = {
 		name: 			'take aim',
 		description: 	'Have allies fire {AMOUNT} projectile(s).',
 		objective: 		'ally_performed_projectile',
-		amount: 		1,
+		amount: 		2,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -1340,7 +1323,7 @@ var all_chained_achievements = {
 		name: 			'zoo',
 		description: 	'Play or summon {AMOUNT} animal card(s).',
 		objective: 		'animal_card_played',
-		amount: 		0.5,
+		amount: 		0.75,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
