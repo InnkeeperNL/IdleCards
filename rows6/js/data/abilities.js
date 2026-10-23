@@ -22,7 +22,7 @@ var ability_base_costs = {
 	slow: 		2,
 	stealth: 	2,
 	strike: 	2,
-	stun: 		5,
+	stun: 		6,
 	summon: 	12,
 	thorns: 	1,
 }
@@ -15852,7 +15852,8 @@ var all_abilities = {
 		},
 		base_cost:{
 			base_cost_id: 	'stun',
-			base_cost_factor: 0.1,
+			base_cost_factor: 0,
+			base_hit_cost_factor: 0.1,
 		},
 		cost_factor: 	'none',
 	},
