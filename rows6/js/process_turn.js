@@ -7618,6 +7618,7 @@ function play_card(side, card_id, forced_play, origin_unit){
 			$('.hand_slot_' + temp_hand_slot + '.side_' + temp_t + ' .card_time').html(temp_time_left);
 		},total_timeout);
 		
+		check_ability_procs(side, 'card_not_played', card_id);
 	}
 	else
 	{

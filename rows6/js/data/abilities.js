@@ -7,7 +7,7 @@ var ability_base_costs = {
 	damage_all: 8,
 	destroy: 	8,
 	discard: 	10,
-	doom: 		1,
+	doom: 		0.75,
 	draw: 		1,
 	empower: 	4,
 	empower_fortify: 5,
@@ -4905,7 +4905,7 @@ var all_abilities = {
 		proc_amount: 	'ability_level',
 		reduce_skill_after_use:'discard',
 		negative_ability: true,
-		min_enemy_hand_cards: 1,
+		min_ally_hand_cards: 1,
 		targets:	{
 			0:{
 				target: 		'card',
@@ -5023,6 +5023,38 @@ var all_abilities = {
 			base_cost_factor: 	-0.25,
 		},
 		cost_adjustment: 	18
+	},
+	discard_unplayed:{
+		description: 	'When any ally card fails to be played, this moves that card to your grave.',
+		proc: 			'ally_card_not_played',
+		cannot_proc_while_stunned: true,
+		min_ally_hand_cards: 1,
+		targets:	{
+			0:{
+				target: 		'card',
+				target_amount: 	1,
+				status: 		'hand',
+				can_target_zero: true,
+				origin_unit: 	true,
+				side: 			'ally',
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'discard',
+				projectile_target: 	'deck',
+				type: 				'set_status',
+				subtypes: 			['discard_ally','deck_control'],
+				new_status: 		'grave',
+				side: 				'ally',
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'draw',
+			base_cost_factor: 0.25,
+			base_cost_spell_factor: 0.1,
+		},
 	},
 	doom:{
 		description: 	'Applies {LEVEL} doom to a random enemy unit.{DOOM}',
@@ -5854,7 +5886,7 @@ var all_abilities = {
 		},
 	},
 	empower_arrivals:{
-		description: 	'When any ally creature unit that has power enters the game, it has a {LEVEL}0% chance to gain 1 temporary power.',
+		description: 	'When any ally creature unit that has power enters the game, it has a {LEVEL}0% chance to gain 1 power.',
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
 		origin_not_self: 	true,
@@ -5876,7 +5908,7 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'power',
-				type: 			'grant_temp_power',
+				type: 			'increase_power',
 				subtypes: 		['empower_any','empower_ally'],
 				amount: 		1
 			},
@@ -5884,8 +5916,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 0.5/10,
-			base_cost_hero_factor: 1/10,
+			base_cost_factor: 1/10,
+			base_cost_hero_factor: 2/10,
 		},
 	},
 	empower_creature:{
@@ -6144,7 +6176,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 1,
+			base_cost_factor: 0.5,
 			base_cost_hero_factor: 1,
 		},
 	},
@@ -6174,7 +6206,8 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 1,
+			base_cost_factor: 0.5,
+			base_cost_hero_factor: 1,
 		},
 	},
 	empowering_arrivals:{
@@ -6562,7 +6595,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'bolster',
-			base_cost_factor: 0.2,
+			base_cost_factor: 0.75,
 		},
 	},
 	enlarge_creature:{
@@ -7276,7 +7309,7 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		base_cost:{
 			base_cost_id: 'curse',
-			base_cost_factor: 3/4,
+			base_cost_factor: 4/4,
 		},
 		ability_level_cost_factors:{
 			resurrect: 		2,
@@ -13180,6 +13213,37 @@ var all_abilities = {
 		},
 		level_cost_cum: true,
 	},
+	regenerating_discards:{
+		description: 	'Applies {LEVEL} regeneration to a random damaged ally unit or hero when any ally card is discarded.{REGEN}',
+		proc: 			'ally_discarded',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				damaged: 		true,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'regeneration',
+				type: 			'apply_effect',
+				effect_id:  	'regeneration',
+				subtypes: 		['magical','grant_regeneration'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.25,
+		},
+		level_cost_cum: true,
+	},
 	/*regeneration:{
 		description: 	'If damaged, this heals itself by {LEVEL}. The amount of regeneration is reduced by 1 after each use.',
 		cannot_proc_while_stunned: true,
@@ -15973,7 +16037,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.1,
+			base_cost_factor: 	0.15,
 			base_cost_spell_factor: 0.025,
 		},
 	},
