@@ -3062,7 +3062,7 @@ var all_available_cards = {
 	pirate_captain:{
 		name: 				'pirate captain',
 		type: 				'creature',
-		subtypes: 			['human','rogue'],
+		subtypes: 			['human','rogue','warrior'],
 		color: 				['colorless'],
 		theme: 				[],
 		craft_theme: 		[],
