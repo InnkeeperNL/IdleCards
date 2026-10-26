@@ -16,6 +16,25 @@ var all_quests = {
 };
 
 var all_achievements = {
+	alchemist:{
+		name: 			'alchemist',
+		description: 	'Play 10 potion cards in one battle.',
+		card_image: 	'alchemist',
+		objective: 		'potion_card_played_times',
+		min_amount: 	10,
+		amount: 		1,
+		hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_alchemist',
+				reward_amount: 		1
+			},
+		}
+	},
 	arcane_druid:{
 		name: 			'arcane druid',
 		description: 	'Have allies shoot 30 arcane bolts and cleanse 30 times in a single battle.',
@@ -770,6 +789,20 @@ var all_chained_achievements = {
 		card_back: 		'mana_beetle',
 		steps: 			4,
 	},
+	heavy_drinker:{
+		name: 			'heavy drinker',
+		description: 	'Play a potion card {AMOUNT} time(s).',
+		objective: 		'potion_card_played',
+		amount: 		0.2,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'pure_potion',
+		steps: 			4,
+	},
 	heavy_hitter: {
 		name: 			'heavy hitter',
 		description: 	'Deal {MIN_AMOUNT} or more damage to an enemy in one hit.',
@@ -1317,6 +1350,20 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'witch',
+		steps: 			4,
+	},
+	zombie:{
+		name: 			'zombie',
+		description: 	'Play or summon {AMOUNT} undead card(s).',
+		objective: 		'undead_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'skeletal_guard',
 		steps: 			4,
 	},
 	zoo:{

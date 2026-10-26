@@ -1364,6 +1364,38 @@ var all_abilities = {
 			base_cost_hero_factor: 0.25,
 		},
 	},
+	brew_potion:{
+		hide_amount: true,
+		description: 	'Has a {LEVEL}0% chance to add a potion card to your hand. If your hand is full, it will add it to your deck instead.',
+		cannot_proc_while_stunned: true,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'true_deck',
+				type: 		'add_card_to_deck',
+				card_id: 	'random',
+				subtypes: 	['summon_ally','brew_potion','add_artifact_card_to_deck','summon_artifact'],
+				card_subtype: 	'potion',
+				card_status: 	'hand',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.1,
+			base_cost_spell_factor: 0.025,
+		},
+	},
 	bring_animal:{
 		description: 	'Summons an animal creature unit. Can be used {LEVEL} time(s).',
 		proc: 			'basic',
