@@ -7,7 +7,7 @@ var ability_base_costs = {
 	damage_all: 8,
 	destroy: 	8,
 	discard: 	10,
-	doom: 		0.75,
+	doom: 		1,
 	draw: 		1,
 	empower: 	4,
 	empower_fortify: 5,
@@ -8911,14 +8911,13 @@ var all_abilities = {
 		level_cost: 		2,
 	},
 	gain_resurrect_charge:{
-		description: 	'This has a {LEVEL}0% chance to gain a resurrect charge.<br/><i>Resurrect: When its health reaches 0, this comes back to life with 1 health.</i>',
-		proc_chance: 	10,
-		proc_factor: 	'ability_level',
+		description: 	'If this has no resurrect charges, it gains {LEVEL} resurrect charge(s).<br/><i>Resurrect: When its health reaches 0, this comes back to life with 1 health.</i>',
 		targets:	{
 			0:{
 				target: 		'any',
 				target_amount: 	1,
 				position: 		'self',
+				max_abilities: 	{resurrect: 0},
 				min_hp: 		1,
 				side: 			'ally',
 			},
@@ -8929,14 +8928,14 @@ var all_abilities = {
 				type: 			'grant_skill',
 				skill_id: 		'resurrect',
 				subtypes: 		[],
-				amount: 		1,
+				amount: 		'ability_level',
 			},
 		},
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 	'resurrect',
-			base_cost_factor: 0.2,
-			base_cost_hero_factor: 0.5,
+			base_cost_factor: 1,
+			base_cost_hero_factor: 0.25,
 		},
 	},
 	go_again:{
@@ -12693,9 +12692,9 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		ability_level_cost_factors:{
-			echo: 		2,
+		base_cost:{
+			base_cost_id: 		'draw',
+			base_cost_factor: 	2,
 		},
 	},
 	reclaim_artifact:{
@@ -14449,6 +14448,35 @@ var all_abilities = {
 			animation: 	'combat_zoom',
 		},
 		level_cost: 	7,
+	},
+	shielding_discards:{
+		description: 	'Applies {LEVEL} shield to a random ally unit or hero when any ally card is discarded.{REGEN}',
+		proc: 			'ally_discarded',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'armor',
+				type: 			'increase_armor',
+				subtypes: 		['fortify'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'fortify',
+			base_cost_factor: 0.25,
+		},
+		level_cost_cum: true,
 	},
 	shoot:{
 		description: 	'Deals physical projectile damage equal to its power to a random enemy unit {LEVEL} time(s). Will target the enemy hero if there are no enemy units.',

@@ -874,10 +874,10 @@ span.done_expeditions
         display: block;
     }
 
-    .single_current_reward .card .card_name
+    /*.single_current_reward .card .card_name
     {
         left: 15px;
-    }
+    }*/
 
     .single_current_reward .card.card_type_potion .card_name,
     .single_current_reward .card.card_type_recipe .card_name
