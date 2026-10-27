@@ -2258,7 +2258,7 @@ var all_abilities = {
 		level_cost_cum: true,
 	},
 	burning_hero:{
-		description: 	'When an enemy unit deals melee damage to your hero, this applies {LEVEL} burn to that unit.{BURN}',
+		description: 	'When an enemy deals melee damage to your hero, this applies {LEVEL} burn to that enemy.{BURN}',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
@@ -2267,7 +2267,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
-				target: 		'unit',
+				target: 		'unit_or_hero',
 				target_amount: 	1,
 				position: 		'random',
 				origin_unit: 	true,
@@ -4012,7 +4012,7 @@ var all_abilities = {
 	},
 	cursed_hero:{
 		hide_amount: true,
-		description: 	'When an enemy unit deals melee damage to your hero, this will apply {LEVEL} curse to it.',
+		description: 	'When an enemy  deals melee damage to your hero, this will apply {LEVEL} curse to that enemy. {CURSE}',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
@@ -4136,7 +4136,7 @@ var all_abilities = {
 		}
 	},
 	cursing_hero:{
-		description: 	'When your hero deals damage to an enemy, this will apply {LEVEL} curse to it.',
+		description: 	'When your hero deals damage to an enemy, this will apply {LEVEL} curse to it. {CURSE}',
 		proc: 			'enemy_damaged_by_hero',
 		ability_subtypes: ['dealt_damage_proc'],
 		scales: 		true,
@@ -12006,7 +12006,7 @@ var all_abilities = {
 		level_cost_cum: true,
 	},
 	poisonous_hero:{
-		description: 	'When an enemy unit deals melee damage to your hero, this applies {LEVEL} poison to that unit.{POISON}',
+		description: 	'When an enemy deals melee damage to your hero, this applies {LEVEL} poison to that enemy.{POISON}',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
@@ -12015,7 +12015,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
-				target: 		'unit',
+				target: 		'unit_or_hero',
 				target_amount: 	1,
 				position: 		'random',
 				not_types: 		['object','structure'],
@@ -16679,7 +16679,7 @@ var all_abilities = {
 		level_cost: 		0.1,
 	},
 	thorned_hero:{
-		description: 	'When an enemy unit deals melee damage to your hero, this will deal {LEVEL} physical damage to it.',
+		description: 	'When an enemy deals melee damage to your hero, this will deal {LEVEL} physical damage to that enemy.',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
@@ -16844,7 +16844,7 @@ var all_abilities = {
 	},
 	trapping_hero:{
 		hide_amount: 	true,
-		description: 	'When an enemy unit deals melee damage to your hero, this has a {LEVEL}0% chance to stun that unit for 1 round.',
+		description: 	'When an enemy deals melee damage to your hero, this has a {LEVEL}0% chance to stun that enemy for 1 round.',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
@@ -17315,7 +17315,7 @@ var all_abilities = {
 	},
 	venomous_hero:{
 		hide_amount: true,
-		description: 	'When your hero deals damage to an enemy unit, this has a {LEVEL}0% chance to apply 1 poison to that unit.{POISON}',
+		description: 	'When your hero deals damage to an enemy, this has a {LEVEL}0% chance to apply 1 poison to that enemy.{POISON}',
 		proc: 			'enemy_damaged_by_hero',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
@@ -17323,7 +17323,7 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
-				target: 		'unit',
+				target: 		'unit_or_hero',
 				target_amount: 	1,
 				position: 		'random',
 				not_types: 		['object','structure'],
@@ -17681,7 +17681,7 @@ var all_abilities = {
 		level_cost_artifact: 8,
 	},
 	withering_hero:{
-		description: 	'When an enemy unit deals melee damage to your hero, this reduces the maximum health of that enemy by {LEVEL}.',
+		description: 	'When an enemy deals melee damage to your hero, this reduces the maximum health of that enemy by {LEVEL}.',
 		proc: 			'ally_hero_damaged',
 		subtypes: 		['melee'],
 		ability_subtypes: ['receive_damage_proc'],
