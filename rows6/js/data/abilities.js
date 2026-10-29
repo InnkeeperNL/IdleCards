@@ -4608,7 +4608,7 @@ var all_abilities = {
 		level_cost_spell: 	0.75,
 	},
 	desperate_haste:{
-		description: 	'When your hero receives damage, this reduces the time left of the card in your hand, with the lowest time left, by {LEVEL}.',
+		description: 	'When your hero receives damage, this reduces the time left of the card in your hand by {LEVEL}.',
 		proc: 			'ally_hero_damaged',
 		cannot_proc_while_stunned: true,
 		//remove_skill: 	'desperate_haste',
@@ -4618,7 +4618,7 @@ var all_abilities = {
 				target_amount: 	1,
 				status: 		'hand',
 				side: 			'ally',
-				lowest_time_left: true,
+				//lowest_time_left: true,
 			},
 		},
 		effects:{
@@ -5057,10 +5057,11 @@ var all_abilities = {
 		cost_adjustment: 	18
 	},
 	discard_unplayed:{
-		description: 	'When any ally card fails to be played, this moves that card to your grave.',
+		description: 	'When any ally card fails to be played, this moves that card to your grave. Can be used once each round.',
 		proc: 			'ally_card_not_played',
 		cannot_proc_while_stunned: true,
 		min_ally_hand_cards: 1,
+		delay: 			1,
 		targets:	{
 			0:{
 				target: 		'card',
@@ -11726,7 +11727,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'destroy',
-			base_cost_factor: 0.02,
+			base_cost_factor: 0.04,
 		},
 		ability_level_cost_factors:{
 			run_away: 		2,
@@ -13108,8 +13109,8 @@ var all_abilities = {
 		level_cost_cum: true,
 	},
 	regenerates:{
-		description: 	'When this receives damage, it applies {LEVEL} regeneration to itself.{REGEN}',
-		proc: 			'receive_damage',
+		description: 	'If this is damaged, it applies {LEVEL} regeneration to itself.{REGEN}',
+		//proc: 			'receive_damage',
 		cannot_proc_while_stunned: true,
 		/*proc_chance: 	10,
 		proc_factor: 	'ability_level',*/
@@ -13136,8 +13137,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.5,
-			base_cost_hero_factor: 1,
+			base_cost_factor: 0.8,
 		},
 		//cost_factor: 		'health',
 		level_cost_cum: true,
