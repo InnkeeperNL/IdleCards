@@ -26,7 +26,7 @@ function show_summon(just_summoned){
 			parsed_summon += '<span>' + parsed_summoned_hero + '</span>';
 			parsed_summon += '<span class="summon_stats">';
 			parsed_summon += 	'<br/>';
-			if(summon_stats['min_level'] != 10 || summon_stats['max_level'] != 10)
+			if(summon_stats['min_level'] != 10 || summon_stats['max_level'] != 10 || true)
 			{
 				parsed_summon += 	'Power: ' + Math.floor(summon_stats['min_level'] * 10);
 				if(summon_stats['min_level'] != (summon_stats['max_level']))
@@ -130,7 +130,7 @@ function show_summon(just_summoned){
 			parsed_summon += '<span class="' + unowned_class + '" onclick="show_card_details(\'' + gamedata['current_summon']['hero'] + '\', true)">' + parsed_summoned_hero + '</span>';
 			parsed_summon += '<span class="summon_stats">';
 			parsed_summon += 	'<br/>';
-			if(summon_stats['min_level'] != 10 || summon_stats['max_level'] != 10 || gamedata['current_summon']['level'] != 10)
+			if(summon_stats['min_level'] != 10 || summon_stats['max_level'] != 10 || gamedata['current_summon']['level'] != 10 || true)
 			{
 				parsed_summon += 	'Power: ' + Math.floor(gamedata['current_summon']['level'] * 10) + '%<br/>';
 			}
@@ -224,6 +224,11 @@ function get_summon_stats(){
 
 	var min_level = gamedata['summon_min_power'] * 0.9;
 	var max_level = gamedata['summon_min_power'] * 1.1;
+	if(gamedata['summon_min_power'] == 10)
+	{
+		min_level = 10;
+		max_level = 10;
+	}
 
 	//min_level = ((gamedata['battles_won'] + 1) / ((gamedata['battles_lost'] * 5) + 10)) * 10;
 	//max_level = min_level * 1.2;

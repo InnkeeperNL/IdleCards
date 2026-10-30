@@ -271,6 +271,7 @@ function end_this_turn(){
 							if(gamedata['highest_summon_won'] < effective_power_factor){gamedata['highest_summon_won'] = effective_power_factor;}
 							if(gamedata['summon_min_power'] == undefined){gamedata['summon_min_power'] = 1;}
 					    	gamedata['summon_min_power'] += 1;
+					    	if(gamedata['summon_min_power'] > 10){gamedata['summon_min_power'] = 10;}
 						}
 						var defeated_hero_id = battle_info.combat_units[1]['card_type'];
 					    if(battle_info.combat_units[1]['original_card_type'] != undefined)
@@ -352,7 +353,7 @@ function end_this_turn(){
 						if(current_battle_type == 'summoned' && gamedata['current_summon']['health_left'] == undefined)
 						{
 							if(gamedata['summon_min_power'] == undefined){gamedata['summon_min_power'] = 1;}
-					    	gamedata['summon_min_power'] *= 0.75;
+					    	gamedata['summon_min_power'] *= 0.9;
 						}
 						check_quests('battle_loss_any');
 						check_quests('battle_loss_any_turn_count',total_turn_counter);
