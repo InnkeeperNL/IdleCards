@@ -631,7 +631,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'dark_night',
+		card_back: 		'cursed_night',
 		steps: 			4,
 	},
 	dancer:{
@@ -1290,7 +1290,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'dark_tower',
+		card_back: 		'cursed_tower',
 		steps: 			5,
 		step_effect: 	'min_amount',
 		step_amount: 	30,

@@ -985,8 +985,11 @@ function show_card_details(card_id, hero_version, amount, added_button, combat_v
 				}
 			}
 
-			var used_count = get_used_by_heroes(card_id);
-			parsed_card_details += 		'<br/><br/><span class="used_by_heroes_count" onclick="show_used_by_heroes(\'' + card_id + '\')">Used by ' + count_object(used_count) + ' heroes</span>';
+			var used_count = count_object(get_used_by_heroes(card_id));
+			if(used_count > 0)
+			{
+				parsed_card_details += 		'<br/><br/><span class="used_by_heroes_count" onclick="show_used_by_heroes(\'' + card_id + '\')">Used by ' + used_count + ' heroes</span>';
+			}
 			
 			parsed_card_details += 		'</div>'
 		}
