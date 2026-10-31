@@ -37,7 +37,7 @@ var all_upgrades = {
 		amount: 		0.1,
 		level_cost_scale: 	1.1,
 		cost: 			{scraps:10,},
-		max_level: 		20,
+		//max_level: 		20,
 	},
 	/*aad_used_non_unit_drop_chance:{
 		name: 			'Aimed drops',
@@ -233,20 +233,20 @@ var all_upgrades = {
 		cost: 			{wheelbarrow:25,},
 		max_level: 		4,
 	},*/
-	/*summon_common_reduction:{
+	summon_common_reduction:{
 		name: 			'Common reduction',
-		description: 	'Reduces the chance of summoning known heroes by 1%.',
+		description: 	'Reduces the chance of summoning low value heroes.',
 		needed_upgrades:{
-			summon_tries: 	4,
+			aac_summon_drop_chance: 	10,
 		},
-		card_image: 	'peasant',
+		card_image: 	'scribe',
 		type: 			'common_reduction',
 		subtypes:  		['any'],
 		level_cost_scale: 	1.5,
-		amount: 		0.01,
-		cost: 			{scraps:25,},
-		max_level: 		10,
-	},*/
+		amount: 		10,
+		cost: 			{scraps:250,},
+		//max_level: 		10,
+	},
 	/*summon_tries:{
 		name: 			'Summon tries',
 		description: 	'Increases the number of times you can try to defeat the same enemy summoned at the altar.',
@@ -311,17 +311,17 @@ var all_upgrades = {
 		name: 			'Decline merchants',
 		description: 	'Allows you to decline merchants. A new merchant will arrive in 10 minutes.',
 		needed_upgrades:{
-			merchant_sales_count: 1,
+			merchant_sales: 10,
 		},
 		card_image: 	'butcher',
 		type: 			'decline_merchants',
 		subtypes:  		['any'],
 		amount: 		0.25,
 		level_cost_scale: 	1,
-		cost: 			{scraps:500,},
+		cost: 			{scraps:2500,},
 		max_level: 		1,
 	},
-	merchant_sales_decline_speed:{
+	/*merchant_sales_decline_speed:{
 		name: 			'Merchant cooldown',
 		description: 	'Reduces the time it takes for a new merchant to arrive after selling or declining.',
 		needed_upgrades:{
@@ -334,7 +334,7 @@ var all_upgrades = {
 		level_cost_scale: 	1,
 		cost: 			{scraps:750,},
 		max_level: 		10,
-	},
+	},*/
 	peasants_gained:{
 		name: 			'Peasants gained',
 		description: 	'Increases the number of peasants gained by 10%.',

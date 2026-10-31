@@ -353,7 +353,7 @@ function end_this_turn(){
 						if(current_battle_type == 'summoned' && gamedata['current_summon']['health_left'] == undefined)
 						{
 							if(gamedata['summon_min_power'] == undefined){gamedata['summon_min_power'] = 1;}
-					    	gamedata['summon_min_power'] *= 0.9;
+					    	//gamedata['summon_min_power'] *= 0.9;
 						}
 						check_quests('battle_loss_any');
 						check_quests('battle_loss_any_turn_count',total_turn_counter);
@@ -495,7 +495,7 @@ function process_next_unit(proc, do_not_process_effects){
 }
 
 function show_pick_new_deck_card(hero_side){
-	if(battle_info['combat_units'][1]['current_health'] > 0)
+	if(still_picking == true && battle_info['combat_units'][1]['current_health'] > 0 && battle_info['combat_units'][2]['current_health'] > 0)
 	{
 		if(hero_side == undefined){hero_side = 2;}
 		var pickable_deck_cards = get_pickable_deck_cards(hero_side);
@@ -515,8 +515,10 @@ function show_pick_new_deck_card(hero_side){
 				}
 			}
 
-			parsed_new_deck_cards	+= '</div>';
+			
 			parsed_new_deck_cards	+= '<div class="hide_pickable_deck_cards_button" onclick="hide_pickable_deck_cards()"></div><div class="show_pickable_deck_cards_button" onclick="show_pickable_deck_cards()"></div>';
+			parsed_new_deck_cards	+= '<div class="add_card_to_deck_from_details_button" onclick="still_picking=false;choose_pickable_deck_card()">STOP PICKING</div>';
+			parsed_new_deck_cards	+= '</div>';
 			$('.battle_container').append(parsed_new_deck_cards);
 		}
 		else
@@ -627,7 +629,10 @@ function choose_pickable_deck_card(card_id){
 	$('.new_deck_card_container').remove();
 	$('.hide_pickable_deck_cards_button').remove();
 	$('.show_pickable_deck_cards_button').remove();
-	add_card_to_combat_deck(2, card_id, 'deck');
+	if(card_id != undefined && all_available_cards[card_id] != undefined)
+	{
+		add_card_to_combat_deck(2, card_id, 'deck');
+	}
 	draw_card(2);
 	process_next_unit('combat_start',true);
 }
@@ -8966,7 +8971,7 @@ function resign_combat(){
 	else
 	{
 		gamedata['battles_lost']++;
-		gamedata['summon_min_power'] *= 0.9;
+		//gamedata['summon_min_power'] *= 0.9;
 		saveToLocalStorage();
 		show_content('summon');
 	}
@@ -8977,7 +8982,7 @@ function end_combat(count_as_loss){
 	if(count_as_loss != undefined && count_as_loss == true)
 	{
 		gamedata['battles_lost']++;
-		gamedata['summon_min_power'] *= 0.9;
+		//gamedata['summon_min_power'] *= 0.9;
 		saveToLocalStorage();
 	}
 	clear_all_timeouts();

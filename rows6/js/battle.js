@@ -22,6 +22,7 @@ var battle_stats = {};
 var endless_wave_count = 1;
 var battle_ability_procs = {};
 var build_deck_while_playing = true;
+var still_picking = true;
 
 
 function show_random_battle(){
@@ -830,6 +831,7 @@ function get_random_hero(on_value, min_rarity, max_rarity, common_reduction){
 	if(gamedata['known_recipes'] == undefined){gamedata['known_recipes'] = {};}
 	var picked_hero = false;
 	var available_hero_count = 0;
+	var possible_heroes = {};
 	eachoa(all_available_cards, function(card_id, card){
 		if(card['hero_version'] != undefined && (max_rarity == undefined || card['value'] <= max_rarity) && (min_rarity == undefined || card['value'] >= min_rarity))
 		{
@@ -853,6 +855,7 @@ function get_random_hero(on_value, min_rarity, max_rarity, common_reduction){
 					temp_rarity *= 1 + (gamedata['owned_cards'][card_id]);
 				}
 				available_hero_count += 1 / (temp_rarity * temp_rarity);
+				possible_heroes[card_id] = 1 / (temp_rarity * temp_rarity);
 			}
 			/*}
 			else
@@ -861,7 +864,8 @@ function get_random_hero(on_value, min_rarity, max_rarity, common_reduction){
 			}*/
 		}
 	});
-	var picked_hero_number = (Math.random() * available_hero_count);
+	picked_hero = get_random_key_from_object_based_on_num_value(possible_heroes);
+	/*var picked_hero_number = (Math.random() * available_hero_count);
 	eachoa(all_available_cards, function(card_id, card){
 		if(card['hero_version'] != undefined && (max_rarity == undefined || card['value'] <= max_rarity) && (min_rarity == undefined || card['value'] >= min_rarity))
 		{
@@ -872,10 +876,10 @@ function get_random_hero(on_value, min_rarity, max_rarity, common_reduction){
 			else
 			{
 				var temp_rarity = card['value'];
-				if(common_reduction != undefined && temp_rarity < common_reduction /*&& (gamedata['known_recipes'][card_id] != undefined || card['recipe'] == undefined)*/)
+				if(common_reduction != undefined && temp_rarity < common_reduction)
 				{
-					/*var temp_correction = common_reduction - card['value'];
-					temp_rarity = common_reduction * temp_correction;*/
+					//var temp_correction = common_reduction - card['value'];
+					//temp_rarity = common_reduction * temp_correction;
 					temp_rarity = common_reduction;
 				}
 				if(gamedata['owned_cards'][card_id] != undefined)
@@ -884,20 +888,12 @@ function get_random_hero(on_value, min_rarity, max_rarity, common_reduction){
 				}
 				picked_hero_number -= 1 / (temp_rarity * temp_rarity);
 			}
-			/*if(card['pick_chance'] == undefined)
-			{*/
-				
-			/*}
-			else
-			{
-				picked_hero_number -= card['pick_chance'];
-			}*/
 			if(picked_hero_number <= 0 && picked_hero == false)
 			{
 				picked_hero = card_id;
 			}
 		}
-	});
+	});*/
 	if(picked_hero == false && min_rarity != undefined && min_rarity > 1)
 	{
 		min_rarity /= 2;

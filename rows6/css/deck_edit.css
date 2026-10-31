@@ -1564,7 +1564,7 @@
     border-radius: 5px;
 }
 
-.card_detail .add_card_to_deck_from_details_button
+.add_card_to_deck_from_details_button
 {
 	position:absolute;
 	bottom:-60px;
@@ -1579,6 +1579,11 @@
 	font-weight:bold;
 	color:rgba(255,255,255,0.8);
 	cursor:pointer;
+}
+
+.new_deck_card_container .add_card_to_deck_from_details_button
+{
+	bottom: 0px;
 }
 
 .card_detail .available_cards

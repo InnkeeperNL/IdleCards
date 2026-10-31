@@ -292,6 +292,7 @@ function show_summoned_battle(){
 	gamedata['current_summon']['tries'] -= 1;
 	saveToLocalStorage();
 	enemy_card_back = '';
+	still_picking = true;
 	endless_waves = false;
 	current_battle_type = 'summoned';
 	show_content('battle');
