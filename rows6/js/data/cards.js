@@ -88,7 +88,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{shoot: 1, shoot_arrivals: 5},
 		hero_version: 			{
-			theme: 				['subtype_archer','move_enemy_to_hand_ability','enemy_played'],
+			theme: 				['subtype_archer','move_enemy_to_hand_ability','enemy_played','damaging_hero'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -491,7 +491,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{shoot_arrivals: 2, cursed_touch: 2, venom: 2},
+		abilities: 			{shoot_arrivals: 5, cursed_touch: 1, venom: 1},
 		quote: '\"They will not make it to the battlefield.\"',
 	},
 	astrologer:{
@@ -1153,7 +1153,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{brew_potion: 2, limited_uses: 1},
+		abilities: 			{brew_potion: 3, limited_uses: 3},
 		quote: '\"Do we need an eye of newt?\"',
 		max_in_deck: 2,
 	},
@@ -3466,7 +3466,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{shoot_arrivals: 3},
+		abilities: 			{shoot_arrivals: 5},
 		quote: '\"Plenty of arrows left.\"',
 	},
 	raging_bear:{

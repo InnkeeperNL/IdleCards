@@ -4132,7 +4132,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'curse',
 			base_cost_factor: 0,
-			base_hit_cost_factor: 0.5,
+			base_hit_cost_factor: 0.75,
 		}
 	},
 	cursing_hero:{
@@ -10375,7 +10375,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'burn',
 			base_cost_factor: 0,
-			base_hit_cost_factor: 0.5,
+			base_hit_cost_factor: 0.75,
 		},
 		level_cost_cum: true,
 	},
@@ -14671,6 +14671,11 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'arcane_bolt',
 			base_cost_factor: 	0.2,
+		},
+		ability_level_cost_factors:{
+			cursed_touch: 		1.5,
+			venom: 				1.5,
+			ignites: 			1.5,
 		},
 		average_hits: 	1,
 	},
