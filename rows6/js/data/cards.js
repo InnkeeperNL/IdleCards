@@ -7777,3 +7777,37 @@ function check_all_pickable_deck_cards(min_amount, look_for_card){
 		}
 	});
 }
+
+function get_used_by_heroes(look_for_card){
+	var all_chosen_cards = {};
+	eachoa(all_available_cards, function(card_id, card_info){
+		if(card_info['hero_version'] != undefined)
+		{
+			var possible_picks = get_pickable_deck_cards(1, card_id);
+			eachoa(possible_picks, function(card_id_2, card_pickable){
+				if(look_for_card != undefined && look_for_card == card_id_2)
+				{
+					all_chosen_cards[card_id] = true;
+				}
+			});
+		}
+	});
+	return all_chosen_cards;
+}
+
+function show_used_by_heroes(card_id){
+	if(all_available_cards[card_id] != undefined)
+	{
+		var used_by_list = '<div class="used_by_list">';
+		var used_by_heroes = get_used_by_heroes(card_id);
+		used_by_list += '<span class="used_by_title">' + capitalizeFirstLetter(all_available_cards[card_id]['name']) + '</span><br/>used by:<br/><br/>';
+		eachoa(used_by_heroes, function(hero_id, used){
+			used_by_list += '<span>' + capitalizeFirstLetter(all_available_cards[hero_id]['name']) + '</span><br/>';
+		});
+		used_by_list += '</div>';
+		setTimeout(function(){
+			$('.detail_overlay').removeClass('hidden');
+			$('.detail_overlay .card_detail').html(used_by_list);
+		},10);
+	}
+}
