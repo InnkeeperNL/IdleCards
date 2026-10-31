@@ -514,11 +514,9 @@ function show_pick_new_deck_card(hero_side){
 					parsed_new_deck_cards += '<div class="pickable_deck_card single_current_reward"><span onclick="show_card_details(\'' + chosen_deck_card_option + '\')">' + parse_card(chosen_deck_card_option) + '</span><div class="menu_button slim pick_reward_button" onclick="choose_pickable_deck_card(\'' + chosen_deck_card_option + '\')">PICK</div></div>';
 				}
 			}
-
-			
-			parsed_new_deck_cards	+= '<div class="hide_pickable_deck_cards_button" onclick="hide_pickable_deck_cards()"></div><div class="show_pickable_deck_cards_button" onclick="show_pickable_deck_cards()"></div>';
 			parsed_new_deck_cards	+= '<div class="add_card_to_deck_from_details_button" onclick="still_picking=false;choose_pickable_deck_card()">STOP PICKING</div>';
 			parsed_new_deck_cards	+= '</div>';
+			parsed_new_deck_cards	+= '<div class="hide_pickable_deck_cards_button" onclick="hide_pickable_deck_cards()"></div><div class="show_pickable_deck_cards_button" onclick="show_pickable_deck_cards()"></div>';
 			$('.battle_container').append(parsed_new_deck_cards);
 		}
 		else
