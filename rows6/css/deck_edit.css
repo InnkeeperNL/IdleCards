@@ -1893,3 +1893,8 @@ span.used_by_title
 	cursor: pointer;
 	font-size: 13px;
 }
+
+.unowned_used_by_hero
+{
+	color:rgba(150,150,150,0.9);
+}

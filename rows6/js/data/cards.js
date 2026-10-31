@@ -7802,7 +7802,14 @@ function show_used_by_heroes(card_id){
 		var used_by_heroes = get_used_by_heroes(card_id);
 		used_by_list += '<span class="used_by_title">' + capitalizeFirstLetter(all_available_cards[card_id]['name']) + '</span><br/>used by:<br/><br/>';
 		eachoa(used_by_heroes, function(hero_id, used){
-			used_by_list += '<span>' + capitalizeFirstLetter(all_available_cards[hero_id]['name']) + '</span><br/>';
+			if(gamedata['owned_cards'][hero_id] == undefined)
+			{
+				used_by_list += '<span class="unowned_used_by_hero">' + capitalizeFirstLetter(all_available_cards[hero_id]['name']) + '</span><br/>';
+			}
+			else
+			{
+				used_by_list += '<span>' + capitalizeFirstLetter(all_available_cards[hero_id]['name']) + '</span><br/>';
+			}
 		});
 		used_by_list += '</div>';
 		setTimeout(function(){
