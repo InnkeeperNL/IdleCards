@@ -3361,9 +3361,65 @@ var all_abilities = {
 		},
 	},
 	consume_creature:{
+		description: 	'Each turn, this destroys 1 random non-undead ally creature unit with no more than 1 health. If it does, This gains {LEVEL} power and heals itself by {LEVEL}. Will target units with the lowest cost first.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'random',
+				not_self: 	true,
+				not_types: 	['structure','artifact'],
+				max_abilities: 	{undead: 0},
+				max_hp: 	1,
+				lowest_cost: true,
+				side: 		'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'drain',
+				type: 		'destroy',
+				subtypes: 	['sacrifice_ally','consume','feast'],
+				amount: 	1,
+			},
+		},
+		on_success:{
+			targets:	{
+				0:{
+					target: 		'any',
+					target_amount: 	1,
+					position: 		'self',
+					min_hp: 		1,
+					side: 			'ally'
+				},
+			},
+			effects:{
+				0:{
+					projectile: 	'power',
+					type: 			'increase_power',
+					subtypes: 		['empower_any','empower_ally'],
+					amount: 		'ability_level'
+				},
+				1:{
+					pause_before: 	-1000,
+					type: 			'healing',
+					subtypes: 		['healing'],
+					amount: 		'ability_level'
+				},
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 2,
+		},
+		cost_adjustment: -2,
+	},
+	consume_creature_hv:{
+		name: 			'consume creature',
 		description: 	'Each turn, this destroys 1 random non-undead ally creature unit with no more than 1 health. If it does, This gains {LEVEL} temporary power and heals itself by {LEVEL}. Will target units with the lowest cost first.',
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['summon_creature_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -3410,9 +3466,11 @@ var all_abilities = {
 				},
 			},
 		},
-		animation: 		'combat_zoom',
-		level_cost: 	3,
-		cost_adjustment: -3,
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 1,
+		},
+		cost_adjustment: -2,
 	},
 	consume_sporeling:{
 		description: 	'If damaged, destroys a random sporeling. This then heals itself by {LEVEL}.',
@@ -8240,7 +8298,7 @@ var all_abilities = {
 		additional_levels_cost: 1,
 	},
 	flaming_kills:{
-		description: 	'When this destroys an enemy, this applies {LEVEL} burn to all enemies.{BURN}',
+		description: 	'When this destroys something, this applies {LEVEL} burn to all enemies.{BURN}',
 		proc: 			'kill',
 		proc_while_dead: true,
 		scales: 		true,
@@ -10097,7 +10155,7 @@ var all_abilities = {
 		level_cost_artifact: 1,
 	},
 	form_tower:{
-		description: 	'Consumes a random archer, mage or witch creature unit to turn into an archer, arcane or dark tower.',
+		description: 	'Consumes a random archer, mage or witch creature unit to turn into an archer, arcane or cursed tower.',
 		cannot_proc_while_stunned: true,
 		targets:	{
 			0:{
@@ -10230,7 +10288,7 @@ var all_abilities = {
 									type: 			'turn_into',
 									subtypes: 		['fusion'],
 									card_id: 		'from_list',
-									card_ids: 		{dark_tower: true},
+									card_ids: 		{cursed_tower: true},
 									amount: 		1
 								},
 								1:{
@@ -12673,6 +12731,35 @@ var all_abilities = {
 			base_cost_spell_factor: 0.25,
 		},
 	},
+	reap_ally:{
+		description: 	'Destroys {LEVEL} ally creature(s) with 1 or less health.',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				min_hp: 		1,
+				max_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'death',
+				type: 		'destroy',
+				subtypes: 	['reap','sacrifice_ally'],
+				amount: 	1,
+			}
+		},
+		animation: 	'combat_zoom',
+		base_cost:{
+			base_cost_id: 'destroy',
+			base_cost_factor: -0.2,
+		},
+	},
 	reaping_touch:{
 		description: 	'After this deals damage to an enemy creature unit, destroys it if it has {LEVEL} or less health.',
 		proc: 			'dealt_damage',
@@ -15071,12 +15158,12 @@ var all_abilities = {
 		cost_adjustment: 1.5,
 	},
 	spawn_sporeling:{
-		description: 	'Has a 25% chance to summon {LEVEL} sporeling(s).',
+		description: 	'Has a {LEVEL}0% chance to summon a sporeling.',
 		proc: 			'basic',
-		proc_chance: 	25,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
-		proc_amount: 'ability_level',
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -15093,7 +15180,10 @@ var all_abilities = {
 			}
 		},
 		animation: 	'combat_zoom',
-		level_cost: 2,
+		base_cost:{
+			base_cost_id: 	'summon',
+			base_cost_factor: 0.075,
+		},
 	},
 	spellblast:{
 		name: 			'spellblast',

@@ -229,6 +229,8 @@ function get_summon_stats(){
 		min_level = 10;
 		max_level = 10;
 	}
+	if(min_level > 10){min_level = 10;}
+	if(max_level > 10){max_level = 10;}
 
 	//min_level = ((gamedata['battles_won'] + 1) / ((gamedata['battles_lost'] * 5) + 10)) * 10;
 	//max_level = min_level * 1.2;
