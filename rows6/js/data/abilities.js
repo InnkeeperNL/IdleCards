@@ -11480,6 +11480,10 @@ var all_abilities = {
 		level_cost: 	1,
 		level_cost_spell: 0.5,
 	},
+	no_allies:{
+		description: 	'This card will not be played if there are any ally units in play.',
+		level_cost: 	0,
+	},
 	nurture:{
 		description: 	'A random non-undead ally creature with 1 health gains {LEVEL} health permanently.',
 		cannot_proc_while_stunned: true,
@@ -13788,9 +13792,11 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		3,
-		level_cost_artifact: 6,
-		level_cost_spell: 	1.5,
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.5,
+			base_cost_hero_factor: 0.7,
+		},
 	},
 	restoring_deaths:{
 		description: 	'When any ally creature is destroyed, this heals your hero by {LEVEL}.',
@@ -13820,6 +13826,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'healing',
 			base_cost_factor: 0.5,
+			base_cost_hero_factor: 0.7,
 		},
 	},
 	restoring_spells:{
@@ -15182,7 +15189,7 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		base_cost:{
 			base_cost_id: 	'summon',
-			base_cost_factor: 0.075,
+			base_cost_factor: 0.08,
 		},
 	},
 	spellblast:{
@@ -16279,7 +16286,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.8,
+			base_cost_factor: 	0.7,
 			base_cost_spell_factor: 0.2,
 		},
 	},
@@ -16309,7 +16316,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.08,
+			base_cost_factor: 	0.07,
 			base_cost_spell_factor: 0.02,
 		},
 	},

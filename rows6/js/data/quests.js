@@ -23,7 +23,7 @@ var all_achievements = {
 		objective: 		'potion_card_played_times',
 		min_amount: 	10,
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 			'chest',
@@ -42,7 +42,7 @@ var all_achievements = {
 		card_image: 	'arcane_druid',
 		min_amount: 	30,
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		reset_if_incomplete: true,
 		rewards:{
 			0:{
@@ -61,7 +61,7 @@ var all_achievements = {
 		objective: 		'guard_affected_by_arrow',
 		card_image: 	'archer_tower',
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 			'chest',
@@ -79,7 +79,7 @@ var all_achievements = {
 		objective: 		'crow_affected_by_move_ally',
 		card_image: 	'crow',
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 			'chest',
@@ -97,7 +97,7 @@ var all_achievements = {
 		card_image: 	'bunny',
 		objective: 		'enemy_hero_killed_by_named_bunny',
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 			'chest',
@@ -116,7 +116,7 @@ var all_achievements = {
 		objective: 		'claimed_pickup_total',
 		min_amount: 	20,
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 			'enchanted_net',
@@ -128,6 +128,25 @@ var all_achievements = {
 			},
 		}
 	},
+	empty_tomb:{
+		name: 			'empty tomb',
+		description: 	'Win a battle against an enemy at 100% power or stronger with no cards in your grave.',
+		card_image: 	'skeletal_soldier',
+		objective: 		'ally_grave_card_count_battle_end_won',
+		max_amount: 	0,
+		amount: 		1,
+		//hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_skeletal_soldier',
+				reward_amount: 		1
+			},
+		}
+	},
 	falconer:{
 		name: 			'falconer',
 		description: 	'Kill an anemy bunny with a falcon.',
@@ -135,7 +154,7 @@ var all_achievements = {
 		objective: 		'enemy_bunny_killed_by_falcon',
 		max_amount: 	0,
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 			'chest',
@@ -147,13 +166,33 @@ var all_achievements = {
 			},
 		}
 	},
+	happy_ending:{
+		name: 			'happy ending',
+		description: 	'Win a battle against an enemy at 100% power or stronger at round 69.',
+		card_image: 	'smiling_clerk',
+		objective: 		'battle_won_any_turn_count',
+		min_amount: 	69,
+		max_amount: 	69,
+		amount: 		1,
+		//hide_details: 	true,
+		rewards:{
+			0:{
+				reward_id: 			'chest',
+				reward_amount: 		1
+			},
+			1:{
+				reward_id: 			'card_back_smiling_clerk',
+				reward_amount: 		1
+			},
+		}
+	},
 	king_of_peasants:{
 		name: 			'king of peasants',
 		description: 	'Gain 1000 peasants.',
 		card_image: 	'crown',
 		objective: 		'gained_card_peasant',
 		amount: 		1000,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 			'crown',
@@ -173,7 +212,7 @@ var all_achievements = {
 		min_amount: 	1337,
 		max_amount: 	1337,
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 			'scraps',
@@ -209,7 +248,7 @@ var all_achievements = {
 		card_image: 	'cursed_scarecrow',
 		objective: 		'crow_affected_by_fear',
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 'chest',
@@ -228,7 +267,7 @@ var all_achievements = {
 		card_image: 	'shieldman',
 		min_amount: 	25,
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 			'chest',
@@ -247,7 +286,7 @@ var all_achievements = {
 		card_image: 	'skirmisher',
 		min_amount: 	30,
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 			'chest',
@@ -265,7 +304,7 @@ var all_achievements = {
 		objective: 		'enemy_cheese_killed',
 		card_image: 	'cheese',
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 			'chest',
@@ -284,7 +323,7 @@ var all_achievements = {
 		card_image: 	'wanderer',
 		min_amount: 	30,
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 			'golden_saddle',
@@ -303,7 +342,7 @@ var all_achievements = {
 		objective: 		'wall_card_played_times',
 		min_amount: 	30,
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 			'chest',
@@ -322,7 +361,7 @@ var all_achievements = {
 		card_image: 	'dark_knight',
 		min_amount: 	2,
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 			'chest',
@@ -340,7 +379,7 @@ var all_achievements = {
 		card_image: 	'wild_boar',
 		objective: 		'wild_boar_affected_by_grant_flying',
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 'chest',
@@ -359,7 +398,7 @@ var all_achievements = {
 		objective: 		'witch_card_played_times',
 		min_amount: 	30,
 		amount: 		1,
-		hide_details: 	true,
+		//hide_details: 	true,
 		rewards:{
 			0:{
 				reward_id: 			'chest',

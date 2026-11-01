@@ -674,7 +674,7 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, counter_spell: 1},
 		hero_version: 			{
-			theme: 				['subtype_ritual','subtype_clerk'],
+			theme: 				['draw_cards_ability','reclaim_ability','subtype_ritual','subtype_clerk'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -1426,7 +1426,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{summon_ghost: 5, maximum_allies: 0},
+		abilities: 			{summon_ghost: 5, no_allies: 1},
 		quote: '\"Spooky, scary... ghosts.\"',
 		max_in_deck: 2,
 	},
@@ -4283,6 +4283,31 @@ var all_available_cards = {
 		},
 		quote: '\"It always starts out small...\"',
 	},
+	smiling_clerk:{
+		name: 				'smiling clerk',
+		type: 				'creature',
+		subtypes: 			['human','clerk'],
+		color: 				['colorless'],
+		theme: 				['on_play_proc_ability'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/smiling_clerk.jpg',
+		image_position: 	'top',
+		power: 				1,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{strike: 1, restoring_arrivals: 1},
+		hero_version: 			{
+			theme: 				['retreat_ability','on_play_proc_ability','ally_unit_card_played_proc_ability','subtype_clerk'],
+			not_theme: 			['subtype_animal','subtype_undead','subtype_giant','type_structure','run_away_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, restoring_arrivals: 1},
+		},
+		quote: '\"Welcome! I will enter your arrival in the registry.\"',
+	},
 	soul_harvest:{
 		name: 				'soul harvest',
 		type: 				'spell',
@@ -5492,15 +5517,15 @@ var all_available_cards = {
 		reward: 			{
 			type: 			'random_card',
 			card_type: 		['treasure'],
-			pick_amount: 	3,
+			pick_amount: 	1,
 			amount: 		1,
 			min_value: 		1,
-			rare_chance:   	1,
-			pickable: 		true,
-			all_pick_chance: true,
+			rare_chance:   	0.1,
+			//pickable: 		true,
+			//all_pick_chance: true,
 			description: 	'Awards 1 random treasure.',
 			text: 			'&nbsp;',
-			amount_used: 	[1],
+			amount_used: 	[1,5,'all'],
 		},
 	},
 	
@@ -6438,12 +6463,12 @@ function check_card(card_id){
 			all_available_cards['card_back_' + card_id]['value'] = card_info['value'] * 25;
 		}
 	    var used_in_recipes = 0;
-	    eachoa(all_available_cards, function(other_card_id, other_card_info){
+	    /*eachoa(all_available_cards, function(other_card_id, other_card_info){
 	    	if(other_card_info['recipe'] != undefined && other_card_info['recipe'][card_id] != undefined)
 	    	{
 	    		used_in_recipes++;
 	    	}
-	    });
+	    });*/
 	    card_info['used_in_recipes'] = used_in_recipes;
 	}
 }
