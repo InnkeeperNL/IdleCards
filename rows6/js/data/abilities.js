@@ -8321,8 +8321,10 @@ var all_abilities = {
 		},
 		base_cost:{
 			base_cost_id: 'burn',
-			base_cost_factor: 0,
-			base_hit_cost_factor: 1,
+			base_cost_factor: 1,
+		},
+		ability_level_cost_factors:{
+			reap_ally: 		2,
 		},
 		animation: 			'combat_zoom',
 		level_cost_cum: true,
