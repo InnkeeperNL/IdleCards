@@ -495,9 +495,9 @@ function process_next_unit(proc, do_not_process_effects){
 }
 
 function show_pick_new_deck_card(hero_side){
+	if(hero_side == undefined){hero_side = 2;}
 	if(still_picking == true && battle_info['combat_units'][1]['current_health'] > 0 && battle_info['combat_units'][2]['current_health'] > 0)
 	{
-		if(hero_side == undefined){hero_side = 2;}
 		var pickable_deck_cards = get_pickable_deck_cards(hero_side);
 		var pickable_deck_cards_amount = count_object(pickable_deck_cards);
 		if(pickable_deck_cards_amount > 1)
@@ -534,6 +534,7 @@ function show_pick_new_deck_card(hero_side){
 	}
 	else
 	{
+		draw_card(hero_side);
 		process_next_unit('combat_start',true);
 	}
 }
