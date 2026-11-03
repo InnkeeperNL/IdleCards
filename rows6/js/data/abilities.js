@@ -13775,6 +13775,7 @@ var all_abilities = {
 		proc: 			'ally_creature_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
+		origin_not_self: true,
 		targets:	{
 			0:{
 				target: 		'hero',

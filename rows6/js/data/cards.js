@@ -211,6 +211,7 @@ var all_available_cards = {
 		subtypes: 			['human','cleric','mage'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['subtype_cleric','subtype_mage'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -1061,7 +1062,7 @@ var all_available_cards = {
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
 		theme: 				[],
-		needs_theme: 		[],
+		needs_theme: 		['summon_creature_ability','ally_creature_death_proc_ability','sacrifice_ability'],
 		not_theme: 			['type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -1079,6 +1080,8 @@ var all_available_cards = {
 		subtypes: 			['undead'],
 		color: 				['colorless'],
 		theme: 				['resurrect_ability'],
+		needs_theme: 		['burn_ability','ally_creature_death_proc_ability','resurrect_ability'],
+		not_theme: 			['sacrifice_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -1341,7 +1344,7 @@ var all_available_cards = {
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
 		theme: 				[],
-		needs_theme: 		[],
+		needs_theme: 		['summon_creature_ability','ally_creature_death_proc_ability','sacrifice_ability'],
 		not_theme: 			['type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -1579,6 +1582,7 @@ var all_available_cards = {
 		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['resurrect_ability','summon_creature_ability','ally_creature_death_proc_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -1604,6 +1608,7 @@ var all_available_cards = {
 		subtypes: 			['human','mage'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['ally_creature_death_proc_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -1807,7 +1812,7 @@ var all_available_cards = {
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
 		theme: 				[],
-		needs_theme: 		[],
+		needs_theme: 		['summon_creature_ability','ally_creature_death_proc_ability','sacrifice_ability'],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -1825,6 +1830,7 @@ var all_available_cards = {
 		subtypes: 			['human','rogue'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['evade_ability','subtype_rogue','burn_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -1849,6 +1855,7 @@ var all_available_cards = {
 		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['subtype_cleric','resurrect_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -2293,7 +2300,7 @@ var all_available_cards = {
 		subtypes: 			['potion'],
 		color: 				['colorless'],
 		theme: 				[],
-		needs_theme: 		[],
+		needs_theme: 		['artifact_death_proc_ability'],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -2427,7 +2434,7 @@ var all_available_cards = {
 		subtypes: 			['potion'],
 		color: 				['colorless'],
 		theme: 				[],
-		needs_theme: 		[],
+		needs_theme: 		['heal_hero_ability'],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -2647,10 +2654,12 @@ var all_available_cards = {
 		subtypes: 			['fungus'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['sacrifice_ally_ability','burn_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
 		image: 				'cards/lavashroom.jpg',
+		image_position: 	'top',
 		power: 				2,
 		armor: 				0,
 		health: 			6,
@@ -2696,6 +2705,7 @@ var all_available_cards = {
 		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
 		theme: 				['subtype_plant'],
+		needs_theme: 		['subtype_plant','grant_regeneration_ability','resurrect_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -2774,6 +2784,7 @@ var all_available_cards = {
 		subtypes: 			['arcane'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['subtype_arcane','echo_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -2865,6 +2876,7 @@ var all_available_cards = {
 		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['resurrect_ability','hasten_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -3074,6 +3086,7 @@ var all_available_cards = {
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['buff_hero_ability','subtype_ritual'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -3132,6 +3145,8 @@ var all_available_cards = {
 		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['subtype_cleric','buff_hero_ability'],
+		not_theme: 			['subtype_animal','subtype_trunked','kill_proc_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -3424,7 +3439,7 @@ var all_available_cards = {
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
 		theme: 				[],
-		needs_theme: 		[],
+		needs_theme: 		['summon_creature_ability','ally_creature_death_proc_ability','sacrifice_ability'],
 		not_theme: 			['type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -4064,6 +4079,7 @@ var all_available_cards = {
 		subtypes: 			['animal','hoofed'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['buff_hero_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -4137,6 +4153,7 @@ var all_available_cards = {
 		subtypes: 			['human','rogue','cleric'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['subtype_cleric','subtype_rogue','artifact_death_proc_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -4360,6 +4377,7 @@ var all_available_cards = {
 		subtypes: 			['human','clerk'],
 		color: 				['colorless'],
 		theme: 				['on_play_proc_ability','ally_unit_card_played_proc_ability'],
+		needs_theme: 		['ally_unit_card_played_proc_ability','retreat_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -5038,6 +5056,7 @@ var all_available_cards = {
 		subtypes: 			['human','cleric','warrior'],
 		color: 				['colorless'],
 		theme: 				[],
+		needs_theme: 		['subtype_warrior','subtype_cleric'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -7879,8 +7898,12 @@ function get_used_by_heroes(look_for_card){
 	eachoa(all_available_cards, function(card_id, card_info){
 		if(card_info['hero_version'] != undefined)
 		{
-			var possible_picks = get_pickable_deck_cards(1, card_id);
-			eachoa(possible_picks, function(card_id_2, card_pickable){
+			if(card_info['hero_deck'] == undefined)
+			{
+				card_info['hero_deck'] = get_pickable_deck_cards(1, card_id);
+			}
+			//var possible_picks = get_pickable_deck_cards(1, card_id);
+			eachoa(card_info['hero_deck'], function(card_id_2, card_pickable){
 				if(look_for_card != undefined && look_for_card == card_id_2)
 				{
 					all_chosen_cards[card_id] = true;
@@ -7913,4 +7936,21 @@ function show_used_by_heroes(card_id){
 			$('.detail_overlay .card_detail').html(used_by_list);
 		},10);
 	}
+}
+
+function get_used_by_most_heroes(){
+	var max_used = 0;
+	var max_used_card = false;
+	eachoa(all_available_cards, function(card_id, card_info){
+		if(all_available_cards[card_id]['used_by_hero_count'] == undefined)
+		{
+			all_available_cards[card_id]['used_by_hero_count'] = count_object(get_used_by_heroes(card_id));
+		}
+		if(all_available_cards[card_id]['used_by_hero_count'] > max_used)
+		{
+			max_used = all_available_cards[card_id]['used_by_hero_count'] + 0;
+			max_used_card = card_id;
+		}
+	});
+	console.log(max_used_card + ' is used by ' + max_used + ' heroes');
 }
