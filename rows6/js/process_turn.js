@@ -554,6 +554,7 @@ function show_pickable_deck_cards(){
 function get_pickable_deck_cards(hero_side, fixed_hero, show_picking){
 	var check_artifacts = false;
 	var current_artifact_count = 0;
+	var current_card_counts = {};
 	if(hero_side == undefined){hero_side = 2;}
 	if(fixed_hero == undefined)
 	{
@@ -570,6 +571,14 @@ function get_pickable_deck_cards(hero_side, fixed_hero, show_picking){
 			if(all_available_cards[card_info['card_id']]['type'] == 'artifact' && card_info['status'] != 'grave')
 			{
 				current_artifact_count++;
+			}
+			if(card_info['status'] != 'grave')
+			{
+				if(current_card_counts[card_info['card_id']] == undefined)
+				{
+					current_card_counts[card_info['card_id']] = 0;
+				}
+				current_card_counts[card_info['card_id']]++;
 			}
 		});
 	}
@@ -612,7 +621,7 @@ function get_pickable_deck_cards(hero_side, fixed_hero, show_picking){
 						}
 						
 					}
-					if(all_available_cards[card_id]['type'] != 'artifact' || current_artifact_count < 5)
+					if((all_available_cards[card_id]['type'] != 'artifact' || current_artifact_count < 5) && (all_available_cards[card_id]['max_in_deck'] == undefined || all_available_cards[card_id]['max_in_deck'] > current_card_counts[card_id]))
 					{
 						if(match_array_values(all_available_cards[card_id]['theme'], 'any') || (match_array_values(all_available_cards[card_id]['theme'], current_theme) > 0 && (current_not_theme == undefined || match_array_values(all_available_cards[card_id]['theme'], current_not_theme) == false) && (current_card_not_theme == undefined || match_array_values(current_theme, current_card_not_theme) == false) && (count_object(current_needs_theme) == 0 || match_array_values(current_theme, current_needs_theme) > 0)))
 						{

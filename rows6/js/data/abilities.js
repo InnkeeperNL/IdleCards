@@ -13766,9 +13766,11 @@ var all_abilities = {
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		4,
-		level_cost_artifact: 6,
-		level_cost_spell: 	1,
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.75,
+			base_cost_spell_factor: 0.25,
+		},
 	},
 	restoring_arrivals:{
 		description: 	'When any ally creature enters the game, this heals your hero by {LEVEL}.',
