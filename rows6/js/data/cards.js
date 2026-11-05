@@ -4646,7 +4646,7 @@ var all_available_cards = {
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
 		theme: 				['artifact_death_proc_ability'],
-		needs_theme: 		['artifact_death_proc_ability','subtype_ritual'],
+		needs_theme: 		['subtype_ritual'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
