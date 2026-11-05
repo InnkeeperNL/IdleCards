@@ -203,7 +203,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{arcane_bolt: 5},
 		quote: '\"Release the energy!\"',
-		max_in_deck: 		2,
+		max_in_deck: 		1,
 	},
 	arcane_druid:{
 		name: 				'arcane druid',
@@ -419,7 +419,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{empower_all: 1, fortify_all: 1, righthand: 1},
 		quote: '\"Ready for a fight!\"',
-		max_in_deck: 		2,
+		max_in_deck: 		1,
 	},
 	armorer:{
 		name: 				'armorer',
@@ -892,7 +892,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{cleanse: 1, regenerate_ally: 1, echo: 1},
 		quote: '\"So pretty!\"',
-		max_in_deck: 		2,
+		max_in_deck: 		1,
 	},
 	bottle_of_poison:{
 		name: 				'bottle of poison',
@@ -927,7 +927,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{discard_enemy_down: 6, painful_discards: 1},
 		quote: '\"My head hurts.\"',
-		max_in_deck: 1,
+		max_in_deck: 		1,
 	},
 	breaking_ray:{
 		name: 				'breaking ray',
@@ -1221,7 +1221,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{brew_potion: 3, limited_uses: 3},
 		quote: '\"Do we need an eye of newt?\"',
-		max_in_deck: 2,
+		max_in_deck: 		1,
 	},
 	cheese:{
 		name: 				'cheese',
@@ -1395,7 +1395,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{curse_all: 1, echo: 1},
 		quote: '\"Make sure you come home before dark.\"',
-		max_in_deck: 1,
+		max_in_deck: 		1,
 	},
 	cursed_rune:{
 		name: 				'cursed rune',
@@ -1499,7 +1499,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{summon_ghost: 5, no_allies: 1},
 		quote: '\"Spooky, scary... ghosts.\"',
-		max_in_deck: 2,
+		max_in_deck: 		1,
 	},
 	dark_fortress:{
 		name: 				'dark fortress',
@@ -2221,14 +2221,14 @@ var all_available_cards = {
 		power: 				3,
 		armor: 				0,
 		health: 			8,
-		abilities: 			{strike: 1, spawn_sporeling: 2, consume_creature: 1},
+		abilities: 			{consume_creature: 1, strike: 1, spawn_sporeling: 2},
 		hero_version: 			{
 			theme: 				['ally_unit_card_played_proc_ability','ally_creature_death_proc_ability','subtype_fungus'],
 			not_theme: 			['subtype_undead','subtype_animal'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, spawn_sporeling: 2, consume_creature_hv: 1},
+			abilities: 			{consume_creature_hv: 1, strike_unit: 1, spawn_sporeling: 2},
 		},
 		quote: '\"Those things eat eachother!\"',
 	},
@@ -2316,7 +2316,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{enlarge_creature: 3, righthand: 1},
 		quote: '\"Normally, I am not afraid of that, but now I am.\"',
-		max_in_deck: 1,
+		max_in_deck: 		1,
 	},
 	grand_healing_potion:{
 		name: 				'grand healing potion',
@@ -2357,7 +2357,7 @@ var all_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{grave_power: 7, strike_unit: 1, summon_artifact: 2},
+			abilities: 			{grave_power: 8, strike_unit: 1, summon_artifact: 5},
 		},
 		quote: '\"It\'s dirty work, but it can be very rewarding.\"',
 	},
@@ -2521,7 +2521,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{hide_ally: 1, echo: 1, righthand: 1},
 		quote: '\"Sometimes, you just have to hide.\"',
-		max_in_deck: 1,
+		max_in_deck: 		1,
 	},
 	high_witch:{
 		name: 				'high witch',
@@ -3120,7 +3120,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{bolster_hero: 10},
 		quote: '\"Let\'s all calm down and think about it for a while.\"',
-		max_in_deck: 		2,
+		max_in_deck: 		1,
 	},
 	meteor_shower:{
 		name: 				'meteor shower',
@@ -3137,7 +3137,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{once_per_enemy: 1, rock_barrage: 2, ignites: 1},
 		quote: '\"Let fire rain from the sky.\"',
-		max_in_deck: 		2,
+		max_in_deck: 		1,
 	},
 	miner:{
 		name: 				'miner',
@@ -3413,7 +3413,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{fire_blast: 5, withering_touch: 1},
 		quote: '\"The heat was so intense. It left nothing but ashes.\"',
-		max_in_deck: 		2,
+		max_in_deck: 		1,
 	},
 	poison_gas:{
 		name: 				'poison gas',
@@ -3430,7 +3430,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{poison_all: 3},
 		quote: '\"What is that smell?\"',
-		max_in_deck: 2,
+		max_in_deck: 		1,
 	},
 	poison_witch:{
 		name: 				'poison witch',
@@ -3629,7 +3629,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{burn: 1, conflagrate: 1, go_again: 5},
 		quote: '\"Let it spread!\"',
-		max_in_deck: 		2,
+		max_in_deck: 		1,
 	},
 	quiver:{
 		name: 				'quiver',
@@ -3880,7 +3880,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{earth_blast: 1, echo: 1},
 		quote: '\"Sometimes, all you can do is hold out and wait.\"',
-		max_in_deck: 		2,
+		max_in_deck: 		1,
 	},
 	scarecrow:{
 		name: 				'scarecrow',
@@ -4555,7 +4555,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{surprise_attack: 2, echo: 1, righthand: 1},
 		quote: '\"It\'s a matter of getting the jump on your enemy.\"',
-		max_in_deck: 		2,
+		max_in_deck: 		1,
 	},
 	sword:{
 		name: 				'sword',
@@ -4572,7 +4572,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{empower_hero: 1},
 		quote: '\"A weapon suited for a hero.\"',
-		max_in_deck: 		2,
+		max_in_deck: 		3,
 	},
 	swordsman:{
 		name: 				'swordsman',
@@ -4615,7 +4615,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{unsummon_ally: 1, echo: 1},
 		quote: '\"I\'m not scared! I\'m just tactically retreating.\"',
-		max_in_deck: 1,
+		max_in_deck: 		1,
 	},
 	taipan:{
 		name: 				'taipan',
@@ -4646,7 +4646,7 @@ var all_available_cards = {
 		subtypes: 			['ritual'],
 		color: 				['colorless'],
 		theme: 				['artifact_death_proc_ability'],
-		needs_theme: 		['subtype_ritual'],
+		needs_theme: 		['artifact_death_proc_ability','subtype_ritual','kill_proc_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -4655,9 +4655,9 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{break: 1, restore_on_act: 2, echo: 1},
+		abilities: 			{break: 3, trophy_kill: 5},
 		quote: '\"Bathe in the wealth.\"',
-		max_in_deck: 1,
+		max_in_deck: 		1,
 	},
 	thief:{
 		name: 				'thief',
@@ -4683,7 +4683,7 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, plunder: 10, evade: 3},
 		},
 		quote: '\"Where did my purse go?!\"',
-		max_in_deck: 		2,
+		max_in_deck: 		1,
 	},
 	thug:{
 		name: 				'thug',
@@ -5230,7 +5230,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{curse_all: 1, call_witch: 10},
 		quote: '\"Some say there are many more.\"',
-		max_in_deck: 		2,
+		max_in_deck: 		1,
 	},
 	witchs_hut:{
 		name: 				'witch\'s hut',
@@ -6349,7 +6349,7 @@ function calculate_card_time(card_id, show_calc, hero_version){
 
 	if(calculated_time >= 1 && (hero_version == undefined || hero_version == false))
 	{
-		var high_card_cost_correction = 1 + ((calculated_time - 1) / 25);
+		var high_card_cost_correction = 1 + ((calculated_time - 1) / 50);
 		calculated_time = calculated_time / high_card_cost_correction;
 		if(show_calc!=undefined){console.log('expensive card correction: /' + high_card_cost_correction + ' = ' + calculated_time);}
 	}

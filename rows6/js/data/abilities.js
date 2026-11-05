@@ -17012,7 +17012,7 @@ var all_abilities = {
 		},
 	},
 	trophy_kill:{
-		description: 	'Restores {LEVEL} health to your hero whenever this destroys an enemy unit.',
+		description: 	'Restores {LEVEL} health to your hero whenever this destroys something.',
 		proc: 			'kill',
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
@@ -17039,6 +17039,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'healing',
 			base_cost_factor: 0.2,
+			base_cost_spell_factor: 0.4,
 			base_cost_hero_factor: 0.4,
 		},
 	},
