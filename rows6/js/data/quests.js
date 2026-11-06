@@ -796,6 +796,20 @@ var all_chained_achievements = {
 		card_back: 		'armorer',
 		steps: 			4,
 	},
+	fungal:{
+		name: 			'fungal',
+		description: 	'Play or summon {AMOUNT} fungus card(s).',
+		objective: 		'fungus_card_played',
+		amount: 		0.75,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'small_fungus',
+		steps: 			4,
+	},
 	greed:{
 		name: 			'greed',
 		description: 	'Own at least {MIN_AMOUNT} scraps.',
@@ -813,6 +827,20 @@ var all_chained_achievements = {
 		steps: 			4,
 		step_effect: 	'min_amount',
 		no_quest: 		true,
+	},
+	guard:{
+		name: 			'guard',
+		description: 	'Have allies guard your hero {AMOUNT} time(s).',
+		objective: 		'ally_performed_guard_now',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'guard',
+		steps: 			4,
 	},
 	hasten:{
 		name: 			'hasten',
@@ -1093,6 +1121,20 @@ var all_chained_achievements = {
 		card_back: 		'soul_harvest',
 		steps: 			4,
 	},
+	runner:{
+		name: 			'runner',
+		description: 	'Have allies run away {AMOUNT} time(s).',
+		objective: 		'ally_performed_run_away',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'runner',
+		steps: 			4,
+	},
 	saboteur:{
 		name: 			'saboteur',
 		description: 	'Destroy {AMOUNT} enemy structure(s) with your hero.',
@@ -1163,6 +1205,20 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'attack_dog',
+		steps: 			4,
+	},
+	sporeling:{
+		name: 			'sporeling',
+		description: 	'Play or summon {AMOUNT} sporeling(s).',
+		objective: 		'sporeling_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'sporeling',
 		steps: 			4,
 	},
 	stasher:{

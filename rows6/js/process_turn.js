@@ -8039,6 +8039,7 @@ function play_unit_card(side, card_id, origin_id, forced_play, origin_unit){
 		check_ability_procs(side, 'unit_card_played', next_combat_unit_id);
 		if(side == 2)
 		{
+			check_quests(card_id + '_card_played');
 			check_quests(all_available_cards[card_id]['type'] + '_card_played');
 			add_battle_stats(all_available_cards[card_id]['type'] + '_card_played');
 			eachoa(all_available_cards[card_id]['subtypes'], function(subtype_key, current_subtype){
