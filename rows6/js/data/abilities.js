@@ -6439,6 +6439,35 @@ var all_abilities = {
 			base_cost_factor: 1/10,
 		},
 	},
+	empowering_deaths_hv:{
+		name: 			'empowering deaths',
+		description: 	'When any ally creature is destroyed, this has gains {LEVEL} temporary power.',
+		proc: 			'ally_creature_death',
+		cannot_proc_while_stunned: true,
+		origin_not_self: 	true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'self',
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		1
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.5,
+		},
+	},
 	empowering_doom:{
 		description: 	'Gains {LEVEL} temporary power for each doomed unit or hero.',
 		cannot_proc_while_stunned: true,
@@ -16587,6 +16616,67 @@ var all_abilities = {
 		animation: 	'combat_zoom',
 		level_cost: 		6,
 		level_cost_spell: 	6,
+	},
+	summon_insect:{
+		description: 	'Summons up to {LEVEL} insect type unit(s).',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		reduce_skill_after_use:'summon_insect',
+		proc_amount: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'random',
+				card_type: 	'any',
+				card_subtype: 'insect',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.3,
+		},
+	},
+	summon_insects:{
+		description: 	'Has a {LEVEL}0% chance to add a random insect card to your hand. If your hand is full, it will add them to your deck instead.',
+		proc: 			'basic',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		proc_chance: 10,
+		proc_factor: 'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_creature','add_creature_card_to_deck'],
+				card_id: 	'random',
+				card_type: 	'any',
+				card_subtype: 'insect',
+				card_status: 	'hand',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.1,
+		},
 	},
 	summon_locust:{
 		description: 	'Summons up to {LEVEL} locust(s).',

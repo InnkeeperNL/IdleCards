@@ -748,6 +748,20 @@ var all_chained_achievements = {
 		card_back: 		'forge_tools',
 		steps: 			4,
 	},
+	entomologists:{
+		name: 			'entomologists',
+		description: 	'Play or summon an insect {AMOUNT} time(s).',
+		objective: 		'insect_card_played',
+		amount: 		0.2,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'entomologists',
+		steps: 			4,
+	},
 	fear:{
 		name: 			'fear',
 		description: 	'Have allies return an enemy to their hand {AMOUNT} time(s).',
