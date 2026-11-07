@@ -4989,6 +4989,36 @@ var all_abilities = {
 		level_cost: 	-3,
 		average_hits: 	'ability_level',
 	},
+	dig_grave:{
+		description: 	'Has a {LEVEL}0% chance to add a random creature card to your grave.',
+		proc: 			'basic',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'true_deck',
+				type: 		'add_card_to_deck',
+				card_id: 	'random',
+				card_type: 	'creature',
+				card_status: 	'grave',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.025,
+		},
+	},
 	discard:{
 		description: 	'Discards up to {LEVEL} card(s) from your hand to the grave.',
 		cannot_proc_while_stunned: true,
