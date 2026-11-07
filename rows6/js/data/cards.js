@@ -2522,7 +2522,8 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{grave_power: 5, strike: 1, summon_artifact: 10},
 		hero_version: 			{
-			theme: 				['add_creature_card_to_deck_ability','heal_hero_ability','add_artifact_card_to_deck_ability','artifact_death_proc_ability','grave_power'],
+			theme: 				['add_creature_card_to_deck_ability','heal_hero_ability','grave_power','artifact_death_proc_ability'],
+			not_theme: 			['type_artifact'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
