@@ -6362,6 +6362,53 @@ var all_abilities = {
 			base_cost_factor: 0.5/10,
 		},
 	},
+	empowering_curses:{
+		description: 	'Gains {LEVEL} temporary power for each cursed unit or hero.',
+		cannot_proc_while_stunned: true,
+		proc: 			'basic',
+		min_effect:  	1,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'target_count',
+				targets_to_count:{
+					targets:{
+						0:{
+							target: 		'unit_or_hero',
+							target_amount: 	100,
+							position: 		'random',
+							has_effect: 	{effect_name: 'cursed', amount: 1, limit: 'min'},
+							min_hp: 		1,
+							side: 			'any'
+						}
+					},
+					effects:{},
+				},
+				amount_factor: 	'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 1.5,
+		},
+		ability_level_cost_factors:{
+			curse: 				2,
+			curse_all: 			3,
+		},
+	},
 	empowering_deaths:{
 		description: 	'When any ally creature is destroyed, this has a {LEVEL}0% chance to gain 1 power.',
 		proc: 			'ally_creature_death',
@@ -6390,6 +6437,53 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'empower',
 			base_cost_factor: 1/10,
+		},
+	},
+	empowering_doom:{
+		description: 	'Gains {LEVEL} temporary power for each doomed unit or hero.',
+		cannot_proc_while_stunned: true,
+		proc: 			'basic',
+		min_effect:  	1,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'target_count',
+				targets_to_count:{
+					targets:{
+						0:{
+							target: 		'unit_or_hero',
+							target_amount: 	100,
+							position: 		'random',
+							has_effect: 	{effect_name: 'doomed', amount: 1, limit: 'min'},
+							min_hp: 		1,
+							side: 			'any'
+						}
+					},
+					effects:{},
+				},
+				amount_factor: 	'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 1,
+		},
+		ability_level_cost_factors:{
+			doom: 			2,
+			doom_all:		3,
 		},
 	},
 	empowering_fire:{
@@ -6439,6 +6533,7 @@ var all_abilities = {
 			burn_hv: 			2,
 			fire_breathing: 	2,
 			fire_breathing_hv: 	2,
+			burn_all: 			3,
 		},
 	},
 	empowering_fire_hv:{
@@ -6517,6 +6612,53 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'empower',
 			base_cost_factor: 1,
+		},
+	},
+	empowering_poison:{
+		description: 	'Gains {LEVEL} temporary power for each poisoned unit or hero.',
+		cannot_proc_while_stunned: true,
+		proc: 			'basic',
+		min_effect:  	1,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'self',
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'target_count',
+				targets_to_count:{
+					targets:{
+						0:{
+							target: 		'unit_or_hero',
+							target_amount: 	100,
+							position: 		'random',
+							has_effect: 	{effect_name: 'poisoned', amount: 1, limit: 'min'},
+							min_hp: 		1,
+							side: 			'any'
+						}
+					},
+					effects:{},
+				},
+				amount_factor: 	'ability_level',
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 1,
+		},
+		ability_level_cost_factors:{
+			poison: 			2,
+			poison_all:			3,
 		},
 	},
 	empowering_shields:{
@@ -7494,6 +7636,38 @@ var all_abilities = {
 		level_cost_artifact: 3,
 		ability_level_cost_factors:{
 			resurrect: 		2,
+		},
+	},
+	final_empower_all:{
+		description: 	'When destroyed, all ally creature units that have power gain {LEVEL} power. Cannot affect heroes.',
+		proc: 			'own_death',
+		proc_while_dead: true,
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		do_not_pause_between: 	true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	5,
+				position: 		'random',
+				not_types: 		['object','structure'],
+				min_hp: 		1,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'increase_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 4/4,
 		},
 	},
 	final_energised_doom:{
@@ -9280,9 +9454,9 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: -0.15,
+			base_cost_factor: -0.2,
 		},
-		cost_adjustment: 8,
+		cost_adjustment: 6,
 	},
 	ground_shake:{
 		description: 	'Deals {LEVEL} physical damage to all non-flying units and heroes.',
