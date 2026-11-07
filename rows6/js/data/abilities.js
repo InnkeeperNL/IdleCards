@@ -6418,7 +6418,7 @@ var all_abilities = {
 		proc_factor: 	'ability_level',
 		targets:	{
 			0:{
-				target: 		'unit',
+				target: 		'unit_or_hero',
 				target_amount: 	1,
 				position: 		'self',
 				min_power: 		0,
@@ -6447,7 +6447,7 @@ var all_abilities = {
 		origin_not_self: 	true,
 		targets:	{
 			0:{
-				target: 		'unit',
+				target: 		'unit_or_hero',
 				target_amount: 	1,
 				position: 		'self',
 				min_power: 		0,
