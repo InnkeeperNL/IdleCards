@@ -1203,8 +1203,22 @@
 		{
 			$('.waves_button').hide();
 		}
+
+		if(gamedata['current_deck'] != undefined && gamedata['decks'][gamedata['current_deck']] != undefined && gamedata['decks'][gamedata['current_deck']]['hero'] != undefined && all_available_cards[gamedata['decks'][gamedata['current_deck']]['hero']] != undefined)
+		{
+			$('.deck_edit_button .bg').css('background-image','url(images/' + all_available_cards[gamedata['decks'][gamedata['current_deck']]['hero']]['image'] + ')');
+			if(all_available_cards[gamedata['decks'][gamedata['current_deck']]['hero']]['image_position'] != undefined)
+			{
+				$('.deck_edit_button .bg').css('background-position',all_available_cards[gamedata['decks'][gamedata['current_deck']]['hero']]['image_position']);
+			}
+			else
+			{
+				$('.deck_edit_button .bg').css('background-position','center');
+			}
+		}
 			
 		saveToLocalStorage();
+		
 	};
 
 	function show_options(){

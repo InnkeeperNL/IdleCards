@@ -669,6 +669,17 @@ function set_hero(card_id, forced){
 		//check_hero_color();
 		saveToLocalStorage();
 		show_deck_edit();
+
+		$('.deck_edit_button .bg').css('background-image','url(images/' + all_available_cards[card_id]['image'] + ')');
+		if(all_available_cards[card_id]['image_position'] != undefined)
+		{
+			$('.deck_edit_button .bg').css('background-position',all_available_cards[card_id]['image_position']);
+		}
+		else
+		{
+			$('.deck_edit_button .bg').css('background-position','center');
+		}
+		
 	}
 	else
 	{
