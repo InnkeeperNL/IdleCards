@@ -222,8 +222,8 @@ function get_summon_stats(){
 	if(gamedata['highest_summon_won'] == undefined){gamedata['highest_summon_won'] = 0;}
 	if(gamedata['summon_min_power'] == undefined){gamedata['summon_min_power'] = 1;}
 
-	var min_level = gamedata['summon_min_power'] * 0.9;
-	var max_level = gamedata['summon_min_power'] * 1.1;
+	var min_level = gamedata['summon_min_power'] * 1;
+	var max_level = gamedata['summon_min_power'] * 1;
 	if(gamedata['summon_min_power'] == 10)
 	{
 		min_level = 10;
