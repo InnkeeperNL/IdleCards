@@ -748,8 +748,8 @@ var all_chained_achievements = {
 		card_back: 		'forge_tools',
 		steps: 			4,
 	},
-	entomologists:{
-		name: 			'entomologists',
+	entomologist:{
+		name: 			'entomologist',
 		description: 	'Play or summon an insect {AMOUNT} time(s).',
 		objective: 		'insect_card_played',
 		amount: 		0.2,

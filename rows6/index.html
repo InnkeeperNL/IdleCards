@@ -1283,7 +1283,7 @@
 		parsed_stats += '<div class="stats_title">Summoning</div>';
 		if(gamedata['battles_won'] != undefined){parsed_stats += '<div class="left_stats">Battles won:</div><div class="right_stats">' + nFormatter(gamedata['battles_won'],3) + '</div>';}
 		if(gamedata['battles_lost'] != undefined){parsed_stats += '<div class="left_stats">Battles lost:</div><div class="right_stats">' + nFormatter(gamedata['battles_lost'],3) + '</div>';}
-		if(gamedata['highest_summon_won'] != undefined && gamedata['highest_summon_won'] > 0){parsed_stats += '<div class="left_stats">Highest summon:</div><div class="right_stats">' + nFormatter(gamedata['highest_summon_won'] * 100,1) + '%</div>';}
+		/*if(gamedata['highest_summon_won'] != undefined && gamedata['highest_summon_won'] > 0){parsed_stats += '<div class="left_stats">Highest summon:</div><div class="right_stats">' + nFormatter(gamedata['highest_summon_won'] * 100,1) + '%</div>';}*/
 		if(gamedata['upgrades'] != undefined && gamedata['upgrades']['summon_altar'] != undefined){
 			parsed_stats += '<div class="left_stats">Max altar rarity:</div><div class="right_stats">' + (Math.floor(get_upgrade_factor('altar_rarity', 'any', true) * get_upgrade_factor('summon_max_rarity', 'any', true))) + '</div>';
 		}

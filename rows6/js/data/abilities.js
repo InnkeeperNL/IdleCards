@@ -5597,6 +5597,9 @@ var all_abilities = {
 			base_cost_factor: 0.1,
 			base_cost_hero_factor: 0.2,
 		},
+		ability_level_cost_factors:{
+			reclaim: 		2,
+		},
 	},
 	draw_on_act:{
 		name: 			'draw',
@@ -13028,10 +13031,10 @@ var all_abilities = {
 		level_cost_hero: 	2,
 	},
 	reclaim:{
-		description: 	'Returns {LEVEL} card(s) in your grave to your deck.',
+		description: 	'Has a {LEVEL}0% chance to return a card in your grave to your deck.',
 		cannot_proc_while_stunned: true,
-		proc_amount: 	'ability_level',
-		hero_tactics: 	['draw_cards_ability'],
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		targets:	{
 			0:{
 				target: 		'card',
@@ -13053,7 +13056,10 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'draw',
-			base_cost_factor: 	2,
+			base_cost_factor: 	0.2,
+		},
+		ability_level_cost_factors:{
+			draw_cards: 		2,
 		},
 	},
 	reclaim_artifact:{
@@ -14995,7 +15001,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'arrow',
 				type: 			'damage',
-				subtypes: 		['physical','projectile','ranged','arrow'],
+				subtypes: 		['physical','projectile','ranged','arrow','shoot_arrivals'],
 				amount: 		1
 			}
 		},
@@ -17034,6 +17040,7 @@ var all_abilities = {
 			base_cost_spell_factor: 	0.5/4,
 		},
 		cost_adjustment: 3,
+		cost_adjustment_spell: 0.75,
 	},
 	thieves_trap:{
 		name: 		'thieves\' trap',

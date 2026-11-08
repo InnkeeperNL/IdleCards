@@ -1233,7 +1233,7 @@ function get_pick_chance_on_value(value, min_value, rare_chance){
 	{
 		if(value < 1){value = 1;}
 		//pick_chance = base_number / (value * (1 + value / 10));
-		pick_chance = base_number / (1 * (1 + (value / rare_chance)));
+		pick_chance = base_number / (1 * sqr(1 + (value / rare_chance)));
 	}
 	
 	//pick_chance = (base_number * pick_chance / 10) + sqr(min_value);
