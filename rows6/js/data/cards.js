@@ -2714,7 +2714,7 @@ var all_available_cards = {
 		},
 		quote: '\"Cute and prickly.\"',
 	},
-	herbal_glasses:{
+	herbal_glasses:{ 
 		name: 				'herbal glasses',
 		type: 				'artifact',
 		subtypes: 			['trinket','plant'],
