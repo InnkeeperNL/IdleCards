@@ -2729,7 +2729,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{discard_unplayed: 1, regenerating_discards: 1},
+		abilities: 			{discard_unplayed: 1, cleansing_discards: 1, regenerating_discards: 1},
 		quote: '\"Just add it to the pile of compost.\"',
 	},
 	herbs:{
@@ -4779,7 +4779,7 @@ var all_available_cards = {
 		power: 				false,
 		armor: 				0,
 		health: 			false,
-		abilities: 			{discard_unplayed: 1, shielding_discards: 1},
+		abilities: 			{discard_unplayed: 1, empowering_discards: 1, shielding_discards: 1},
 		quote: '\"We can protect ourselves from events that have happened before.\"',
 	},
 	stone_fort:{
@@ -6081,6 +6081,10 @@ function calculate_card_value(card_id, show_calc){
 		if(all_available_cards[card_id]['unique'] != undefined && all_available_cards[card_id]['unique'] == true)
 		{
 			current_card_value *= 2;
+		}
+		if(all_available_cards[card_id]['type'] == 'artifact' || all_available_cards[card_id]['type'] == 'spell')
+		{
+			current_card_value *= 0.9 + (10 / current_card_value);
 		}
 		current_card_value = Math.ceil(current_card_value);
 	}

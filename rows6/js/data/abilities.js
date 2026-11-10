@@ -2913,6 +2913,36 @@ var all_abilities = {
 			base_cost_spell_factor: 0.25,
 		},
 	},
+	cleansing_discards:{
+		description: 	'Removes {LEVEL} negative effect(s) from a random ally unit or your hero  when any ally card is discarded.{REGEN}',
+		proc: 			'ally_discarded',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				has_negative_effect: true,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'cleanse',
+				type: 			'reduce_negative_effects',
+				subtypes: 		['cleansing','cleanse_ally'],
+				amount: 		1,
+			}
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'cleanse',
+			base_cost_factor: 0.5,
+		},
+	},
 	cleanse_hero:{
 		description: 	'Removes {LEVEL} negative effect(s) from your hero.',
 		cannot_proc_while_stunned: true,
@@ -5140,9 +5170,9 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'discard',
-			base_cost_factor: 	-0.25,
+			base_cost_factor: 	-0.2,
 		},
-		cost_adjustment: 	18
+		cost_adjustment: 	22
 	},
 	discard_unplayed:{
 		description: 	'When any ally card fails to be played, this moves that card to your grave. Can be used once each round.',
@@ -6501,6 +6531,35 @@ var all_abilities = {
 			base_cost_factor: 0.5,
 		},
 	},
+	empowering_discards:{
+		description: 	'Gives a random ally {LEVEL} temporary power when any ally card is discarded.{REGEN}',
+		proc: 			'ally_discarded',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_power: 		0,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','empower_ally'],
+				amount: 		'ability_level',
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.5,
+		},
+	},
 	empowering_doom:{
 		description: 	'Gains {LEVEL} temporary power for each doomed unit or hero.',
 		cannot_proc_while_stunned: true,
@@ -6528,7 +6587,7 @@ var all_abilities = {
 							target: 		'unit_or_hero',
 							target_amount: 	100,
 							position: 		'random',
-							has_effect: 	{effect_name: 'doomed', amount: 1, limit: 'min'},
+							has_effect: 	{effect_name: 'doom', amount: 1, limit: 'min'},
 							min_hp: 		1,
 							side: 			'any'
 						}
@@ -13603,7 +13662,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.25,
+			base_cost_factor: 0.375,
 		},
 		level_cost_cum: true,
 	},
@@ -14844,7 +14903,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'fortify',
-			base_cost_factor: 0.25,
+			base_cost_factor: 0.5,
 		},
 		level_cost_cum: true,
 	},
@@ -15143,7 +15202,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'slow',
 			base_cost_factor: 	5,
-			base_cost_spell_factor: 1.25,
+			base_cost_spell_factor: 2.5,
 		},
 	},
 	slow_all_on_act:{
@@ -15175,7 +15234,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 		'slow',
 			base_cost_factor: 	5,
-			base_cost_spell_factor: 1.25,
+			base_cost_spell_factor: 2.5,
 		},
 	},
 	slow_enemy_draws:{
