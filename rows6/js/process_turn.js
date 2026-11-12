@@ -498,18 +498,34 @@ function show_pick_new_deck_card(hero_side){
 	if(hero_side == undefined){hero_side = 2;}
 	if(still_picking == true && battle_info['combat_units'][1]['current_health'] > 0 && battle_info['combat_units'][2]['current_health'] > 0)
 	{
+		var max_pickable = 3;
 		var pickable_deck_cards = get_pickable_deck_cards(hero_side);
 		var pickable_deck_cards_amount = count_object(pickable_deck_cards);
+		var pickable_artifacts = 0;
 		if(pickable_deck_cards_amount > 1)
 		{
 			var new_deck_card_options = [];
 			var parsed_new_deck_cards = '<div class="new_deck_card_container">';
-			for (var deck_card_option_counter = 0; deck_card_option_counter <3; deck_card_option_counter++) {
+			for (var deck_card_option_counter = 0; deck_card_option_counter < max_pickable; deck_card_option_counter++) {
 				//var chosen_deck_card_option = get_random_card('any', undefined, undefined, undefined, undefined, undefined, new_deck_card_options, undefined, undefined, undefined);
 				if(count_object(pickable_deck_cards) > 0)
 				{
 					var chosen_deck_card_option = get_random_key_from_object(pickable_deck_cards);
 					delete pickable_deck_cards[chosen_deck_card_option];
+					if(all_available_cards[chosen_deck_card_option]['type'] == 'artifact')
+					{
+						pickable_artifacts++;
+					}
+					if(pickable_artifacts > max_pickable -2 && deck_card_option_counter < max_pickable -1)
+					{
+						pickable_artifacts = 0;
+						console.log('too many artifacts');
+						temp_pickable_deck_cards = strip_pickable_artifacts(pickable_deck_cards);
+						if(temp_pickable_deck_cards > 0)
+						{
+							pickable_deck_cards = temp_pickable_deck_cards;
+						}
+					}
 					new_deck_card_options[count_object[new_deck_card_options]] = chosen_deck_card_option;
 					parsed_new_deck_cards += '<div class="pickable_deck_card single_current_reward"><span onclick="show_card_details(\'' + chosen_deck_card_option + '\')">' + parse_card(chosen_deck_card_option) + '</span><div class="menu_button slim pick_reward_button" onclick="choose_pickable_deck_card(\'' + chosen_deck_card_option + '\')">PICK</div></div>';
 				}
@@ -537,6 +553,16 @@ function show_pick_new_deck_card(hero_side){
 		draw_card(hero_side);
 		process_next_unit('combat_start',true);
 	}
+}
+
+function strip_pickable_artifacts(pickable_deck_cards){
+	eachoa(pickable_deck_cards, function(card_id, pickable){
+		if(all_available_cards[card_id]['type'] == 'artifact')
+		{
+			delete pickable_deck_cards[card_id];
+		}
+	});
+	return pickable_deck_cards;
 }
 
 function hide_pickable_deck_cards(){

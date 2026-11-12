@@ -12,12 +12,12 @@ var ability_base_costs = {
 	empower: 	4,
 	empower_fortify: 5,
 	enlarge:  	8,
-	evade: 		1,
+	evade: 		0.75,
 	fear:  		2,
 	fortify: 	2,
 	hasten: 	2,
 	healing: 	3,
-	poison: 	1.5,
+	poison: 	1.9,
 	resurrect: 	4,
 	slow: 		2,
 	stealth: 	2,
@@ -6465,7 +6465,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 1.5,
+			base_cost_factor: 0.75,
 		},
 		ability_level_cost_factors:{
 			curse: 				2,
@@ -6600,7 +6600,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 1,
+			base_cost_factor: 0.75,
 		},
 		ability_level_cost_factors:{
 			doom: 			2,
@@ -6647,7 +6647,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 1,
+			base_cost_factor: 0.5,
 		},
 		ability_level_cost_factors:{
 			burn: 				2,
@@ -6697,7 +6697,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 1,
+			base_cost_factor: 0.5,
 		},
 		ability_level_cost_factors:{
 			burn: 				2,
@@ -6775,7 +6775,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'empower',
-			base_cost_factor: 1,
+			base_cost_factor: 0.5,
 		},
 		ability_level_cost_factors:{
 			poison: 			2,
@@ -13494,7 +13494,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.75,
+			base_cost_factor: 1,
 			base_cost_spell_factor: 0.2,
 		},
 		level_cost_cum: true,
@@ -13528,7 +13528,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.8,
+			base_cost_factor: 1,
 		},
 		//cost_factor: 		'health',
 		level_cost_cum: true,
@@ -13563,7 +13563,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.05,
+			base_cost_factor: 0.1,
 			base_cost_hero_factor: 0.1,
 		},
 		//cost_factor: 		'health',
@@ -13630,8 +13630,8 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.75,
-			base_cost_hero_factor: 1,
+			base_cost_factor: 1,
+			base_cost_hero_factor: 1.5,
 		},
 		level_cost_cum: true,
 	},
@@ -13662,7 +13662,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'healing',
-			base_cost_factor: 0.375,
+			base_cost_factor: 0.5,
 		},
 		level_cost_cum: true,
 	},

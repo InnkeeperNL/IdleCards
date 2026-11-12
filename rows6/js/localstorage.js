@@ -110,8 +110,8 @@ function loadLocalStorage(){
 
 		gamedata['decks'][0]['hero'] = chosen_hero;*/
 		gamedata['decks'][0] = {};
-		gamedata['owned_cards']['peasant'] = 6;
-		gamedata['decks'][0]['peasant'] = 5;
+		gamedata['owned_cards']['peasant'] = 1;
+		//gamedata['decks'][0]['peasant'] = 5;
 		gamedata['decks'][0]['hero'] = 'peasant';
 
 		//saveToLocalStorage();

@@ -3,11 +3,11 @@ var current_upgrade = false;
 var all_upgrades = {
 	aaa_rewards:{
 		name: 			'Rewards',
-		description: 	'Increases the rewards of newly summoned enemies by 5% each level.',
+		description: 	'Increases the rewards of newly summoned enemies by 10% each level.',
 		card_image: 	'shard',
 		type: 			'summon_reward',
 		subtypes:  		['any'],
-		amount: 		0.05,
+		amount: 		0.1,
 		level_cost_scale: 	2.5,
 		cost: 			{shard:5,},
 	},

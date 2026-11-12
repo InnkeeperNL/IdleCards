@@ -23,6 +23,7 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, bolster: 1},
 		},
 		quote: '\"I will guide the flock.\"',
+		max_in_deck: 		2,
 	},
 	adder:{
 		name: 				'adder',
@@ -89,6 +90,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{reap_ally: 1, flaming_kills: 1},
 		quote: '\"Keep the bodies burning!\"',
+		max_in_deck: 		1,
 	},
 	ambush_archer:{
 		name: 				'ambush archer',
@@ -536,6 +538,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{shoot_arrivals: 5, cursed_touch: 1, venom: 1},
 		quote: '\"They will not make it to the battlefield.\"',
+		max_in_deck: 		1,
 	},
 	astrologer:{
 		name: 				'astrologer',
@@ -718,10 +721,10 @@ var all_available_cards = {
 		abilities: 			{strike: 1, counter_spell: 1},
 		hero_version: 			{
 			theme: 				['draw_cards_ability','reclaim_ability','subtype_ritual','subtype_clerk'],
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, counter_spells: 3},
+			abilities: 			{strike_unit: 1, counter_spells: 6},
 		},
 		quote: '\"I object!\"',
 	},
@@ -875,7 +878,7 @@ var all_available_cards = {
 		hero_version: 			{
 			theme: 				['burn_ability'],
 			not_theme: 			['cleanse_ally_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{empowering_fire: 1, strike_unit: 1, burn_arrivals: 1},
@@ -1094,7 +1097,7 @@ var all_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, evade: 3, hide: 1},
+			abilities: 			{strike_unit: 1, hide: 1, ally_runs_away: 2},
 		},
 		quote: '\"Cute but very hard to find.\"',
 	},
@@ -1104,7 +1107,7 @@ var all_available_cards = {
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
 		theme: 				[],
-		needs_theme: 		['summon_creature_ability','ally_creature_death_proc_ability','sacrifice_ally_ability'],
+		needs_theme: 		['ally_creature_death_proc_ability'],
 		not_theme: 			['type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -1115,6 +1118,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{burning_deaths: 1},
 		quote: '\"It burns your soul.\"',
+		max_in_deck: 		2,
 	},
 	burning_skeleton:{
 		name: 				'burning skeleton',
@@ -1365,6 +1369,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{fearful_hero: 5, slow_enemy_draws: 1},
 		quote: '\"Do you dare to go into battle against that?\"',
+		max_in_deck: 		2,
 	},
 	crier:{
 		name: 				'crier',
@@ -1461,7 +1466,7 @@ var all_available_cards = {
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
 		theme: 				[],
-		needs_theme: 		['summon_creature_ability','ally_creature_death_proc_ability','sacrifice_ally_ability'],
+		needs_theme: 		['ally_creature_death_proc_ability'],
 		not_theme: 			['type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -1472,6 +1477,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{cursed_deaths: 1},
 		quote: '\"It curses your soul.\"',
+		max_in_deck: 		2,
 	},
 	cursed_night:{
 		name: 				'cursed night',
@@ -1979,7 +1985,7 @@ var all_available_cards = {
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
 		theme: 				[],
-		needs_theme: 		['summon_creature_ability','ally_creature_death_proc_ability','sacrifice_ally_ability'],
+		needs_theme: 		['ally_creature_death_proc_ability'],
 		not_theme: 			[],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -1990,6 +1996,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{dooming_deaths: 1},
 		quote: '\"It calls your soul.\"',
+		max_in_deck: 		2,
 	},
 	fire_assassin:{
 		name: 				'fire assassin',
@@ -2047,7 +2054,7 @@ var all_available_cards = {
 		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
 		theme: 				[],
-		needs_theme: 		['subtype_cleric','resurrect_ability'],
+		needs_theme: 		['subtype_cleric','resurrect_ability','ally_creature_death_proc_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -2223,6 +2230,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{igniting_hero: 5},
 		quote: '\"It can be used to light a fire or stab a foe.\"',
+		max_in_deck: 		2,
 	},
 	flame_rogue:{
 		name: 				'flame rogue',
@@ -2290,6 +2298,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{empower_hero: 1, igniting_hero: 5},
 		quote: '\"Strike the enemy and set them ablaze!\"',
+		max_in_deck: 		2,
 	},
 	forest_witch:{
 		name: 				'forest witch',
@@ -2503,6 +2512,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{restore: 3, limited_uses: 3},
 		quote: '\"Hold on to it. It will save your life!\"',
+		max_in_deck: 		1,
 	},
 	grave_bug:{
 		name: 				'grave bug',
@@ -2621,6 +2631,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{repair: 1},
 		quote: '\"A usefull tool.\"',
+		max_in_deck: 		4,
 	},
 	haunted_house:{
 		name: 				'haunted house',
@@ -2688,6 +2699,31 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{restore: 1, limited_uses: 1},
 		quote: '\"Drink when in need.\"',
+		max_in_deck: 		2,
+	},
+	heckler:{
+		name: 				'heckler',
+		type: 				'creature',
+		subtypes: 			['human','villager'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/heckler.jpg',
+		image_position: 	'top left',
+		power: 				1,
+		armor: 				0,
+		health: 			4,
+		abilities: 			{strike: 1, counter_spells: 2},
+		hero_version: 			{
+			theme: 				['subtype_villager'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, counter_spells: 3},
+		},
+		quote: '\"I\'m sorry, did I break your concentration?\"',
 	},
 	hedgehog:{
 		name: 				'hedgehog',
@@ -2731,6 +2767,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{discard_unplayed: 1, cleansing_discards: 1, regenerating_discards: 1},
 		quote: '\"Just add it to the pile of compost.\"',
+		max_in_deck: 		1,
 	},
 	herbs:{
 		name: 				'herbs',
@@ -2748,6 +2785,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{cleanse: 1},
 		quote: '\"They have medicinal purposes.\"',
+		max_in_deck: 		3,
 	},
 	hideout:{
 		name: 				'hideout',
@@ -2898,6 +2936,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{fortify_hero: 1},
 		quote: '\"When they shoot at you, raise your shield.\"',
+		max_in_deck: 		2,
 	},
 	lava_boulder:{
 		name: 				'lava boulder',
@@ -2973,7 +3012,7 @@ var all_available_cards = {
 		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
 		theme: 				['subtype_plant'],
-		needs_theme: 		['subtype_plant','grant_regeneration_ability','resurrect_ability'],
+		needs_theme: 		['resurrect_ability','ally_creature_death_proc_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -2989,7 +3028,7 @@ var all_available_cards = {
 			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1, regenerating_deaths: 1, regenerates: 1},
+			abilities: 			{strike_unit: 1, regenerating_deaths: 1},
 		},
 		quote: '\"You may hurt us, but we will regrow.\"',
 	},
@@ -3010,6 +3049,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{regenerate_hero: 1, limited_uses: 2},
 		quote: '\"Has a herbal taste.\"',
+		max_in_deck: 		2,
 	},
 	levitate:{
 		name: 				'levitate',
@@ -3167,7 +3207,7 @@ var all_available_cards = {
 		subtypes: 			['human','cleric'],
 		color: 				['colorless'],
 		theme: 				[],
-		needs_theme: 		['resurrect_ability','hasten_ability'],
+		needs_theme: 		['resurrect_ability','hasten_ability','ally_creature_death_proc_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -3297,6 +3337,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{hasten: 1, limited_uses: 2},
 		quote: '\"Drinking this will fill you with energy.\"',
+		max_in_deck: 		1,
 	},
 	mana_skeleton:{
 		name: 				'mana skeleton',
@@ -3563,6 +3604,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{summon_fragile_artifact: 3, fragile: 10},
 		quote: '\"Time to get scavenging!\"',
+		max_in_deck: 		1,
 	},
 	pirate:{
 		name: 				'pirate',
@@ -3730,7 +3772,7 @@ var all_available_cards = {
 		subtypes: 			['trinket'],
 		color: 				['colorless'],
 		theme: 				[],
-		needs_theme: 		['summon_creature_ability','ally_creature_death_proc_ability','sacrifice_ally_ability'],
+		needs_theme: 		['ally_creature_death_proc_ability'],
 		not_theme: 			['type_structure'],
 		craft_theme: 		[],
 		pick_chance: 		1,
@@ -3741,6 +3783,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{poisonous_deaths: 1},
 		quote: '\"It poisons your soul.\"',
+		max_in_deck: 		2,
 	},
 	porcupine:{
 		name: 				'porcupine',
@@ -3801,6 +3844,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{cleanse_hero: 3, limited_uses: 2},
 		quote: '\"Made with the water from a crystal spring.\"',
+		max_in_deck: 		1,
 	},
 	pygmy_elephant:{
 		name: 				'pygmy elephant',
@@ -3871,7 +3915,7 @@ var all_available_cards = {
 		hero_version: 			{
 			theme: 				['burn_ability'],
 			not_theme: 			['damaging_hero','empower_hero_ability','receive_damage_proc_ability','ally_hero_damaged_proc_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{empowering_fire: 1, strike_unit: 1},
@@ -4004,6 +4048,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{unsummon_ally: 1},
 		quote: '\"If you ever feel weary, just come back home.\"',
+		max_in_deck: 		2,
 	},
 	rock_biter:{
 		name: 				'rock biter',
@@ -4096,6 +4141,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{final_empower_all: 1, fragile: 100},
 		quote: '\"It holds powerful energy.\"',
+		max_in_deck: 		1,
 	},
 	rune_of_vines:{
 		name: 				'rune of vines',
@@ -4113,6 +4159,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{final_poison_all: 2, final_stun_all: 1, fragile: 100},
 		quote: '\"A dangerous rune indeed.\"',
+		max_in_deck: 		1,
 	},
 	runner:{
 		name: 				'runner',
@@ -4155,6 +4202,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{discard_unplayed: 1, reclaim: 10},
 		quote: '\"Once use by the librarians of Thull, those glasses were used for important research.\"',
+		max_in_deck: 		1,
 	},
 	sandstorm:{
 		name: 				'sandstorm',
@@ -4747,6 +4795,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{empower_arrival: 2, counter_spell: 1},
 		quote: '\"A weapon forged to fight mages.\"',
+		max_in_deck: 		1,
 	},
 	sporeling:{
 		name: 				'sporeling',
@@ -4781,6 +4830,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{discard_unplayed: 1, empowering_discards: 1, shielding_discards: 1},
 		quote: '\"We can protect ourselves from events that have happened before.\"',
+		max_in_deck: 		1,
 	},
 	stone_fort:{
 		name: 				'stone fort',
@@ -4864,7 +4914,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{empower_hero: 1},
 		quote: '\"A weapon suited for a hero.\"',
-		max_in_deck: 		3,
+		max_in_deck: 		4,
 	},
 	swordsman:{
 		name: 				'swordsman',
@@ -5019,10 +5069,10 @@ var all_available_cards = {
 		abilities: 			{strike: 1, guard: 1, poison_aura: 2},
 		hero_version: 			{
 			theme: 				['poison_ability','subtype_amphibian','heal_hero_ability'],
-			power: 				2,
+			power: 				1,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{strike_unit: 1,  ally_runs_away: 1, poison_aura: 1},
+			abilities: 			{strike_unit: 1,  ally_runs_away: 2, poison_aura: 1},
 		},
 		quote: '\"Harmless unless you touch it.\"',
 	},
@@ -5042,6 +5092,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{igniting_hero: 5, cleanse_poison: 2},
 		quote: '\"Swing it at your enemy or use it to cauterize a wound.\"',
+		max_in_deck: 		1,
 	},
 	torchbearer:{
 		name: 				'torchbearer',
@@ -5086,12 +5137,13 @@ var all_available_cards = {
 		hero_version: 			{
 			theme: 				['subtype_insect','poison_ability'],
 			not_theme: 			['subtype_rogue','subtype_villager','subtype_witch','subtype_warrior','grant_stealth_ability','retreat_ability','buff_hero_ability','ally_hero_damaged_proc_ability','enemy_damaged_by_hero_proc_ability'],
-			power: 				1,
+			power: 				2,
 			armor: 				0,
 			health: 			40,
 			abilities: 			{empowering_poison: 1, strike_unit: 1, venom: 1},
 		},
 		quote: '\"It might be small, but it\'s bite is deadly.\"',
+		verified: true,
 	},
 	venom_mage:{
 		name: 				'venom mage',
@@ -5384,6 +5436,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{counter_spell: 1},
 		quote: '\"It absorbs magical energy.\"',
+		max_in_deck: 		1,
 	},
 	warrior_druid:{
 		name: 				'warrior druid',
@@ -6670,7 +6723,7 @@ function calculate_card_time(card_id, show_calc, hero_version){
 
 	if(calculated_time >= 1 && (hero_version == undefined || hero_version == false))
 	{
-		var high_card_cost_correction = 1 + ((calculated_time - 1) / 50);
+		var high_card_cost_correction = 1 + ((calculated_time - 1) / 25);
 		calculated_time = calculated_time / high_card_cost_correction;
 		if(show_calc!=undefined){console.log('expensive card correction: /' + high_card_cost_correction + ' = ' + calculated_time);}
 	}
