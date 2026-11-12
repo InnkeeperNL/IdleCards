@@ -16728,6 +16728,8 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
+				projectile: 		'book',
+				projectile_target: 	'true_deck',
 				type: 		'summon_unit',
 				subtypes: 	['summon_ally','summon_creature'],
 				card_id: 	'random',
@@ -16758,6 +16760,8 @@ var all_abilities = {
 		},
 		effects:{
 			0:{
+				projectile: 		'book',
+				projectile_target: 	'true_deck',
 				type: 		'add_card_to_deck',
 				subtypes: 	['summon_ally','summon_creature','add_creature_card_to_deck'],
 				card_id: 	'random',

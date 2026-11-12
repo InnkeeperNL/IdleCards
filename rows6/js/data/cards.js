@@ -6828,7 +6828,7 @@ function show_time_correction(fromtime, totime){
 	}
 }
 
-var ideal_hero_hp = 40;
+var ideal_hero_hp = 60;
 var hero_hp_cost_factor = 4;
 
 var hero_subtype_themes = {
