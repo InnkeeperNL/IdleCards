@@ -759,7 +759,7 @@ var all_chained_achievements = {
 				reward_amount: 		1
 			},
 		},
-		card_back: 		'entomologists',
+		card_back: 		'entomologist',
 		steps: 			4,
 	},
 	fear:{
