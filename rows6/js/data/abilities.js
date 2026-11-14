@@ -5912,9 +5912,10 @@ var all_abilities = {
 		average_hits: 		1,
 	},
 	empower_animal:{
-		description: 	'A random ally animal creature that has power gains {LEVEL} temporary power. Cannot affect heroes or itself.',
+		description: 	'Has a {LEVEL}0% chance to increase the power of a random ally animal creature unit by 1. Cannot affect itself.',
 		cannot_proc_while_stunned: true,
-		scales: 		true,
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
 		hero_tactics: 	['subtype_animal'],
 		targets:	{
 			0:{
@@ -5932,16 +5933,17 @@ var all_abilities = {
 		effects:{
 			0:{
 				projectile: 	'power',
-				type: 			'grant_temp_power',
+				type: 			'increase_power',
 				subtypes: 		['empower_any','empower_ally'],
-				amount: 		'ability_level'
+				amount: 		1
 			},
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		1.5,
-		level_cost_structure: 1.25,
-		level_cost_spell: 	0.35,
-		level_cost_hero: 	2,
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.65/10,
+			base_cost_spell_factor: 0.8/4/10,
+		},
 	},
 	empower_ally:{
 		description: 	'Has a {LEVEL}0% chance to increase the power of a random ally creature unit by 1. Cannot affect itself.',
@@ -11691,6 +11693,112 @@ var all_abilities = {
 		},
 		animation: 			'combat_zoom',
 		level_cost: 		4,
+	},
+	morph_griffin_eagle:{
+		name: 			'Mythic fusion',
+		description: 	'Fuses with an eagle into a griffin.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_self: 		true,
+				min_hp: 		1,
+				card_ids: 		['eagle'],
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'pull_to_self',
+				amount: 		1,
+			},
+			1:{
+				type: 			'disappear',
+				amount: 		1,
+				on_success:{
+					targets:{
+						0:{
+							target: 		'unit',
+							target_amount: 	1,
+							position: 		'self',
+							min_hp: 		1,
+							side: 			'ally',
+						},
+					},
+					effects:{
+						0:{
+							type: 			'turn_into',
+							subtypes: 		['morph'],
+							card_id: 		'from_list',
+							card_ids: 		{griffin: true},
+							amount: 		1
+						},
+						1:{
+							type: 				'go_again',
+							subtypes: 			['go_again'],
+							amount: 			1,
+						}
+					},
+				}
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
+	},
+	morph_griffin_lion:{
+		name: 			'Mythic fusion',
+		description: 	'Fuses with an lion into a griffin.',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_self: 		true,
+				min_hp: 		1,
+				card_ids: 		['lion'],
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 			'pull_to_self',
+				amount: 		1,
+			},
+			1:{
+				type: 			'disappear',
+				amount: 		1,
+				on_success:{
+					targets:{
+						0:{
+							target: 		'unit',
+							target_amount: 	1,
+							position: 		'self',
+							min_hp: 		1,
+							side: 			'ally',
+						},
+					},
+					effects:{
+						0:{
+							type: 			'turn_into',
+							subtypes: 		['morph'],
+							card_id: 		'from_list',
+							card_ids: 		{griffin: true},
+							amount: 		1
+						},
+						1:{
+							type: 				'go_again',
+							subtypes: 			['go_again'],
+							amount: 			1,
+						}
+					},
+				}
+			},
+		},
+		animation: 		'combat_zoom',
+		level_cost: 	1,
 	},
 	morph_sporeling:{
 		description: 	'Turns {LEVEL} enemy unit(s) into a sporeling when played. Will target the unit with the highest cost first.',

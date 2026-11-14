@@ -1995,6 +1995,30 @@ var all_available_cards = {
 		},
 		quote: '\"I will show you I can fight!\"',
 	},
+	eagle:{
+		name: 				'eagle',
+		type: 				'creature',
+		subtypes: 			['animal','bird','carnivore'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/eagle.jpg',
+		image_position: 	'top left',
+		power: 				2,
+		armor: 				0,
+		health: 			2,
+		abilities: 			{strike: 1, precision: 1, flying: 5, morph_griffin_lion: 1},
+		hero_version: 			{
+			theme: 				['subtype_carnivore','flying_ability'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, precision: 1, flying: 5},
+		},
+		quote: '\"The king of the sky.\"',
+	},
 	elephant:{
 		name: 				'elephant',
 		type: 				'creature',
@@ -2771,6 +2795,31 @@ var all_available_cards = {
 		},
 		quote: '\"It\'s dirty work, but it can be very rewarding.\"',
 	},
+	griffin:{
+		name: 				'griffin',
+		type: 				'creature',
+		subtypes: 			['animal','bird','carnivore'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/griffin.jpg',
+		image_position: 	'left',
+		power: 				4,
+		armor: 				0,
+		health: 			8,
+		abilities: 			{empower_animal: 10, strike: 1, precision: 1, flying: 5},
+		hero_version: 			{
+			theme: 				['subtype_carnivore','flying_ability'],
+			not_theme: 			['subtype_human','subtype_undead','subtype_fungus','subtype_giant'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{empower_animal: 2, strike_unit: 1, precision: 1, flying: 5},
+		},
+		quote: '\"The king of the animals.\"',
+	},
 	guard:{
 		name: 				'guard',
 		type: 				'creature',
@@ -3289,6 +3338,30 @@ var all_available_cards = {
 		abilities: 			{lightning: 6},
 		quote: '\"I always hits the highest point!\"',
 		max_in_deck: 		2,
+	},
+	lion:{
+		name: 				'lion',
+		type: 				'creature',
+		subtypes: 			['animal','carnivore'],
+		color: 				['colorless'],
+		theme: 				[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/lion.jpg',
+		power: 				2,
+		armor: 				0,
+		health: 			6,
+		abilities: 			{empower_animal: 10, strike: 1, morph_griffin_eagle: 1},
+		hero_version: 			{
+			theme: 				['subtype_carnivore','enrage_ability'],
+			not_theme: 			['burn_ability','subtype_witch','doom_ability','subtype_human','subtype_undead','subtype_fungus','subtype_giant'],
+			power: 				2,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{strike_unit: 1, empower_animal: 10},
+		},
+		quote: '\"The king of the jungle.\"',
 	},
 	magic_dust:{
 		name: 				'magic dust',
@@ -7007,7 +7080,7 @@ function calculate_card_time(card_id, show_calc, hero_version){
 
 	if(calculated_time >= 1 && (hero_version == undefined || hero_version == false))
 	{
-		var high_card_cost_correction = 1 + ((calculated_time - 1) / 25);
+		var high_card_cost_correction = 1 + ((calculated_time - 1) / 50);
 		calculated_time = calculated_time / high_card_cost_correction;
 		if(show_calc!=undefined){console.log('expensive card correction: /' + high_card_cost_correction + ' = ' + calculated_time);}
 	}
