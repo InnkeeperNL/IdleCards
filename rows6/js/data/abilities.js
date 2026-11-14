@@ -16453,6 +16453,68 @@ var all_abilities = {
 			base_cost_hero_factor: 0.02,
 		},
 	},
+	summon_bee:{
+		hide_amount: 	true,
+		description: 	'Has a {LEVEL}0% chance to add a bee card to your hand. If your hand is full, it will add it to your deck instead.',
+		proc: 			'basic',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'true_deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_bee','summon_creature','add_creature_card_to_deck'],
+				card_id: 	'bee',
+				card_status: 	'hand',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.1,
+			base_cost_spell_factor: 0.025,
+		},
+	},
+	summon_bramble:{
+		hide_amount: 	true,
+		description: 	'Has a {LEVEL}0% chance to summon a bramble.',
+		proc: 			'basic',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		max_ally_units: 4,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_structure'],
+				card_id: 	'bramble',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.1,
+			base_cost_spell_factor: 0.025,
+		},
+	},
 	summon_conscript:{
 		description: 	'Summons {LEVEL} conscript(s).',
 		proc: 			'basic',
