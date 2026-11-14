@@ -16220,7 +16220,6 @@ var all_abilities = {
 		proc: 			'enemy_unit_card_played',
 		proc_chance: 	10,
 		proc_factor: 	'ability_level',
-		scales: 		true,
 		targets:	{
 			0:{
 				target: 		'unit',
