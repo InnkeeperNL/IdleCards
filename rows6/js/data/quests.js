@@ -1419,6 +1419,20 @@ var all_chained_achievements = {
 		card_back: 		'blossom',
 		steps: 			4,
 	},
+	village_people:{
+		name: 			'village people',
+		description: 	'Play or summon {AMOUNT} villager card(s).',
+		objective: 		'villager_card_played',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'village_defender',
+		steps: 			4,
+	},
 	warder:{
 		name: 			'warder',
 		description: 	'Have allies counter a spell {AMOUNT} time(s).',

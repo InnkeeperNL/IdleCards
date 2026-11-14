@@ -7,14 +7,14 @@ var ability_base_costs = {
 	damage_all: 8,
 	destroy: 	8,
 	discard: 	10,
-	doom: 		1,
+	doom: 		1.5,
 	draw: 		1,
 	empower: 	4,
 	empower_fortify: 5,
 	enlarge:  	8,
 	evade: 		0.75,
 	fear:  		2,
-	fortify: 	2,
+	fortify: 	3,
 	hasten: 	2,
 	healing: 	3,
 	poison: 	1.9,
@@ -1424,6 +1424,7 @@ var all_abilities = {
 		level_cost: 		6,
 	},
 	bring_armor:{
+		name: 			'bring shields',
 		description: 	'When played, this grants all allies {LEVEL} shield.{SHIELD}',
 		proc: 			'on_play',
 		cannot_proc_while_stunned: true,
@@ -1450,7 +1451,7 @@ var all_abilities = {
 		animation: 		'combat_zoom',
 		base_cost:{
 			base_cost_id: 'fortify',
-			base_cost_factor: 2,
+			base_cost_factor: 1,
 		}
 	},
 	bring_artifact:{
@@ -4072,14 +4073,14 @@ var all_abilities = {
 	},
 	cursed_entry:{
 		hide_amount: true,
-		description: 	'Applies {LEVEL} curse to all nearby enemy units when played. {CURSE}',
+		description: 	'Applies {LEVEL} curse to all enemies when played. {CURSE}',
 		proc: 			'on_play',
 		do_not_pause_between: true,
 		targets:	{
 			0:{
-				target: 		'unit',
-				target_amount: 	3,
-				position: 		'opposing_wide',
+				target: 		'unit_or_hero',
+				target_amount: 	6,
+				position: 		'random',
 				min_hp: 		1,
 				side: 			'enemy'
 			},
@@ -4096,7 +4097,10 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'curse',
 			base_cost_factor: 1,
-		}
+		},
+		ability_level_cost_factors:{
+			coward: 		2,
+		},
 	},
 	cursed_hero:{
 		hide_amount: true,
@@ -8991,7 +8995,8 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'fortify',
 			base_cost_factor: 1,
-		}
+		},
+		level_cost_cum: true,
 	},
 	fragile:{
 		description: 	'When your hero receives damage, this has a {LEVEL}% chance to be destroyed.',
