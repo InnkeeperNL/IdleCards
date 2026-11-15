@@ -28,6 +28,31 @@ var ability_base_costs = {
 }
 
 var all_abilities = {
+	activate_food:{
+		description: 	'Has a {LEVEL}0% chance to give a random ally food another turn.',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		cannot_proc_while_stunned: true,
+		targets:	{
+			0:{
+				target: 	'any',
+				target_amount: 1,
+				position: 	'random',
+				subtypes: 	['food'],
+				side: 		'ally',
+				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'max'},
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'hasten',
+				type: 		'go_again',
+				amount: 	1,
+				increase_timeout: -250,
+			},
+		},
+		level_cost: 	0.2,
+	},
 	add_ignite:{
 		hide_amount: 	true,
 		description: 	'When played, this adds {LEVEL} ignite cards to both decks.',
@@ -144,7 +169,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
-		hero_tactics: 	['flying_ability','air_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -165,9 +189,11 @@ var all_abilities = {
 			}
 		},
 		animation: 			'combat_zoom',
-		level_cost: 		12,
-		level_cost_spell: 	3,
-		level_cost_hero: 	10,
+		base_cost:{
+			base_cost_id: 		'damage_all',
+			base_cost_factor: 	1.75,
+			base_cost_spell_factor: 0.5,
+		},
 		average_hits: 		3,
 	},
 	air_bolt:{
@@ -270,7 +296,7 @@ var all_abilities = {
 		level_cost: 2,
 	},
 	ally_charges:{
-		description: 	'Makes an ally creature unit with power charge. If used by a creature, it cannot target itself.<br/><i>Charge: This unit will move to the furthest free slot with an opposing unit and gains {LEVEL} temporary power for each slot moved.</i>',
+		description: 	'Makes {LEVEL} ally creature unit(s) with power charge. If used by a creature, it cannot target itself.<br/><i>Charge: This unit will move to the furthest free slot with an opposing unit and gains 1 temporary power for each slot moved.</i>',
 		max_ally_units: 4,
 		ability_subtypes: ['charge','empower_any','empower_ally','movement','move_ally'],
 		min_unopposed_enemy_units: 1,
@@ -278,7 +304,7 @@ var all_abilities = {
 		targets:	{
 			0:{
 				target: 		'unit',
-				target_amount: 	1,
+				target_amount: 	'ability_level',
 				position: 		'random',
 				not_types: 		['structure','object'],
 				has_effect: 	{effect_name: 'stunned', amount: 0, limit: 'max'},
@@ -293,7 +319,7 @@ var all_abilities = {
 				projectile: 		'hoof',
 				type: 				'random_ability',
 				ability_options: 	['charge'],
-				amount: 			'ability_level',
+				amount: 			1,
 			}
 		},
 		animation: 			'combat_zoom',
@@ -10333,7 +10359,7 @@ var all_abilities = {
 				pause_before: 	500,
 				projectile: 'dodge',
 				type: 		'set_skill',
-				subtypes: 	['grant_stealth','buff_hero'],
+				subtypes: 	['grant_stealth','buff_hero','grant_hero_stealth'],
 				skill_id: 	'stealth',
 				amount: 	1
 			}
@@ -10367,7 +10393,7 @@ var all_abilities = {
 				pause_before: 	500,
 				projectile: 'dodge',
 				type: 		'set_skill',
-				subtypes: 	['grant_stealth','buff_hero'],
+				subtypes: 	['grant_stealth','buff_hero','grant_hero_stealth'],
 				skill_id: 	'stealth',
 				amount: 	1
 			}
@@ -12634,9 +12660,9 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 		'summon',
-			base_cost_factor: 	0.1,
-			base_cost_spell_factor: 0.025,
-			base_cost_hero_factor: 0.2,
+			base_cost_factor: 	0.05,
+			base_cost_spell_factor: 0.0125,
+			base_cost_hero_factor: 0.1,
 		},
 	},
 	prime_target:{
