@@ -3,7 +3,7 @@
 	position:absolute;
 	left:2%;
 	top:80px;
-	width:28%;
+	width:27%;
 	height:180px;
 	background-color:rgba(0,0,0,0.2);
 	border-radius: 5px;
@@ -265,7 +265,7 @@
 	position:absolute;
 	left:2%;
 	top:270px;
-	width:34%;
+	width:27%;
 	bottom:70px;
 	background-color:rgba(0,0,0,0);
 }
@@ -316,7 +316,7 @@
 .available_cards
 {
 	position:absolute;
-	left:37%;
+	left:30%;
 	top:80px;
 	right:0px;
 	bottom:80px;
@@ -1323,7 +1323,7 @@
 	height:44px;
 	overflow:hidden;
 	position:relative;
-	margin-left: -1px;
+	margin-left: 0px;
 	margin-top:2px;
 	box-sizing: border-box;
 }
