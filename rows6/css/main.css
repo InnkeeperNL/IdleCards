@@ -307,9 +307,14 @@ button:focus
 
 .home_buttons_container .menu_button.third
 {
-	margin: 3px;
+	margin: 0px;
+	margin-left:0.5%;
+	margin-right: 0.5%;
+	margin-bottom: 0.5%;
 	height: 200px;
 	width: 200px;
+	max-height: 30%;
+	max-width: 48%;
 	border-radius: 10%;
 	box-shadow: 5px 5px 10px rgba(0,0,0,0.85);
 	border-width: 5px;
