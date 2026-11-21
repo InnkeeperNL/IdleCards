@@ -241,24 +241,6 @@ button:focus
 	margin-bottom: 10px;
 }
 
-.home_buttons_container .menu_button.third
-{
-	margin-bottom: 1%;
-	height: 30%;
-	border-radius: 10%;
-	box-shadow: 5px 5px 10px rgba(0,0,0,0.85);
-}
-
-.home_buttons_container .menu_button.third .bg
-{
-	border-radius: 10%;
-	box-shadow: inset 5px 5px 10px rgba(255,255,255,0.35);
-}
-.home_buttons_container .menu_button.third .bg:hover
-{
-	box-shadow: inset 5px 5px 25px rgba(0,0,0,0.35);
-}
-
 @media only screen and (max-width:1000px) {
 
 	/*.menu_button.third
@@ -321,6 +303,37 @@ button:focus
 	right: 15px;
 	text-align: left;
 	text-shadow:1px 1px 0px rgba(0,0,0,1),1px -1px 0px rgba(0,0,0,1),-1px 1px 0px rgba(0,0,0,1),-1px -1px 0px rgba(0,0,0,1),1px 1px 3px rgba(0,0,0,1);
+}
+
+.home_buttons_container .menu_button.third
+{
+	margin: 3px;
+	height: 200px;
+	width: 200px;
+	border-radius: 10%;
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.85);
+	border-width: 5px;
+}
+
+.home_buttons_container .menu_button.third .bg
+{
+	border-radius: 10%;
+	box-shadow: inset 5px 5px 10px rgba(255,255,255,0.35);
+}
+.home_buttons_container .menu_button.third:hover .bg
+{
+	box-shadow: inset 5px 5px 25px rgba(0,0,0,0.5);
+	opacity: 1;
+}
+
+.home_buttons_container .menu_button.third span
+{
+	font-size: 24px;
+}
+
+.home_buttons_container .menu_button.third span.quest_button_complete_count
+{
+	font-size: 40px;
 }
 
 .menu_button.third span.max_level
@@ -1152,28 +1165,24 @@ div.menu_button.widest
 {
 	background-image:url('../images/cards/fantasy-3389041_1280.jpg');
 	background-position:top;
-	opacity:0.7;
 }
 
 .quests_button .bg
 {
 	background-image:url('../images/cards/dream_TradingCard-2024-11-30T171529.098.jpg');
 	background-position:center;
-	opacity:0.5;
 }
 
 .town_button .bg
 {
 	background-image:url('../images/cards/house.jpg');
 	background-position:center;
-	opacity:0.5;
 }
 
 .upgrades_button .bg
 {
 	background-image:url('../images/cards/dream_TradingCard-2023-03-17T062225.jpg');
 	background-position:center;
-	opacity:0.5;
 }
 
 
@@ -1181,28 +1190,24 @@ div.menu_button.widest
 {
 	background-image:url('../images/cards/fantasy-4103064_640.jpg');
 	background-position:top;
-	opacity:0.7;
 }
 
 .random_battles_button .bg
 {
 	background-image:url('../images/cards/barbarian-4616094_640.jpg');
 	background-position:top;
-	opacity:0.7;
 }
 
 .summon_mob_button .bg
 {
 	background-image:url('../images/cards/magic_portal.jpg');
 	background-position:center;
-	opacity:0.7;
 }
 
 .waves_button .bg
 {
 	background-image:url('../images/cards/dream_TradingCard-2024-11-24T070421.937.jpg');
 	background-position:top;
-	opacity:0.7;
 }
 
 .merchant_button .bg
@@ -1215,21 +1220,18 @@ div.menu_button.widest
 {
 	background-image:url('../images/cards/peasant.jpg');
 	background-position:center;
-	opacity: 0.5;
 }
 
 .craft_menu_button .bg
 {
 	background-image:url('../images/cards/carpenter.jpg');
 	background-position:center;
-	opacity: 0.5;
 }
 
 .tinker_menu_button .bg
 {
 	background-image:url('../images/cards/hammer.jpg');
 	background-position:center;
-	opacity: 0.5;
 }
 
 .quests_button span.quest_button_complete_count,

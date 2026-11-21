@@ -17,6 +17,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, bolster_all: 1},
 		hero_version: 			{
 			theme: 				['subtype_cleric','enrage_ability'],
+			not_theme: 			['subtype_rogue','burn_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -66,6 +67,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, brew_potion: 5},
 		hero_version: 			{
 			theme: 				['artifact_death_proc_ability','subtype_clerk','add_artifact_card_to_deck_ability'],
+			not_theme: 			['subtype_food','summon_creature_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -132,8 +134,8 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{strike: 1, strike_arrival: 5, stealth: 1, retreat_on_kill: 1},
 		hero_version: 			{
-			theme: 				['enemy_played','move_enemy_to_hand_ability','subtype_rogue','damaging_hero'],
-			not_theme: 			['movement_ability'],
+			theme: 				['subtype_archer','move_enemy_to_hand_ability','enemy_unit_card_played_proc_ability','empower_hero_ability'],
+			not_theme: 			['subtype_gear','burn_ability','poison_ability','run_away_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -490,7 +492,7 @@ var all_available_cards = {
 		abilities: 			{empower_ally: 5, fortify_ally: 1},
 		hero_version: 			{
 			theme: 				['subtype_warrior','subtype_archer'],
-			not_theme: 			['subtype_cleric','subtype_mage','subtype_rogue','subtype_undead','empower_hero_ability','damaging_hero','shoot_arrivals_ability','burn_ability'],
+			not_theme: 			['subtype_cleric','subtype_mage','subtype_rogue','subtype_undead','empower_hero_ability','damaging_hero','shoot_arrivals_ability','burn_ability','no_power_creature'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -1111,6 +1113,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{break: 1},
 		quote: '\"There was a bright light... Then it was broken.\"',
+		max_in_deck: 	1,
 	},
 	brew_potion:{
 		name: 				'brew potion',
@@ -1127,6 +1130,7 @@ var all_available_cards = {
 		health: 			false,
 		abilities: 			{brew_potion: 10, echo: 1},
 		quote: '\"Now add the eye of newt.\"',
+		max_in_deck: 		1,
 	},
 	brewer:{
 		name: 				'brewer',
@@ -1408,6 +1412,32 @@ var all_available_cards = {
 		abilities: 			{brew_potion: 3, limited_uses: 3},
 		quote: '\"Do we need an eye of newt?\"',
 		max_in_deck: 		1,
+	},
+	cheerleader:{
+		name: 				'cheerleader',
+		type: 				'creature',
+		subtypes: 			['human','villager'],
+		color: 				['colorless'],
+		theme: 				['damaging_hero'],
+		needs_theme: 		['ally_hero_kill_proc_ability','buff_hero_ability','empower_hero','damaging_hero'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/cheerleader.jpg',
+		image_position: 	'top',
+		power: 				false,
+		armor: 				0,
+		health: 			5,
+		abilities: 			{empower_hero: 1, heroic_adrenaline: 1},
+		hero_version: 			{
+			theme: 				['active_healing_ability','cleanse_ally_ability'],
+			not_theme: 			['subtype_mage','arcane_bolts_ability','empower_hero','damaging_hero'],
+			power: 				false,
+			armor: 				0,
+			health: 			40,
+			abilities: 			{brace_ally: 1},
+		},
+		quote: '\"You can do it!\"',
 	},
 	cheese:{
 		name: 				'cheese',
@@ -2398,7 +2428,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, burn: 2, burn_ally: 1, empower_ally: 4},
 		hero_version: 			{
 			theme: 				['subtype_warrior','cleanse_ally_ability'],
-			not_theme: 			['subtype_mage','subtype_cleric','type_structure'],
+			not_theme: 			['subtype_mage','subtype_cleric','type_structure','no_power_creature'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -2715,7 +2745,7 @@ var all_available_cards = {
 		type: 				'creature',
 		subtypes: 			['human','witch'],
 		color: 				['colorless'],
-		theme: 				['ally_creature_death_proc_ability','aoe','subtype_undead'],
+		theme: 				['ally_creature_death_proc_ability','aoe','subtype_undead','fear_ability'],
 		craft_theme: 		[],
 		pick_chance: 		1,
 		time: 				1,
@@ -3247,7 +3277,8 @@ var all_available_cards = {
 		health: 			4,
 		abilities: 			{cursed_entry: 1, strike: 1},
 		hero_version: 			{
-			theme: 				['curse_ability'],
+			theme: 				['enemy_unit_card_played_proc_ability','on_play_proc_ability','retreat_ability'],
+			not_theme: 			['movement_ability','fear_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -3315,6 +3346,24 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, spawn_sporeling: 2, burning_aura: 1},
 		},
 		quote: '\"Can you believe that stuff survives in the volcano?!\"',
+	},
+	laurel_charm:{
+		name: 				'laurel charm',
+		type: 				'artifact',
+		subtypes: 			['trinket','plant'],
+		color: 				['colorless'],
+		theme: 				['damaging_hero','empower_hero_ability'],
+		needs_theme: 		['damaging_hero','empower_hero_ability','buff_hero_ability'],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/laurel_charm.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{heroic_adrenaline: 2},
+		quote: '\"Prove yourself and you will gain incredible power.\"',
+		max_in_deck: 		1,
 	},
 	leaf_bug:{
 		name: 				'leaf bug',
@@ -4050,7 +4099,7 @@ var all_available_cards = {
 		abilities: 			{run_away: 1, strike: 1, plunder: 5, scavenge: 10, empower_ally: 10},
 		hero_version: 			{
 			theme: 				['subtype_rogue','plunder_ability','summon_artifact_ability','summon_structure_ability','artifact_death_proc_ability'],
-			not_theme: 			['subtype_mage','subtype_warrior','subtype_witch','poison_ability','burn_ability'],
+			not_theme: 			['subtype_mage','subtype_warrior','subtype_witch','poison_ability','burn_ability','no_power_creature'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -4211,6 +4260,25 @@ var all_available_cards = {
 			abilities: 			{strike_unit: 1, thorns: 1},
 		},
 		quote: '\"Big and prickly.\"',
+	},
+	power_potion:{
+		name: 				'power potion',
+		type: 				'artifact',
+		subtypes: 			['potion'],
+		color: 				['colorless'],
+		theme: 				[],
+		needs_theme: 		['damaging_hero','empower_hero_ability'],
+		not_theme: 			[],
+		craft_theme: 		[],
+		pick_chance: 		1,
+		time: 				1,
+		image: 				'cards/power_potion.jpg',
+		power: 				false,
+		armor: 				0,
+		health: 			false,
+		abilities: 			{empower_hero: 2, limited_uses: 2},
+		quote: '\"Can you feel the power?!\"',
+		max_in_deck: 		1,
 	},
 	protective_bubble:{
 		name: 				'protective bubble',
@@ -4522,7 +4590,7 @@ var all_available_cards = {
 		abilities: 			{empowering_structures: 1, strike: 1, demolish: 1, scavenge: 5},
 		hero_version: 			{
 			theme: 				['type_structure','summon_artifact_ability','summon_structure_ability'],
-			not_theme: 			['move_ally_to_hand_ability','summon_ally_creature_ability'],
+			not_theme: 			['move_ally_to_hand_ability','summon_creature_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -5034,7 +5102,7 @@ var all_available_cards = {
 		abilities: 			{charge: 1, strike: 1, gain_resurrect_charge: 1, undead: 1},
 		hero_version: 			{
 			theme: 				['resurrect_ability','ally_creature_death_proc_ability','empower_ally_ability'],
-			not_theme: 			['type_structure','evade_ability','movement_ability','burn_ability','subtype_animal','subtype_villager'],
+			not_theme: 			['type_structure','evade_ability','movement_ability','burn_ability','subtype_animal','subtype_villager','no_power_creature'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -5286,7 +5354,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, empower_hero: 1},
 		hero_version: 			{
 			theme: 				['subtype_warrior','heal_hero_ability','empower_hero_ability'],
-			not_theme: 			['burn_ability','arcane_bolts_ability','subtype_rogue','subtype_cleric','subtype_undead'],
+			not_theme: 			['burn_ability','arcane_bolts_ability','subtype_rogue','subtype_cleric','subtype_undead','no_power_creature'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -5778,7 +5846,7 @@ var all_available_cards = {
 		abilities: 			{empowering_structures: 1, strike: 1},
 		hero_version: 			{
 			theme: 				['type_structure','subtype_villager'],
-			not_theme: 			['projectile_ability','poison_ability','burn_ability','doom_ability','curse_ability','empower_ally_ability','add_creature_card_to_deck_ability'],
+			not_theme: 			['projectile_ability','poison_ability','burn_ability','doom_ability','curse_ability','empower_ally_ability','add_creature_card_to_deck_ability','empower_hero_ability'],
 			power: 				2,
 			armor: 				0,
 			health: 			40,
@@ -7484,6 +7552,11 @@ function check_card(card_id){
 		if(card_info['theme'] == undefined){card_info['theme'] = {};};
 		if(card_info['craft_theme'] == undefined || card_info['craft_theme'][0] == undefined){card_info['craft_theme'] = ['type_' + card_info['type']];};
 		card_info['theme'][get_highest_key_in_object(card_info['theme']) + 1] = 'type_' + card_info['type'];
+
+		if(card_info['power'] == undefined || (card_info['power'] === false && card_info['type'] == 'creature'))
+		{
+			card_info['theme'][get_highest_key_in_object(card_info['theme']) + 1] = 'no_power_creature';
+		}
 
 		eachoa(card_info['subtypes'], function(subtype_id, current_subtype){
 			card_info['theme'][get_highest_key_in_object(card_info['theme']) + 1] = 'subtype_' + current_subtype;

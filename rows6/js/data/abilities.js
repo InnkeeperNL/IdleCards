@@ -941,7 +941,7 @@ var all_abilities = {
 		},
 	},
 	bolster_all:{
-		description: 	'All ally units and your hero gain {LEVEL} health.',
+		description: 	'All ally units and your hero gain {LEVEL} health. If used by a unit, it cannot target itself.',
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
@@ -951,6 +951,7 @@ var all_abilities = {
 				target: 		'unit_or_hero',
 				target_amount: 	6,
 				position: 		'random',
+				not_self: 		true,
 				min_hp: 		1,
 				side: 			'ally'
 			},
@@ -966,7 +967,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'bolster',
-			base_cost_factor: 		4,
+			base_cost_factor: 		3,
 			base_cost_spell_factor: 1,
 		},
 	},
@@ -1234,7 +1235,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	1,
 		scales: 		true,
-		hero_tactics: 	['melee_ability','empower_ally_ability','bolster_ally_ability'],
 		targets:	{
 			0:{
 				target: 	'unit',
@@ -1329,8 +1329,8 @@ var all_abilities = {
 			base_cost_factor: 		1,
 			base_cost_spell_factor: 0.25,
 		},
-		cost_adjustment: 			2,
-		cost_adjustment_spell: 		0.5,
+		cost_adjustment: 			4,
+		cost_adjustment_spell: 		1,
 	},
 	break:{
 		name: 			'break artifact',
@@ -4690,7 +4690,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'power',
 				type: 			'increase_power',
-				subtypes: 		['empower_any','enrage','empower_ally'],
+				subtypes: 		['empower_any','empower_ally'],
 				amount: 		'ability_level',
 			},
 		},
@@ -10201,6 +10201,34 @@ var all_abilities = {
 		level_cost_spell: 	1,
 		max_level: 1,
 	},
+	heroic_adrenaline:{
+		description: 	'When your hero destroys something, it gains {LEVEL} temporary power.',
+		proc: 			'ally_hero_kill',
+		cannot_proc_while_stunned: true,
+		proc_while_dead: true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','buff_hero','empower_hero','adrenaline'],
+				amount: 		'ability_level',
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.5/4,
+		},
+	},
 	hex:{
 		description: 	'Turns {LEVEL} random non-undead enemy creature unit(s) into a frog until the end of their next turn.',
 		cannot_proc_while_stunned: true,
@@ -14855,7 +14883,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'power',
 				type: 			'increase_power',
-				subtypes: 		['empower_any','enrage','empower_ally'],
+				subtypes: 		['empower_any','empower_ally'],
 				amount: 		1,
 			},
 		},
@@ -14886,7 +14914,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'power',
 				type: 			'grant_temp_power',
-				subtypes: 		['empower_any','enrage','empower_ally'],
+				subtypes: 		['empower_any','empower_ally'],
 				amount: 		'ability_level',
 			},
 		},
@@ -17280,7 +17308,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'power',
 				type: 			'grant_temp_power',
-				subtypes: 		['empower_any','enrage','empower_ally'],
+				subtypes: 		['empower_any','empower_ally'],
 				amount: 		'ability_level',
 			},
 			1:{
@@ -17464,7 +17492,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'power',
 				type: 			'increase_power',
-				subtypes: 		['enrage','empower_ally'],
+				subtypes: 		['empower_ally'],
 				amount: 		'ability_level',
 			},
 			1:{

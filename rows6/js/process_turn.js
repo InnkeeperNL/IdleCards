@@ -516,7 +516,7 @@ function show_pick_new_deck_card(hero_side){
 					{
 						pickable_artifacts++;
 					}
-					if(pickable_artifacts > max_pickable -2 && deck_card_option_counter < max_pickable -1)
+					if(pickable_artifacts > 0 && deck_card_option_counter < max_pickable -1)
 					{
 						pickable_artifacts = 0;
 						//console.log('too many artifacts');
