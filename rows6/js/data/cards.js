@@ -1115,7 +1115,7 @@ var all_available_cards = {
 		quote: '\"There was a bright light... Then it was broken.\"',
 		max_in_deck: 	1,
 	},
-	brew_potion:{
+	brew_potion:{ 
 		name: 				'brew potion',
 		type: 				'spell',
 		subtypes: 			['ritual'],
