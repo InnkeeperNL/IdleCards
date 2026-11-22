@@ -29,8 +29,8 @@ var all_buildings = {
 				//production_achievement_bonus: 0.1,
 			},*/
 			scraps_placeholder:{
-				base_time: 		1 * 1 * 3600,
-				base_storage: 	1 * 8,
+				base_time: 		1.05 * 1 * 600,
+				base_storage: 	0.96 * 50,
 				upgrade_cost_speed:{
 					peasant: 		10,
 				},

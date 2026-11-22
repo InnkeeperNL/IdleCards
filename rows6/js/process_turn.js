@@ -4308,7 +4308,7 @@ function receive_damage(target_id, origin_id, calculated_amount,subtypes){
     			eachoa(battle_info.combat_units[origin_id]['abilities'], function(ability_key, ability_level){
     				if(match_array_values(all_abilities[ability_key]['proc'], 'overkill') == true && (all_abilities[ability_key]['subtypes'] == undefined || match_array_values(all_abilities[ability_key]['subtypes'], subtypes) == true) && (all_abilities[ability_key]['not_subtypes'] == undefined || match_array_values(all_abilities[ability_key]['not_subtypes'], subtypes) == false))
     				{
-    					process_ability(origin_id, all_abilities[ability_key], overkill, target_id, undefined, 'overkill', false);
+    					process_ability(origin_id, all_abilities[ability_key], overkill, target_id, undefined, 'overkill', true);
     				}
     				latest_result = temp_damage_dealt;
     			});
@@ -5354,6 +5354,10 @@ function check_unit_alive(unit_id, origin_id, forced_death, subtypes){
 				if(battle_info.combat_units[origin_id] != undefined)
 				{
 					check_ability_procs(unit['side'], temp_unit_type + '_killed', origin_id);
+					if(unit['side'] != battle_info.combat_units[origin_id]['side'])
+					{
+						check_ability_procs(battle_info.combat_units[origin_id]['side'], 'kill_enemy', origin_id);
+					}
 					if(origin_id < 3)
 					{
 						check_ability_procs(battle_info.combat_units[origin_id]['side'], 'hero_kill', origin_id);

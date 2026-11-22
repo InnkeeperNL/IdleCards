@@ -105,6 +105,35 @@ var all_abilities = {
 			base_cost_factor: 	0.05,
 		},
 	},
+	adrenal_kills:{
+		description: 	'When an ally destroys an enemy, it gains {LEVEL} temporary power.',
+		proc: 			'ally_kill_enemy',
+		cannot_proc_while_stunned: true,
+		proc_while_dead: true,
+		targets:	{
+			0:{
+				target: 		'unit_or_hero',
+				target_amount: 	1,
+				position: 		'random',
+				origin_unit: 	true,
+				min_power: 		0,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'power',
+				type: 			'grant_temp_power',
+				subtypes: 		['empower_any','buff_hero','empower_hero','adrenaline'],
+				amount: 		'ability_level',
+			},
+		},
+		animation: 		'combat_zoom',
+		base_cost:{
+			base_cost_id: 'empower',
+			base_cost_factor: 0.5/2,
+		},
+	},
 	adrenaline:{
 		description: 	'When this destroys something, it has a {LEVEL}0% chance to gain 1 power.',
 		proc: 			'kill',
@@ -14299,6 +14328,35 @@ var all_abilities = {
 			base_cost_hero_factor: 0.7,
 		},
 	},
+	restoring_kills:{
+		description: 	'When an ally destroys an enemy, this heals your hero by {LEVEL}.',
+		proc: 			'ally_kill_enemy',
+		cannot_proc_while_stunned: true,
+		scales: 		true,
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				position: 		'random',
+				min_hp: 		1,
+				damaged: 		true,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 	'healing',
+				type: 			'healing',
+				subtypes: 		['healing','active_healing','heal_ally','heal_hero','buff_hero'],
+				amount: 		'ability_level'
+			},
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 'healing',
+			base_cost_factor: 0.75,
+		},
+	},
 	restoring_spells:{
 		description: 	'When any ally spell is cast, this heals your hero by {LEVEL}.',
 		proc: 			'ally_spell_card_played',
@@ -17440,12 +17498,19 @@ var all_abilities = {
 		average_hits: 		1,
 	},
 	trample:{
-		description: 	'When this kills a unit with physical melee damage, the excess damage is dealt to the enemy hero.',
+		description: 	'When this kills a unit with physical melee damage, the excess damage is dealt to the nearest enemy unit, or the enemy hero if there are no enemy units.',
 		proc: 			'overkill',
 		cannot_proc_while_stunned: true,
 		hero_tactics: 	['empower_hero_ability','stun_ability','reveal_ability'],
 		targets:	{
 			0:{
+				target: 	'unit',
+				target_amount: 1,
+				position: 	'nearest',
+				min_hp: 	1,
+				side: 		'enemy'
+			},
+			1:{
 				target: 	'hero',
 				target_amount: 1,
 				position: 	'random',
@@ -17464,11 +17529,11 @@ var all_abilities = {
 		animation: 			'attack',
 		base_cost:{
 			base_cost_id: 	'strike',
-			base_cost_factor: 0.25,
-			base_cost_hero_factor: 0.5,
+			base_cost_factor: 0.5,
+			base_cost_hero_factor: 1,
 		},
-		cost_factor: 	'power',
-		average_hits: 	'ability_level',
+		//cost_factor: 	'power',
+		//average_hits: 	'ability_level',
 	},
 	trampling_might:{
 		description: 	'A random ally unit that uses power and has the strike ability and an opposing unit, but does not have the trample ability, gains {LEVEL} permanent power and the trample ability.<br/><i>Trample: When this kills a unit with melee damage, the excess damage is dealt to the enemy hero.</i>',
