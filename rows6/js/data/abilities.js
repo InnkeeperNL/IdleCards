@@ -9315,6 +9315,35 @@ var all_abilities = {
 		average_hits: 		1,
 		cost_adjustment: 	1,
 	},
+	fungal_overgrowth:{
+		description: 	'Turns {LEVEL} damaged ally wall unit(s) into a fungal wall.',
+		cannot_proc_while_stunned: true,
+		proc_amount: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'unit',
+				target_amount: 	1,
+				position: 		'random',
+				not_types: 		['creature'],
+				subtypes: 		['wall'],
+				not_card_ids: 	['fungal_wall'],
+				damaged: 		true,
+				min_hp: 		1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 'voodoo',
+				type: 		'turn_into',
+				subtypes: 	['shift','turn_ally_into'],
+				card_id: 	'fungal_wall',
+				amount: 	1
+			},
+		},
+		animation: 			'combat_zoom',
+		level_cost: 		1,
+	},
 	gain_energy:{
 		description: 	'Gains {LEVEL} energy each turn.',
 		cannot_proc_while_stunned: true,
