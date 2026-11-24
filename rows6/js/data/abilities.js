@@ -10032,7 +10032,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		level_cost: 		4,
 	},
-	heal:{ 
+	heal:{
 		description: 	'Heals a random damaged ally creature {LEVEL} time(s).',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
