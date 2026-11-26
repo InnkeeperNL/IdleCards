@@ -132,6 +132,7 @@ var all_abilities = {
 		base_cost:{
 			base_cost_id: 'empower',
 			base_cost_factor: 0.5/2,
+			base_cost_hero_factor: 0.5/1.25,
 		},
 	},
 	adrenaline:{

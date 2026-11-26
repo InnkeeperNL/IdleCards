@@ -1430,12 +1430,12 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{empower_hero: 1, adrenal_kills: 1},
 		hero_version: 			{
-			theme: 				['active_healing_ability','cleanse_ally_ability'],
-			not_theme: 			['subtype_mage','arcane_bolts_ability','empower_hero','damaging_hero'],
+			theme: 				['active_healing_ability','cleanse_ally_ability','heal_hero_ability','kill_proc_ability'],
+			not_theme: 			['subtype_mage','arcane_bolts_ability','empower_hero','damaging_hero','type_structure','type_artifact','retreat_ability'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
-			abilities: 			{brace_ally: 1},
+			abilities: 			{encourage_creature: 2, adrenal_kills: 2},
 		},
 		quote: '\"You can do it!\"',
 	},
@@ -1964,7 +1964,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, bolstering_deaths: 1},
 		hero_version: 			{
 			theme: 				['ally_creature_death_proc_ability','resurrect_ability','summon_creature_ability','buff_hero_ability'],
-			not_theme: 			['type_structure','movement_ability','damaging_hero'],
+			not_theme: 			['type_structure','movement_ability','damaging_hero','doom_ability','poison_ability','burn_ability','subtype_insect'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -1990,7 +1990,7 @@ var all_available_cards = {
 		abilities: 			{arcane_bolt: 1, death_bolt: 1},
 		hero_version: 			{
 			theme: 				['ally_creature_death_proc_ability','resurrect_ability','summon_creature_ability','damaging_hero'],
-			not_theme: 			['type_structure','movement_ability','empower_hero_ability'],
+			not_theme: 			['type_structure','movement_ability','empower_hero_ability','doom_ability','poison_ability','curse_ability','subtype_insect'],
 			power: 				false,
 			armor: 				0,
 			health: 			40,
@@ -2337,7 +2337,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, burning_deaths: 1},
 		hero_version: 			{
 			theme: 				['ally_creature_death_proc_ability','resurrect_ability','summon_creature_ability','burn_ability'],
-			not_theme: 			['type_structure','movement_ability','empower_hero_ability','damaging_hero','echo_ability','fragile_ability','subtype_villager','subtype_warrior','subtype_witch'],
+			not_theme: 			['type_structure','movement_ability','empower_hero_ability','damaging_hero','echo_ability','fragile_ability','subtype_villager','subtype_warrior','subtype_witch','doom_ability','poison_ability','curse_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -3505,7 +3505,7 @@ var all_available_cards = {
 		abilities: 			{strike: 1, regenerating_deaths: 1},
 		hero_version: 			{
 			theme: 				['ally_creature_death_proc_ability','resurrect_ability','summon_creature_ability','grant_regeneration_ability','buff_hero_ability'],
-			not_theme: 			['type_structure','movement_ability','empower_hero_ability','damaging_hero'],
+			not_theme: 			['type_structure','movement_ability','empower_hero_ability','damaging_hero','doom_ability','poison_ability','curse_ability','subtype_insect'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
@@ -3724,8 +3724,8 @@ var all_available_cards = {
 		health: 			5,
 		abilities: 			{strike: 1, hastening_deaths: 1},
 		hero_version: 			{
-			theme: 				['ally_creature_death_proc_ability','resurrect_ability','summon_creature_ability'],
-			not_theme: 			['type_structure','movement_ability','buff_hero_ability'],
+			theme: 				['ally_creature_death_proc_ability','resurrect_ability','add_creature_card_to_deck_ability'],
+			not_theme: 			['type_structure','movement_ability','buff_hero_ability','doom_ability','poison_ability','curse_ability'],
 			power: 				1,
 			armor: 				0,
 			health: 			40,
