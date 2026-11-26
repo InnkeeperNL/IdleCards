@@ -9022,7 +9022,7 @@ var all_abilities = {
 		animation: 			'combat_zoom',
 		base_cost:{
 			base_cost_id: 'fortify',
-			base_cost_factor: 1,
+			base_cost_factor: 0.6,
 			base_cost_spell_factor: 0.25,
 		}
 	},
@@ -9314,6 +9314,35 @@ var all_abilities = {
 		level_cost_spell: 	0.75,
 		average_hits: 		1,
 		cost_adjustment: 	1,
+	},
+	fungal_aura:{
+		description: 	'When this receives damage, it has a {LEVEL}0% chance to summon a sporeling.',
+		proc: 			'receive_damage',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		proc_while_dead: true,
+		max_ally_units: 4,
+		targets:	{
+			0:{
+				target: 	'any',
+				target_amount: 1,
+				position: 	'self',
+				side: 		'any'
+			},
+		},
+		effects:{
+			0:{
+				type: 		'summon_unit',
+				subtypes: 	['summon_ally','summon_creature'],
+				card_id: 	'sporeling',
+				amount: 	1
+			}
+		},
+		animation: 	'combat_zoom',
+		base_cost:{
+			base_cost_id: 	'summon',
+			base_cost_factor: 0.08,
+		},
 	},
 	fungal_overgrowth:{
 		description: 	'Turns {LEVEL} damaged ally wall unit(s) into a fungal wall.',
@@ -13269,7 +13298,8 @@ var all_abilities = {
 				not_types: 		['object','structure'],
 				min_hp: 		1,
 				max_hp: 		1,
-				side: 			'ally'
+				side: 			'ally',
+				lowest_cost: 	true,
 			},
 		},
 		effects:{
