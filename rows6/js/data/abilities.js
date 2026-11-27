@@ -1079,7 +1079,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'bolster',
 				type: 			'increase_health',
-				subtypes: 		['bolster','heal_hero','buff_hero'],
+				subtypes: 		['bolster','bolster_hero','buff_hero'],
 				amount: 		'ability_level'
 			},
 		},
@@ -1123,7 +1123,6 @@ var all_abilities = {
 		proc: 			'basic',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['bolster_structure_ability','repairing_ability','type_structure'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -1154,7 +1153,6 @@ var all_abilities = {
 		proc: 			'ally_unit_card_played',
 		cannot_proc_while_stunned: true,
 		scales: 		true,
-		hero_tactics: 	['heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'hero',
@@ -1168,7 +1166,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'bolster',
 				type: 			'grant_temp_health',
-				subtypes: 		['bolster','heal_hero','buff_hero'],
+				subtypes: 		['bolster','bolster_hero','buff_hero'],
 				amount: 		'ability_level'
 			},
 		},
@@ -1194,7 +1192,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'bolster',
 				type: 			'increase_health',
-				subtypes: 		['bolster','heal_hero','buff_hero'],
+				subtypes: 		['bolster','bolster_hero','buff_hero'],
 				amount: 		'ability_level'
 			},
 		},
@@ -1222,7 +1220,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'bolster',
 				type: 			'increase_health',
-				subtypes: 		['bolster','heal_hero','buff_hero'],
+				subtypes: 		['bolster','bolster_hero','buff_hero'],
 				amount: 		'ability_level'
 			},
 		},
@@ -1250,7 +1248,7 @@ var all_abilities = {
 			0:{
 				projectile: 	'bolster',
 				type: 			'increase_health',
-				subtypes: 		['bolster','heal_hero','buff_hero'],
+				subtypes: 		['bolster','bolster_hero','buff_hero'],
 				amount: 		'ability_level'
 			},
 		},
@@ -1780,7 +1778,7 @@ var all_abilities = {
 				projectile: 		'book',
 				projectile_target: 	'true_deck',
 				type: 		'add_card_to_deck',
-				subtypes: 	['summon_ally','summon_rat','summon_creature','add_spell_card_to_deck'],
+				subtypes: 	['summon_ally','summon_spell','add_spell_card_to_deck'],
 				card_id: 	'random',
 				card_type: 	'spell',
 				card_status: 	'hand',
@@ -3615,7 +3613,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		max_ally_units: 4,
 		proc_amount: 	'ability_level',
-		hero_tactics: 	['heal_hero_ability','ally_creature_death_proc_ability'],
 		targets:	{
 			0:{
 				target: 	'hero',
@@ -3645,7 +3642,6 @@ var all_abilities = {
 		cannot_proc_while_stunned: true,
 		proc_amount: 	'ability_level',
 		need_power: 	true,
-		hero_tactics: 	['heal_hero_ability','empower_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -4033,7 +4029,6 @@ var all_abilities = {
 		proc: 			'receive_damage',
 		subtypes: 		['melee'],
 		proc_while_dead: true,
-		hero_tactics: 	['projectile_ability','blast_ability','heal_hero_ability','curse_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -4166,7 +4161,6 @@ var all_abilities = {
 		ability_subtypes: ['receive_damage_proc'],
 		scales: 		true,
 		cannot_proc_while_stunned: true,
-		hero_tactics: 	['projectile_ability','blast_ability','heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit_or_hero',
@@ -5079,6 +5073,36 @@ var all_abilities = {
 		level_cost: 	-3,
 		average_hits: 	'ability_level',
 	},
+	devise_tactic:{
+		description: 	'Has a {LEVEL}0% chance to add a random tactic card to your hand. If your hand is full, it will add them to your deck instead.',
+		proc_chance: 	10,
+		proc_factor: 	'ability_level',
+		targets:	{
+			0:{
+				target: 		'hero',
+				target_amount: 	1,
+				side: 			'ally'
+			},
+		},
+		effects:{
+			0:{
+				projectile: 		'book',
+				projectile_target: 	'true_deck',
+				type: 		'add_card_to_deck',
+				subtypes: 	['summon_ally','summon_spell','add_spell_card_to_deck'],
+				card_id: 	'random',
+				card_type: 	'spell',
+				card_subtype: 	'tactic',
+				card_status: 	'hand',
+				amount: 	1
+			}
+		},
+		animation: 			'combat_zoom',
+		base_cost:{
+			base_cost_id: 		'summon',
+			base_cost_factor: 	0.1,
+		},
+	},
 	dig_grave:{
 		description: 	'Has a {LEVEL}0% chance to add a random creature card to your grave.',
 		proc: 			'basic',
@@ -5300,7 +5324,6 @@ var all_abilities = {
 		description: 	'Applies {LEVEL} doom to all enemy units.{DOOM}',
 		cannot_proc_while_stunned: true,
 		do_not_pause_between: 	true,
-		hero_tactics: 	['doom_ability','subtype_wall','heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',
@@ -5592,7 +5615,6 @@ var all_abilities = {
 		description: 	'Applies {LEVEL} doom to any unit it deals damage to.{DOOM}',
 		proc: 			'dealt_damage',
 		proc_while_dead: true,
-		hero_tactics: 	['doom_ability','subtype_wall','heal_hero_ability'],
 		targets:	{
 			0:{
 				target: 		'unit',

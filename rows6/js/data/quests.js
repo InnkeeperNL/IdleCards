@@ -413,6 +413,20 @@ var all_achievements = {
 }
 
 var all_chained_achievements = {
+	adrenaline:{
+		name: 			'adrenaline',
+		description: 	'Have allies gain power by destroying something {AMOUNT} time(s).',
+		objective: 		'ally_performed_adrenaline',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'cheerleader',
+		steps: 			4,
+	},
 	almost:{
 		name: 			'almost',
 		description: 	'Loose a battle while the enemy hero has 1 health left {AMOUNT} time(s).',
@@ -796,6 +810,20 @@ var all_chained_achievements = {
 		step_amount: 	10,
 		no_quest: 		true,
 	},
+	flying_high:{
+		name: 			'flying high',
+		description: 	'Have allies avoid an enemy ability by flying {AMOUNT} time(s).',
+		objective: 		'ally_performed_flying',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'bee',
+		steps: 			4,
+	},
 	fortify:{
 		name: 			'fortify',
 		description: 	'Have allies shield an ally {AMOUNT} time(s).',
@@ -1106,6 +1134,34 @@ var all_chained_achievements = {
 		step_effect: 	'max_amount',
 		step_amount: 	-5,
 		no_quest: 		true,
+	},
+	rage:{
+		name: 			'rage',
+		description: 	'Have allies enrage {AMOUNT} time(s).',
+		objective: 		'ally_performed_enrage',
+		amount: 		0.5,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'wench',
+		steps: 			4,
+	},
+	restore:{
+		name: 			'restore',
+		description: 	'Have allies restore the health of your hero {AMOUNT} time(s).',
+		objective: 		'ally_performed_heal_hero',
+		amount: 		1,
+		rewards:{
+			0:{
+				reward_id: 			'stash',
+				reward_amount: 		1
+			},
+		},
+		card_back: 		'sheep',
+		steps: 			4,
 	},
 	rogue:{
 		name: 			'rogue',
