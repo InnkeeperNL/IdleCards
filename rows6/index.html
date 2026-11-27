@@ -817,7 +817,7 @@
 				<div class="current_deck_colors"></div>
 				<div class="available_cards"></div>
 				<div class="card_count"></div>
-				<div class="clear_deck_button" onclick="clear_current_deck()">CLEAR</div>
+				<!-- <div class="clear_deck_button" onclick="clear_current_deck()">CLEAR</div> -->
 
 				<div class="page_selection">
 
@@ -1297,6 +1297,7 @@
 		parsed_stats += '<div class="stats_title">Summoning</div>';
 		if(gamedata['battles_won'] != undefined){parsed_stats += '<div class="left_stats">Battles won:</div><div class="right_stats">' + nFormatter(gamedata['battles_won'],3) + '</div>';}
 		if(gamedata['battles_lost'] != undefined){parsed_stats += '<div class="left_stats">Battles lost:</div><div class="right_stats">' + nFormatter(gamedata['battles_lost'],3) + '</div>';}
+		if(gamedata['battles_won'] != undefined != gamedata['battles_lost'] != undefined && gamedata['battles_won'] > 0 && gamedata['battles_lost'] > 0){parsed_stats += '<div class="left_stats">Win ratio:</div><div class="right_stats">' + nFormatter(gamedata['battles_won']/gamedata['battles_lost'],2) + '</div>';}
 		/*if(gamedata['highest_summon_won'] != undefined && gamedata['highest_summon_won'] > 0){parsed_stats += '<div class="left_stats">Highest summon:</div><div class="right_stats">' + nFormatter(gamedata['highest_summon_won'] * 100,1) + '%</div>';}*/
 		if(gamedata['upgrades'] != undefined && gamedata['upgrades']['summon_altar'] != undefined){
 			parsed_stats += '<div class="left_stats">Max altar rarity:</div><div class="right_stats">' + (Math.floor(get_upgrade_factor('altar_rarity', 'any', true) * get_upgrade_factor('summon_max_rarity', 'any', true))) + '</div>';
@@ -1305,7 +1306,7 @@
 		if(gamedata['highest_wave_ever'] != undefined && gamedata['highest_wave_ever'] > 1){parsed_stats += '<div class="left_stats">Highest wave:</div><div class="right_stats">' + nFormatter(gamedata['highest_wave_ever'],3) + '</div>';}*/
 		parsed_stats += '<div class="stats_title">Cards</div>';
 		if(gamedata['owned_cards'] != undefined){parsed_stats += '<div class="left_stats">Cards owned:</div><div class="right_stats">' + nFormatter(count_owned_cards(),3) + '</div>';}
-		if(gamedata['decks'] != undefined){parsed_stats += '<div class="left_stats">Decks owned:</div><div class="right_stats">' + nFormatter(count_object(gamedata['decks']),3) + '</div>';}
+		if(gamedata['decks'] != undefined && count_object(gamedata['decks']) > 1){parsed_stats += '<div class="left_stats">Decks owned:</div><div class="right_stats">' + nFormatter(count_object(gamedata['decks']),3) + '</div>';}
 		//if(gamedata['known_recipes'] != undefined){parsed_stats += '<div class="left_stats">Recipes known:</div><div class="right_stats">' + nFormatter(count_object(gamedata['known_recipes']),3) + '</div>';}
 		if(gamedata['owned_card_backs'] != undefined && count_object(gamedata['owned_card_backs']) > 0){parsed_stats += '<div class="left_stats">Card backs:</div><div class="right_stats">' + nFormatter(count_object(gamedata['owned_card_backs']),3) + '</div>';}
 		
