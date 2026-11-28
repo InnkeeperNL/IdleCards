@@ -463,6 +463,7 @@ var all_chained_achievements = {
 		min_amount: 	30,
 		amount: 		1,
 		hide_amount: 	true,
+		reset_if_incomplete: true,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -473,7 +474,6 @@ var all_chained_achievements = {
 		steps: 			5,
 		step_effect: 	'min_amount',
 		step_amount: 	30,
-		no_quest: 		true,
 	},
 	army:{
 		name: 			'army',
@@ -496,6 +496,7 @@ var all_chained_achievements = {
 		min_amount: 	30,
 		amount: 		1,
 		hide_amount: 	true,
+		reset_if_incomplete: true,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -506,7 +507,6 @@ var all_chained_achievements = {
 		steps: 			5,
 		step_effect: 	'min_amount',
 		step_amount: 	30,
-		no_quest: 		true,
 	},
 	attunement:{
 		name: 			'attunement',
@@ -661,6 +661,7 @@ var all_chained_achievements = {
 		min_amount: 	10,
 		amount: 		1,
 		hide_amount: 	true,
+		reset_if_incomplete: true,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -671,7 +672,6 @@ var all_chained_achievements = {
 		steps: 			4,
 		step_effect: 	'min_amount',
 		step_amount: 	10,
-		no_quest: 		true,
 	},
 	curse:{
 		name: 			'curse',
@@ -708,6 +708,7 @@ var all_chained_achievements = {
 		min_amount: 	30,
 		amount: 		1,
 		hide_amount: 	true,
+		reset_if_incomplete: true,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -718,7 +719,6 @@ var all_chained_achievements = {
 		steps: 			5,
 		step_effect: 	'min_amount',
 		step_amount: 	30,
-		no_quest: 		true,
 	},
 	doom:{
 		name: 			'doom',
@@ -789,7 +789,6 @@ var all_chained_achievements = {
 		},
 		card_back: 		'creepy_mask',
 		steps: 			4,
-		no_quest: 		true,
 	},
 	flare:{
 		name: 			'flare',
@@ -798,6 +797,7 @@ var all_chained_achievements = {
 		min_amount: 	10,
 		amount: 		1,
 		hide_amount: 	true,
+		reset_if_incomplete: true,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -808,7 +808,6 @@ var all_chained_achievements = {
 		steps: 			4,
 		step_effect: 	'min_amount',
 		step_amount: 	10,
-		no_quest: 		true,
 	},
 	flying_high:{
 		name: 			'flying high',
@@ -916,8 +915,10 @@ var all_chained_achievements = {
 		name: 			'heavy hitter',
 		description: 	'Deal {MIN_AMOUNT} or more damage to an enemy in one hit.',
 		objective: 		'dealt_damage',
-		min_amount: 	10,
+		min_amount: 	5,
 		amount: 		1,
+		hide_amount: 	true,
+		reset_if_incomplete: true,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -925,10 +926,9 @@ var all_chained_achievements = {
 			},
 		},
 		card_back: 		'wombat',
-		steps: 			6,
+		steps: 			5,
 		step_effect: 	'min_amount',
-		step_amount: 	4,
-		no_quest: 		true,
+		step_amount: 	5,
 	},
 	homebound:{
 		name: 			'homebound',
@@ -1021,6 +1021,7 @@ var all_chained_achievements = {
 		min_amount: 	10,
 		amount: 		1,
 		hide_amount: 	true,
+		reset_if_incomplete: true,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -1031,7 +1032,6 @@ var all_chained_achievements = {
 		steps: 			4,
 		step_effect: 	'min_amount',
 		step_amount: 	10,
-		no_quest: 		true,
 	},
 	merchant:{
 		name: 			'merchant',
@@ -1246,7 +1246,6 @@ var all_chained_achievements = {
 		},
 		card_back: 		'thieves_cloak',
 		steps: 			4,
-		no_quest: 		true,
 	},
 	shards:{
 		name: 			'shards',
@@ -1415,6 +1414,7 @@ var all_chained_achievements = {
 		min_amount: 	30,
 		amount: 		1,
 		hide_amount: 	true,
+		reset_if_incomplete: true,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -1425,7 +1425,6 @@ var all_chained_achievements = {
 		steps: 			5,
 		step_effect: 	'min_amount',
 		step_amount: 	30,
-		no_quest: 		true,
 	},
 	trover:{
 		name: 			'trover',
@@ -1449,6 +1448,7 @@ var all_chained_achievements = {
 		min_amount: 	30,
 		amount: 		1,
 		hide_amount: 	true,
+		reset_if_incomplete: true,
 		rewards:{
 			0:{
 				reward_id: 			'stash',
@@ -1459,7 +1459,6 @@ var all_chained_achievements = {
 		steps: 			5,
 		step_effect: 	'min_amount',
 		step_amount: 	30,
-		no_quest: 		true,
 	},
 	victory:{
 		name: 			'victory',
@@ -1655,6 +1654,10 @@ eachoa(all_chained_achievements, function(achievement_id, achievement_info){
 	if(all_quests[achievement_id] == undefined && achievement_info['no_quest'] == undefined)
 	{
 		var quest_amount = achievement_info['amount'] * 1;
+		if(achievement_info['min_amount'] != undefined)
+		{
+			quest_amount = Math.ceil(achievement_info['min_amount'] / 5);
+		}
 		/*if(quest_amount > 1)
 		{
 			quest_amount = 1 + (quest_amount / 10);
@@ -1674,7 +1677,10 @@ eachoa(all_chained_achievements, function(achievement_id, achievement_info){
 				//peasant: 		(0.25 / quest_amount),
 				scraps: 		(10 / quest_amount),
 			}
-		}
+		};
+		if(achievement_info['reset_if_incomplete'] != undefined){all_quests[achievement_id]['reset_if_incomplete'] = achievement_info['reset_if_incomplete'];}
+		if(achievement_info['hide_amount'] != undefined){all_quests[achievement_id]['hide_amount'] = achievement_info['hide_amount'];}
+		
 	}
 });
 

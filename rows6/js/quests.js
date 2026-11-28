@@ -59,14 +59,21 @@ function show_quests(){
 					parsed_quest += '<div class="background" style="' + image_position + 'background-image:url(images/' + quest_info['image'] + ')"></div>';
 				}
 				var progress_percent = 100 - ((current_quest_info['progress'] / current_quest_info['amount']) * 100);
-				parsed_quest += '<div class="progress_bar" style="width:' + progress_percent + '%"></div>';
+				var progress_bar_opacity = 1;
+				if(quest_info['hide_amount'] != undefined && quest_info['hide_amount'] == true){progress_bar_opacity = 0.5;}
+				parsed_quest += '<div class="progress_bar" style="width:' + progress_percent + '%;opacity:' + progress_bar_opacity + '"></div>';
 				parsed_quest += '<div class="single_quest_name">' + capitalizeFirstLetter(quest_info['name']) + '</div>';
 				parsed_quest += '<div class="single_quest_description">';
 				
 				if(quest_complete != 'complete')
 				{
-					parsed_quest += check_plural(quest_info['description'].split("{AMOUNT}").join(numberWithCommas(current_quest_info['amount'])), numberWithCommas(current_quest_info['amount'])) + '<br/>';
-					parsed_quest += 'Progress: ' + current_quest_info['progress'];
+					var parsed_quest_text = quest_info['description'].split("{AMOUNT}").join(numberWithCommas(current_quest_info['amount']));
+						parsed_quest_text = parsed_quest_text.split("{MIN_AMOUNT}").join(numberWithCommas(current_quest_info['amount']));
+					parsed_quest += check_plural(parsed_quest_text, numberWithCommas(current_quest_info['amount'])) + '<br/>';
+					if(quest_info['hide_amount'] == undefined || quest_info['hide_amount'] == false)
+					{
+						parsed_quest += 'Progress: ' + current_quest_info['progress'];
+					}
 				}
 				else
 				{
@@ -74,7 +81,7 @@ function show_quests(){
 				}
 				parsed_quest += '</div>';
 
-				parsed_quest += '<div class="single_quest_reward_title">Reward:</div>';
+				//parsed_quest += '<div class="single_quest_reward_title">Reward:</div>';
 				parsed_quest += 	'<div class="single_quest_reward_container">';
 				eachoa(current_quest_info['rewards'], function(reward_type, reward_info){
 					//reward_info = (reward_info * get_upgrade_factor('summon_reward', 'any', true));
@@ -164,14 +171,23 @@ function show_daily_quests(){
 			parsed_quest += '<div class="background" style="' + image_position + 'background-image:url(images/' + quest_info['image'] + ')"></div>';
 		}
 		var progress_percent = 100 - ((current_quest_info['progress'] / current_quest_info['amount']) * 100);
-		parsed_quest += '<div class="progress_bar" style="width:' + progress_percent + '%"></div>';
+		var progress_bar_opacity = 1;
+		if(quest_info['hide_amount'] != undefined && quest_info['hide_amount'] == true){progress_bar_opacity = 0.5;}
+		parsed_quest += '<div class="progress_bar" style="width:' + progress_percent + '%;opacity:' + progress_bar_opacity + '"></div>';
 		parsed_quest += '<div class="single_quest_name">' + capitalizeFirstLetter(quest_info['name']) + '</div>';
 		parsed_quest += '<div class="single_quest_description">';
 		
 		if(quest_complete != 'complete')
 		{
-			parsed_quest += check_plural(quest_info['description'].split("{AMOUNT}").join(current_quest_info['amount']), current_quest_info['amount']) + '<br/>';
-			parsed_quest += 'Progress: ' + current_quest_info['progress'];
+			var parsed_quest_text = quest_info['description'].split("{AMOUNT}").join(numberWithCommas(current_quest_info['amount']));
+				parsed_quest_text = parsed_quest_text.split("{MIN_AMOUNT}").join(numberWithCommas(current_quest_info['amount']));
+			parsed_quest += check_plural(parsed_quest_text, numberWithCommas(current_quest_info['amount'])) + '<br/>';
+			if(quest_info['hide_amount'] == undefined || quest_info['hide_amount'] == false)
+			{
+				parsed_quest += 'Progress: ' + current_quest_info['progress'];
+			}
+			/*parsed_quest += check_plural(quest_info['description'].split("{AMOUNT}").join(current_quest_info['amount']), current_quest_info['amount']) + '<br/>';
+			parsed_quest += 'Progress: ' + current_quest_info['progress'];*/
 		}
 		else
 		{
@@ -199,7 +215,7 @@ function show_daily_quests(){
 		}
 		parsed_quest += '</div>';
 
-		parsed_quest += '<div class="single_quest_reward_title">Reward:</div>';
+		//parsed_quest += '<div class="single_quest_reward_title">Reward:</div>';
 		parsed_quest += 	'<div class="single_quest_reward_container">';
 		eachoa(quest_info['rewards'], function(reward_type, reward_info){
 			reward_info = (reward_info * get_upgrade_factor('quest_reward', 'any', true));
@@ -313,7 +329,7 @@ function check_new_quests(show_new_message){
 			if(count_object(possible_quests) > 0)
 			{
 				var new_quest_id = get_random_key_from_object(possible_quests);
-				var quest_amount = Math.ceil(((Math.random() * (all_quests[new_quest_id]['max_amount'] - (all_quests[new_quest_id]['min_amount'] / 2)) * 1) + (all_quests[new_quest_id]['min_amount'] / 2))  * get_upgrade_factor('quest_amount', 'any', true));
+				var quest_amount = Math.ceil(((Math.random() * (all_quests[new_quest_id]['max_amount'] - (all_quests[new_quest_id]['min_amount'])) * 1) + (all_quests[new_quest_id]['min_amount']))  * get_upgrade_factor('quest_amount', 'any', true));
 				var chosen_reward = get_random_key_from_object_based_on_num_value(random_loot_drops);
 				//console.log(chosen_reward);
 				var chosen_reward_amount = all_quests[new_quest_id]['reward_per_amount']['scraps'] * quest_amount * get_upgrade_factor('quest_reward', 'any', true);
@@ -1123,7 +1139,20 @@ function reset_achievements(){
 							gamedata['achievements'][achievement_id]['amount'][objective_id] = 0;
 						});
 					}
+					
 				}
+
+				
+			}
+			if(achievement_info['reset_if_incomplete'] != undefined && achievement_info['reset_if_incomplete'] == true)
+			{
+				var temp_achievement_id = achievement_id.replaceAll('_1','');
+				eachoa(gamedata['quests'], function(quest_key, quest_info){
+					if(quest_info['quest_id'] == temp_achievement_id)
+					{
+						gamedata['quests'][quest_key]['progress'] = 0;
+					}
+				});
 			}
 		});
 	}

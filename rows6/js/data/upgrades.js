@@ -376,7 +376,7 @@ var all_upgrades = {
 		amount: 		1,
 		level_cost_scale: 	1,
 		cost: 			{scraps:10,},
-		max_level: 		20,
+		max_level: 		10,
 	},
 	quest_reward:{
 		name: 			'Quest rewards',
@@ -390,7 +390,7 @@ var all_upgrades = {
 		amount: 		0.05,
 		level_cost_scale: 	1,
 		cost: 			{scraps:500,},
-		max_level: 		10,
+		max_level: 		20,
 	},
 	/*wave_access:{
 		name: 			'Waves',
