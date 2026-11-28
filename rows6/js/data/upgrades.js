@@ -1,7 +1,7 @@
 var current_upgrade = false;
 
 var all_upgrades = {
-	aaa_rewards:{ 
+	aaa_rewards:{
 		name: 			'Rewards',
 		description: 	'Increases the rewards of newly summoned enemies by 10% each level.',
 		card_image: 	'shard',
